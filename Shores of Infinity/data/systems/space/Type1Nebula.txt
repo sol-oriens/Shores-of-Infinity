@@ -1,0 +1,24 @@
+System: Type1Nebula
+	Frequency: 0
+
+	//RS - Scaling
+	ExpandSystem(30000:40000)
+
+	Repeat(1:7)
+		MakeAnomaly()
+	Repeat(0:4)
+		MakeArtifact()
+	Repeat(0:4)
+		MakeAsteroid(Cargo = Ore, Resource = Distributed)
+
+	MakeNebula(#f0c870)
+
+	Repeat(0:2)
+		MakeCreepCamp(Offset = 1200)
+
+	AddRegionStatus(Type1Nebula) // Hides stuff, but not as badly as a Mutara nebula.
+	ABEM_nebulae::SetGlobalSystemFlag(Type1Nebula)
+	ABEM_nebulae::SetGlobalSystemFlag(IsNebula)
+
+	NoRegionVision()
+	SetStaticSeeableRange(500*$SENSOR_RANGE_MULT)

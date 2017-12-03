@@ -1,0 +1,24 @@
+Site: ContaminatedCavern
+	Name: #SITE_P_ODDITY
+	Description: #SITE_NAR_ODDITY
+
+	State:
+		Narrative: #SITE_NAR_CONTAMINATED_CAVERN
+
+		Sprite: ResourceIcons::39
+
+		Choice: Growth
+		Choice: Energy
+
+	Option: Growth
+		Icon: PopGrowth
+		Description: #SITE_CONTAMINATED_CAVERN_GROWTH:1
+
+		AddStatus(Prolific)
+		AddMaxPopulation(-1)
+
+	Option: Energy
+		Icon: ResourceIcon::2
+		Description: #SITE_CONTAMINATED_CAVERN_ENERGY:1
+
+		AddPressure(Energy, 1)

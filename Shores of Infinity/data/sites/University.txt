@@ -1,0 +1,118 @@
+Site: University
+	Name: #SITE_P_ANCIENT_RUINS
+	Description: #SITE_NAR_ANCIENT_RUINS
+
+	State: Initial
+		Narrative: #SITE_NAR_UNIVERSITY
+
+		Sprite: BuildingSprites::8
+
+		Choice: AdministrativeWing
+		Choice: CollegeAppliedArts
+		Choice: CollegeSciences
+		Choice: PhysicsExperimentarium = 50%
+		Choice: BiochemistryLabs = 50%
+
+	Option: AdministrativeWing
+		Icon: CardCategoryIcons::1
+		Description: #SITE_UNIVERSITY_ADMINISTRATIVE_WING
+
+		Result: 70%
+			SendMessage(#SITE_UNIVERSITY_ADMINISTRATIVE_WING_SUCCESS)
+			GainInfluenceCard(AncientKnowledge)
+
+		Result: 30%
+			SendMessage(#SITE_UNIVERSITY_ADMINISTRATIVE_WING_FAIL)
+
+	Option: CollegeAppliedArts
+		Icon: ResourceIcon::1
+		Description: #SITE_UNIVERSITY_COLLEGE_APPLIED_ARTS
+
+		Result: 50%
+			SendMessage(#SITE_UNIVERSITY_COLLEGE_APPLIED_ARTS_INFLUENCE:1)
+			AddInfluenceStake(1)
+
+		Result: 50%
+			SendMessage(#SITE_UNIVERSITY_COLLEGE_APPLIED_ARTS_MONEY:100)
+			AddMoney(100)
+
+	Option: CollegeSciences
+		Icon: ResourceIcon::4
+		Description: #SITE_UNIVERSITY_COLLEGE_SCIENCES
+
+		Result: 60%
+			SendMessage(#SITE_UNIVERSITY_COLLEGE_SCIENCES_SUCCESS:150)
+			AddResearchPoints(150, Modified = False, Penalized = False)
+
+		Result: 40%
+			SendMessage(#SITE_UNIVERSITY_COLLEGE_SCIENCES_FAIL:25)
+			AddResearchPoints(25, Modified = False, Penalized = False)
+
+	Option: PhysicsExperimentarium
+		Icon: ResourceIcon::2
+		Description: #SITE_UNIVERSITY_PHYSICS_EXPERIMENTARIUM
+
+		ProgressToState(PhysicsExperimentarium)
+
+	Option: BiochemistryLabs
+		Icon: ResourceIcon::4
+		Description: #SITE_UNIVERSITY_BIOCHEMISTRY_LABS
+
+		ProgressToState(BiochemistryLabs)
+
+	State: PhysicsExperimentarium
+		Narrative: #SITE_NAR_UNIVERSITY_PHYSICS_EXPERIMENTARIUM
+		Frequency: 0
+
+		Sprite: BuildingSprites::8
+
+		Choice: Cooling
+		Choice: Solar = 70%
+		Choice: Plasma = 70%
+		Choice: Research
+
+	Option: Cooling
+		Icon: SupportCommand * #ffff00
+		Description: #SITE_UNIVERSITY_PHYSICS_EXPERIMENTARIUM_COOLING
+
+		UnlockModule(AugmentReload)
+
+	Option: Solar
+		Icon: SolarPanel
+		Description: #SITE_UNIVERSITY_PHYSICS_EXPERIMENTARIUM_SOLAR
+
+		UnlockSubsystem(SolarPanel)
+
+	Option: Plasma
+		Icon: RocketPod::0
+		Description: #SITE_UNIVERSITY_PHYSICS_EXPERIMENTARIUM_PLASMA
+
+		UnlockSubsystem(PlasmaThrower)
+		UnlockSubsystem(SupportPlasmaThrower)
+
+	Option: Research
+		Icon: ResourceIcon::4
+		Description: #SITE_UNIVERSITY_PHYSICS_EXPERIMENTARIUM_RESEARCH
+
+		AddResearchPoints(75:100, Modified = False, Penalized = False)
+
+	State: BiochemistryLabs
+		Narrative: #SITE_NAR_UNIVERSITY_BIOCHEMISTRY_LABS
+		Frequency: 0
+
+		Sprite: BuildingSprites::8
+
+		Choice: Cultivation
+		Choice: Immunology
+
+	Option: Cultivation
+		Icon: ResourceIcons::4
+		Description: #SITE_UNIVERSITY_BIOCHEMISTRY_LABS_CULTIVATION
+
+		GainInfluenceCard(Cultivation)
+
+	Option: Immunology
+		Icon: ResourceIcon::8
+		Description: #SITE_UNIVERSITY_BIOCHEMISTRY_LABS_IMMUNOLOGY:1
+
+		AddMaxPopulation(1)

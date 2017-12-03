@@ -1,0 +1,19 @@
+Technology: ShieldedAntimatter
+	Name: #S_SHIELDED_AMGEN
+	Description: #R_SYS_SHIELDED_AMGEN_DESC
+
+	Icon: ShieldedAntimatterGen
+	Symbol: ResourceIcon::2
+	Color: #33ffcc
+
+	Category: Control, Power & Supply
+	Class: Unlock
+
+	Point Cost: 750
+	Time Cost: 180
+
+	SecondaryEnergyCost(1250)
+
+	SkipOnUnlockedSubsystem(ShieldedAntimatter)
+	UnlockSubsystem(ShieldedAntimatter)
+	ModAttribute(ProgenitorTechProgress, Add, 5)

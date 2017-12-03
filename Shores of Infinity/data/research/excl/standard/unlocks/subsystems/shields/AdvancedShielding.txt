@@ -1,0 +1,38 @@
+Technology: AdvancedShielding
+	Name: #R_ADV_SHIELD
+	Description: #R_ADV_SHIELD_DESC
+
+	Icon: TechIcons::6
+	Color: #e20dff
+
+	Category: Shields
+	Class: Unlock
+
+	Point Cost: 1000
+	Time Cost: 180
+
+	SecondaryEnergyCost(1500)
+
+	UnlockTag(ShieldCharger)
+	UnlockTag(StellarShieldOrbital)
+	UnlockSubsystem(CovariantShield)
+	ModAttribute(ProgenitorTechProgress, Add, 5)
+
+Technology: FeyhAdvancedShielding
+	Name: #R_SYS_GRAND_SHRINE
+	Description: #R_SYS_GRAND_SHRINE_DESC
+
+	Icon: GreatShrine
+	Color: #e20dff
+
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+	Class: Unlock
+
+	Point Cost: 1000
+	Time Cost: 180
+
+	SecondaryEnergyCost(1500)
+
+	UnlockTag(ShieldCharger)
+	UnlockTag(StellarShieldOrbital)
+	UnlockSubsystem(GrandShrine)

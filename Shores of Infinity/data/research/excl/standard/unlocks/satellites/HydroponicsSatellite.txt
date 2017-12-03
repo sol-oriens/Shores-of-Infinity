@@ -1,0 +1,63 @@
+Technology: HydroponicsSatellite
+	Name: #R_ORB_HYDROPONICS_SATELLITE
+	Description: #R_ORB_HYDROPONICS_SATELLITE_DESC
+
+	Icon: GuiOrbitalIcons::14
+	Color: #ffdc40
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Category: Satellites
+	Class: Unlock
+
+	Point Cost: 500
+	Time Cost: 90
+
+	SecondaryInfluenceCost(10)
+
+	SkipOnUnlockedTag(HydroponicsSatelliteUnlock)
+	UnlockTag(HydroponicsSatelliteUnlock)
+	ModAttribute(ProgenitorTechProgress, Add, 0.5)
+
+Technology: AtroanHydroponics
+	Name: #R_ORB_ORBITAL_CONTROL
+	Description: #R_ORB_ORBITAL_CONTROL_DESC
+
+	Icon: GuiOrbitalIcons::14
+	Color: #ffdc40
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+	Class: Unlock
+
+	Point Cost: 500
+	Time Cost: 90
+
+	SecondaryInfluenceCost(10)
+
+	SkipOnUnlockedTag(OrbitalControlUnlock)
+	UnlockTag(OrbitalControlUnlock)
+
+Technology: MonoHydroponics
+	Name: #R_ORB_ZEROGRAV_ASSEMBLY
+	Description: #R_ORB_ZEROGRAV_ASSEMBLY_DESC
+
+	Icon: GuiOrbitalIcons::14
+	Color: #ffdc40
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+	Class: Unlock
+
+	Point Cost: 500
+	Time Cost: 90
+
+	SecondaryInfluenceCost(10)
+
+	SkipOnUnlockedTag(ZeroGAssemblyUnlock)
+	UnlockTag(ZeroGAssemblyUnlock)

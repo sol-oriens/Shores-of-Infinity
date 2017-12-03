@@ -1,0 +1,18 @@
+Technology: Bulkhead
+	Name: #R_MOD_BULKHEAD
+	Description: #R_MOD_BULKHEAD_DESC
+
+	Icon: HexagonSubsystems::0 * #cf00ff
+	Color: #eda1ff
+
+	Category: Modifiers
+	Class: Unlock
+
+	Point Cost: 400
+	Time Cost: 60
+
+	SecondaryMoneyCost(750)
+	
+	SkipOnUnlockedModule(Bulkhead)
+	UnlockModule(Bulkhead)
+	ModAttribute(ProgenitorTechProgress, Add, 0.2)

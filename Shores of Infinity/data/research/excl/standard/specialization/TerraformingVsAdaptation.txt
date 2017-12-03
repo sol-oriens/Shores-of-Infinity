@@ -1,0 +1,155 @@
+Technology: TerraformSpec1
+	Name: #R_SPEC_TERRAFORM1
+	Description: #R_SPEC_TERRAFORM1_DESC:20%:10%
+
+	Icon: SupplyIcon
+	Symbol: EnormousPlanet
+	Color: #84ff19
+
+	Category: Specializations
+	Class: Unlock
+
+	Point Cost: 250
+	Time Cost: 60
+
+	SecondaryMoneyCost(500)
+
+	ReplaceTechnologyNodes(AdaptationSpec1, SpecConnector)
+	ModAttribute(TerraformCostFactor, Add, -0.1)
+	ModAttribute(TerraformLaborFactor, Add, -0.1)
+
+Technology: AdaptationSpec1
+	Name: #R_SPEC_ADAPTATION1
+	Description: #R_SPEC_ADAPTATION1_DESC:20%:10%
+
+	Icon: Megafarm
+	Symbol: SequesteredSociety
+	Color: #6c412f
+
+	Category: Specializations
+	Class: Unlock
+
+	Point Cost: 250
+	Time Cost: 60
+
+	SecondaryMoneyCost(500)
+
+	ReplaceTechnologyNodes(TerraformSpec1, SpecConnector)
+	ModAttribute(ImperialBldConstructionRate, Add, 1)
+	ModAttribute(BuildingCostFactor, Add, -0.2)
+	ModAttribute(BuildingMaintFactor, Add, -0.1)
+
+Technology: TerraformSpec2
+	Name: #R_SPEC_TERRAFORM2
+	Description: #R_SPEC_TERRAFORM2_DESC
+
+	Icon: ResourceIcons::26*#aaaaaa
+	Symbol: EnormousPlanet
+	Color: #84ff19
+
+	Category: Specializations
+	Class: Unlock
+
+	Point Cost: 500
+	Time Cost: 120
+
+	SecondaryMoneyCost(1000)
+
+	ReplaceTechnologyNodes(AdaptationSpec2, SpecConnector)
+	UnlockTag(Terraform2)
+
+Technology: AdaptationSpec2
+	Name: #R_SPEC_ADAPTATION2
+	Description: #R_SPEC_ADAPTATION2_DESC:25%
+
+	Icon: Industrious
+	Symbol: SequesteredSociety
+	Color: #6c412f
+
+	Category: Specializations
+	Class: Unlock
+
+	Point Cost: 500
+	Time Cost: 120
+
+	SecondaryMoneyCost(1000)
+
+	ReplaceTechnologyNodes(TerraformSpec2, SpecConnector)
+	GainAttitude(Adaptation2)
+
+Technology: TerraformSpec3
+	Name: #R_SPEC_TERRAFORM3
+	Description: #R_SPEC_TERRAFORM3_DESC:30%:15%
+
+	Icon: FtlIcon
+	Symbol: EnormousPlanet
+	Color: #84ff19
+
+	Category: Specializations
+	Class: Unlock
+
+	Point Cost: 1000
+	Time Cost: 240
+
+	SecondaryMoneyCost(2000)
+
+	ReplaceTechnologyNodes(AdaptationSpec3, SpecConnector)
+	ModAttribute(TerraformCostFactor, Add, -0.15)
+	ModAttribute(TerraformLaborFactor, Add, -0.15)
+
+Technology: AdaptationSpec3
+	Name: #R_SPEC_ADAPTATION3
+	Description: #R_SPEC_ADAPTATION3_DESC:1
+
+	Icon: ResourceIcons::38
+	Symbol: SequesteredSociety
+	Color: #6c412f
+
+	Category: Specializations
+	Class: Unlock
+
+	Point Cost: 1000
+	Time Cost: 240
+
+	SecondaryMoneyCost(2000)
+
+	ReplaceTechnologyNodes(TerraformSpec3, SpecConnector)
+	GainAttitude(Adaptation3)
+
+Technology: TerraformSpec4
+	Name: #R_SPEC_TERRAFORM4
+	Description: #R_SPEC_TERRAFORM4_DESC
+
+	Icon: ResourceIcons::29*#66ffff
+	Symbol: EnormousPlanet
+	Color: #84ff19
+
+	Category: Specializations
+	Class: Unlock
+
+	Point Cost: 1500
+	Time Cost: 300
+
+	SecondaryMoneyCost(3000)
+
+	ReplaceTechnologyNodes(AdaptationSpec4, SpecConnector)
+	UnlockTag(Terraform4)
+
+Technology: AdaptationSpec4
+	Name: #R_SPEC_ADAPTATION4
+	Description: #R_SPEC_ADAPTATION4_DESC
+
+	Icon: Refinery
+	Symbol: SequesteredSociety
+	Color: #6c412f
+
+	Category: Specializations
+	Class: Unlock
+
+	Point Cost: 1500
+	Time Cost: 300
+
+	SecondaryMoneyCost(3000)
+
+	ReplaceTechnologyNodes(TerraformSpec4, SpecConnector)
+	ModAttribute(Adaptation4, Add, 1)

@@ -1,0 +1,46 @@
+Construction: TerraformIN
+	Name: #C_EXPAND_SUBSURFACE
+	Build Cost: 700
+	Labor Cost: 50
+	Icon: DesignationIcons::10
+	Category: Planetary Development
+	Description: #C_EXPAND_SUBSURFACE_DESC
+
+	//RequireUnlockTag(TerraformSurface)
+	RequirePlanet()
+	OnStart(AddStatus(TerraformStacks))
+	OnStart(AddStatus(BuildingSubsurface))
+	AddLaborCostStatusCount(TerraformStacks, Multiply = 1.5)
+
+	ConsumeCargoStatusCount(Ore, TerraformStacks, 1000, Allow Cancel = True)
+
+	AddSurfaceArea(Artificial, (10, 1), Separate = False, Developed = False, Vertical = True)
+
+	RequireStatus(TerraformStacks)
+	RequireNotStatus(FloatingContinent)
+	OnCancel(RemoveStatusInstance(TerraformStacks))
+	OnCancel(RemoveStatusInstance(BuildingSubsurface))
+	RemoveStatusInstance(BuildingSubsurface)
+
+	RequireNotTrait(StarChildren)
+	
+Construction: Terraform
+	Name: #C_SUBSURFACE_HABITATS
+	Icon: DesignationIcons::10
+	Description: #C_SUBSURFACE_HABITATS_DESC
+
+	Build Cost: 500
+	Labor Cost: 50
+	Category: Planetary Development
+	RequireNotStatus(TerraformStacks)
+	RequireNotStatus(FloatingContinent)
+	ConsumeCargo(Ore, 1000)
+	RequirePlanet()
+	AddSurfaceArea(Artificial, (10, 2), Separate = True, Developed = False, Vertical = True)
+	OnStart(AddStatus(TerraformStacks))
+	OnStart(AddStatus(BuildingSubsurface))
+	//RequireUnlockTag(TerraformSurface)
+	RequireNotTrait(StarChildren)
+	OnCancel(RemoveStatusInstance(TerraformStacks))
+	OnCancel(RemoveStatusInstance(BuildingSubsurface))
+	RemoveStatusInstance(BuildingSubsurface)

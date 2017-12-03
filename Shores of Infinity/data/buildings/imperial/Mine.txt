@@ -1,0 +1,34 @@
+Building: Mine
+	Name: #BLD_MINE
+	Description: #BLD_MINE_DESC
+	
+	Sprite: Mine
+
+	Category: Production
+	Build Affinity: Mountains
+	Maintenance Affinity: Mountains
+
+	Size: 6x3
+
+	Base Cost: 190
+	Tile Cost: 10
+	Base Maintenance: 120
+	Tile Maintenance: 10
+
+	Build Time: 360
+
+	ConsumeResearch(50)
+
+	RequireNotStatus(Ringworld)
+	RequireNotStatus(ArtificialPlanetoid)
+	RequireNotTrait(Ancient)
+
+	AddPlanetResource(OreRateMine)
+
+	AddPressure(Labor, 2)
+	IfNative(Aluminum, ImproveNativeResourcePressure(2))
+	IfNative(Iron, ImproveNativeResourcePressure(2))
+	IfNative(Titanium, ImproveNativeResourcePressure(2))
+	IfNative(Supercarbons, ImproveNativeResourcePressure(2))
+	IfNative(NativeGold, ImproveNativeResourcePressure(1))
+	IfNative(Coal, ImproveNativeResourcePressure(1))

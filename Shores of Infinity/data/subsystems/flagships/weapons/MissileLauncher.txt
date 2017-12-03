@@ -1,0 +1,65 @@
+Subsystem: MissileLauncher
+	Name: #MISSILELAUNCHER_NAME
+	Description: #MISSILELAUNCHER_DESC
+	BaseColor: #b746f9
+	TypeColor: #b746f9
+	Picture: SubsystemButtonArt::4
+	Elevation: 2
+
+	Tags: BaseCost
+	Tags: WeaponBase, MissileBase, Category:Weapons, Rotatable
+	Tags: ExteriorCore, Weapon, DefaultUnlock, IsExplosiveWeapon, HasInternals, MainDPS, Homing
+	Hull: Flagship, Station
+
+	Size := HexSize * Hexes
+	Range := Size * 11 + 3800
+	Damage := Size * 13.5
+	PodSize := 1
+	Reload := (4.75 * min(1.0 + Size/512, 2.0)) * PodSize
+	Speed := max(85, Range / 30)
+	Tracking := 3
+	SupplyCost := Size * 6.5
+	out DPS := (Damage * PodSize) / (Reload)
+	out SupplyDrain := SupplyCost / PodSize
+
+	Hex.HP := 18 * HexSize
+	Hex.Resistance := 0.2
+	Hex.Mass := HexSize
+
+	Module: LaunchTube
+		DefaultUnlock: True
+		Sprite: WarheadTube * #78a8bf
+		Name: Launch Tube
+		Description: Adds an additional launch tube to the launcher, increasing the amount of missiles fired per salvo.  This will increase reload time to match, and all missiles will be launched from the main core as a single salvo.
+		PodSize := PodSize + 1
+		Hex.BuildCost := 2 * Hex.BuildCost
+		Hex.LaborCost := 5 * Hex.LaborCost
+		Assert: PodSize < 7
+			Message: Cannot have more than 6 tubes per launcher.
+			Unique: True
+	Requires:
+		Command = 1
+
+	Module: Default
+
+	Module: Core
+		Hex.HP := Hex.HP * 3
+		Hex.BuildCost := 5.0 * Hex.BuildCost
+		Hex.Mass := 5.0 * Hex.Mass
+
+		Sprite: MissileLauncher::0
+		DrawMode: 1
+
+		Hex.DamageResist := ShipSize / 64.0
+		Effect: DamageResist
+			Resist = Hex.DamageResist
+
+	Effector: SalvoMissile
+		Range = Range
+		Damage = Damage
+		Reload = Reload
+		Speed = Speed
+		Tracking = Tracking
+		SupplyCost = SupplyCost * (Reload / PodSize)
+		PodSize = PodSize
+		FireDelay = (1.5 / PodSize)

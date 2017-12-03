@@ -1,0 +1,14 @@
+Technology: ImprovedLabs
+	Name: #R_IMPROVEDLABS
+	Description: #R_IMPROVEDLABS_DESC
+
+	Icon: ResourceIcons::17
+	Symbol: ResourceIcon::4
+	Color: #8c4ec9
+
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+
+	Point Cost: 500
+	Time Cost: 90
+	
+	ModAttribute(ResearchProductionBoost, Add, 1)

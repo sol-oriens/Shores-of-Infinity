@@ -1,0 +1,58 @@
+Trait: Technicists
+	Name: #TRAIT_TECHNICISTS
+	Description: #TRAIT_TECHNICISTS_DESC
+	Order: 12
+
+	DLC: Heralds
+
+	Category: Lifestyle
+	Unique: Lifestyle
+
+	Icon: BuildingSprites::9
+	Color: #8c4ec9
+	AI Support: False
+
+	UnlockSubsystem(ShieldHarmonizer)
+	UnlockSubsystem(SupShieldGen)
+	UnlockSubsystem(Superstructure)
+	UnlockSubsystem(SupportSuperstructure)
+	UnlockSubsystem(ShieldGen)
+
+	AddModifier(ShieldRegenFactor(1.20))
+	AddModifier(ShieldCapacityFactor(2.1))
+	AddModifier(tag/IsArmor::HpFactor(0.5))
+	AddModifier( ShieldHarmonizer::BonusShieldFactor(2.1) )
+
+	//ForbidSubsystem
+	ForbidSubsystem(SupportPlateArmor)
+	ForbidSubsystem(SupportCeramicArmor)
+	ForbidSubsystem(SupportReactiveArmor)
+	ForbidSubsystem(SupportAblativeArmor)
+
+	ForbidSubsystem(ReactiveArmor)
+	ForbidSubsystem(AblativeArmor)
+	ForbidSubsystem(PlateArmor)
+	ForbidSubsystem(CeramicArmor)
+
+	//Grid Replacements
+
+	//Armor for HP
+
+	ReplaceTechnologyNodes(ArmorHealth2, Health2)
+	ReplaceTechnologyNodes(ArmorHealth, Health)
+	ReplaceTechnologyNodes(ShieldGen, Science)
+
+
+	////ARMOR BANS
+
+	ReplaceTechnologyNodes(CompositeArmor, ImprovedLabs)
+	ReplaceTechnologyNodes(QuantumArmor, ImprovedLabs)
+	ReplaceTechnologyNodes(CrystalArmor, ImprovedLabs)
+	ReplaceTechnologyNodes(NeutronArmor, ImprovedLabs)
+	ReplaceTechnologyNodes(LiquidArmor, ImprovedLabs)
+
+	///SECRET ARMOR BAN
+
+	RemoveTechnologyNodes(FerrofluidArmor)
+
+	UnlockSubsystem(Forcefield)

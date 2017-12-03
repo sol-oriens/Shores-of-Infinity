@@ -1,0 +1,234 @@
+SITE: Site
+SITE_CHOICES: Options
+SITE_P_ANCIENT_RUINS: Ancient Ruins
+SITE_P_ODDITY: Oddity
+SITE_P_RESOURCE_DEPOSITS: Mineral Vein
+SITE_P_NOTIFICATION: A site of interest has been discovered on $1.
+
+SITE_NAR_ANCIENT_RUINS: <<|
+	Far from civilization, ruins from a forgotten era lie silent, only testimony of their builders long gone.
+>>
+
+SITE_NAR_RESEARCH_CENTER: <<|
+	Somewhere in the vast expanse of what used to be a bustling metropolis, your exploration team discovers an ancient research center. Among collapsed rooms and gutted machinery, remains of beings alien to you lie in awkward stances. Clearly, something wrong happened here. Something very wrong.
+
+	Though badly damaged, some of the databanks are still online.
+>>
+SITE_RESEARCH_CENTER_READ: <<|
+	Analyze the content of the databanks.
+
+	[right][b][color=#842cdb]Gain research points.[/color][/b][/right]
+>>
+SITE_RESEARCH_CENTER_RECOVER: <<|
+	Try to upload the data to the capital city so the scientists over there can use it and cross-reference it with their own.
+
+	[right][b][color=#d1966a]May lose some data.[/color][/b][/right]
+>>
+SITE_RESEARCH_CENTER_RECOVER_SUCCESS: <<|
+	You successfully uploaded the whole content of the databanks. Scientists reported that it would be an invaluable source of knowledge to study for the years to come.
+
+	[b][color=#af0baf]+$1/s Research Income[/color][/b]
+>>
+SITE_RESEARCH_CENTER_RECOVER_FAIL: <<|
+	The alien network protocols turned out to be completely incompatible with ours. The connection attempts generated strong electrostatic feedbacks that fried the circuitry of the databanks and shut them down for good.
+>>
+
+SITE_NAR_UNIVERSITY: <<|
+	Among the ruins of an alien city, your exploration team locates the remains of a university campus. Most of the buildings are nothing more than rubble, but a few of them refuse to collapse.
+>>
+SITE_UNIVERSITY_ADMINISTRATIVE_WING: <<|
+	Investigate the administrative wing.
+
+	[right][b][color=#ff0000]Unknown results.[/color][/b][/right]
+>>
+SITE_UNIVERSITY_ADMINISTRATIVE_WING_SUCCESS: <<|
+	After investigation of electronic records found in the live databanks of the building, your team was able to gain valuable insights on the civilization which built this university.
+
+	[b][color=#4141ff]You have gained one [b]Ancient Knowledge[/b] influence card.[/color][/b]
+>>
+SITE_UNIVERSITY_ADMINISTRATIVE_WING_FAIL: <<|
+	By a cruel twist of fate, the building collapsed while your team was inside. All team members were confirmed KIA.
+>>
+SITE_UNIVERSITY_COLLEGE_APPLIED_ARTS: <<|
+	Investigate the college of applied arts.
+
+	[right][b][color=#ff0000]Unknown results.[/color][/b][/right]
+>>
+SITE_UNIVERSITY_COLLEGE_APPLIED_ARTS_INFLUENCE: <<|
+ Your team discovered a number of documents detailing protocols and etiquette of this ancient civilization. This could benefit our diplomacy.
+
+ [b][color=#4141ff]+$1 Influence Generation[/color][/b]
+>>
+SITE_UNIVERSITY_COLLEGE_APPLIED_ARTS_MONEY: <<|
+	Your team was able to recover quite a lot of beautiful works of art realized by senior students and teachers and the subsequent tender offer gathered significant funds.
+
+	[b][color=#d1cb6a]You have gained §$1k[/color][/b]
+>>
+SITE_UNIVERSITY_COLLEGE_SCIENCES: <<|
+	Investigate the college of sciences.
+
+	[right][b][color=#ff0000]Unknown results.[/color][/b][/right]
+>>
+SITE_UNIVERSITY_COLLEGE_SCIENCES_SUCCESS: <<|
+	As expected, the college of science is a scattered but huge trove of knowledge. Your scientists are sure to make good use of this civilization's legacy.
+
+	[b][color=#842cdb]You have gained $1 research points.[/color][/b]
+>>
+SITE_UNIVERSITY_COLLEGE_SCIENCES_FAIL: <<|
+	Everything in here was ruined and your team could hardly recover anything of value. Few bits of scientific research reports are now analyzed by scientists.
+
+	[b][color=#842cdb]You have gained $1 research points.[/color][/b]
+>>
+SITE_UNIVERSITY_PHYSICS_EXPERIMENTARIUM: <<|
+	Investigate the physics experimentarium.
+>>
+SITE_UNIVERSITY_BIOCHEMISTRY_LABS: <<|
+	Investigate the biochemistry labs.
+>>
+SITE_NAR_UNIVERSITY_PHYSICS_EXPERIMENTARIUM: <<|
+	The physics experimentarium is a mess of computers, machinery and prototypes, most of them completely ruined. The energy experiments section, however, is in quite good condition.
+>>
+SITE_UNIVERSITY_PHYSICS_EXPERIMENTARIUM_COOLING: <<|
+	An advanced coolant system prototype is still functional. We could reverse engineer it.
+
+	[right][b][color=#80ff80]Unlock[/color] [img=SupportCommand * #ffff00;22/]Coolant System[/b][/right]
+>>
+SITE_UNIVERSITY_PHYSICS_EXPERIMENTARIUM_SOLAR: <<|
+	Different patterns of solar cell meshes are exposed on a wall, obviously demonstrating successive steps in perfecting the technology. Analyzing them may prove useful.
+
+	[right][b][color=#80ff80]Unlock[/color] [template=subsys_ref;SolarPanel/][/b][/right]
+>>
+SITE_UNIVERSITY_PHYSICS_EXPERIMENTARIUM_PLASMA: <<|
+	A secured room houses plasma generators. They are in bad condition but studying them is worth a try.
+
+	[right][b][color=#80ff80]Unlock[/color] [template=subsys_ref;PlasmaThrower/][/b][/right]
+>>
+SITE_UNIVERSITY_PHYSICS_EXPERIMENTARIUM_RESEARCH: <<|
+	The archive section contains a lot of logs on past experiments. This will certainly be useful to our scientists.
+
+	[right][b][color=#842cdb]Gain research points.[/color][/b][/right]
+>>
+SITE_NAR_UNIVERSITY_BIOCHEMISTRY_LABS: <<|
+	The biochemistry labs are filled with... biostuff.
+>>
+SITE_UNIVERSITY_BIOCHEMISTRY_LABS_CULTIVATION: <<|
+	Several containers lie in a storage room. Preliminary analysis reveals they contain organic agents able to modify the genome of vegetal lifeforms. The molecular composition of this substance is too complex for us to reproduce without schematics but we can still use it to allow a species of fruit to adapt to a new environment.
+
+	[right][b][color=#96d16a]Gain one [b]Cultivation[/b] influence card.[/color][/b][/right]
+>>
+SITE_UNIVERSITY_BIOCHEMISTRY_LABS_IMMUNOLOGY: <<|
+	The immunology section contains frozen genetic samples and research logs related to a particularly potent virus present in the atmosphere of this planet. This will be a great help to protect our colonists from this virus.
+
+	[right][b][color=#d1cb6a]Gain +$1 maximum Population.[/color][/b][/right]
+>>
+
+SITE_NAR_TEMPLE_REMAINS: <<|
+  Your exploration team discovers a patchwork of ruined walls, dismembered statues and eroded headstones sitting in the middle of nowhere. From the looks of it, this most likely used to be a religious site for a primitive pre-space civilization.
+>>
+SITE_TEMPLE_REMAINS_PROTECT: <<|
+	Declare the site as a planetary heritage and set it up as a museum.
+
+	[right][b][color=#4141ff]Gain Influence Points[/color][/b][/right]
+>>
+SITE_TEMPLE_REMAINS_DISMANTLE: <<|
+	These old stones have little value. Dismantle the temple and sell the pieces to collectors.
+
+	[right][b][color=#d1cb6a]Gain §$1k[/color][/b][/right]
+>>
+
+SITE_NAR_GRANARY: <<|
+  A gigantic building in poor but functional condition was located in an isolated region of the planet. Exploration reveals that it is a technologically very advanced granary designed to keep huge grain reserves safe in suspended animation. For an unknown reason, those were never used but they have been perfectly preserved. However, further analysis determined that the conservation system has recently failed ; this means that they will soon be lost if left alone.
+>>
+SITE_GRANARY_USE: <<|
+  Those grain reserves can be planted and provide a permanent source of food for the planet.
+
+  [right][b][color=#e072c9]Add a native Grain to the planet.[/color][/b][/right]
+>>
+SITE_GRANARY_RECOVER: <<|
+  The grain can probably be stored in space and exported on a more suitable world. Safely transporting a cargo amount of this magnitude will be difficult and may damage it, though.
+
+  [right][b][color=#e072c9]May gain one Harvest influence card.[/color][/b][/right]
+>>
+SITE_GRANARY_RECOVER_FAIL: <<|
+  Despite taking all necessary precautions, a significant portion of the transport convoy was not able to keep the grain in useable condition. Unfortunately, the remaining reserves are not sufficient to durably sustain an entire population.
+>>
+
+SITE_NAR_ODDITY: <<|
+	An unusual planetary feature stands out in this region. What secrets does it hide?
+>>
+
+SITE_NAR_CRYSTALLINE_FORMATION: <<|
+	In the middle of a large open area, a tall crystalline formation stands up like a shimmering, twisted tower coveting the sky. Its many faces reflecting ambient light seem to slightly vary in color over time. Some members of your exploration team swear they even move imperceptibly. Sensors indicate that some sort of slowly pulsating vibration emanates from the base of the formation, many times larger.
+>>
+SITE_CRYSTALLINE_FORMATION_DRAW: <<|
+	Applying conductive materials to the base transmits a strong electric current. Completely covering it with a conductive layer will allow us to use the site as a potent source of energy.
+
+	[right][b][color=#42b4bd]+$1 Energy generation.[/color][/b][/right]
+>>
+SITE_CRYSTALLINE_FORMATION_ENERGIZE: <<|
+	One of your scientists believes that directing a powerful energy burst towards the base may trigger a self-sufficient chain reaction, essentially transforming the structure into a extremely powerful reactor.
+
+	[right][b][color=#42b4bd]+$1 Energy generation.[/color][color=#ff0000] May be dangerous.[/color][/b][/right]
+>>
+SITE_CRYSTALLINE_FORMATION_ENERGIZE_FAIL: <<|
+	Unfortunately, the triggered reaction went completely out of control and made the structure into a bomb whose explosion vaporized everything across a large distance, including the crystalline formation itself and your unfortunate team.
+>>
+
+SITE_NAR_CONTAMINATED_CAVERN: <<|
+While exploring a deep underground cavern, your explorer team discovered the remains of a previous team gone missing. Once brought back to civilization for examination, it quickly became clear that they were somehow infected by a parasitic microorganism. Despite the drastic quarantine measures immediately applied, it is now too late: it is spreading at an alarming rate and already contaminated most of the planet.
+>>
+SITE_CONTAMINATED_CAVERN_GROWTH: <<|
+	Further analysis of the microorganism reveals that it is a parasitic nanomachine blending in organic life forms and mechanical entities alike. While it is damaging to cortex tissues and IA neural networks in the long term, it greatly enhances self-replication and production abilities.
+
+	[right][b][color=#ff0000]Lose $1 Max Population[/color][/b][/right]
+	[right][b][color=#72cbe0]Planet becomes Prolific.[/color][/b][/right]
+>>
+SITE_CONTAMINATED_CAVERN_ENERGY: <<|
+	This microorganism statically charges everything on the planet. While the charges are not high enough to disturb electronics, the amount of energy produced on a global scale could be harnessed with the right equipment.
+
+	[right][b][color=#42b4bd]+$1 Energy pressure.[/color][/b][/right]
+>>
+
+SITE_NAR_RESOURCE_DEPOSITS: <<|
+	There is an unusually strong concentration of natural resources here.
+>>
+
+SITE_NAR_IRON_VEIN: <<|
+	You discover a site with particularly rich iron deposits.
+>>
+SITE_IRON_VEIN_MINE: <<|
+	Build a mine on the site and commence extraction.
+
+	[right][b][color=#d1966a]+$1 Labor generation.[/color][/b][/right]
+>>
+SITE_IRON_VEIN_BORE: <<|
+	Sensors detect even richer deposits in deeper layers. Prepare the site for deep mining operations.
+
+	[right][b][color=#d1966a]+$1 Labor pressure.[/color][/b][/right]
+>>
+
+SITE_NAR_GOLD_VEIN: <<|
+	Sensors indicate that a gold vein seems to lie in this area. However, heavy material resonance in the underground layers may induce false readings.
+>>
+SITE_GOLD_VEIN_DIG: <<|
+	Dig a hole in the ground and check.
+
+	[right][b][color=#ff0000]Unknown results.[/color][/b][/right]
+>>
+SITE_GOLD_VEIN_DIG_FAIL: <<|
+	The resonance fooled the sensors into a false positive. There is nothing underground but worthless rock.
+>>
+SITE_GOLD_VEIN_DIG_POOR: <<|
+	There is indeed a gold vein here, but it is tiny and will deplete very quickly.
+
+	[b][color=#d1cb6a]You have gained §$1k[/color][/b]
+>>
+SITE_GOLD_VEIN_DIG_RICH: <<|
+	The sensors were correct, there is a rich gold vein underground. Mining is underway.
+
+	[b][color=#d1cb6a]+$1 Money pressure[/color][/b]
+>>
+
+SITE_NAR_OIL_DEPOSITS: <<|
+	Sensors revealed multiple large oil deposits.
+>>

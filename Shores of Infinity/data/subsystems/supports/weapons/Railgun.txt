@@ -1,0 +1,65 @@
+Subsystem: Railgun
+	Name: #RAILGUN_NAME
+	Description: #RAILGUN_DESC
+	BaseColor: #c5f946
+	TypeColor: #c5f946
+	Picture: SubsystemButtonArt::2
+	Elevation: 2
+
+	Tags: WeaponBase, ProjBase, Rotatable, HexLimitArc, Category:Weapons
+	Tags: ExteriorCore, Weapon, DefaultUnlock, IsProjWeapon, IsRailgun, HasInternals
+	Hull: Support, Satellite
+
+	Size := HexSize * Hexes
+
+	Range := Size * 8 + 2100
+	Damage := Size * 3.25
+	Reload := 2.05 * min(1.0 + Size/512, 2.0)
+	Speed := max(110, Range / 15)
+	Spread := 0.0225 / max(Range / 600, 1)
+	Tracking := 0.8
+	FireArc := 0.5 * pi
+	Pierce := 1.0
+	SupplyCost := Size * 1.5
+
+	Hex.HP := 27 * HexSize
+	Hex.Resistance := 0.4
+	Hex.Mass := HexSize
+	Hex.BuildCost := 0.75 * HexSize
+	Hex.MaintainCost := 0
+	Hex.LaborCost := 0.07 * HexSize
+
+	Requires:
+		Command = 1
+
+	Modifier: AddMuonEnhancement(DamageBonus, SpreadMinus, PierceBonus)
+		Damage := Damage + DamageBonus
+		Spread := (0.0225 - SpreadMinus) / max(Range / 600, 1)
+		Pierce := Pierce + PierceBonus
+
+	Module: Default
+
+	Module: Core
+		Hex.HP := Hex.HP * 3
+		Hex.BuildCost := Hex.BuildCost * 5
+		Hex.Mass := Hex.Mass * 5
+
+		Sprite: Railgun::0
+		DrawMode: 1
+
+		Hex.DamageResist := ShipSize / 21.0
+		Effect: DamageResist
+			Resist = Hex.DamageResist
+
+	Effector: Railgun
+		Range = Range
+		Damage = Damage
+		Reload = Reload
+		Speed = Speed
+		FireArc = FireArc
+		Tracking = Tracking
+		CapOnTarget = 0
+		Spread = Spread
+		TargetTolerance = Spread / 2
+		Pierce = Pierce
+		SupplyCost = SupplyCost * Reload

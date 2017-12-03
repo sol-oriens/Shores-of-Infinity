@@ -1,0 +1,20 @@
+Technology: Simulator
+	Name: #R_SYS_SIMULATOR
+	Description: #R_SYS_SIMULATOR_DESC
+	Icon: Simulator
+	Color: #f17757
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Category: Equipment - Support
+	Class: Unlock
+
+	Point Cost: 600
+	Time Cost: 120
+
+	SecondaryInfluenceCost(10)
+
+	SkipOnUnlockedSubsystem(Simulator)
+	UnlockSubsystem(Simulator)
+	ModAttribute(ProgenitorTechProgress, Add, 2)

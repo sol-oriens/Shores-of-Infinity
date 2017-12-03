@@ -1,0 +1,128 @@
+Technology: Connector
+	Name: LINK
+
+	Category: Grid Utils
+	Class: Special
+
+	AutomaticallyUnlocks()
+
+Technology: DLCConnector
+	Name: LINK
+	Description: #R_CONNECTOR_DLC
+
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+	Class: Special
+
+	AutomaticallyUnlocks()
+
+Technology: AreaGovernance
+	Name: #R_AREA_GOVERNANCE
+	Description: #R_AREA_GOVERNANCE_DESC
+
+	Icon: StatusPeace
+
+	Category: Grid Utils
+	Class: Keystone
+
+	Default Unlock: True
+
+	AutomaticallyUnlocks()
+
+Technology: AreaEngineering
+	Name: #R_AREA_ENGINEERING
+	Description: #R_AREA_ENGINEERING_DESC
+
+	Icon: TimeReal
+
+	Category: Grid Utils
+	Class: Keystone
+
+	Default Unlock: True
+
+	AutomaticallyUnlocks()
+
+Technology: AreaIndustry
+	Name: #R_AREA_INDUSTRY
+	Description: #R_AREA_INDUSTRY_DESC
+
+	Icon: DesignationIcons::16
+
+	Category: Grid Utils
+	Class: Keystone
+
+	Default Unlock: True
+
+	AutomaticallyUnlocks()
+
+Technology: AreaWarfare
+	Name: #R_AREA_WARFARE
+	Description: #R_AREA_WARFARE_DESC
+
+	Icon: StatusWar
+
+	Category: Grid Utils
+	Class: Keystone
+
+	Default Unlock: True
+
+	AutomaticallyUnlocks()
+
+Technology: AreaHarnessing
+	Name: #R_AREA_HARNESSING
+	Description: #R_AREA_HARNESSING_DESC
+
+	Icon: techEnergy
+
+	Category: Grid Utils
+	Class: Keystone
+
+	Default Unlock: True
+
+	AutomaticallyUnlocks()
+
+Technology: AreaEfficiency
+	Name: #R_AREA_EFFICIENCY
+	Description: #R_AREA_EFFICIENCY_DESC
+
+	Icon: techHyperfield
+
+	Category: Grid Utils
+	Class: Keystone
+
+	Default Unlock: True
+
+	AutomaticallyUnlocks()
+
+Technology: FillerNode
+	Name: Filler (Minor)
+	Description: Put a minor level 1 upgrade here during the next grid pass.
+	Blurb: Put a minor upgrade here
+
+	Icon: PlanetIcon0
+	Symbol: MenuIcons::8
+
+	Category: Grid Utils
+
+Technology: FillerNode2
+	Name: Filler (Medium)
+	Description: Put a minor level 2 or a medium upgrade here during the next grid pass.
+	Blurb: Put a medium upgrade here
+
+	Icon: PlanetIcon1
+	Symbol: MenuIcons::8
+
+	Category: Grid Utils
+
+Technology: SpecConnector
+	Name: LINK
+	Description: #R_CONNECTOR_SPECIALIZATION
+
+	Color: #ff0000
+
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+	Class: Unlock
+
+	Point Cost: 1
+	Time Cost: 1
+
+	AutomaticallyUnlocks()

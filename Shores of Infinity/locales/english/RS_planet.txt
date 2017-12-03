@@ -1,0 +1,6 @@
+TT_EXPLORE_PLANET: <<
+	[b]Study Discovered Sites[/b]
+
+	Study one of the sites that have been discovered on this planet.
+>>
+BIOME_GAS: Gas

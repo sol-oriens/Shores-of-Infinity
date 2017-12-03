@@ -1,0 +1,17 @@
+Technology: SS
+	Name: #R_SYS_SLIPSTREAM
+	Description: #R_SYS_SLIPSTREAM_DESC
+
+	Icon: TechIcons::57
+	Color: #00c0ff
+
+	Category: FTL
+	Class: Unlock
+
+	Point Cost: 2000
+	Time Cost: 180
+
+	SkipOnUnlockedSubsystem(Slipstream)
+	SkipOnUnlockedSubsystem(ExperimentalSlipstream)
+	UnlockSubsystem(ExperimentalSlipstream)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)

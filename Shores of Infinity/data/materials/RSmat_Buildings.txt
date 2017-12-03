@@ -1,0 +1,62 @@
+Material: RSBuilding
+	Culling: None
+	Alpha: True
+	DepthTest: NoDepthTest
+	Mipmap: False
+	Lighting: False
+
+	//Production
+Material: Mine
+	Inherit: Image2D
+	Texture: data/images/buildings/Mine.png
+
+Material: NrgFactory
+	Inherit: Image2D
+	Texture: data/images/buildings/nrgfactory.png
+
+	//Infrastructure
+Material: BldArcology
+Inherit: Image2D
+Texture: data/images/buildings/arcology.png
+
+Material: BldHealthComplex
+Inherit: Image2D
+Texture: data/images/buildings/health_complex.png
+
+	//Artificial Resources
+
+Material: EcxFactory
+	Inherit: Image2D
+	Texture: data/images/buildings/ecxfactory.png
+
+Material: lvl1r
+	Inherit: RSBuilding
+	Texture: data/images/buildings/Lvl1Research.png
+
+Material: lvl1b
+	Inherit: RSBuilding
+	Texture: data/images/buildings/Lvl1Budget.png
+
+Material: lvl1d
+	Inherit: RSBuilding
+	Texture: data/images/buildings/Lvl1Defense.png
+
+Material: lvl2r
+	Inherit: RSBuilding
+	Texture: data/images/buildings/Lvl2Research.png
+
+Material: lvl2b
+	Inherit: RSBuilding
+	Texture: data/images/buildings/Lvl2Budget.png
+
+Material: lvl2d
+	Inherit: RSBuilding
+	Texture: data/images/buildings/Lvl2Defense.png
+
+Material: StripTransmuter
+	Inherit: RSBuilding
+	Texture: data/images/buildings/ancient_strip_transmuter.png
+
+Material: PortalStabilizer
+	Inherit: RSBuilding
+	Texture: data/images/buildings/portal_stabilizer.png

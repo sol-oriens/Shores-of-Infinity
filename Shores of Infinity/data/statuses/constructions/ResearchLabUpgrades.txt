@@ -1,0 +1,7 @@
+Status: ResearchLabCrystallizer
+Collapses: True
+Visible To: Nobody
+
+Status: ResearchLabHypercharger
+Collapses: True
+Visible To: Nobody

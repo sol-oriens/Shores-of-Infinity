@@ -1,0 +1,21 @@
+Technology: Ramjet
+	Name: #R_SYS_RAMJET
+	Description: #R_SYS_RAMJET_DESC
+
+	Icon: ResearchIcons::0
+	Color: #629b26
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Category: Propulsion
+	Class: Unlock
+
+	Point Cost: 600
+	Time Cost: 120
+
+	SecondaryMoneyCost(1000)
+
+	SkipOnUnlockedSubsystem(Ramjet)
+	UnlockSubsystem(Ramjet)
+	ModAttribute(ProgenitorTechProgress, Add, 1)

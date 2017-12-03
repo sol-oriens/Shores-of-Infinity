@@ -1,0 +1,710 @@
+// *********************************************************
+// **************SUBSYSTEM CATEGORIES HERE!*****************
+// *********************************************************
+
+SC_Armor:[hspace=4/][img=PlateArmor;32x32/][hspace=6/]  [color=#6e7371]Armor[/color]
+SC_Defense:[bbloc=#SC_Shields/]
+SC_Power:[hspace=4/][img=DesignationIcons::2;32x32/][hspace=6/]  [color=#6e7371]Power and Supply[/color]
+SC_Manufacturing:[hspace=4/][img=ResourceIcon::6;32x32/][hspace=6/]  [color=#6e7371]Manufacturing[/color]
+SC_Shields:[hspace=4/][img=ShieldGen;32x32/][hspace=6/]  [color=#0A50F5]Shields[/color]
+SC_Sensors:[hspace=4/][img=TechIcons::1;32x32/][hspace=6/] [color=#9ed6ff]Sensors[/color]
+
+// *********************************************************
+// ****************SUBSYSTEM ERRORS HERE!*******************
+// *********************************************************
+
+ERROR_ONLYONEADMIRAL: Only one Admiral can operate from a flagship at any time, and no Admiral needs two command centers, right?! Right!
+ERROR_PROGENITOR_COMPUTERMISMATCH: Cannot combine Progenitor Control Computers with standard Control Computers.
+ERROR_ENGBAYSIZE: Engineering Bays must be at least size 5. Increase the bay's hex count or the ship's size.
+ERROR_ZPG: Singularity Core must be at least size 100. Add more hexes to the core or increase the ship's size.
+ERROR_MIN_SIZE: $1 has a minimum size of $2.
+ERROR_STEALTH: Stealth ships cannot use hyperdrives.
+ERROR_PLANETDEVOURER_NOLASER: Planet Devourers cannot be placed on a ship with a Mining Laser or another Planet Devourer.
+ERROR_PLANETDEVOURER_HARVESTERONLY: Planet Devourers can only be placed on a Harvester.
+ERROR_SUPERLASER: Superlaser must be at least size 200. Add more hexes to the superlaser or increase the ship's size.
+ERROR_RESEARCHLAB: Research Lab must be at least size 15. Add more hexes to the lab or increase the station's size.
+ERROR_FTLJAMMER: The FTL Jammer must be at least size 100. Increase the jammer's hex count or the station's size.
+ERROR_MAX_SIZE: $1 has a maximum size of $2.
+ERROR_DRONEWEAPON: Boring Drone Launcher is not large enough to hold any drones. Increase the launcher's hex count or the ship's size.
+ERROR_MUST_HAVE_SELFDESTRUCT: Bombship Hull must have a Self-Destruct Device.
+ERROR_SPECIFIC_SIZE: $1 must be exactly size $2.
+ERROR_CANNOT_BOARD: $1 cannot have boarding parties.
+
+// *********************************************************
+// ****************SUBSYSTEM STATS HERE!********************
+// *********************************************************
+
+S_COMBATSUPPLYREGEN: Combat Supply Regeneration
+STT_COMBATSUPPLYREGEN: <<
+	The rate at which this ship regenerates Supply in combat. This is in addition to normal Supply regeneration.
+>>
+S_BOARDTOTAL: Boarding Defense
+STT_BOARDTOTAL: <<
+	The strength with which the ship will fight off boarders. This number must exceed the Boarding Strength of the attacking ship's Boarding Parties in order to survive a boarding action.
+>>
+S_BOARDSUBSYS: Boarding Strength
+STT_BOARDSUBSYS: <<
+	The strength this subsystem contributes to a boarding defense. Only Boarding Parties contribute to an offensive boarding action; their offensive strength is the same as their defensive strength.
+>>
+S_SENSORRANGE: Sensor Range
+STT_SENSORRANGE: <<
+	How far sensors on the ship allow identification of objects around it, prior to the application of any multiplying effects such as entering a nebula, and prior to modification by the game's Global Sensor Multiplier. Sensors are integrated in the hull and wired to Control, but they can be enhanced by more advanced sensors.
+>>
+S_STRENGTH: Base Combat Strength
+STT_STRENGTH: <<
+	How well the ship should perform in combat. This is based both on its predicted survivability (design flaws such as exposed bridges notwithstanding) and the amount of damage it deals. (The ship's 'Base Toughness' and 'Damage / Second' statistics, respectively, represent these values.)
+
+	This is not necessarily an accurate value - other factors such as battle damage, lack of supply, or flagship naming can alter a ship's Combat Strength - however it can still be a useful baseline.
+>>
+S_HULLSTRENGTH: Base Toughness
+STT_HULLSTRENGTH: <<
+	How well the ship should withstand hostile attacks. This is based on a variety of factors such as repair rate, shield strength and hull strength - regardless, major design flaws such as exposed control cores may cause this value to be drastically higher than it realistically should be.
+
+	This is not necessarily an accurate value - various effects that alter the ship's maximum health can change its Toughness.
+>>
+S_PLANETMININGRATE: Mining Rate
+STT_PLANETMININGRATE: The rate at which this ship can mine materials from planets and put them into cargo storage.
+S_REPAIR: Repair Rate
+STT_REPAIR: The amount of hitpoints the ship can repair per second while out of combat.
+S_REPAIR_COMBAT: In-Combat Repair Rate
+STT_REPAIR_COMBAT: The amount of hitpoints the ship can repair per second while in combat.
+S_REGENPERSECOND: Regeneration Rate
+S_SENSORMULT: Sensor Multiplier
+S_SENSORPRIORITY: Sensor Priority
+S_PROJRESIST: Projectile Resistance
+S_ENERGYRESIST: Energy Resistance
+S_EXPLRESIST: Explosive Resistance
+S_HULLHEALING: Repair Rate
+S_SHIELDHEALING: Regeneration Rate
+S_SUPPLYTRANSFER: Transfer Rate
+S_SHIELDTRANSFER: Transfer Rate
+S_DEFENSIVEMATRIX: Matrix Capacity
+S_PODSIZE: Pod Size
+S_LASERDRIVEPOWER: Laser Drive Power
+S_DEFENSEGENERATION: Defense Generation
+S_DEFENSEGENERATION: Defense Generation
+S_FORCEFIELD_STAT: Forcefield Capacity
+S_FORCEFIELDREGEN: Forcefield Regeneration
+S_DAMAGEFACTOR: Damage Multiplier
+S_REPAIRFACTOR: Repair Multiplier
+STT_DEFENSEGENERATION: <<
+	The amount of Defense generated by this ship. This Defense is used to construct support ships for the fleet.
+>>
+S_RESEARCHGENERATION: Research Generation
+STT_RESEARCHGENERATION: <<
+	The amount of Research generated by this ship.
+>>
+S_CHANNELPERCENTAGE: Channel Rate
+STT_CHANNELPERCENTAGE: <<
+	The rate at which resisted damage is channelled into the ship's shields.
+>>
+S_EXTACCEL: Max External Acceleration
+STT_EXTACCEL: <<
+	The amount of acceleration generated by leveraging external sources, such as solar energy.
+>>
+S_SOLARTHRUST: Maximum Solar Thrust
+STT_SOLARTHRUST: <<
+	The maximum thrust gained from solar energy. Varies with the distance and temperature from nearby stars and can decrease down to 0.
+>>
+S_LASERTHRUST: Maximum Laser Thrust
+STT_LASERTHRUST: <<
+	The maximum thrust gained from directed laser energy. Varies with the laser strength and decreases down to 0 when there is no laser to transmit momentum.
+>>
+
+// *********************************************************
+// ******************SUBSYSTEMS HERE!***********************
+// *********************************************************
+
+
+S_PLANET_MINING_LASER: Planet Devourer
+S_PLANET_MINING_LASER_DESC: <<
+	An array of tractor beams and mining lasers designed to harvest immense quantities of resources from a barren planet, destroying the planet in the process.
+
+	[img=Plus]Mines Ore from planets.[/img]
+	[img=Plus]Is 10 times faster than mining from an asteroid.[/img]
+	[img=MenuIcons::3;20]Cannot be placed on the same ship as a Mining Laser, and can only be placed on a Harvester.[/img]
+	[img=MenuIcons::3;20]Only Barren planets can be mined for Ore. Other planets must first have their resources Harvested.[/img]
+	[img=Minus]Has a significantly higher power consumption compared to a Mining Laser, and cannot mine from asteroids.[/img]
+>>
+S_HARVESTER: Harvester Hull
+S_HARVESTER_DESC: <<
+	A hull architecture designed specifically for the harvesting of resources from other planets.
+
+	[img=Plus]Can prepare planets for Harvesting by Ringworlds.[/img]
+	[img=Plus]Can use the Planet Devourer subsystem to mine Barren planets for Ore.[/img]
+	[img=Plus]All hex health is doubled.[/img]
+	[img=Plus]All damage resistance is increased by 50%.[/img]
+	[img=Plus]Shield capacity is doubled.[/img]
+	[img=Plus]Does not require Supply to fire weapons or repair itself.[/img]
+	[img=Plus]Slipstream costs are significantly reduced.[/img]
+	[img=Plus]Cargo storage capacity is multiplied tenfold.[/img]
+	[img=Minus]Mass is tripled.[/img]
+	[img=Minus]Cannot hold support ships.[/img]
+	[img=Minus]Damage output is reduced by 75%.[/img]
+	[img=Minus]Build costs are increased by 50%.[/img]
+	[img=MenuIcons::3;20]Cannot be used on ships under size 500.[/img]
+>>
+
+CREWCONTROL_DESC: <<
+	A bridge, crew quarters, and other facilities for a crew to command a vessel.
+
+	[img=ActionBarIcons::0;22;#00ff80]Provides [b][color=#00ff80]Control[/color][/b] to operate other subsystems.[/img]
+	[img=Plus]Slowly repairs the vessel.[/img]
+	[img=Minus]Ship is disabled or destroyed if no control remains.[/img]
+>>
+SHIPCOMPUTER_DESC: <<
+	An autonomous computer capable of controlling numerous ship systems.
+
+	[img=ActionBarIcons::0;22;#00ff80]Provides a lot of [b][color=#00ff80]Control[/color][/b] to operate other subsystems.[/img]
+	[img=QuickbarIcons::6;22]For the first 30 seconds of any combat, the strength of the entire fleet is boosted by a percentage dependent on the size of the Control Computer.[/img]
+	[img=Plus]Slowly repairs the vessel.[/img]
+	[img=Minus]Requires power to run.[/img]
+	[img=Minus]Ship is disabled or destroyed if no control remains.[/img]
+>>
+
+S_EXPERIMENTAL_HYPERDRIVE: Prototype Hyperdrive
+S_EXPERIMENTAL_HYPERDRIVE_DESC: This bulky, expensive prototype allows for slow hyperdrive navigation, and can be used to develop standard hyperdrives. The larger the hyperdrive the faster the FTL speed.
+S_EXPERIMENTAL_JUMPDRIVE: Prototype Jumpdrive
+S_EXPERIMENTAL_JUMPDRIVE_DESC: <<
+	Allows the ship to make subspace jumps to other locations within range. Larger jump drive subsystems allow for larger safe jump distances.
+
+	Jumping outside of safe jump range is possible, but can cause damage to the ship and may drop the ship at an location away from the intended destination.
+
+	Jumpdrives require a large amount of [b]Control[/b] for the jump calculations.
+
+	This experimental jumpdrive is bulky, expensive and inefficient, but can be used to develop standard jumpdrives.
+>>
+S_EXPERIMENTAL_SLIPSTREAM: Prototype Slipstream Generator
+S_EXPERIMENTAL_SLIPSTREAM_DESC: This bulky, expensive and inefficient prototype grants the ability to generate slipstream portals and research standard slipstream generators.
+ERROR_PROTOTYPE_HYPERDRIVE: Ships carrying a Prototype Hyperdrive cannot have more than one Hyperdrive subsystem.
+ERROR_PROTOTYPE_JUMPDRIVE: Ships carrying a Prototype Jumpdrive cannot have more than one Jumpdrive subsystem.
+ERROR_PROTOTYPE_SLIPSTREAM: Ships carrying a Prototype Slipstream Generator cannot have more than one Slipstream Generator subsystem.
+S_CONTROLCHAIR: Neural Interface Chair
+S_CONTROLCHAIR_DESC: <<
+	A neural interface linked into all the ship's systems allows a single officer to single-handedly control massive battlecruisers whilst sitting in a comfortable chair.
+
+	[img=ActionBarIcons::0;22;#00ff80][img=Plus]Provides a ludicrous amount of [b][color=#00ff80]Control[/color][/b] to operate other subsystems, enough for even the most insane of ship designs.[/img][/img]
+	[img=MenuIcons::3;20]Only one Neural Interface Chair per ship.[/img]
+	[img=Minus]Does not repair the ship at all.[/img]
+	[img=Minus]Ship is disabled or destroyed if no control remains.[/img]
+>>
+S_EMERGENCY_SUPPLIES_DESC: <<
+	An output node for the Empire's energy. Allows supplies to be produced instantly anywhere in the galaxy, at great cost.
+
+	An interesting side-effect of the process is that it releases a substantial quantity of plasma, similar to the kind used by most shield systems. This plasma discharge can be harnessed to rapidly regenerate the ship's shields.
+
+	[img=AttributeIcons::4;22]Immediately generates supplies.[/img]
+	[img=ShieldImpactLarge*#8888ff;22]Regenerates 1% of the ship's shield capacity each second for a brief period after activation.[/img]
+	[img=Minus]Costs energy.[/img]
+	[img=Minus]30 Second Cooldown.[/img]
+>>
+S_RECALL: Recall Device
+S_RECALL_DESC: <<
+	A hyperfield manipulator designed to open a wormhole between a nearby location and any allied object in the universe.
+
+	[img=MenuIcons::3;20]Grants the Recall ability.[/img]
+	[img=ResourceIcon::2;22]Costs [b][color=#42b4bd]Energy[/color][/b] to activate.[/img]
+	[img=MenuIcons::3;20]The smaller the recalled object is, and the larger the recalling ship is, the less energy is consumed.[/img]
+	[img=MenuIcons::3;20]The larger the Recall Device is, the less energy is consumed.[/img]
+	[img=MenuIcons::3;20][i][bbloc=#ABL_RECALL_DESC/][/i][/img]
+>>
+S_PIERCING_DRONES: Piercing Drone Launcher
+S_PIERCING_DRONES_DESC: <<
+	Launches a series of nimble drones which use their speed and a superheated plasma shield to bore through the hull of their target, bypassing enemy shielding along the way.
+
+	[img=MenuIcons::3;20]Each drone deals 75 damage.[/img]
+	[img=MenuIcons::3;20]Instead of increasing drone damage, a bigger launcher will be capable of launching larger quantities of drones with each salvo.[/img]
+	[img=Plus]Bypasses all damage resistance and shields.
+		[vspace=3/][img=MenuIcons::3;20]Shield Hardeners will still have a chance to block a drone collision, though.[/img][/img]
+	[img=Minus]Fragile and expensive.[/img]
+	[img=Minus]Takes a lot of time to reload.[/img]
+	[img=Minus]Requires Power to run.[/img]
+	[img=Minus]Significant amounts of [b][color=#00ff80]Control[/color][/b] are required to support the drones.[/img]
+	[img=MenuIcons::3;20][i][color=#aaa]Drones have a limited lifetime before their power source fails and a new drone needs to be launched. The closer a drone is fired to its target, the more time it will have to assault enemy ships, increasing its effective damage output.[/color][/i][/img]
+>>
+S_PROGENITORCOMPUTER: Progenitor Control Computer
+S_PROGENITORCOMPUTER_DESC: <<
+	A resilient autonomous computer of Progenitor design, capable of controlling an incredible amount of subsystems.
+
+	[img=ActionBarIcons::0;22;#00ff80]Provides a very large amount of [b][color=#00ff80]Control[/color][/b] to operate other subsystems.[/img]
+	[img=QuickbarIcons::6;22]For the first 60 seconds of any combat, the strength of the entire fleet is boosted by a considerable percentage dependent on the size of the Control Computer.[/img]
+	[img=Plus]Slowly repairs the vessel.[/img]
+	[img=Plus]Ship can remain indefinitely inside Radioactive Nebulae.[/img]
+	[img=Minus]Requires a lot of power to run.[/img]
+	[img=Minus]Is more expensive than a regular Control Computer.[/img]
+	[img=Minus]Ship is disabled or destroyed if no control remains.[/img]
+>>
+NEUTRONARMOR_DESC: <<
+	Microscopic pellets of neutronium-doped metal are mixed with standard plate armor.
+
+	[img=Plus][b]Very[/b] high [b][color=#80ff80]health[/color][/b] with minor damage resist.[/img]
+	[img=Plus]Armor on the outside of the ship does not use up interior space.[/img]
+	[img=Minus]Extremely heavy.[/img]
+	[img=Minus]Very high build cost with significant labor cost.[/img]
+>>
+PLATEARMOR_DESC: <<
+	Heavy, interlocked plates of metal that protect the ship from damage.
+
+	[img=Plus]High [b][color=#80ff80]health[/color][/b], and good health density per hex and mass.[/img]
+	[img=Plus]Cheapest and simplest defensive option.[/img]
+	[img=Plus]Armor on the outside of the ship does not use up interior space.[/img]
+	[img=Minus]Heavy.[/img]
+>>
+S_PROGENITOR_ARMOR_DESC: <<
+	Incredibly advanced Progenitor armor. Lighter than Crystalline Armor and just as tough.
+
+	[img=Plus]Damage hits exceeding the [b][color=#c33ac6]damage threshold[/color][/b] are reduced significantly.[/img]
+	[img=Plus]Increases the [b][color=#80ff80]health[/color][/b] of surrounding hexes. Resists damage and is impervious to armor penetration.[/img]
+	[img=Plus]Each hex regenerates health regardless of the availability of Supply.[/img]
+	[img=MenuIcons::3;20]The most formidable armor in the known universe, effective against most weapons.[/img]
+	[img=Minus]Very expensive with an extreme maintenance cost, and requires a lot of Power.[/img]
+>>
+LASER_DESC: <<
+	A highly focused beam of light inflicts damage by burning holes through ship subsections.
+
+	[img=Plus]Accurate and instant beam lock-on, with constant damage.[/img]
+	[img=Plus]Low [b][color=#fefc61]supply cost[/color][/b].[/img]
+	[img=Minus]Ineffective against armor.[/img]
+	[img=Minus]Very limited turret firing arc.[/img]
+
+	[img=MenuIcons::3;20]Flagship-grade lasers have a direct connection to the flagship's power core and can maintain a constant beam, but support-grade lasers must fire in pulses as their integrated capacitors cannot sustain a beam capable of dealing damage.
+>>
+RAILBATTERY_DESC: <<
+	A battery of magnetic cannons that fire relatively small projectiles at immense velocities.
+
+	[img=Plus]Rapid fire rate.[/img]
+	[img=Minus]Inaccurate projectiles.[/img]
+	[img=Minus]Limited turret firing arc.[/img]
+
+	[img=MenuIcons::3;20]Railguns can accurately target orbitals or stations from significantly further away than they can attempt to hit a maneuverable target.  This is currently not shown on the range display.[/img]
+>>
+RAILGUN_DESC: <<
+	A magnetic cannon that fires relatively small projectiles at immense velocities.
+
+	[img=Plus]High damage per hit.[/img]
+	[img=Minus]Inaccurate projectiles.[/img]
+	[img=Minus]Limited turret firing arc.[/img]
+
+	[img=MenuIcons::3;20]Support-grade railguns do not have the sophisticated targeting computers needed to recalibrate for stationary targets - their range is always the same.[/img]
+>>
+MUONBATTERY_NAME: Muon Projector Battery
+MUON_CANNON_NAME: Muon Projector
+SUPPORTMISSILELAUNCHER_DESC: <<
+	Missiles loaded with explosives and sufficient propellant are lowered out of the ship and locked onto their primary target.
+
+	[img=Plus]High [b][color=#ff8080]damage[/color][/b] per shot.[/img]
+	[img=Plus]No firing arc limitations.[/img]
+	[img=Plus]Very effective at piercing armor.[/img]
+	[img=Minus]Slow fire rate.[/img]
+	[img=Minus]Very high [b][color=#fefc61]supply cost[/color][/b].[/img]
+
+	[img=MenuIcons::3;20]Support-grade missile launchers do not support reconfigurable salvos or warheads, instead trading some range for dependable damage and rate of fire.[/img]
+>>
+S_DUMBFIREROCKETS: Dumbfire Rockets
+S_DUMBFIREROCKETS_DESC: <<
+	A rack of short-range rockets designed to be launched in a strafing run against large targets.
+
+	[img=Plus]High [b][color=#ff8080]damage[/color][/b].[/img]
+	[img=Plus]Very effective at piercing armor.[/img]
+	[img=Minus]Must reload after each volley.[/img]
+	[img=Minus][b]Very[/b] short range. Long reload time.[/img]
+	[img=Minus]High [b][color=#fefc61]supply cost[/color][/b].[/img]
+
+	[img=MenuIcons::3;20]Recommended for use with the 'Brawler' support behavior and a moderate amount of Ammo Storage.[/img]
+>>
+
+S_ROCKETPOD_DESC: <<
+	A concealed tube of rockets rapidly extends, launches a volley of short range rockets, and receeds to reload.
+
+	[img=Plus]High [b][color=#ff8080]damage[/color][/b].[/img]
+	[img=Plus]Very effective at piercing armor.[/img]
+	[img=Minus]Must reload after several shots.[/img]
+	[img=Minus]High [b][color=#fefc61]supply cost[/color][/b].[/img]
+>>
+S_MATTERDISRUPTOR: Matter Disruptor
+S_MATTERDISRUPTOR_DESC: <<
+	An energy weapon which abuses the gravitational attraction between the parts of its target to deal additional damage.
+
+	[img=Plus]Deals up to 400% of listed damage based on the relative sizes of the ship and its target. Scaling cuts off at 400% size.[/img]
+	[img=Minus]Deals as little as 50% of listed damage if the target is smaller than the ship. Scaling cuts off at 50% size.[/img]
+	[img=Minus]Fires 10 times slower than a Railgun Battery, and deals only 5 times as much damage per shot as a Railgun Battery does.[/img]
+	[img=MenuIcons::3;20]Behaves like a Railgun Battery in every other way, except that it deals energy damage and has no long-range firing mode.[/img]
+>>
+S_VOIDRAY: Adaptive Laser
+S_VOIDRAY_DESC: <<
+	Advanced sensors attached to a laser allow for the beam to be automatically tuned to deal more damage to a target.
+
+	[img=Plus]Deals up to 150% of listed damage based on how long it has been firing at a target.[/img]
+	[img=Minus]Base damage is 25% lower than that of a Laser.[/img]
+	[img=MenuIcons::3;20]Takes around 10 seconds of activity to reach maximum damage output.[/img]
+	[img=MenuIcons::3;20]Behaves like a Laser in every other way.[/img]
+>>
+MISSILELAUNCHER_DESC: <<
+	Missiles loaded with explosives and sufficient propellant are lowered out of the ship and locked onto their primary target.
+
+	[img=Plus]High [b][color=#ff8080]damage[/color][/b] per shot.[/img]
+	[img=Plus]No firing arc limitations.[/img]
+	[img=Plus]Very effective at piercing armor.[/img]
+	[img=Minus]Slow fire rate.[/img]
+	[img=Minus]Very high [b][color=#fefc61]supply cost[/color][/b].[/img]
+
+	[img=MenuIcons::3;20]Additional Launch Tubes can be added to missile launchers to increase burst damage at the cost of porportionately longer salvo reload times.[/img]
+>>
+
+S_HYPERLASER_DESC: <<
+	A powerful pulse laser with energy densities nearly high enough to spontaneously generate matter.
+
+	[img=Plus]Accurate and instant beam lock-on.[/img]
+	[img=Plus]Deals damage in short pulses, resulting in higher effectiveness against armor.[/img]
+	[img=Minus]Lower overall DPS against shields or unarmored targets.[/img]
+	[img=Minus]Very limited turret firing arc. Firing arc is larger than that of regular lasers.[/img]
+>>
+
+S_ZPG: Singularity Core
+S_SHIELDED_AMGEN: Shielded Antimatter Generator
+S_COVARIANT_SHIELD: Covariant Shield Generator
+S_REMNANTSHIELD: Progenitor Shield Generator
+S_BATTERY_NAME: Batteries
+S_BOARDING_PARTY: Boarding Parties
+S_GUARDIANHULL: Guardian Hull
+S_GUARDIANHULL_DESC: Dummy subsystem only used by the Remnant Guardian. Cannot be boarded.
+S_HAULER_HULL: Hauler Hull
+S_MINER_HULL: Miner Hull
+S_PROGENITOR_ARMOR: Progenitor Armor
+
+S_MINER_HULL_DESC: <<
+	A specialized hull designed for the extraction and transportation of large quantities of ore from asteroids.
+
+	[img=Plus]Increases shield capacity by 50%.[/img]
+	[img=Plus]Reduces supply capacity by 90%.[/img]
+	[img=Plus]Mining rate and cargo storage are increased by 25%.[/img]
+	[img=Minus]Cannot have weapons or support command.[/img]
+>>
+S_JUGGERNAUT_HULL: Bombship Hull
+S_JUGGERNAUT_HULL_DESC: <<
+	A specialized hull designed for containing and stabilizing a large payload of extremely volatile explosives.
+
+	[img=Plus]Increases health by 1200%, and boosts armor damage resistance by 50%.[/img]
+	[img=AntimatterReactor;20;#ff0000]Significantly increases the potency of, and requires a Self-Destruct Device. Also allows manual detonation of Self-Destruct Devices.[/img]
+	[img=Plus]Halved maintenance cost.[/img]
+	[img=Minus]Increases mass by 500%, but increases turn thrust by only 300%.[/img]
+	[img=Minus]Increases Labor cost by 400%.[/img]
+	[img=Minus]Cannot have weapons or support command.[/img]
+	[img=Minus]Significantly reduced hex count.[/img]
+	[img=MenuIcons::3;20][i][color=#aaa]Bombship Hulls can only be used on ships of size 300 or greater.[/color][/i][/img]
+>>
+S_FORCEFIELD: Forcefield
+S_FORCEFIELD_DESC: <<
+	An advanced shielding system capable of projecting a highly cohesive, geometrically complex plasma field to defend key sections of the ship.
+
+	[img=Plus]Can be used to isolate select portions of the ship behind a shield-like barrier.[/img]
+	[img=Plus]Only the emitter counts towards the ship's hex limit, mass and maintenance cost. Bigger forcefields can absorb more damage before failing.[/img]
+	[img=MenuIcons::3;22]Has a number of applications in designing more exotic vessels, and only benefits from shield upgrades.[/img]
+	[img=Minus]Extremely inefficient and fairly weak compared to standard shield systems, with high build costs and power consumption, and low shield capacity and regeneration. Additionally, bigger forcefields require exponentially more Power to operate.[/img]
+	[img=Minus]Is not affected by Shield Harmonizers or Power Transmitters.[/img]
+>>
+
+TARGETINGSENSOR_DESC: <<
+	Sophisticated targeting and tracking sensors allow a weapon to more accurately find its destination, increasing its effective range.
+
+	[img=Plus;22;#cf00ff]Can be placed on weapon subsystems.[/img]
+	[img=Plus]Increases the [b][color=#80ffea]range[/color][/b] of the weapon.[/img]
+	[img=Minus]Increases the build cost of the weapon by 50%.[/img]
+	[img=Minus]Slightly increases the [b][color=#fefc61]supply cost[/color][/b] of firing the weapon.[/img]
+	[i][color=#aaa]Placing more than one targeting sensor on a weapon will continue to increase its range, but will also skyrocket its costs.[/color][/i]
+>>
+
+S_TITAN_HULL_DESC: <<
+	An extremely heavy hull frame that allows larger ships to be constructed more efficiently.
+
+	[img=Plus]Much more internal space available.[/img]
+	[img=Plus]Reduces build costs by up to 50% as the ship size gets bigger.[/img]
+	[img=Plus]Rigorous construction increases turret potential firing arcs.[/img]
+	[img=Minus]Can only be used for ships of size 500 or greater.[/img]
+>>
+
+S_CARRIER_HULL_DESC: <<
+	A hull specifically designed to control and maintain a large fleet of support ships.
+
+	[img=Plus]Doubles any support capacity.[/img]
+	[img=Plus]Doubles all health and shield capacity.[/img]
+	[img=Plus]Increases supply capacity by 50%.[/img]
+	[img=Minus]Cannot have any weapons on the flagship.[/img]
+	[img=Minus]Less internal space available.[/img]
+	[img=MenuIcons::3;20][i][color=#aaa]Carrier Hulls can only be used on ships of size 300 or greater.[/color][/i][/img]
+>>
+
+S_SHIELDED_AMGEN_DESC: <<
+	A sustained matter-antimatter annihilation reaction provides continuous power for the ship. This generator comes with a built-in shield generator to protect it, allowing it to operate at full output - though much of it is used by the shield - even in combat.
+
+	[img=ResourceIcon::2;22]Provides a [b][color=#0f0]very large[/color][/b] amount of [b][color=#42b4bd]Power[/color][/b] to operate other subsystems.[/img]
+	[img=AttributeIcons::4;22]Provides a [b][color=#0f0]high[/color] [color=#fefc61]Resupply Rate[/color][/b]. Minor resupply even in [color=#ff0000][b]Combat[/b][/color].[/img]
+	[img=Plus]Does not destroy the ship when damaged.[/img]
+	[img=Minus]High construction and moderate maintenance costs.[/img]
+	[img=Minus]Provides less power and resupplies the ship slower than a regular antimatter generator.[/img]
+>>
+
+S_BATTLE_SHRINE: Shrine of War
+S_SHRINE: Shrine of Protection
+S_GRAND_SHRINE: Shrine of Leadership
+S_PROGENITOR_SHRINE: Shrine of the Gods
+S_BATTLE_SHRINE_DESC: <<
+	A shrine honoring the War God, Enilatros, built to his exacting specifications. Praying to this shrine improves the crew's effectiveness in combat, making them hit harder and think faster.
+
+	[img=Plus]Improves the ship's damage output and repair rate.[/img]
+	[img=Minus]At least as much Prayer must be generated as the ship has Control.[/img]
+	[img=MenuIcons::3;20]Neural Interface Chairs generate 995 Prayer. Control Computers generate a certain amount of Prayer as well.[/img]
+	[img=ResourceIconsSmall::53;22][b][color=#408fc1]Only available when the 'Devout' race option is chosen.[/color][/b][/img]
+>>
+S_GRAND_SHRINE_DESC: <<
+	A shrine honoring the God of Leadership, Ialatros, and built from the blueprints he has given us. Although this shrine is not as vast as the others, its elaborate design and the teachings within remind the crew that size does not always matter.
+
+	[img=Plus]Adds twice as much Prayer as other Shrines.[/img]
+	[img=Minus]At least as much Prayer must be generated as the ship has Control.[/img]
+	[img=MenuIcons::3;20]Neural Interface Chairs generate 995 Prayer. Control Computers generate a certain amount of Prayer as well.[/img]
+	[img=ResourceIconsSmall::53;22][b][color=#408fc1]Only available when the 'Devout' race option is chosen.[/color][/b][/img]
+>>
+S_PROGENITOR_SHRINE_DESC: <<
+	An extremely complex shrine, built to honor all of the Old Gods. Its power is almost tangible; the Gods have truly blessed us with these blueprints.
+
+	[img=Plus]Combines and improves upon the effects of all other Shrines.[/img]
+	[img=Minus]At least as much Prayer must be generated as the ship has Control.[/img]
+	[img=Minus]Extremely expensive.[/img]
+	[img=MenuIcons::3;20]Neural Interface Chairs generate 995 Prayer. Control Computers generate a certain amount of Prayer as well.[/img]
+	[img=ResourceIconsSmall::53;22][b][color=#408fc1]Only available when the 'Devout' race option is chosen.[/color][/b][/img]
+>>
+S_SHRINE_DESC: <<
+	A shrine to honor the Goddess of Wisdom, Alephatra, and built under her guiding hand. Praying to this shrine protects the ship from harm.
+
+	[img=Plus]Adds a Shield to the ship.[/img]
+	[img=Minus]At least as much Prayer must be generated as the ship has Control.[/img]
+	[img=MenuIcons::3;20]Neural Interface Chairs generate 995 Prayer. Control Computers generate a certain amount of Prayer as well.[/img]
+	[img=ResourceIconsSmall::53;22][b][color=#408fc1]Only available when the 'Devout' race option is chosen.[/color][/b][/img]
+>>
+
+S_ZPG_DESC: <<
+	An artificial quantum singularity harnessed to provide immense quantities of power.
+
+	[img=ResourceIcon::2;22]Provides a [b][color=#0f0]large to huge[/color][/b] amount of [b][color=#42b4bd]Power[/color][/b] to operate other subsystems, depending on its size.[/img]
+	[img=AttributeIcons::4;22]Provides a [b][color=#0f0]high[/color][/b] [b][color=#fefc61]Resupply Rate[/color][/b], somewhat lower than that of Antimatter Generators.[/img]
+	[img=Plus]No maintenance cost.[/img]
+	[img=Minus]Very high construction and Labor costs.[/img]
+>>
+
+S_TORPEDOLAUNCHER_DESC: <<
+	Launches massive, slow-moving, guided bombs. These bombs explode in an area around their target.
+
+	[img=Plus]Extreme [b][color=#ff8080]damage[/color][/b] per shot.[/img]
+	[img=Plus]No firing arc limitations and extreme range.[/img]
+	[img=Plus]Deals damage in an area and scatters enemy formations.[/img]
+	[img=Plus]Low supply consumption.[/img]
+	[img=Minus]High power requirements.[/img]
+	[img=Minus]Very slow fire rate.[/img]
+	[img=Minus]Very low [b][color=#ff8080]DPS[/color][/b].[/img]
+>>
+
+S_BOMBBAY: Energy Bomb Launcher
+S_BOMBBAY_DESC: <<
+	Generates and launches a salvo of highly unstable energy bombs. These bombs explode in an area around their target.
+
+	[img=Plus]Extreme [b][color=#ff8080]damage[/color][/b].[/img]
+	[img=Plus]Deals damage in a large area and scatters enemy formations.[/img]
+	[img=Plus]Fires multiple projectiles per salvo.[/img]
+	[img=Minus]Very low accuracy.[/img]
+	[img=Minus]Extremely slow fire rate.[/img]
+	[img=Minus]Low [b][color=#ff8080]DPS[/color][/b].[/img]
+
+	[img=MenuIcons::3;20]Recommended for use with the 'Brawler' support behavior and a moderate amount of Ammo Storage.[/img]
+>>
+
+SUPPORTSUPPLY_DESC: <<
+	A secondary supply storage facility may be placed on particular support ships, increasing the amount of ammunition and general combat materials available to the fleet.
+
+	[img=AttributeIcons::4;22]Provides [b][color=#fefc61]Supply Capacity[/color][/b] to the fleet.[/img]
+	[img=Minus]Adds maintenance cost to the support ships.[/img]
+	[img=Minus]Destroyed supply storage hexes leak supplies over time.[/img]
+	[img=MenuIcons::3;20;#f00][i][color=#faa]Support ships with maintenance costs will not be created by Defense.[/color][/i][/img]
+>>
+
+S_REMNANTSHIELD_DESC: <<
+	Incredibly advanced Progenitor technology. Creates a powerful shield around the vessel, blocking some incoming damage.
+
+	[img=Plus]Creates regenerating barrier against damage.[/img]
+	[img=Plus]Stronger than covariant shields.[/img]
+	[img=Plus]Regenerates faster than standard shields.[/img]
+	[img=Minus]Weakened shields allow some damage through.[/img]
+	[img=Minus]Very expensive, and requires a lot of Power.[/img]
+>>
+S_COVARIANT_SHIELD_DESC: <<
+	Creates a shield around the vessel, blocking some incoming damage. Covariant shields are more powerful, but they regenerate at a slower rate than their standard counterparts.
+
+	[img=Plus]Creates regenerating barrier against damage.[/img]
+	[img=Minus]Weakened shields allow some damage through.[/img]
+	[img=Plus]Increased capacity.[/img]
+	[img=Minus]Reduced regeneration.[/img]
+>>
+
+S_SUPSHIELD_DESC: <<
+	Creates a shield around the vessel, blocking some incoming damage. This shield's capacitors must be charged by the support ship's inferior power supply, so it regenerates at a slower rate compared to flagship shielding.
+
+	[img=Plus]Creates regenerating barrier against damage.[/img]
+	[img=Minus]Weakened shields allow some damage through.[/img]
+>>
+
+S_BOARDING_PARTY_DESC: <<
+	Contains all the equipment required to send boarding parties onto an object in space, and attempt to capture it.
+
+	[img=Plus]Allows a ship to send boarding parties to capture enemy flagships and orbitals, or to take control of derelicts.[/img]
+	[img=Plus]Boarding party deals damage to random subsystems throughout the target ship until all troops are lost or the ship has been critically damaged.[/img]
+	[img=Minus]Boarding parties must be trained manually from a planet with labor, and only one batch of troops can be taken at a time. Only one boarding party may attempt to capture a ship at any given time.[/img]
+	[img=Minus]Large quantities of [b][color=#00ff80]Control[/color][/b] are required to coordinate the boarding party.[/img]
+	[img=Minus]Depending on how many boarders survive the battle, captured ships may take up to 30 minutes to become operational.[/img]
+	[img=MenuIcons::3;20]Ships belonging to a Verdant race cannot be boarded.[/img]
+>>
+S_SECURITY_STATION: Security Station
+S_SECURITY_STATION_DESC: <<
+	Defensive installations designed to prevent ship capture by boarding parties.
+
+S_LASER_DRIVE: Phased Array Laser Drive
+S_LASER_DRIVE_DESC: <<
+	An array of laser emitters condensed through a giant lens firing a single coherent beam, tuned to be used by reflector panels of lightsails. A more powerful beam provides increased thrust, but requires an ever bigger size.
+
+	[img=MenuIcons::3;20]Transmits thrust to ships equipped with a [template=subsys_ref;Lightsail/].[/img]
+	[img=MenuIcons::3;20]Thrust is increased as the subsystem's size increases with diminishing returns.[/img]
+	[img=MenuIcons::3;20]Laser Power represents a factor of potential acceleration, 1 being the maximum output of the hottest stars and 1.5 being the output of the beam of a Phased Laser Array orbital. The maximum Laser Power is 5.[/img]
+>>
+S_SELF_DESTRUCT_DESC: <<
+	A massive warhead designed to detonate when the host vessel is critically damaged or captured.
+
+	[img=Plus]Deals extreme damage in a large area when the ship is destroyed.[/img]
+	[img=MenuIcons::3;22]If this subsystem is active when the ship is captured or disabled, the ship will explode.[/img]
+	[img=Minus]You die.[/img]
+>>
+S_SELF_DESTRUCT: Self-Destruct Device
+S_WARHEAD_DESC: <<
+	A heavily armed warhead that detonates in the enemy fleet, creating a blast of ultrahard radiation to bombard all the enemy ships in the area.
+
+	[img=Plus]Damage is divided equally across all hexes on each affected ship.[/img]
+	[img=Minus]Limited storage of warheads.[/img]
+	[img=Minus]Warheads are expensive and must be constructed manually from a planet with labor.[/img]
+	[img=Minus]Damage reduced significantly by shields.[/img]
+	[img=MenuIcons::3;20][i][color=#aaa]Warhead storage can be expanded by adding extra Warhead Tube modifiers to the subsystem.[/color][/i][/img]
+>>
+
+// *********************************************************
+// ****************ARMOR!***********************************
+// *********************************************************
+S_COMPOSITE_ARMOR: Composite Armor
+S_CRYSTAL_ARMOR: Crystalline Armor
+S_NANO_ARMOR: Nanite Armor
+S_POWERED_ARMOR: Powered Armor
+S_QUANTUM_ARMOR: Quantum Armor
+
+S_QUANTUM_ARMOR_DESC: <<
+	Neutronium armor mostly shifted out of our physical universe to reduce mass, only to reappear prior to impact and withstand the same amount of firepower.
+
+	[img=Plus]Very high health, slightly weaker than Neutronium Armor.[/img]
+	[img=Plus]Lower mass than most types of armor.[/img]
+	[img=Minus][b]Very[/b] expensive.[/img]
+	[img=Minus][b]Very[/b] high labor cost.[/img]
+	[img=Minus]Requires a moderate amount of maintenance and power.[/img]
+>>
+
+S_COMPOSITE_ARMOR_DESC: <<
+	A uniform, seamless coat of a highly resistant composite material.
+
+	[img=Plus]Reduces all incoming damage by a fixed percentage depending on type.[/img]
+	[img=Plus]Tougher and lighter than Plate Armor.[/img]
+	[img=Plus]Resists armor penetration very well.[/img]
+	[img=Minus]Requires a low amount of maintenance, and is harder and much costlier to build than Plate Armor.[/img]
+>>
+
+S_SUPERSTRUCTURE: Structural Reinforcement
+S_SUPERSTRUCTURE_DESC: <<
+	Light-weight metal scaffolding to give structure and definition to the ship. Can prevent some amount of damage to internal components, but not as protective per-weight as actual armor.
+
+	[img=Plus]Structural Reinforcement on the outside of the ship does not use up interior space.[/img]
+	[img=Plus]Cheap and lightweight.[/img]
+	[img=Minus][b][color=#f00]Very low[/color] [color=#80ff80]health[/color][/b].[/img]
+>>
+S_CERAMICARMOR: Ceramic Armor
+S_CERAMICARMOR_DESC: <<
+	An armor plate constructed with layers of heat-resistant ceramic tiles that can withstand significant thermal stress. While they are simple enough to replace they are impossible to properly repair in combat or without the aid of a dockyard.
+
+	[img=Plus]High [b][color=#c6c33a]damage resistance[/color][/b] against energy weapons.[/img]
+	[img=Plus]Moderate [b][color=#c6c33a]damage resistance[/color][/b] against non-energy weapons.[/img]
+	[img=Minus]Lower health than standard plating.[/img]
+	[img=Minus]Cannot be repaired.[/img]
+	[img=Minus]When a Ceramic Armor hex is destroyed, it is permanently removed from the ship.[/img]
+>>
+
+S_FERROFLUIDARMOR: Ferrofluid Armor
+S_FERROFLUIDARMOR_DESC: <<
+	A basin of liquid ferro-metal precisely controlled and suspended on the hull of the ship by an electromagnetic field. The ferro-metal absorbs impacts and spreads them evenly, filling any gaps that are created. The advanced electromagnetic field is configured to strongly repel traditional projectiles, and can draw back the ferro-metal to form firing ports when needed without exposing gun turrets to retaliatory fire.
+
+	[img=Plus]High [b][color=#80ff80]health[/color][/b].[/img]
+	[img=Plus]Health flows from high health hexes to connected low health hexes to equalize density.[/img]
+	[img=Plus]Armor on the outside of the ship does not use up interior space.[/img]
+	[img=Plus]Does not block weapon arcs or engine exhausts.[/img]
+	[img=MenuIcons::3;20]Does not provide any damage resistance against Energy or Explosive damage.[/img]
+	[img=Minus]Heavier, more expensive and more labor-intensive than standard Liquid Armor, and cannot interact with it.[/img]
+>>
+NANOMESH_NAME: Nanomesh
+NANOMESH_DESC: <<
+	A finely weaved mesh of nanobots strengthen the integrity of nearby subsystems.
+
+	[img=Plus]Increases the [b][color=#80ff80]health[/color][/b] of surrounding hexes.[/img]
+	[img=Plus]Health bonus is improved by armor health research.[/img]
+	[img=Minus]Always uses internal space.[/img]
+	[img=Minus]The nanomesh itself has no health.[/img]
+>>
+
+// *********************************************************
+// ****************OTHER EXTERNAL SUBSYSTEMS****************
+// *********************************************************
+S_LIGHTSAIL: Lightsail
+S_LIGHTSAIL_DESC: <<
+	A reflector panel allowing to use the momentum of photons as actual thrust, composed of opposing layers reflecting the photons into one another (a process know as photon recycling) to amplify the push or to decelerate. Can use photons transmitted by solar energy, or concentrated by laser to provide much higher thrust.
+
+	[img=Plus]Does not need fuel, very low maintenance cost.[/img]
+	[img=Plus]Lightsails on the outside of the ship do not use up interior space.[/img]
+	[img=Minus]Thrust is not improved by research.[/img]
+	[img=Minus]Requires to be within range of an active laser propulsion beam to function a full efficiency, or a near a star to function at low efficiency.[/img]
+	[img=MenuIcons::3;20]Laser Propulsion Beam is an ability of Phased Laser Array Drive orbitals.[/img]
+	[img=MenuIcons::3;20]Thrust increases with diminishing returns as the subsystem's size increases.[/img]
+	[img=MenuIcons::3;20]Diminishing returns combined with linear mass increase also means diminishing returns on acceleration as the ship size increases.[/img]
+	[img=MenuIcons::3;20]Only one external source can be used at a time (including solar).[/img]
+	[img=MenuIcons::3;20]Can be combined with other propulsion systems.[/img]
+>>
+S_SENSOR_DISH: Sensor Dish
+S_SENSOR_DISH_DESC: <<
+	An enormous rotating dish concentrating sensor waves, extending effective range.
+
+	[img=Plus]Increases sight range by a small amount.[/img]
+	[img=Plus]Requires no Control.[/img]
+	[img=MenuIcons::3;20]Completely covering sensors with armor or other sensors will cause them to use interior space again. The opposite is also true, so covering armor with sensors will cause the armor to use interior space.[/img]
+	[img=Minus]Adding more than one dish doesn't increase sight range more and only gives redundancy benefits.[/img]
+	[img=Minus]Dishes must be external.[/img]
+>>
+S_SENSOR_PHASING: Phasing Sensors
+S_SENSOR_PHASING_DESC: <<
+	Regular technology can only extend the maximum range of identification of sensors so far. By literally putting molecular 'skip drives' on emitted particles, it is possible to cheat and send them much farther with millions of micro-jumps. Having more than one sensor on the same design allows to focus higher amounts of energy on specific regions and to cover more space overall.
+
+	[img=Plus]Increases sight range by a moderate amount, decreasing as the subsystem's size increases.[/img]
+	[img=Plus]Sensors on the outside of the ship do not use up interior space.[/img]
+	[img=MenuIcons::3;20]Completely covering sensors with armor or other sensors will cause them to use interior space again. The opposite is also true, so covering armor with sensors will cause the armor to use interior space.[/img]
+	[img=Minus]Requires Power. Requires increasingly high amounts of Power and Control as the subsystem's size increases. Sinew halves the Control requirements.[/img]
+	[img=Minus]Sensor core must be external.[/img]
+>>
+S_SENSOR_TACHYON: Tachyon Sensors
+S_SENSOR_TACHYON_DESC: <<
+	Phasing principles applied to the next level. By "harvesting" tachyons from a nebula and sending them to this specialized sensor, it is possible to send signals directly through the hyperfield at FTL speeds, tremendously extending range.
+
+	[img=Plus]Increases sight range by a high amount, decreasing as the subsystem's size increases.[/img]
+	[img=Plus]Sensors on the outside of the ship do not use up interior space.[/img]
+	[img=MenuIcons::3;20]Completely covering sensors with armor or other sensors will cause them to use interior space again. The opposite is also true, so covering armor with sensors will cause the armor to use interior space.[/img]
+	[img=MenuIcons::3;20]Is immune to some of the sight-impairing effects of nebulae, but interference from subspace eddies negates the sight boost from empty space.[/img]
+	[img=Minus]Requires an active Tachyon Uplink orbital to function.[/img]
+	[img=Minus]Requires increasingly high amounts of Control as the subsystem's size increases. Sinew halves the Control requirements.[/img]
+	[img=Minus]Requires much more Control than an equal-sized Phasing Sensor.[/img]
+	[img=Minus]Sensor core must be external.[/img]

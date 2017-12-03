@@ -1,0 +1,18 @@
+Technology: BuildCost
+	Name: #R_KEY_BUILD_COST
+	Description: #R_KEY_BUILD_COST_DESC
+
+	Icon: ResourceIcon::6
+	Color: #b1b4b6
+	Symbol: OrbitalIcons::3*#f09030
+
+	Category: Special Upgrades
+	Class: BigUpgrade
+
+	Point Cost: 750
+	Time Cost: 120
+
+	AddModifier(hull/Flagship::BuildCostFactor(0.5))
+	AddModifier(hull/Flagship::LaborCostFactor(2.0))
+	ReduceResearchPenalty(750)
+	ModAttribute(DrydockCostFactor, Multiply, 0.8)

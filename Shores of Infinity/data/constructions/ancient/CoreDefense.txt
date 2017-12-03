@@ -1,0 +1,34 @@
+Construction: CoreDefense
+	Name: #CONS_CORE_DEFENSE
+	Description: #CONS_CORE_DEFENSE_DESC
+	Icon: CoreBuilding*#af7926
+
+	Category: Core Programming
+
+	RequireStatus(AncientReplicator)
+	building_effects::RequireStatusToProgress(AncientReplicator)
+	RequireStatus(AncientCore)
+	RequireNotStatus(CoreDefense)
+	RequireUnlockTag(CoreProgramming)
+	ConflictBuilding(AncientTransmuter, Hide = True)
+	ConflictBuilding(AncientMiner, Hide = True)
+	ConflictBuilding(AncientStripTransmuter, Hide = True)
+
+	AddBuildCostStatusCount(CoreProgrammed, 125)
+	AddLaborCostStatusCount(CoreProgrammed, 7.5)
+	AddBuildCostStatusCount(CoreAdapted, 125)
+	AddLaborCostStatusCount(CoreAdapted, 7.5)
+	AddBuildCostStatusCount(CoreSpecialized, 250)
+	AddLaborCostStatusCount(CoreSpecialized, 15)
+
+	AddLaborCostAttribute(TerraformLaborFactor, Multiply = 22.5)
+	AddBuildCostAttribute(TerraformCostFactor, Multiply = 375)
+	AddStatus(CoreProgrammed)
+	AddStatus(CoreDefense)
+	RemoveStatus(CoreInfluence)
+	RemoveStatus(CoreLabor)
+	RemoveStatus(CoreResearch)
+	RemoveStatus(CoreEnergy)
+	RemoveStatus(CoreMoney)
+	RemoveStatus(CoreAdapted)
+	RemoveStatus(CoreSpecialized)

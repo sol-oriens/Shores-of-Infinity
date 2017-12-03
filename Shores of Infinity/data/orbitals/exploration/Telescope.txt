@@ -1,0 +1,52 @@
+Module: Telescope
+	Name: #ORB_TELESCOPE
+	Blurb: #ORB_TELESCOPE_BLURB
+	Description: #ORB_TELESCOPE_DESC
+
+	Icon: GuiOrbitalIcons::17
+	Strategic Icon: OrbitalIcons::17
+	Icon Size: 0.02
+	Model: Observatory
+	Material: GenericPBR_Telescope
+
+	Size: 7
+
+	Core: True
+	Standalone: True
+
+	Health: 2000
+	Armor: 2000
+
+	Build Cost: 200
+	Labor Cost: 15
+	Maintenance: 40
+
+	ShowRange(400000, #00ff00)
+	GrantAbility(TelescopeArray)
+
+Module: QuantumTelescope
+	Name: #ORB_QUANTUM_TELESCOPE
+	Blurb: #ORB_QUANTUM_TELESCOPE_BLURB
+	Description: #ORB_QUANTUM_TELESCOPE_DESC
+	
+	Icon: GuiOrbitalIcons::17
+	Strategic Icon: OrbitalIcons::17
+	Icon Size: 0.02
+	Model: Observatory
+	Material: GenericPBR_Telescope
+
+	Size: 14
+
+	Core: True
+	Standalone: True
+
+	Health: 5000
+	Armor: 5000
+
+	Build Cost: 750
+	Labor Cost: 50
+
+	ConsumeCargo(Ore, 750)
+
+	ShowRange(1000000, #00ff00)
+	GrantAbility(TelescopeArrayDistant)

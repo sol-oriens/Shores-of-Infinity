@@ -1,0 +1,14 @@
+Material: RSStatus
+	Culling: None
+	Alpha: False
+	DepthTest: NoDepthTest
+	Mipmap: False
+	Lighting: False
+
+Material: RammingSpeed
+	Inherit: RSStatus
+	Texture: data/images/status/RammingSpeed.png
+
+Material: PopGrowth
+	Inherit: Image2D
+	Texture: data/images/status/PopGrowth.png

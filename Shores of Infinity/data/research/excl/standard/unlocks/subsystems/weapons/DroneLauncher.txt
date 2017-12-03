@@ -1,0 +1,21 @@
+Technology: DroneLauncher
+	Name: #R_SYS_DRONELAUNCHER
+	Description: #R_SYS_DRONELAUNCHER_DESC
+
+	Icon: MissileLauncher::0
+	Color: #e6ed00
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Category: Weapons
+	Class: Unlock
+
+	Point Cost: 500
+	Time Cost: 90
+
+	SecondaryMoneyCost(1000)
+
+	SkipOnUnlockedSubsystem(DroneLauncher)
+	UnlockSubsystem(DroneLauncher)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)

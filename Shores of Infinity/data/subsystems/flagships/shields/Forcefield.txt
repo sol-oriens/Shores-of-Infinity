@@ -1,0 +1,75 @@
+Subsystem: Forcefield
+	Name: #S_FORCEFIELD
+	Description: #S_FORCEFIELD_DESC
+	BaseColor: #00a4db
+	Elevation: 2
+
+	Tags: Category:Shields, NoWall, PassExterior, BadFiller
+	Tags: Forcefield, HasInternals, ExternalSpace
+	Hull: Flagship, Station
+
+	Size := HexSize * Hexes
+	PowerUse := (45 + 5 * (Hexes - 1) + (pow(Size / ShipSize, 3) * 2000)) * HexSize
+	ForcefieldRegen := 0.75 * Size
+	ForcefieldCapacity := 15 * HexSize * (Hexes - 1)
+	ForcefieldCapacityMult := 1
+
+	Ship.ExternalHexes := Ship.ExternalHexes + Hexes - 1
+	State: double = ForcefieldCapacity
+	State: double = 1
+	State: double = ForcefieldCapacityMult
+
+	Requires:
+		Command = 1
+		Power = PowerUse
+
+	Module: Core
+		Sprite: SupportShield*#50ffff
+
+		Hex.HP := 20 * HexSize
+		Hex.Mass := 3 * HexSize
+		Hex.Resistance := 0.1
+
+		Hex.BuildCost := 6.0 * HexSize
+		Hex.LaborCost := 1.5 * HexSize
+		Hex.MaintainCost := 4 * HexSize
+		Color: #00a4db
+
+	Module: Default
+		Sprite: Forcefield*#00a4db
+		Hex.HP := ForcefieldCapacity / (Hexes - 1)
+		Hex.Resistance := 99
+		Hex.Mass := 0
+
+		Hex.BuildCost := 2.0 * HexSize
+		Hex.LaborCost := 0.25 * HexSize
+		Hex.MaintainCost := 0
+
+	Modifier: HpFactor(factor)
+		Hex.HP := if(IsCore, Hex.HP * factor, Hex.HP)
+
+	Modifier: AddBaseHP(factor)
+		Hex.HP := if(IsCore, Hex.HP + Base::Hex.HP * factor, Hex.HP)
+
+	Modifier: AddHP(amount)
+		Hex.HP := if(IsCore, Hex.HP + amount, Hex.HP)
+
+	Modifier: ShieldCapacityFactor(factor)
+		ForcefieldCapacity := ForcefieldCapacity * factor
+		ForcefieldCapacityMult := ForcefieldCapacityMult * factor
+
+	Modifier: ShieldRegenFactor(factor)
+		ForcefieldRegen := ForcefieldRegen * factor
+
+	Effect: NoRepairNonCore
+
+	Effect: ForcefieldBase
+		Regen = ForcefieldRegen
+		Capacity = ForcefieldCapacity
+		CapacityMult = ForcefieldCapacityMult
+
+	Effect: ForcefieldShutdown
+
+	Effect: ForcefieldDamage
+		Capacity = ForcefieldCapacity
+		UseBleedthrough = 1

@@ -1,0 +1,18 @@
+Technology: HyperLaser
+	Name: #R_SYS_HYPERLASER
+	Description: #R_SYS_HYPERLASER_DESC
+
+	Icon: HyperdenseLaser::0
+	Color: #f9394d
+
+	Category: Weapons
+	Class: Unlock
+
+	Point Cost: 600
+	Time Cost: 120
+
+	SecondaryEnergyCost(1500)
+
+	SkipOnUnlockedSubsystem(HyperLaser)
+	UnlockSubsystem(HyperLaser)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)

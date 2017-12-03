@@ -1,0 +1,60 @@
+System: HomeSystem
+
+	//RS - Scaling
+	MakeStar(Temperature = 400:13000, Radius = 650:850)
+		BonusHealth(20000000000)
+
+		//RS - Scaling
+		ExpandSystem(1850:2850)
+
+	RepeatHomeworlds()
+
+		//RS - Scaling
+		MakePlanet(RandomType:Food:Common, Radius = 100, Grid Size = (18, 11), Conditions = False, Moons = False)
+			BonusHealth(5000000000)
+			AddPlanetResource(Water)
+			AddResource(Labor, +1)
+			OnPlanet( AddIncome(130) )
+			AddPopulation(3.0)
+			SpawnBuilding(Factory, (4, 3), Develop = True)
+			OnPlanet( AddPressureCap(2) )
+			NoNeedPopulationForLevel()
+			ForceUsefulSurface(0.8, Forest)
+			MakeMoon()
+
+	MakePlanet(RandomType:Food:Common, Conditions = False, Moons = False)
+	MakePlanet(Water, Conditions = False, Moons = False)
+	MakePlanet(RandomLevel:1:Common, Conditions = False, Moons = False)
+	MakePlanet(RandomType:Food:Common, Conditions = False, Moons = False)
+	MakePlanet(Resource = RareGases)
+
+	MakeAsteroid(Cargo = Ore, Cargo Amount = 1200)
+	MakeAsteroid(Cargo = Ore, Cargo Amount = 1200)
+	MakeAsteroid(Cargo = Ore, Cargo Amount = 1150)
+	MakeAsteroid(Cargo = Ore, Cargo Amount = 1050)
+	MakeAsteroid(Cargo = Ore, Cargo Amount = 685)
+	MakeAsteroid(Cargo = Ore, Cargo Amount = 465)
+	MakeAsteroid(Cargo = Ore, Cargo Amount = 250)
+	MakeAsteroid(Resource = Distributed)
+	MakeAsteroid(Resource = AsteroidFTLPermanent)
+		IfQuickStart()
+			SetMine()
+
+	MakeAnomaly()
+	MakeArtifact(Type = Comet)
+
+	GuaranteeAdjacentResource(RandomType:Food:Common, Distance = 2)
+	GuaranteeAdjacentResource(RandomLevel:1:Common, Distance = 2)
+	GuaranteeAdjacentResource(RandomLevel:2:Common, Distance = 2)
+	GuaranteeAdjacentResource(RandomType:Food:Common, Distance = 3)
+	GuaranteeAdjacentResource(Water, Distance = 3)
+
+	MakeAdjacentAsteroid(Resource = Pekelm)
+	MakeAdjacentAsteroid(Resource = Explosives)
+	MakeAdjacentAsteroid(Resource = AsteroidFTLPermanent, Farther = True)
+	MakeAdjacentAsteroid(Resource = Neutronium, Farther = True)
+
+	AddAdjacentArtifacts(2)
+	MakeAdjacentCreepCamp(SmallCamp, Place Far = True)
+
+	ExpandSystem(1000)

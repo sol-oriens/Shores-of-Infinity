@@ -1,0 +1,10 @@
+Status: Prolific
+	Name: #STATUS_PROLIFIC
+	Description: #STATUS_PROLIFIC_DESC
+	Visible To: Owner
+	Icon: PopGrowth
+
+	Unique: True
+
+	ModPopulationGrowth(0.2)
+	AddLaborFactor(0.1)

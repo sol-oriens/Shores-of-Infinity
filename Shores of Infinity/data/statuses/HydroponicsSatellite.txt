@@ -1,0 +1,48 @@
+Status: HydroponicsSatellite
+	Visible To: Nobody
+	Collapses: True
+
+	RepeatStacks(AddPlanetResource(BuildingWater))
+	RepeatStacks(AddPlanetResource(Soylent1))
+
+Status: OrbitalControl
+	Visible To: Nobody
+	Unique: True
+
+	IfHaveStatus(AncientCore, AddStatus(OrbitalCoreControl))
+	IfHaveStatus(AncientTransmuter, AddStatus(OrbitalTransmuterControl))
+	IfHaveStatus(AncientMiner, AddStatus(OrbitalMinerControl))
+	IfHaveStatus(AncientStripTransmuter, AddStatus(OrbitalStripTransmuterControl))
+
+Status: ZeroGAssembly
+	Visible To: Nobody
+	Unique: True
+
+Status: OrbitalCoreControl
+	Visible To: Nobody
+	Unique: True
+
+	ProduceNativePressurePct(Per Stack = 0.25)
+
+Status: OrbitalTransmuterControl
+	Visible To: Nobody
+	Unique: True
+
+	TriggerPeriodic(AddCargo(BaseMaterial, 0.5), Interval = 6))
+	IfAttributeGTE(OptimizedCores, 1, TriggerPeriodic(AddCargo(BaseMaterial, 0.25), Interval = 6)))
+
+Status: OrbitalMinerControl
+	Visible To: Nobody
+	Unique: True
+
+	TriggerPeriodic(AddCargo(Ore, 0.5), Interval = 1))
+	IfAttributeGTE(OptimizedCores, 1, TriggerPeriodic(AddCargo(Ore, 0.25), Interval = 1)))
+
+Status: OrbitalStripTransmuterControl
+	Visible To: Global
+	Unique: True
+
+	TriggerPeriodic(AddCargo(BaseMaterial, 0.375), Interval = 6))
+	IfAttributeGTE(OptimizedCores, 1, TriggerPeriodic(AddCargo(BaseMaterial, 0.125), Interval = 6)))
+	TriggerPeriodic(AddCargo(Ore, 0.375), Interval = 1))
+	IfAttributeGTE(OptimizedCores, 1, TriggerPeriodic(AddCargo(Ore, 0.125), Interval = 1)))

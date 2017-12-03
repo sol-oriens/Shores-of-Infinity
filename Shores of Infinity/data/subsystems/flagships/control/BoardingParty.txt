@@ -1,0 +1,38 @@
+Subsystem: BoardingParty
+	Name: #S_BOARDING_PARTY
+	Description: #S_BOARDING_PARTY_DESC
+
+	BaseColor: #c5f946
+	Elevation: 5
+
+	Tags: BaseCost, NonContiguous,Category:Equipment, Ability:BoardingParty
+	Tags: Boarders, ExteriorCore
+	Tags: HasInternals
+	Hull: Flagship, Station
+
+	EvaluationOrder: -10
+
+	Size := HexSize * Hexes
+	BoardingStrength := floor(10 * Size)
+
+	BoardingPartyCost := BoardingStrength * 4
+	BoardingPartyLabor := BoardingStrength / 10
+	BoardingPartyStorage := 1
+
+	Hook: OnEnable(AddStatus(BoardingPartyTroops))
+	Hook: LimitStatusStacks(BoardingPartyTroops, BoardingPartyStorage)
+
+	Hex.Resistance := 0.2
+	Hex.HP := 36 * HexSize
+	Hex.Mass := HexSize
+
+	Requires:
+		Command = ceil(Hexes * 0.4)
+
+	Module: Core
+		Sprite: ABEMShuttle
+		Hex.BuildCost := Hex.BuildCost + BoardingPartyCost
+		Hex.LaborCost := Hex.LaborCost + BoardingPartyLabor
+
+	Module: Default
+		Sprite: BoardingParty

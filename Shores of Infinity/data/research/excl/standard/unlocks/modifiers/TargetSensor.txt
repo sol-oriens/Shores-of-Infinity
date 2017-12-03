@@ -1,0 +1,16 @@
+Technology: TargetSensor
+	Name: #R_MOD_TARGET_SENSOR
+	Description: #R_MOD_TARGET_SENSOR_DESC
+
+	Icon: SupportCommand * #00ff00
+	Color: #00ff00
+
+	Category: Modifiers
+	Class: Unlock
+
+	Point Cost: 500
+	Time Cost: 90
+
+	SkipOnUnlockedModule(TargetingSensor)
+	UnlockModule(TargetingSensor)
+	ModAttribute(ProgenitorTechProgress, Add, 0.2)

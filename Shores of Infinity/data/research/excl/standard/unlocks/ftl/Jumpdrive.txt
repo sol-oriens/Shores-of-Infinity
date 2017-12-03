@@ -1,0 +1,20 @@
+Technology: Jumpdrive
+	Name: #R_SYS_JUMPDRIVE
+	Description: #R_SYS_JUMPDRIVE_DESC
+
+	Icon: Jumpdrive
+	Color: #00c0ff
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Category: FTL
+	Class: Unlock
+
+	Point Cost: 2000
+	Time Cost: 180
+
+	SkipOnUnlockedSubsystem(Jumpdrive)
+	SkipOnUnlockedSubsystem(ExperimentalJumpdrive)
+	UnlockSubsystem(ExperimentalJumpdrive)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)

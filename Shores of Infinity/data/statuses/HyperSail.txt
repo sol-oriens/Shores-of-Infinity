@@ -1,0 +1,18 @@
+Status: Hypercharging
+	Visible To: Nobody
+
+Status: Hypercharge
+Name: #STATUS_HYPERCHARGE
+Description: #STATUS_HYPERCHARGE_DESC
+	Visible To: Owner
+	Icon: techPropulsion*#26a980
+
+	GrantAbility(HyperBeam)
+
+Status: HyperSail
+	Name: #STATUS_HYPERSAIL
+	Description: #STATUS_HYPERSAIL_DESC
+	Visible To: Everybody
+	Icon: techPropulsion*#26a980
+
+  ABEM_hooks::AddThrustBonus(500.0)

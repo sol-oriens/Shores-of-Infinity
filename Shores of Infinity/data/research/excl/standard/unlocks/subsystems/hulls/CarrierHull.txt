@@ -1,0 +1,21 @@
+Technology: CarrierHull
+	Name: #R_SYS_CARRIER_HULL
+	Description: #R_SYS_CARRIER_HULL_DESC
+
+	Icon: HullSubsystems::0
+	Color: #d6d300
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Category: Hulls
+	Class: Unlock
+
+	Point Cost: 600
+	Time Cost: 120
+
+	SecondaryMoneyCost(1000)
+
+	SkipOnUnlockedSubsystem(CarrierHull)
+	UnlockSubsystem(CarrierHull)
+	ModAttribute(ProgenitorTechProgress, Add, 1)

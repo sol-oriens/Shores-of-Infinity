@@ -1,0 +1,19 @@
+Trait: Pacifists
+	Name: #TRAIT_PACIFISTS
+	Description: #TRAIT_PACIFISTS_DESC
+	Order: 9
+
+	Category: Lifestyle
+	Unique: Lifestyle
+
+	Icon: CardIcons::6
+	Color: #00ffa4
+	AI Support: False
+
+	AddStatusOwnedPlanets(Pacifists)
+
+	ModAttribute(FleetEfficiencyFactor, Add, -0.15)
+	OnDLC(Heralds, UnlockSubsystem(BroadcastAntenna))
+	ABEM_glory::SetGloryMeter(PacifistGlory, 4)
+
+	OnHomeworld(AddPlanetResource(Allondium))

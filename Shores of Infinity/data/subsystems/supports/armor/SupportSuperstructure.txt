@@ -1,0 +1,24 @@
+Subsystem: SupportSuperstructure
+	Name: #S_SUPERSTRUCTURE
+	Description: #S_SUPERSTRUCTURE_DESC
+	BaseColor: #a9a9a9
+
+	Tags: Category:Armor, NoWall, FauxExterior
+	Tags: NoCore, NonContiguous,Defense, ExternalSpace
+	Hull: Support, Satellite
+
+	Size := HexSize * Hexes
+
+	Hex.Resistance := 0.1
+	Hex.HP := 10.5 * HexSize
+
+	Hex.Mass := 1.3 * HexSize
+
+	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
+
+	Hex.BuildCost := HexSize * 0.75
+	Hex.LaborCost := HexSize * 0.09
+	Hex.MaintainCost := 0
+
+	Module: Default
+		Sprite: Superstructure

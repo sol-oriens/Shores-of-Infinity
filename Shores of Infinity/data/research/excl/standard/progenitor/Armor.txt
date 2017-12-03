@@ -1,0 +1,18 @@
+Technology: ProgenitorArmor
+	Name: #R_SYS_PROGENITOR_ARMOR
+	Description: #R_SYS_PROGENITOR_ARMOR_DESC
+
+	Icon: ProgenitorArmor
+	Color: #39b0ff
+
+	Category: Progenitor
+	Class: Unlock
+
+	Point Cost: 1500
+	Time Cost: 180
+
+	RequireUnlockTag(ProgenitorTech)
+
+	AutoUnlockOnUnlockedTag(ProgenitorArmor)
+	UnlockSubsystem(ProgenitorArmor)
+	ModAttribute(ProgenitorTechProgress, Add, 15)

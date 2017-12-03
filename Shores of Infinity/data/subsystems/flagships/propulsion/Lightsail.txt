@@ -1,0 +1,47 @@
+Subsystem: Lightsail
+	Name: #S_LIGHTSAIL
+	Description: #S_LIGHTSAIL_DESC
+	BaseColor: #fefee7
+	Elevation: 3
+
+	Tags: BaseCost, Category:Propulsion, Lightsail, NoBackWall, VectorThrust
+	Tags: DefaultUnlock, Engine, GivesThrust, NonContiguous, NoCore
+	Hull: Flagship
+
+	Size := HexSize * Hexes
+	Thrust := 0.0
+	TurnThrust := 0.0
+
+	PhotonRecycling := 1
+	SolarPower := 1 * (PhotonRecycling * Size * 20) / (Size + 10)
+	SolarThrust := 100 * SolarPower //This is a replica of the hook formula with maximum values for design stats and is not used for actual acceleration
+	LaserPower := 1 * (PhotonRecycling * Size * 20) / (Size + 10)
+	LaserThrust := 100 * LaserPower * 5 //This is a replica of the hook formula with maximum values for design stats and is not used for actual acceleration
+	ExternalThrust := max(SolarThrust, LaserThrust)
+
+	SolarThrustMinBoost := 0.0
+	SolarThrustMaxBoost := 1.0
+	LaserThrustMinBoost := 0.0
+	LaserThrustMaxBoost := 5.0
+
+	Hook: ABEM_hooks::SolarThrust(SolarThrustMinBoost, SolarThrustMaxBoost)
+	Hook: ABEM_hooks::LaserThrust(LaserThrustMinBoost, LaserThrustMaxBoost)
+
+	Requires:
+		Command = 1
+
+	Hex.Resistance := 0.01
+	Hex.HP := 1 * HexSize
+	Hex.Mass := 0.1 * HexSize
+
+	Hex.MaintainCost := 0.01 * HexSize
+	Hex.LaborCost := 0.05 * HexSize
+	Hex.BuildCost := 0.5 * HexSize
+
+	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
+
+	Assert: Hexes == ExteriorHexes
+		Message: #ERROR_MUST_BE_EXTERIOR
+
+	Module: Default
+		Sprite: SolarPanel * #fefee7

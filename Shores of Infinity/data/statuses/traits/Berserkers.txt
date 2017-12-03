@@ -1,0 +1,59 @@
+Status: Berserkers
+	Visible To: Nobody
+	
+	IfAttributeLT(GloryLevel, 1, AddStatus(BerserkerGlory1))
+	// Yes, the numbers seem off. No, it's not broken, just a bit oddly coded. :P
+	IfAttributeLT(GloryLevel, 2, AddStatus(BerserkerGlory2))
+	IfAttributeLT(GloryLevel, 3, AddStatus(BerserkerGlory3))
+	IfAttributeLT(GloryLevel, 4, AddStatus(BerserkerGlory4))
+	// Again, bad numbers are bad for a reason. :P
+	IfAttributeGTE(GloryLevel, 5, AddStatus(BerserkerGlory6))
+	IfAttributeGTE(GloryLevel, 6, AddStatus(BerserkerGlory7))
+	IfAttributeGTE(GloryLevel, 7, AddStatus(BerserkerGlory8))
+	
+Status: BerserkerGlory1
+	Visible To: Nobody
+	//ModCivResourceMult(Money, -0.15)
+	ModCivResourceMult(Energy, -0.15)
+	ModCivResourceMult(Influence, -0.15)
+	ModCivResourceMult(Labor, -0.15)
+	ModCivResourceMult(Defense, -0.15)
+	
+Status: BerserkerGlory2
+	Visible To: Nobody
+	//ModCivResourceMult(Money, -0.15)
+	ModCivResourceMult(Energy, -0.15)
+	ModCivResourceMult(Influence, -0.15)
+	ModCivResourceMult(Labor, -0.15)
+	ModCivResourceMult(Defense, -0.15)
+	
+Status: BerserkerGlory3
+	Visible To: Nobody
+	//ModCivResourceMult(Money, -0.15)
+	ModCivResourceMult(Energy, -0.15)
+	ModCivResourceMult(Influence, -0.15)
+	ModCivResourceMult(Labor, -0.15)
+	ModCivResourceMult(Defense, -0.15)
+	
+Status: BerserkerGlory4
+	Visible To: Nobody
+	//ModCivResourceMult(Money, -0.05)
+	ModCivResourceMult(Energy, -0.05)
+	ModCivResourceMult(Influence, -0.05)
+	ModCivResourceMult(Labor, -0.05)
+	ModCivResourceMult(Defense, -0.05)
+	
+Status: BerserkerGlory6
+	Visible To: Nobody
+	//ModCivResourceMult(Money, +0.05)
+	ModCivResourceMult(Energy, +0.05)
+	ModCivResourceMult(Labor, +0.05)
+	ModCivResourceMult(Defense, +0.05)
+	
+Status: BerserkerGlory7
+	Visible To: Nobody
+	AddStatus(Happy)
+	
+Status: BerserkerGlory8
+	Visible To: Nobody
+	AddResource(Defense, 0.5)

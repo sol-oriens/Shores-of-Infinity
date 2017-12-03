@@ -1,0 +1,18 @@
+Technology: ShieldHardener
+	Name: #R_SYS_SHIELD_HARDENER
+	Description: #R_SYS_SHIELD_HARDENER_DESC
+
+	Icon: ShieldHardener
+	Color: #681be3
+
+	Category: Shields
+	Class: Unlock
+
+	Point Cost: 750
+	Time Cost: 90
+
+	SecondaryEnergyCost(1500)
+
+	SkipOnUnlockedSubsystem(ShieldHardener)
+	UnlockSubsystem(ShieldHardener)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)

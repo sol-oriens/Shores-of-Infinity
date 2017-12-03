@@ -1,0 +1,18 @@
+Technology: JuggernautHull
+	Name: #R_SYS_JUGGERNAUT_HULL
+	Description: #R_SYS_JUGGERNAUT_HULL_DESC
+
+	Icon: HullSubsystems::5
+	Color: #ff0623
+
+	Category: Hulls
+	Class: Unlock
+
+	Point Cost: 600
+	Time Cost: 120
+
+	SecondaryEnergyCost(1000)
+
+	SkipOnUnlockedSubsystem(JuggernautHull)
+	UnlockSubsystem(JuggernautHull)
+	ModAttribute(ProgenitorTechProgress, Add, 0.75)

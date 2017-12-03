@@ -1,0 +1,16 @@
+Technology: StarForge
+	Name: #R_ORB_STARFORGE
+	Description: #R_ORB_STARFORGE_DESC
+
+	Icon: OrbitalIcons::16
+	Color: #fff300
+
+	Class: Unlock
+	Category: Megaconstructions
+
+	Point Cost: 1500
+	Time Cost: 180
+
+	SkipOnUnlockedTag(StarForgeUnlock)
+	UnlockTag(StarForgeUnlock)
+	ModAttribute(ProgenitorTechProgress, Add, 10)

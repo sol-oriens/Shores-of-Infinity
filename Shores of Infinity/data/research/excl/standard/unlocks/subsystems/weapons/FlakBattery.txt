@@ -1,0 +1,21 @@
+Technology: FlakBattery
+	Name: #R_SYS_FLAK_BATTERY
+	Description: #R_SYS_FLAK_BATTERY_DESC
+
+	Icon: Flak::0
+	Color: #41fdc1
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Category: Weapons
+	Class: Unlock
+
+	Point Cost: 600
+	Time Cost: 120
+
+	SecondaryEnergyCost(1250)
+
+	SkipOnUnlockedSubsystem(FlakBattery)
+	UnlockSubsystem(FlakBattery)
+	ModAttribute(ProgenitorTechProgress, Add, 1)

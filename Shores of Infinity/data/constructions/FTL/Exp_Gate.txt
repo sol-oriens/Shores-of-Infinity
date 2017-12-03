@@ -1,0 +1,14 @@
+Construction: EXP_GateUnlock
+	Name: #C_GATE_UNLOCK
+	Time Cost: 300
+	Description: #C_GATE_UNLOCK_DESC
+	Icon: OrbitalIcons::1
+	
+	RequireAttributeLT(HasFlux)
+	RequireNotTrait(Gate)
+	RequireOnOrbital(EXP_GateCore)
+	ModAttribute(GateConst, Add, 1)
+	ModAttribute(ProgenitorTechProgress, Add, 3.5)
+	RequireAttributeLT(GateConst)
+	ConsumeFTL(200)
+	UnlockSubsystem(GateModule)

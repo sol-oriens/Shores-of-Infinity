@@ -1,0 +1,23 @@
+Construction: StagingHubAsteroidMorph
+	Name: #STAGING_HUB_ASTEROID_MORPH
+	Description: #STAGING_HUB_ASTEROID_MORPH_DESC
+
+	Category: Upgrades
+	In Context: True
+
+	Build Cost: 2000
+	Labor Cost: 35
+
+  ConsumeResearch(500)
+  ConsumeEnergy(750)
+
+	Target: roid = Object
+	TargetFilterType(roid, Asteroid)
+	TargetFilterHasTradePresence(roid, Allow Adjacent = False)
+	TargetFilterHasCargoStored(roid)
+
+	RequireOnOrbital(StagingHub)
+  RequireNotTrait(Extragalactic)
+
+	Trigger(roid, SpawnAsteroids(1, Distance = 0, Resource Only = True))
+	Trigger(roid, Destroy())

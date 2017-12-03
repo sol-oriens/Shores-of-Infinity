@@ -1,0 +1,21 @@
+Technology: DestroyerHull
+	Name: #R_SYS_DESTROYER_HULL
+	Description: #R_SYS_DESTROYER_HULL_DESC
+
+	Icon: HullSubsystems::1
+	Color: #ff8080
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Category: Hulls
+	Class: Unlock
+
+	Point Cost: 600
+	Time Cost: 120
+
+	SecondaryMoneyCost(1000)
+
+	SkipOnUnlockedSubsystem(DestroyerHull)
+	UnlockSubsystem(DestroyerHull)
+	ModAttribute(ProgenitorTechProgress, Add, 1)

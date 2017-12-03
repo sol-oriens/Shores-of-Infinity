@@ -1,0 +1,16 @@
+Technology: Ringworld
+	Name: #R_ORB_RINGWORLD
+	Description: #R_ORB_RINGWORLD_DESC
+
+	Icon: PlanetType::14
+	Color: #83ff40
+
+	Category: Megaconstructions
+	Class: Unlock
+
+	Point Cost: 2500
+	Time Cost: 240
+
+	SkipOnUnlockedTag(RingworldUnlock)
+	UnlockTag(RingworldUnlock)
+	ModAttribute(ProgenitorTechProgress, Add, 10)

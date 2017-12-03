@@ -1,0 +1,19 @@
+Resource: Neutronium
+	Name: #NEUTRONIUM
+	Description: #NEUTRONIUM_DESC
+	Native Biome: Mountains
+
+	Icon: ResourceIcons::36
+	Small Icon: ResourceIconsSmall::36
+
+	Level: 2
+	Affinity: Defense
+
+	Asteroid Frequency: 0.01
+	Asteroid Labor: 60
+
+	Pressure: 7 Defense
+	
+	Terraform Cost: 1500
+	Terraform Labor: 90
+	ABEM_terraforming::TerraformRequireUnlockTag(Terraform4)

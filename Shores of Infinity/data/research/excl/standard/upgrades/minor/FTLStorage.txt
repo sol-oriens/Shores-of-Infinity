@@ -1,0 +1,17 @@
+Technology: FTLStorage
+	Name: #R_DEV_FTL
+	Blurb: #R_DEV_FTL_BLURB:250
+	Description: #R_DEV_FTL_DESC:250
+
+	Icon: ResourceIcon::3
+	Symbol: FTLStorage
+	Color: #00c0ff
+
+	Category: Minor Upgrades
+	Class: Boost
+
+	Point Cost: 500
+	Time Cost: 60
+
+	AddFTLStorage(250)
+	AddStoredFTL(250)

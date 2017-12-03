@@ -1,0 +1,4 @@
+Status: StagingHub
+	Visible To: Nobody
+
+	AddDefenseReserve(+15)

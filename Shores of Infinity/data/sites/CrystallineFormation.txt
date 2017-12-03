@@ -1,0 +1,27 @@
+Site: CrystallineFormation
+	Name: #SITE_P_ODDITY
+	Description: #SITE_NAR_ODDITY
+
+	State:
+		Narrative: #SITE_NAR_CRYSTALLINE_FORMATION
+
+		Sprite: ResourceIcons::22
+
+		Choice: Draw
+		Choice: Energize
+
+	Option: Draw
+		Icon: ResourceIcon::2
+		Description: #SITE_CRYSTALLINE_FORMATION_DRAW:0.5
+
+		AddResource(Energy, +0.5)
+
+	Option: Energize
+		Icon: techIonization * #42b4bd
+		Description: #SITE_CRYSTALLINE_FORMATION_ENERGIZE:1
+
+		Result: 60%
+			AddResource(Energy, +1)
+
+		Result: 40%
+			SendMessage(#SITE_CRYSTALLINE_FORMATION_ENERGIZE_FAIL)

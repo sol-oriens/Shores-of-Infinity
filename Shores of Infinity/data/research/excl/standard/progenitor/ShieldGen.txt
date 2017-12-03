@@ -1,0 +1,36 @@
+Technology: ProgenitorShield
+	Name: #R_SYS_REMNANTSHIELD
+	Description: #R_SYS_REMNANTSHIELD_DESC
+
+	Icon: ProgenitorShield
+	Color: #000bde
+
+	Category: Progenitor
+	Class: Unlock
+
+	Point Cost: 1500
+	Time Cost: 180
+
+	RequireUnlockTag(ProgenitorTech)
+
+	AutoUnlockOnUnlockedTag(RemnantShield)
+	UnlockSubsystem(RemnantShield)
+	ModAttribute(ProgenitorTechProgress, Add, 15)
+
+Technology: FeyhProgenitorShield
+	Name: #R_SYS_PROGENITOR_SHRINE
+	Description: #R_SYS_PROGENITOR_SHRINE_DESC
+
+	Icon: ProgenitorShrine
+	Color: #000bde
+
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+	Class: Unlock
+
+	Point Cost: 1500
+	Time Cost: 180
+
+	RequireUnlockTag(ProgenitorTech)
+	
+	AutoUnlockOnUnlockedTag(RemnantShield)
+	UnlockSubsystem(ProgenitorShrine)

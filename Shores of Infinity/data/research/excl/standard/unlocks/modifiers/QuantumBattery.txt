@@ -1,0 +1,16 @@
+Technology: QuantumBattery
+	Name: #R_MOD_QUANTUM_BATTERY
+	Description: #R_MOD_QUANTUM_BATTERY_DESC:1200
+
+	Icon: QuantumBattery
+	Color: #d8cc48
+
+	Category: Modifiers
+	Class: Unlock
+
+	Point Cost: 500
+	Time Cost: 90
+
+	SkipOnUnlockedModule(QuantumBattery)
+	UnlockModule(QuantumBattery)
+	ModAttribute(ProgenitorTechProgress, Add, 5)

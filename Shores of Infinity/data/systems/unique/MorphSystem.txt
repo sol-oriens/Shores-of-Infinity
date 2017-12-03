@@ -1,0 +1,19 @@
+System: MorphSystem
+	Frequency: 0.01
+	Unique: Global
+
+	//RS - Scaling
+	MakeStar(Temperature = 5778, Radius = 750)
+	ExpandSystem(1000)
+
+	Repeat(3)
+		MakePlanet(AsteroidAffinity)
+
+	Repeat(2)
+		MakeAsteroid(Resource = AsteroidAffinity)
+
+
+	MakeAnomaly(MorphRed)
+	MakeAnomaly(MorphBlue)
+	MakeAnomaly(MorphGreen)
+	AddAdjacentAnomalies(1)

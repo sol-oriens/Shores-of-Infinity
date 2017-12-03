@@ -1,0 +1,18 @@
+System: CoreBlackhole
+
+	//RS - Scaling
+	MakeBlackhole()
+	ExpandSystem(5000)
+
+	MakeAsteroidBelt(Count = 250, Radius = 75000)
+
+	//RS - Scaling
+	MakePlanet(Orbit Spacing = 3000)
+
+
+
+	//RS - Scaling
+	MakePlanet(Orbit Spacing = 2800)
+
+	MakePlanet(AncientHubworld, Orbit Spacing = 3000, Grid Size = (26, 15), Conditions = False)
+	ForceMakeCreepCamp(BlackHoleCamp)

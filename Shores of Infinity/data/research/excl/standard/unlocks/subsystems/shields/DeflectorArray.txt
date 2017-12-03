@@ -1,0 +1,21 @@
+Technology: DeflectorArray
+	Name: #R_SYS_DEFLECTOR_ARRAY
+	Description: #R_SYS_DEFLECTOR_ARRAY_DESC
+
+	Icon: Dish
+	Color: #348c99
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Category: Shields
+	Class: Unlock
+
+	Point Cost: 600
+	Time Cost: 120
+
+	SecondaryEnergyCost(1500)
+
+	SkipOnUnlockedSubsystem(DeflectorArray)
+	UnlockSubsystem(DeflectorArray)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)

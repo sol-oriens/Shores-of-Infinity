@@ -1,0 +1,16 @@
+Technology: ArtificialPlanetoid
+	Name: #R_ORB_ARTIFICIAL_PLANETOID
+	Description: #R_ORB_ARTIFICIAL_PLANETOID_DESC
+
+	Icon: PlanetType::1
+	Color: #f3ff00
+
+	Category: Megaconstructions
+	Class: Unlock
+
+	Point Cost: 2000
+	Time Cost: 200
+
+	SkipOnUnlockedTag(ArtificialPlanetoidUnlock)
+	UnlockTag(ArtificialPlanetoidUnlock)
+	ModAttribute(ProgenitorTechProgress, Add, 5)

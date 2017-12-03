@@ -1,0 +1,22 @@
+Technology: CrystalArmor
+	Name: #R_SYS_CRYSTAL_ARMOR
+	Description: #R_SYS_CRYSTAL_ARMOR_DESC
+
+	Icon: CrystalArmor
+	Color: #ef45ff
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Category: Armor
+	Class: Unlock
+
+	Point Cost: 500
+	Time Cost: 90
+
+	SecondaryMoneyCost(1000)
+
+	SkipOnUnlockedSubsystem(CrystalArmor)
+	UnlockSubsystem(CrystalArmor)
+	UnlockSubsystem(SupportCrystalArmor)
+	ModAttribute(ProgenitorTechProgress, Add, 5)

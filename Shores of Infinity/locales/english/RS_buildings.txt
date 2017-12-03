@@ -1,0 +1,215 @@
+BLD_SPACE_ELEVATOR_DESC: <<
+	[color=#aaa][i]A ribbon-like tether reaching vertically into space can be used to significantly increase the efficiency of transporting materials into space.[/i][/color]
+
+	Increases the construction speed of support ships on this planet by 40%.
+	Adds 1 money generation per Planet Level starting from Level 1 if a Starport is present in the system.
+
+	[i]Only one Space Elevator may be constructed per planet.[/i]
+>>
+
+BLD_ARCOLOGY: Arcology
+BLD_ARCOLOGY_DESC: <<
+	[color=#aaa][i]The ultimate settlement, designed for self-sufficiency. An arcology is a city-in-a-giant-building: residential areas, business and shopping centers, factories, parks, farms, water and waste processing units, all operating in a closed circuit. Nothing needs to enter an arcology to sustain it, and nothing needs to exit. Except tax...[/i][/color]
+
+	Replaces up to 5 regular cities.
+	Adds 5 population.
+>>
+
+BLD_HEALTH_COMPLEX: Healthcare Complex
+BLD_HEALTH_COMPLEX_DESC: <<
+	[color=#aaa][i]Keeping people healthy leads to longer lifespans, ultimately increasing population. Featuring a top-notch hospital, a convalescent home and a disease research center, this complex greatly enhances a planet's capacity to keep local bacteria and viruses at bay and people at work.[/i][/color]
+
+	Adds 1 population.
+	Increases population growth by 10%.
+>>
+
+BLD_ECX_FACTORY: Electronics Factory
+BLD_ECX_FACTORY_DESC: <<
+	[color=#aaa][i]A state-of-the art factory allowing mass production of electronic components.[/i][/color]
+
+	Can replace a Level 1 resource.
+	Adds 3 money pressure.
+
+	[bbloc=#TIP_CONSUME_ORE:8/]
+>>
+
+BLD_MINE: Mining Complex
+BLD_MINE_DESC: <<
+	[color=#aaa][i]An enormous installation blanketed with unending underground galleries and deep bore holes, some of them extending down to the core of the planet, used to extract ore, construction materials and any other useful resource. While not nearly as effective as asteroid mining, planet mining is an order of magnitude easier from a logistical standpoint.[/i][/color]
+
+	Adds an Ore resource that can be exported and generates [b]10 ore per minute[/b] at its destination.
+	Adds 2 labor pressure.
+	Increases the pressure given by native Aluminium, Iron, Titanium or Supercarbons by 2.
+	Increases the pressure given by native Coal or Native Gold by 1.
+>>
+
+BLD_NRG_FACTORY: Fuel Facility
+BLD_NRG_FACTORY_DESC: <<
+	[color=#aaa][i]An advanced installation for fossil fuel extraction, processing and storage. Significantly increases energy income and money coming with it.[/i][/color]
+
+	Adds 1 energy pressure and 1 money pressure.
+	Increases the pressure given by native Natural Gas or Oil by 1.
+>>
+
+BLD_LABORCAMP: Xenomanufacturing Center
+BLD_SLAVECAMP: Xenoindustrial Sector
+BLD_LABORCAMP_DESC: <<
+	Uses advanced equipment, exotic materials and alien prisoners to quickly manufacture large quantities of military equipment.
+
+	Produces Defense and Labor in quantities equivalent to 75% of a Base and Industry, respectively. Uses 1 Research pressure.
+
+	[img=$Defense;22/] [bbloc=#PRESSURE_Defense/]
+	[img=$Labor;22/] [bbloc=#PRESSURE_Labor/]
+
+	[bbloc=#TIP_PRESSURE/]
+>>
+BLD_SLAVECAMP_DESC: <<
+	Upgrades from Xenomanufacturing Center.
+	Uses advanced equipment, exotic materials and alien prisoners to quickly manufacture large quantities of military equipment.
+
+	Produces Defense and Labor in quantities equivalent to 75% of a Launch Pad and Enterprise, respectively. Uses 2 Research pressure.
+
+	[img=$Defense;22/] [bbloc=#PRESSURE_Defense/]
+	[img=$Labor;22/] [bbloc=#PRESSURE_Labor/]
+
+	[bbloc=#TIP_PRESSURE/]
+
+	[bbloc=#TIP_CIV_UPGRADES/]
+>>
+
+F_SENATE_NAME: Centralized Coordination Complex
+F_SENATE_DESC: <<
+	[color=#aaa][i]Centralized Coordination Complexes, or 'C3s' as they're sometimes called, coordinate and monitor the activities of the empire's government, attempting to remove excessive red tape and corrupt officials. The procedures used vary wildly from empire to empire, but the net effect is always an improvement of the government's ability to look outward - and to focus its power and influence on more important matters.[/i][/color]
+
+	Generates 1 Influence Stake for every 20 billion inhabitants in your empire.
+>>
+
+B_SLAVE: Slave Barracks
+B_SLAVE_DESC: <<
+	[color=#aaa][i]Massive slave camps where all the planet's resources - and its population - are dedicated to construction.[/i][/color]
+
+	Generates 1.5 Labor per 1 billion inhabitants. Converts Energy generation to Labor generation at a 2:1 ratio. Converts Defense generation to Labor at a 1:1 ratio. Adds 50 Labor storage. Replaces 4 cities.
+
+	Reduces planet's civilian influence and research production by 90%. Reduces loyalty of all planets in the system by 3.
+>>
+B_TAXCENTER_DESC: <<
+	Facilities dedicated to ensuring that the population pays their taxes regularly, no matter the cost.
+
+	Adds 1 Money generation for every 0.5 billion inhabitants.
+
+	Decreases population growth by 20%. Decreases planet loyalty by 10.
+>>
+
+F_POWERPLANT_NAME: Power Plant
+F_POWERPLANT_DESC: <<
+	[color=#aaa][i]A massive power plant dedicated to the production of large amounts of clean energy.[/i][/color]
+
+	Provides Energy generation equivalent to 10 pressure.
+>>
+
+BLD_RECALL: Recall Facility
+BLD_RECALL_DESC: <<
+	A hyperfield manipulator designed to open a wormhole between a location in orbit and any allied object in the universe.
+
+	[img=MenuIcons::3;20]Grants the Recall ability.[/img]
+	[img=ResourceIcon::2;20]Costs [b][color=#42b4bd]Energy[/color][/b] to activate.[/img]
+	[img=MenuIcons::3;20]The smaller the recalled object is, the less energy is consumed.[/img]
+	[img=MenuIcons::3;20][i][bbloc=#ABL_RECALL_DESC/][/i][/img]
+>>
+B_DEFENSEFACTORY: Command Center
+B_DEFENSEFACTORY_DESC: <<
+	A facility dedicated to the coordination of defensive forces across the planet.
+
+	Adds 2 Defense generation. Adds 128 support capacity.
+>>
+B_FAKELVL1_RESEARCH: Research Complex
+B_FAKELVL1_RESEARCH_DESC: <<
+	A specialized processing plant that can replace a Level 1 resource and generates 3 Research pressure.
+
+	[img=ResourceIconsSmall::11;22;#91692c][b][color=#91692c]Requires large amounts of Ore mined from asteroids.[/color][/b][/img]
+>>
+B_FAKELVL1_MONEY: Space Market
+B_FAKELVL1_MONEY_DESC: <<
+	A specialized processing plant that can replace a Level 1 resource and generates 3 Money pressure.
+
+	[img=ResourceIconsSmall::11;22;#91692c][b][color=#91692c]Requires large amounts of Ore mined from asteroids.[/color][/b][/img]
+>>
+B_FAKELVL1_DEFENSE: Weapons Factory
+B_FAKELVL1_DEFENSE_DESC: <<
+	A specialized processing plant that can replace a Level 1 resource and generates 3 Defense pressure.
+
+	[img=ResourceIconsSmall::11;22;#91692c][b][color=#91692c]Requires large amounts of Ore mined from asteroids.[/color][/b][/img]
+>>
+B_FAKELVL2_RESEARCH: Research Complex
+B_FAKELVL2_RESEARCH_DESC: <<
+	A specialized processing plant that can replace a Level 2 resource and generates 7 Research pressure.
+
+	[img=ResourceIconsSmall::11;22;#91692c][b][color=#91692c]Requires large amounts of Ore mined from asteroids.[/color][/b][/img]
+>>
+B_FAKELVL2_MONEY: Space Market
+B_FAKELVL2_MONEY_DESC: <<
+	A specialized processing plant that can replace a Level 2 resource and generates 7 Money pressure.
+
+	[img=ResourceIconsSmall::11;22;#91692c][b][color=#91692c]Requires large amounts of Ore mined from asteroids.[/color][/b][/img]
+>>
+B_FAKELVL2_DEFENSE: Weapons Factory
+B_FAKELVL2_DEFENSE_DESC: <<
+	A specialized processing plant that can replace a Level 2 resource and generates 7 Defense pressure.
+
+	[img=ResourceIconsSmall::11;22;#91692c][b][color=#91692c]Requires large amounts of Ore mined from asteroids.[/color][/b][/img]
+>>
+
+BLD_FTLBREEDER_DESC: <<
+	A large reactor that uses FTL energy to excite and extract more FTL energy from the hyperfield, giving off radiation hazardous to all organic life in the process.
+>>
+BLD_BARRACKS_DESC: <<
+	Adds 20 Defense Reserve to your global pool.
+
+	When your defense reserve is full, it can be deployed at any time to one of your planets to spawn defense ships.
+>>
+
+BLD_REFINERY_DESC: <<
+	Generates 1 pressure of the native resource's main pressure type.
+
+	The pressure is added on this planet only, and is not exported or removed when the native resource is exported.
+
+	[i]Cannot be built on planets without native pressure, or whose only pressure type is money.[/i]
+>>
+COND_ANCIENT_CANNON: Ancient Planetary Defenses
+COND_ANCIENT_CANNON_DESC: <<|
+	An ancient defense system of immense power is located on the surface, inactive but usable.
+>>
+BLD_ANCIENT_CANNON: Ancient Gravitational Collapser
+BLD_ANCIENT_CANNON_DESC: <<|
+	A reactivated ancient weapon of considerable firepower.
+
+	If operational, fires a projectile every 10 seconds, dealing between 500 and 37500 damage to all targets within 50 units of the explosion, depending on their size. Size 100 ships will take 2500 damage per hit, size 20 or smaller will take 500 damage per hit, size 1500 or larger will take 37500 damage per hit.
+
+	If the planet is under siege and has no defenses remaining in orbit, the weapon is deactivated.
+>>
+BLD_VANGUARDPORTAL: Portal Stabilizer
+BLD_VANGUARDPORTAL_DESC: <<
+	An immensely powerful hyperfield manipulator. When activated and targeted at a specific point in space along with two other Stabilizers, this structure will create a massive wormhole to the Overlord home galaxy, enabling the Overlords' invasion force to enter this galaxy.
+
+	[img=ShieldImpactLarge*#de12de;20]Constructing three Portal Stabilizers will cause you to win a Vanguard Victory.[/img]
+	[img=Plus;20]The presence of a Portal Stabilizer inspires the owner's race to fight harder to defend the system, manifesting as a 40% boost to fleet effectiveness to all owned fleets in the system.[/img]
+	[img=MenuIcons::3;20]Intense rivalry between Vanguard races - and the desire of non-Vanguard races to keep the Overlords away - cause the Stabilizer to self-destruct or be destroyed, respectively, when the planet's owner changes for any reason.[/img]
+	[img=MenuIcons::3;20]Can only be constructed once per planet, and can only be constructed on a Ringworld or Artificial Planetoid.[/img]
+>>
+BLD_ANCIENT_STRIP_TRANSMUTER: Ore Transmuter
+BLD_ANCIENT_STRIP_TRANSMUTER_DESC: <<
+	A complex apparatus which mines large amounts of ore from the planet's surface, then transmutes some of it into base materials.
+
+	[img=Plus;20]Generates both Ore and Base Materials. Generates 7.5 Base Materials and 45 Ore per minute.[/img]
+	[img=Plus;20]Two Ore Transmuters will generate more of each resource type than a Strip Miner and a Transmuter combined. This effect is slightly dampened by the [bbloc=#R_CORE_OPTIMIZATIONS/] tech.[/img]
+	[img=Minus;20]Requires a small maintenance cost, and combines the construction costs of Strip Miners and Transmuters.[/img]
+>>
+BLD_DEFENSE_GRID_DESC: <<
+	A massive field of missile silos located on the surface of the planet, capable of firing at nearby enemy fleets.
+
+	The grid is composed of $1 missile launchers totaling $2 DPS with $3 range.
+
+	[i]If there are enemy fleets in orbit and you do not have any remaining support ships to protect the satellite guidance system, the missile silos are disabled.[/i]
+>>
+BLD_PLANETOID_LV1_DESC: A specialized processing plant that can replace one of the artificial planetoid's tier 1 resource requirements.
+BLD_PLANETOID_LV2_DESC: A specialized processing plant that can replace one of the artificial planetoid's tier 2 resource requirements.

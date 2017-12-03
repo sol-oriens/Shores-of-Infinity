@@ -1,0 +1,18 @@
+Object.Sites : components.Sites::Sites {
+restricted local:
+	uint getSiteId(uint index);
+	uint getSiteTypeId(uint siteId);
+	bool hasSite(uint id);
+	Site@[] selectSite(uint index);
+	Site@[] refreshCurrentSite();
+	uint get_siteCount();
+local:
+	void chooseSiteOption(uint siteId, uint optionId);
+	void destroySite(uint siteId);
+	void addProgressToSite(Empire@ emp, uint siteId, float amount);
+server:
+	uint spawnSite(uint typeId);
+	void writeSites(Message& msg) const;
+shadow:
+	void readSites(Message& msg);
+}

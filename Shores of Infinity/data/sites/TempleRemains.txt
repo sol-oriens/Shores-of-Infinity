@@ -1,0 +1,23 @@
+Site: TempleRemains
+	Name: #SITE_P_ANCIENT_RUINS
+	Description: #SITE_NAR_ANCIENT_RUINS
+
+	State:
+		Narrative: #SITE_NAR_TEMPLE_REMAINS
+
+		Sprite: Museum
+
+		Choice: Protect
+		Choice: Dismantle
+
+	Option: Protect
+		Icon: ResourceIcon::1
+		Description: #SITE_TEMPLE_REMAINS_PROTECT
+
+		AddInfluencePoints(2:6)
+
+	Option: Dismantle
+	Icon: ResourceIcon::0
+	Description: #SITE_TEMPLE_REMAINS_DISMANTLE:100
+
+		AddMoney(100)

@@ -1,0 +1,16 @@
+Resource: AsteroidFTLPermanent
+	Name: #ASTEROID_FTL_PERMANENT
+	Description: #ASTEROID_FTL_PERMANENT_DESC
+
+	Icon: ResourceIcons::22
+	Small Icon: ResourceIconsSmall::21
+
+	Rarity: Uncommon
+	Exportable: False
+
+	Distribution: 0
+	Asteroid Frequency: 0.2
+	Asteroid Labor: 30
+
+	AddFTLIncome(+1.0)
+	AddFTLStorage(+250)

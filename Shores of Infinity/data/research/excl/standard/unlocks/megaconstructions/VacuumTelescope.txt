@@ -1,0 +1,16 @@
+Technology: VacuumTelescope
+	Name: #R_ORB_VACUUM_TELESCOPE
+	Description: #R_ORB_VACUUM_TELESCOPE_DESC
+
+	Icon: GuiOrbitalIcons::17
+	Color: #fff300
+
+	Category: Megaconstructions
+	Class: Unlock
+
+	Point Cost: 1000
+	Time Cost: 180
+
+	SkipOnUnlockedTag(VacuumTelescopeUnlock)
+	UnlockTag(VacuumTelescopeUnlock)
+	ModAttribute(ProgenitorTechProgress, Add, 5)

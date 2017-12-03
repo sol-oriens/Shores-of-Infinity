@@ -1,0 +1,45 @@
+Construction: CoreSpecialization
+	Name: #CONS_CORE_SPECIALIZATION
+	Description: #CONS_CORE_SPECIALIZATION_DESC
+	Icon: CoreBuilding*#bbbbbb
+
+	Category: Programming Upgrades
+
+	AddLaborCostAttribute(TerraformLaborFactor, Multiply = 30)
+	AddBuildCostAttribute(TerraformCostFactor, Multiply = 500)
+
+	RequireStatus(AncientReplicator)
+	building_effects::RequireStatusToProgress(AncientReplicator)
+	RequireStatus(AncientCore)
+	RequireStatus(CoreProgrammed)
+	RequireNotStatus(CoreMoney)
+	RequireUnlockTag(AtroanTerraform4)
+	ConflictBuilding(AncientTransmuter, Hide = True)
+	ConflictBuilding(AncientMiner, Hide = True)
+	ConflictBuilding(AncientStripTransmuter, Hide = True)
+
+	AddBuildCostStatusCount(CoreMoney, 500)
+	AddLaborCostStatusCount(CoreMoney, 30)
+
+	AddStatus(CoreSpecialized)
+
+Construction: CoreSpecializationMoney
+	Name: #CONS_CORE_SPECIALIZATION
+	Description: #CONS_CORE_SPECIALIZATION_DESC
+	Icon: CoreBuilding*#bbbbbb
+
+	Category: Programming Upgrades
+
+	AddLaborCostAttribute(TerraformLaborFactor, Multiply = 60)
+	AddBuildCostAttribute(TerraformCostFactor, Multiply = 1000)
+
+	RequireStatus(AncientReplicator)
+	building_effects::RequireStatusToProgress(AncientReplicator)
+	RequireStatus(AncientCore)
+	RequireStatus(CoreMoney)
+	RequireUnlockTag(AtroanTerraform4)
+	ConflictBuilding(AncientTransmuter, Hide = True)
+	ConflictBuilding(AncientMiner, Hide = True)
+	ConflictBuilding(AncientStripTransmuter, Hide = True)
+
+	AddStatus(CoreSpecialized)

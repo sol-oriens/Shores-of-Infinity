@@ -1,0 +1,21 @@
+Technology: NilingArmor
+	Name: #R_SYS_NILINGARMOR
+	Description: #R_SYS_NILINGARMOR_DESC
+
+	Icon: NilingArmor
+	Color: #9dffb9
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Category: Armor
+	Class: Unlock
+
+	Point Cost: 1000
+	Time Cost: 180
+
+	SecondaryEnergyCost(1500)
+
+	SkipOnUnlockedSubsystem(NilingArmor)
+	UnlockSubsystem(NilingArmor)
+	ModAttribute(ProgenitorTechProgress, Add, 4)

@@ -1,0 +1,14 @@
+Trait: SequesteredSociety
+	Name: #TRAIT_SEQUESTERED_SOCIETY
+	Description: #TRAIT_SEQUESTERED_SOCIETY_DESC
+	Category: Foundation
+
+	Icon: SequesteredSociety
+	Color: #aaffaa
+
+	Costs Points: 1
+	Conflict: StarChildren
+	Conflict: Ancient
+
+	TriggerHomeworld(AddStatus(SequesteredSociety), Run Post = True)
+	TriggerHomeworld(DevelopTiles(25))

@@ -1,0 +1,31 @@
+Building: AncientStripTransmuter
+	Name: #BLD_ANCIENT_STRIP_TRANSMUTER
+	Description: #BLD_ANCIENT_STRIP_TRANSMUTER_DESC
+	Sprite: StripTransmuter
+
+	Category: ControlHubs
+
+	Size: 10x6
+
+	Base Cost: 80
+	Tile Cost: 4
+	Build Time: 60
+	Base Maintenance: 40
+	Tile Maintenance: 2
+
+	Build Affinity: Mountains
+
+	In Queue: True
+
+	RequireStatus(AncientReplicator)
+	RequireStatusToProgress(AncientReplicator)
+	RequireUnlockTag(AdvancedCores)
+	ConflictBuilding(AncientCore, Hide = True)
+	ConflictBuilding(AncientTransmuter, Hide = True)
+	ConflictBuilding(AncientMiner, Hide = True)
+	ConflictBuilding(AncientStripTransmuter, Hide = True)
+
+	RequireNotStatus(Ringworld)
+	RequireNotStatus(ArtificialPlanetoid)
+	AddStatus(AncientClaim)
+	ChangeNativeResourceTo(StripTransmuter)

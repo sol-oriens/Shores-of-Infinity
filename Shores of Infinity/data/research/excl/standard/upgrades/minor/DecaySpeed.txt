@@ -1,0 +1,32 @@
+Technology: ImpDecaySpeed
+	Name: #R_IMP_DECAY
+	Blurb: #R_IMP_DECAY_BLURB:20%
+	Description: #R_IMP_DECAY_DESC:20%:1.2M
+
+	Icon: AttributeIcons::0
+	Symbol: QuickbarIcons::4
+	Color: #a77751
+
+	Category: Minor Upgrades
+	Class: Boost
+
+	Point Cost: 500
+	Time Cost: 60
+
+	Trigger( ModAttribute(PlanetDecaySpeed, Multiply, 0.8) )
+
+Technology: ImpDecaySpeed2
+	Name: #R_IMP_DECAY2
+	Blurb: #R_IMP_DECAY_BLURB:40%
+	Description: #R_IMP_DECAY_DESC:40%:2M
+
+	Icon: AttributeIcons::0
+	Symbol: QuickbarIcons::4
+	Color: #a77751
+
+	Category: Medium Upgrades
+
+	Point Cost: 750
+	Time Cost: 80
+
+	Trigger( ModAttribute(PlanetDecaySpeed, Multiply, 0.64) )

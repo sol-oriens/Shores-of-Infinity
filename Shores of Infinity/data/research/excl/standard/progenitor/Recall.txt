@@ -1,0 +1,38 @@
+Technology: Recall
+	Name: #R_RECALL
+	Description: #R_RECALL_DESC
+
+	Icon: ActionBarIcons::7
+	Color: #bc12de
+
+	Category: Progenitor
+	Class: Unlock
+
+	Point Cost: 1500
+	Time Cost: 180
+
+	RequireUnlockTag(ProgenitorTech)
+
+	AutoUnlockOnUnlockedTag(Recall)
+	UnlockTag(Recall)
+	UnlockSubsystem(RecallDevice)
+	ModAttribute(ProgenitorTechProgress, Add, 15)
+
+Technology: NylliRecall
+	Name: #R_RECALL
+	Description: #R_NYLLIRECALL_DESC
+
+	Icon: ActionBarIcons::7
+	Color: #bc12de
+
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+	Class: Unlock
+
+	Point Cost: 1500
+	Time Cost: 180
+
+	RequireUnlockTag(ProgenitorTech)
+
+	AutoUnlockOnUnlockedTag(Recall)
+	UnlockTag(Recall)
+	UnlockSubsystem(RecallDevice)

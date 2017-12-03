@@ -1,0 +1,21 @@
+Technology: SubspaceShredder
+	Name: #R_SYS_SUBSPACE_SHREDDER
+	Description: #R_SYS_SUBSPACE_SHREDDER_DESC
+
+	Icon: MissileLauncher::0
+	Color: #ae6383
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Category: Weapons
+	Class: Unlock
+
+	Point Cost: 600
+	Time Cost: 120
+
+	SecondaryMoneyCost(1500)
+
+	SkipOnUnlockedSubsystem(SubspaceShredder)
+	UnlockSubsystem(SubspaceShredder)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)

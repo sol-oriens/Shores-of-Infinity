@@ -1,0 +1,28 @@
+Building: Senate
+	Name: #F_SENATE_NAME
+	Description: #F_SENATE_DESC
+	
+	Sprite: Museum
+
+	Category: Infrastructure
+
+	Size: 8x6
+
+	Base Cost: 600
+	Tile Cost: 25
+	Base Maintenance: 400
+	Tile Maintenance: 50
+	Labor Cost: 125
+
+	RequireUnlockTag(Senate)
+	RequireNotTrait(Ancient)
+	ConflictBuilding(SlaveBarracks)
+
+	RepeatEmpirePopulation(20, AddInfluenceStake(1))
+	ShowTotalPopulation(Empire Population, Icon = ResourceIcon::8)
+
+	TriggerStartConstruction( ModAttribute(SenateCount, Add, 1) )
+	TriggerCancelConstruction( ModAttribute(SenateCount, Add, -1) )
+	TriggerConstructed( ModAttribute(SenateCount, Add, -1) )
+
+	ModEmpireAttribute(SenateCount, Add, 1)

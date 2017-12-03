@@ -1,0 +1,51 @@
+System: Orathi
+	Position: (0, 0, 0)
+	Homeworld: False
+
+	//RS - Scaling
+	MakeStar(Temperature = 1000, Radius = 2000)
+	ExpandSystem(5000)
+
+	TriggerRegion(SetSystemAssignGroup(-2))
+
+	//RS - Scaling
+	MakePlanet(AncientHubworld, Radius = 240, Conditions = False)
+		Rename(Orathi Prime)
+
+		AddPlanetResource(Water)
+		AddPlanetResource(Grain)
+		AddPlanetResource(Grain)
+		AddPlanetResource(Oil)
+		AddPlanetResource(AncientCity)
+		AddPlanetResource(AncientCity)
+
+		SpawnBuilding(Factory, (4, 3))
+		SpawnBuilding(Factory, (9, 6))
+		Trigger(DevelopTiles(1000))
+
+		AddResource(Money, +2.5)
+
+	//RS - Scaling
+	MakePlanet(RandomLevel:1, Radius = 160, Conditions = False)
+		AddPlanetResource(Water)
+		AddPlanetResource(Meat)
+
+	//RS - Scaling
+	MakePlanet(RandomLevel:1, Radius = 160, Conditions = False)
+		AddPlanetResource(Water)
+		AddPlanetResource(Fruit)
+
+	//RS - Scaling
+	ExpandSystem(7500)
+
+	MakeAsteroid()
+	MakeAsteroid()
+	MakeAsteroid()
+	MakeAsteroid()
+	MakeAsteroid()
+
+	MakeArtifact()
+	MakeArtifact()
+	MakeArtifact()
+	MakeArtifact()
+	MakeArtifact()

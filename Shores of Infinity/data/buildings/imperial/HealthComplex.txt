@@ -1,0 +1,24 @@
+Building: HealthComplex
+	Name: #BLD_HEALTH_COMPLEX
+	Description: #BLD_HEALTH_COMPLEX_DESC
+	
+	Sprite: BldHealthComplex
+
+	Category: Infrastructure
+
+	Size: 2x2
+
+	Base Cost: 85
+	Tile Cost: 10
+	Base Maintenance: 20
+	Tile Maintenance: 5
+
+	RequireNotTrait(Ancient)
+	RequireNotTrait(Mechanoid)
+
+	TriggerStartConstruction( AddStatus(HealthComplexCost) )
+	TriggerCancelConstruction( RemoveStatusInstance(HealthComplexCost) )
+	ConsumeResearchStatusCount(HealthComplexCost, Base Amount = 100, Amount = 100)
+
+  AddMaxPopulation(1)
+	ModPopulationGrowth(0.1)

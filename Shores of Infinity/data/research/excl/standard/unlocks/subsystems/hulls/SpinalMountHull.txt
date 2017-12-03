@@ -1,0 +1,21 @@
+Technology: SpinalMountHull
+	Name: #R_SYS_SPINAL_MOUNT_HULL
+	Description: #R_SYS_SPINAL_MOUNT_HULL_DESC
+
+	Icon: HullSubsystems::2
+	Color: #8edcef
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Category: Hulls
+	Class: Unlock
+
+	Point Cost: 600
+	Time Cost: 120
+
+	SecondaryMoneyCost(1000)
+
+	SkipOnUnlockedSubsystem(SpinalMountHull)
+	UnlockSubsystem(SpinalMountHull)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)

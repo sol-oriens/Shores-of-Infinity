@@ -1,0 +1,14 @@
+Construction: EXP_FlingCoreUnlock
+	Name: #C_FLING_UNLOCK
+	Time Cost: 300
+	Description: #C_FLING_UNLOCK_DESC
+	Icon: OrbitalIcons::
+	
+	RequireAttributeLT(HasFlux)
+	RequireNotTrait(Fling)
+	RequireOnOrbital(EXP_FlingCore)
+	ModAttribute(FlingBeaconConst, Add, 1)
+	ModAttribute(ProgenitorTechProgress, Add, 3.5)
+	RequireAttributeLT(FlingBeaconConst)
+	ConsumeFTL(200)
+	UnlockTag(HasFling)

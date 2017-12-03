@@ -1,0 +1,21 @@
+Technology: BroadcastAntenna
+	Name: #R_SYS_BROADCAST_ANTENNA
+	Description: #R_SYS_BROADCAST_ANTENNA_DESC
+
+	Icon: Antenna
+	Color: #f67bed
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Category: Equipment - Support
+	Class: Unlock
+
+	Point Cost: 500
+	Time Cost: 120
+
+	SecondaryInfluenceCost(10)
+
+	SkipOnUnlockedSubsystem(BroadcastAntenna)
+	UnlockSubsystem(BroadcastAntenna)
+	ModAttribute(ProgenitorTechProgress, Add, 0.25)

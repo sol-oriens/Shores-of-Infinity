@@ -1,0 +1,21 @@
+Resource: Deuterium
+	Name: #DEUTERIUM
+	Description: #DEUTERIUM_DESC
+	Native Biome: Ice
+
+	Icon: ResourceIcons::31
+	Small Icon: ResourceIconsSmall::31
+
+	Level: 1
+	Rarity: Uncommon
+	Affinity: Research + Defense
+
+	Asteroid Frequency: 0.01
+	Asteroid Labor: 55
+
+	Pressure: 2 Research
+	Pressure: 2 Defense
+	
+	Terraform Labor: 750
+	Terraform Cost: 45
+	ABEM_terraforming::TerraformRequireUnlockTag(Terraform2)

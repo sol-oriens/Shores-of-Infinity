@@ -1,0 +1,13 @@
+System: EmptyAncientSystem
+	Inherit: BaseSystem
+	Frequency: 0.1
+
+	//RS - Scaling
+	MakeStar(Temperature = 1000:2500, Radius = 1250:2000)
+
+	ExpandSystem(17500:20000)
+
+	RepeatChance(Chance = $ASTEROID_BELT_OCCURANCE, Repeat Modifier = 0.9999999)
+		MakeAsteroidBelt()
+
+	AddQuality(+200)

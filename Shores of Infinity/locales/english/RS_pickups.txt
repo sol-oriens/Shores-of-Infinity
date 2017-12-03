@@ -1,0 +1,8 @@
+﻿PICKUP_CRYS: Crystallurgical Knowledge
+PICKUP_CRYS_DESC: Unlocks the Crystalline Armor subsystem.
+
+PICKUP_DISRUPTOR: Disruptor Stash
+PICKUP_DISRUPTOR_DESC: Unlocks the Disruptor subsystem.
+
+PICKUP_PARTICLE_LANCE: Particle Lance Prototypes
+PICKUP_PARTICLE_LANCE_DESC: Unlocks the Particle Lance subsystem.

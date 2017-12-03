@@ -1,0 +1,7 @@
+PlanetType: Gas
+	Icon: PlanetType::1
+	DistantIcon: DistantPlanetType::1
+	Atmosphere: GasAtmosphere
+
+	BiomeWeights:
+		Gas: 100000

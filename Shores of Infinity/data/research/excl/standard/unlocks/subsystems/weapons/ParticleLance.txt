@@ -1,0 +1,21 @@
+Technology: ParticleLance
+	Name: #R_SYS_PARTICLELANCE
+	Description: #R_SYS_PARTICLELANCE_DESC
+
+	Icon: ParticleLance::2
+	Color: #ff7600
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Category: Weapons
+	Class: Unlock
+
+	Point Cost: 500
+	Time Cost: 90
+
+	SecondaryEnergyCost(1000)
+
+	SkipOnUnlockedSubsystem(ParticleLance)
+	UnlockSubsystem(ParticleLance)
+	ModAttribute(ProgenitorTechProgress, Add, 3)

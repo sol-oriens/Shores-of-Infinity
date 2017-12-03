@@ -1,0 +1,31 @@
+Building: SlaveBarracks
+	Name: #B_SLAVE
+	Description: #B_SLAVE_DESC
+
+	Sprite: TechIcons::21
+
+	Category: Infrastructure
+
+	Size: 6x6
+
+	Base Cost: 400
+	Tile Cost: 20
+	Base Maintenance: 100
+	Tile Maintenance: 5
+	Build Time: 360
+
+	RequireNotTrait(Ancient)
+	RequireUnlockTag(Slave Barracks)
+
+	GloballyVisible()
+
+	ReplacesCities(Amount = 4)
+
+	ModCivResourceMult(Research, -0.9)
+	ModCivResourceMult(Influence, -0.9)
+
+	ConvertResource(Defense, 1, Labor)
+	ConvertResource(Energy, 0.5, Labor)
+	PerPopulationAddResource(1.5, Labor)
+	ModLocalLoyalty(-3)
+	AddLaborStorage(50)

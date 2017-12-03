@@ -1,0 +1,23 @@
+Site: IronVein
+	Name: #SITE_P_RESOURCE_DEPOSITS
+	Description: #SITE_NAR_RESOURCE_DEPOSITS
+
+	State:
+		Narrative: #SITE_NAR_IRON_VEIN
+
+		Sprite: ResourceIcons::7
+
+		Choice: Mine
+		Choice: Bore = 40%
+
+	Option: Mine
+		Icon: ResourceIcon::6
+		Description: #SITE_IRON_VEIN_MINE:1
+
+		AddResource(Labor, +1)
+
+	Option: Bore
+		Icon: BuildingSprites::4
+		Description: #SITE_IRON_VEIN_BORE:2
+
+		AddPressure(Labor, 2)

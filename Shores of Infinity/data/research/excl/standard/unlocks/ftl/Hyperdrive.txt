@@ -1,0 +1,17 @@
+Technology: Hyperdrive
+	Name: #R_SYS_HYPERDRIVE
+	Description: #R_SYS_HYPERDRIVE_DESC
+
+	Icon: TechIcons::34
+	Color: #00c0ff
+
+	Category: FTL
+	Class: Unlock
+
+	Point Cost: 2000
+	Time Cost: 180
+
+	SkipOnUnlockedSubsystem(Hyperdrive)
+	SkipOnUnlockedSubsystem(ExperimentalHyperdrive)
+	UnlockSubsystem(ExperimentalHyperdrive)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)

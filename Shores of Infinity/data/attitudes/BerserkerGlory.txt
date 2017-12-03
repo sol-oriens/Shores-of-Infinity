@@ -1,0 +1,85 @@
+Attitude: BerserkerGlory
+	Name: #GLORY_BERSERKER
+	Progress: #GLORY_BERSERKER_PROGRESS
+	Color: #c73434
+	Sort: 1000
+
+	Secret: True
+
+	ABEM_glory::CannotManuallyTake()
+	ABEM_glory::NoProgressPastMaxLevel()
+
+	ABEM_glory::ProgressFromContested(0.5)
+	ABEM_glory::ConsumeAttributeToProgress(Glory, 1, GloryFactor)
+	ModEmpireAttribute(GloryMode, Add, 1)
+
+	ABEM_glory::DecayProgress(1)
+	
+	Level:
+		Description: #GLORY_BERSERKER_LVL1
+		Icon: SupportNayIcon*#88ffff
+		ModEmpireAttribute(GloryFactor, Add, 4) // 500% Glory generation
+	
+	Level:
+		Description: #GLORY_BERSERKER_LVL2
+		Icon: StatusWar*#ff8888
+		Threshold: 1000
+		ModEmpireAttribute(GloryLevel, Add, 1)
+		ModEmpireAttribute(GloryFactor, Add, -1) // 400% Glory generation
+	
+	Level:
+		Description: #GLORY_BERSERKER_LVL3
+		Threshold: 2000
+		Icon: StatusCeasefire*#ff8888
+		ModEmpireAttribute(GloryLevel, Add, 1)
+		ModEmpireAttribute(GloryFactor, Add, -1) // 300% Glory generation
+	
+	Level:
+		Description: #GLORY_BERSERKER_LVL4
+		Icon: StatusPeace*#ff2222
+		Threshold: 3500
+		ModEmpireAttribute(GloryLevel, Add, 1)
+		ModEmpireAttribute(GloryFactor, Add, -1) // 200% Glory generation
+	
+	Level:
+		Description: #GLORY_BERSERKER_LVL5
+		Icon: SupportIcon
+		Threshold: 4000
+		ModEmpireAttribute(GloryLevel, Add, 1)
+		ModEmpireAttribute(GloryFactor, Add, -1) // 100% Glory generation
+	
+	Level:
+		Description: #GLORY_BERSERKER_LVL6
+		Icon: StatusWar
+		Threshold: 4500
+		ModEmpireAttribute(GloryLevel, Add, 1)	
+		ModEmpireAttribute(GloryFactor, Add, -0.2) // 80% Glory generation
+	
+	Level:
+		Description: #GLORY_BERSERKER_LVL7
+		Icon: SupportYayIcon
+		Threshold: 6000
+		ModEmpireAttribute(GloryLevel, Add, 1)
+		ModEmpireAttribute(GloryFactor, Add, -0.2) // 60% Glory generation
+		
+	Level:
+		Description: #GLORY_BERSERKER_LVL8
+		Icon: ResourceIcons::6
+		Threshold: 7000
+		ModEmpireAttribute(GloryLevel, Add, 1)
+		ModEmpireAttribute(GloryFactor, Add, -0.2) // 40% Glory generation
+	
+	Level:
+		Description: #GLORY_BERSERKER_LVL9
+		Icon: SystemUnderAttack
+		Threshold: 8000
+		ModEmpireAttribute(GloryLevel, Add, 1)
+		ModEmpireAttribute(FleetEfficiencyFactor, Add, 0.25)
+		ModEmpireAttribute(GloryFactor, Add, -0.2) // 20% Glory generation
+	
+	Level:
+		Description: #GLORY_BERSERKER_LVL10
+		Icon: HappyFace
+		Threshold: 10000
+		ModEmpireAttribute(GloryFactor, Add, -0.2) // No Glory generated from kills.
+		

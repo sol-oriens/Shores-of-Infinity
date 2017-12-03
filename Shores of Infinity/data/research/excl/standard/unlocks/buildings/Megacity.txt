@@ -1,0 +1,48 @@
+Technology: Megacity
+	Name: #R_BLD_MEGACITY
+	Description: #R_BLD_MEGACITY_DESC
+
+	Icon: Megacity
+	Color: #00f3ff
+
+	Category: Buildings
+	Class: Unlock
+
+	Point Cost: 800
+	Time Cost: 90
+
+	SkipOnUnlockedTag(MegacityUnlock)
+	UnlockTag(MegacityUnlock)
+	ModAttribute(ProgenitorTechProgress, Add, 1)
+
+Technology: AtroanMegacity
+	Name: #R_CORE_ADV
+	Description: #R_CORE_ADV_DESC
+
+	Icon: CoreBuilding
+	Color: #00f3ff
+
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+	Class: Unlock
+
+	Point Cost: 800
+	Time Cost: 90
+
+	SkipOnUnlockedTag(AdvancedCores)
+	UnlockTag(AdvancedCores)
+
+Technology: NylliMegacity
+	Name: #R_NYLLI_FOOD
+	Description: #R_NYLLI_FOOD_DESC
+
+	Icon: Plantation
+	Symbol: SupplyIcon
+
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+	Class: Unlock
+
+	Point Cost: 800
+	Time Cost: 90
+
+	SkipOnUnlockedTag(NylliNutrients)
+	UnlockTag(NylliNutrients)

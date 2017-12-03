@@ -1,0 +1,20 @@
+System: RichAsteroidBelt
+	Frequency: 0.01
+	Unique: Galaxy
+
+	//RS - Scaling
+	MakeStar(Temperature = 4520, Radius = 740)
+	ExpandSystem(1000)
+
+	AddQuality(-300)
+
+	MakePlanet()
+	MakeAsteroidBelt(Count = 90, Distribution Chance = 0.6, Radius = Inner, Layers = 2)
+
+	Repeat(2)
+		MakePlanet()
+
+	MakeAsteroidBelt(Count = 160, Distribution Chance = 0.6, Radius = Outer, Layers = 3)
+
+	Repeat(5)
+		MakeAsteroid(Resource = Distributed)

@@ -1,0 +1,19 @@
+Technology: QuantumCompressor
+	Name: #R_MOD_QUANTUM_COMPRESSOR
+	Description: #R_MOD_QUANTUM_COMPRESSOR_DESC
+
+	Color: #69eaf2
+	Icon: QuantumCompressor
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Category: Modifiers
+	Class: Unlock
+
+	Point Cost: 600
+	Time Cost: 120
+
+	SkipOnUnlockedModule(QuantumCompressor)
+	UnlockModule(QuantumCompressor)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)

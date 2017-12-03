@@ -1,0 +1,19 @@
+Technology: Warhead
+	Name: #R_SYS_WARHEAD
+	Description: #R_SYS_WARHEAD_DESC
+
+	Icon: Warhead::0
+	Color: #df123d
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Category: Weapons
+	Class: Unlock
+
+	Point Cost: 600
+	Time Cost: 120
+
+	SkipOnUnlockedSubsystem(Warhead)
+	UnlockSubsystem(Warhead)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)

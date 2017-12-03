@@ -1,0 +1,21 @@
+Construction: ResearchLabHypercharge
+	Name: #RESEARCH_LAB_HYPERCHARGE
+	Description: #RESEARCH_LAB_HYPERCHARGE_DESC
+  Icon: techPropulsion*#26a980
+
+	Category: Enhancements
+
+  Time Cost: 15
+  ConsumeEnergy(250)
+  ConsumeCargo(Hypercore, 1)
+
+	OnStart( AddStatus(Hypercharging) )
+	OnCancel( RemoveStatusInstance(Hypercharging) )
+
+	AddStatus(Hypercharge)
+	RemoveStatusInstance(Hypercharging)
+
+  RequireOnOrbital(ResearchLab)
+  RequireStatus(ResearchLabHypercharger)
+	RequireNotStatus(Hypercharging)
+	RequireNotStatus(Hypercharge)

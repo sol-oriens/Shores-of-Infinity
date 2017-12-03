@@ -1,0 +1,21 @@
+Technology: TroopPods
+	Name: #R_SYS_TROOP_PODS
+	Description: #R_SYS_TROOP_PODS_DESC
+
+	Icon: TroopPods
+	Color: #dd3b4e
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Category: Equipment - Support
+	Class: Unlock
+
+	Point Cost: 600
+	Time Cost: 120
+
+	SecondaryInfluenceCost(10)
+
+	SkipOnUnlockedSubsystem(TroopPods)
+	UnlockSubsystem(TroopPods)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)

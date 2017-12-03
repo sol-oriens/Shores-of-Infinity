@@ -1,0 +1,21 @@
+Technology: FleetComputer
+	Name: #R_SYS_FLEET_COMPUTER
+	Description: #R_SYS_FLEET_COMPUTER_DESC
+
+	Icon: FleetComputer
+	Color: #ca5700
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Category: Equipment - Combat
+	Class: Unlock
+
+	Point Cost: 600
+	Time Cost: 120
+
+	SecondaryEnergyCost(1000)
+
+	SkipOnUnlockedSubsystem(FleetComputer)
+	UnlockSubsystem(FleetComputer)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)

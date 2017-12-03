@@ -1,0 +1,31 @@
+Module: SolarOrbital
+	Name: #ORB_SOLAR_ORBITAL
+	Blurb: #ORB_SOLAR_ORBITAL_BLURB
+	Description: #ORB_SOLAR_ORBITAL_DESC
+
+	Icon: GuiOrbitalIcons::13
+	Distant Icon: OrbitalIcons::13
+	Icon Size: 0.01
+	Model: SolarEngine
+	Material: GenericPBR_SolarEngine
+
+	Size: 30
+
+	Health: 4000
+	Armor: 3500
+
+	Build Cost: 400
+	Maintenance: 25
+	Labor Cost: 15
+
+	FacesOrbitCenter()
+
+	RequireUnlockTag(SolarOrbitalUnlock)
+
+	LimitOncePerSystem(SolarOrbitalFlag)
+
+	IfTagUnlocked(ProgenitorSolarOrbital, OnEnable(SpawnOrbital(ProgenitorSolarOrbital)))
+	IfTagUnlocked(ProgenitorSolarOrbital, OnEnable(Destroy(True)))
+	ABEM_races::RequireNotUnlockTag(ProgenitorSolarOrbital)
+
+	AddEnergyIncomeStarTemperature(0.25, 1.0)

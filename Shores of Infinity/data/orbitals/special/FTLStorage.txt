@@ -1,0 +1,49 @@
+Module: FTLStorage
+	Name: #ORB_FTL_STORAGE
+	Blurb: #ORB_FTL_STORAGE_DESC
+	Description: #ORB_FTL_STORAGE_DESC
+	
+	Icon: GuiOrbitalIcons::19
+	Strategic Icon: OrbitalIcons::19
+	Model: FTLStorage
+	Material: GenericPBR_FTLStorage
+
+	Size: 12
+
+	Health: 5000
+	Armor: 1000
+
+	Build Cost: 300
+	Maintenance: 50
+	Labor Cost: 10
+
+	RequireTrait(StarChildren)
+	RequireNotTrait(Flux)
+
+	AddFTLStorage(300)
+
+	Module: FTLStorageFLUX
+		Name: #ORB_FTL_STORAGE
+		Blurb: #ORB_FTL_STORAGE_FLUX_DESC
+		Description: #ORB_FTL_STORAGE_FLUX_DESC
+		Icon: GuiOrbitalIcons::19
+		Strategic Icon: OrbitalIcons::19
+		Model: FTLStorage
+		Material: GenericPBR_FTLStorage
+
+		Size: 16
+
+		Health: 5000
+		Armor: 1000
+
+		Build Cost: 300
+		Maintenance: 50
+		Labor Cost: 10
+
+		ConsumeCargo(Ore, 500)
+
+		RequireTrait(StarChildren)
+		RequireTrait(Flux)
+
+		AddFTLStorage(600)
+		AddFTLIncome(0.5)

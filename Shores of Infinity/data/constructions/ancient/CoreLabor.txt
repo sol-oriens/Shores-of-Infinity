@@ -1,0 +1,35 @@
+Construction: CoreLabor
+	Name: #CONS_CORE_LABOR
+	Description: #CONS_CORE_LABOR_DESC
+	Icon: CoreBuilding*#b1b4b6
+
+	Category: Core Programming
+
+	AddLaborCostAttribute(TerraformLaborFactor, Multiply = 22.5)
+	AddBuildCostAttribute(TerraformCostFactor, Multiply = 375)
+
+	RequireStatus(AncientReplicator)
+	building_effects::RequireStatusToProgress(AncientReplicator)
+	RequireStatus(AncientCore)
+	RequireNotStatus(CoreLabor)
+	RequireUnlockTag(CoreProgramming)
+	ConflictBuilding(AncientTransmuter, Hide = True)
+	ConflictBuilding(AncientMiner, Hide = True)
+	ConflictBuilding(AncientStripTransmuter, Hide = True)
+
+	AddBuildCostStatusCount(CoreProgrammed, 125)
+	AddLaborCostStatusCount(CoreProgrammed, 7.5)
+	AddBuildCostStatusCount(CoreAdapted, 125)
+	AddLaborCostStatusCount(CoreAdapted, 7.5)
+	AddBuildCostStatusCount(CoreSpecialized, 250)
+	AddLaborCostStatusCount(CoreSpecialized, 15)
+
+	AddStatus(CoreProgrammed)
+	AddStatus(CoreLabor)
+	RemoveStatus(CoreInfluence)
+	RemoveStatus(CoreEnergy)
+	RemoveStatus(CoreResearch)
+	RemoveStatus(CoreDefense)
+	RemoveStatus(CoreMoney)
+	RemoveStatus(CoreAdapted)
+	RemoveStatus(CoreSpecialized)

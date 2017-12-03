@@ -1,0 +1,22 @@
+Building: SpaceElevator
+	Name: #BLD_SPACE_ELEVATOR
+	Description: #BLD_SPACE_ELEVATOR_DESC
+	
+	Sprite: SpaceElevator
+
+	Category: Infrastructure
+
+	Size: 2x5
+
+	Base Cost: 750
+	Labor Cost: 50
+
+	ConsumeCargo(Ore, 1000)
+
+	RequireNotTrait(Ancient)
+	ConflictBuilding(SpaceElevator)
+
+	ModSupportBuildSpeed(+0.4)
+	IfSystemFlag(Starport, AddResourceFromLevel(Money, Factor = 1.0))
+
+	AddPlanetGfxFlag(SpaceElevator)

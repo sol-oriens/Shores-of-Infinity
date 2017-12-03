@@ -1,0 +1,23 @@
+Technology: PlasmaThrower
+	Name: #R_SYS_PLASMA_THROWER
+	Description: #R_SYS_PLASMA_THROWER_DESC
+
+	Icon: RocketPod::0
+	Color: #ce815a
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Category: Weapons
+	Class: Unlock
+
+	Point Cost: 600
+	Time Cost: 120
+
+	SecondaryMoneyCost(1000)
+
+	SkipOnUnlockedSubsystem(PlasmaThrower)
+	UnlockSubsystem(PlasmaThrower)
+	UnlockSubsystem(SupportPlasmaThrower)
+	AddModifier(TorpedoLauncher::SetDoTActive(1))
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)

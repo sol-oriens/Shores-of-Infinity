@@ -1,0 +1,34 @@
+Technology: Terraforming
+	Name: #R_TERRAFORMING
+	Description: #R_TERRAFORMING_DESC
+
+	Icon: EnormousPlanet
+	Symbol: AffinityIcons::11
+	Color: #058514
+
+	Category: Terraforming
+	Class: Unlock
+
+	Point Cost: 1500
+	Time Cost: 180
+
+	SkipOnUnlockedTag(Terraforming)
+	UnlockTag(Terraforming)
+	ModAttribute(ForbidTerraform, Multiply, 0)
+
+Technology: AtroanTerraforming
+	Name: #R_CORE_PROGRAMMING
+	Description: #R_CORE_PROGRAMMING_DESC
+
+	Icon: CoreBuilding
+	Symbol: AffinityIcons::11
+	Color: #058514
+
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+	Class: Unlock
+
+	Point Cost: 1500
+	Time Cost: 180
+
+	SkipOnUnlockedTag(CoreProgramming)
+	UnlockTag(CoreProgramming)

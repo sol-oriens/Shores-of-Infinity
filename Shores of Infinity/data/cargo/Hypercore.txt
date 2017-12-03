@@ -1,0 +1,4 @@
+Cargo: Hypercore
+	Name: #C_HYPERCORE
+	Description: #C_HYPERCORE_DESC
+	Icon: ResourceIconsSmall::81*#33ff55

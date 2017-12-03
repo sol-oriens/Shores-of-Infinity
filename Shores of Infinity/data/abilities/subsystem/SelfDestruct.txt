@@ -1,0 +1,14 @@
+Ability: SelfDestruct
+	Name: #ABL_SELF_DESTRUCT
+	Description: #ABL_SELF_DESTRUCT_DESC
+	Icon: AntimatterReactor * #ff0000
+
+	SetInCombat()
+	Destroy()
+Ability: RammingSpeedAbil
+	Name: #ABL_RAMMING_SPEED
+	Description: #ABL_RAMMING_SPEED_DESC
+	Icon: RammingSpeed
+	Cooldown: 140
+	Activate Sound: RedAlert
+	AddStatusSelf(JRamSpeed, Duration = 25)

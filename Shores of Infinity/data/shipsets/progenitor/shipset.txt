@@ -1,0 +1,17 @@
+Shipset: Progenitor
+	Name: Progenitor
+	Available: Yes
+
+	Hull: ProgenitorFlagMedium
+	Hull: ProgenitorFlagTiny
+	Hull: ProgenitorFlagSmall
+	Hull: ProgenitorFlagLarge
+	Hull: ProgenitorFlagVeryLarge
+	Hull: ProgenitorSeedShip
+
+	Hull: GevronStation
+
+	Hull: GevronSatellite
+
+	Hull: ProgenitorTiny
+	Hull: ProgenitorSmall

@@ -1,0 +1,13 @@
+Trait: Industrious
+	Name: #TRAIT_INDUSTRIOUS
+	Description: #TRAIT_INDUSTRIOUS_DESC:10%
+	Category: Foundation
+
+	Color: #aaffaa
+	Icon: DesignationIcons::4
+
+	Costs Points: 1
+	Order: 1
+	Conflict: StarChildren
+	Conflict: Ancient
+	OnHomeworld( ModCivResourceMult(Labor, +0.10))

@@ -1,0 +1,27 @@
+Subsystem: Superstructure
+	Name: #S_SUPERSTRUCTURE
+	Description: #S_SUPERSTRUCTURE_DESC
+	BaseColor: #a9a9a9
+
+	Tags: Category:Armor, NoWall, FauxExterior
+	Tags: NoCore, NonContiguous, Defense, ExternalSpace
+	Hull: Flagship, Station
+
+	Size := HexSize * Hexes
+
+	Hex.Resistance := 0.2
+	Hex.HP := 20 * HexSize
+
+	Hex.Mass := 1.5 * HexSize
+
+	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
+
+
+	Hex.BuildCost := 1.0 * HexSize
+	Hex.LaborCost := 0.1 * HexSize
+	Hex.MaintainCost := 0
+
+	Module: Default
+		Hex.BuildCost := Hex.BuildCost * 2
+		Hex.LaborCost := Hex.LaborCost * 4
+		Sprite: Superstructure

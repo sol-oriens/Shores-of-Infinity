@@ -1,0 +1,39 @@
+Subsystem: NilingArmor
+	Name: #S_NILINGARMOR
+	Description: #S_NILINGARMOR_DESC
+	BaseColor: #7fcf96
+	Elevation: 1
+
+	Tags: Category:Armor, FauxExterior, HeraldsDLC
+	Tags: NoCore, NonContiguous, Defense, ExternalSpace, AlwaysTakeDamage
+	Tags: SecondaryArmor
+	Hull: Flagship, Station
+
+	Size := HexSize * Hexes
+
+	Hex.HP := 0
+	Hex.Mass := 6.0 * HexSize
+
+	Modifier: AddHP(amount)
+		Hex.HP := 0
+
+	Damage := Size * 100
+	Radius := ((ShipSize + Size)/2)^(1/2.5) * 50
+
+	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
+
+	State: double = 0
+
+	DummyEnergyResist := 100
+
+	Hex.LaborCost := 0.8 * HexSize
+	Hex.BuildCost := 4.5 * HexSize
+	Hex.MaintainCost := 4 * HexSize / ShipSize^0.5
+	Effect: NilingAbsorb
+		Damage = Damage
+		Radius = Radius
+
+	Module: Default
+		Hex.BuildCost := Hex.BuildCost * 2
+		Hex.LaborCost := Hex.LaborCost * 8
+		Sprite: NilingArmor

@@ -1,0 +1,19 @@
+Building: AncientRefinery
+	Name: #BLD_ANCIENT_REFINERY
+	Description: #BLD_ANCIENT_REFINERY_DESC
+	Sprite: AncientRefinery
+
+	Category: Infrastructure
+
+	Size: 4x6
+
+	Base Cost: 100
+	Build Time: 60
+
+	In Queue: True
+
+	RequireStatus(AncientReplicator)
+	RequireStatusToProgress(AncientReplicator)
+
+	ShowAttributeValue(Additional Resource Production, AtroanAdaptation2, Multiplier = 15.0, Icon = AffinityIcons::11, Suffix = %, Hide Zero = True)
+	ActiveWhenCargoConsumed(BaseMaterial, 1, 6, Repeat(3, AddStatus(AncientProduce)), Inactive Status = AncientRequireBaseMat)

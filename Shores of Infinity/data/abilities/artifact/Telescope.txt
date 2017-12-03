@@ -1,0 +1,46 @@
+Ability: Telescope
+	Name: #ABL_TELESCOPE
+	Description: #ABL_TELESCOPE_DESC
+	Icon: VoteIcons::3
+	Activate Sound: telescope_activate
+
+	Energy Cost: 500
+	ReduceEnergyCostSystemFlag(0.75, CheapArtifacts)
+
+	Target: targ = Object
+	TargetFilterRegion(targ)
+
+	Trigger(targ, GrantRegionVision(900, Hops = 1))
+
+Ability: TelescopeArray
+	Name: #ABL_TELESCOPE
+	Description: #ABL_TELESCOPE_ARRAY_DESC:300000
+	Icon: VoteIcons::3
+	Activate Sound: telescope_activate
+
+	DistanceEnergyCost(targ, 0.0003)
+
+	Target: targ = Object
+	Range: 400000
+	Cooldown: 60
+	Hotkey: T
+	TargetFilterRegion(targ)
+
+	Trigger(targ, GrantRegionVision(Duration = 180))
+
+Ability: TelescopeArrayDistant
+	Name: #ABL_TELESCOPE
+	Description: #ABL_TELESCOPE_ARRAY_DESC:1000000
+	Icon: VoteIcons::3
+	Activate Sound: telescope_activate
+
+	DistanceEnergyCost(targ, 0.0005)
+	ConsumeDistanceFTL(targ, Base Cost = 10, Distance Cost = 0.00015)
+
+	Target: targ = Object
+	Range: 1000000
+	Cooldown: 180
+	Hotkey: T
+	TargetFilterRegion(targ)
+
+	Trigger(targ, GrantRegionVision(Duration = 180))

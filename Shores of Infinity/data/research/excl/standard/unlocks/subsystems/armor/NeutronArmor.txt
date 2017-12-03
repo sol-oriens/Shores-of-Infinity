@@ -1,0 +1,18 @@
+Technology: NeutronArmor
+	Name: #R_SYS_NEUTRON_ARMOR
+	Description: #R_SYS_NEUTRON_ARMOR_DESC
+
+	Icon: PlateArmor * #449944
+	Color: #449944
+
+	Category: Armor
+	Class: Unlock
+
+	Point Cost: 600
+	Time Cost: 90
+
+	SecondaryMoneyCost(1500)
+
+	SkipOnUnlockedSubsystem(NeutronArmor)
+	UnlockSubsystem(NeutronArmor)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)

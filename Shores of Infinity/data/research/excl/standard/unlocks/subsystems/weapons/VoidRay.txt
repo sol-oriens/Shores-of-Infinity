@@ -1,0 +1,16 @@
+Technology: VoidRay
+	Name: #R_VOIDRAY
+	Description: #R_VOIDRAY_DESC
+
+	Icon: AdaptiveLaser::2
+	Color: #ff0314
+
+	Category: Weapons
+	Class: Unlock
+
+	Point Cost: 600
+	Time Cost: 120
+
+	SkipOnUnlockedSubsystem(VoidRay)
+	UnlockSubsystem(VoidRay)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)

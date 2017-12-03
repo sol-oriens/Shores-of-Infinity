@@ -1,0 +1,23 @@
+Module: FTLHarvester
+	Name: #ORB_FTL_HARVESTER
+	Blurb: #ORB_FTL_HARVESTER_BLURB
+	Description: #ORB_FTL_HARVESTER_DESC
+	
+	Icon: GuiOrbitalIcons::19
+	Strategic Icon: OrbitalIcons::19
+	Model: FTLStorage
+	Material: GenericPBR_FTLStorage
+
+	Size: 13
+
+	Health: 5000
+	Armor: 1000
+
+	Build Cost: 450
+	Maintenance: 75
+	Labor Cost: 25
+
+	RequireNotTrait(Flux)
+
+	AddFTLStorage(250)
+  AddFTLIncome(0.15)

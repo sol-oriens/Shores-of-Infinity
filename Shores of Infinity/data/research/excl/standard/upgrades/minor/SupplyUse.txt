@@ -1,0 +1,32 @@
+Technology: SupplyUse
+	Name: #R_IMP_SUPPLY_USE
+	Blurb: #R_IMP_SUPPLY_USE_BLURB:10%
+	Description: #R_IMP_SUPPLY_USE_DESC:10%
+
+	Icon: AttributeIcons::1*#00e5f7
+	Symbol: AttributeIcons::4
+	Color: #fefc61
+
+	Category: Minor Upgrades
+	Class: Boost
+
+	Point Cost: 500
+	Time Cost: 60
+
+	AddModifier( tag/Weapon,hull/Flagship::SupplyCostFactor(0.9) )
+
+Technology: SupplyUse2
+	Name: #R_IMP_SUPPLY_USE2
+	Blurb: #R_IMP_SUPPLY_USE_BLURB:20%
+	Description: #R_IMP_SUPPLY_USE_DESC:20%
+
+	Icon: AttributeIcons::1*#00e5f7
+	Symbol: AttributeIcons::4
+	Color: #fefc61
+
+	Category: Medium Upgrades
+
+	Point Cost: 800
+	Time Cost: 80
+
+	AddModifier( tag/Weapon,hull/Flagship::SupplyCostFactor(0.8) )

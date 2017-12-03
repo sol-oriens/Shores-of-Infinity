@@ -1,0 +1,21 @@
+Technology: SuperstructureHull
+	Name: #R_SYS_SUPERSTRUCTURE_HULL
+	Description: #R_SYS_SUPERSTRUCTURE_HULL_DESC
+
+	Icon: HullSubsystems::3
+	Color: #cc6a3a
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Category: Hulls
+	Class: Unlock
+
+	Point Cost: 600
+	Time Cost: 120
+
+	SecondaryMoneyCost(1000)
+
+	SkipOnUnlockedSubsystem(SuperstructureHull)
+	UnlockSubsystem(SuperstructureHull)
+	ModAttribute(ProgenitorTechProgress, Add, 1)

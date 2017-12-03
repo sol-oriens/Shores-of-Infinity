@@ -1,0 +1,45 @@
+Construction: GenerateHypercore
+  Name: #RESEARCH_LAB_HYPERCORE
+  Icon: ResourceIconsSmall::81*#26a980
+
+  Category: Production
+	Description: #RESEARCH_LAB_HYPERCORE_DESC
+
+  Time Cost: 30
+  Build Cost: 100
+  ConsumeEnergy(1000)
+  ConsumeFTL(250)
+
+  AddCargo(Hypercore, 1)
+
+  RequireOnOrbital(ResearchLab)
+
+Construction: GenerateFTL
+	Name: #RESEARCH_LAB_FTL
+  Icon: ResourceIcons::22
+
+	Category: Production
+	Description: #RESEARCH_LAB_FTL_DESC
+
+  Time Cost: 10
+  ConsumeEnergy(750)
+
+  AddStoredFTL(25:250, Obey Capacity = True)
+
+	RequireOnOrbital(ResearchLab)
+  RequireStatus(ResearchLabCrystallizer)
+
+Construction: GenerateFTLHyper
+	Name: #RESEARCH_LAB_FTL_HYPER
+  Icon: ResourceIcons::22
+
+	Category: Production
+	Description: #RESEARCH_LAB_FTL_HYPER_DESC
+
+  Time Cost: 10
+  ConsumeCargo(Hypercore, 1)
+
+  AddStoredFTL(750:1000, Obey Capacity = True)
+
+	RequireOnOrbital(ResearchLab)
+  RequireStatus(ResearchLabCrystallizer)

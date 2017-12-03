@@ -1,0 +1,4 @@
+Status: MoonBase
+	Visible To: Nobody
+
+		IfHaveTrait(Mechanoid, AddIncome(100))

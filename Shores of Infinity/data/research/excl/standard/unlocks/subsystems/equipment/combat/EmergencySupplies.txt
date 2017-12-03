@@ -1,0 +1,18 @@
+Technology: EmergencySupplies
+	Name: #R_SYS_EMERGENCY_SUPPLIES
+	Description: #R_SYS_EMERGENCY_SUPPLIES_DESC
+
+	Icon: AntimatterReactor * #b8b800
+	Color: #b88b00
+
+	Category: Equipment - Combat
+	Class: Unlock
+
+	Point Cost: 500
+	Time Cost: 90
+
+	SecondaryEnergyCost(1000)
+
+	SkipOnUnlockedSubsystem(EmergencySupplies)
+	UnlockSubsystem(EmergencySupplies)
+	ModAttribute(ProgenitorTechProgress, Add, 2)

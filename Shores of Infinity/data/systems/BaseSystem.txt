@@ -1,0 +1,42 @@
+System: BaseSystem
+	Inherit: BaseGasGiants
+	Inherit: BaseInnerRim
+	Inherit: BaseOuterRim
+	Inherit: BaseRemnants
+	Inherit: BaseAsteroids
+	Inherit: BaseAnomalies
+	Inherit: BaseArtifacts
+
+System: BaseGasGiants
+	RepeatChance(Chance = 0.5, Repeat Modifier = 0.94)
+		MakePlanet(Resource = RareGases)
+
+System: BaseInnerRim
+
+System: BaseOuterRim
+	ExpandSystem(1000)
+	ExpandSystemMinimum()
+
+System: BaseAsteroids
+	RepeatChance(Chance = $ASTEROID_BELT_OCCURANCE, Repeat Modifier = 0.99999)
+		MakeAsteroidBelt()
+	RepeatChance(Chance = $ASTEROID_OCCURANCE, Repeat Modifier = 0.999999)
+		MakeAsteroid(Cargo = Ore)
+	RepeatChance(Chance = $RESOURCE_ASTEROID_OCCURANCE, Repeat Modifier = 0.7)
+		MakeAsteroid(Resource = Distributed)
+
+System: BaseAnomalies
+	RepeatChance(Chance = $ANOMALY_OCCURANCE, Repeat Modifier = 0.5)
+		MakeAnomaly()
+
+System: BaseRemnants
+	RepeatQuality(Chance = $REMNANT_OCCURANCE, Repeat Modifier = 0.5, Quality Step = 200)
+		MakeCreepCamp()
+
+System: BaseArtifacts
+	RepeatQuality(Chance = $ARTIFACT_FREQUENCY, Repeat Modifier = 0.25, Quality Step = 200)
+		MakeArtifact()
+	RepeatChance(Chance = 0.2, Repeat Modifier = 0.8)
+		MakeArtifact(Type = Comet)
+	RepeatChance(Chance = 0.1, Repeat Modifier = 0.6)
+		MakeArtifact(Type = ProtoPlanet)

@@ -1,0 +1,6 @@
+Status: LaserSail
+	Name: #STATUS_LASERSAIL
+	Description: #STATUS_LASERSAIL_DESC
+	Visible To: Everybody
+	Unique: True
+	Icon: SolarPanel * #fefee7

@@ -1,0 +1,34 @@
+Material: RSArtifact
+	Culling: None
+	Alpha: True
+	DepthTest: NoDepthTest
+	Mipmap: False
+	Lighting: False
+
+Material: RevCannon
+	Inherit: RSArtifact
+	Texture: data/images/artifacts/RemnantCannon.png
+
+Material: RevChassis
+	Inherit: RSArtifact
+	Texture: data/images/artifacts/RemnantChassis.png
+
+Material: RevCore
+	Inherit: RSArtifact
+	Texture: data/images/artifacts/RemnantCore.png
+
+Material: RevEngine
+	Inherit: RSArtifact
+	Texture: data/images/artifacts/RemnantEngine.png
+
+Material: Arcology
+	Inherit: RSArtifact
+	Texture: data/images/subsystems/arcology.png
+
+Material: BusterMachine
+	Inherit: RSArtifact
+	Texture: data/images/subsystems/buster.png
+
+Material: PlanetGenerator
+	Inherit: RSArtifact
+	Texture: data/images/subsystems/planetgenerator.png

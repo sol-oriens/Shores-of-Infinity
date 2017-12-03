@@ -1,0 +1,37 @@
+Module: GuardianShipyard
+	Name: #ORB_GUARDIAN
+	Blurb: #ORB_GUARDIAN_BLURB
+	Description: #ORB_GUARDIAN_DESC
+
+	Icon: techShipYard
+	Strategic Icon: OrbitalIcons::5
+	Icon Size: 0.1
+	Model: Shipyard
+	Material: GenericPBR_Shipyard
+
+	Size: 50
+
+	Spin: 0
+
+	Health: 50000
+	Armor: 50000
+
+	Shield Capacity: 50000
+	Shield Regeneration: 50
+
+	Can Fling: False
+
+	CannotBuildManually()
+
+	GloballyVisible()
+
+	OnEnable(AddStatus(GuardianShipyardActive))
+	WorthPoints(5000)
+
+	AddStatus(Stationary)
+	AddStatus(Untractorable)
+
+	GrantAbility(FinishGuardianConstruction)
+	GrantAbility(BuildGuardian)
+
+	ForbidLaborExport()

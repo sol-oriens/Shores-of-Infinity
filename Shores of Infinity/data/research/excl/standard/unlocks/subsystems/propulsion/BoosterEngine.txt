@@ -1,0 +1,21 @@
+Technology: BoosterEngine
+	Name: #R_SYS_BOOSTER_ENGINE
+	Description: #R_SYS_BOOSTER_ENGINE_DESC
+
+	Icon: ResearchIcons::1
+	Color: #8872bb
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Category: Propulsion
+	Class: Unlock
+
+	Point Cost: 500
+	Time Cost: 100
+
+	SecondaryEnergyCost(1000)
+
+	SkipOnUnlockedSubsystem(BoosterEngine)
+	UnlockSubsystem(BoosterEngine)
+	ModAttribute(ProgenitorTechProgress, Add, 0.5)

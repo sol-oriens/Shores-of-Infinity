@@ -1,0 +1,37 @@
+Subsystem: SupportCeramicArmor
+	Name: #S_CERAMICARMOR
+	Description: #S_CERAMICARMOR_DESC
+	BaseColor: #a6661e
+	Elevation: 2
+
+	Tags: Category:Armor, FauxExterior
+	Tags: NoCore, NonContiguous, Defense, IsArmor, ResistArmor, ExternalSpace, DefaultUnlock
+	Tags: PrimaryArmor
+	Hull: Support, Satellite
+
+	Size := HexSize * Hexes
+	Hex.Resistance := 0.3
+	Hex.HP := 31 * HexSize
+	Hex.Mass := 0.6 * HexSize
+
+	Hex.LaborCost := 0.2 * HexSize
+	Hex.BuildCost := 1.25 * HexSize
+	Hex.MaintainCost := 0
+
+	Ship.ExternalHexes := Ship.ExternalHexes + ExteriorHexes
+
+	BaseDamageResist := ShipSize / 9.0
+	ProjResist := BaseDamageResist * 0.8
+	EnergyResist := BaseDamageResist * 3.0
+	ExplResist := BaseDamageResist
+
+	Effect: ReduceDamage
+		ProjResist = ProjResist
+		EnergyResist = EnergyResist
+		ExplResist = ExplResist
+		MinimumPercent = 1/6
+
+	Effect: SingleUseHexes
+
+	Module: Default
+		Sprite: SolarPanel * #f9ac69

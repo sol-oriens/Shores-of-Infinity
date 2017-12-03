@@ -1,0 +1,32 @@
+Technology: FlagDamage
+	Name: #R_IMP_FLAG_DAMAGE
+	Blurb: #R_IMP_FLAG_DAMAGE_BLURB:25%
+	Description: #R_IMP_FLAG_DAMAGE_DESC:25%
+
+	Icon: AttributeIcons::1 * #00e5f7
+	Symbol: techImpact*#ff8000
+	Color: #ff8000
+
+	Category: Minor Upgrades
+	Class: Boost
+
+	Point Cost: 500
+	Time Cost: 60
+
+	AddModifier( tag/Weapon,hull/Flagship::DamageFactor(1.25) )
+
+Technology: FlagDamage2
+	Name: #R_IMP_FLAG_DAMAGE2
+	Blurb: #R_IMP_FLAG_DAMAGE_BLURB:50%
+	Description: #R_IMP_FLAG_DAMAGE_DESC:50%
+
+	Icon: AttributeIcons::1 * #00e5f7
+	Symbol: techImpact2*#ffff00
+	Color: #ff8000
+
+	Category: Medium Upgrades
+
+	Point Cost: 750
+	Time Cost: 80
+
+	AddModifier( tag/Weapon,hull/Flagship::DamageFactor(1.5) )

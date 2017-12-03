@@ -1,0 +1,21 @@
+Construction: ExplorePlanet
+	Name: #C_EXPLORE_PLANET
+	Time Cost: 1
+	Icon: PlanetType::2
+
+	Category: Planetary Exploration
+	Description: #C_EXPLORE_PLANET_DESC
+
+  Build Cost: 50
+
+	OnStart(AddStatus(Exploring))
+	OnCancel(RemoveStatusInstance(Exploring))
+
+	ABEM_sites::AddSite(Start Scanned = True, Chance = 1.0, Status = ExploredPlanet)
+	RemoveStatusInstance(Exploring)
+
+  RequirePlanet()
+	RequireNotStatus(Exploring)
+	RequireNotStatus(ExploredPlanet)
+	RequireNotStatus(Ringworld)
+	RequireNotStatus(ArtificialPlanetoid)

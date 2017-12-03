@@ -1,0 +1,423 @@
+ORB_TRADE_OUTPOST_BLURB: Allows trade through its system. Generates defense ships and protects planets in the system from being captured. Can store 1k units of cargo.
+ORB_TRADE_OUTPOST_DESC: <<|
+	A small outpost that allows your civilian ships to travel through the
+	system it is in.
+
+	Outposts generate up to [b]3 Defense[/b] worth of local defense ships,
+	depending on how many adjacent systems have outposts in them.
+
+	If all of the outpost's support command is used and it has a full
+	complement of defense ships, it will start adding its defense generation to
+	your empire's global pool.
+
+	Planets in systems that have contained an outpost for at least 2 minutes
+	will be [b]Protected[/b] from being captured until the outpost is destroyed.
+
+	[i]Can be built in systems you do not own planets in, expanding your
+	empire border. Only one outpost can be constructed per system.[/i]
+
+	Can store 1k units of cargo.
+>>
+
+ORB_TRADE_STATION_DESC: <<|
+	A large and bustling station of commerce allows global resource trade
+	between any territories with commerce stations or starports with long haul
+	docking bays. Additional trade with foreign empires also provides
+	income for each planet in the system belonging to another empire you are
+	at peace with, to each friendly empire including yours, equal to 100k per
+	planet Level starting from 1 and up to 300k.
+
+	In addition, on each commerce station you can purchase a quantity of
+	research, energy, influence or labor in exchange for money every 3 minutes.
+
+	[i]Normally, planets in separated territories cannot export resources to
+	each other. Construct a commerce station or upgrade a starport with long haul
+	docking bays in both territories in order to allow import and export of
+	resources from planets in your distinct territories. Only one commerce
+	station can be constructed per system.[/i]
+>>
+ORB_SHIPYARD_BLURB: Can build flagships and support ships. Planets can be ordered to export their labor to this shipyard. Can store 25k units of cargo.
+ORB_SHIPYARD_DESC: <<|
+	A massive orbital shipyard capable of constructing fleets in space.
+
+	Construction of ships on a shipyard has a 20% cheaper build cost.
+
+	Has 6 innate Labor generation per minute. Planets can export their own
+	labor to shipyards within trade range at a 75% reduced rate.
+
+	Gains Labor from Metallurgy factory research at a 75% reduced rate.
+
+	Can store 25k units of cargo.
+>>
+ORB_FTL_STORAGE_FLUX_DESC: <<
+	Stores 600 FTL Energy.
+>>
+ORB_STARPORT: Starport
+ORB_STARPORT_BLURB: Allows trade through its system. Generates income per friendly planet. Can store 2.5k units of cargo.
+ORB_STARPORT_DESC: <<
+	[color=#aaa][i]A docking station for civilian and military ships and a transit point for interstellar trade greatly facilitating planetary exporting. A market area also allows small scale commerce with friendly planets.[/i][/color]
+
+	Provides 30k income for each owned and friendly planet in the system belonging to another empire you are at peace with or yours, up to 120k.
+	Support ships assigned to a Starport independently move across the system to attack enemy fleets.
+	Can be upgraded to allow global resource trade.
+
+	Can store 2.5k units of cargo.
+
+	[i]Only one Starport may be constructed per system.[/i]
+>>
+ORB_STARPORT_DOCKING_BAYS: Long Haul Docking Bays
+ORB_STARPORT_DOCKING_BAYS_DESC: <<
+	[color=#aaa][i]Standard civilian trade ships are not suited for very long distance travels and an extensive infrastructure is required to maintain supply lines across multiple systems. These much bigger and specialized docking bays allow long distance superhaulers to dock at the starport, a privilege usually exclusive to huge commerce stations.[/i][/color]
+
+	Allows global resource trade between any territories with Commerce Stations or Starports with Long Haul Docking Bays.
+>>
+ORB_STAGING_HUB: Staging Hub
+ORB_STAGING_HUB_BLURB: Allows trade through its system. Can import and sell resources. Planets can be ordered to export their labor to this orbital. Can store 5k units of cargo.
+ORB_STAGING_HUB_DESC: <<|
+	[color=#aaa][i]This multipurpose station can act as a trading outpost as well as a remote base for mining operations or construction projects. It can also support a small fleet and stockpile resources to sell to private corporations.[/i][/color]
+
+	Has no innate labor, but planets can export their own labor to staging hubs within trade range at a 50% reduced rate.
+	Can construct mining bases on asteroids.
+	Can import labor resources and gain labor per minute equivalent to 50% of the imported pressure.
+	Can import influence, energy, research and defense resources and generate 5k per imported pressure as special funds every minute.
+	Adds 15 Defense Reserve when in orbit around a planet.
+
+	Can store 5k units of cargo.
+
+	[i]Can be built in systems you do not own planets in, expanding your empire border.[/i]
+>>
+ORB_RESEARCH_LAB: Zero-G Lab
+ORB_RESEARCH_LAB_BLURB: Generates research points for the empire and gives access to special projects. Can store 1.5k units of cargo.
+ORB_RESEARCH_LAB_DESC: <<|
+	[color=#aaa][i]A space based research and development laboratory taking advantage of zero-gravity conditions for specific projects.[/i][/color]
+
+	Gives 1 research generation.
+	Allows access to special projects.
+
+	Can store 1.5k units of cargo.
+>>
+ORB_RESEARCH_LAB_CRYSTALLIZER: Hyperfield Crystallizer
+ORB_RESEARCH_LAB_CRYSTALLIZER_DESC: <<
+	[color=#aaa][i]This highly advanced device is able to artificially reproduce the FTL crystal formation process at an accelerated rate through a complex chain reaction.[/i][/color]
+
+	Unlocks the Hyperfield Crystallization Project.
+>>
+
+ORB_RESEARCH_LAB_HYPERCHARGER: Hypercharger
+ORB_RESEARCH_LAB_HYPERCHARGER_DESC: <<
+	[color=#aaa][i]A canon projecting a constant beam of energy extracted from a hypercore, able to tremendously boost engine thrust for a short duration. This effect is nicknamed "hypersail", though there is no physical sail per se.[/i][/color]
+
+	Unlocks the Hypercharge Project.
+>>
+ORB_FTL_HARVESTER: Hyperfield Actuator
+ORB_FTL_HARVESTER_BLURB: Generates and stores FTL Energy.
+ORB_FTL_HARVESTER_DESC: <<
+	[color=#aaa][i]A facility that can slowly tap into the hyperfield to extract its particles.[/i][/color]
+
+	Stores 250 [img=$FTL;22/] FTL Energy.
+
+	[img=$FTL;22][b][color=#00c0ffff]FTL[/color][/b] [offset=120]0.15 /s[/offset][/img]
+>>
+ORB_TELESCOPE: Telescope Array
+ORB_TELESCOPE_BLURB: Allows temporary vision of nearby star systems.
+ORB_TELESCOPE_DESC: <<|
+	[color=#aaa][i]Telescopes have been used for millennia to look at the stars around. This facility is equipped with an array of the most advanced models available which can provide a high fidelity computer enhanced view of an entire system in the vicinity.[/i][/color]
+
+	Has the 'Telescope' ability. Costs Energy based on target distance to activate.
+
+	[i][bbloc=#ABL_TELESCOPE_ARRAY_DESC:400000/][/i]
+>>
+ORB_QUANTUM_TELESCOPE: Quantum Telescope Array
+ORB_QUANTUM_TELESCOPE_BLURB: Allows temporary vision of nearby or distant star systems.
+ORB_QUANTUM_TELESCOPE_DESC: <<|
+	[color=#aaa][i]The combination of huge telescopes and oversized quantic computer systems allows an almost perfect virtual rendering of very distant star systems.[/i][/color]
+
+	Has the 'Telescope' ability. Costs Energy and FTL Energy based on target distance to activate.
+
+	[i][bbloc=#ABL_TELESCOPE_ARRAY_DESC:1000000/][/i]
+>>
+ORB_QUANTUM_TELESCOPE_ADAPTED: Spy Telescope Array
+ORB_QUANTUM_TELESCOPE_ADAPTED_DESC: <<
+	[bbloc=#ORB_TELESCOPE_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Telescope Array:Periodically generates Intelligence cards against nearby empires/]
+>>
+ORB_LASER_DRIVE: Phased Array Laser Drive
+ORB_LASER_DRIVE_BLURB: Can propel ships equipped with a lightsail.
+ORB_LASER_DRIVE_DESC: <<
+	[color=#aaa][i]'Leaving the engine at home' is the master idea behind the concept of directed energy propulsion. A powerful laser delivers energy to a reflector panel equipped on a ship, which uses the momentum of photons as actual thrust.[/i][/color]
+
+	Has the 'Laser Propulsion Beam' ability.
+>>
+ORB_TACHYON_UPLINK: Tachyon Uplink Facility
+ORB_TACHYON_UPLINK_BLURB: Unlocks Tachyon Sensors.
+ORB_TACHYON_UPLINK_DESC: <<
+	[color=#aaa][i]This specialized facility harnesses the massive tachyonic fields found in eponymous nebulae and redirects tachyons in the underlying hyperfield towards specialized sensors that can use them to obtain tremendous detection ranges.[/i][/color]
+
+	Unlocks the Tachyon Sensor subsystem.
+
+	[i]Can only be built in a Tachyon Nebula.[/i]
+	[i]Only one Tachyon Uplink may be constructed per system.[/i]
+
+	[img=$FTL;22][b][color=#00c0ffff]FTL[/color][/b] [offset=120]0.5 /s[/offset][/img]
+>>
+ORB_SHIELD_CHARGER: Power Transmitter
+ORB_SHIELD_CHARGER_BLURB: Recharges the shields of allied fleets in the system.
+ORB_SHIELD_CHARGER_DESC: <<
+	A series of powerful generators and emitters transmits additional power to any ships in need of it. This power is then harnessed to charge up the ships' shield capacitors. However, shield activity disrupts the transmission beam, so combat will prevent continued charging.
+
+	Increases the out-of-combat shield recharge rate of all ships in the system by 25, plus 0.01% of the ships' shield capacity.
+>>
+ORB_EXPERIMENTAL_FLING: Experimental Fling Beacon
+ORB_EXPERIMENTAL_FLING_BLURB: Lets nearby ships use fling to FTL to anywhere in the galaxy. Can be used to conduct research into fling beacon technology.
+ORB_EXPERIMENTAL_FLING_DESC: <<|
+	This expensive, oversized research facility allows use of fling-based FTL in its vicinity.
+
+	Ships within 12,500 distance units of a fling beacon can be FTLed to anywhere in the galaxy.
+
+	[b][color=#00c0ff]Experimental Fling Beacons are required to research standard Fling Beacons, cost 500 FTL energy to construct, and have an upkeep cost of 0.15 FTL/s.[/color][/b]
+>>
+ORB_EXPERIMENTAL_GATE: Prototype Stargate
+ORB_EXPERIMENTAL_GATE_BLURB: Allows instantaneous travel to any other gate. Can be used to conduct research into gate technology.
+ORB_EXPERIMENTAL_GATE_DESC: <<|
+	This expensive, oversized research facility allows instantaneous travel to any other gate.
+
+	[b][color=#00c0ff]Prototype Stargates are required to research designable gates, and have an upkeep cost of 0.15 FTL/s.[/color][/b]
+>>
+ORB_GUARDIAN: Guardian Facility
+ORB_GUARDIAN_BLURB: Acts as a Research-generating super-shipyard, or constructs a powerful Guardian.
+ORB_GUARDIAN_DESC: <<
+	An ancient shipyard of tremendous scale used to construct Guardians, the so-called 'Guardian Facility' is as valuable as the knowledge on the nearby Hubworld.
+
+	The advanced nature of the facility's matter fabricators and the phase shifting it uses to store finished components produce an immense quantity of Research. The technology itself allows the facility to construct anything as if it were a planet, import Labor from other planets, generate 100 Labor per minute and store 5000 Labor. It cannot, however, be used to export Labor to other shipyards.
+
+	The sheer size of the facility makes it impossible to move through conventional means, while its phasing technology causes complications when attempting to use FTL systems to propel it. Additionally, automated security systems of considerable complexity prevent boarding parties from making any progress while attacking it.
+
+	If damaged severely enough, the Guardian Facility will shut down and phase-shift; while its location is no longer a mystery, it will have to be reactivated and repaired again.
+>>
+ORB_PROGENITOR_SOLARORBITAL: Advanced Solar Engine
+ORB_PROGENITOR_SOLARORBITAL_BLURB: Generates energy per second relative to the temperature of the system's star. Requires no maintenance.
+ORB_PROGENITOR_SOLARORBITAL_DESC: <<
+	Generates extra energy per second. The higher the temperature of the star of the system it's in, the more energy is generated. Generates more energy than a regular Solar Engine. Requires no maintenance.
+
+	Only one Solar Engine of any kind may be constructed per system.
+>>
+ORB_ADAPTED: [i]This is an upgrade from the [b][color=#f00]$1[/color][/b], unlocked by the Multipurpose Infrastructure specialization tech. [b]Secondary effect: $2.[/b][/i]
+ORB_SOLAR_ORBITAL_ADAPTED: Improved Solar Engine
+ORB_SOLAR_ORBITAL_ADAPTED_DESC: <<
+	[bbloc=#ORB_SOLAR_ORBITAL_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Solar Engine:Generates 0.1 FTL per second/]
+>>
+ORB_PROGENITOR_SOLARORBITAL_ADAPTED: Superior Solar Engine
+ORB_PROGENITOR_SOLARORBITAL_ADAPTED_DESC: <<
+	[bbloc=#ORB_PROGENITOR_SOLARORBITAL_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Advanced Solar Engine:Generates 0.15 FTL per second/]
+>>
+ORB_RECALL_BLURB: Uses Energy to Recall allied flagships and orbitals to its location.
+ORB_RECALL_DESC: <<
+	A hyperfield manipulator designed to open a wormhole between a nearby location and any allied object in the universe.
+
+	[img=MenuIcons::3;20]Grants the Recall ability.[/img]
+	[img=ResourceIcon::2;22]Costs [b][color=#42b4bd]Energy[/color][/b] to activate.[/img]
+	[img=MenuIcons::3;20]The smaller the recalled object is, the less energy is consumed.[/img]
+	[img=MenuIcons::3;20][i][bbloc=#ABL_RECALL_DESC/][/i][/img]
+>>
+
+ORB_STELLAR_SHIELD: Stellar Shield Generator
+ORB_STELLAR_SHIELD_BLURB: Adds a powerful shield to all stars in the system.
+ORB_STELLAR_SHIELD_DESC: <<
+	A gargantuan shield emitter, this facility envelops entire stars in a powerful shield, providing a temporary defense against weapons such as Graviton Condensers.
+
+	Adds 1G shield capacity to every star in the system. Black holes receive 10G shield capacity. Shield regenerates at a rate of 1M per second.
+
+	Stacks with other stellar shielding technology. Will protect indiscriminately against friendly and enemy attacks alike.
+>>
+ORB_EMBASSY: Embassy
+ORB_EMBASSY_BLURB: Sends envoys to other planets to achieve diplomatic goals.
+ORB_EMBASSY_DESC: <<
+	A center of diplomatic activity, this station periodically sends out Envoys to other planets. Envoys persuade the governments of enemy planets that they would be better off under their empire's rule, and inspire the populations of allied planets into persisting long after they would normally be beaten.
+
+	Enemy planets visited by an Envoy have a 10% chance of defecting to your empire. Planets belonging to your empire, your vassals or an empire you have an Alliance with will be immune to loyalty loss for 180 seconds.
+
+	Diplomatic backlash gives you and your allies Leverage against anyone who would destroy the Embassy.
+
+	High levels of diplomatic activity in the Embassy grant 2 Influence Stake, and a 5% chance of receiving a random influence card every minute.
+
+	Embassies act as Commerce Stations and Outposts in that they allow trade between separated territories, and expand your empire's borders, respectively.
+>>
+ORB_FARM: Hydroponics Station
+ORB_HYDROGENATOR: Water Reclamation Facility
+ORB_FARM_BLURB: Produces food.
+ORB_FARM_DESC: <<
+	Generates a basic food resource for the planet it orbits. Food generation only applies if the planet and Hydroponics Station are owned by the same empire.
+>>
+ORB_HYDROGENATOR_BLURB: Produces water.
+ORB_HYDROGENATOR_DESC: <<
+	Generates a basic water resource for the planet it orbits. Water generation only applies if the planet and Water Reclamation Facility are owned by the same empire.
+>>
+ORB_SENATE_BLURB: Generates 1 Influence Stake per 20 billion people.
+ORB_POWERPLANT_BLURB: Generates 5 Energy per second.
+ORB_INTEL_BLURB: Generates Intelligence against nearby empires.
+ORB_HYDROPONICS_SATELLITE_BLURB: Adds 1 Food and Water to the planet it is in orbit of.
+ORB_HYDROPONICS_SATELLITE: Nutrient Reclamation Satellite
+ORB_HYDROPONICS_SATELLITE_DESC: <<
+	A satellite equipped with high-yield zero-G hydroponics bays growing genetically modified crops in exposure to direct sunlight, as well as an advanced water processing facility.
+
+	Must be constructed in orbit of a planet.
+
+	The planet this is in orbit of gains 1 Food and Water resource.
+
+	Costs 750 Energy to construct in addition to its build cost.
+>>
+ORB_ORBITAL_CONTROL: Orbital Control Satellite
+ORB_ORBITAL_CONTROL_BLURB: Increases Control Hub production by 50% on the planet it is orbiting.
+ORB_ORBITAL_CONTROL_DESC: <<
+	A satellite equipped with the command and communication equipment required to operate Atroan technology on the planet below. Moving the control infrastructure off-world allows the hubs on the surface to operate more efficiently.
+
+	Must be constructed in orbit of a planet.
+
+	The Control Hub of the planet this is orbiting generates 50% more resources.
+
+	Costs 750 Energy to construct in addition to its build cost.
+
+	Only one Orbital Control Satellite may be constructed in orbit of a planet.
+>>
+ORB_ZEROGRAV_ASSEMBLY: Antimatter Core Assembler
+ORB_ZEROGRAV_ASSEMBLY_BLURB: Reduces the construction cost of population on the planet it is orbiting.
+ORB_ZEROGRAV_ASSEMBLY_DESC: <<
+	A specialized satellite designed to harvest antimatter for the power cores of Mono drones. The harvested antimatter significantly increases the efficiency with which new drones are constructed.
+
+	Must be constructed in orbit of a planet.
+
+	New population built on the planet surface is §150k cheaper and requires 5 less Labor.
+
+	Costs 750 Energy to construct in addition to its build cost.
+
+	Only one Antimatter Core Assembler may be constructed in orbit of a planet.
+>>
+ORB_DEFENSE_SATELLITE_DESC: <<
+	A military satellite constructed in low planetary orbit grants improved defensive capabilities to the planet and its support ships.
+
+	Must be constructed in orbit of a planet.
+
+	Support ships assigned to this planet fight at increased combat strength, and can independently move across the system in order to attack enemy fleets. Support ships set to Shield, Support or Artillery behavior will not leave the planet's orbit.
+
+	Additionally, the satellite is armed with a number of laser and missile turrets, allowing it to defend itself to a limited degree.
+
+	Costs 500 Energy to construct in addition to its build cost.
+
+	Only one tactical satellite may be constructed in orbit of every planet.
+>>
+ORB_RING_HABITAT_DESC: <<
+	A ring habitat constructed in low planetary orbit increases the population that can live in and around it, allowing a luxuriously maintained lifestyle in space for those who can afford it.
+
+	Must be constructed in orbit of a planet. Increases the maximum population of that planet by 2.
+
+	2 Population is removed from the planet constructing the Ring Habitat to live on it. These people will appear on the planet owning the Ring Habitat once it is completed.
+
+	Costs 10 Influence to construct in addition to its build cost.
+
+	Only one ring habitat may be constructed in orbit of every planet.
+>>
+ORB_SHIPYARD_DESC: <<|
+	A massive orbital shipyard capable of constructing fleets in space.
+
+	Construction of ships on a shipyard has a 20% cheaper build cost.
+
+	Has 7.5 innate Labor generation per minute. Planets can export their own
+	labor to shipyards within trade range at a 25% reduced rate.
+
+	Gains Labor from Metallurgy factory research at a 25% reduced rate.
+>>
+ORB_SHIPYARD_ADAPTED: Advanced Shipyard
+ORB_SHIPYARD_ADAPTED_DESC: <<|
+	[bbloc=#ORB_SHIPYARD_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Shipyard:Generates 2 Defense per minute/]
+>>
+ORB_SENATORIAL_PALACE_ADAPTED: Lavish Senatorial Palace
+ORB_SENATORIAL_PALACE_ADAPTED_DESC: <<
+	[bbloc=#ORB_SENATORIAL_PALACE_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Senatorial Palace:Generates 3 Influence Stake/]
+>>
+ORB_SINGULARITY_LAB_ADAPTED: Advanced Singularity Lab
+ORB_SINGULARITY_LAB_ADAPTED_DESC: <<
+	[bbloc=#ORB_SINGULARITY_LAB_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Singularity Lab:Creates system-wide hyperfield distortions, effectively blocking enemy FTL in the system it is located in and dealing heavy shield damage/]
+>>
+ORB_TRADE_OUTPOST_ADAPTED: Fortified Outpost
+ORB_TRADE_OUTPOST_ADAPTED_DESC: <<
+	[bbloc=#ORB_TRADE_OUTPOST_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Outpost:Has a fairly powerful shield generator, and support ships can break off to raid enemy forces/]
+>>
+ORB_TRADE_STATION_ADAPTED: Prosperous Commerce Station
+ORB_TRADE_STATION_ADAPTED_DESC: <<
+	[bbloc=#ORB_TRADE_STATION_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Commerce Station:Sends two Freighters to random allied or owned Level 1+ planets every 3 minutes. Receiving planets become Happy for 3 minutes/]
+>>
+ORB_FTL_JAMMER_ADAPTED: Redistributing FTL Jammer
+ORB_FTL_JAMMER_ADAPTED_DESC: <<
+	[bbloc=#ORB_FTL_JAMMER_DESC/]
+
+	[bbloc=#ORB_ADAPTED:FTL Jammer:Generates 1 Energy per second/]
+>>
+STARFORGE_ADAPTED: Restorative Star Forge
+STARFORGE_ADAPTED_DESC: <<
+	[bbloc=#STARFORGE_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Star Forge:Generates a shield around the system's star, reducing the damage dealt by the forge and possibly eliminating it altogether if the shield is allowed time to recover/]
+>>
+VACUUM_TELESCOPE_ADAPTED: Vacuum Research Telescope
+VACUUM_TELESCOPE_ADAPTED_DESC: <<
+	[bbloc=#VACUUM_TELESCOPE_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Vacuum Telescope:Generates 5 Research per second/]
+>>
+ORB_SHIELD_CHARGER_ADAPTED: Radiant Power Transmitter
+ORB_SHIELD_CHARGER_ADAPTED_DESC: <<
+	[bbloc=#ORB_SHIELD_CHARGER_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Power Transmitter:All flagships in the system receive a 20% boost to shield capacity. Does not affect Forcefields/]
+>>
+ORB_STELLAR_SHIELD_ADAPTED: Advanced Stellar Shield Generator
+ORB_STELLAR_SHIELD_ADAPTED_DESC: <<
+	[bbloc=#ORB_STELLAR_SHIELD_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Stellar Shield Generator:Has the Support Beam ability/]
+>>
+ORB_SUPPLY_DEPOT_ADAPTED: Advanced Supply Depot
+ORB_SUPPLY_DEPOT_ADAPTED_DESC: <<
+	[bbloc=#ORB_SUPPLY_DEPOT_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Supply Depot:Grants 50 Defense Reserve/]
+>>
+ORB_FTL_STORAGE_ADAPTED: Advanced FTL Storage
+ORB_FTL_STORAGE_ADAPTED_DESC: <<
+	[bbloc=#ORB_FTL_STORAGE_DESC/]
+
+	[bbloc=#ORB_ADAPTED:FTL Storage:Generates 0.5 Research per second/]
+>>
+ORB_FARM_ADAPTED: Efficient Hydroponics Station
+ORB_FARM_ADAPTED_DESC: <<
+	[bbloc=#ORB_FARM_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Hydroponics Station:Has a reduced maintenance cost, equivalent to building a Megafarm on developed terrain/]
+>>
+ORB_HYDROGENATOR_ADAPTED: Efficient Water Reclamation Facility
+ORB_HYDROGENATOR_ADAPTED_DESC: <<
+	[bbloc=#ORB_HYDROGENATOR_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Water Reclamation Facility:Has a reduced maintenance cost, equivalent to building a Hydrogenator on developed terrain/]
+>>
+ORB_SENATE_ADAPTED_NAME: Hyper-Centralized Coordination Complex
+ORB_SENATE_ADAPTED_DESC: <<
+	[bbloc=#F_SENATE_DESC/]
+
+	[bbloc=#ORB_ADAPTED:Centralized Coordination Complex:Generates a random influence card once per minute/]
+>>

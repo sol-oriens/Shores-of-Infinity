@@ -1,0 +1,28 @@
+Site: ResearchCenter
+	Name: #SITE_P_ANCIENT_RUINS
+	Description: #SITE_NAR_ANCIENT_RUINS
+
+	State:
+		Narrative: #SITE_NAR_RESEARCH_CENTER
+
+		Sprite: ResearchComplex
+
+		Choice: Read
+		Choice: Recover
+
+	Option: Read
+		Icon: ResourceIcon::4
+		Description: #SITE_RESEARCH_CENTER_READ
+
+		AddResearchPoints(50:100, Modified = False, Penalized = False)
+
+	Option: Recover
+		Icon: CardCategoryIcons::1
+		Description: #SITE_RESEARCH_CENTER_RECOVER
+
+		Result: 50%
+			SendMessage(#SITE_RESEARCH_CENTER_RECOVER_SUCCESS:0.5)
+			AddResearchIncome(0.5)
+
+		Result: 50%
+			SendMessage(#SITE_RESEARCH_CENTER_RECOVER_FAIL)

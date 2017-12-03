@@ -1,0 +1,16 @@
+Technology: MatterDisruptor
+	Name: #R_SYS_MATTERDISRUPTOR
+	Description: #R_MATTERDISRUPTOR_DESC
+
+	Icon: MatterDisruptor::2
+	Color: #06c0ff
+
+	Category: Weapons
+	Class: Unlock
+
+	Point Cost: 600
+	Time Cost: 120
+
+	SkipOnUnlockedSubsystem(MatterDisruptor)
+	UnlockSubsystem(MatterDisruptor)
+	ModAttribute(ProgenitorTechProgress, Add, 2.5)

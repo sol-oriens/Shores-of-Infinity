@@ -1,0 +1,51 @@
+Construction: MechanoidPopulation
+	Name: #MECH_BUILD_POPULATION:1
+	Description: #MECH_BUILD_POPULATION_DESC:1
+
+	Category: Infrastructure
+
+	Labor Cost: 5
+	Build Cost: 150
+	Always Borrowable: True
+
+	RequireTrait(Mechanoid)
+	RequirePlanet()
+
+	GivePopulation(1)
+	SlowDownDebtGrowthFactor() #version>=117
+
+	OnStart(ModAttribute(MechPopulationQueued, Add, 1))
+	OnCancel(ModAttribute(MechPopulationQueued, Add, -1))
+	ModAttribute(MechPopulationQueued, Add, -1)
+
+	AddBuildCostTotalPopulation(Add = -6, Add Attribute = MechPopulationQueued, Power = 0.5, Multiply = 10)
+	AddLaborCostTotalPopulation(Add = -6, Add Attribute = MechPopulationQueued, Power = 0.5, Multiply = 2)
+	AddLaborCostTotalPopulation(Add = -6, Add Attribute = MechPopulationQueued, Power = 0.33, Multiply = 2.5)
+	AddBuildCostStatusCount(ZeroGAssembly, -150)
+	AddLaborCostStatusCount(ZeroGAssembly, -5)
+
+Construction: MechanoidPopulation10
+	Name: #MECH_BUILD_POPULATION:10
+	Description: #MECH_BUILD_POPULATION_DESC:10
+
+	Category: Infrastructure
+
+	Labor Cost: 50
+	Build Cost: 1500
+	Always Borrowable: True
+
+	RequireTrait(Mechanoid)
+	RequirePlanet()
+
+	GivePopulation(10)
+	SlowDownDebtGrowthFactor() #version>=117
+
+	OnStart(ModAttribute(MechPopulationQueued, Add, 10))
+	OnCancel(ModAttribute(MechPopulationQueued, Add, -10))
+	ModAttribute(MechPopulationQueued, Add, -10)
+
+	AddBuildCostTotalPopulation(Add = -6, Add Attribute = MechPopulationQueued, Power = 0.5, Multiply = 100)
+	AddLaborCostTotalPopulation(Add = -6, Add Attribute = MechPopulationQueued, Power = 0.5, Multiply = 20)
+	AddLaborCostTotalPopulation(Add = -6, Add Attribute = MechPopulationQueued, Power = 0.33, Multiply = 25)
+	AddBuildCostStatusCount(ZeroGAssembly, -1500)
+	AddLaborCostStatusCount(ZeroGAssembly, -50)

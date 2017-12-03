@@ -1,0 +1,9 @@
+Status: Damaged
+	Name: #STATUS_DAMAGED
+	Description: #STATUS_DAMAGED_DESC
+	Color: #ff041d
+	Visible To: Owner
+	Icon: techMaterialScience1*#ff041d
+	AddBonusHP(-0.3)
+	GrantAbility(Repair)
+	AddFleetEffectiveness(-0.3)

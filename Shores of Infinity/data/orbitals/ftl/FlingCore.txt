@@ -1,0 +1,37 @@
+Module: FlingCore
+	Name: #ORB_FLING_CORE
+	Blurb: #ORB_FLING_CORE_BLURB
+	Description: #ORB_FLING_CORE_DESC
+	
+	Icon: GuiOrbitalIcons::2
+	Strategic Icon: OrbitalIcons::2
+	Icon Size: 0.04
+	Model: Fling
+	Material: GenericPBR_Fling
+
+	Size: 14
+
+	Standalone: True
+	Solid: False
+	Spin: 0
+
+	Health: 10000
+	Armor: 4000
+
+	Can Fling: False
+
+	Build Cost: 400
+	Maintenance: 200
+	Labor Cost: 20
+
+	ConsumeFTL(250) #version>=147
+	FTLMaintenance(0.15) #version>=147
+
+	RequireUnlockTag(HasFling)
+
+	DisableOnFTLBlock()
+
+	IsFlingBeacon() #version<147
+	IfNotFTLShortage(IsFlingBeacon()) #version>=147
+
+	BreakOrbitOnFTL()

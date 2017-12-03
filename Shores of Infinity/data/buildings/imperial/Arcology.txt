@@ -1,0 +1,20 @@
+Building: Arcology
+	Name: #BLD_ARCOLOGY
+	Description: #BLD_ARCOLOGY_DESC
+	
+	Sprite: BldArcology
+
+	Category: Infrastructure
+
+	Size: 3x4
+
+	Base Cost: 2500
+  Labor Cost: 50
+
+	RequireNotTrait(Ancient)
+
+	ConsumeCargo(Ore, 2000)
+	ConsumeInfluence(20)
+
+  AddMaxPopulation(5)
+  ReplacesCities(5)

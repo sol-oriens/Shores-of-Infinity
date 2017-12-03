@@ -1,0 +1,21 @@
+Technology: SolarSatellite
+	Name: #R_ORB_SOLAR_SATELLITE
+	Description: #R_ORB_SOLAR_SATELLITE_DESC
+
+	Icon: GuiOrbitalIcons::13
+	Color: #ffdc40
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Category: Satellites
+	Class: Unlock
+
+	Point Cost: 600
+	Time Cost: 120
+
+	SecondaryInfluenceCost(15)
+
+	SkipOnUnlockedTag(SolarSatelliteUnlock)
+	UnlockTag(SolarSatelliteUnlock)
+	ModAttribute(ProgenitorTechProgress, Add, 1)

@@ -1,0 +1,77 @@
+TRAIT_SEDENTARY_DESC: Building construction is 50% slower. Applies to civilian as well as imperial infrastructure. 
+TRAIT_TECHNICISTS: Researchers
+TRAIT_TECHNICISTS_DESC: <<
+	[img=ShieldGen;22]Shield Generators are available from the beginning of the game. All shield capacity is increased by 110%, and shield regeneration is increased by 20%.[/img]
+	[img=ShieldHarmonizer;22]Shield Harmonizers are available from the beginning of the game and provide 110% more shield capacity to flagships.[/img]
+	[img=Forcefield*#00a4ff;22]Forcefields are available from the beginning of the game.[/img]
+	[img=PlateArmor;22]Cannot research most armor types. Armor discovered through alternative methods will have halved health.[/img]
+	[img=Superstructure;22]Does not start with any armor subsystems unlocked. Inexpensive and fragile Structural Reinforcement is used instead.[/img]
+>>
+TRAIT_INEFFICIENT_DESC: All weapons drain $1 more supply when firing.
+TRAIT_SEQUESTERED_SOCIETY_DESC: We have lived a quiet life so far but now is the time to reach for the stars. Your homeworld begins with 25 tiles fully developed and has an additional 5 Pressure Capacity.
+TRAIT_INDUSTRIOUS_DESC: Civilian labor generation on the homeworld is increased by $1.
+TRAIT_PACIFISTS: Pacifists
+TRAIT_PACIFISTS_DESC: <<
+	[img=ResourceIconsSmall::61;22]Starts with an Allondium on their homeworld.[/img]
+	[img=ThumbsUp;22]Maintaining a high level of Comfort by avoiding combat, planet loss and casualties bestows various benefits - failing to do so weakens the empire through cvil unrest.[/img]
+	[img=LoyaltyIcon;22]Civilian Labor and Defense generations, as well as fleet effectiveness, are reduced by 15%.[/img]
+	[img=CardIcons::7;22]Embassies automatically send [b]Envoys[/b] to nearby planets, giving various benefits.[/img]
+	[dlc=Heralds][img=Antenna;22]Broadcast Antennae are available from the beginning of the game.[/img][/dlc]
+>>
+TRAIT_BERSERKERS: Berserkers
+TRAIT_BERSERKERS_DESC: <<
+	[img=ResourceIconsSmall::62*#ff000088;22]Starts with Sulphate Traces on their homeworld, providing half of the benefits of Sulphate.[/img]
+	[img=HexagonSubsystems::8 * #fdffa8;22]Personal quests for glory reduce support capacity by 50%.[/img]
+	[img=StatusWar;22]Centuries of conflict have resulted in a 25% reduction in supply costs due to optimized weaponry.[/img]
+	[img=ResourceIcon::4*ff8888;22]Research pressure does not generate Research, and is instead processed into Labor and Defense.[/img]
+	[img=SystemUnderAttack;22]Fighting, conquering or destroying enemies generates Glory, unifying the clans and granting various benefits - failing to do so weakens the empire through internal strife.[/img]
+	[img=ResourceIcon::4;22]Destroying enemy objects gives Research dependent on their type and Labor cost.[/img]
+	[img=ThumbsDown;22]The Influence cost of playing support cards during a vote is increased by 2, while the cost of starting a vote is increased by 4.[/img]
+	[img=ResourceIcon::5;22]All planets have an additional 256 Support Capacity. Support ships attached to planets can always raid.[/img]
+	[img=BoardingParty;22][dlc=Heralds][img=TroopPods;22/]  [/dlc]Boarding Parties [dlc=Heralds]and Troop Pods [/dlc]are available from the beginning of the game.[/img]
+>>
+TRAIT_PROGENITORS: Progenitor Race
+TRAIT_PROGENITORS_DESC: <<
+	[img=ResourceIconsSmall::60;22][img=ResourceIconsSmall::63;22/]  Starts with a Quartz and a Cyllium on their homeworld.[/img]
+	[img=Plantation;22]Homeworld cannot export its food or water.[/img]
+	[img=BuildingSprites::0;22]All civilian resource generation is reduced by 80%. Production slowly returns to normal over the first 80 minutes of the game.[/img]
+	[img=techHyperfield;22]Cannot attack or be attacked by Remnant ships, but can use the Override Remnant Programming ability to take control of non-Guardian Remnant fleets.[/img]
+	[img=ResourceIcon::4;22]Researching enough technologies allows access to Progenitor tech tree, opening up powerful new techs without the need for a level 6 Ancient Hubworld.[/img]
+>>
+TRAIT_VERDANT: Verdant
+TRAIT_VERDANT_DESC: <<
+	[img=Sinew;22]Ships must be held together by organic [b]Sinew[/b], providing control instead of having a bridge.[/img]
+	[img=Sinew;22]Ships, orbitals and asteroid mines cannot have or be targeted by Boarding Parties.[/img]
+	[img=BuildingSprites::0;22]Does [b]not[/b] have any form of cities.[/img]
+	[img=AttributeIcons::0;22]Must construct [b]Stalks[/b] on planets to be able to use pressure.[/img]
+>>
+TRAIT_FLUX_DESC: <<
+	Your empire maintains an intricate flux field across all its systems to allow for instantaneous spatial translation.
+
+	Your ships instantly FTL to any system you have vision over. A fleet that has recently used the flux field cannot use it again immediately. Your ships are unable to travel through deep space.
+
+	Ships cost FTL Energy to build.
+
+	You automatically gain vision over all systems within your trade range. You start the game with a free Subspace Telescope Array, and cannot research other FTL methods.
+>>
+TRAIT_VANGUARD_RINGWORLDER: Vanguard (Ringworlders)
+TRAIT_VANGUARD_RINGWORLDER_DESC: <<|
+	[vspace=3/][img=PlanetType::14;28]Instead of planets, starts with a Ringworld and the technology to build more.[/img]
+	[vspace=3/][img=QuickbarIcons::3;22]Cannot own non-Ringworld planets. This includes Artificial Planetoids.[/img]
+	[vspace=3/][img=QuickbarIcons::2;22]Bulky Harvesters prepare planets for harvesting by Ringworlds, which steal all non-building resources from the planet's surface and turn it into a barren world.[/img]
+	[vspace=3/][img=QuickbarIcons::4;22]Harvesters can Devour barren planets, producing vast quantities of Ore and damaging the planet over time.[/img]
+	[bbloc=#TRAIT_VANGUARD_DESC/]
+>>
+TRAIT_VANGUARD_DESC: <<
+	[vspace=3/][img=ShieldImpactLarge*#de12de;22]Is a Vanguard race, with all their advantages and disadvantages:
+
+	[vspace=3/][img=PortalStabilizer;22]Can achieve a Vanguard Victory by constructing 3 Portal Stabilizers on 3 separate Ringworlds or Artificial Planetoids.[/img]
+	[vspace=3/][img=AttributeIcons::3*#f88;22][b][color=#f00]Not recommended for beginners.[/color][/b][/img][/img]
+>>
+TRAIT_MECHANOID_DESC: <<|
+	[vspace=3/][img=ResourceIcon::6;22]Additional [b]population[/b] must be constructed with labor instead of growing. Each unit of population provides extra labor.[/img]
+	[vspace=3/][img=ActionBarIcons::1;22]Can instantaneouly transfer population between planets to colonize, costing [img=ResourceIcon::3;20/] FTL Energy.[/img]
+	[vspace=3/][img=ResourceIcons::5;22]Does [b]not[/b] require any food or water to level up planets.[/img]
+	[vspace=3/][img=ResourceIcons::13;22]Can remain in Radioactive Nebulae indefinitely without control loss. Shields and sensors are still affected by the nebula.[/img]
+	[vspace=3/][img=GuiOrbitalIcons::5;22]Cannot use shipyards or dry docks.[/img]
+>>

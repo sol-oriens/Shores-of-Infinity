@@ -1,0 +1,17 @@
+System: ExpeditionSystem
+	Inherit: BaseSystem
+	Frequency: 0
+
+	//RS - Scaling
+	MakeStar(Temperature = 4000:12000, Radius = 650:850)
+	ExpandSystem(1850:2850)
+
+	AddQuality(200)
+
+	Repeat(4:6)
+		MakePlanet()
+
+	Repeat(2:5)
+		SpawnRandomRemnants(50, 0.3:0.6, 4)
+
+	AddRegionStatus(RemnantBlockedColonization)

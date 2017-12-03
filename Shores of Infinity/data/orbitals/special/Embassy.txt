@@ -1,0 +1,33 @@
+Module: Embassy
+	Name: #ORB_EMBASSY
+	Blurb: #ORB_EMBASSY_BLURB
+	Description: #ORB_EMBASSY_DESC
+	
+	Icon: GuiOrbitalIcons::15
+	Distant Icon: OrbitalIcons::15
+	Model: CommerceStation
+	Material: GenericPBR_CommerceStation
+
+	Size: 7
+
+	Core: True
+	Standalone: True
+
+	Health: 6000
+	Armor: 4000
+
+	Build Cost: 500
+	Maintenance: 200
+	Labor Cost: 15
+
+	RequireTrait(Pacifists)
+
+	AddHealthEmpireAttribute(OutpostBoost, 10000)
+
+	GiveTrade()
+	GlobalTradeNode()
+
+	TriggerPeriodic(RandomTrigger(0.05, GainRandomInfluenceCards(1)))
+	AddInfluenceStake(2)
+	OnKillSpreadLeverageToFriendlies(Quality Factor = 5.0)
+	SpawnFreighters(Rate = 2, Status = Envoy, Name = Envoy, Set Origin Empire = True, Visit Hostile = True)

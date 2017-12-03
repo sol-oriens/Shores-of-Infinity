@@ -1,0 +1,26 @@
+Site: Granary
+	Name: #SITE_P_ANCIENT_RUINS
+	Description: #SITE_NAR_ANCIENT_RUINS
+
+	State:
+		Narrative: #SITE_NAR_GRANARY
+
+		Sprite: Warehouse
+
+		Choice: Use
+		Choice: Recover
+
+	Option: Use
+		Icon: ResourceIcons::3
+		Description: #SITE_GRANARY_USE
+
+		AddPlanetResource(Grain)
+
+	Option: Recover
+	Icon: CardCategoryIcons::1
+	Description: #SITE_GRANARY_RECOVER
+
+		Result: 60%
+			GainInfluenceCard(Harvest)
+		Result: 40%
+			SendMessage(#SITE_GRANARY_RECOVER_FAIL)

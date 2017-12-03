@@ -1,0 +1,18 @@
+Technology: PiercingDrones
+	Name: #R_SYS_PIERCING_DRONES
+	Description: #R_SYS_PIERCING_DRONES_DESC
+
+	Icon: HexagonSubsystems::9
+	Color: #d3de07
+
+	Category: Progenitor
+	Class: Unlock
+
+	Point Cost: 1500
+	Time Cost: 180
+
+	RequireUnlockTag(ProgenitorTech)
+
+	AutoUnlockOnUnlockedTag(PiercingDrones)
+	UnlockSubsystem(PiercingDrones)
+	ModAttribute(ProgenitorTechProgress, Add, 15)

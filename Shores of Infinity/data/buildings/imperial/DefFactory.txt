@@ -1,0 +1,20 @@
+Building: DefenseFactory
+	Name: #B_DEFENSEFACTORY
+	Description: #B_DEFENSEFACTORY_DESC
+	
+	Sprite: lvl1d
+
+	Category: Military
+
+	Size: 2x2
+
+	Base Cost: 300
+	Tile Cost: 50
+	Base Maintenance: 150
+	Tile Maintenance: 100
+	Build Time: 250
+
+	RequireNotTrait(Ancient)
+
+	AddResource(Defense, 2)
+	AddFleetCommand(128)

@@ -1,0 +1,31 @@
+Site: GoldVein
+	Name: #SITE_P_RESOURCE_DEPOSITS
+	Description: #SITE_NAR_RESOURCE_DEPOSITS
+
+	State:
+		Narrative: #SITE_NAR_GOLD_VEIN
+
+		Sprite: ResourceIcons::30
+
+		Choice: Mine
+
+	Option: Mine
+		Icon: ResourceIcon::6
+		Description: #SITE_GOLD_VEIN_DIG
+
+		Result: 25%
+			SendMessage(#SITE_GOLD_VEIN_DIG_FAIL)
+
+		Result: 30%
+			SendMessage(#SITE_GOLD_VEIN_DIG_POOR:150)
+
+			AddMoney(150)
+
+		Result: 20%
+			SendMessage(#SITE_GOLD_VEIN_DIG_POOR:250)
+
+			AddMoney(250)
+
+		Result: 25%
+			SendMessage(#SITE_GOLD_VEIN_DIG_RICH:1)
+			AddPressure(Money, +1)

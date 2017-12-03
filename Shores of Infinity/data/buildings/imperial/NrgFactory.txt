@@ -1,0 +1,28 @@
+Building: NrgFactory
+	Name: #BLD_NRG_FACTORY
+	Description: #BLD_NRG_FACTORY_DESC
+	
+	Sprite: NrgFactory
+
+	Category: Production
+	Maintenance Affinity: Oceanic
+
+	Size: 3x3
+
+	Base Cost: 110
+	Tile Cost: 10
+	Base Maintenance: 50
+	Tile Maintenance: 10
+
+	Build Time: 300
+
+	ConsumeResearch(50)
+
+	RequireNotStatus(Ringworld)
+	RequireNotStatus(ArtificialPlanetoid)
+	RequireNotTrait(Ancient)
+
+	AddPressure(Energy, 1)
+	AddPressure(Money, 1)
+	IfNative(NaturalGas, ImproveNativeResourcePressure(1))
+	IfNative(Oil, ImproveNativeResourcePressure(1))

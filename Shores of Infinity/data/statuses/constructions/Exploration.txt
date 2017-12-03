@@ -1,0 +1,9 @@
+Status: Exploring
+	Collapses: True
+	Visible To: Nobody
+
+Status: ExploredPlanet
+	Name: #STATUS_EXPLORED_PLANET
+  Description: #STATUS_EXPLORED_PLANET_DESC
+	Visible To: Owner
+  Icon: PlanetType::2

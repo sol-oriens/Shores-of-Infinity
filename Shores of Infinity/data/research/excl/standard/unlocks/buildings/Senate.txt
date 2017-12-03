@@ -1,0 +1,35 @@
+Technology: Senate
+	Name: #R_BLD_SENATE_NAME
+	Description: #R_BLD_SENATE_DESC
+
+	Icon: PoliticalStrengthIcon
+	Color: #00f3ff
+
+	Category: Buildings
+	Class: Unlock
+
+	Point Cost: 1000
+	Time Cost: 100
+
+	SecondaryMoneyCost(1500)
+
+	SkipOnUnlockedTag(Senate)
+	UnlockTag(Senate)
+	ModAttribute(ProgenitorTechProgress, Add, 1)
+
+Technology: NylliSenate
+	Name: #R_BLD_SENATE_NAME
+	Description: #R_ORB_SENATE_DESC
+
+	Icon: PoliticalStrengthIcon
+	Color: #00f3ff
+	
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+
+	Point Cost: 1000
+	Time Cost: 100
+
+	SecondaryMoneyCost(1500)
+
+	SkipOnUnlockedTag(NylliSenate)
+	UnlockTag(NylliSenate)

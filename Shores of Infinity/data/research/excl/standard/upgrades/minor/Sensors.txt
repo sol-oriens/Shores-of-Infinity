@@ -1,0 +1,33 @@
+Technology: Sensors
+	Name: #R_IMP_SENSORS
+	Blurb: #R_IMP_SENSORS_BLURB:10%
+	Description: #R_IMP_SENSORS_DESC:10%
+
+	Icon: techPhaseHarmonics * #80ffea
+	Color: #80ffea
+
+	Category: Minor Upgrades
+	Class: Boost
+
+	Point Cost: 500
+	Time Cost: 60
+
+	AddModifier( tag/Sensor::SensorFactor(1.1) )
+	ModAttribute(StaticSensorFactor, Multiply, 1.1)
+
+Technology: Sensors2
+	Name: #R_IMP_SENSORS2
+	Blurb: #R_IMP_SENSORS_BLURB:20%
+	Description: #R_IMP_SENSORS_DESC:20%
+
+	Icon: techPhaseContainment * #80ffea
+	Color: #80ffea
+
+	Category: Medium Upgrades
+	Class: Upgrade
+
+	Point Cost: 700
+	Time Cost: 80
+
+	AddModifier( tag/Sensor::SensorFactor(1.2) )
+	ModAttribute(StaticSensorFactor, Multiply, 1.2)

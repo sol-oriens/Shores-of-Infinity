@@ -1,0 +1,260 @@
+ELECTRONICS: Semiconductors
+PARADISE_NAME: Tropical Paradise
+RESOURCE_INTEL: Intelligence Hub
+TECHNOFARM_NAME: Technofarm
+RESOURCE_SHIPYARD: Ancient Shipyard
+RESOURCE_RESEARCH: Research Center
+RESOURCE_HUBWORLD: Ancient Hubworld
+LOCAL_ASTEROID_FIELD_DESC: <<
+	Civilian labor generation is increased by 50%. Also adds [levels=$1;#ffb4b6]0/12/14/16/18/20/22[/levels] Pressure Capacity depending on planet level.
+
+	[color=#ff7070][b]Cannot be exported.[/b][/color]
+>>
+RESOURCE_HUBWORLD_BLURB: <<
+	Generates [levels=$1;#ffb4b6]1/2/3/4/5/6/7[/levels] pressure of every kind.
+	Provides various buffs as it levels up, culminating in access to the Progenitor tech tree at level 6. Cannot be exported.
+>>
+RESOURCE_HUBWORLD_DESC: <<
+	A sort of galactic hub, this planet's immense surface is littered with all sorts of ancient technology; indeed, considering its advanced defensive fleet, this world may have been home to the ancient race that built the automated warships known as the 'Remnants'.
+
+	Exploring the ruins adds [levels=$1;#ffb4b6]1/2/3/4/5/6/7[/levels] pressure of every kind, based on the planet's level.
+
+	An advanced defense coordination system allows the planet to support an additional 1024 support ships and act as a Supply Depot once reactivated at level 1.
+
+	A unique wormhole generator on the planet's surface and an incredibly advanced planetary fling beacon allow the planet to tie into the empire's gate network as well as send fleets out into any location in the galaxy at incredible speeds once reactivated at level 2. Furthermore, the planet's systems act as a jump beacon, allowing jumpdrives to safely reach it from any distance.
+
+	A series of shield projectors in the upper atmosphere allows the planet to act as a Power Transmitter, while the wormhole generator is repaired and opened for civilian use, allowing the planet to trade with any other gate or Commerce Station in the empire at level 3.
+
+	At level 4, the planet's shield projectors are restored to full capacity, allowing it to protect all other planets in the system from loyalty loss.
+
+	The wormhole generator is brought to full capacity at level 5, allowing any of the empire's fleets in the galaxy to be instantly transported to the Hubworld.
+
+	At level 6, the ancient archives on the planet are brought back online, unlocking access to the Progenitor tech tree for as long as the archives are active.
+>>
+
+
+QUARTZ_BLURB: <<
+	Gain [levels=$1;#ffb4b6]10/25/50/80/120/200/300[/levels] bonus stored labor per artifact activated.
+>>
+QUARTZ_DESC: <<
+	Every time you activate an artifact, this planet gains [levels=$1;#ffb4b6]10/25/50/80/120/200/300[/levels] stored labor, provided it has enough labor storage to hold it.
+
+	This planet has [levels=$1;#ffb4b6]10/110/210/310/410/510/610[/levels] bonus labor storage.
+
+	[i][color=#aaa]This resource is a scalable resource and cannot be exported or used to level up. Its bonuses depend on the level of the planet.[/color][/i]
+>>
+PHOSPHATE_BLURB: <<
+	Increases fleet strength in allied systems by [levels=$1;#ffb4b6]5%/10%/15%/25%/40%/60%/100%[/levels].
+>>
+PHOSPHATE_DESC: <<
+	Fleets fighting in any systems you control gain [levels=$1;#ffb4b6]5%/10%/15%/25%/40%/60%/100%[/levels] extra strength.
+
+	[i][color=#aaa]This resource is a scalable resource and cannot be exported or used to level up. Its bonuses depend on the level of the planet.[/color][/i]
+>>
+SULPHATE: Sulphate
+SULPHATE_BLURB: <<
+	Increases fleet strength outside owned systems by [levels=$1;#ffb4b6]5%/10%/15%/25%/40%/60%/100%[/levels].
+>>
+SULPHATE_DESC: <<
+	Increases fleet strength outside owned systems by [levels=$1;#ffb4b6]5%/10%/15%/25%/40%/60%/100%[/levels].
+
+	[i][color=#aaa]This resource is a scalable resource and cannot be exported or used to level up. Its bonuses depend on the level of the planet.[/color][/i]
+>>
+RAHTA_SULPHATE: Sulphate Traces
+RAHTA_SULPHATE_BLURB: <<
+	Increases fleet strength outside owned systems by [levels=$1;#ffb4b6]2.5%/5%/7.5%/12.5%/20%/30%/50%[/levels]. Unique.
+>>
+RAHTA_SULPHATE_DESC: <<
+	Sulphate can be located on this planet in low quantities, barely sufficient for industrial usage. This resource is half as effective as an ordinary Sulphate.
+
+	Increases fleet strength outside owned systems by [levels=$1;#ffb4b6]2.5%/5%/7.5%/12.5%/20%/30%/50%[/levels].
+
+	[i][color=#aaa]This resource is a scalable resource and cannot be exported or used to level up. Its bonuses depend on the level of the planet.[/color][/i]
+>>
+FTL_CRYSTALS_BLURB: <<
+	Produces [levels=$1;#00c0ff]0.5/1/1.5/2/3/5/10[/levels] [img=ResourceIcons::22;20/] FTL/s.
+	Gives special effects at [b]levels 4 and 5[/b].
+>>
+FTL_CRYSTALS_DESC: <<
+	Produces [levels=$1;#00c0ff]0.5/1/1.5/2/3/5/10[/levels] [img=ResourceIcons::22;20/] FTL per second.
+
+	[b]If this planet is Level 4 or higher:[/b]
+	[offset=30]Grants vision over all fleets currently in FTL anywhere.[/offset]
+
+	[b]If this planet is Level 5 or higher:[/b]
+	[offset=30]All FTL jumps leaving from this system are free.[/offset]
+
+	[i][color=#aaa]This resource is a scalable resource and cannot be exported or used to level up. Its bonuses depend on the level of the planet.[/color][/i]
+>>
+CYLLIUM_DESC: <<
+	Energy generation on this planet is increased by [levels=$1;#ffb4b6]10%/20%/30%/40%/50%/60%/70%[/levels].
+
+	Generates a new random artifact in the system every 2 minutes. Up to [levels=$1;#ffb4b6]1/2/3/5/8/15/30[/levels] artifacts will remain in the system, older artifacts will expire.
+
+	[b]If this planet is Level 4 or higher:[/b]
+	[offset=30]Artifacts in this system are 25% cheaper to activate.[/offset]
+
+	[b]If this planet is Level 6:[/b]
+	[offset=30]Artifact generation rate is doubled.[/offset]
+
+	[i][color=#aaa]This resource is a scalable resource and cannot be exported or used to level up. Its bonuses depend on the level of the planet.[/color][/i]
+>>
+ALLONDIUM_DESC: <<
+	Influence generation on this planet is increased by [levels=$1;#ffb4b6]10%/20%/30%/40%/50%/60%/70%[/levels].
+
+	The cost of purchasing diplomacy cards further into the stack is reduced by up to [levels=$1;#ffb4b6]0/0/1/1/2/2/3[/levels] influence.
+
+	[b]If this planet is Level 4 or higher:[/b]
+	[offset=30]This planet gains abilities to purchase 'Name Flagship' or 'Annex Planet' cards at will.[/offset]
+
+	[b]If this planet is Level 5 or higher:[/b]
+	[offset=30]The cost of playing cards into a vote is reduced by up to 3 influence.[/offset]
+
+	[b]If this planet is Level 6:[/b]
+	[offset=30]Starting a vote no longer costs any Influence.[/offset]
+
+	[i][color=#aaa]This resource is a scalable resource and cannot be exported or used to level up. Its bonuses depend on the level of the planet.[/color][/i]
+>>
+PLAINS_DESC: <<
+	The planet has a massive surface.
+
+	Tile development speed is increased by [levels=$1;#ffb4b6]100%/150%/200%/250%/300%/350%/400%[/levels].
+
+	The total maintenance cost of buildings on this planet is reduced by up to [levels=$1;#d1cb6a]§50k/§150k/§300k/§500k/§750k/§1.1M/§2M[/levels].
+>>
+RINGWORLD_DESC: <<
+	An enormous ring constructed around a system's star, with habitable space on the inner surface of the ring, facing the star.
+
+	Ringworlds have [levels=$1;#ffb4b6]+0/+10/+20/+30/+40/+50/+60[/levels] increased maximum population.
+
+	For each resource type, if the ringworld is receiving any pressure at all for that resource, it gains [levels=$1;#ffb4b6]2/4/6/8/10/12/14[/levels] extra pressure of that resource.
+
+	[img=ResourceIconsSmall::11;22;#91692c][b][color=#91692c]Requires extremely large amounts of Ore mined from asteroids.[/color][/b][/img]
+>>
+MARENIUM_DESC: <<|
+	[b]Unique[/b]. Unlocks the [b]Marenium Reactor[/b] to provide power on ships.
+
+	Ships using marenium reactors gain [levels=$1;#ff8000]5%/10%/15%/20%/25%/30%/40%[/levels] extra combat strength.
+
+	Ships using marenium reactors gain [levels=$1;#ff8000]0.1/0.2/0.4/0.7/1.5/4.0/7.0[/levels] extra acceleration.
+
+	If this planet is lost, any ships using marenium reactors you have will instead have their combat strength significantly reduced.
+>>
+R_SPACEFERNS_BLURB: <<
+	[font=Small]Reduces engine maintenance by [levels=$1;#ffb4b6]5% / 10% / 25% / 50% / 75% / 90% / 100%[/levels]. Gains various pressures per level.[/font]
+>>
+R_SPACEFERNS_DESC: <<|
+	The omnivorous ferns that have evolved to cover the entire surface of this planet have a myriad of useful and interesting properties. Aside from their stems serving as a delicacy for several species, they also emit an extremely potent gaseous fuel as a byproduct of their efficient metabolism.
+
+	This planet only requires large quantities of food and water to level up.
+
+	Holding this planet reduces the maintenance cost of all the engines on your ships by [levels=$1;#ffb4b6]5%/10%/25%/50%/75%/90%/100%[/levels].
+
+	The planet gains various extra pressure as it is leveled; gaining 2 Energy pressure at level 1, 3 Money pressure at level 2, 4 Influence pressure at level 3, 5 Energy pressure at level 4, 6 Influence pressure at level 5, and 7 Money pressure at level 6.
+>>
+
+RESOURCE_SHIPYARD_BLURB: <<
+	Adds 16 Labor generation. Can upgrade fleets, granting them +40% combat effectiveness.
+	Cannot be exported.
+>>
+RESOURCE_SHIPYARD_DESC: <<
+	An ancient shipyard of immense scale. While its purpose is unknown, you can repurpose its technology to upgrade your own ships' systems and build new ships.
+
+	Adds 16 Labor generation. Can upgrade fleets, granting them +40% combat effectiveness. Cannot be exported.
+>>
+RESOURCE_INTEL_BLURB: <<
+	Provides various intelligence-related effects.
+	Cannot be exported.
+>>
+RESOURCE_INTEL_DESC: <<
+	Abandoned ancient facilities that were designed to look over an entire empire. Gives full vision of adjacent systems. Generates Intelligence cards against empires in adjacent systems. Grants the 'Telescope' ability.
+
+	Cannot be exported.
+>>
+RESOURCE_RESEARCH_BLURB: <<
+	Converts Labor and Energy into Research. Civilian research generation on the planet is increased by 20%.
+	Cannot be exported.
+>>
+RESOURCE_RESEARCH_DESC: <<
+	A massive ancient research facility. Converts Labor and Energy into Research. Civilian research on the planet is increased by 20%.
+
+	Cannot be exported.
+>>
+
+PARADISE_BLURB: <<
+	+100% population growth. +10 maximum population. +5 bonus to planet loyalty.
+	-50% to civilian Labor, Research, Defense and Energy generation. Cannot be exported.
+>>
+PARADISE_DESC: <<
+	A carefree, peaceful planet, this world attracts many people, some simply for holidays, others as permanent residents.
+
+	+100% population growth. +10 maximum population. +5 bonus to planet loyalty.
+
+	-50% to civilian Labor, Research, Defense or Energy generation on this planet. Cannot be exported.
+>>
+TECHNOFARM_BLURB: <<
+	Generates a Cultivation card every 6 minutes. Increases population growth by 50%. Does not require a third [img=ResourceClassIcons::3;20/] Food resource to reach level 3.
+	Cannot be exported.
+>>
+TECHNOFARM_DESC: <<
+	A huge laboratory dedicated to the creation, improvement and adaptation of new plant types to any number of environments. The facility's massive capabilities can also be used to create large quantities of food for local populations.
+
+	Once operational, the facility's food production attracts settlers, increasing population growth by 50%, and acts as a free Megafarm. Furthermore, its more scientific applications generate a Cultivation card every 6 minutes.
+
+	Cannot be exported.
+>>
+RAREGASES: Rare Gases
+RAREGASES_BLURB: <<
+	[font=Small]Increases all ship engine thrust by a cumulative bonus of [levels=$1;#ffb4b6]0%/2.5%/5%/15%/30%/60%/100%[/levels]. Gains various pressures per level.[/font]
+	 Cannot be exported.
+>>
+RAREGASES_DESC: <<
+	The atmosphere of gas giants contains a multitude of gas isotopes that only exist in small quantities elsewhere in the universe. Due to their nature, gas giants are very difficult to colonize and using their many moons as bases is critical. However, the exploitation of the gases provides a lot of energy and other materials as well as extremely potent chemicals to enhance propulsion systems.
+
+	[b]If this planet is Level 1 or higher:[/b]
+	[offset=30]The planet gains 2 Energy pressure per Level.[/offset]
+	[offset=30]Ships gain 2.5% extra acceleration.[/offset]
+
+	[b]If this planet is Level 2 or higher:[/b]
+	[offset=30]The planet gains 2 Defense pressure per Level starting from Level 2.[/offset]
+	[offset=30]Ships gain 5% extra acceleration.[/offset]
+
+	[b]If this planet is Level 3 or higher:[/b]
+	[offset=30]The planet gains 2 Research pressure per Level starting from Level 3.[/offset]
+	[offset=30]Ships gain 15% extra acceleration.[/offset]
+
+	[b]If this planet is Level 4 or higher:[/b]
+	[offset=30]The planet gains 2 Influence pressure per Level starting from Level 4.[/offset]
+	[offset=30]Ships gain 30% extra acceleration.[/offset]
+
+	[b]If this planet is Level 5 or higher:[/b]
+	[offset=30]The planet gains 2 Money pressure per Level starting from Level 5.[/offset]
+	[offset=30]Ships gain 60% extra acceleration.[/offset]
+
+	[b]If this planet is Level 6:[/b]
+	[offset=30]Ships gain 100% extra acceleration.[/offset]
+
+	[i][color=#aaa]This resource is a scalable resource and cannot be exported or used to level up. Its bonuses depend on the level of the planet.[/color][/i]
+>>
+R_ORE_RATE_MINE: Ore
+R_ORE_RATE_MINE_DESC: <<
+	Generates 10 Ore per minute. Can be exported to other planets.
+>>
+ASTEROID_FTL: FTL Shards
+ASTEROID_FTL_DESC: <<|
+	Generates 0.5 FTL per second for a limited time and permanently adds 500 FTL storage.
+
+	Does not need to be exported.
+>>
+ASTEROID_FTL_PERMANENT: FTL Crystals
+ASTEROID_FTL_PERMANENT_DESC: <<|
+	Permanently generates 1 FTL per second and adds 250 FTL storage.
+
+	Does not need to be exported.
+>>
+C_HYPERCORE: Hypercore
+C_HYPERCORE_DESC: <<
+	The energy produced by colliding hyperfield particles into one another, stored in a specialized container. Its quasi-non-existence in subspace means it is unusable as a conventional energy source, but it has other very interesting applications.
+>>
+R_STRIP_TRANSMUTER: Transmuted Ore
+R_STRIP_TRANSMUTER_DESC: Generates 7.5 Base Materials and 45 Ore per minute. Can be exported to other planets.

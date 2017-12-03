@@ -1,0 +1,21 @@
+Technology: SolarPanel
+	Name: #R_SYS_SOLARPANEL
+	Description: #R_SYS_SOLARPANEL_DESC
+
+	Icon: SolarPanel
+	Color: #64fff9
+
+	DLC: Heralds
+	DLC Replace: DLCConnector
+
+	Class: Unlock
+	Category: Control, Power & Supply
+
+	Point Cost: 600
+	Time Cost: 120
+
+	SecondaryInfluenceCost(15)
+
+	SkipOnUnlockedSubsystem(SolarPanel)
+	UnlockSubsystem(SolarPanel)
+	ModAttribute(ProgenitorTechProgress, Add, 1)

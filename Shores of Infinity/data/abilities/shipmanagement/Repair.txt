@@ -1,0 +1,8 @@
+Ability: Repair
+	Name: #ABL_REPAIR
+	Description: #ABL_REPAIR_DESC
+	Icon: techConstruction*#00ff00
+	Energy Cost: 400
+	ConsumeMoney(600)
+	ShowMoneyValue(600)
+	ConsumeStatus(Damaged, Hide = True)
