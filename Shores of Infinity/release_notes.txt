@@ -44,7 +44,7 @@ Players always have full vision on their starting systems.
 
 [*] Subsystems
 
-- Removed the 90% maintenance cost reduction for Miner Hull.
+- Removed the maintenance cost reduction and shield capacity bonus for Miner Hull. Reduced the cargo storage bonus to balance the introduction of a new type of hull.
 - Re-added Muon Cannon and rebalanced it accordingly. Now renamed to Muon Projector.
 - Muon Cannon Battery renamed to Muon Projector Battery.
 - Re-added Carpet Bomb with supply cost doubled.
@@ -142,6 +142,7 @@ frequency options on purpose.
 
 - Orbital Command and Orbital Command 2 now also grant 64 and 128 additional support capacity, respectively, to Starports.
 - Added Scanning and Scanning 2 nodes. Increases all sensor ranges by 10% and 20%, respectively.
+- Added the Dedicated Hauling Architecture node. Unlocks Hauler Hull.
 
 [*] Resources
 
@@ -174,6 +175,8 @@ frequency options on purpose.
 
 [*] Subsystems
 
+- Added Hauler Hull. Increases cargo storage by 25%. Cargo storage must fill at least 50% of the ship. Reduces supply capacity by 90%. Cannot have weapons or support command.
+- Miner Hull no longer provides a maintenance reduction bonus nor shield capacity bonus and its cargo storage bonus is reduced to 12.5% (down from 25%).
 - Added Sensor Dish. Increases sight range by a small amount. Adding more than one dish doesn't increase sight range more and only gives redundancy benefits.
 - Added Phasing Sensor. Increases sight range by a moderate amount, decreasing as the subsystem's size increases. Requires Power. Requires increasingly high amounts of Power and Control as the subsystem's size increases. Sinew halves the Control requirements.
 - Added Tachyon Sensor back. Increases sight range by a high amount, decreasing as the subsystem's size increases. Requires an active Tachyon Uplink orbital to function. Requires increasingly high amounts of Control as the subsystem's size increases. Sinew halves the Control requirements.

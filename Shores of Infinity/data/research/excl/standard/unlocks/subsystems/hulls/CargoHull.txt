@@ -1,0 +1,18 @@
+Technology: CargoHull
+	Name: #R_CARGO_HULL
+	Description: #R_CARGO_HULL_DESC
+
+	Icon: TechIcons::2
+	Color: #cc6a3a
+
+	Category: Hulls
+	Class: Unlock
+
+	Point Cost: 600
+	Time Cost: 120
+
+	SecondaryMoneyCost(1000)
+
+	SkipOnUnlockedSubsystem(CargoHull)
+	UnlockSubsystem(CargoHull)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)

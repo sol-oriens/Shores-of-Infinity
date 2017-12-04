@@ -21,6 +21,7 @@ ERROR_MIN_SIZE: $1 has a minimum size of $2.
 ERROR_STEALTH: Stealth ships cannot use hyperdrives.
 ERROR_PLANETDEVOURER_NOLASER: Planet Devourers cannot be placed on a ship with a Mining Laser or another Planet Devourer.
 ERROR_PLANETDEVOURER_HARVESTERONLY: Planet Devourers can only be placed on a Harvester.
+ERROR_CARGO_HULL: Cargo Storage must fill at least $1% of the ship.
 ERROR_SUPERLASER: Superlaser must be at least size 200. Add more hexes to the superlaser or increase the ship's size.
 ERROR_RESEARCHLAB: Research Lab must be at least size 15. Add more hexes to the lab or increase the station's size.
 ERROR_FTLJAMMER: The FTL Jammer must be at least size 100. Increase the jammer's hex count or the station's size.
@@ -368,16 +369,24 @@ S_BATTERY_NAME: Batteries
 S_BOARDING_PARTY: Boarding Parties
 S_GUARDIANHULL: Guardian Hull
 S_GUARDIANHULL_DESC: Dummy subsystem only used by the Remnant Guardian. Cannot be boarded.
-S_HAULER_HULL: Hauler Hull
+S_CARGO_HULL: Hauler Hull
 S_MINER_HULL: Miner Hull
 S_PROGENITOR_ARMOR: Progenitor Armor
 
-S_MINER_HULL_DESC: <<
-	A specialized hull designed for the extraction and transportation of large quantities of ore from asteroids.
+S_CARGO_HULL_DESC: <<
+	A specialized hull designed for the transportation of large quantities of cargo.
 
-	[img=Plus]Increases shield capacity by 50%.[/img]
-	[img=Plus]Reduces supply capacity by 90%.[/img]
-	[img=Plus]Mining rate and cargo storage are increased by 25%.[/img]
+	[img=Plus]Increases cargo storage by 25%.[/img]
+	[img=Minus]Cargo storage must fill at least 50% of the ship.[/img]
+	[img=Minus]Reduces supply capacity by 90%.[/img]
+	[img=Minus]Cannot have weapons or support command.[/img]
+>>
+S_MINER_HULL_DESC: <<
+	A hull designed for the extraction of ore from asteroids, with specialized cargo bays and mounts for mining lasers.
+
+	[img=Plus]Increases mining rate by 25%.[/img]
+	[img=Plus]Increases cargo storage by 12.5%.[/img]
+	[img=Minus]Reduces supply capacity by 90%.[/img]
 	[img=Minus]Cannot have weapons or support command.[/img]
 >>
 S_JUGGERNAUT_HULL: Bombship Hull

@@ -1,6 +1,6 @@
-Subsystem: MinerHull
-	Name: #S_MINER_HULL
-	Description: #S_MINER_HULL_DESC
+Subsystem: CargoHull
+	Name: #S_CARGO_HULL
+	Description: #S_CARGO_HULL_DESC
 
 	Tags: Applied:Hull, Category:Hulls, NoCore
 	Hull: Flagship
@@ -8,14 +8,13 @@ Subsystem: MinerHull
 	BaseColor: #7000cc
 
 	AddShipModifier: SupplyCapacityFactor(0.1)
-	AddShipModifier: MiningRateFactor(1.25)
-	AddShipModifier: CargoStorageFactor(1.125)
+	AddShipModifier: CargoStorageFactor(1.25)
 
 	Assert: TagCount.Boarders == 0
 		Message: #ERROR_CANNOT_BOARD
 
 	Module: Default
-		Sprite: HullSubsystems::6
+		Sprite: TechIcons::2
 		DrawMode: 3
 
 	Assert: TagCount.Weapon == 0
@@ -23,3 +22,6 @@ Subsystem: MinerHull
 
 	Assert: Sum.SupportCapacity == 0
 		Message: #ERROR_CANNOT_HAVE_SUPPORT
+
+	Assert: Sum.CargoStorage >= 0.5 * Ship.HexSize * 4 * 1.25 * (ShipTotalHexes - Ship.ExternalHexes)
+		Message: #ERROR_CARGO_HULL:50

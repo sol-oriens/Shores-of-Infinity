@@ -359,9 +359,17 @@ R_ORB_SENATE_DESC: <<
 
 	Unlocks the Centralized Coordination Complex orbital.
 >>
+R_CARGO_HULL: Dedicated Hauling Architecture
+R_CARGO_HULL_DESC: <<
+[color=#aaa][i]Hulls specifically designed for transport, maximizing usable space, allow more cargo to be loaded at once.[/i][/color]
+
+Unlocks the Hauler Hull subsystem for use on flagships.
+
+[i][bbloc=#S_CARGO_HULL_DESC/][/i]
+>>
 R_MINER_HULL: Dedicated Mining Architecture
 R_MINER_HULL_DESC: <<
-	[color=#aaa][i]Streamlining various support craft, such as miners, allows them to be more effective.[/i][/color]
+	[color=#aaa][i]Specialized mounts for mining lasers increase mining efficiency.[/i][/color]
 
 	Unlocks the Miner Hull subsystem for use on flagships.
 

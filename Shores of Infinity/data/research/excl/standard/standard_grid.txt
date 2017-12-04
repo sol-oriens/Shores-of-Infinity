@@ -53,7 +53,7 @@ Grid: StandardResearch
 	SuperstructureHull: 2,-6
 	FireRate: -3,7
 	FTLStorage: -5,13
-	MinerHull: 1,-6
+	CargoHull: 1,-6
 	FTLHurdle: -5,15
 	InfluenceHurdle: -6,0
 	SupportCap: -7,0
@@ -387,3 +387,4 @@ Grid: StandardResearch
 	PlanetSupport2: -13,0
 	InfiniteSupport: -13,1
 	Senate: -12,-1
+	MinerHull: 1,-5
