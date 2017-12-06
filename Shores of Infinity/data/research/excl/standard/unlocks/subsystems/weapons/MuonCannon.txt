@@ -13,7 +13,7 @@ Technology: MuonCannon
 
 	SecondaryInfluenceCost(12)
 
-	SkipOnUnlockedSubsystem(MuonBattery)
+	SkipOnUnlockedSubsystem(MuonCannon)
+	UnlockSubsystem(MuonCannon)
 	UnlockSubsystem(MuonBattery)
-	AddModifier(Railgun::SetMuonEnhanced(1))
 	ModAttribute(ProgenitorTechProgress, Add, 2.5)

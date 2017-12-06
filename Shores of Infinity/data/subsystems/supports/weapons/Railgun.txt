@@ -32,11 +32,6 @@ Subsystem: Railgun
 	Requires:
 		Command = 1
 
-	Modifier: AddMuonEnhancement(DamageBonus, SpreadMinus, PierceBonus)
-		Damage := Damage + DamageBonus
-		Spread := (0.0225 - SpreadMinus) / max(Range / 600, 1)
-		Pierce := Pierce + PierceBonus
-
 	Module: Default
 
 	Module: Core
@@ -50,6 +45,19 @@ Subsystem: Railgun
 		Hex.DamageResist := ShipSize / 21.0
 		Effect: DamageResist
 			Resist = Hex.DamageResist
+
+	Module: PiercingEnhancement
+		Sprite: Ammo * #449944
+		Name: S_PIERCING_ENHANCEMENT
+		Description: S_PIERCING_ENHANCEMENT_DESC
+		Damage := Damage * 1.1
+		Pierce := Pierce + 0.5
+		ExclusiveMod := ExclusiveMod + 1
+		Hex.BuildCost := 25 * Hex.BuildCost
+		Hex.LaborCost := 8 * Hex.LaborCost
+		Assert: ExclusiveMod < 2
+			Message: ERROR_EXCLUSIVE_MOD
+			Unique: True
 
 	Effector: Railgun
 		Range = Range

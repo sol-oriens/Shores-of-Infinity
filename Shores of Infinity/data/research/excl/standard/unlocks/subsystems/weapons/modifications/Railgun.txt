@@ -1,0 +1,33 @@
+Technology: KnockbackEnhancement
+	Name: #R_MOD_KNOCKBACK_ENHANCEMENT
+	Description: #R_MOD_KNOCKBACK_ENHANCEMENT_DESC
+
+	Icon: Ammo
+	Color: #238f59
+
+	Category: Weapon Modifications
+	Class: Unlock
+
+	Point Cost: 500
+	Time Cost: 90
+
+	SkipOnUnlockedModule(KnockbackEnhancement)
+	UnlockModule(KnockbackEnhancement)
+	ModAttribute(ProgenitorTechProgress, Add, 0.2)
+
+Technology: PiercingEnhancement
+	Name: #R_MOD_PIERCING_ENHANCEMENT
+	Description: #R_MOD_PIERCING_ENHANCEMENT_DESC
+
+	Icon: Ammo * #449944
+	Color: #449944
+
+	Category: Weapon Modifications
+	Class: Unlock
+
+	Point Cost: 500
+	Time Cost: 90
+
+	SkipOnUnlockedModule(PiercingEnhancement)
+	UnlockModule(PiercingEnhancement)
+	ModAttribute(ProgenitorTechProgress, Add, 0.2)

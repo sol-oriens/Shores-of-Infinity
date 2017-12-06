@@ -89,6 +89,9 @@ R_CONNECTOR_DLC: <<
 R_KEY_EMERGENCY_SHIELDS_DESC: Doubles the duration of the shield regeneration buff provided by the "Emergency Supplies" subsystem.
 R_KEY_EMERGENCY_SHIELDS: Improved Plasma Harnessing
 
+R_KEY_RAILGUN_KNOCKBACK_DESC: <<
+	Doubles the effect of the High Impulse System on Railgun subsystems.
+>>
 
 R_SYS_ZPG_DESC: <<
 	[color=#aaa][i]Massive breakthroughs in quantum physics allow us to generate and contain an artificial black hole, drawing power from it. The device is fairly bulky, but the power generation is well worth it.[/i][/color]
@@ -110,9 +113,7 @@ R_ADV_SHIELD_DESC: <<
 >>
 R_SYS_MUON_CANNON: Muon Projectors
 R_SYS_MUON_CANNON_DESC: <<
-	[color=#aaa][i]Unlocks the Muon Projector Battery and Muon Projector subsystems.
-
-	Additionally, upgrades railguns with a low-grade muon projector, increasing their accuracy, armor penetration and damage.[/i][/color]
+	[color=#aaa][i]Unlocks the Muon Projector Battery and Muon Projector subsystems.[/i][/color]
 
 	[bbloc=#MUONBATTERY_DESC/]
 >>
@@ -455,6 +456,28 @@ R_SYS_PROGENITOR_SHRINE_DESC: <<
 	Unlocks the Shrine of the Gods for use on flagships.
 
 	[bbloc=#S_PROGENITOR_SHRINE_DESC/]
+>>
+
+****************************
+*** WEAPON MODIFICATIONS ***
+****************************
+
+R_MOD_KNOCKBACK_ENHANCEMENT: High Impulse System
+R_MOD_KNOCKBACK_ENHANCEMENT_DESC: <<
+	[color=#aaa][i]Size matters. Unlike most advertisements in the civilian sector, a size enlargement treatment applied to railgun cannons, along with improved projection capabilities, proves to be very effective and grants amazing stopping power, and even more, to connecting shots.[/i][/color]
+
+	Unlocks the High Impulse System weapon modification for use on flagships.
+
+	[bbloc=#S_KNOCKBACK_ENHANCEMENT_DESC/]
+>>
+
+R_MOD_PIERCING_ENHANCEMENT: Neutronium Re-chambering
+R_MOD_PIERCING_ENHANCEMENT_DESC: <<
+	[color=#aaa][i]The extraordinary density of neutronium is not only useful for armor: harder bullets pierce harder armor.[/i][/color]
+
+	Unlocks the Neutronium Re-chambering weapon modification for use on flagships and supports.
+
+	[bbloc=#S_PIERCING_ENHANCEMENT_DESC/]
 >>
 
 ************************************

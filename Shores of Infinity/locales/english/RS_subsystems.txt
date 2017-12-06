@@ -30,6 +30,8 @@ ERROR_DRONEWEAPON: Boring Drone Launcher is not large enough to hold any drones.
 ERROR_MUST_HAVE_SELFDESTRUCT: Bombship Hull must have a Self-Destruct Device.
 ERROR_SPECIFIC_SIZE: $1 must be exactly size $2.
 ERROR_CANNOT_BOARD: $1 cannot have boarding parties.
+ERROR_LAUNCHTUBE: Cannot have more than 6 tubes per launcher.
+ERROR_EXCLUSIVE_MOD: Cannot have more than 1 exclusive mod per weapon.
 
 // *********************************************************
 // ****************SUBSYSTEM STATS HERE!********************
@@ -69,6 +71,7 @@ S_REPAIR: Repair Rate
 STT_REPAIR: The amount of hitpoints the ship can repair per second while out of combat.
 S_REPAIR_COMBAT: In-Combat Repair Rate
 STT_REPAIR_COMBAT: The amount of hitpoints the ship can repair per second while in combat.
+S_IMPULSE_EFFECT: Impulse
 S_REGENPERSECOND: Regeneration Rate
 S_SENSORMULT: Sensor Multiplier
 S_SENSORPRIORITY: Sensor Priority
@@ -280,13 +283,31 @@ RAILBATTERY_DESC: <<
 	[img=MenuIcons::3;20]Railguns can accurately target orbitals or stations from significantly further away than they can attempt to hit a maneuverable target.  This is currently not shown on the range display.[/img]
 >>
 RAILGUN_DESC: <<
-	A magnetic cannon that fires relatively small projectiles at immense velocities.
+	A magnetic cannon that fires relatively small depleted uranium projectiles at immense velocities.
 
 	[img=Plus]High damage per hit.[/img]
+	[img=Plus]Armor piercing effect.[/img]
+	[img=Plus]Long range firing mode against stationary targets.[/img]
 	[img=Minus]Inaccurate projectiles.[/img]
 	[img=Minus]Limited turret firing arc.[/img]
 
 	[img=MenuIcons::3;20]Support-grade railguns do not have the sophisticated targeting computers needed to recalibrate for stationary targets - their range is always the same.[/img]
+>>
+S_KNOCKBACK_ENHANCEMENT: High Impulse System
+S_KNOCKBACK_ENHANCEMENT_DESC: <<
+	The combination of a larger caliber, enhanced magnetic induction and specially engineered ammunition looking to transmit momentum to the target rather than pierce its armor creates a knockback effect on impact.
+
+	[img=Plus]Knockbacks the target on impact.[/img]
+	[img=Minus]Nullifies all armor piercing effects.[/img]
+	[img=MenuIcons::3;20][template=subsys_ref;Railgun/] exclusive modification.[/img]
+>>
+S_PIERCING_ENHANCEMENT: Neutronium Re-chambering
+S_PIERCING_ENHANCEMENT_DESC: <<
+	Re-chambers the railgun to fire neutronium instead of standard depleted uranium ammunition, whose extreme density increases penetration power and damage.
+
+	[img=Plus]Increases piercing by 50% and damage by 10%.[/img]
+	[img=Minus]Very high build cost with significant labor cost.[/img]
+	[img=MenuIcons::3;20][template=subsys_ref;Railgun/] exclusive modification.[/img]
 >>
 MUONBATTERY_NAME: Muon Projector Battery
 MUON_CANNON_NAME: Muon Projector
@@ -349,7 +370,11 @@ MISSILELAUNCHER_DESC: <<
 	[img=Minus]Slow fire rate.[/img]
 	[img=Minus]Very high [b][color=#fefc61]supply cost[/color][/b].[/img]
 
-	[img=MenuIcons::3;20]Additional Launch Tubes can be added to missile launchers to increase burst damage at the cost of porportionately longer salvo reload times.[/img]
+	[img=MenuIcons::3;20]Additional Launch Tubes can be added to missile launchers to increase burst damage at the cost of proportionately longer salvo reload times.[/img]
+>>
+S_LAUNCHTUBE: Launch Tube
+S_LAUNCHTUBE_DESC: <<
+	Adds an additional launch tube to the launcher, increasing the amount of missiles fired per salvo.  This will increase reload time to match, and all missiles will be launched from the main core as a single salvo.
 >>
 
 S_HYPERLASER_DESC: <<
@@ -573,6 +598,7 @@ S_BOARDING_PARTY_DESC: <<
 S_SECURITY_STATION: Security Station
 S_SECURITY_STATION_DESC: <<
 	Defensive installations designed to prevent ship capture by boarding parties.
+>>
 
 S_LASER_DRIVE: Phased Array Laser Drive
 S_LASER_DRIVE_DESC: <<

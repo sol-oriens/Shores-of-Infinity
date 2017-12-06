@@ -55,6 +55,13 @@ GlobalStat: PlanetMiningRate
 // ******SUBSYSTEM-SPECIFIC STATS*******
 // *************************************
 
+SubsystemStat: ImpulsePower
+	Name: #S_IMPULSE_EFFECT
+	Icon: Ammo
+	Color: #aaaaaa
+
+	Variable: Impulse
+
 SubsystemStat: ProjResist
 	Name: #S_PROJRESIST
 	Icon: DesignationIcons::16
@@ -224,7 +231,7 @@ SubsystemStat: RepairFactor
 	Suffix: x
 
 	Variable: RepairFactor
-	
+
 SubsystemStat: LaserDrivePower
 	Name: #S_LASERDRIVEPOWER
 	Icon: Laser::0 * #91692c

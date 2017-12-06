@@ -26,19 +26,20 @@ Subsystem: MissileLauncher
 	Hex.Resistance := 0.2
 	Hex.Mass := HexSize
 
+	Requires:
+		Command = 1
+
 	Module: LaunchTube
 		DefaultUnlock: True
 		Sprite: WarheadTube * #78a8bf
-		Name: Launch Tube
-		Description: Adds an additional launch tube to the launcher, increasing the amount of missiles fired per salvo.  This will increase reload time to match, and all missiles will be launched from the main core as a single salvo.
+		Name: #S_LAUNCHTUBE
+		Description: #S_LAUNCHTUBE_DESC
 		PodSize := PodSize + 1
 		Hex.BuildCost := 2 * Hex.BuildCost
 		Hex.LaborCost := 5 * Hex.LaborCost
 		Assert: PodSize < 7
-			Message: Cannot have more than 6 tubes per launcher.
+			Message: #ERROR_LAUNCHTUBE
 			Unique: True
-	Requires:
-		Command = 1
 
 	Module: Default
 

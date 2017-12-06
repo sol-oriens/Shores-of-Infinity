@@ -96,7 +96,7 @@ Material: ArmorArt7
 	Texture: data/images/subsystems/armor7.png
 
 // *********************************************************
-// **********************WEAPONS**************************
+// **********************WEAPONS****************************
 // *********************************************************
 
 SpriteSheet: AdaptiveLaser
@@ -112,15 +112,23 @@ SpriteSheet: MatterDisruptor
 	Spacing: 2
 
 // *********************************************************
+// **********************MODS*******************************
+// *********************************************************
+
+Material: Ammo
+Inherit: RSSubsystem
+Texture: data/images/subsystems/ammo.png
+
+// *********************************************************
 // **********************SENSORS****************************
 // *********************************************************
-Material:SensorDish
+Material: SensorDish
 Inherit: RSSubsystem
 Texture: data/images/subsystems/sensordish.png
-Material:PhasingSensor
+Material: PhasingSensor
 Inherit: RSSubsystem
 Texture: data/images/subsystems/phasingsensor.png
-Material:TachyonSensor
+Material: TachyonSensor
 Inherit: RSSubsystem
 Texture: data/images/subsystems/tachyonsensor.png
 

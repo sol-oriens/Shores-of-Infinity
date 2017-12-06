@@ -22,22 +22,21 @@ Subsystem: RailgunBattery
 	Pierce := 1.0
 	SupplyCost := Size * 1.5
 	PowerUse := 2.5 * Size
-	Impulse := 0
+	ImpulseFlag := 0
+	ImpulseBonus := 0
+	Impulse := ImpulseFlag * ImpulseBonus * Size
+	ExclusiveMod := 0
 
 	Hex.HP := 27 * HexSize
 	Hex.Resistance := 0.4
 	Hex.Mass := HexSize
+
 	Modifier: AddRailgunKnockback(Amount)
-		Impulse := Impulse + Amount * Size
+		ImpulseBonus := ImpulseBonus + Amount
 
 	Requires:
 		Command = 1
 		Power = PowerUse
-
-	Modifier: AddMuonEnhancement(DamageBonus, SpreadMinus, PierceBonus)
-		Damage := Damage + DamageBonus
-		Spread := (0.030 - SpreadMinus) / max(Range / 600, 1)
-		Pierce := Pierce + PierceBonus
 
 	Module: Default
 
@@ -52,6 +51,33 @@ Subsystem: RailgunBattery
 		Hex.DamageResist := ShipSize / 48.0
 		Effect: DamageResist
 			Resist = Hex.DamageResist
+
+	Module: KnockbackEnhancement
+		Sprite: Ammo
+		Name: S_KNOCKBACK_ENHANCEMENT
+		Description: S_KNOCKBACK_ENHANCEMENT_DESC
+		Pierce := 0
+		ImpulseFlag := 1
+		ImpulseBonus := ImpulseBonus + 5
+		ExclusiveMod := ExclusiveMod + 1
+		Hex.BuildCost := 5 * Hex.BuildCost
+		Hex.LaborCost := 5 * Hex.LaborCost
+		Assert: ExclusiveMod < 2
+			Message: ERROR_EXCLUSIVE_MOD
+			Unique: True
+
+	Module: PiercingEnhancement
+		Sprite: Ammo * #449944
+		Name: S_PIERCING_ENHANCEMENT
+		Description: S_PIERCING_ENHANCEMENT_DESC
+		Damage := Damage * 1.1
+		Pierce := Pierce + 0.5
+		ExclusiveMod := ExclusiveMod + 1
+		Hex.BuildCost := 25 * Hex.BuildCost
+		Hex.LaborCost := 8 * Hex.LaborCost
+		Assert: ExclusiveMod < 2
+			Message: ERROR_EXCLUSIVE_MOD
+			Unique: True
 
 	Effector: AntiShipRailgunBattery
 		Range = Range

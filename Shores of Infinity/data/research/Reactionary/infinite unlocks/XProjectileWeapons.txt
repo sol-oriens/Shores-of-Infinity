@@ -16,8 +16,6 @@ Technology: XMuonCannon
 
 	SecondaryMoneyCost(1000)
 	RequireEmpireAttributeGTE(InfiniteProjTech, 4, #R_LIFESTYLE_REQ:Ballistics:4)
-	AddModifier(RailgunBattery::AddMuonEnhancement(0.75, 0.0135, 0.5))
-	AddModifier(Railgun::AddMuonEnhancement(0.75, 0.01, 0.5))
 	ModAttribute(ProgenitorTechProgress, Add, 2.5)
 
 Technology: XFlakBattery

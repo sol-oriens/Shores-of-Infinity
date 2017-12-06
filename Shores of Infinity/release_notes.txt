@@ -19,6 +19,8 @@ Specific sensor subsystems can be added to flagship	and station designs to furth
 Planets and orbitals also have sight range which can also be upgraded through research.
 Players always have full vision on their starting systems.
 
+*** This version introduces new weapon exclusive modifications, similar to generic modifiers, allowing to install weapon-specific modifiers granting special effects or changing certain parameters. Weapon modifications are (generally) mutually exclusive.
+
 ****************************************
 *** Changes to Rising Stars Features ***
 ****************************************
@@ -41,6 +43,7 @@ Players always have full vision on their starting systems.
 - The research grid has been replaced by a completely different one.
 - Rebalanced several nodes.
 - Re-added removed nodes.
+- Removed the bonus granted to railguns when researching muon projectors in favor of the new weapon modification feature.
 
 [*] Subsystems
 
@@ -182,10 +185,14 @@ frequency options on purpose.
 - Added Tachyon Sensor back. Increases sight range by a high amount, decreasing as the subsystem's size increases. Requires an active Tachyon Uplink orbital to function. Requires increasingly high amounts of Control as the subsystem's size increases. Sinew halves the Control requirements.
 - Added Phased Array Laser Drive. Allows station designs with the same functionalities as the orbital of the same name, with scaling.
 - Added Lightsail, a reflector panel allowing to use the momentum of photons as actual thrust. Does not need fuel, very low maintenance cost. Lightsails on the outside of the ship do not use up interior space. Thrust is not improved by research. Requires to be within range of an active laser propulsion beam to function a full efficiency, or a near a star to function at low efficiency.
+- Added High Impulse System, a railgun exclusive modification. Knockbacks the target on impact. Nullifies armor piercing.
+- Added Neutronium Re-chambering, a railgun exclusive modification. Increases piercing by 50% and damage by 10%. Very high build cost with significant labor cost.
 - Increased most weapon ranges by a factor of 4. Energy Bomb, Plasma Thrower, Pulse Bolt and Subspace Shredder ranges are unchanged. The Flak Battery range formula has been tweaked to keep a much more linear and slow progression relative to ship size.
 - Increased Planetary Cannon, Planetary Defense Grid and Ancient Gravitational Collapser ranges by a factor of 4.
 - Increased Fleet Computer raiding range bonus (and base raiding range) by a factor of 6.
 - Superstructure Hull now provides less build and labor cost reduction, but its ore cost is drastically reduced. Maintenance cost reduction is unchanged.
+- Added Laser Drive Power subsystem stat (for laser drives).
+- Added Impulse subsystem stat (for railguns).
 
 [*] Systems
 

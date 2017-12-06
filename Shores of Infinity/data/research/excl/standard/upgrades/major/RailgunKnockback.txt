@@ -11,7 +11,5 @@ Technology: KeyRailgunKnockback
 	Category: Special Upgrades
 	Class: BigUpgrade
 
-	AddModifier(tag/IsRailgun::SpreadFactor(0.5))
-	AddModifier(tag/IsRailgun::PierceFactor(0.0))
-	AddModifier(RailgunBattery::AddRailgunKnockback(30))
+	AddModifier(RailgunBattery::AddRailgunKnockback(5))
 	ReduceResearchPenalty(750)

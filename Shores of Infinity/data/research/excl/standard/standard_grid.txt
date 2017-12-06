@@ -120,23 +120,16 @@ Grid: StandardResearch
 	FactoryLabor: 3,-3
 	Bulkhead: 3,-2
 	AoERadius: 2,2
-	ArmorDR: 4,-3
-	ArmorHealth: 5,-3
 	Health: 0,-6
-	ArmorHealth: 4,-5
+	CompositeArmor: 4,-5
 	ArmorHealth: 4,-4
-	ArmorHealth2: 6,-6
+	NeutronArmor: 6,-6
 	Health: 3,-6
-	NeutronArmor: 5,-6
-	CompositeArmor: 5,-4
-	ArmorDR2: 5,-5
+	Health: 5,-6
 	FactoryLabor2: 5,-8
-	ArmorHealth: 6,-8
 	ArmorDR2: 7,-8
 	ArmorHealth: 3,-7
-	Health: 4,-7
-	ArmorHealth2: 6,-9
-	InfiniteHealth: 7,-10
+	ArmorHealth: 4,-7
 	BuildCost: 4,-12
 	OrbitalConstruction: 0,-7
 	OrbitalConstruction2: 0,-12
@@ -319,7 +312,6 @@ Grid: StandardResearch
 	EnergyHurdle: -3,-9
 	Range: -1,-6
 	VoidRay: -3,-10
-	CrystalArmor: 7,-7
 	Range: 12,0
 	TroopPods: 6,-1
 	BoardingParty: 7,-2
@@ -335,7 +327,6 @@ Grid: StandardResearch
 	Health: 10,-3
 	FlagDamage: 12,-4
 	SupportDamage: 12,-2
-	KeyRailgunKnockback: 9,2
 	SubspaceShredder: 8,17
 	DroneLauncher: -5,-12
 	Repair2: -6,-13
@@ -388,3 +379,14 @@ Grid: StandardResearch
 	InfiniteSupport: -13,1
 	Senate: -12,-1
 	MinerHull: 1,-5
+	CrystalArmor: 8,-8
+	ArmorHealth2: 7,-6
+	ArmorDR2: 5,-9
+	ArmorDR: 6,-8
+	ArmorHealth: 5,-7
+	PiercingEnhancement: 8,-6
+	ArmorHealth: 6,-9
+	ArmorHealth2: 7,-10
+	InfiniteHealth: 7,-11
+	KnockbackEnhancement: 6,-2
+	KeyRailgunKnockback: 5,-3
