@@ -37,7 +37,7 @@ System: HomeSystem
 	MakeAsteroid(Cargo = Ore, Cargo Amount = 250)
 	MakeAsteroid(Resource = Distributed)
 	MakeAsteroid(Resource = AsteroidFTLPermanent)
-		IfQuickStart()
+		addon_options::QuickStartOption()
 			SetMine()
 
 	MakeAnomaly()
