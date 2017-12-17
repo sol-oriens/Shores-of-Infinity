@@ -13,6 +13,7 @@ Building: AncientCore
 
 	In Queue: True
 
+	addon_requirements::ConflictNativeResource(RareGases, Hide = True)
 	RequireStatus(AncientReplicator)
 	RequireStatusToProgress(AncientReplicator)
 	ConflictBuilding(AncientCore, Hide = True)

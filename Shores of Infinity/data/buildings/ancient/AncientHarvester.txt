@@ -1,0 +1,22 @@
+Building: AncientHarvester
+	Name: #BLD_ANCIENT_HARVESTER
+	Description: #BLD_ANCIENT_HARVESTER_DESC
+	Sprite: AncientHarvester
+
+	Category: Infrastructure
+
+	Size: 5x3
+
+	Base Cost: 350
+	Base Maintenance: 50
+	Build Time: 100
+
+	In Queue: True
+
+	addon_requirements::RequireNativeResource(RareGases, Hide = True)
+	RequireStatus(AncientReplicator)
+	RequireStatusToProgress(AncientReplicator)
+
+	AddStatus(AncientHarvester)
+	ActiveWhenCargoConsumed(Ore, 2, 1.0, AddStatus(AncientHarvesterReq1))
+	ActiveWhenCargoConsumed(BaseMaterial, 1, 6, AddStatus(AncientHarvesterReq2), Inactive Status = AncientRequireBaseMat)

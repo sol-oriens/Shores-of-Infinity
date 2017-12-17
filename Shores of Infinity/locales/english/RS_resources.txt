@@ -212,23 +212,23 @@ RAREGASES_DESC: <<
 	The atmosphere of gas giants contains a multitude of gas isotopes that only exist in small quantities elsewhere in the universe. Due to their nature, gas giants are very difficult to colonize and using their many moons as bases is critical. However, the exploitation of the gases provides a lot of energy and other materials as well as extremely potent chemicals to enhance propulsion systems.
 
 	[b]If this planet is Level 1 or higher:[/b]
-	[offset=30]The planet gains 2 Energy pressure per Level.[/offset]
+	[offset=30]The planet gains 1 Energy pressure per Level.[/offset]
 	[offset=30]Ships gain 2.5% extra acceleration.[/offset]
 
 	[b]If this planet is Level 2 or higher:[/b]
-	[offset=30]The planet gains 2 Defense pressure per Level starting from Level 2.[/offset]
+	[offset=30]The planet gains 1 Defense pressure per Level starting from Level 2.[/offset]
 	[offset=30]Ships gain 5% extra acceleration.[/offset]
 
 	[b]If this planet is Level 3 or higher:[/b]
-	[offset=30]The planet gains 2 Research pressure per Level starting from Level 3.[/offset]
+	[offset=30]The planet gains 1 Research pressure per Level starting from Level 3.[/offset]
 	[offset=30]Ships gain 15% extra acceleration.[/offset]
 
 	[b]If this planet is Level 4 or higher:[/b]
-	[offset=30]The planet gains 2 Influence pressure per Level starting from Level 4.[/offset]
+	[offset=30]The planet gains 1 Influence pressure per Level starting from Level 4.[/offset]
 	[offset=30]Ships gain 30% extra acceleration.[/offset]
 
 	[b]If this planet is Level 5 or higher:[/b]
-	[offset=30]The planet gains 2 Money pressure per Level starting from Level 5.[/offset]
+	[offset=30]The planet gains 1 Money pressure per Level starting from Level 5.[/offset]
 	[offset=30]Ships gain 60% extra acceleration.[/offset]
 
 	[b]If this planet is Level 6:[/b]

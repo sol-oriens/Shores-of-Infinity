@@ -5,7 +5,8 @@ Material: RSBuilding
 	Mipmap: False
 	Lighting: False
 
-	//Production
+//Production
+
 Material: Mine
 	Inherit: Image2D
 	Texture: data/images/buildings/Mine.png
@@ -14,7 +15,8 @@ Material: NrgFactory
 	Inherit: Image2D
 	Texture: data/images/buildings/nrgfactory.png
 
-	//Infrastructure
+//Infrastructure
+
 Material: BldArcology
 Inherit: Image2D
 Texture: data/images/buildings/arcology.png
@@ -23,7 +25,7 @@ Material: BldHealthComplex
 Inherit: Image2D
 Texture: data/images/buildings/health_complex.png
 
-	//Artificial Resources
+//Artificial Resources
 
 Material: EcxFactory
 	Inherit: Image2D
@@ -53,9 +55,21 @@ Material: lvl2d
 	Inherit: RSBuilding
 	Texture: data/images/buildings/Lvl2Defense.png
 
+//Ancient
+
 Material: StripTransmuter
 	Inherit: RSBuilding
 	Texture: data/images/buildings/ancient_strip_transmuter.png
+
+Material: AncientCollector
+	Inherit: RSBuilding
+	Texture: data/images/buildings/ancient_collector.png
+
+Material: AncientHarvester
+	Inherit: RSBuilding
+	Texture: data/images/buildings/ancient_harvester.png
+
+//Special
 
 Material: PortalStabilizer
 	Inherit: RSBuilding

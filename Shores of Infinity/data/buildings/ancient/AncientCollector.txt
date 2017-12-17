@@ -1,0 +1,52 @@
+Building: AncientCollector
+	Name: #BLD_ANCIENT_COLLECTOR
+	Description: #BLD_ANCIENT_COLLECTOR_DESC
+	Sprite: AncientCollector
+
+	Category: ControlHubs
+
+	Size: 5x5
+
+	Base Cost: 150
+	Build Time: 60
+
+	In Queue: True
+
+	addon_requirements::RequireNativeResource(RareGases, Hide = True)
+	RequireStatus(AncientReplicator)
+	RequireStatusToProgress(AncientReplicator)
+	RequireNotStatus(Ringworld)
+	RequireNotStatus(ArtificialPlanetoid)
+	ConflictBuilding(AncientCollector, Hide = True)
+
+	AddStatus(AncientClaim)
+	AddStatus(AncientCollector)
+	ProduceAsteroidPressure()
+
+	AddResource(Energy, 1)
+
+	IfLevel(1, AddResource(Energy, 1))
+
+	IfLevel(2, AddResource(Energy, 1))
+	IfLevel(2, AddResource(Defense, 1))
+
+	IfLevel(3, AddResource(Energy, 1))
+	IfLevel(3, AddResource(Defense, 1))
+	IfLevel(3, AddResource(Research, 1))
+
+	IfLevel(4, AddResource(Energy, 1))
+	IfLevel(4, AddResource(Defense, 1))
+	IfLevel(4, AddResource(Research, 1))
+	IfLevel(4, AddResource(Influence, 1))
+
+	IfLevel(5, AddResource(Energy, 1))
+	IfLevel(5, AddResource(Defense, 1))
+	IfLevel(5, AddResource(Research, 1))
+	IfLevel(5, AddResource(Influence, 1))
+	IfLevel(5, AddResource(Money, 1))
+
+	IfLevel(6, AddResource(Energy, 1))
+	IfLevel(6, AddResource(Defense, 1))
+	IfLevel(6, AddResource(Research, 1))
+	IfLevel(6, AddResource(Influence, 1))
+	IfLevel(6, AddResource(Money, 1))

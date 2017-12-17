@@ -15,31 +15,31 @@ Resource: RareGases
 	Can Be Terraformed: False
 	Exportable: False
 
-	IfLevel(1, AddPressure(Energy, 2))
+	IfLevel(1, AddPressure(Energy, 1))
 
-	IfLevel(2, AddPressure(Energy, 2))
-	IfLevel(2, AddPressure(Defense, 2))
+	IfLevel(2, AddPressure(Energy, 1))
+	IfLevel(2, AddPressure(Defense, 1))
 
-	IfLevel(3, AddPressure(Energy, 2))
-	IfLevel(3, AddPressure(Defense, 2))
-	IfLevel(3, AddPressure(Research, 2))
+	IfLevel(3, AddPressure(Energy, 1))
+	IfLevel(3, AddPressure(Defense, 1))
+	IfLevel(3, AddPressure(Research, 1))
 
-	IfLevel(4, AddPressure(Energy, 2))
-	IfLevel(4, AddPressure(Defense, 2))
-	IfLevel(4, AddPressure(Research, 2))
-	IfLevel(4, AddPressure(Influence, 2))
+	IfLevel(4, AddPressure(Energy, 1))
+	IfLevel(4, AddPressure(Defense, 1))
+	IfLevel(4, AddPressure(Research, 1))
+	IfLevel(4, AddPressure(Influence, 1))
 
-	IfLevel(5, AddPressure(Energy, 2))
-	IfLevel(5, AddPressure(Defense, 2))
-	IfLevel(5, AddPressure(Research, 2))
-	IfLevel(5, AddPressure(Influence, 2))
-	IfLevel(5, AddPressure(Money, 2))
+	IfLevel(5, AddPressure(Energy, 1))
+	IfLevel(5, AddPressure(Defense, 1))
+	IfLevel(5, AddPressure(Research, 1))
+	IfLevel(5, AddPressure(Influence, 1))
+	IfLevel(5, AddPressure(Money, 1))
 
-	IfLevel(6, AddPressure(Energy, 2))
-	IfLevel(6, AddPressure(Defense, 2))
-	IfLevel(6, AddPressure(Research, 2))
-	IfLevel(6, AddPressure(Influence, 2))
-	IfLevel(6, AddPressure(Money, 2))
+	IfLevel(6, AddPressure(Energy, 1))
+	IfLevel(6, AddPressure(Defense, 1))
+	IfLevel(6, AddPressure(Research, 1))
+	IfLevel(6, AddPressure(Influence, 1))
+	IfLevel(6, AddPressure(Money, 1))
 
 	IfLevel(1, EnableModifier(ThrustFactor(1.025)) )
 	IfLevel(1, ModEmpireAttribute(ColonizerSpeed, AddFactor, 1.025)) )

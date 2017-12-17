@@ -13,8 +13,9 @@ Building: AncientInfuser
 
 	In Queue: True
 
+	addon_requirements::ConflictNativeResource(RareGases, Hide = True)
+	RequireNativeClass(Scalable)
 	RequireStatus(AncientReplicator)
 	RequireStatusToProgress(AncientReplicator)
-	RequireNativeClass(Scalable)
 
 	ActiveWhenCargoConsumed(BaseMaterial, 3, 6, AddStatus(AncientScalable), Inactive Status = AncientRequireBaseMat, Inactive Status Count = 3)

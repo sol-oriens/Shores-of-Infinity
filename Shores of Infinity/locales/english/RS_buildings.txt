@@ -204,6 +204,24 @@ BLD_ANCIENT_STRIP_TRANSMUTER_DESC: <<
 	[img=Plus;20]Two Ore Transmuters will generate more of each resource type than a Strip Miner and a Transmuter combined. This effect is slightly dampened by the [bbloc=#R_CORE_OPTIMIZATIONS/] tech.[/img]
 	[img=Minus;20]Requires a small maintenance cost, and combines the construction costs of Strip Miners and Transmuters.[/img]
 >>
+BLD_ANCIENT_COLLECTOR: Collector
+BLD_ANCIENT_COLLECTOR_DESC: <<
+	[color=#aaa][i]A facility managing the building and maintenance of transorbital drones designed to harvest rare gas molecules found in gas giants and carry them to the facility where they are then stored and refined.[/i][/color]
+
+	Can only be constructed on Rare Gases resources. Produces 100% of the pressure that the planet's native resource gives.
+	Pressure from asteroids imported at this planet is automatically produced.
+
+	[bbloc=#TIP_CONTROL_HUB/]
+>>
+BLD_ANCIENT_HARVESTER: Harvester
+BLD_ANCIENT_HARVESTER_DESC: <<
+	[color=#aaa][i]A factory providing specialized drones to harvest gas giants at deeper levels and with better efficiency.[/i][/color]
+
+	Can only be constructed on Rare Gases resources. Increases the level of this planet by 1.
+
+	[b][img=ResourceIconsSmall::65;20/] [color=#91692c]Ore Used:[/color][/b][offset=150]2 / second[/offset]
+	[bbloc=#TIP_CONSUME_BASE_MATERIAL:10/]
+>>
 BLD_DEFENSE_GRID_DESC: <<
 	A massive field of missile silos located on the surface of the planet, capable of firing at nearby enemy fleets.
 

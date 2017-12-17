@@ -9,3 +9,6 @@ Status: AncientMiner
 
 Status: AncientStripTransmuter
 	Visible To: Nobody
+
+Status: AncientCollector
+	Visible To: Nobody

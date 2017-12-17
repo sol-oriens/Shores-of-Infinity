@@ -79,14 +79,16 @@ Players always have full vision on their starting systems.
 
 [*] Buildings
 
-*** All new buildings are available to non Ancient and, obviously, non Star Children races only.
+*** Most new buildings are available to non Ancient and, obviously, non Star Children races only.
 
 - Space Elevators now add 1 Money generation per Planet Level starting from Level 1 if a Starport is present in the system and additionally cost 1k ore and 50 Labor to build.
 - Added Mining Complex. Adds an Ore resource that can be exported and generates 10 Ore per minute at its destination. Also adds 2 Labor pressure and increases the pressure given by native Aluminum, Iron, Titanium or Supercarbons by 2 and Coal or Native Gold by 1. Unlike the Ancient Strip Miner, Ore stored on the planet is not moved on export. Base and maintenance costs of 190k and 120k, respectively. Also costs 50 Research to build.
-- Added Fuel Facility: Adds 1 Energy pressure, 1 Money pressure and increases the pressure given by native Natural Gas or Oil by 1. Base build and maintenance costs of 110 and 50k, respectively. Also costs 50 Research to build.
-- Added Electronics Factory: Can replace a Level 1 resource and adds 3 Money pressure. Consumes 8 ore per minute. Base build and maintenance costs of 40k and 30k, respectively. The building becomes inactive if there is no more Ore left on the planet (which can then potentially level down).
-- Added Healthcare Complex: Adds 1 Population and increases Population growth by 10%. Base build and maintenance costs of 85k and 20k, respectively. Also costs 100 Research to build and 100 more for each Healthcare Complex already built or building on the planet. Cannot be built by Mechanoid lifestyles.
-- Added Arcology: Adds 5 Population and replaces 5 cities. Costs 2.5M, 2k Ore, 20 Influence, and 50 Labor.
+- Added Fuel Facility. Adds 1 Energy pressure, 1 Money pressure and increases the pressure given by native Natural Gas or Oil by 1. Base build and maintenance costs of 110 and 50k, respectively. Also costs 50 Research to build.
+- Added Electronics Factory. Can replace a Level 1 resource and adds 3 Money pressure. Consumes 8 ore per minute. Base build and maintenance costs of 40k and 30k, respectively. The building becomes inactive if there is no more Ore left on the planet (which can then potentially level down).
+- Added Healthcare Complex. Adds 1 Population and increases Population growth by 10%. Base build and maintenance costs of 85k and 20k, respectively. Also costs 100 Research to build and 100 more for each Healthcare Complex already built or building on the planet. Cannot be built by Mechanoid lifestyles.
+- Added Arcology. Adds 5 Population and replaces 5 cities. Costs 2.5M, 2k Ore, 20 Influence, and 50 Labor.
+- Added Collector, exclusive to Ancient races: equivalent to a Core for gas giants. Can only be constructed on Rare Gases resources. Produces 100% of the pressure that the planet's native resource gives. Pressure from asteroids imported at this planet is automatically produced.
+- Added Harvester, exclusive to Ancient races: equivalent to an Infuser for gas giants. Can only be constructed on Rare Gases resources. Increases the level of this planet by 1. Uses 2 Ore per second and 10 Base Materials per minute.
 
 [*] FTL
 
@@ -154,7 +156,7 @@ frequency options on purpose.
 - Added FTL Crystals asteroids: provide 1 FTL/s and add 250 FTL storage. These are not consumed when mined (but they can be captured...). Spawn frequency is slightly lower than FTL shards.
 - FTL Shards asteroids now permanently add 500 FTL storage (up from 100).
 - FTL Crystals planets now provide 0.5/1/1.5/2/3/5/10 FTL/s.
-- Added Rare Gases, a new scalable resource found on gas giants only. Increases all ship engine thrust (including colony ships) by a cumulative bonus of 0%/2.5%/5%/15%/30%/60%/100%. Does not increase turn rate nor hyperdrive speed. Gains 2 Energy pressure per level starting from level 1, 2 Defense pressure per level starting from level 2, 2 Research pressure per level starting from level 3, 2 Influence pressure per level starting from level 4 and 2 Money pressure per level starting from level 5. Cannot be exported.
+- Added Rare Gases, a new scalable resource found on gas giants only. Increases all ship engine thrust (including colony ships) by a cumulative bonus of 0%/2.5%/5%/15%/30%/60%/100%. Does not increase turn rate nor hyperdrive speed. Gains 1 Energy pressure per level starting from level 1, 1 Defense pressure per level starting from level 2, 1 Research pressure per level starting from level 3, 1 Influence pressure per level starting from level 4 and 1 Money pressure per level starting from level 5. Cannot be exported.
 *** Sublight species are strongly advised to heavily invest in developing those planets!
 - Available ore on asteroids has been reduced to anywhere from 50 to 1250 ore (down from 500 to 10000). Default ore asteroid chance per system has been changed to 90% (up from 45%). In addition, systems with ore asteroids are very likely to have a LOT of them.
 - Moderately increased resource asteroid chance. Slightly decreased Construction Materials and Morphic Materials asteroid chance. Moderately decreased FTL Shards asteroid chance.

@@ -1,0 +1,10 @@
+Status: AncientHarvester
+	Visible To: Nobody
+
+	IfHaveStatus(AncientHarvesterReq1, IfHaveStatus(AncientHarvesterReq2, AddStatus(AncientScalable)))
+
+Status: AncientHarvesterReq1
+	Visible To: Nobody
+
+Status: AncientHarvesterReq2
+	Visible To: Nobody
