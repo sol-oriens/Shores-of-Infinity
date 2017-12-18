@@ -23,30 +23,8 @@ Building: AncientCollector
 	AddStatus(AncientCollector)
 	ProduceAsteroidPressure()
 
-	AddResource(Energy, 1)
-
-	IfLevel(1, AddResource(Energy, 1))
-
-	IfLevel(2, AddResource(Energy, 1))
-	IfLevel(2, AddResource(Defense, 1))
-
-	IfLevel(3, AddResource(Energy, 1))
-	IfLevel(3, AddResource(Defense, 1))
-	IfLevel(3, AddResource(Research, 1))
-
-	IfLevel(4, AddResource(Energy, 1))
-	IfLevel(4, AddResource(Defense, 1))
-	IfLevel(4, AddResource(Research, 1))
-	IfLevel(4, AddResource(Influence, 1))
-
-	IfLevel(5, AddResource(Energy, 1))
-	IfLevel(5, AddResource(Defense, 1))
-	IfLevel(5, AddResource(Research, 1))
-	IfLevel(5, AddResource(Influence, 1))
-	IfLevel(5, AddResource(Money, 1))
-
-	IfLevel(6, AddResource(Energy, 1))
-	IfLevel(6, AddResource(Defense, 1))
-	IfLevel(6, AddResource(Research, 1))
-	IfLevel(6, AddResource(Influence, 1))
-	IfLevel(6, AddResource(Money, 1))
+	ProduceAllPressure(Energy)
+	ProduceAllPressure(Defense)
+	ProduceAllPressure(Research)
+	ProduceAllPressure(Influence)
+	ProduceAllPressure(Money)
