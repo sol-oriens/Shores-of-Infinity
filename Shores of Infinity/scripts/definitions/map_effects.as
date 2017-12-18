@@ -501,7 +501,10 @@ class MakePlanet : MapHook {
 		PlanetNode@ plNode = cast<PlanetNode>(bindNode(planet, "PlanetNode"));
 		plNode.establish(planet);
 		plNode.planetType = planet.PlanetType;
-		if(rings.boolean && randomi(0,9) == 0) {
+
+		//Setup rings
+		//RS - Gas Giants: gas giants always have rings
+		if ((resource !is null && resource.ident == "RareGases") || (rings.boolean && randomi(0,9) == 0)) {
 			uint style = randomi();
 			plNode.addRing(style);
 			planet.setRing(style);
