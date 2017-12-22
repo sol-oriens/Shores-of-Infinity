@@ -23,6 +23,33 @@ R_AREA_EFFICIENCY_DESC: <<
 	[color=#aaa][i]From raw to polished.[/i][/color]
 >>
 
+R_BLD_ARCOLOGY: Arcology
+R_BLD_ARCOLOGY_DESC: <<
+	[i][color=#aaa]We learned to build settlements. Then we learned to build ever bigger cities. Then we learned to build megacities, with ever taller buildings. Now, we learned to build cities inside buildings.[/color][/i]
+
+	Unlocks the Arcology building.
+
+	[i][bbloc=#BLD_ARCOLOGY_DESC/][/i]
+>>
+
+R_ANCIENT_ARCOLOGY: Simulator
+R_ANCIENT_ARCOLOGY_DESC: <<
+	[i][color=#aaa]Giant computers running algorithms fine-tuned by millennia of knowledge make efficient governors indeed.[/color][/i]
+
+	Unlocks the Simulator building.
+
+	[i][bbloc=#BLD_ANCIENT_SIMULATOR_DESC/][/i]
+>>
+
+R_STAR_ARCOLOGY: Ring Habitat
+R_STAR_ARCOLOGY_DESC: <<
+	[i][color=#aaa]Space habitats can quickly feel cramped for the wealthy, always in demand of more comfort and bigger luxury quarters. This new model of habitat, complete with 'outdoors' areas, gardens and palaces, delivers.[/color][/i]
+
+	Unlocks the Ring Habitat orbital.
+
+	[i][bbloc=#ORB_STAR_RING_HABITAT_DESC/][/i]
+>>
+
 R_IMP_PLANET_SUPPORT_DESC: <<
 	[i][color=#aaa]More focused and effective command of orbital defense vessels.[/color][/i]
 

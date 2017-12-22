@@ -1,0 +1,21 @@
+Building: AncientSimulator
+	Name: #BLD_ANCIENT_SIMULATOR
+	Description: #BLD_ANCIENT_SIMULATOR_DESC
+	Sprite: AncientSimulator
+
+	Category: Infrastructure
+
+	Size: 4x6
+
+	Base Cost: 2500
+	Build Time: 180
+
+	In Queue: True
+
+	ConsumeInfluence(20)
+
+	RequireUnlockTag(AncientSimUnlock)
+	RequireStatus(AncientReplicator)
+	RequireStatusToProgress(AncientReplicator)
+
+	ActiveWhenCargoConsumed(BaseMaterial, 1, 6, AddIncome(250), Inactive Status = AncientRequireBaseMat)

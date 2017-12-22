@@ -558,7 +558,7 @@ class ConsumeCargoStatusCount : ConsumeEffect {
 class ConsumeStatus : ConsumeEffect {
 	Document doc("Consumes an instance of a status on the object.");
 	Argument type(AT_Status, doc="Type of status to take.");
-	Argument amount(AT_Integer, "1", doc="Amount of cargo taken to build per status.");
+	Argument amount(AT_Integer, "1", doc="Amount of status instances taken.");
 	Argument hide(AT_Boolean, "False", doc="If the object has _no_ statuses of this type, hide the option.");
 
 	bool canConsume(Object& obj, const Targets@ targs, bool ignoreCost) const {
@@ -578,14 +578,14 @@ class ConsumeStatus : ConsumeEffect {
 		int count = obj.getStatusStackCount(type.integer);
 		if(count < amount.integer)
 			return false;
-
 		for(int i = 0; i < amount.integer; ++i)
 			obj.removeStatusInstanceOfType(type.integer);
 		return true;
 	}
 
 	void reverse(Object& obj, const Targets@ targs, bool cancel) const override {
-		obj.addStatus(type.integer);
+		for(int i = 0; i < amount.integer; ++i)
+			obj.addStatus(type.integer);
 	}
 #section all
 };

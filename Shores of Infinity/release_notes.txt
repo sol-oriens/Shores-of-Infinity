@@ -86,9 +86,10 @@ Players always have full vision on their starting systems.
 - Added Fuel Facility. Adds 1 Energy pressure, 1 Money pressure and increases the pressure given by native Natural Gas or Oil by 1. Base build and maintenance costs of 110 and 50k, respectively. Also costs 50 Research to build.
 - Added Electronics Factory. Can replace a Level 1 resource and adds 3 Money pressure. Consumes 8 ore per minute. Base build and maintenance costs of 40k and 30k, respectively. The building becomes inactive if there is no more Ore left on the planet (which can then potentially level down).
 - Added Healthcare Complex. Adds 1 Population and increases Population growth by 10%. Base build and maintenance costs of 85k and 20k, respectively. Also costs 100 Research to build and 100 more for each Healthcare Complex already built or building on the planet. Cannot be built by Mechanoid lifestyles.
-- Added Arcology. Adds 5 Population and replaces 5 cities. Costs 2.5M, 2k Ore, 20 Influence, and 50 Labor.
+- Added Arcology. Adds 5 Population and replaces 5 cities. Costs 2.5M, 2k Ore, 20 Influence, and 75 Labor.
 - Added Collector, exclusive to Ancient races: equivalent to a Core for gas giants. Can only be constructed on Rare Gases resources. Produces 100% of the pressure that the planet's native resource gives. Pressure from asteroids imported at this planet is automatically produced.
-- Added Harvester, exclusive to Ancient races: equivalent to an Infuser for gas giants. Can only be constructed on Rare Gases resources. Increases the level of this planet by 1. Uses 2 Ore per second and 10 Base Materials per minute.
+- Added Harvester, exclusive to Ancient races: equivalent to an Infuser for gas giants. Can only be constructed on Rare Gases resources. Increases the level of this planet by 1. Uses 2 Ore per second and 1 Base Materials per minute.
+- Added Simulator, exclusive to Ancient races: replacement for Arcology. Increases the income of a planet by 250k. Costs 2.5M, and 20 Influence. Uses 1 Base Materials per minute.
 
 [*] FTL
 
@@ -127,6 +128,7 @@ for use as a remote mining base, as the new balance makes tractoring ore asteroi
 - Added Zero-G Lab. Gives 1 Research generation and allows access to special modules and projects. Build and maintenance costs of 400k and 100k, respectively.
 - Added Hyperfield Actuator. Generates 0.15 FTL Energy per second and stores 250 FTL Energy. Build and maintenance costs of 450k and 75k, respectively.
 - Added Tachyon Uplink. Unlocks the Tachyon Sensor subsystem. Requires 0.5 FTL maintenance. Can only be built in a Tachyon Nebula. Only one Tachyon Uplink may be constructed per system.
+- Added Ring Habitat, exclusive to Star Children: replacement for Arcology. Must be constructed in orbit of a planet. Increases the maximum population of that planet by 5. Costs 5 population from the Mothership in addition to its build cost. Up to three ring habitats may be constructed in orbit of every planet. Costs 2.5M, 2k Ore, 20 Influence, and 75 Labor.
 - FTL Storage orbitals for Star Children with Flux FTL now generate 0.5 FTL Energy per second and store 600 FTL Energy to make up for the impossibility to build FTL Breeders. They also additionally cost 500 ore to build.
 - All orbitals now have a base sensor range of 10.000 units which can be upgraded through research.
 
@@ -218,6 +220,10 @@ frequency options on purpose.
 - Fixed a vanilla bug where the dry dock construction menu would list different versions of a design under certain circumstances.
 - Fixed a vanilla bug where persistent beam effects were not restored upon loading a save file.
 - Fixed an vanilla issue with strategic icon positions not always updating correctly when zooming due to the engine squaring already huge rescaled distances, resulting in a memory overflow.
+
+[*] Other
+
+- Fixed a vanilla bug where status stacks spent to build certain things (like troop pods filled with troops) would only ever refund one instance instead of the correct amount when refunded.
 
 [*] Known issues
 

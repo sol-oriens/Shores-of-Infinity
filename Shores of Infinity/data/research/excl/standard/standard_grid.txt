@@ -390,3 +390,5 @@ Grid: StandardResearch
 	InfiniteHealth: 7,-11
 	KnockbackEnhancement: 6,-2
 	KeyRailgunKnockback: 5,-3
+	InfluenceHurdle: -7,-5
+	Arcology: -8,-5

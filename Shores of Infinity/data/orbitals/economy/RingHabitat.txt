@@ -1,0 +1,81 @@
+Module: RingHabitat
+	Name: #ORB_RING_HABITAT
+	Blurb: #ORB_RING_HABITAT_BLURB
+	Description: #ORB_RING_HABITAT_DESC
+
+	Icon: GuiOrbitalIcons::11
+	Distant Icon: OrbitalIcons::11
+	Model: Habitat
+	Material: GenericPBR_Habitat
+
+	Size: 8
+
+	Standalone: True
+	Core: True
+
+	Health: 20000
+	Armor: 10000
+
+	Build Cost: 1000
+	Labor Cost: 25
+
+	ConsumeInfluence(10)
+	ConsumePopulation(2)
+
+	RequireUnlockTag(RingHabitatUnlock)
+
+	LimitInOrbitStatus(RingHabitat)
+
+	AddStatusToOrbitingPlanet(RingHabitat)
+	MatchOrbitingOwner(Destroy None = True)
+
+	ModEmpireAttribute(RingHabitatsBuilt, Add, 1)
+
+Module: StarRingHabitat
+	Name: #ORB_STAR_RING_HABITAT
+	Blurb: #ORB_STAR_RING_HABITAT_BLURB
+	Description: #ORB_STAR_RING_HABITAT_DESC
+
+	Icon: GuiOrbitalIcons::11
+	Distant Icon: OrbitalIcons::11
+	Model: Habitat
+	Material: GenericPBR_Habitat
+
+	Size: 12
+
+	Standalone: True
+	Core: True
+
+	Health: 50000
+	Armor: 25000
+
+	Build Cost: 2500
+	Labor Cost: 75
+
+	ConsumeCargo(Ore, 2000)
+	ConsumeInfluence(20)
+	ConsumeStatus(MothershipPopulation, Amount = 5)
+
+	RequireTrait(StarChildren)
+	RequireUnlockTag(StarRingHabitatUnlock)
+
+	LimitInOrbitStatus(StarRingHabitat, Max Stacks = 3, Min Distance = 10)
+
+	Repeat(5, AddStatusToOrbitingPlanet(StarHabitats, Set Origin Empire = True))
+	AddStatusToOrbitingPlanet(StarRingHabitat)
+	MatchOrbitingOwner(Destroy None = True)
+
+	AddHealthEmpireAttribute(HabitatUpgrade, 4000)
+	AddArmorEmpireAttribute(HabitatUpgrade, 4000)
+
+	AddResistance(5.0)
+
+	AddTurret(Missile, Range=300, Damage=10, Reload=1, Speed=150, Tracking=6) #version>=115
+	AddTurret(Laser, Range=200, DPS=5, Duration=2, Cooldown=0, Tracking=0.4) #version>=115
+
+	RepeatExtended(AddTurret(Missile, Range=300, Damage=6, Reload=1, Speed=150, Tracking=6), Base = 4, Multiply Attribute = StaticDamageFactor)
+	RepeatExtended(AddTurret(Laser, Range=200, DPS=5, Duration=2, Cooldown=0, Tracking=0.4), Base = 2, Multiply Attribute = StaticDamageFactor)
+
+	RecordBonusDPS(35) #version>=115
+	RepeatExtended(RecordBonusDPS(6), Base = 4, Multiply Attribute = StaticDamageFactor)
+	RepeatExtended(RecordBonusDPS(5), Base = 2, Multiply Attribute = StaticDamageFactor)

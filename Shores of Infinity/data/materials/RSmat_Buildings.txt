@@ -69,6 +69,10 @@ Material: AncientHarvester
 	Inherit: RSBuilding
 	Texture: data/images/buildings/ancient_harvester.png
 
+Material: AncientSimulator
+	Inherit: RSBuilding
+	Texture: data/images/buildings/ancient_simulator.png
+
 //Special
 
 Material: PortalStabilizer

@@ -1,0 +1,48 @@
+Technology: Arcology
+	Name: #R_BLD_ARCOLOGY
+	Description: #R_BLD_ARCOLOGY_DESC
+
+	Icon: BldArcology
+	Color: #00f3ff
+
+	Category: Buildings
+	Class: Unlock
+
+	Point Cost: 1000
+	Time Cost: 120
+
+	SkipOnUnlockedTag(ArcologyUnlock)
+	UnlockTag(ArcologyUnlock)
+	ModAttribute(ProgenitorTechProgress, Add, 1)
+
+Technology: AncientArcology
+	Name: #R_ANCIENT_ARCOLOGY
+	Description: #R_ANCIENT_ARCOLOGY_DESC
+
+	Icon: AncientSimulator
+	Color: #00f3ff
+
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+	Class: Unlock
+
+	Point Cost: 1000
+	Time Cost: 120
+
+	SkipOnUnlockedTag(AncientSimUnlock)
+	UnlockTag(AncientSimUnlock)
+
+Technology: StarArcology
+	Name: #R_STAR_ARCOLOGY
+	Description: #R_STAR_ARCOLOGY_DESC
+
+	Icon: GuiOrbitalIcons::11
+	Color: #00f3ff
+
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+	Class: Unlock
+
+	Point Cost: 1000
+	Time Cost: 120
+
+	SkipOnUnlockedTag(StarRingHabitatUnlock)
+	UnlockTag(StarRingHabitatUnlock)

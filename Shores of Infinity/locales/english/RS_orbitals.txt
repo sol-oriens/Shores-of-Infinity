@@ -1,3 +1,4 @@
+OERR_PLANET_LIMIT: Maximum $1 per planet orbit allowed.
 ORB_TRADE_OUTPOST_BLURB: Allows trade through its system. Generates defense ships and protects planets in the system from being captured. Can store 1k units of cargo.
 ORB_TRADE_OUTPOST_DESC: <<|
 	A small outpost that allows your civilian ships to travel through the
@@ -320,6 +321,15 @@ ORB_RING_HABITAT_DESC: <<
 	Costs 10 Influence to construct in addition to its build cost.
 
 	Only one ring habitat may be constructed in orbit of every planet.
+>>
+ORB_STAR_RING_HABITAT: Ring Habitat
+ORB_STAR_RING_HABITAT_BLURB: Increases the population that can live on and around the planet.
+ORB_STAR_RING_HABITAT_DESC: <<
+	[color=#aaa][i]A enormous habitat with far more capacity than regular habitats, able to sustain itself with a closed circuit production chain.[/i][/color]
+
+	Must be constructed in orbit of a planet. Increases the maximum population of that planet by 5.
+	Costs 5 population from the Mothership in addition to its build cost.
+	Up to three ring habitats may be constructed in orbit of every planet.
 >>
 ORB_SHIPYARD_DESC: <<|
 	A massive orbital shipyard capable of constructing fleets in space.
