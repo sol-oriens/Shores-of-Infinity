@@ -2,7 +2,7 @@ Module: TachyonUplink
 	Name: #ORB_TACHYON_UPLINK
 	Blurb: #ORB_TACHYON_UPLINK_BLURB
 	Description: #ORB_TACHYON_UPLINK_DESC
-	
+
 	Icon: GuiOrbitalIcons::18
 	Strategic Icon: OrbitalIcons::18
 	Model: Beacon
@@ -22,9 +22,10 @@ Module: TachyonUplink
 
 	FTLMaintenance(0.5)
 
+	RequireUnlockTag(TachyonUplinkUnlock)
 	ABEM_orbitals::RequireSystemFlag(TachyonNebula)
 
-	LimitOncePerSystem(UplinkFlag)
+	LimitOncePerSystem(TachyonUplinkFlag)
 
 	TiedSubsystemUnlock(TachyonSensor, UnlockTachyonSensor)
 	ModEmpireAttribute(TachyonUplink, Add, 1)

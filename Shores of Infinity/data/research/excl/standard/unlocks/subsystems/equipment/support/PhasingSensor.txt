@@ -1,0 +1,16 @@
+Technology: PhasingSensor
+	Name: #R_SYS_SENSOR_PHASING
+	Description: #R_SYS_SENSOR_PHASING_DESC
+
+	Icon: PhasingSensor
+	Color: #9ed6ff
+
+	Category: Equipment - Support
+	Class: Unlock
+
+	Point Cost: 500
+	Time Cost: 90
+
+	SkipOnUnlockedSubsystem(PhasingSensor)
+	UnlockSubsystem(PhasingSensor)
+	ModAttribute(ProgenitorTechProgress, Add, 0.5)

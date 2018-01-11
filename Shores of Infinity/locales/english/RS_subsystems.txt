@@ -741,5 +741,6 @@ S_SENSOR_TACHYON_DESC: <<
 	[img=MenuIcons::3;20]Is immune to some of the sight-impairing effects of nebulae, but interference from subspace eddies negates the sight boost from empty space.[/img]
 	[img=Minus]Requires an active Tachyon Uplink orbital to function.[/img]
 	[img=Minus]Requires increasingly high amounts of Control as the subsystem's size increases. Sinew halves the Control requirements.[/img]
-	[img=Minus]Requires much more Control than an equal-sized Phasing Sensor.[/img]
+	[img=Minus]Requires much more Control than equal-sized Phasing Sensors.[/img]
 	[img=Minus]Sensor core must be external.[/img]
+>>

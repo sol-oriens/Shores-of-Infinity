@@ -262,6 +262,7 @@ R_SYS_QUANTUM_ARMOR_DESC: <<
 
 	[i][bbloc=#S_QUANTUM_ARMOR_DESC/][/i]
 >>
+
 R_ORB_FLING_DESC: <<
 	[i][color=#aaa]A device capable of catapulting nearby vessels into hyperspace. The ships then proceed to exit from hyperspace under their own power.[/color][/i]
 
@@ -483,6 +484,24 @@ R_SYS_PROGENITOR_SHRINE_DESC: <<
 	Unlocks the Shrine of the Gods for use on flagships.
 
 	[bbloc=#S_PROGENITOR_SHRINE_DESC/]
+>>
+
+R_SYS_SENSOR_PHASING: Particle Phasing
+R_SYS_SENSOR_PHASING_DESC: <<
+	[color=#aaa][i]Advances in skip drive technology made possible to build devices able to project their output at a greatly reduced cost and, unfortunately, efficiency. The devices are only able to teleport particles, but it allows tremendous improvements to scanners.[/i][/color]
+
+	Unlocks the Phasing Sensors subsystem for use on flagships and stations.
+
+	[bbloc=#S_SENSOR_PHASING_DESC/]
+>>
+R_SYS_SENSOR_TACHYON: Tachyon Harnessing
+R_SYS_SENSOR_TACHYON_DESC: <<
+	[color=#aaa][i]The elusive faster-than-light particle known as tachyon is at last bending to our will. We can now build a facility able to create a channel between a location with a high concentration of tachyons and a remote target and project them through it. The quantities involved are too small to be of any use for our travel ambitions, but specialized panels can reflect them and use them to scan things much farther and faster than ever! [/i][/color]
+
+	Unlocks the Tachyon Uplink Facility orbital.
+	Unlocks the Tachyon Sensors subsystem for use on flagships and stations with an active Tachyon Uplink.
+
+	[bbloc=#S_SENSOR_TACHYON_DESC/]
 >>
 
 ****************************

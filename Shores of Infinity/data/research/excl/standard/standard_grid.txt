@@ -237,7 +237,6 @@ Grid: StandardResearch
 	FTL: 4,13
 	FTLHurdle: 3,12
 	FTLStorage: 2,13
-	EnergyHurdle2: -1,9
 	GravitonChanneling: -1,10
 	FlagDamage: -1,11
 	GravitonCondenser: 0,12
@@ -392,3 +391,6 @@ Grid: StandardResearch
 	KeyRailgunKnockback: 5,-3
 	InfluenceHurdle: -7,-5
 	Arcology: -8,-5
+	EnergyHurdle2: -2,9
+	PhasingSensor: 0,9
+	TachyonSensor: 3,13

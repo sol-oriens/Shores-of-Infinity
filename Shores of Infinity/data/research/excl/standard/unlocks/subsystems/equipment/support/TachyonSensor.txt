@@ -1,0 +1,16 @@
+Technology: TachyonSensor
+	Name: #R_SYS_SENSOR_TACHYON
+	Description: #R_SYS_SENSOR_TACHYON_DESC
+
+	Icon: TachyonSensor
+	Color: #9ed6ff
+
+	Category: Equipment - Support
+	Class: Unlock
+
+	Point Cost: 1000
+	Time Cost: 180
+
+	SkipOnUnlockedTag(TachyonUplinkUnlock)
+	UnlockTag(TachyonUplinkUnlock)
+	ModAttribute(ProgenitorTechProgress, Add, 0.5)
