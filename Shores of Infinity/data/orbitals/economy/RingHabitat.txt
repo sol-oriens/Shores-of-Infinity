@@ -70,12 +70,12 @@ Module: StarRingHabitat
 
 	AddResistance(5.0)
 
-	AddTurret(Missile, Range = 600, Damage = 10, Reload = 1, Speed = 150, Tracking = 6) #version >= 115
-	AddTurret(Laser, Range = 400, DPS = 5, Duration = 2, Cooldown = 0, Tracking = 0.4) #version >= 115
+	AddTurret(Missile, Range = 600, Damage = 10, Reload = 1, Speed = 150, Tracking = 6) #version>=115
+	AddTurret(Laser, Range = 400, DPS = 5, Duration = 2, Cooldown = 0, Tracking = 0.4) #version>=115
 
 	RepeatExtended(AddTurret(Missile, Range = 600, Damage = 6, Reload = 1, Speed = 150, Tracking = 6), Base = 4, Multiply Attribute = StaticDamageFactor)
 	RepeatExtended(AddTurret(Laser, Range = 400, DPS = 5, Duration = 2, Cooldown = 0, Tracking = 0.4), Base = 2, Multiply Attribute = StaticDamageFactor)
 
-	RecordBonusDPS(35) #version >= 115
+	RecordBonusDPS(35) #version>=115
 	RepeatExtended(RecordBonusDPS(6), Base = 4, Multiply Attribute = StaticDamageFactor)
 	RepeatExtended(RecordBonusDPS(5), Base = 2, Multiply Attribute = StaticDamageFactor)

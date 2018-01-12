@@ -2,7 +2,7 @@ Module: TradeOutpost
 	Name: #ORB_TRADE_OUTPOST
 	Blurb: #ORB_TRADE_OUTPOST_BLURB
 	Description: #ORB_TRADE_OUTPOST_DESC
-	
+
 	Icon: GuiOrbitalIcons::14
 	Distant Icon: OrbitalIcons::14
 	Model: Outpost
@@ -10,8 +10,8 @@ Module: TradeOutpost
 
 	Size: 7
 
+	Standalone: False
 	Core: True
-	Standalone: True
 
 	Health: 6000
 	Armor: 4000
@@ -51,3 +51,55 @@ Module: TradeOutpost
 	AddCargoStorage(1000)
 
 	AI: RegisterForUse(TradeOutpost)
+
+Module: ListeningPost
+	Name: #ORB_LISTENING_POST
+	Description: #ORB_LISTENING_POST_DESC
+
+	Icon: CardIcons::5
+
+	Standalone: False
+	Core: False
+
+	Build Cost: 150
+
+	ConsumeInfluence(5)
+
+	RequireOnOrbital(TradeOutpost)
+
+	PeriodicNearbyIntelligence(Timer = 60)
+
+Module: ArmoredLayer
+	Name: #ORB_ARMORED_LAYER
+	Description: #ORB_ARMORED_LAYER_DESC
+
+	Icon: PlateArmor
+
+	Standalone: False
+	Core: False
+
+	Armor: 4000
+
+	Build Cost: 100
+	Maintenance: 50
+
+	RequireOnOrbital(TradeOutpost)
+
+	AddResistance(2.5)
+
+Module: MissileRack
+	Name: #ORB_MISSILE_RACK
+	Description: #ORB_MISSILE_RACK_DESC
+
+	Icon: techRocket
+
+	Standalone: False
+	Core: False
+
+	Build Cost: 50
+	Maintenance: 25
+
+	RequireOnOrbital(TradeOutpost)
+
+	RepeatExtended(AddTurret(Missile, Range = 1400, Damage = 12, Reload = 1, Speed = 150, Tracking = 6), Base = 8, Multiply Attribute = StaticDamageFactor)
+	RepeatExtended(RecordBonusDPS(12), Base = 8, Multiply Attribute = StaticDamageFactor)

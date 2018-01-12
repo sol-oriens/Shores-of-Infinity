@@ -1,17 +1,3 @@
-Construction: OutpostArmor
-	Name: #OUTPOST_ARMORING
-	Time Cost: 120
-	Icon: PlateArmor
-	Category: Upgrades
-	Description: #OUTPOST_ARMORING_DESC
-
-	OnStart(AddStatus(OutpostArmorCost))
-	OnCancel(RemoveStatusInstance(OutpostArmorCost))
-	AddStatus(OutpostArmorStacks)
-	ConsumeCargoStatusCount(Ore, OutpostArmorCost, 300, Allow Cancel = True)
-
-	RequireOnOrbital(TradeOutpost)
-
 Construction: OutpostDefense
 	Name: #OUTPOST_DEFENSE
 	Time Cost: 120
@@ -22,20 +8,6 @@ Construction: OutpostDefense
 	OnCancel(RemoveStatusInstance(OutpostDefenseCost))
 	OnStart(AddStatus(OutpostDefenseCost))
 	AddStatus(OutpostDefenseStacks)
-	ConsumeCargoStatusCount(Ore, OutpostDefenseCost, 300, Allow Cancel = True)
-
-	RequireOnOrbital(TradeOutpost)
-
-Construction: OutpostWeapons
-	Name: #OUTPOST_WEAPONS
-	Time Cost: 120
-	Icon: techRocket
-	Category: Upgrades
-	Description: #OUTPOST_WEAPONS_DESC
-
-	OnCancel(RemoveStatusInstance(OutpostWeaponCost))
-	OnStart(AddStatus(OutpostWeaponCost))
-	AddStatus(OutpostWeaponStacks)
-	ConsumeCargoStatusCount(Ore, OutpostWeaponCost, 300, Allow Cancel = True)
+	ConsumeCargoStatusCount(Ore, OutpostDefenseCost, 500, Allow Cancel = True)
 
 	RequireOnOrbital(TradeOutpost)

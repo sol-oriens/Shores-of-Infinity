@@ -2,7 +2,7 @@ Module: TradeStation
 	Name: #ORB_TRADE_STATION
 	Blurb: #ORB_TRADE_STATION_BLURB
 	Description: #ORB_TRADE_STATION_DESC
-	
+
 	Icon: GuiOrbitalIcons::15
 	Strategic Icon: OrbitalIcons::15
 	Model: CommerceStation
@@ -10,8 +10,8 @@ Module: TradeStation
 
 	Size: 16
 
-	Core: True
 	Standalone: True
+	Core: True
 
 	Health: 5000
 	Armor: 1000

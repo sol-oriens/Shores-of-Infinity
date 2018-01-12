@@ -19,6 +19,24 @@ ORB_TRADE_OUTPOST_DESC: <<|
 
 	Can store 1k units of cargo.
 >>
+ORB_LISTENING_POST: Listening Post
+ORB_LISTENING_POST_DESC: <<|
+	[color=#aaa][i]An additional restricted access area module, equipped with advanced sensors and run by hackers and spies, which can intercept and decode secured transmissions from other empires in the surroundings.[/i][/color]
+
+	Grants a free Intelligence influence card against a random empire in the same system or an adjacent one every minute.
+>>
+ORB_ARMORED_LAYER: Armored Layer
+ORB_ARMORED_LAYER_DESC: <<|
+	[color=#aaa][i]An additional layer of military-grade armor plating covering the whole orbital.[/i][/color]
+
+	Adds 4000 armor and 2.5 damage resistance.
+>>
+ORB_MISSILE_RACK: Missile Rack
+ORB_MISSILE_RACK_DESC: <<|
+	[color=#aaa][i]An 8-tubed missile rack, complete with a large ammo chamber and a targeting system, designed for cheap and effective fire support in contested systems in early development.[/i][/color]
+
+	Can fire 8 missiles per second for 12 base damage each, modified by research.
+>>
 
 ORB_TRADE_STATION_DESC: <<|
 	A large and bustling station of commerce allows global resource trade

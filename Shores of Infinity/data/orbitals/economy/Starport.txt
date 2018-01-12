@@ -10,8 +10,8 @@ Module: Starport
 
 	Size: 12
 
-	Core: True
 	Standalone: False
+	Core: True
 
 	Health: 5000
 	Armor: 1000
@@ -38,7 +38,7 @@ Module: Starport
 Module: StarportDockingBays
 	Name: #ORB_STARPORT_DOCKING_BAYS
 	Description: #ORB_STARPORT_DOCKING_BAYS_DESC
-	
+
 	Icon: ActionBarIcons::2
 
 	Standalone: False
