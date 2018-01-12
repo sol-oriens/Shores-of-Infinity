@@ -12,7 +12,7 @@ Subsystem: Railgun
 
 	Size := HexSize * Hexes
 
-	Range := Size * 8 + 2100
+	Range := Size * 4 + 1050
 	Damage := Size * 3.25
 	Reload := 2.05 * min(1.0 + Size/512, 2.0)
 	Speed := max(110, Range / 15)

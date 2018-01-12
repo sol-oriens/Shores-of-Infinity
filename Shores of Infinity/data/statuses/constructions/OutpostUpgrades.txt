@@ -8,7 +8,7 @@ Status: OutpostWeaponStacks
 	Collapses: True
 	Visible To: Nobody
 	RepeatStacks(RepeatExtended(RecordBonusDPS(25), Base = 20, Multiply Attribute = StaticDamageFactor))
-	RepeatStacks(RepeatExtended(AddTurret(Missile, Range=1000, Damage=50, Reload=1, Speed=150, Tracking=6), Base = 10, Multiply Attribute = StaticDamageFactor))
+	RepeatStacks(RepeatExtended(AddTurret(Missile, Range = 2000, Damage = 50, Reload = 1, Speed = 150, Tracking = 6), Base = 10, Multiply Attribute = StaticDamageFactor))
 Status: OutpostDefenseStacks
 	Name: Defense Upgrade
 	Collapses: True

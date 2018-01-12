@@ -11,7 +11,7 @@ Subsystem: DumbfireRockets
 	Hull: Support
 
 	Size := HexSize * Hexes
-	Range := Size * 4 + 600
+	Range := Size * 2 + 300
 	Damage := Size * 5.0
 	Reload := 15 * min(1.0 + Size/512, 2.0)
 	Speed := max(140, Range / 12)

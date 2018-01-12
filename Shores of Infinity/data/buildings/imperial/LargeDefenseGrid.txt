@@ -1,7 +1,7 @@
 Building: LargeDefenseGrid
 	Name: #BLD_DEFENSE_GRID
 	Description: #BLD_DEFENSE_GRID_DESC:20:500:1000
-	
+
 	Sprite: DefenseGrid
 
 	Category: Military
@@ -20,5 +20,5 @@ Building: LargeDefenseGrid
 
 	AddStatus(HasDefenses)
 
-	IfNotSiege(RepeatExtended(AddTurret(Missile, Range=1800, Damage=25, Reload=1, Speed=150, Tracking=6), Base = 20, Multiply Attribute = StaticDamageFactor))
+	IfNotSiege(RepeatExtended(AddTurret(Missile, Range = 900, Damage = 25, Reload = 1, Speed = 150, Tracking = 6), Base = 20, Multiply Attribute = StaticDamageFactor))
 	RecordBonusDPS(500)
