@@ -90,7 +90,7 @@ R_SYS_SHIELDED_AMGEN_BLURB: In-Combat Resupply
 R_SYS_SHIELDED_AMGEN_DESC: <<
 	[color=#aaa][i]New advances in shield compacting unlock the Shielded Antimatter Generator subsystem.[/i][/color]
 
-	[bbloc=#S_SHIELDED_AMGEN_DESC/]
+	[i][bbloc=#S_SHIELDED_AMGEN_DESC/][/i]
 >>
 R_DEV_FTL_DESC: <<
 	[i][color=#aaa]New technologies to store and transport FTL energy.[/color][/i]
@@ -403,7 +403,7 @@ R_ORB_RECYCLING_FACILITY_DESC: <<
 
 	Unlocks the Recycling Facility orbital.
 
-	[bbloc=#ORB_RECYCLING_FACILITY_DESC/]
+	[i][bbloc=#ORB_RECYCLING_FACILITY_DESC/][/i]
 >>
 R_ORB_ZEROGRAV_ASSEMBLY: Antimatter Core Assembler
 R_ORB_ZEROGRAV_ASSEMBLY_DESC: <<
@@ -474,16 +474,17 @@ R_SYS_SENSOR_PHASING_DESC: <<
 
 	Unlocks the Phasing Sensors subsystem for use on flagships and stations.
 
-	[bbloc=#S_SENSOR_PHASING_DESC/]
+	[i][bbloc=#S_SENSOR_PHASING_DESC/][/i]
 >>
 R_SYS_SENSOR_TACHYON: Tachyon Harnessing
 R_SYS_SENSOR_TACHYON_DESC: <<
 	[color=#aaa][i]The elusive faster-than-light particle known as tachyon is at last bending to our will. We can now build a facility able to create a channel between a location with a high concentration of tachyons and a remote target and project them through it. The quantities involved are too small to be of any use for our travel ambitions, but specialized panels can reflect them and use them to scan things much farther and faster than ever! [/i][/color]
 
 	Unlocks the Tachyon Uplink Facility orbital.
+	
 	Unlocks the Tachyon Sensors subsystem for use on flagships and stations with an active Tachyon Uplink.
 
-	[bbloc=#S_SENSOR_TACHYON_DESC/]
+	[i][bbloc=#S_SENSOR_TACHYON_DESC/][/i]
 >>
 
 ****************************
@@ -496,7 +497,7 @@ R_MOD_KNOCKBACK_ENHANCEMENT_DESC: <<
 
 	Unlocks the High Impulse System weapon modification for use on flagships.
 
-	[bbloc=#S_KNOCKBACK_ENHANCEMENT_DESC/]
+	[i][bbloc=#S_KNOCKBACK_ENHANCEMENT_DESC/][i]
 >>
 
 R_MOD_PIERCING_ENHANCEMENT: Neutronium Re-chambering
@@ -505,7 +506,7 @@ R_MOD_PIERCING_ENHANCEMENT_DESC: <<
 
 	Unlocks the Neutronium Re-chambering weapon modification for use on flagships and supports.
 
-	[bbloc=#S_PIERCING_ENHANCEMENT_DESC/]
+	[i][bbloc=#S_PIERCING_ENHANCEMENT_DESC/][i]
 >>
 
 ************************************

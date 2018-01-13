@@ -77,7 +77,9 @@ ORB_STARPORT_DESC: <<
 	[color=#aaa][i]A docking station for civilian and military ships and a transit point for interstellar trade greatly facilitating planetary exporting. A market area also allows small scale commerce with friendly planets.[/i][/color]
 
 	Provides 30k income for each owned and friendly planet in the system belonging to another empire you are at peace with or yours, up to 120k.
+
 	Support ships assigned to a Starport independently move across the system to attack enemy fleets.
+	
 	Can be upgraded to allow global resource trade.
 
 	Can store 2.5k units of cargo.
@@ -96,9 +98,13 @@ ORB_STAGING_HUB_DESC: <<|
 	[color=#aaa][i]This multipurpose station can act as a trading outpost as well as a remote base for mining operations or construction projects. It can also support a small fleet and stockpile resources to sell to private corporations.[/i][/color]
 
 	Has no innate labor, but planets can export their own labor to staging hubs within trade range at a 50% reduced rate.
+
 	Can construct mining bases on asteroids.
+
 	Can import labor resources and gain labor per minute equivalent to 50% of the imported pressure.
+
 	Can import influence, energy, research and defense resources and generate 5k per imported pressure as special funds every minute.
+
 	Adds 15 Defense Reserve when in orbit around a planet.
 
 	Can store 5k units of cargo.
@@ -111,7 +117,8 @@ ORB_RESEARCH_LAB_DESC: <<|
 	[color=#aaa][i]A space based research and development laboratory taking advantage of zero-gravity conditions for specific projects.[/i][/color]
 
 	Gives 1 research generation.
-	Allows access to special projects.
+
+	Allows access to special modules and projects.
 
 	Can store 1.5k units of cargo.
 >>
@@ -270,7 +277,7 @@ ORB_SENATE_BLURB: Generates 1 Influence Stake per 20 billion people.
 ORB_POWERPLANT_BLURB: Generates 5 Energy per second.
 ORB_INTEL_BLURB: Generates Intelligence against nearby empires.
 ORB_HYDROPONICS_SATELLITE_DESC: <<
-	A satellite equipped with high-yield zero-G hydroponics bays growing genetically modified crops in exposure to direct sunlight.
+	[color=#aaa][i]A satellite equipped with high-yield zero-G hydroponics bays growing genetically modified crops in exposure to direct sunlight.[/i][/color]
 
 	Must be constructed in orbit of a planet.
 
@@ -279,7 +286,7 @@ ORB_HYDROPONICS_SATELLITE_DESC: <<
 ORB_ORBITAL_CONTROL: Orbital Control Satellite
 ORB_ORBITAL_CONTROL_BLURB: Increases Control Hub production by 50% on the planet it is orbiting.
 ORB_ORBITAL_CONTROL_DESC: <<
-	An off-world control satellite performing additional processing to allows cores on the surface to operate more efficiently.
+	[color=#aaa][i]An off-world control satellite performing additional processing to allows hubs on the surface to operate more efficiently.[/i][/color]
 
 	Must be constructed in orbit of a planet.
 
@@ -290,7 +297,7 @@ ORB_ORBITAL_CONTROL_DESC: <<
 ORB_ZEROGRAV_ASSEMBLY: Antimatter Core Assembler
 ORB_ZEROGRAV_ASSEMBLY_BLURB: Reduces the construction cost of population on the planet it is orbiting.
 ORB_ZEROGRAV_ASSEMBLY_DESC: <<
-	A specialized satellite designed to harvest antimatter for the power cores of drones. The harvested antimatter significantly increases the efficiency with which new drones are constructed.
+	[color=#aaa][i]A specialized satellite designed to harvest antimatter for the power cores of drones. The harvested antimatter significantly increases the efficiency with which new drones are constructed.[/i][/color]
 
 	Must be constructed in orbit of a planet.
 
@@ -299,7 +306,7 @@ ORB_ZEROGRAV_ASSEMBLY_DESC: <<
 	Only one Antimatter Core Assembler may be constructed in orbit of a planet.
 >>
 ORB_DEFENSE_SATELLITE_DESC: <<
-	A military satellite constructed in low planetary orbit grants improved defensive capabilities to the planet and its support ships.
+	[color=#aaa][i]A military satellite constructed in low planetary orbit grants improved defensive capabilities to the planet and its support ships.[/i][/color]
 
 	Must be constructed in orbit of a planet.
 
@@ -307,12 +314,17 @@ ORB_DEFENSE_SATELLITE_DESC: <<
 
 	Additionally, the satellite is armed with a number of laser and missile turrets, allowing it to defend itself to a limited degree.
 
-	Costs 500 Energy to construct in addition to its build cost.
-
 	Only one tactical satellite may be constructed in orbit of every planet.
 >>
+ORB_SOLAR_SATELLITE_DESC: <<
+	[color=#aaa][i]A solar power satellite constructed in low planetary orbit sends power down to the surface for domestic use, improving the efficiency of economic operations on the ground.[/i][/color]
+
+	Must be constructed in orbit of a planet. Increases the pressure given by that planet's native resource by 1 where possible.
+
+	Only one solar satellite may be constructed in orbit of every planet.
+>>
 ORB_RING_HABITAT_DESC: <<
-	A ring habitat constructed in low planetary orbit increases the population that can live in and around it, allowing a luxuriously maintained lifestyle in space for those who can afford it.
+	[color=#aaa][i]A ring habitat constructed in low planetary orbit increases the population that can live in and around it, allowing a luxuriously maintained lifestyle in space for those who can afford it.[/i][/color]
 
 	Must be constructed in orbit of a planet. Increases the maximum population of that planet by 2.
 
@@ -325,10 +337,12 @@ ORB_RING_HABITAT_DESC: <<
 ORB_STAR_RING_HABITAT: Ring Habitat
 ORB_STAR_RING_HABITAT_BLURB: Increases the population that can live on and around the planet.
 ORB_STAR_RING_HABITAT_DESC: <<
-	[color=#aaa][i]A enormous habitat with far more capacity than regular habitats, able to sustain itself with a closed circuit production chain.[/i][/color]
+	[color=#aaa][i]An enormous habitat with far more capacity than regular habitats, able to sustain itself with a closed circuit production chain.[/i][/color]
 
 	Must be constructed in orbit of a planet. Increases the maximum population of that planet by 5.
+
 	Costs 5 population from the Mothership in addition to its build cost.
+
 	Up to three ring habitats may be constructed in orbit of every planet.
 >>
 ORB_RECYCLING_FACILITY: Recycling Facility
@@ -337,8 +351,11 @@ ORB_RECYCLING_FACILITY_DESC: <<
 	[color=#aaa][i]When you live in space, every gram of matter counts. This specialized facility recycles every atom of liquid or solid waste into reusable materials.[/i][/color]
 
 	Must be constructed in orbit of a planet.
+
 	The planet this is in orbit of gains 1 Food resource.
+
 	Adds 1 Influence Stake.
+
 	Adds 1 Energy generation.
 >>
 ORB_SHIPYARD_DESC: <<|

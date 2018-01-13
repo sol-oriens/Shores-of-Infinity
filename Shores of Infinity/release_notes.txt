@@ -122,6 +122,9 @@ different methods preferable in different situations. Third: To tone down the ad
 
 - Activated and added support for orbital modules, an unfinished / unreleased vanilla feature for orbitals. Modules are add-ons that can be constructed on previously built orbitals. Some orbitals make use of this feature and this will be extended further in a future release.
 - Commerce Stations now additionally cost 5 Influence and provide income, for each friendly planet in the system excluding the owner's, equal to 100k per planet Level starting from 1 and up to 300k. Only one Commerce Station may now be built per system.
+- Hydroponics Satellite now have an additional 50k maintenance cost, but cost 350 energy instead of 100 research to build.
+- Tactical Satellites now have an additional 25k maintenance cost.
+- Solar Satellites now have an additional 50k maintenance cost and cost 350 energy (down from 500) to build.
 - Added Starport. Provides 25k income for each owned and friendly planet in the system, up to 75k. Support ships assigned to a Starport independently move across the system to attack enemy fleets. Build and maintenance costs of 200k and 100k, respectively. Only one Starport may be constructed per system.
 - Added Long Haul Docking Bays Starport module. Allows global resource trade. Build and maintenance costs of 300k and 100k, respectively. Also costs 5 Influence to build.
 - Added Telescope Array, which has 40% Telescope power of the quantum version. Costs 200k to build, requires no ore but has a 40k maintenance cost. Primarily designed for early scouting, when interstellar travel is a problem, and border control. Its Telescope ability only costs Energy (and no FTL Energy).
