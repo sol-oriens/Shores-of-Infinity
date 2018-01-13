@@ -2,7 +2,6 @@ Status: HydroponicsSatellite
 	Visible To: Nobody
 	Collapses: True
 
-	RepeatStacks(AddPlanetResource(BuildingWater))
 	RepeatStacks(AddPlanetResource(Soylent1))
 
 Status: OrbitalControl

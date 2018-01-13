@@ -20,7 +20,7 @@ Technology: HydroponicsSatellite
 	UnlockTag(HydroponicsSatelliteUnlock)
 	ModAttribute(ProgenitorTechProgress, Add, 0.5)
 
-Technology: AtroanHydroponics
+Technology: AncientHydroponics
 	Name: #R_ORB_ORBITAL_CONTROL
 	Description: #R_ORB_ORBITAL_CONTROL_DESC
 
@@ -41,7 +41,7 @@ Technology: AtroanHydroponics
 	SkipOnUnlockedTag(OrbitalControlUnlock)
 	UnlockTag(OrbitalControlUnlock)
 
-Technology: MonoHydroponics
+Technology: MechanoidHydroponics
 	Name: #R_ORB_ZEROGRAV_ASSEMBLY
 	Description: #R_ORB_ZEROGRAV_ASSEMBLY_DESC
 

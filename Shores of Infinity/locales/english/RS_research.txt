@@ -23,7 +23,7 @@ R_AREA_EFFICIENCY_DESC: <<
 	[color=#aaa][i]From raw to polished.[/i][/color]
 >>
 
-R_BLD_ARCOLOGY: Arcology
+R_BLD_ARCOLOGY: Arcologies
 R_BLD_ARCOLOGY_DESC: <<
 	[i][color=#aaa]We learned to build settlements. Then we learned to build ever bigger cities. Then we learned to build megacities, with ever taller buildings. Now, we learned to build cities inside buildings.[/color][/i]
 
@@ -70,19 +70,10 @@ R_IMP_SENSORS_DESC: <<
 
 	Increases all sensor ranges by $1.
 >>
+R_POPULATION: Modular Habitats
 R_SYS_MATTERDISRUPTOR: Matter Disruption
 R_VOIDRAY: Adaptive Frequency Modulation
 RESEARCH_REQ_BUILDLIQUIDARMOR: Construct at least $2 units of Liquid Armor across all your ships. ( $1 / $2 )
-R_NYLLI_FOOD: Nutrient Recyclers
-R_NYLLI_FOOD_DESC: <<
-	[i][color=#aaa]New and improved methods of recycling and reusing organic matter allow us to produce food and water for entire populations in space.[/color][/i]
-
-	Unlocks the Hydroponics Station and Water Reclamation Facility orbitals.
-
-	[i][bbloc=#ORB_FARM_DESC/][/i]
-
-	[i][bbloc=#ORB_HYDROGENATOR_DESC/][/i]
->>
 R_FORCEFIELD: Forcefield Projection
 R_FORCEFIELD_DESC: <<
 	[color=#aaa][i]We all know very well how a shield typically functions. A semi-permeable cohesive plasma bubble is formed outside the ship, allowing objects to exit at will while deflecting anything that tries to enter it. However, what if we could apply the same principles to create a more complex shape, such as a panel or a brick? Or a sword?
@@ -291,17 +282,7 @@ R_BOARDING_PARTY_DESC: <<
 
 	[i][bbloc=#S_BOARDING_PARTY_DESC/][/i]
 >>
-R_NYLLI_FOOD: Nutrient Reclamation
-R_NYLLI_FOOD_BLURB: Nutrient Orbitals
-R_NYLLI_FOOD_DESC: <<
-	[i][color=#aaa]New and improved methods of recycling and reusing organic matter allow us to produce food and water for entire populations in space.[/color][/i]
 
-	Unlocks the Hydroponics Station and Water Reclamation Facility orbitals.
-
-	[i][bbloc=#ORB_FARM_DESC/][/i]
-
-	[i][bbloc=#ORB_HYDROGENATOR_DESC/][/i]
->>
 R_ORB_FLING: Fling Studies
 R_ORB_GATE: Gate Construction
 R_SYS_HYPERDRIVE: Hyperdrive Theory
@@ -416,12 +397,13 @@ R_METROPOLIS_UPGRADE: Metropolitan Optimization
 R_METROPOLIS_UPGRADE_DESC: <<
 	Increases the amount of pressure capacity added by Metropoles by 2.
 >>
+R_ORB_RECYCLING_FACILITY: Recycling
+R_ORB_RECYCLING_FACILITY_DESC: <<
+	[color=#aaa][i]New recycling processes and policies led to the design of this centralized and an order of magnitude more efficient facility, which will gradually replace our built-in habitat recyclers.[/i][/color]
 
-R_ORB_HYDROPONICS_SATELLITE: Nutrient Reclamation Satellite
-R_ORB_HYDROPONICS_SATELLITE_DESC: <<
-	[color=#aaa][i]Unlocks the Nutrient Reclamation Satellite orbital.[/i][/color]
+	Unlocks the Recycling Facility orbital.
 
-	[bbloc=#ORB_HYDROPONICS_SATELLITE_DESC/]
+	[bbloc=#ORB_RECYCLING_FACILITY_DESC/]
 >>
 R_ORB_ZEROGRAV_ASSEMBLY: Antimatter Core Assembler
 R_ORB_ZEROGRAV_ASSEMBLY_DESC: <<

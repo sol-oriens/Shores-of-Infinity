@@ -31,12 +31,11 @@ Technology: AtroanMegacity
 	SkipOnUnlockedTag(AdvancedCores)
 	UnlockTag(AdvancedCores)
 
-Technology: NylliMegacity
-	Name: #R_NYLLI_FOOD
-	Description: #R_NYLLI_FOOD_DESC
+Technology: StarMegacity
+	Name: #R_ORB_RECYCLING_FACILITY
+	Description: #R_ORB_RECYCLING_FACILITY_DESC
 
-	Icon: Plantation
-	Symbol: SupplyIcon
+	Icon: ResourceIcons::31
 
 	Category: Racial/DLC Replacements (DO NOT PLACE)
 	Class: Unlock
@@ -44,5 +43,5 @@ Technology: NylliMegacity
 	Point Cost: 800
 	Time Cost: 90
 
-	SkipOnUnlockedTag(NylliNutrients)
-	UnlockTag(NylliNutrients)
+	SkipOnUnlockedTag(StarMegacityUnlock)
+	UnlockTag(StarMegacityUnlock)

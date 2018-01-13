@@ -21,9 +21,9 @@ Players always have full vision on their starting systems as if they had fully e
 
 *** This version introduces new weapon exclusive modifications, similar to generic modifiers, allowing to install weapon-specific modifiers granting special effects or changing certain parameters. Weapon modifications are (generally) mutually exclusive.
 
-****************************************
-*** Changes to Rising Stars Features ***
-****************************************
+***********************************************************
+*** Differences with / Changes to Rising Stars Features ***
+***********************************************************
 
 [*] Game Options
 
@@ -35,6 +35,8 @@ Players always have full vision on their starting systems as if they had fully e
 - Subspace Telescope Array has been renamed to Quantum Telescope Array, has no maintenance cost anymore and can no longer move. Its Telescope ability now has a range of 1M units and it now costs an amount of Energy and FTL Energy linearly relative to the target distance.
 - The Install Swarm Missiles and Structural Enhancement Outpost upgrades have been replaced by new orbital modules.
 - The Refit Launch Bays Outpost upgrade now has a base cost of 500 Ore (up from 300).
+- Star Children Hydroponics Station and Water Reclamation Facility are not included in favor of different mechanics.
+- Hydroponics Satellite is the same as vanilla, although its cost was rebalanced.
 
 [*] Planets
 
@@ -42,16 +44,16 @@ Players always have full vision on their starting systems as if they had fully e
 
 [*] Research
 
-- The research grid has been replaced by a completely different one.
+- The research grid is completely different.
 - Rebalanced several nodes.
-- Re-added removed nodes.
 - Removed the bonus granted to railguns when researching muon projectors in favor of the new weapon modification feature.
+- Terraforming technologies are not included, except the basic Terraforming node. Terraforming will have a different destiny in
 
 [*] Subsystems
 
 - Removed the maintenance cost reduction and shield capacity bonus for Miner Hull. Reduced the cargo storage bonus to balance the introduction of a new type of hull.
 - Re-added Muon Cannon and rebalanced it accordingly. Now renamed to Muon Projector.
-- Muon Cannon Battery renamed to Muon Projector Battery.
+- Renamed Muon Cannon Battery to Muon Projector Battery.
 - Re-added Carpet Bomb with supply cost doubled.
 
 ************************
@@ -128,7 +130,8 @@ different methods preferable in different situations. Third: To tone down the ad
 for use as a remote mining base, as the new balance makes tractoring ore asteroids around a pain. Build and maintenance costs of 400k and 70k, respectively.
 - Added Zero-G Lab. Gives 1 Research generation and allows access to special modules and projects. Build and maintenance costs of 400k and 100k, respectively.
 - Added Hyperfield Actuator. Generates 0.15 FTL Energy per second and stores 250 FTL Energy. Build and maintenance costs of 450k and 75k, respectively.
-- Added Tachyon Uplink. Unlocks the Tachyon Sensor subsystem when active. Requires 0.5 FTL maintenance. Can only be built in a Tachyon Nebula. Only one Tachyon Uplink may be constructed per system.
+- Added Tachyon Uplink. Unlocks the Tachyon Sensor subsystem when active. Build and maintenance costs of 1M and 500k, respectively. Requires 0.5 FTL maintenance. Can only be built in a Tachyon Nebula. Only one Tachyon Uplink may be constructed per system.
+- Added Recycling Facility, exclusive to Star Children: replacement for Megacity. Must be constructed in orbit of a planet.The planet this is in orbit of gains 1 Food resource. Adds 1 Influence Stake. Adds 1 Energy generation. Build and maintenance costs of 350k and 150k, respectively.
 - Added Ring Habitat, exclusive to Star Children: replacement for Arcology. Must be constructed in orbit of a planet. Increases the maximum population of that planet by 5. Costs 5 population from the Mothership in addition to its build cost. Up to three ring habitats may be constructed in orbit of every planet. Costs 2.5M, 2k Ore, 20 Influence, and 75 Labor.
 - Added Listening Post Outpost module. Grants a free Intelligence influence card against a random empire in the same system or an adjacent one every minute. Build cost of 150k. Also costs 5 Influence to build.
 - Added Armored Layer Outpost module. Adds 4000 armor and 2.5 damage resistance. Build and maintenance costs of 100k and 50k, respectively.

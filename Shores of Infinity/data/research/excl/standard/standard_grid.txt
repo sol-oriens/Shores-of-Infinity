@@ -42,8 +42,8 @@ Grid: StandardResearch
 	PlanetSupport: -4,0
 	Health: -2,-4
 	Health: -2,4
-	Connector: 2,4
-	Health: 2,5
+	Health: 2,4
+	SolarPanel: 2,5
 	Thrust: -3,5
 	InfluenceIncome: -5,0
 	Range: -3,-5
@@ -63,7 +63,7 @@ Grid: StandardResearch
 	InfluenceIncome2: -9,2
 	EnergyHurdle: -1,7
 	GravityEngine: -1,8
-	Connector: 0,5
+	EnergyHurdle: 0,5
 	Population: -4,-5
 	InfluenceHurdle: -5,-5
 	ImpDecaySpeed2: -6,-9
@@ -101,12 +101,11 @@ Grid: StandardResearch
 	Damage: 2,1
 	ImpDecaySpeed: -3,-1
 	PlanetSupport: 4,-1
-	Connector: -4,-3
-	Connector: -3,-2
+	TileDevelopment: -4,-3
+	Health: -3,-2
 	MetropolisUpg: -4,-4
-	ImpDecaySpeed: -5,-3
-	Connector: -5,-2
-	Health: 0,-4
+	Population: -5,-3
+	HydroponicsSatellite: 0,-4
 	Megacity: -6,-5
 	CivConstruction: -4,-8
 	Health: -3,-6
@@ -163,14 +162,13 @@ Grid: StandardResearch
 	Health2: -2,-17
 	SupplyRegen: -2,2
 	SupplyStorage: -3,1
-	EnergyHurdle: 0,6
 	FireRate: -2,5
 	Sensors: 0,3
 	FireRate: -1,3
 	EnergyHurdle: -2,7
 	SupportSupplyUse: -3,4
 	SupplyUse: -4,4
-	SolarPanel: 3,6
+	SolarSatellite: 3,6
 	Range: 3,4
 	ShieldCap: 5,6
 	ShieldReg: 5,7
@@ -196,10 +194,8 @@ Grid: StandardResearch
 	ShieldedAntimatter: 8,12
 	EnergyHurdle: 6,12
 	AntimatterGen: 5,11
-	Energy: 5,10
-	SolarSatellite: 4,8
-	EnergyHurdle: 4,9
-	Connector: 3,7
+	EnergyHurdle: 5,10
+	EnergyHurdle: 3,7
 	EnergyStorage: 4,10
 	PowerGeneration: 5,9
 	EnergyHurdle2: 6,13
@@ -222,7 +218,6 @@ Grid: StandardResearch
 	EnergyHurdle3: 10,18
 	CloakPlating: 11,18
 	MuonCannon: 3,3
-	Ramjet: 0,7
 	Sensors: 1,4
 	AoERadius: 5,2
 	ShieldGen: 4,7
@@ -244,11 +239,11 @@ Grid: StandardResearch
 	Thrust: -4,8
 	Health: -5,10
 	EnergyHurdle2: -6,11
-	EmergencySupplies: 3,10
-	EnergyHurdle: 2,9
+	EnergyHurdle: 3,10
+	EmergencySupplies: 2,9
 	KeyEmergencyShields: 2,8
-	EnergyHurdle: 2,10
-	SkipDrive: 1,10
+	SkipDrive: 2,10
+	EnergyHurdle: 1,10
 	EnergyHurdle: -4,10
 	FireRate2: -4,9
 	MissileRange: -6,8
@@ -287,7 +282,6 @@ Grid: StandardResearch
 	EnergyHurdle3: -7,14
 	VacuumTelescope: -3,16
 	HyperfieldSequencing: -4,17
-	Connector: -6,-1
 	InfluenceHurdle: -9,1
 	PlanetSupport: -10,0
 	InfluenceHurdle: -11,0
@@ -370,7 +364,6 @@ Grid: StandardResearch
 	Support3: 19,-2
 	EnergyHurdle3: -7,-9
 	Terraforming: -7,-10
-	HydroponicsSatellite: -7,-7
 	Thrust2: -8,15
 	MatterDisruptor: -7,11
 	InfiniteThrust: -8,16
@@ -394,3 +387,11 @@ Grid: StandardResearch
 	EnergyHurdle2: -2,9
 	PhasingSensor: 0,9
 	TachyonSensor: 3,13
+	EnergyHurdle: 5,8
+	Energy: 4,9
+	Ramjet: 0,6
+	Sensors: -4,-9
+	FlagDamage: -7,12
+	Health: -5,-2
+	ImpDecaySpeed: -6,-1
+	CivConstruction2: -3,-12

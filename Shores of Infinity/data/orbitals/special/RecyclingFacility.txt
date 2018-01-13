@@ -1,0 +1,30 @@
+Module: RecyclingFacility
+	Name: #ORB_RECYCLING_FACILITY
+	Blurb: #ORB_RECYCLING_FACILITY_BLURB
+	Description: #ORB_RECYCLING_FACILITY_DESC
+
+	Icon: GuiOrbitalIcons::14
+	Distant Icon: OrbitalIcons::14
+	Model: Outpost
+	Material: GenericPBR_Outpost
+
+	Size: 8
+
+	Standalone: True
+  Core: True
+
+	Health: 20000
+	Armor: 10000
+
+	Build Cost: 350
+	Maintenance: 150
+	Labor Cost: 20
+
+	RequireUnlockTag(StarMegacityUnlock)
+
+	LimitInOrbitStatus(RecyclingFacility, 1)
+
+	AddStatusToOrbitingPlanet(RecyclingFacility)
+	AddInfluenceStake(1)
+	AddEnergyIncome(1)
+	MatchOrbitingOwner(Destroy None = True)

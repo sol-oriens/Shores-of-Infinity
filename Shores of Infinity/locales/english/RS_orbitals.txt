@@ -266,29 +266,15 @@ ORB_EMBASSY_DESC: <<
 
 	Embassies act as Commerce Stations and Outposts in that they allow trade between separated territories, and expand your empire's borders, respectively.
 >>
-ORB_FARM: Hydroponics Station
-ORB_HYDROGENATOR: Water Reclamation Facility
-ORB_FARM_BLURB: Produces food.
-ORB_FARM_DESC: <<
-	Generates a basic food resource for the planet it orbits. Food generation only applies if the planet and Hydroponics Station are owned by the same empire.
->>
-ORB_HYDROGENATOR_BLURB: Produces water.
-ORB_HYDROGENATOR_DESC: <<
-	Generates a basic water resource for the planet it orbits. Water generation only applies if the planet and Water Reclamation Facility are owned by the same empire.
->>
 ORB_SENATE_BLURB: Generates 1 Influence Stake per 20 billion people.
 ORB_POWERPLANT_BLURB: Generates 5 Energy per second.
 ORB_INTEL_BLURB: Generates Intelligence against nearby empires.
-ORB_HYDROPONICS_SATELLITE_BLURB: Adds 1 Food and Water to the planet it is in orbit of.
-ORB_HYDROPONICS_SATELLITE: Nutrient Reclamation Satellite
 ORB_HYDROPONICS_SATELLITE_DESC: <<
-	A satellite equipped with high-yield zero-G hydroponics bays growing genetically modified crops in exposure to direct sunlight, as well as an advanced water processing facility.
+	A satellite equipped with high-yield zero-G hydroponics bays growing genetically modified crops in exposure to direct sunlight.
 
 	Must be constructed in orbit of a planet.
 
-	The planet this is in orbit of gains 1 Food and Water resource.
-
-	Costs 750 Energy to construct in addition to its build cost.
+	The planet this is in orbit of gains 1 Food resource.
 >>
 ORB_ORBITAL_CONTROL: Orbital Control Satellite
 ORB_ORBITAL_CONTROL_BLURB: Increases Control Hub production by 50% on the planet it is orbiting.
@@ -348,6 +334,16 @@ ORB_STAR_RING_HABITAT_DESC: <<
 	Must be constructed in orbit of a planet. Increases the maximum population of that planet by 5.
 	Costs 5 population from the Mothership in addition to its build cost.
 	Up to three ring habitats may be constructed in orbit of every planet.
+>>
+ORB_RECYCLING_FACILITY: Recycling Facility
+ORB_RECYCLING_FACILITY_BLURB:
+ORB_RECYCLING_FACILITY_DESC: <<
+	[color=#aaa][i]When you live in space, every gram of matter counts. This specialized facility recycles every atom of liquid or solid waste into reusable materials.[/i][/color]
+
+	Must be constructed in orbit of a planet.
+	The planet this is in orbit of gains 1 Food resource.
+	Adds 1 Influence Stake.
+	Adds 1 Energy generation.
 >>
 ORB_SHIPYARD_DESC: <<|
 	A massive orbital shipyard capable of constructing fleets in space.

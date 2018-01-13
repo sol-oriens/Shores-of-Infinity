@@ -65,8 +65,10 @@ Trait: Ancient
 	ReplaceTechnologyNodes(Arcology, AncientArcology)
 	ReplaceTechnologyNodes(RingHabitat, Thrust)
 	ReplaceTechnologyNodes(PlanetaryEngine, Thrust2)
+	ReplaceTechnologyNodes(CivConstruction, FoundryLabor)
+	ReplaceTechnologyNodes(CivConstruction2, FoundryLabor)
 	ReplaceTechnologyNodes(Population, FoundryLabor)
-	ReplaceTechnologyNodes(HydroponicsSatellite, AtroanHydroponics)
+	ReplaceTechnologyNodes(HydroponicsSatellite, AncientHydroponics)
 	ReplaceTechnologyNodes(Terraforming, AtroanTerraforming)
 
 	//ReplaceTechnologyNodes(TerraformSpec1, AtroanTerraformSpec1)

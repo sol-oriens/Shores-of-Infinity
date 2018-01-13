@@ -1,0 +1,5 @@
+Status:RecyclingFacility
+	Visible To: Nobody
+	Collapses: True
+
+	RepeatStacks(AddPlanetResource(BuildingWater))
