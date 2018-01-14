@@ -8,13 +8,21 @@ NEBULA_MUTARA: Mutara-class Nebula
 NEBULA_RADIOACTIVE: Radioactive Nebula
 NEBULA_TACHYON: Tachyon Nebula
 NEBULA_TYPE1: Interstellar Gas Cloud
-STATUS_ARMORED_LAYER: Armored Layer Module
-STATUS_ARMORED_LAYER_DESC: <<
-	This orbital has an Armored Layer module installed.
+STATUS_ARMOR_LAYER: Armored Layer Module
+STATUS_ARMOR_LAYER_DESC: <<
+	This orbital has an Additional Armor Layer module installed.
 >>
 STATUS_MISSILE_RACK: Missile Rack Module
 STATUS_MISSILE_RACK_DESC: <<
 	This orbital has a Missile Rack module installed.
+>>
+STATUS_LARGE_MISSILE_RACK: Large Missile Rack Module
+STATUS_LARGE_MISSILE_RACK_DESC: <<
+	This orbital has a Large Missile Rack module installed.
+>>
+STATUS_TACTICAL_SUITE: Tactical Suite Module
+STATUS_TACTICAL_SUITE_DESC: <<
+	This orbital has a Tactical Suite module installed.
 >>
 STATUS_TACTICAL_OUTPOST: Tactical Outpost Module
 STATUS_TACTICAL_OUTPOST_DESC: <<

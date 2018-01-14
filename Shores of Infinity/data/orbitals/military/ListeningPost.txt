@@ -11,7 +11,7 @@ Module: ListeningPost
 
 	ConsumeInfluence(5)
 
-	RequireOnOrbital(TradeOutpost)
+	RequireEither(RequireOnOrbital(TradeOutpost), RequireOnOrbital(Starbase))
 
 	PeriodicNearbyIntelligence(Timer = 60)
 	AddStatus(ListeningPost)

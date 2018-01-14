@@ -1,0 +1,43 @@
+Module: Starbase
+	Name: #ORB_STARBASE
+	Blurb: #ORB_STARBASE_BLURB
+	Description: #ORB_STARBASE_DESC
+
+	Icon: OrbitalIcons::0
+	Distant Icon: OrbitalIcons::0
+	Model: DefenseStation
+	Material: GenericPBR_Defense_Station
+
+	Size: 18
+
+	Standalone: False
+	Core: True
+
+	Health: 20000
+	Armor: 10000
+
+	Build Cost: 750
+	Maintenance: 100
+	Labor Cost: 40
+
+	RequireNotTrait(Evangelical)
+	RequireNotTrait(Pacifists)
+
+	LimitOncePerSystem(OutpostFlag)
+
+	AddFleetCommand(256)
+	AddFleetCommandEmpireAttribute(OutpostBoost, 256)
+	AddFleetEffectiveness(+2.0)
+	AddSupportBonusHP(+1.0)
+
+	AddHealthEmpireAttribute(OutpostBoost, 10000)
+	AddLocalDefenseAdjacentFlags(OutpostFlag, 3, 6, Overflow Global = True, Local Boost = OutpostBoost)
+
+	ProtectSystem(90)
+	AddStatus(StartingProtection, Duration = 90)
+
+	GiveTrade()
+	AllowConstruction()
+
+	RepeatExtended(AddTurret(Laser, Range = 1500, DPS = 10, Duration = 2, Cooldown = 0, Tracking = 0.4), Base = 10, Multiply Attribute = StaticDamageFactor)
+	RepeatExtended(RecordBonusDPS(10), Base = 10, Multiply Attribute = StaticDamageFactor)

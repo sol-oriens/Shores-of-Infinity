@@ -33,8 +33,8 @@ Players always have full vision on their starting systems as if they had fully e
 [*] Orbitals
 
 - Subspace Telescope Array has been renamed to Quantum Telescope Array, has no maintenance cost anymore and can no longer move. Its Telescope ability now has a range of 1M units and it now costs an amount of Energy and FTL Energy linearly relative to the target distance.
-- The Install Swarm Missiles and Structural Enhancement Outpost upgrades have been replaced by new orbital modules.
-- The Refit Launch Bays Outpost upgrade now has a base cost of 500 Ore (up from 300).
+- The Outpost upgrades have been replaced by new mechanics.
+- Outposts can no longer store cargo.
 - Star Children Hydroponics Station and Water Reclamation Facility are not included in favor of different mechanics.
 - Hydroponics Satellite is the same as vanilla, although its cost was rebalanced.
 
@@ -132,17 +132,28 @@ different methods preferable in different situations. Third: To tone down the ad
 - Added Staging Hub. Allows trade through its system. Can construct mining bases on asteroids. Has no innate labor, but planets can export their own labor to staging hubs within trade range at a 50% reduced rate. Adds 15 Defense Reserve when in orbit around a planet. Designed to fill various support roles, notably
 for use as a remote mining base, as the new balance makes tractoring ore asteroids around a pain. Build and maintenance costs of 200k and 20k, respectively.
 - Added Public Market Staging Hub module. Can import influence, energy, research and defense resources and generate 5k per imported pressure as special funds every minute. Build cost of 150k.
-- Added Tactical Outpost module, buildable by Starports and Staging Hubs. Generates 1 Defense worth of local defense ships. Support ships assigned to this orbital can independently move across the system to attack enemy fleets. Support ships set to Shield, Support or Artillery behavior will not leave the orbital. Build and maintenance costs of 100k and 30k, respectively.
-- Added Listening Post Outpost module. Grants a free Intelligence influence card against a random empire in the same system or an adjacent one every minute. Build cost of 150k. Also costs 5 Influence to build.
-- Added Armored Layer module, buildable by Outposts and Staging Hubs. Adds 4000 armor and 2.5 damage resistance. Build and maintenance costs of 100k and 2.5k, respectively.
-- Added Missile Rack module, buildable by Outposts and Staging Hubs. Can fire 8 missiles par second for 12 base damage each, modified by research. Build and maintenance cost of 50k and 15k, respectively.
+- Added Tactical Outpost module, buildable by starports and staging hubs. Generates 1 Defense worth of local defense ships. Support ships assigned to this orbital can independently move across the system to attack enemy fleets. Support ships set to Shield, Support or Artillery behavior will not leave the orbital. Build and maintenance costs of 100k and 30k, respectively.
+- Added Additional Armor Layer module, buildable by outposts and staging hubs. Adds 4000 armor and 2.5 damage resistance. Build and maintenance costs of 100k and 2.5k, respectively.
+- Added Missile Rack module, buildable by outposts and staging hubs. Can fire missiles at hostile ships for 12 damage each. The number of available weapons increases with research and time. Build and maintenance cost of 50k and 15k, respectively.
+- Added Starbase, which has the same functions as an outpost, but with twice as many support capacity and ship spawn speed. Also has much better armor and is armed with lasers. Only one outpost or starbase can be constructed per system. Build and maintenance cost of 750k and 100k, respectively. Cannot be built by Evangelical and Pacifist lifestyle.
+- Added Additional Armor Layer module, buildable by starbases. Adds 8000 armor and 5 damage resistance. Build and maintenance costs of 200k and 5k, respectively.
+- Added Large Missile Rack module, buildable by starbases. Can fire missiles at hostile ships for 25 damage each. The number of available weapons increases with research and time. Build and maintenance cost of 80k and 25k, respectively.
+- Added Tactical Suite module, buildable by outposts and starbases. Support ships assigned to this orbital can independently move across the system to attack enemy fleets. Support ships set to Shield, Support or Artillery behavior will not leave the orbital. Build and maintenance costs of 100k and 30k, respectively.
+- Added Listening Post module, buildable by outposts and starbases. Grants a free Intelligence influence card against a random empire in the same system or an adjacent one every minute. Build cost of 150k. Also costs 5 Influence to build.
 - Added Zero-G Lab. Gives 1 Research generation and allows access to special modules and projects. Build and maintenance costs of 400k and 100k, respectively.
 - Added Hyperfield Actuator. Generates 0.15 FTL Energy per second and stores 250 FTL Energy. Build and maintenance costs of 450k and 75k, respectively.
 - Added Tachyon Uplink. Unlocks the Tachyon Sensor subsystem when active. Build and maintenance costs of 1M and 500k, respectively. Requires 0.5 FTL maintenance. Can only be built in a Tachyon Nebula. Only one Tachyon Uplink may be constructed per system.
 - Added Recycling Facility, exclusive to Star Children: replacement for Megacity. Must be constructed in orbit of a planet. The planet this is in orbit of gains 1 Food resource. Adds 1 Influence Stake. Adds 1 Energy generation. Build and maintenance costs of 350k and 150k, respectively.
 - Added Ring Habitat, exclusive to Star Children: replacement for Arcology. Must be constructed in orbit of a planet. Increases the maximum population of that planet by 5. Costs 5 population from the Mothership in addition to its build cost. Up to three ring habitats may be constructed in orbit of every planet. Costs 2.5M, 2k Ore, 20 Influence, and 75 Labor.
+- Outposts can now be upgraded to starbases for the same cost and labor as building a starbase from scratch. Labor can now be exported to outposts.
 - FTL Storage orbitals for Star Children with Flux FTL now generate 0.5 FTL Energy per second and store 600 FTL Energy to make up for the impossibility to build FTL Breeders. They also additionally cost 500 ore to build.
 - All orbitals now have a base sensor range of 10.000 units which can be upgraded through research.
+- Outpost health and armor have been increased, respectively, to 10000 (up from 6000) and 5000 (up from 4000).
+- Progenitor and regular solar orbital and health have been increased to 8000 (up from 4000).
+- Commerce station health and armor have been increased, respectively, to 20000 (up from 5000) and 10000 (up from 1000).
+- Solar and hydroponics satellite health and armor have been decreased, respectively, to 6000 (down from 20000) and 4000 (down from 10000).
+- Tactical satellite health and armor have been decreased, respectively, to 10000 (down from 15000) and 5000 (down from 10000).
+- Ring habitat health and armor have been decreased, respectively, to 10000 (down from 20000) and 5000 (down from 10000).
 
 [*] Planets
 
@@ -159,7 +170,7 @@ frequency options on purpose.
 
 [*] Research
 
-- Orbital Command and Orbital Command 2 now also grant 64 and 128 additional support capacity, respectively, to Starports.
+- Orbital Command and Orbital Command 2 now also grant additional support capacity to starbases, starports and staging hubs and additional health to starbases.
 - Added Scanning and Scanning 2 nodes. Increases all sensor ranges by 10% and 20%, respectively.
 - Added the Dedicated Hauling Architecture node. Unlocks the Hauler Hull subsystem for use on flagships.
 - Added the Phasing Sensors node. Unlocks the Phasing Sensors subsystem for use on flagships and stations.

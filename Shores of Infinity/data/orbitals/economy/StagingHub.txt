@@ -13,8 +13,8 @@ Module: StagingHub
 	Standalone: False
 	Core: True
 
-	Health: 5000
-	Armor: 1000
+	Health: 6000
+	Armor: 4000
 
 	Build Cost: 200
 	Maintenance: 20

@@ -10,8 +10,8 @@ Module: DefenseSatellite
 
 	Size: 8
 
-	Health: 15000
-	Armor: 10000
+	Health: 10000
+	Armor: 5000
 
 	Build Cost: 250
 	Maintenance: 25

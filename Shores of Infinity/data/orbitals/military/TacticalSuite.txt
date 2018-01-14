@@ -1,3 +1,21 @@
+Module: TacticalSuite
+	Name: #ORB_TACTICAL_SUITE
+	Description: #ORB_TACTICAL_SUITE_DESC
+
+	Icon: ActionBarIcons::2
+
+	Standalone: False
+	Core: False
+
+	Build Cost: 100
+	Maintenance: 30
+
+	RequireEither(RequireOnOrbital(TradeOutpost), RequireOnOrbital(Starbase))
+
+	AllowFreeRaiding()
+	AddRaidRange(-10000000) //Negative range resolves to "in the current system"
+	AddStatus(TacticalSuite)
+
 Module: TacticalOutpost
 	Name: #ORB_TACTICAL_OUTPOST
 	Description: #ORB_TACTICAL_OUTPOST_DESC

@@ -11,7 +11,7 @@ Module: SolarOrbital
 
 	Size: 30
 
-	Health: 4000
+	Health: 8000
 	Armor: 3500
 
 	Build Cost: 400

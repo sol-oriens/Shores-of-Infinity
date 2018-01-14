@@ -13,8 +13,8 @@ Module: TradeStation
 	Standalone: True
 	Core: True
 
-	Health: 5000
-	Armor: 1000
+	Health: 20000
+	Armor: 10000
 
 	Build Cost: 500
 	Maintenance: 200

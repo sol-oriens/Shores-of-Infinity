@@ -13,8 +13,8 @@ Module: ResearchLab
 	Standalone: False
 	Core: True
 
-	Health: 5000
-	Armor: 1000
+	Health: 6000
+	Armor: 4000
 
 	Build Cost: 400
   Maintenance: 100

@@ -12,6 +12,24 @@ Module: MissileRack
 
 	RequireEither(RequireOnOrbital(TradeOutpost), RequireOnOrbital(StagingHub))
 
-	RepeatExtended(AddTurret(Missile, Range = 1400, Damage = 12, Reload = 1, Speed = 150, Tracking = 6), Base = 8, Multiply Attribute = StaticDamageFactor)
-	RepeatExtended(RecordBonusDPS(12), Base = 8, Multiply Attribute = StaticDamageFactor)
+	RepeatExtended(AddTurret(Missile, Range = 1400, Damage = 12, Reload = 1, Speed = 150, Tracking = 6), Base = 6, Multiply Attribute = StaticDamageFactor)
+	RepeatExtended(RecordBonusDPS(12), Base = 6, Multiply Attribute = StaticDamageFactor)
 	AddStatus(MissileRack)
+
+Module: LargeMissileRack
+	Name: #ORB_LARGE_MISSILE_RACK
+	Description: #ORB_LARGE_MISSILE_RACK_DESC
+
+	Icon: techRocket
+
+	Standalone: False
+	Core: False
+
+	Build Cost: 80
+	Maintenance: 25
+
+	RequireOnOrbital(Starbase)
+
+	RepeatExtended(AddTurret(Missile, Range = 2100, Damage = 25, Reload = 1, Speed = 150, Tracking = 6), Base = 8, Multiply Attribute = StaticDamageFactor)
+	RepeatExtended(RecordBonusDPS(25), Base = 8, Multiply Attribute = StaticDamageFactor)
+	AddStatus(LargeMissileRack)

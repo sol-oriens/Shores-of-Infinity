@@ -1,0 +1,13 @@
+Construction: OutpostStarbaseUpgrade
+	Name: #OUTPOST_STARBASE_UPGRADE
+	Description: #OUTPOST_STARBASE_UPGRADE_DESC
+	Icon: OrbitalIcons::0
+	Category: Upgrades
+
+	Build Cost: 750
+	Labor Cost: 40
+
+	SpawnOrbital(Starbase)
+	Destroy(Quiet = True)
+
+	RequireOnOrbital(TradeOutpost)

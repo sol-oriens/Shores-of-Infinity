@@ -13,8 +13,8 @@ Module: Habitat
 	Standalone: True
 	Core: True
 
-	Health: 500
-	Armor: 0
+	Health: 4000
+	Armor: 4000
 	Combat Repair: False
 
 	CannotBuildManually()
@@ -22,9 +22,6 @@ Module: Habitat
 
 	AddStatusToOrbitingPlanet(StarHabitats, Set Origin Empire = True)
 	DestroyIfNotAroundOwnedPlanet(Do Colonize = True)
-
-	AddHealth(4000) #version>=115
-	AddArmor(4000) #version>=115
 
 	AddHealthEmpireAttribute(HabitatUpgrade, 4000)
 	AddArmorEmpireAttribute(HabitatUpgrade, 4000)

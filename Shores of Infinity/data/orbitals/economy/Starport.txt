@@ -13,8 +13,8 @@ Module: Starport
 	Standalone: False
 	Core: True
 
-	Health: 5000
-	Armor: 1000
+	Health: 15000
+	Armor: 5000
 
 	Build Cost: 300
 	Maintenance: 70

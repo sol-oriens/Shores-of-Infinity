@@ -10,8 +10,8 @@ Module: HydroponicsSatellite
 
 	Size: 8
 
-	Health: 20000
-	Armor: 10000
+	Health: 6000
+	Armor: 4000
 
 	Build Cost: 600
 	Maintenance: 50

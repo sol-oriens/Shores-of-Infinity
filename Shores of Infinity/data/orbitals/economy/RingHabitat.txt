@@ -13,8 +13,8 @@ Module: RingHabitat
 	Standalone: True
 	Core: True
 
-	Health: 20000
-	Armor: 10000
+	Health: 10000
+	Armor: 5000
 
 	Build Cost: 1000
 	Labor Cost: 25
@@ -46,8 +46,8 @@ Module: StarRingHabitat
 	Standalone: True
 	Core: True
 
-	Health: 50000
-	Armor: 25000
+	Health: 20000
+	Armor: 20000
 
 	Build Cost: 2500
 	Labor Cost: 75
@@ -64,8 +64,8 @@ Module: StarRingHabitat
 	Repeat(5, AddStatusToOrbitingPlanet(StarHabitats, Set Origin Empire = True))
 	AddStatusToOrbitingPlanet(StarRingHabitat, Set Origin Empire = True)
 
-	AddHealthEmpireAttribute(HabitatUpgrade, 4000)
-	AddArmorEmpireAttribute(HabitatUpgrade, 4000)
+	AddHealthEmpireAttribute(HabitatUpgrade, 20000)
+	AddArmorEmpireAttribute(HabitatUpgrade, 20000)
 
 	AddResistance(5.0)
 

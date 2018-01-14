@@ -89,11 +89,13 @@ C_SLIPSTREAM_UNLOCK_DESC: <<
 	[i][bbloc=#S_SLIPSTREAM_GENERATOR_DESC/][/i]
 >>
 
-OUTPOST_DEFENSE: Refit Launch Bays
-OUTPOST_DEFENSE_DESC: <<
-	Perform a substantial retrofit of the orbital's hangar deck and docking ports, allowing it to support more vessels coming in or out at any given time. The additional traffic also encourages the civilian sector to assist with constructing additional defense ships.
+OUTPOST_STARBASE_UPGRADE: Upgrade to Starbase
+OUTPOST_STARBASE_UPGRADE_DESC: <<
+	Upgrades this Outpost to a Starbase.
 
-	Adds 256 support capacity and 4 Defense generation. Subsequent hangar refits require increasingly large amounts of Ore to perform.
+	Any module built on this Outpost will be lost.
+
+	[i][bbloc=#ORB_STARBASE_DESC/][/i]
 >>
 
 RESEARCH_LAB_HYPERCHARGE: Hypercharge

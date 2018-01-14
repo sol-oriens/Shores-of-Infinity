@@ -5,7 +5,9 @@ ORB_TRADE_OUTPOST_DESC: <<|
 	system it is in.
 
 	Outposts generate up to [b]3 Defense[/b] worth of local defense ships,
-	depending on how many adjacent systems have outposts in them.
+	depending on how many adjacent systems have outposts or starbases in them.
+
+	Support ships assigned to this orbital fight at increased effectiveness.
 
 	If all of the outpost's support command is used and it has a full
 	complement of defense ships, it will start adding its defense generation to
@@ -14,10 +16,12 @@ ORB_TRADE_OUTPOST_DESC: <<|
 	Planets in systems that have contained an outpost for at least 2 minutes
 	will be [b]Protected[/b] from being captured until the outpost is destroyed.
 
-	[i]Can be built in systems you do not own planets in, expanding your
-	empire border. Only one outpost can be constructed per system.[/i]
+	Can be upgraded to a Starbase.
 
-	Can store 1k units of cargo.
+	Has no innate labor, but planets can export their own labor to outposts within trade range at a 50% reduced rate.
+
+	[i]Can be built in systems you do not own planets in, expanding your
+	empire border. Only one outpost or starbase can be constructed per system.[/i]
 >>
 
 ORB_TRADE_STATION_DESC: <<|
@@ -52,6 +56,25 @@ ORB_SHIPYARD_DESC: <<|
 >>
 ORB_FTL_STORAGE_FLUX_DESC: <<
 	Stores 600 FTL Energy.
+>>
+ORB_STARBASE: Starbase
+ORB_STARBASE_BLURB: Heavy defense installation. Allows trade through its system. Generates defense ships and protects planets in the system from being captured.
+ORB_STARBASE_DESC: <<
+	[color=#aaa][i]A imposing military base designed to secure supply lines and protect a system against a sustained siege.[/i][/color]
+
+	Generates up to [b]6 Defense[/b] worth of local defense ships, depending on how many adjacent systems have outposts or starbases in them.
+
+	Support ships assigned to this orbital fight at increased effectiveness.
+
+	If all of the starbase's support command is used and it has a full complement of defense ships, it will start adding its defense generation to your empire's global pool.
+
+	Planets in systems that have contained a starbase for at least 2 minutes will be [b]Protected[/b] from being captured until the starbase is destroyed.
+
+	Fires lasers at hostile ships for 10 damage per second each. The number of available weapons increases with research and time.
+
+	Can be upgraded with miscellaneous military modules.
+
+	[i]Can be built in systems you do not own planets in, expanding your empire border. Only one outpost or starbase can be constructed per system.[/i]
 >>
 ORB_STARPORT: Starport
 ORB_STARPORT_BLURB: Allows trade through its system. Generates income per friendly planet. Can store 2.5k units of cargo.
@@ -449,17 +472,34 @@ ORB_SENATE_ADAPTED_DESC: <<
 *** CROSS CORE MODULES ***
 **************************
 
-ORB_ARMORED_LAYER: Armored Layer
-ORB_ARMORED_LAYER_DESC: <<|
+ORB_ARMOR_LAYER: Additional Armor Layer
+ORB_ARMOR_LAYER_DESC: <<|
 	[color=#aaa][i]An additional layer of military-grade armor plating covering the whole orbital.[/i][/color]
 
 	Adds 4000 armor and 2.5 damage resistance.
 >>
+ORB_ARMOR_LAYER_HEAVY_DESC: <<|
+	[color=#aaa][i]An additional layer of military-grade armor plating covering the whole orbital.[/i][/color]
+
+	Adds 8000 armor and 5 damage resistance.
+>>
 ORB_MISSILE_RACK: Missile Rack
 ORB_MISSILE_RACK_DESC: <<|
-	[color=#aaa][i]An 8-tubed missile rack, complete with a large ammo chamber and a targeting system, designed for cheap and effective fire support in contested systems in early development.[/i][/color]
+	[color=#aaa][i]A missile rack, complete with a large ammo chamber and a targeting system, designed for cheap and effective fire support in contested systems in early development.[/i][/color]
 
-	Can fire 8 missiles per second for 12 base damage each, modified by research.
+	Fires missiles at hostile ships for 12 damage each. The number of available weapons increases with research and time.
+>>
+ORB_LARGE_MISSILE_RACK: Large Missile Rack
+ORB_LARGE_MISSILE_RACK_DESC: <<
+	[color=#aaa][i]A large missile rack, complete with a large ammo chamber and a targeting system, designed for heavy fire support.[/i][/color]
+
+	Fires missiles at hostile ships for 25 damage each. The number of available weapons increases with research and time.
+>>
+ORB_TACTICAL_SUITE: Tactical Suite
+ORB_TACTICAL_SUITE_DESC: <<
+	[color=#aaa][i]A military module equipped with a tactical relay and resupply equipment allowing the garrisoned fleet to perform in-system strikes.[/i][/color]
+
+	Support ships assigned to this orbital can independently move across the system to attack enemy fleets. Support ships set to Shield, Support or Artillery behavior will not leave the orbital.
 >>
 ORB_TACTICAL_OUTPOST: Tactical Outpost
 ORB_TACTICAL_OUTPOST_DESC: <<

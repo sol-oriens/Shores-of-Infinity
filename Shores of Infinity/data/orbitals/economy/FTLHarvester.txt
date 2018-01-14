@@ -2,7 +2,7 @@ Module: FTLHarvester
 	Name: #ORB_FTL_HARVESTER
 	Blurb: #ORB_FTL_HARVESTER_BLURB
 	Description: #ORB_FTL_HARVESTER_DESC
-	
+
 	Icon: GuiOrbitalIcons::19
 	Strategic Icon: OrbitalIcons::19
 	Model: FTLStorage
@@ -10,8 +10,8 @@ Module: FTLHarvester
 
 	Size: 13
 
-	Health: 5000
-	Armor: 1000
+	Health: 6000
+	Armor: 4000
 
 	Build Cost: 450
 	Maintenance: 75

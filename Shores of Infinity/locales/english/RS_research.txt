@@ -53,15 +53,17 @@ R_STAR_ARCOLOGY_DESC: <<
 R_IMP_PLANET_SUPPORT_DESC: <<
 	[i][color=#aaa]More focused and effective command of orbital defense vessels.[/color][/i]
 
-	Increases the maximum support capacity of all owned [b][img=GuiOrbitalIcons::0;20/] Outposts[/b] orbitals by $1.
+	Increases the maximum support capacity of all owned [b][img=GuiOrbitalIcons::0;20/] Starbase[/b] orbitals by $1.
 
-	Increases the maximum support capacity of all owned [b][img=GuiOrbitalIcons::0;20/] Starports[/b] orbitals by $2.
+	Increases the maximum support capacity of all owned [b][img=GuiOrbitalIcons::14;20/] Outpost[/b] orbitals by $2.
 
-	Increases the maximum support capacity of all owned [b][img=GuiOrbitalIcons::0;20/] Staging Hubs[/b] orbitals by $3.
+	Increases the maximum support capacity of all owned [b][img=GuiOrbitalIcons::15;20/] Starport[/b] orbitals by $3.
 
-	Increases the maximum support capacity of all owned [b][img=PlanetType::2;20/] Planets[/b] by $2 for each planet level.
+	Increases the maximum support capacity of all owned [b][img=GuiOrbitalIcons::15;20/] Staging Hub[/b] orbitals by $4.
 
-	Also increases the [img=Plus;20/] Health and the rate of local defense ship production of [b][img=GuiOrbitalIcons::0;20/] Outpost[/b] orbitals.
+	Increases the maximum support capacity of all owned [b][img=PlanetType::2;20/] Planets[/b] by $3 for each planet level.
+
+	Also increases the [img=Plus;20/] Health and the rate of local defense ship production of [b][img=GuiOrbitalIcons::14;20/] Outpost[/b] and [b][img=GuiOrbitalIcons::0;20/] Starbase[/b] orbitals.
 >>
 
 R_IMP_SENSORS: Scanning

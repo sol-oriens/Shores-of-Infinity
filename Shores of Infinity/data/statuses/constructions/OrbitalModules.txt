@@ -1,6 +1,14 @@
-Status: ArmoredLayer
-	Name: #STATUS_ARMORED_LAYER
-	Description: #STATUS_ARMORED_LAYER_DESC
+Status: ArmorLayer
+	Name: #STATUS_ARMOR_LAYER
+	Description: #STATUS_ARMOR_LAYER_DESC
+	Visible To: Owner
+	Icon: techArmor
+
+	Unique: True
+
+Status: HeavyArmorLayer
+	Name: #STATUS_ARMOR_LAYER
+	Description: #STATUS_ARMOR_LAYER_DESC
 	Visible To: Owner
 	Icon: techArmor
 
@@ -11,6 +19,22 @@ Status: MissileRack
 	Description: #STATUS_MISSILE_RACK_DESC
 	Visible To: Owner
 	Icon: techRocket
+
+	Unique: True
+
+Status: LargeMissileRack
+	Name: #STATUS_LARGE_MISSILE_RACK
+	Description: #STATUS_LARGE_MISSILE_RACK_DESC
+	Visible To: Owner
+	Icon: techRocket
+
+	Unique: True
+
+Status: TacticalSuite
+	Name: #STATUS_TACTICAL_SUITE
+	Description: #STATUS_TACTICAL_SUITE_DESC
+	Visible To: Owner
+	Icon: ActionBarIcons::2
 
 	Unique: True
 

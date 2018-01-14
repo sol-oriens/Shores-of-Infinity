@@ -13,8 +13,8 @@ Module: TradeOutpost
 	Standalone: False
 	Core: True
 
-	Health: 6000
-	Armor: 4000
+	Health: 10000
+	Armor: 5000
 
 	Build Cost: 300
 	Maintenance: 30
@@ -46,6 +46,8 @@ Module: TradeOutpost
 	GiveTrade()
 	AllowConstruction()
 
-	AddCargoStorage(1000)
+	AddLaborFactor(-0.5)
+	AllowLaborImport()
+	ForbidLaborExport()
 
 	AI: RegisterForUse(TradeOutpost)

@@ -1,6 +1,6 @@
-Module: ArmoredLayer
-	Name: #ORB_ARMORED_LAYER
-	Description: #ORB_ARMORED_LAYER_DESC
+Module: ArmorLayer
+	Name: #ORB_ARMOR_LAYER
+	Description: #ORB_ARMOR_LAYER_DESC
 
 	Icon: techArmor
 
@@ -15,4 +15,23 @@ Module: ArmoredLayer
 	RequireEither(RequireOnOrbital(TradeOutpost), RequireOnOrbital(StagingHub))
 
 	AddResistance(2.5)
-	AddStatus(ArmoredLayer)
+	AddStatus(ArmorLayer)
+
+Module: HeavyArmorLayer
+	Name: #ORB_ARMOR_LAYER
+	Description: #ORB_ARMOR_LAYER_HEAVY_DESC
+
+	Icon: techArmor
+
+	Standalone: False
+	Core: False
+
+	Armor: 8000
+
+	Build Cost: 200
+	Maintenance: 5
+
+	RequireOnOrbital(Starbase)
+
+	AddResistance(5)
+	AddStatus(HeavyArmorLayer)
