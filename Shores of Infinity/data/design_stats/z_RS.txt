@@ -239,6 +239,28 @@ SubsystemStat: LaserDrivePower
 
 	Variable: LaserDrivePower
 
+SubsystemStat: BombardStacks
+	Name: S_BOMBARDSTACKS
+	Icon: ResourceIconsSmall::45
+	Color: #ff8931
+
+	Variable: BombardStacks
+
+SubsystemStat: BombardDuration
+	Name: S_BOMBARDDURATION
+	Icon: MilitaryStrengthIcon
+	Color: #ff8931
+	Suffix: s
+
+	Variable: BombardDuration
+
+SubsystemStat: BombardCost
+	Name: S_BOMBARDCOST
+	Icon: MissileLauncher::0 * #ffa0a0
+	Color: #ff8931
+
+	Variable: BombardCost
+
 // *************************************
 // *********HEX-SPECIFIC STATS**********
 // *************************************

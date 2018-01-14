@@ -54,7 +54,7 @@ Players always have full vision on their starting systems as if they had fully e
 - Removed the maintenance cost reduction and shield capacity bonus for Miner Hull. Reduced the cargo storage bonus to balance the introduction of a new type of hull.
 - Re-added Muon Cannon and rebalanced it accordingly. Now renamed to Muon Projector.
 - Renamed Muon Cannon Battery to Muon Projector Battery.
-- Re-added Carpet Bomb with supply cost doubled.
+- Re-added and rebalanced Carpet Bomb.
 
 ************************
 *** Detailed Changes ***
@@ -222,7 +222,8 @@ frequency options on purpose.
 - Increased Fleet Computer raiding range bonus (and base raiding range) by a factor of 6.
 - Superstructure Hull now provides less build and labor cost reduction, but its ore cost is drastically reduced. Maintenance cost reduction is unchanged.
 - Added Laser Drive Power subsystem stat (for laser drives).
-- Added Impulse subsystem stat (for railguns).
+- Added Impulse subsystem stat for railguns.
+- Added Points of Impact, Fallout Duration and Supply Cost subsystem stats for carpet bombs.
 
 [*] Systems
 

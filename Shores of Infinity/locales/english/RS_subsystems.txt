@@ -85,6 +85,9 @@ S_SHIELDTRANSFER: Transfer Rate
 S_DEFENSIVEMATRIX: Matrix Capacity
 S_PODSIZE: Pod Size
 S_LASERDRIVEPOWER: Laser Drive Power
+S_BOMBARDSTACKS: Points of Impact
+S_BOMBARDDURATION: Fallout Duration
+S_BOMBARDCOST: Supply Cost
 S_DEFENSEGENERATION: Defense Generation
 S_DEFENSEGENERATION: Defense Generation
 S_FORCEFIELD_STAT: Forcefield Capacity
