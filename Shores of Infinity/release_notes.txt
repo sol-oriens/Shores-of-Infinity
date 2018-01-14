@@ -47,7 +47,7 @@ Players always have full vision on their starting systems as if they had fully e
 - The research grid is completely different.
 - Rebalanced several nodes.
 - Removed the bonus granted to railguns when researching muon projectors in favor of the new weapon modification feature.
-- Terraforming technologies are not included, except the basic Terraforming node. Terraforming will have a different destiny in
+- Terraforming technologies are not included, except the basic Terraforming node. Terraforming will have a different destiny in SoI.
 
 [*] Subsystems
 
@@ -171,6 +171,7 @@ frequency options on purpose.
 [*] Research
 
 - Orbital Command and Orbital Command 2 now also grant additional support capacity to starbases, starports and staging hubs and additional health to starbases.
+- Laboratories now also grants 2 additional Research generation to zero-G labs.
 - Added Scanning and Scanning 2 nodes. Increases all sensor ranges by 10% and 20%, respectively.
 - Added the Dedicated Hauling Architecture node. Unlocks the Hauler Hull subsystem for use on flagships.
 - Added the Phasing Sensors node. Unlocks the Phasing Sensors subsystem for use on flagships and stations.

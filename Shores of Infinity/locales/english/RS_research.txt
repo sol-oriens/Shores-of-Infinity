@@ -23,6 +23,12 @@ R_AREA_EFFICIENCY_DESC: <<
 	[color=#aaa][i]From raw to polished.[/i][/color]
 >>
 
+R_LABORATORIES_DESC: <<
+	Research Complex buildings give $1 additional Research Pressure.
+
+	Zero-G Lab orbitals add $1 additional Research generation.
+>>
+
 R_BLD_ARCOLOGY: Arcologies
 R_BLD_ARCOLOGY_DESC: <<
 	[i][color=#aaa]We learned to build settlements. Then we learned to build ever bigger cities. Then we learned to build megacities, with ever taller buildings. Now, we learned to build cities inside buildings.[/color][/i]
