@@ -1,0 +1,63 @@
+Status: ArmoredLayer
+	Name: #STATUS_ARMORED_LAYER
+	Description: #STATUS_ARMORED_LAYER_DESC
+	Visible To: Owner
+	Icon: techArmor
+
+	Unique: True
+
+Status: MissileRack
+	Name: #STATUS_MISSILE_RACK
+	Description: #STATUS_MISSILE_RACK_DESC
+	Visible To: Owner
+	Icon: techRocket
+
+	Unique: True
+
+Status: TacticalOutpost
+	Name: #STATUS_TACTICAL_OUTPOST
+	Description: #STATUS_TACTICAL_OUTPOST_DESC
+	Visible To: Owner
+	Icon: ActionBarIcons::2
+
+	Unique: True
+
+Status: ListeningPost
+	Name: #STATUS_LISTENING_POST
+	Description: #STATUS_LISTENING_POST_DESC
+	Visible To: Owner
+	Icon: CardIcons::5
+
+	Unique: True
+
+Status: StagingHubMarket
+	Name: #STATUS_STAGING_HUB_MARKET
+	Description: #STATUS_STAGING_HUB_MARKET_DESC
+	Visible To: Owner
+	Icon: ResourceIcon::0
+
+	Unique: True
+
+Status: StarportDockingBays
+	Name: #STATUS_STARPORT_DOCKING_BAYS
+	Description: #STATUS_STARPORT_DOCKING_BAYS_DESC
+	Visible To: Owner
+	Icon: ActionBarIcons::2
+
+	Unique: True
+
+Status: ResearchLabCrystallizer
+	Name: #STATUS_RESEARCH_LAB_CRISTALLIZER
+	Description: #STATUS_RESEARCH_LAB_CRISTALLIZER_DESC
+	Visible To: Owner
+	Icon: ResourceIconsSmall::47
+
+	Unique: True
+
+Status: ResearchLabHypercharger
+	Name: #STATUS_RESEARCH_LAB_HYPERCHARGER
+	Description: #STATUS_RESEARCH_LAB_HYPERCHARGER_DESC
+	Visible To: Owner
+	Icon: techPropulsion*#26a980
+
+	Unique: True

@@ -24,7 +24,4 @@ Module: RecyclingFacility
 
 	LimitInOrbitStatus(RecyclingFacility, 1)
 
-	AddStatusToOrbitingPlanet(RecyclingFacility)
-	AddInfluenceStake(1)
-	AddEnergyIncome(1)
-	MatchOrbitingOwner(Destroy None = True)
+	AddStatusToOrbitingPlanet(RecyclingFacility, Set Origin Empire = True)

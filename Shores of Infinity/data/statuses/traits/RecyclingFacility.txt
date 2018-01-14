@@ -2,4 +2,6 @@ Status:RecyclingFacility
 	Visible To: Nobody
 	Collapses: True
 
-	RepeatStacks(AddPlanetResource(BuildingWater))
+	AddPlanetResource(BuildingWater)
+	AddInfluenceStake(1)
+	AddEnergyIncome(1)

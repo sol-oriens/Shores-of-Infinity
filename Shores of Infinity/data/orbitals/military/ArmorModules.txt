@@ -1,0 +1,18 @@
+Module: ArmoredLayer
+	Name: #ORB_ARMORED_LAYER
+	Description: #ORB_ARMORED_LAYER_DESC
+
+	Icon: techArmor
+
+	Standalone: False
+	Core: False
+
+	Armor: 4000
+
+	Build Cost: 100
+	Maintenance: 2.5
+
+	RequireEither(RequireOnOrbital(TradeOutpost), RequireOnOrbital(StagingHub))
+
+	AddResistance(2.5)
+	AddStatus(ArmoredLayer)

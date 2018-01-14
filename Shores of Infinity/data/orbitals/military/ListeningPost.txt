@@ -1,0 +1,17 @@
+Module: ListeningPost
+	Name: #ORB_LISTENING_POST
+	Description: #ORB_LISTENING_POST_DESC
+
+	Icon: CardIcons::5
+
+	Standalone: False
+	Core: False
+
+	Build Cost: 150
+
+	ConsumeInfluence(5)
+
+	RequireOnOrbital(TradeOutpost)
+
+	PeriodicNearbyIntelligence(Timer = 60)
+	AddStatus(ListeningPost)

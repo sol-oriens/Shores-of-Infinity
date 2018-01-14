@@ -25,7 +25,7 @@ Module: ResearchLab
 
 	AllowConstruction()
 
-Module: Crystallizer
+Module: ResearchLabCrystallizer
 	Name: #ORB_RESEARCH_LAB_CRYSTALLIZER
 	Description: #ORB_RESEARCH_LAB_CRYSTALLIZER_DESC
 
@@ -42,10 +42,10 @@ Module: Crystallizer
 
 	AddStatus(ResearchLabCrystallizer)
 
-Module: Hypercharger
+Module: ResearchLabHypercharger
 	Name: #ORB_RESEARCH_LAB_HYPERCHARGER
 	Description: #ORB_RESEARCH_LAB_HYPERCHARGER_DESC
-	
+
 	Icon: techPropulsion*#26a980
 
 	Standalone: False

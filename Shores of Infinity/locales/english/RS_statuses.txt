@@ -8,6 +8,38 @@ NEBULA_MUTARA: Mutara-class Nebula
 NEBULA_RADIOACTIVE: Radioactive Nebula
 NEBULA_TACHYON: Tachyon Nebula
 NEBULA_TYPE1: Interstellar Gas Cloud
+STATUS_ARMORED_LAYER: Armored Layer Module
+STATUS_ARMORED_LAYER_DESC: <<
+	This orbital has an Armored Layer module installed.
+>>
+STATUS_MISSILE_RACK: Missile Rack Module
+STATUS_MISSILE_RACK_DESC: <<
+	This orbital has a Missile Rack module installed.
+>>
+STATUS_TACTICAL_OUTPOST: Tactical Outpost Module
+STATUS_TACTICAL_OUTPOST_DESC: <<
+	This orbital has a Tactical Outpost module installed.
+>>
+STATUS_LISTENING_POST: Listening Post Module
+STATUS_LISTENING_POST_DESC: <<
+	This orbital has a Listening Post module installed.
+>>
+STATUS_STARPORT_DOCKING_BAYS: Long Haul Docking Bays Module
+STATUS_STARPORT_DOCKING_BAYS_DESC: <<
+	This Starport has a Long Haul Docking Bays module installed.
+>>
+STATUS_STAGING_HUB_MARKET: Public Market Module
+STATUS_STAGING_HUB_MARKET_DESC: <<
+	This Staging Hub as a Public Market module installed.
+>>
+STATUS_RESEARCH_LAB_CRISTALLIZER: Hyperfield Crystallizer Module
+STATUS_RESEARCH_LAB_CRISTALLIZER_DESC: <<
+	This Zero-G Lab has a Hyperfield Crystallizer module installed.
+>>
+STATUS_RESEARCH_LAB_HYPERCHARGER: Hypercharger Module
+STATUS_RESEARCH_LAB_HYPERCHARGER_DESC: <<
+	This Zero-G Lab has a Hypercharger module installed.
+>>
 STATUS_FAST_RECHARGE: Shield Recharge
 STATUS_EMERGENCY_SHIELDS_DESC: This ship is experiencing temporarily boosted shield regeneration due to activating an "Emergency Supplies" subsystem.
 STATUS_FAST_RECHARGE_DESC: <<
@@ -55,7 +87,7 @@ STATUS_DAMAGED_DESC: <<
 STATUS_PROGENITOR_COMPUTER_BOOST_DESC: Heavy computation done by the Progenitor-designed control computer aboard the flagship is significantly increasing this fleet's efficiency and combat strength for the first 60 seconds of any combat.
 STATUS_HYPERCHARGE: Hypercharge
 STATUS_HYPERCHARGE_DESC: <<
-	A hypercharge granting one use of the Hypersail Beam ability.
+	A hypercharge granting one use of the Hyperpropulsion Beam ability.
 >>
 STATUS_LASERSAIL: Lasersailing
 STATUS_LASERSAIL_DESC: <<

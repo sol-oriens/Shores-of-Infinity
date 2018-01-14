@@ -19,24 +19,6 @@ ORB_TRADE_OUTPOST_DESC: <<|
 
 	Can store 1k units of cargo.
 >>
-ORB_LISTENING_POST: Listening Post
-ORB_LISTENING_POST_DESC: <<|
-	[color=#aaa][i]An additional restricted access area module, equipped with advanced sensors and run by hackers and spies, which can intercept and decode secured transmissions from other empires in the surroundings.[/i][/color]
-
-	Grants a free Intelligence influence card against a random empire in the same system or an adjacent one every minute.
->>
-ORB_ARMORED_LAYER: Armored Layer
-ORB_ARMORED_LAYER_DESC: <<|
-	[color=#aaa][i]An additional layer of military-grade armor plating covering the whole orbital.[/i][/color]
-
-	Adds 4000 armor and 2.5 damage resistance.
->>
-ORB_MISSILE_RACK: Missile Rack
-ORB_MISSILE_RACK_DESC: <<|
-	[color=#aaa][i]An 8-tubed missile rack, complete with a large ammo chamber and a targeting system, designed for cheap and effective fire support in contested systems in early development.[/i][/color]
-
-	Can fire 8 missiles per second for 12 base damage each, modified by research.
->>
 
 ORB_TRADE_STATION_DESC: <<|
 	A large and bustling station of commerce allows global resource trade
@@ -78,11 +60,11 @@ ORB_STARPORT_DESC: <<
 
 	Provides 30k income for each owned and friendly planet in the system belonging to another empire you are at peace with or yours, up to 120k.
 
-	Support ships assigned to a Starport independently move across the system to attack enemy fleets.
-	
 	Can be upgraded to allow global resource trade.
 
 	Can store 2.5k units of cargo.
+
+	[i]Can be built in systems you do not own planets in, expanding your empire border.[/i]
 
 	[i]Only one Starport may be constructed per system.[/i]
 >>
@@ -93,23 +75,27 @@ ORB_STARPORT_DOCKING_BAYS_DESC: <<
 	Allows global resource trade between any territories with Commerce Stations or Starports with Long Haul Docking Bays.
 >>
 ORB_STAGING_HUB: Staging Hub
-ORB_STAGING_HUB_BLURB: Allows trade through its system. Can import and sell resources. Planets can be ordered to export their labor to this orbital. Can store 5k units of cargo.
+ORB_STAGING_HUB_BLURB: Allows trade through its system. Can build mining bases. Planets can be ordered to export their labor to this orbital. Can store 5k units of cargo.
 ORB_STAGING_HUB_DESC: <<|
 	[color=#aaa][i]This multipurpose station can act as a trading outpost as well as a remote base for mining operations or construction projects. It can also support a small fleet and stockpile resources to sell to private corporations.[/i][/color]
 
-	Has no innate labor, but planets can export their own labor to staging hubs within trade range at a 50% reduced rate.
-
 	Can construct mining bases on asteroids.
 
-	Can import labor resources and gain labor per minute equivalent to 50% of the imported pressure.
+	Has no innate labor, but planets can export their own labor to staging hubs within trade range at a 50% reduced rate.
 
-	Can import influence, energy, research and defense resources and generate 5k per imported pressure as special funds every minute.
+	Can be upgraded to sell imported resources.
 
 	Adds 15 Defense Reserve when in orbit around a planet.
 
 	Can store 5k units of cargo.
 
 	[i]Can be built in systems you do not own planets in, expanding your empire border.[/i]
+>>
+ORB_STAGING_HUB_MARKET: Public Market
+ORB_STAGING_HUB_MARKET_DESC <<
+	[color=#aaa][i]Additional warehouse space along with a management area to store and sell imported resources to private buyers. As these trades are made outside the civilian sector, all profits are state-owned.[/i][/color]
+
+	Can import influence, energy, research and defense resources and generate 5k per imported pressure as special funds every minute.
 >>
 ORB_RESEARCH_LAB: Zero-G Lab
 ORB_RESEARCH_LAB_BLURB: Generates research points for the empire and gives access to special projects. Can store 1.5k units of cargo.
@@ -457,4 +443,35 @@ ORB_SENATE_ADAPTED_DESC: <<
 	[bbloc=#F_SENATE_DESC/]
 
 	[bbloc=#ORB_ADAPTED:Centralized Coordination Complex:Generates a random influence card once per minute/]
+>>
+
+**************************
+*** CROSS CORE MODULES ***
+**************************
+
+ORB_ARMORED_LAYER: Armored Layer
+ORB_ARMORED_LAYER_DESC: <<|
+	[color=#aaa][i]An additional layer of military-grade armor plating covering the whole orbital.[/i][/color]
+
+	Adds 4000 armor and 2.5 damage resistance.
+>>
+ORB_MISSILE_RACK: Missile Rack
+ORB_MISSILE_RACK_DESC: <<|
+	[color=#aaa][i]An 8-tubed missile rack, complete with a large ammo chamber and a targeting system, designed for cheap and effective fire support in contested systems in early development.[/i][/color]
+
+	Can fire 8 missiles per second for 12 base damage each, modified by research.
+>>
+ORB_TACTICAL_OUTPOST: Tactical Outpost
+ORB_TACTICAL_OUTPOST_DESC: <<
+	[color=#aaa][i]A military module equipped with a tactical relay and resupply equipment allowing the garrisoned fleet to perform in-system strikes. Assigned officers will also take care of commissioning needed ships from the civilian sector.[/i][/color]
+
+	Generates [b]1 Defense[/b] worth of local defense ships.
+
+	Support ships assigned to this orbital can independently move across the system to attack enemy fleets. Support ships set to Shield, Support or Artillery behavior will not leave the orbital.
+>>
+ORB_LISTENING_POST: Listening Post
+ORB_LISTENING_POST_DESC: <<|
+	[color=#aaa][i]An additional restricted access area module, equipped with advanced sensors and run by hackers and spies, which can intercept and decode secured transmissions from other empires in the surroundings.[/i][/color]
+
+	Grants a free Intelligence influence card against a random empire in the same system or an adjacent one every minute.
 >>

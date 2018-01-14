@@ -62,8 +62,7 @@ Module: StarRingHabitat
 	LimitInOrbitStatus(StarRingHabitat, Max Stacks = 3, Min Distance = 10)
 
 	Repeat(5, AddStatusToOrbitingPlanet(StarHabitats, Set Origin Empire = True))
-	AddStatusToOrbitingPlanet(StarRingHabitat)
-	MatchOrbitingOwner(Destroy None = True)
+	AddStatusToOrbitingPlanet(StarRingHabitat, Set Origin Empire = True)
 
 	AddHealthEmpireAttribute(HabitatUpgrade, 4000)
 	AddArmorEmpireAttribute(HabitatUpgrade, 4000)

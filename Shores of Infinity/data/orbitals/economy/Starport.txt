@@ -8,7 +8,7 @@ Module: Starport
 	Model: CommerceStation
 	Material: GenericPBR_CommerceStation
 
-	Size: 12
+	Size: 14
 
 	Standalone: False
 	Core: True
@@ -16,8 +16,8 @@ Module: Starport
 	Health: 5000
 	Armor: 1000
 
-	Build Cost: 200
-	Maintenance: 100
+	Build Cost: 300
+	Maintenance: 70
 	Labor Cost: 15
 
 	LimitOncePerSystem(StarportFlag)
@@ -28,8 +28,6 @@ Module: Starport
 
 	AddFleetCommand(64)
 	AddFleetCommandEmpireAttribute(OutpostBoost, 64)
-	AllowFreeRaiding()
-	AddRaidRange(-10000000) //Negative range resolves to "in the current system"
 
 	AllowConstruction()
 	GiveTrade()
@@ -44,11 +42,12 @@ Module: StarportDockingBays
 	Standalone: False
 	Core: False
 
-	Build Cost: 300
-	Maintenance: 100
+	Build Cost: 200
+	Maintenance: 130
 
 	ConsumeInfluence(5)
 
 	RequireOnOrbital(Starport)
 
 	GlobalTradeNode()
+	AddStatus(StarportDockingBays)

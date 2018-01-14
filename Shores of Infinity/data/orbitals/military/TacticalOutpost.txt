@@ -1,0 +1,18 @@
+Module: TacticalOutpost
+	Name: #ORB_TACTICAL_OUTPOST
+	Description: #ORB_TACTICAL_OUTPOST_DESC
+
+	Icon: ActionBarIcons::2
+
+	Standalone: False
+	Core: False
+
+	Build Cost: 100
+	Maintenance: 30
+
+	RequireEither(RequireOnOrbital(Starport), RequireOnOrbital(StagingHub))
+
+	AddLocalDefense(1)
+	AllowFreeRaiding()
+	AddRaidRange(-10000000) //Negative range resolves to "in the current system"
+	AddStatus(TacticalOutpost)

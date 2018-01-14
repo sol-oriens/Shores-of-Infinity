@@ -53,9 +53,11 @@ R_STAR_ARCOLOGY_DESC: <<
 R_IMP_PLANET_SUPPORT_DESC: <<
 	[i][color=#aaa]More focused and effective command of orbital defense vessels.[/color][/i]
 
-	Increases the maximum support capacity of all owned [b][img=GuiOrbitalIcons::0;20/] Outpost[/b] orbitals by $1.
+	Increases the maximum support capacity of all owned [b][img=GuiOrbitalIcons::0;20/] Outposts[/b] orbitals by $1.
 
-	Increases the maximum support capacity of all owned [b][img=GuiOrbitalIcons::0;20/] Starport[/b] orbitals by $2.
+	Increases the maximum support capacity of all owned [b][img=GuiOrbitalIcons::0;20/] Starports[/b] orbitals by $2.
+
+	Increases the maximum support capacity of all owned [b][img=GuiOrbitalIcons::0;20/] Staging Hubs[/b] orbitals by $3.
 
 	Increases the maximum support capacity of all owned [b][img=PlanetType::2;20/] Planets[/b] by $2 for each planet level.
 
@@ -481,7 +483,7 @@ R_SYS_SENSOR_TACHYON_DESC: <<
 	[color=#aaa][i]The elusive faster-than-light particle known as tachyon is at last bending to our will. We can now build a facility able to create a channel between a location with a high concentration of tachyons and a remote target and project them through it. The quantities involved are too small to be of any use for our travel ambitions, but specialized panels can reflect them and use them to scan things much farther and faster than ever! [/i][/color]
 
 	Unlocks the Tachyon Uplink Facility orbital.
-	
+
 	Unlocks the Tachyon Sensors subsystem for use on flagships and stations with an active Tachyon Uplink.
 
 	[i][bbloc=#S_SENSOR_TACHYON_DESC/][/i]
