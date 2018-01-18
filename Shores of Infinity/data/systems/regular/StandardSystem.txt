@@ -1,6 +1,6 @@
 System: StandardSystem
 	Inherit: BaseSystem
-	Frequency: 0.50
+	Frequency: 0.25
 
 	//RS - Scaling
 	MakeStar(Temperature = 4000:12000, Radius = 650:850)

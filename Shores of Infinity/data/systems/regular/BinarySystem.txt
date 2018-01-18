@@ -1,16 +1,16 @@
 System: BinarySystem
 	Inherit: BaseSystem
-	Frequency: 0.1
+	Frequency: 0.25
 
 	//RS - Scaling
 	MakeStar(Temperature = 2000:9000, Radius = 1250:2000, Suffix = A, Moves = True)
 	ExpandSystem(4000)
-		SetupOrbit(Radius = 2500:4500, Orbit Pct = 0.4)
+		SetupOrbit(Radius = 2500:8500, Orbit Pct = 0.4)
 
 	//RS - Scaling
 	MakeStar(Temperature = 7000:29800, Radius = 1050:1650, Suffix = B, Moves = True)
 	ExpandSystem(4000)
-		SetupOrbit(Radius = 2500:4500, Orbit Pct = 0.9)
+		SetupOrbit(Radius = 2500:8500, Orbit Pct = 0.9)
 
 	ExpandSystem(3000:4000)
 

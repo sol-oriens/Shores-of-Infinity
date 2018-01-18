@@ -1,0 +1,17 @@
+Biome: HeavyFluids
+	Name: #BIOME_HEAVY_FLUIDS
+
+	Buildable: False
+
+	Temperature: 0
+	Humidity: 0
+
+	UseWeight: 0
+	BuildTime: 50
+	Frequency: 0
+
+	Color: #70c9e0
+
+	Lookup Range: 0.04795
+
+	IsWater: True

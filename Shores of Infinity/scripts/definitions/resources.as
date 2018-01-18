@@ -21,7 +21,7 @@ enum WelfareMode {
 	WM_Research,
 	WM_HW_Labor,
 	WM_Defense,
-	
+
 	WM_COUNT
 };
 
@@ -76,6 +76,18 @@ enum MoneyType {
 	MoT_COUNT
 };
 
+enum PlanetClass {
+	PC_Rocky,
+	PC_Gas,
+	PC_Icy,
+
+	PC_COUNT,
+
+	//Default value for resources which are not in any planet classification or not intended to be spawned
+	//Do not use
+	PC_None
+};
+
 tidy final class ResourceType {
 	const ResourceClass@ cls;
 	uint id = 0;
@@ -108,11 +120,13 @@ tidy final class ResourceType {
 	bool requirementDisplay = true;
 	bool willLock = false;
 	bool unique = false;
+	bool weighted = true;
 	bool stealable = true;
 	double requireContestation = -INFINITY;
 	int rarityLevel = -1;
 	bool limitlessLevel = false;
 	bool canBeTerraformed = true;
+	PlanetClass planetClass = PC_None;
 
 	bool get_hasEffect() const {
 		for(uint i = 0, cnt = hooks.length; i < cnt; ++i) {
@@ -157,7 +171,7 @@ tidy final class ResourceType {
 		}
 		return true;
 	}
-	
+
 	double get_totalRarity() const {
 		return 1.0 / rarityScore;
 	}
@@ -393,17 +407,17 @@ string getResourceTooltip(const ResourceType@ type, const Resource@ r = null, Ob
 		text += format(type.blurb, toString(curLevel, 0));
 	else
 		text += format(type.description, toString(curLevel, 0));
-	
+
 	if(type.totalPressure > 0) {
 		uint types = 0;
 		for(uint i = 0; i < TR_COUNT; ++i)
 			if(type.tilePressure[i] > 0)
 				types += 1;
-		
+
 		if(types <= 2) {
 			if(type.description.length > 0 || type.blurb.length > 0)
 				text += "\n\n";
-			
+
 			bool first = true;
 			for(uint i = 0; i < TR_COUNT; ++i) {
 				if(type.tilePressure[i] > 0) {
@@ -446,14 +460,14 @@ string getResourceTooltip(const ResourceType@ type, const Resource@ r = null, Ob
 			else
 				text += format(locale::VANISH_TIP_NOUSE, formatTime(timeLeft));
 		}
-		
+
 		if(!r.usable) {
 			string err;
 			if(r.origin !is null)
 				err = r.origin.getDisabledReason(r.id);
 			else if(drawFrom !is null)
 				err = drawFrom.getDisabledReason(r.id);
-			
+
 			if(err.length > 0) {
 				text += "\n\n";
 				string base;
@@ -616,7 +630,7 @@ tidy final class Resources : Serializable, Savable {
 			return 0;
 		return amounts[index];
 	}
-	
+
 	void clear() {
 		types.length = 0;
 		amounts.length = 0;
@@ -1203,6 +1217,11 @@ tidy final class LevelFrequency {
 	array<RarityFrequency> rarities(6);
 };
 array<LevelFrequency> LevelFrequencies(4);
+tidy final class PlanetClassFrequency {
+	double totalWeight = 0.0;
+	array<ResourceType@> types;
+};
+array<PlanetClassFrequency> PlanetClassFrequencies(PC_COUNT);
 
 uint getResourceCount() {
 	return resources::resources.length;
@@ -1281,6 +1300,27 @@ const ResourceType@ getRandomResource(uint level) {
 	return lFreq.types[randomi(0,lFreq.types.length-1)];
 }
 
+const ResourceType@ getClassWeightedResource(PlanetClass planetClass) {
+	auto@ pFreq = PlanetClassFrequencies[planetClass];
+	for(uint i = 0, cnt = pFreq.types.length; i < cnt; ++i) {
+		const ResourceType@ type = pFreq.types[i];
+		if (!type.weighted)
+			continue;
+
+		uint lev = clamp(type.level, 0, 3);
+		if(type.rarityLevel != -1)
+			lev = clamp(type.rarityLevel, 0, 3);
+		uint rar = clamp(uint(type.rarity), 0, 5);
+		double freq = LEVEL_DISTRIBUTION[lev] * RARITY_DISTRIBUTION[rar+lev*6];
+
+		double num = randomd(0, pFreq.totalWeight);
+		if(num <= freq)
+			return type;
+		num -= freq;
+	}
+	return pFreq.types[pFreq.types.length-1];
+}
+
 const ResourceType@ getDistributedAsteroidResource() {
 	double num = randomd(0, resources::asteroidFrequency);
 	const ResourceType@ type;
@@ -1314,6 +1354,7 @@ void markResourceUsed(const ResourceType@ type) {
 		mut.rarityScore = 0;
 		mut.distribution = 0;
 		mut.asteroidFrequency = 0;
+		mut.weighted = false;
 	}
 }
 
@@ -1364,7 +1405,7 @@ void parseLine(string& line, ResourceType@ r, ReadFile@ file) {
 
 void loadResources(const string& filename) {
 	ReadFile file(filename, true);
-	
+
 	string key, value;
 	ResourceType@ r;
 	bool advance = true;
@@ -1372,7 +1413,7 @@ void loadResources(const string& filename) {
 		key = file.key;
 		value = file.value;
 		advance = true;
-		
+
 		if(file.fullLine) {
 			if(r is null) {
 				error("Missing 'Resource: ID' line in " + filename);
@@ -1465,6 +1506,14 @@ void loadResources(const string& filename) {
 		}
 		else if(key.equals_nocase("Stealable")) {
 			r.stealable = toBool(value);
+		}
+		else if(key == "Planet Classification") {
+			if (value == "Rocky")
+				r.planetClass = PC_Rocky;
+			else if (value == "Gas")
+				r.planetClass = PC_Gas;
+			else if (value == "Icy")
+				r.planetClass = PC_Icy;
 		}
 		else if(key.equals_nocase("Require Contestation")) {
 			r.requireContestation = toDouble(value);
@@ -1565,7 +1614,7 @@ void loadResources(const string& filename) {
 			parseLine(line, r, file);
 		}
 	}
-	
+
 	if(r !is null)
 		addResourceType(r);
 }
@@ -1726,18 +1775,25 @@ void addResourceType(ResourceType@ type) {
 		resources::asteroidFrequency += type.asteroidFrequency;
 	}
 
-	uint lev = type.level;
+	uint lev = clamp(type.level, 0, 3);
 	if(type.rarityLevel != -1)
 		lev = clamp(type.rarityLevel, 0, 3);
+	uint rar = clamp(uint(type.rarity), 0, 5);
 
-	LevelFrequency@ lFreq = LevelFrequencies[clamp(lev, 0, 3)];
-	RarityFrequency@ rFreq = lFreq.rarities[clamp(uint(type.rarity), 0, 5)];
+	LevelFrequency@ lFreq = LevelFrequencies[lev];
+	RarityFrequency@ rFreq = lFreq.rarities[rar];
 
 	lFreq.totalDistribution += type.distribution;
 	lFreq.types.insertLast(type);
 	rFreq.totalDistribution += type.distribution;
 	rFreq.types.insertLast(type);
-	
+
+	if (type.planetClass != PC_None) {
+		auto@ pFreq = PlanetClassFrequencies[type.planetClass];
+		pFreq.totalWeight += LEVEL_DISTRIBUTION[lev] * RARITY_DISTRIBUTION[rar+lev*6];
+		pFreq.types.insertLast(type);
+	}
+
 	//Figure out class
 	if(type.className.length != 0) {
 		ResourceClass@ cls;

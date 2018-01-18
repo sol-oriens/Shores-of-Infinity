@@ -1,0 +1,15 @@
+Resource: Meat
+	Name: #MEAT
+	Blurb: #FOOD_BLURB
+	Native Biome: Forest
+	Class: Food
+
+	Icon: ResourceIcons::5
+	Small Icon: ResourceIconsSmall::17
+
+	Distribution: 0.9
+	Frequency: 0.9
+
+	Level: 0
+	AddBuildingMaintenanceRefund(100) #version<105
+	AddToNativeResource(AddBuildingMaintenanceRefund(100)) #version<71

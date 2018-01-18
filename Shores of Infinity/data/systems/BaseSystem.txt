@@ -1,6 +1,8 @@
 System: BaseSystem
-	Inherit: BaseGasGiants
+	//Caution: this is a load order
 	Inherit: BaseInnerRim
+	Inherit: BaseGasGiants
+	Inherit: BaseIceGiants
 	Inherit: BaseOuterRim
 	Inherit: BaseRemnants
 	Inherit: BaseAsteroids
@@ -8,8 +10,13 @@ System: BaseSystem
 	Inherit: BaseArtifacts
 
 System: BaseGasGiants
-	RepeatChance(Chance = 0.5, Repeat Modifier = 0.94)
-		MakePlanet(Resource = RareGases)
+	RepeatChance(Chance = 0.7, Repeat Modifier = 0.6)
+		MakePlanet(Resource = Weighted, Classification = Gas, Giant = True, Force Native biome = True)
+
+System: BaseIceGiants
+	RepeatChance(Chance = 0.4, Repeat Modifier = 0.3)
+		MakePlanet(Resource = Weighted, Classification = Icy, Giant = True, Force Native Biome = True)
+		AddPlanetResource(LocalIcyWater)
 
 System: BaseInnerRim
 
@@ -36,7 +43,5 @@ System: BaseRemnants
 System: BaseArtifacts
 	RepeatQuality(Chance = $ARTIFACT_FREQUENCY, Repeat Modifier = 0.25, Quality Step = 200)
 		MakeArtifact()
-	RepeatChance(Chance = 0.2, Repeat Modifier = 0.8)
+	RepeatChance(Chance = 0.3, Repeat Modifier = 0.8)
 		MakeArtifact(Type = Comet)
-	RepeatChance(Chance = 0.1, Repeat Modifier = 0.6)
-		MakeArtifact(Type = ProtoPlanet)

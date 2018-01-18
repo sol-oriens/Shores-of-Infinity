@@ -1,0 +1,20 @@
+Resource: IcyPekelm
+	Name: #PEKELM
+	Description: #PEKELM_DESC
+	Native Biome: HeavyFluids
+
+	Icon: ResourceIcons::25
+	Small Icon: ResourceIconsSmall::25
+
+	Distribution: 0
+	Frequency: 0
+
+	Level: 1
+	Rarity: Uncommon
+	Affinity: Defense
+	Can Be Terraformed: False
+
+	Planet Classification: Icy
+
+	Pressure: 3 Defense
+	ModColonyShipAccel(+1.0)

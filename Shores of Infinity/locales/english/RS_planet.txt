@@ -3,4 +3,5 @@ TT_EXPLORE_PLANET: <<
 
 	Study one of the sites that have been discovered on this planet.
 >>
-BIOME_GAS: Gas
+BIOME_LIGHT_FLUIDS: Fluids
+BIOME_HEAVY_FLUIDS: Fluids

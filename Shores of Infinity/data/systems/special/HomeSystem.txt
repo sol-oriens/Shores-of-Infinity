@@ -25,8 +25,12 @@ System: HomeSystem
 	MakePlanet(RandomType:Food:Common, Conditions = False, Moons = False)
 	MakePlanet(Water, Conditions = False, Moons = False)
 	MakePlanet(RandomLevel:1:Common, Conditions = False, Moons = False)
-	MakePlanet(RandomType:Food:Common, Conditions = False, Moons = False)
-	MakePlanet(Resource = RareGases)
+	MakePlanet(Resource = RareGases, Classification = Gas, Giant = True, Force Native Biome = True)
+	MakePlanet(Resource = RareGases, Classification = Gas, Giant = True, Force Native Biome = True)
+	MakePlanet(Resource = IcyWater, Classification = Icy, Giant = True, Force Native Biome = True)
+		AddPlanetResource(LocalIcyWater)
+	MakePlanet(Resource = IcyPekelm, Classification = Icy, Giant = True, Force Native Biome = True)
+		AddPlanetResource(LocalIcyWater)
 
 	MakeAsteroid(Cargo = Ore, Cargo Amount = 1200)
 	MakeAsteroid(Cargo = Ore, Cargo Amount = 1200)
@@ -44,10 +48,10 @@ System: HomeSystem
 	MakeArtifact(Type = Comet)
 
 	GuaranteeAdjacentResource(RandomType:Food:Common, Distance = 2)
+	GuaranteeAdjacentResource(RandomType:Food:Common, Distance = 2)
 	GuaranteeAdjacentResource(RandomLevel:1:Common, Distance = 2)
-	GuaranteeAdjacentResource(RandomLevel:2:Common, Distance = 2)
 	GuaranteeAdjacentResource(RandomType:Food:Common, Distance = 3)
-	GuaranteeAdjacentResource(Water, Distance = 3)
+	GuaranteeAdjacentResource(RandomLevel:2:Common, Distance = 3)
 
 	MakeAdjacentAsteroid(Resource = Pekelm)
 	MakeAdjacentAsteroid(Resource = Explosives)

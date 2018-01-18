@@ -1,0 +1,19 @@
+Resource: LocalIcyWater
+	Name: #WATER
+	Blurb: #WATER_BLURB
+	Description: #LOCAL_ICY_WATER_DESC
+	Native Biome: HeavyFluids
+	Class: WaterType
+
+	Icon: ResourceIconsSmall::103
+	Small Icon: ResourceIconsSmall::103
+	Display Weight: -10
+
+	Distribution: 0
+	Frequency: 0
+
+	Level: 0
+	Exportable: False
+	Can Be Terraformed: False
+
+	Pressure: 1 Influence

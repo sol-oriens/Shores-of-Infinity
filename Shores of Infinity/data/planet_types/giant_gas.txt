@@ -1,0 +1,7 @@
+PlanetType: GiantGas
+	Icon: PlanetType::7
+	DistantIcon: DistantPlanetType::7
+	Atmosphere: GasAtmosphere
+
+	BiomeWeights:
+		LightFluids: 100000

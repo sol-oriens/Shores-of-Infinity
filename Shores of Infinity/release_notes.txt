@@ -12,6 +12,8 @@ make expansion more system-centric and less of a colony-spam.
 Resources and economy have been rebalanced to support these changes in a way that gameplay progression still feels dynamic and rewarding. Some existing buildings and orbitals have been modified, and new ones have been added, to boost economy where needed (including budget). New synergies allow to take advantage of the environment or of the presence of other infrastructure.
 This new balance is also designed to make infrastructure building and careful expansion a (hopefully) viable alternative to fast expansion and allow smaller, well developed empires to compete with larger empires with empty systems and planets.
 
+*** The universe has been revised to be closer to current scientific knowledge.
+
 *** The game AI has been improved. It is a work in progress and most of the current improvements are a basis for future features but some of them already have a visible impact.
 
 *** Sensors from ABEM (the ancestor of Rising Stars) have been reimplemented with a completely different approach. All flagship and station hulls now have integrated basic sensors. Sight range is moderate, slightly scaled with size and can be upgraded through research.
@@ -28,7 +30,7 @@ Players always have full vision on their starting systems as if they had fully e
 [*] Game Options
 
 - Added Automatically Claim Spatial Anomalies: When toggled on, spatial anomalies in your tradable area will automatically be claimed into your territory. Toggled off by default.
-*** This adds the possibility to deactivate the script created by Dalo Lorn.
+*** This adds the possibility to activate or deactivate the nebula claiming script created by Dalo Lorn. Thanks to new AI features the impact on AI expansion capabilities will be null in normal game conditions (read: reasonable nebula frequency).
 
 [*] Orbitals
 
@@ -40,7 +42,7 @@ Players always have full vision on their starting systems as if they had fully e
 
 [*] Planets
 
-- Level 6 planets now require 2 Level 1 resources (up from 0).
+- Level 6 planets now require 2 additional Level 1 resources (up from 0).
 
 [*] Research
 
@@ -160,6 +162,7 @@ for use as a remote mining base, as the new balance makes tractoring ore asteroi
 - Added gas giants, using previously unused vanilla low resolution textures. Gas giants can be colonized (more or less) and feature a new scalable resource designed to balance the increased scale of the game by providing increased propulsion speed and various pressure boosts. They are commonly found in all kinds of
 systems, but they are more difficult to level up due to their mostly useless biome: imperial buildings cannot be built on it and civilian tile development is extremely slow. They however typically have a large number of moons where bases can be constructed. Gas giants completely bypass resource scarcity and planet
 frequency options on purpose.
+- Added ice giants. As gas giants, their biome is useless but they also have a large number of moons, although slightly less than gas giants. Ice giants always have a basic non exportable water resource and additionally have one of the following resources: Water (common), Pekelm (uncommon) and Salts (uncommon). Water from ice giants gives 1 Influence pressure. Ice giants also bypass resource scarcity and planet frequency options.
 - Destroyed planets now yield more asteroid with less ore.
 - Planets now have a base sensor range of 20.000 units which can be upgraded through research.
 - Slightly reduced pressure capacity of planets per level.
@@ -192,8 +195,11 @@ frequency options on purpose.
 - Black holes now have a big, thick asteroid belt beyond their accretion disk.
 - Increased default resource asteroid chance to 60% (up from 45%).
 - Renamed Electronics resource to Semiconductors.
+- Greatly reduced the number of Water resources and slightly reduced the number of Food resources on regular planets.
+- Water asteroids are now much more frequent.
 - Deuterium and Neutronium can now very rarely spawn as an asteroid resource.
-- Comets and Protoplanets now have a low chance of spawning in systems regardless of the artifact frequency option.
+- Comets now have a low chance of spawning in systems regardless of the artifact frequency option.
+- Protoplanets now have a high chance of spawning in systems with young stars regardless of the artifact frequency option.
 - Empires no longer start with any FTL generation or FTL storage regardless of FTL trait choice.
 - Empires now have an additional an additional FTL Crystals asteroid in their home system. A mine is prebuilt if the Quick Start game option is toggled on. This effectively reverts the starting FTL generation and FTL storage to vanilla values.
 - Empires now have an additional an additional Pekelm asteroid in an adjacent system.
@@ -203,8 +209,7 @@ frequency options on purpose.
 - Empires now have 6k worth of ore asteroids in their home system instead of one 6k ore asteroid.
 - Empires now have an additional anomaly in their home system.
 - Empires now have an additional Comet in their home system.
-- Empires now have one less Water planet in adjacent systems.
-- Empires now have an additional Food planet in their home system, but one less in adjacent systems.
+- Empires no longer have 2 guaranteed Water planets in adjacent systems.
 
 [*] Subsystems
 
@@ -237,6 +242,8 @@ frequency options on purpose.
 - Increased default system spacing by a factor of 20. System spacing can no longer be reduced below the default value.
 - Increased variance in vertical spacing of systems in the core of spiral galaxies.
 - Increased variance in planet number per system, possibly down to 0. Systems with no planets have a greatly increased chance of hiding valuable asteroids and artifacts.
+- Increased chance of binary systems.
+- Stars in binary systems can now have much more spacing.
 - Black holes in the core of spiral and cluster galaxies are now supermassive if the Supermassive Black Holes game option is toggled on.
 *** The massive scale of the supermassive black holes accretion disks impacts system performances the higher the game speed is. Consider turning this option off if you experience stuttering.
 - The guaranteed moon around the level 1 planet in the home system has moved to the homeworld.
@@ -254,6 +261,5 @@ frequency options on purpose.
 
 [*] Known issues
 
-- Regular planets (including homeworlds) will rarely have a gas giant atmosphere.
 - Stations with the Phased Array Laser Drive subsystem will not show the range of their Laser Propulsion Beam ability (this is not the case with the orbital of the same name). This is a technical limitation that will be addressed in a future release.
 - Modules available to build on orbitals build instantly. It is unknown if this is an originally intended behavior but there is no vanilla code to handle construction queues. This may or may not be changed in a future release.

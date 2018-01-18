@@ -1,5 +1,5 @@
-Biome: Gas
-	Name: #BIOME_GAS
+Biome: LightFluids
+	Name: #BIOME_LIGHT_FLUIDS
 
 	Buildable: False
 
@@ -12,6 +12,6 @@ Biome: Gas
 
 	Color: #ff0000
 
-	Lookup Range: 0.001
+	Lookup Range: 0.000
 
 	IsWater: True

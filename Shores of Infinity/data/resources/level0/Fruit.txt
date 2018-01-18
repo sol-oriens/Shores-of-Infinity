@@ -1,0 +1,14 @@
+Resource: Fruit
+	Name: #FRUIT
+	Blurb: #FOOD_BLURB
+	Native Biome: Forest
+	Class: Food
+
+	Icon: ResourceIcons::4
+	Small Icon: ResourceIconsSmall::14
+
+	Distribution: 0.9
+	Frequency: 0.9
+
+	Level: 0
+	ModResourceEfficiencyBonus(+0.2) #version<105

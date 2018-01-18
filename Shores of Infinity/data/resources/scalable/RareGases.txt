@@ -2,7 +2,7 @@ Resource: RareGases
 	Name: #RAREGASES
 	Blurb: #RAREGASES_BLURB
 	Description: #RAREGASES_DESC
-	Native Biome: Gas
+	Native Biome: LightFluids
 	Class: Scalable
 
 	Small Icon: ResourceIconsSmall::41*#af5a53
@@ -10,10 +10,13 @@ Resource: RareGases
 	Pressure: 1 Energy
 
 	Distribution: 0
+	Frequency: 0
 
 	Limitless Level: True
 	Can Be Terraformed: False
 	Exportable: False
+
+	Planet Classification: Gas
 
 	IfLevel(1, AddPressure(Energy, 1))
 

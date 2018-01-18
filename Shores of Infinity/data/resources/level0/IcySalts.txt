@@ -1,0 +1,25 @@
+Resource: IcySalts
+	Name: #SALTS
+	Description: #SALTS_DESC
+	Class: Food
+	Native Biome: HeavyFluids
+
+	Icon: ResourceIcons::23
+	Small Icon: ResourceIconsSmall::23
+
+	Distribution: 0
+	Frequency: 0
+
+	Level: 1
+	Rarity: Uncommon
+	Can Be Terraformed: False
+
+	Planet Classification: Icy
+
+	Display Requirement: False
+
+	Pressure: 1 Money
+	Pressure: 1 Research
+	Pressure: 1 Influence
+	Pressure: 1 Defense
+	Pressure: 1 Energy

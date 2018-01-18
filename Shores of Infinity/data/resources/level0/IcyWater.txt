@@ -1,0 +1,18 @@
+Resource: IcyWater
+	Name: #WATER
+	Blurb: #WATER_BLURB
+	Native Biome: HeavyFluids
+	Class: WaterType
+
+	Icon: ResourceIcons::0
+	Small Icon: ResourceIconsSmall::18
+
+	Distribution: 0
+	Frequency: 0
+
+	Level: 1
+	Can Be Terraformed: False
+
+	Planet Classification: Icy
+
+	Pressure: 1 Influence

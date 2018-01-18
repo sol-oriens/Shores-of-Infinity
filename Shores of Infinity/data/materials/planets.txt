@@ -44,9 +44,12 @@ Material: CrystalAtmosphere
 
 Material: GasAtmosphere
 	Shader: Lighting
-	LoadPriority: Low
 	Texture: data/images/planets/gas.png
 	Texture2: data/images/planets/gas_normal.png
+
+Material: IcyAtmosphere
+	Shader: Lighting
+	Texture: data/images/planets/gas_normal.png
 
 Material: GuiPlanetSurface
 	LoadPriority: Game

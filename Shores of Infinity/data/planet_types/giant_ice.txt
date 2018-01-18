@@ -1,0 +1,7 @@
+PlanetType: GiantIce
+	Icon: PlanetType::11
+	DistantIcon: DistantPlanetType::11
+	Atmosphere: IcyAtmosphere
+
+	BiomeWeights:
+		HeavyFluids: 100000
