@@ -170,6 +170,7 @@ frequency options on purpose.
 - Added a new Project exclusive to planets, Planet Exploration. Sends an exploration team around the planet. May yield a random discovery. This feature is similar to how anomalies work, with smaller bonuses, but available a (limited) number of times per planet. Homeworlds have a special set of (more beneficial) anomalies.
 - Fixed a vanilla bug with asteroid fields orbiting Local Asteroid Field Planets not being rendered in certain circumstances.
 - Local Asteroid Field planets now have more and bigger asteroids orbiting closer to them (this is a purely cosmetic change).
+- Removed starting Labor, income and pressure cap bonuses from the homeworld.
 
 [*] Research
 
