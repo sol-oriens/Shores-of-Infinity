@@ -240,7 +240,7 @@ frequency options on purpose.
 - Increased scale of ringworld gravity wells to their system's radius to simulate them having no gravity well (they have no core), but instead objects actually orbiting around the star. As a side effect, orbitals restricted to planet gravity well can be built anywhere in the system, which seems completely reasonable for ringworlds.
 - Increased scale of asteroids by a factor of 2.
 - Decreased scale of ships by a factor of 0.5.
-- Increased default system spacing by a factor of 20. System spacing can no longer be reduced below the default value.
+- Increased default system spacing by a factor of around 23 (150.000 units). System spacing can no longer be reduced below the default value.
 - Increased variance in vertical spacing of systems in the core of spiral galaxies.
 - Increased variance in planet number per system, possibly down to 0. Systems with no planets have a greatly increased chance of hiding valuable asteroids and artifacts.
 - Increased chance of binary systems.
