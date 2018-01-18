@@ -1,7 +1,7 @@
 Building: NrgFactory
 	Name: #BLD_NRG_FACTORY
 	Description: #BLD_NRG_FACTORY_DESC
-	
+
 	Sprite: NrgFactory
 
 	Category: Production
@@ -16,7 +16,7 @@ Building: NrgFactory
 
 	Build Time: 300
 
-	ConsumeResearch(50)
+	ConsumeResearch(25)
 
 	RequireNotStatus(Ringworld)
 	RequireNotStatus(ArtificialPlanetoid)

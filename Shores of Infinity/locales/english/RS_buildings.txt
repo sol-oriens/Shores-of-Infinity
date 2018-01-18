@@ -28,7 +28,7 @@ BLD_ECX_FACTORY_DESC: <<
 	[color=#aaa][i]A state-of-the art factory allowing mass production of electronic components.[/i][/color]
 
 	Can replace a Level 1 resource.
-	Adds 3 money pressure.
+	Adds 3 Money pressure.
 
 	[bbloc=#TIP_CONSUME_ORE:8/]
 >>
@@ -39,15 +39,15 @@ BLD_MINE_DESC: <<
 
 	Adds an Ore resource that can be exported and generates [b]10 ore per minute[/b] at its destination.
 	Adds 2 labor pressure.
-	Increases the pressure given by native Aluminium, Iron, Titanium or Supercarbons by 2.
-	Increases the pressure given by native Coal or Native Gold by 1.
+	Increases the pressure given by native Titanium 2.
+	Increases the pressure given by Native Gold by 1.
 >>
 
-BLD_NRG_FACTORY: Fuel Facility
+BLD_NRG_FACTORY: Fossil Fuel Facility
 BLD_NRG_FACTORY_DESC: <<
 	[color=#aaa][i]An advanced installation for fossil fuel extraction, processing and storage. Significantly increases energy income and money coming with it.[/i][/color]
 
-	Adds 1 energy pressure and 1 money pressure.
+	Adds 1 Energy pressure and 1 Money pressure.
 	Increases the pressure given by native Natural Gas or Oil by 1.
 >>
 

@@ -40,6 +40,9 @@ System: HomeSystem
 	MakeAsteroid(Cargo = Ore, Cargo Amount = 465)
 	MakeAsteroid(Cargo = Ore, Cargo Amount = 250)
 	MakeAsteroid(Resource = Distributed)
+	MakeAsteroid(Resource = Pekelm)
+		addon_options::QuickStartOption()
+			SetMine()
 	MakeAsteroid(Resource = AsteroidFTLPermanent)
 		addon_options::QuickStartOption()
 			SetMine()
@@ -53,7 +56,6 @@ System: HomeSystem
 	GuaranteeAdjacentResource(RandomType:Food:Common, Distance = 3)
 	GuaranteeAdjacentResource(RandomLevel:2:Common, Distance = 3)
 
-	MakeAdjacentAsteroid(Resource = Pekelm)
 	MakeAdjacentAsteroid(Resource = Explosives)
 	MakeAdjacentAsteroid(Resource = AsteroidFTLPermanent, Farther = True)
 	MakeAdjacentAsteroid(Resource = Neutronium, Farther = True)
