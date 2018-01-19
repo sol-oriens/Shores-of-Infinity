@@ -17,10 +17,10 @@ Site: Granary
 		AddPlanetResource(Grain)
 
 	Option: Recover
-	Icon: CardCategoryIcons::1
-	Description: #SITE_GRANARY_RECOVER
+		Icon: CardCategoryIcons::1
+		Description: #SITE_GRANARY_RECOVER
 
-		Result: 60%
+		Result: 75%
 			GainInfluenceCard(Harvest)
-		Result: 40%
+		Result: 25%
 			SendMessage(#SITE_GRANARY_RECOVER_FAIL)

@@ -17,7 +17,7 @@ Site: TempleRemains
 		AddInfluencePoints(2:6)
 
 	Option: Dismantle
-	Icon: ResourceIcon::0
-	Description: #SITE_TEMPLE_REMAINS_DISMANTLE:100
+		Icon: ResourceIcon::0
+		Description: #SITE_TEMPLE_REMAINS_DISMANTLE:100
 
 		AddMoney(100)
