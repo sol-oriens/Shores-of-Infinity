@@ -116,6 +116,10 @@ different methods preferable in different situations. Third: To tone down the ad
 - Default asteroid and orbital labor cost step increased to 100% (up from 50%).
 - Reactivated Legacy Exploration Mode from ABEM (default: off) as sensors are back.
 
+[*] Influence Cards
+
+- Slightly decreased the rarity of Cultivation.
+
 [*] Lifestyles
 
 - Somewhat flattened the Extragalactic free colonizer frequency exponential curve with a nerf hammer. Early game frequency is unchanged.
