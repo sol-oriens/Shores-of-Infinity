@@ -626,18 +626,24 @@ final class Colonization : AIComponent {
 			weight *= 2.0;
 		else
 			weight *= sqr(double(1 + type.level));
-		if(type.cls is foodClass || type.cls is waterClass)
-			weight *= 2.5;
+		if(type.cls is foodClass || type.cls is waterClass) {
+			if (type.ident == "IcyWater" && ai.empire.EstNextBudget < budget.mediumThreshold)
+					weight *= 0;
+			else
+				weight *= 2.5;
+		}
 		if(type.cls is scalableClass) {
 			if (type.ident == "RareGases") {
 				if (ai.empire.EstNextBudget < budget.mediumThreshold)
 					weight *= 0;
 				else
-					weight *= 3.0;
+					weight *= 3.5;
 			}
 			else
 				weight *= 0.1;
 		}
+		if ((type.ident == "IcyPekelm" || type.ident == "IcySalts") && ai.empire.EstNextBudget < budget.mediumThreshold)
+			weight *= 0;
 		if(type.totalPressure > 0)
 			weight *= double(type.totalPressure);
 		if(race !is null)
@@ -735,6 +741,16 @@ final class Colonization : AIComponent {
 			PotentialColonize p;
 			@p.pl = pl;
 			@p.resource = getResource(resId);
+
+			//Skip gas or ice giants in the beginning of the game or if we have budget issues
+			if ((p.resource.ident == "RareGases"
+					|| p.resource.ident == "IcyWater"
+					|| p.resource.ident == "IcyPekelm"
+					|| p.resource.ident == "IcySalts")
+					&& (ai.empire.EstNextBudget < budget.mediumThreshold
+					|| gameTime < 180))
+				continue;
+
 			p.weight = 1.0 * sysWeight;
 			//TODO: this should be weighted according to the position of the planet,
 			//we should try to colonize things in favorable positions
@@ -892,7 +908,7 @@ final class Colonization : AIComponent {
 		}
 
 		if (ai.empire.EstNextBudget <= 0) {
-			//We are in trouble. Abandon all planets sucking budget up
+			//We are in trouble. Abandon planets sucking budget up
 			if (log)
 				ai.print("Colonization: negative budget, abandoning planets");
 			auto@ homeworld = ai.empire.Homeworld;
@@ -908,6 +924,7 @@ final class Colonization : AIComponent {
 					pl.forceAbandon();
 				}
 			}
+			//If we are still in trouble, abandon more planets
 			if (ai.empire.EstNextBudget <= 0) {
 				for (uint i = 0, cnt = planets.planets.length; i < cnt; i++) {
 					auto@ pl = planets.planets[i].obj;
@@ -920,6 +937,7 @@ final class Colonization : AIComponent {
 					if ((type.cls is foodClass || type.cls is waterClass) && !pl.primaryResourceExported)
 						pl.forceAbandon();
 				}
+				//More!
 				if (ai.empire.EstNextBudget <= 0) {
 					for (uint i = 0, cnt = planets.planets.length; i < cnt; i++) {
 						auto@ pl = planets.planets[i].obj;

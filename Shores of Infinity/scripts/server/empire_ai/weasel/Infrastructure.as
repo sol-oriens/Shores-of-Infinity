@@ -418,6 +418,7 @@ class PlanetCheck {
   private double _weight = 0.0;
   private bool _isSystemUnderAttack = false;
   private bool _isGasGiant = false;
+  private bool _isIceGiant = false;
 
   PlanetCheck() {}
 
@@ -428,8 +429,13 @@ class PlanetCheck {
     int resId = this.ai.obj.primaryResourceType;
     if (resId > -1) {
       const ResourceType@ type = getResource(resId);
+      //TODO: Now that giants can have different resources this should be optimised with planet flags
       if (type.ident == "RareGases")
         _isGasGiant = true;
+      else if (type.ident =="IcyWater"
+        || type.ident == "IcyPekelm"
+        || type.ident == "IcySalts")
+        _isIceGiant = true;
     }
   }
 
@@ -437,6 +443,7 @@ class PlanetCheck {
   double get_weight() const { return _weight; }
   bool get_isSystemUnderAttack() const { return _isSystemUnderAttack; }
   bool get_isGasGiant() const { return _isGasGiant; }
+  bool get_isIceGiant() const { return _isIceGiant; }
   bool get_isBuilding() const { return orders.length > 0; }
 
   void save(Infrastructure& infrastructure, SaveFile& file) {
@@ -451,6 +458,7 @@ class PlanetCheck {
     file << _weight;
     file << _isSystemUnderAttack;
     file << _isGasGiant;
+    file << _isIceGiant;
   }
 
   void load(Infrastructure& infrastructure, SaveFile& file) {
@@ -468,6 +476,7 @@ class PlanetCheck {
     file >> _weight;
     file >> _isSystemUnderAttack;
     file >> _isGasGiant;
+    file >> _isIceGiant;
   }
 
   void tick(AI& ai, Infrastructure& infrastructure, double time) {
@@ -735,8 +744,8 @@ final class Infrastructure : AIComponent {
               bestWeight = w;
               if (log)
                 ai.print("moon base considered with weight: " + w, pl.ai.obj);
-              if (pl.isGasGiant && pl.ai.obj.getStatusStackCountAny(moonBaseStatusId) == 0) {
-                //The first moon base on gas giants must be built as soon as possible
+              if ((pl.isGasGiant || pl.isIceGiant) && pl.ai.obj.getStatusStackCountAny(moonBaseStatusId) == 0) {
+                //The first moon base on gas or ice giants must be built as soon as possible
                 nextAction.priority = 2.0;
                 critical = true;
               }
@@ -926,11 +935,11 @@ final class Infrastructure : AIComponent {
   bool shouldHaveMoonBase(PlanetCheck& pl) {
     if (pl.ai.obj.moonCount == 0)
       return false;
-		//Gas giants should have a moon base if there is none already built regardless of any other condition
-    if (pl.isGasGiant && pl.ai.obj.getStatusStackCountAny(moonBaseStatusId) == 0)
+		//Gas or ice giants should have a moon base if there is none already built regardless of any other condition
+    if ((pl.isGasGiant || pl.isIceGiant) && pl.ai.obj.getStatusStackCountAny(moonBaseStatusId) == 0)
       return true;
-    //If the planet is a gas giant and is at least level 1 and short on empty developed tiles, it should have a moon base
-		if (pl.isGasGiant && pl.ai.obj.moonCount > pl.ai.obj.getStatusStackCountAny(moonBaseStatusId)
+    //If the planet is a gas or ice giant and is at least level 1 and short on empty developed tiles, it should have a moon base
+		if ((pl.isGasGiant || pl.isIceGiant) && pl.ai.obj.moonCount > pl.ai.obj.getStatusStackCountAny(moonBaseStatusId)
         && pl.ai.obj.resourceLevel > 0 && pl.ai.obj.emptyDevelopedTiles < 9)
 			return true;
     //If the planet is at least level 2 and short on empty developed tiles, it should have a moon base
