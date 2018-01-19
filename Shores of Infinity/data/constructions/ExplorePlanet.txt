@@ -1,6 +1,6 @@
 Construction: ExplorePlanet
 	Name: #C_EXPLORE_PLANET
-	Time Cost: 1
+	Time Cost: 25
 	Icon: PlanetType::2
 
 	Category: Planetary Exploration
