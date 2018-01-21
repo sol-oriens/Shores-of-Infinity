@@ -11,7 +11,7 @@ Subsystem: TachyonSensor
 	Size := HexSize * Hexes
 	SensorPower := (Size * 25000) / (Size + 0.25)
 	SensorRange := 100 + HexSize * 50 + SensorPower
-	SensorPriority := 200
+	SensorPriority := 199
 	Hex.Mass := HexSize / 2
 	Hex.Resistance := 0.1
 	Hex.HP := 15 * HexSize

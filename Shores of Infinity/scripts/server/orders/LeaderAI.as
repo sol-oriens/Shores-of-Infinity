@@ -58,6 +58,14 @@ class SightModifier : Savable {
 	double multiplier = 1;
 	double addedRange = 0;
 
+	int opCmp(const SightModifier@ other) const {
+		if(priority < other.priority)
+			return -1;
+		if(priority > other.priority)
+			return 1;
+		return 0;
+	}
+
 	void save(SaveFile& file) {
 		file << id;
 		file << priority;
@@ -88,7 +96,6 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 	GroupData@[] groupData;
 
 	SightModifier@[] sightData;
-	uint[] sightOrder;
 	uint nextInstanceID = 0;
 
 	AutoMode autoMode = AM_AreaBound;
@@ -302,13 +309,10 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 		}
 		msg >> cnt;
 		sightData.length = cnt;
-		sightOrder.length = cnt;
 		for(uint i = 0; i < cnt; ++i) {
 			@sightData[i] = SightModifier();
 			sightData[i].load(msg);
 		}
-		for(uint i = 0; i < cnt; ++i)
-			msg >> sightOrder[i];
 		msg >> nextInstanceID;
 	}
 
@@ -380,8 +384,6 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 		msg << cnt;
 		for(uint i = 0; i < cnt; ++i)
 			sightData[i].save(msg);
-		for(uint i = 0; i < cnt; ++i)
-			msg << sightOrder[i];
 		msg << nextInstanceID;
 
 	}
@@ -2618,8 +2620,8 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 //		print("Calculating sight range... base range is " + sightRange);
 		uint prevPriority = 0;
 		double currentBonus = 0;
-		for(uint i = 0; i < sightOrder.length; ++i) {
-			SightModifier@ data = sightData[sightOrder[i]];
+		for(uint i = 0; i < sightData.length; ++i) {
+			SightModifier@ data = sightData[i];
 			if(data.priority != prevPriority) {
 //				print("New cycle. Priorities: " + data.priority + "/" + prevPriority);
 				prevPriority = data.priority;
@@ -2645,26 +2647,8 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 		data.multiplier = multiplier;
 		data.addedRange = addedRange;
 		sightData.insertLast(data);
+		sightData.sortAsc();
 
-		uint position = sightData.length - 1;
-		if(position == 0) {
-//			print("Priority " + data.priority + " is the first modifier added to this object...");
-			sightOrder.insertLast(0);
-		}
-		else {
-			if(data.priority <= sightData[sightOrder[0]].priority) {
-//				print("Priority " + data.priority + " is less than or equal to previous 'left' priority " + sightData[sightOrder[0]].priority);
-				sightOrder.insertAt(0, position);
-				}
-			else if(data.priority >= sightData[sightOrder.last].priority) {
-//				print("Priority " + data.priority + " exceeds previous 'right' priority " + sightData[sightOrder.last].priority);
-				sightOrder.insertLast(position);
-				}
-			else {
-				// This is a bit of a more complicated sorting algorithm that I'm passing it into, and it's recursive, so...
-				continueSortingSightPriority(position, sightOrder, sightData, sightOrder.length / 2, double(sightOrder.length / 2));
-			}
-		}
 //		print("addSightModifier triggered calculateSightRange...");
 		calculateSightRange(obj);
 //		print("Position: " + position);
@@ -2675,25 +2659,13 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 //			print("Multiplier: " + sightData[i].multiplier);
 //			print("Added range: " + sightData[i].addedRange);
 //		}
-//		print("Starting order printing...");
-//		for(uint i = 0; i < sightOrder.length; ++i) {
-//			print("Destination of index " + i + ": " + sightOrder[i]);
-//		}
 		return data.id;
 	}
 
 	void removeSightModifier(Object& obj, uint id) {
-		// We need to run through the order rather than the data because we have to delete the order entry pointing at the modifier,
-		// not just the modifier itself. Also, what I wrote below.
-		for(uint i = 0; i < sightOrder.length; ++i) {
-			if(sightData[sightOrder[i]].id == id) {
-				sightData.removeAt(sightOrder[i]);
-				// This shifts the destination indexes of all following sightOrder entries by 1, so they don't point at the wrong SightModifier instance.
-				for(uint j = 0; j < sightOrder.length; ++j) {
-					if(sightOrder[j] > sightOrder[i])
-						sightOrder[j] -= 1;
-				}
-				sightOrder.removeAt(i);
+		for(uint i = 0; i < sightData.length; ++i) {
+			if(sightData[i].id == id) {
+				sightData.removeAt(i);
 				break;
 			}
 		}
@@ -2713,42 +2685,6 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 		}
 //		print("modifySightModifier triggered calculateSightRange...");
 		calculateSightRange(obj);
-	}
-
-	// Performs a binary search until it finds a location where it can fit in nicely.
-	void continueSortingSightPriority(uint position, array<uint>& orderArray, array<SightModifier@>& dataArray, uint pivot, double difference) {
-		// halfDiff is half of the previous difference, obviously.
-		double halfDiff = difference / 2;
-//		print(difference + "/" + halfDiff);
-		if(halfDiff > 0.5)
-			halfDiff = 1;
-		// pivotMinOne accounts for C-like array indexing. Lets me worry about the actual logic of it, rather than whether I'm off by one or not.
-		uint pivotMinOne = pivot - 1;
-		// If the priority of the pivot (accounting for C-style array indexing) is equal to the new modifier's priority...
-		if(dataArray[position].priority == dataArray[orderArray[pivotMinOne]].priority) {
-			// Insert it before the pivot. The sorting here isn't stable, but it doesn't matter. I think. I hope. :/
-//			print("Priority " + dataArray[position].priority + " equals priority at index " + pivotMinOne + ", which is " + dataArray[orderArray[pivotMinOne]].priority);
-			orderArray.insertAt(pivotMinOne, position);
-		}
-		// If the new modifier's priority is less than the pivot's priority...
-		else if(dataArray[position].priority < dataArray[orderArray[pivotMinOne]].priority) {
-			// If dividing by 2 isn't going to move the pivot (unless rounded accordingly), then we've found our sweet spot. Insert before the pivot.
-			if(uint(pivot - halfDiff) == pivot) {
-//				print("Priority " + dataArray[position].priority + " is less than priority at index " + pivotMinOne + ", which is " + dataArray[orderArray[pivotMinOne]].priority);
-				orderArray.insertAt(pivotMinOne, position);
-				}
-			else
-				continueSortingSightPriority(position, orderArray, dataArray, uint(pivot - halfDiff), halfDiff);
-		}
-		else {
-			// If dividing by 2 isn't going to move the pivot, blah blah blah... Insert after the pivot.
-			if(uint(pivot + halfDiff) == pivot) {
-//				print("Priority " + dataArray[position].priority + " exceeds priority at index " + pivotMinOne + ", which is " + dataArray[orderArray[pivotMinOne]].priority);
-				orderArray.insertAt(pivotMinOne + 1, position);
-				}
-			else
-				continueSortingSightPriority(position, orderArray, dataArray, uint(pivot + halfDiff), halfDiff);
-		}
 	}
 
 	void writeOrders(const Object& obj, Message& msg) {
