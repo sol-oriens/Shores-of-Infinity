@@ -15,8 +15,8 @@ Trait: VanguardRingworlders
 	TriggerHomeworld(DestroySystemPlanet(2, Quiet = True))
 	TriggerHomeworld(DestroySystemPlanet(3, Quiet = True))
 
-	SpawnShip(Harvester, Override Disable Starting = True)
-	SpawnShip(Harvester, Override Disable Starting = True)
+	SpawnShip(Harvester)
+	SpawnShip(Harvester)
 	TriggerHomeworld(DestroySystemPlanet(0, Quiet = True))
 	AddStatusOwnedPlanets(ReclusiveRingworlder)
 

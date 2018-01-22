@@ -30,4 +30,4 @@ Trait: Slipstream
 
 	ModAttribute(SlipstreamConst, Add, 1)
 	ModAttribute(ProgenitorTechProgress, Add, 3.5)
-	IfNotHaveTrait(StarChildren, SpawnQuickStartShip(Slipstream Generator))
+	IfNotHaveTrait(StarChildren, SpawnShip(Slipstream Generator, Quick Start = True))

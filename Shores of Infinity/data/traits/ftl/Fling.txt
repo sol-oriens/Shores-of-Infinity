@@ -24,4 +24,4 @@ Trait: Fling
 	UnlockTag(HasFling)
 	ModAttribute(FlingBeaconConst, Add, 1)
 	ModAttribute(ProgenitorTechProgress, Add, 3.5)
-	SpawnQuickStartOrbital(FlingCore)
+	SpawnOrbital(FlingCore, Quick Start = True)

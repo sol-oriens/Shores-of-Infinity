@@ -32,7 +32,7 @@ NG_SUPERMASSIVE_BLACK_HOLES: Supermassive Black Holes
 NGTT_SUPERMASSIVE_BLACK_HOLES: When toggled on, black holes at the center of galaxies are supermassive and thus much bigger.
 
 NG_QUICK_START: Quick Start
-NGTT_QUICK_START: When toggled on, empires will be able to expand to other systems almost immediately instead of having to build a basic economy first.
+NGTT_QUICK_START: When toggled on, empires will start with a number of assets to help them getting started in the game faster.
 
 NG_BLACK_HOLE_OCCURANCE: Black Hole Occurrence
 NGTT_BLACK_HOLE_OCCURANCE: <<

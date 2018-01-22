@@ -109,10 +109,10 @@ different methods preferable in different situations. Third: To tone down the ad
 
 [*] Game Options
 
-- Added Quick Start: when toggled on, empires will be able to expand to other systems almost immediately instead of having to build a basic economy first. This reverts the now slower game start to more or less vanilla speed. This option is off by default.
+- Added Quick Start: when toggled on, empires will start with a number of assets to help them getting started in the game faster. This option is off by default.
 - Added Supermassive Black Holes: when toggled on, black holes at the center of galaxies are supermassive and thus much bigger. Much. BIGGER. (And make an equally bigger boom.)
 - Reduced the minimum and maximum values of the System Size slider to prevent systems that are too small or too large colliding each other. Added a tooltip warning to deactivate the Supermassive Black Holes option when reducing size (the size of this system is enforced and doesn't play well with reduced sizes).
-- Disable Starting Fleets is now on by default.
+- Disable Starting Fleets has been removed to be merged with the new Quick Start Option.
 - Default asteroid and orbital labor cost step increased to 100% (up from 50%).
 - Reactivated Legacy Exploration Mode from ABEM (default: off) as sensors are back.
 

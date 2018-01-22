@@ -34,7 +34,6 @@ class GamePage : GameSettingsPage {
 		/*Toggle(locale::NG_ENABLE_CIVILIAN_TRADE, "ENABLE_CIVILIAN_TRADE", halfWidth=true);*/
 		Toggle(locale::NG_ENABLE_INFLUENCE_EVENTS, "ENABLE_INFLUENCE_EVENTS", halfWidth=true, tooltip=locale::NGTT_ENABLE_INFLUENCE_EVENTS);
 		Toggle(locale::NG_QUICK_START, "QUICK_START", halfWidth = true, tooltip=locale::NGTT_QUICK_START);
-		Toggle(locale::NG_DISABLE_STARTING_FLEETS, "DISABLE_STARTING_FLEETS", halfWidth=true, tooltip=locale::NGTT_DISABLE_STARTING_FLEETS);
 		Toggle(locale::NG_REMNANT_AGGRESSION, "REMNANT_AGGRESSION", halfWidth=true, tooltip=locale::NGTT_REMNANT_AGGRESSION);
 		Toggle(locale::NG_ALLOW_TEAM_SURRENDER, "ALLOW_TEAM_SURRENDER", halfWidth=true, tooltip=locale::NGTT_ALLOW_TEAM_SURRENDER);
 		Toggle(locale::NG_START_EXPLORED_MAP, "START_EXPLORED_MAP", halfWidth=true, tooltip=locale::NGTT_START_EXPLORED_MAP);
