@@ -108,6 +108,10 @@ GAME_TIME_LIMIT: 0
 //Whether quick start is activated
 QUICK_START: 0
 
+//Whether empires start with fleets
+//This is left on purpose to not break some stuff but has no effect, use QUICK_START instead
+DISABLE_STARTING_FLEETS: 0
+
 //Whether the remnants are aggressive
 REMNANT_AGGRESSION: 0
 
