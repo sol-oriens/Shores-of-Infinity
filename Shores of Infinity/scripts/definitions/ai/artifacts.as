@@ -161,7 +161,7 @@ class ActivateInOwnedSystem : ArtifactAI {
 #section all
 };
 
-//RS - Scaling: increased distance
+//SoI - Scaling: increased distance
 class ActivateNearOwnedSystem : ArtifactAI {
 	Document doc("Activate this artifact on a position placed outside an arbitrary owned system.");
 	Argument value(AT_Decimal, "1.0", doc="Value for activating this.");

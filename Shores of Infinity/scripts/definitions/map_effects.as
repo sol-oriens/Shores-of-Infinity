@@ -8,6 +8,7 @@ import camps;
 import anomalies;
 import pickups;
 import block_effects;
+import addon_block_effects;
 import artifacts;
 import statuses;
 from map_systems import IMapHook, MapHook, getSystemType;
@@ -35,7 +36,7 @@ class MakeStar : MapHook {
 	Document doc("Creates a star in the system.");
 	Argument tempK("Temperature", AT_Range, doc="Star temperature in Kelvin.");
 
-	//RS - Scaling
+	//SoI - Scaling
 	Argument rad("Radius", AT_Range, "1000.0", doc="Radius of the star");
 
 	Argument position("Position", AT_Position, "(0, 0, 0)", doc="Position relative to the center of the system to create the star.");
@@ -84,7 +85,7 @@ class MakeStar : MapHook {
 		if(system !is null)
 			node.hintParentObject(system.object, false);
 
-		//RS - Scaling: rescale HP back to vanilla size ratio
+		//SoI - Scaling: rescale HP back to vanilla size ratio
 		double hp = AVG_STAR_HEALTH * (radius / 750.0);
 		star.Health = hp;
 		star.MaxHealth = hp;
@@ -92,7 +93,7 @@ class MakeStar : MapHook {
 		//Create light
 		LightDesc lightDesc;
 
-		//RS - Scaling: increased light reach
+		//SoI - Scaling: increased light reach
 		lightDesc.att_quadratic = 1.f/(8000.f*8000.f);
 
 		lightDesc.position = vec3f(star.position);
@@ -119,7 +120,7 @@ class MakeBlackhole : MapHook {
 
 	Document doc("Creates a black hole in the system.");
 
-	//RS - Scaling
+	//SoI - Scaling
 	Argument rad("Radius", AT_Range, "180.0:200.0", doc="Radius of the event horizon.");
 
 	Argument position("Position", AT_Position, "(0, 0, 0)", doc="Position relative to the center of the system to create the black hole.");
@@ -129,7 +130,7 @@ class MakeBlackhole : MapHook {
 		double radius = arguments[0].fromRange();
 		vec3d pos = arguments[1].fromPosition();
 
-		//RS - Scaling: make supermassive black holes supermassive
+		//SoI - Scaling: make supermassive black holes supermassive
 		double healthFactor = 1.0;
 		if(config::SUPERMASSIVE_BLACK_HOLES > 0 && getSystemType(data.systemType) is getSystemType("CoreBlackhole")) {
 			radius *= 25;
@@ -324,7 +325,7 @@ class MakePlanet : MapHook {
 	Document doc("Create a new planet in the system.");
 	Argument resource(AT_Custom, "distributed", doc="The primary resource on the planet. 'distributed' to randomize.");
 
-	//RS - Scaling
+	//SoI - Scaling
 	Argument radius(AT_Range, "60:140", doc="Size of the planet, can be a random range.");
 	Argument orbit_spacing(AT_Range, "2750:3250", doc="Distance from the previous planet.");
 
@@ -394,8 +395,8 @@ class MakePlanet : MapHook {
 			radius = normald(arguments[1].decimal, arguments[1].decimal2);
 		double spacing = arguments[2].fromRange() * config::SYSTEM_SIZE;
 
-		//RS - Gas Giants: make gas giants giant
-		//RS - Ice Giants: make ice giants giant
+		//SoI - Gas Giants: make gas giants giant
+		//SoI - Ice Giants: make ice giants giant
 		if (resource !is null && giant.boolean) {
 			switch (planetClass)
 			{
@@ -463,11 +464,11 @@ class MakePlanet : MapHook {
 		const Biome@ biome3 = getDistributedBiome();
 
 		//Figure out planet size
-		//RS - Scaling: rescale radius for grid size calculation
+		//SoI - Scaling: rescale radius for grid size calculation
 		double scaledradius = 0;
 
-		//RS - Gas Giants: apply a specific formula scaling down the grid more to avoid a big surface displaying a scroll bar before even displaying moon bases
-		//RS - Ice Giants: apply a specific formula scaling down the grid more to avoid a big surface displaying a scroll bar before even displaying moon bases
+		//SoI - Gas Giants: apply a specific formula scaling down the grid more to avoid a big surface displaying a scroll bar before even displaying moon bases
+		//SoI - Ice Giants: apply a specific formula scaling down the grid more to avoid a big surface displaying a scroll bar before even displaying moon bases
 		//The loss of space is not a problem since the biome is useless anyway
 		if (resource !is null && giant.boolean && (planetClass == PC_Gas || planetClass == PC_Icy)) {
 			//min_planet_radius + 100 * (radius / 2 - min_planet_radius) / (max_planet_radius - min_planet_radius)
@@ -489,8 +490,8 @@ class MakePlanet : MapHook {
 			gridH = ceil(givenGrid.y);
 
 		//Figure out planet type
-		//RS - Gas Giants: lock planet type on gas biome
-		//RS - Ice Giants: lock planet type on ice biome
+		//SoI - Gas Giants: lock planet type on gas biome
+		//SoI - Ice Giants: lock planet type on ice biome
 		if (resource !is null && force_native_biome.boolean) {
 			const PlanetType@ planetType = getBestPlanetType(biome1, null, null);
 			planet.PlanetType = planetType.id;
@@ -500,7 +501,7 @@ class MakePlanet : MapHook {
 			planet.PlanetType = planetType.id;
 		}
 
-		//RS - Scaling: increased orbit / gravity well based on planet size
+		//SoI - Scaling: increased orbit / gravity well based on planet size
 		if (resource !is null && resource.ident == "Ringworld")
 			//Ringworlds shouldn't have gravity wells as they have no core
 			//Orbit size is the star's
@@ -522,10 +523,10 @@ class MakePlanet : MapHook {
 		uint resId = uint(-1);
 		if(resource !is null)
 			resId = resource.id;
-		//RS - Gas Giants: force gas giants to their base biome only
-		//RS - Ice Giants: force ice giants to their base biome only
+		//SoI - Gas Giants: force gas giants to their base biome only
+		//SoI - Ice Giants: force ice giants to their base biome only
 		if (resource !is null && force_native_biome.boolean) {
-			//RS - TODO: Refactor surface creation to avoid this ugly hack
+			//SoI - TODO: Refactor surface creation to avoid this ugly hack
 			planet.initSurface(gridW, gridH, biome1.id, biome1.id, biome1.id, resId);
 		}
 		else {
@@ -538,8 +539,8 @@ class MakePlanet : MapHook {
 		plNode.planetType = planet.PlanetType;
 
 		//Setup rings
-		//RS - Gas Giants: gas giants always have rings
-		//RS - Ice Giants: ice giants always have rings
+		//SoI - Gas Giants: gas giants always have rings
+		//SoI - Ice Giants: ice giants always have rings
 		if ((resource !is null && giant.boolean) || (rings.boolean && randomi(0,9) == 0)) {
 			uint style = randomi();
 			plNode.addRing(style);
@@ -564,8 +565,8 @@ class MakePlanet : MapHook {
 		}
 
 		//Setup moons
-		//RS - Gas Giants: gas giants should have at least 4 moons
-		//RS - Ice Giants: ice giants should have at least 2 moons
+		//SoI - Gas Giants: gas giants should have at least 4 moons
+		//SoI - Ice Giants: ice giants should have at least 2 moons
 		if (resource !is null && giant.boolean) {
 			int min, max;
 			switch (planetClass) {
@@ -1970,7 +1971,7 @@ class ForceMakeCreepCamp : MapHook {
 #section all
 };
 
-//RS - Scaling: get a random point in the system but outside the radius of the star(s)
+//SoI - Scaling: get a random point in the system but outside the radius of the star(s)
 //Make sure that objects do not spawn inside a star but can be relatively close whatever its radius and the system radius are
 vec2d get2dPos(SystemDesc@ system, double radiusFactor = 1.0, double edgeOffset = 0.0) {
 	double maxRadius = (system.radius - edgeOffset) * radiusFactor;

@@ -7,12 +7,11 @@ v0.1.0b
 *** Most features of Rising Stars 1.2.0 are included.
 
 *** The global scale of the universe has been increased based on dolynick's outstanding work with DOF.
-Movement has been rebalanced to achieve a more realistic feel and, combined with a reduction in population growth and a serious dent in budget due to longer colony ship travel time,
-make expansion more system-centric and less of a colony-spam.
-Resources and economy have been rebalanced to support these changes in a way that gameplay progression still feels dynamic and rewarding. Some existing buildings and orbitals have been modified, and new ones have been added, to boost economy where needed (including budget). New synergies allow to take advantage of the environment or of the presence of other infrastructure.
+Movement has been rebalanced to achieve a more realistic feel and, combined with a reduction in population growth and a serious dent in budget due to longer colony ship travel time, make expansion much slower, more costly and less of a colony-spam.
+Resources and economy have been rebalanced to support these changes in a way that gameplay progression still feels dynamic and rewarding. Some existing buildings and orbitals have been modified and new ones have been added to boost economy where needed (including budget). New synergies allow to take advantage of the environment or of the presence of other infrastructure.
 This new balance is also designed to make infrastructure building and careful expansion a (hopefully) viable alternative to fast expansion and allow smaller, well developed empires to compete with larger empires with empty systems and planets.
 
-*** The universe has been revised to be closer to current scientific knowledge.
+*** The universe arrangement has been revised to be closer to current scientific knowledge.
 
 *** The game AI has been improved. It is a work in progress and most of the current improvements are a basis for future features but some of them already have a visible impact.
 
@@ -23,6 +22,10 @@ Players always have full vision on their starting systems as if they had fully e
 
 *** This version introduces new weapon exclusive modifications, similar to generic modifiers, allowing to install weapon-specific modifiers granting special effects or changing certain parameters. Weapon modifications are (generally) mutually exclusive.
 
+*** This version is a beta. Balance is experimental and far from final. Game progression may also feel a bit slow, especially in the beginning of the game; this will be fine-tuned and balanced with more content in future versions.
+Star Children and Ancient still miss a few equivalents to new buildings and will have an economic disadvantage. Ringworlders have not be balanced at all yet and should not be played outside of experimentation.
+Competitive multiplayer games are discouraged until balance is fine-tuned.
+
 ***********************************************************
 *** Differences with / Changes to Rising Stars Features ***
 ***********************************************************
@@ -30,7 +33,7 @@ Players always have full vision on their starting systems as if they had fully e
 [*] Game Options
 
 - Added Automatically Claim Spatial Anomalies: When toggled on, spatial anomalies in your tradable area will automatically be claimed into your territory. Toggled off by default.
-*** This adds the possibility to activate or deactivate the nebula claiming script created by Dalo Lorn. Thanks to new AI features the impact on AI expansion capabilities will be null in normal game conditions (read: reasonable nebula frequency).
+*** This adds the possibility to activate or deactivate the feature created by Dalo Lorn. Thanks to new enhancements this has little to no impact on AI expansion capabilities in normal game conditions (read: reasonable nebula frequency).
 
 [*] Orbitals
 
@@ -38,7 +41,7 @@ Players always have full vision on their starting systems as if they had fully e
 - The Outpost upgrades have been replaced by new mechanics.
 - Outposts can no longer store cargo.
 - Star Children Hydroponics Station and Water Reclamation Facility are not included in favor of different mechanics.
-- Hydroponics Satellite is the same as vanilla, although its cost was rebalanced.
+- Hydroponics Satellite has been reverted to vanilla, although its cost was rebalanced.
 
 [*] Planets
 
@@ -48,8 +51,8 @@ Players always have full vision on their starting systems as if they had fully e
 
 - The research grid is completely different.
 - Rebalanced several nodes.
-- Removed the bonus granted to railguns when researching muon projectors in favor of the new weapon modification feature.
-- Terraforming technologies are not included, except the basic Terraforming node. Terraforming will have a different destiny in SoI.
+- Removed the bonus granted to railguns when researching muon projectors in favor of the new weapon exclusive modification feature.
+- Terraforming technologies are not included, excepted the basic Terraforming node. Terraforming will have a different destiny in SoI.
 
 [*] Subsystems
 
@@ -72,11 +75,11 @@ Players always have full vision on their starting systems as if they had fully e
 - AIs now expand outside their territory when they are out of other options.
 - AIs now build moon bases on planets when needed (excepted, of course, Star Children).
 - AIs now slow down or even temporarily stop their colonization effort when necessary in order to maintain a budget buffer for other expenditures.
-- Colonization prioritization has been revised and all randomness in the decision process has been removed to be replaced by a deterministic weighting.
+- Colonization prioritization has been revised and all randomness in the decision process has been replaced by a deterministic weighting.
 - AIs now abandon certain planets if their estimated next budget becomes negative.
 - AIs can now choose to focus on one particular area with their budget spending under certain circumstances.
 - AIs can now borrow money from their next budget for construction projects critical to their development.
-- Fixed a vanilla bug where orbital types present in systems tracked by the AIs were not loaded from a previously saved game.
+- Fixed a vanilla bug where orbital types present in systems tracked by AIs were not loaded from a previously saved game.
 
 [*] Attitudes
 
@@ -90,35 +93,39 @@ Players always have full vision on their starting systems as if they had fully e
 - Added Mining Complex. Adds an Ore resource that can be exported and generates 10 Ore per minute at its destination. Also adds 2 Labor pressure and increases the pressure given by native Titanium and Native Gold by 1. Unlike the Ancient Strip Miner, Ore stored on the planet is not moved on export. Base and maintenance costs of 190k and 120k, respectively.
 - Added Fossil Fuel Facility. Adds 1 Energy and 1 Money pressure and increases the pressure given by native Natural Gas or Oil by 1. Base build and maintenance costs of 110 and 50k, respectively. Also costs 25 Research to build.
 - Added Electronics Factory. Can replace a Level 1 resource and adds 3 Money pressure. Consumes 8 ore per minute. Base build and maintenance costs of 40k and 30k, respectively. The building becomes inactive if there is no more Ore left on the planet (which can then potentially level down).
-- Added Healthcare Complex. Adds 1 Population and increases Population growth by 10%. Base build and maintenance costs of 85k and 20k, respectively. Also costs 100 Research to build and 100 more for each Healthcare Complex already built or building on the planet. Cannot be built by Mechanoid lifestyles.
+- Added Healthcare Complex. Adds 1 Population and increases Population growth by 10%. Base build and maintenance costs of 85k and 20k, respectively. Also costs 100 Research to build and 100 more for each Healthcare Complex already built or currently building on the planet. Cannot be built by Mechanoid lifestyles.
 - Added Arcology. Adds 5 Population and replaces 5 cities. Costs 2.5M, 2k Ore, 20 Influence, and 75 Labor.
 - Added Collector, exclusive to Ancient races: equivalent to a Core for gas giants. Can only be constructed on Rare Gases resources. Produces 100% of the pressure that the planet's native resource gives. Pressure from asteroids imported at this planet is automatically produced.
 - Added Harvester, exclusive to Ancient races: equivalent to an Infuser for gas giants. Can only be constructed on Rare Gases resources. Increases the level of this planet by 1. Uses 2 Ore per second and 1 Base Materials per minute.
 - Added Simulator, exclusive to Ancient races: replacement for Arcology. Increases the income of a planet by 250k. Costs 2.5M, and 20 Influence. Uses 1 Base Materials per minute.
+
+[*] Cargo
+
+- Added Hypercore. This new cargo type has very specific uses.
 
 [*] FTL
 
 *** FTL has been completely rebalanced with several objectives in mind. First: to make long distances matter more, especially in early game. Costs are balanced to make FTL a luxury at first and more common later, as more FTL sources and storage become available, but needs to be carefully planned and managed until very late game. Second: to take into account the possibility to research more FTL methods and even more clearly make
 different methods preferable in different situations. Third: To tone down the advantages over sublight, while still retaining a clear advantage.
 
-- Increased hyperdrive speed by a factor of 20. Hyperdrive speed ratio is identical to vanilla to make up for its decreased effectiveness over very long distances. Cost is unchanged, meaning it costs more FTL Energy to get from system A to system B.
-- Increased fling beacon range by a factor of 4 and fling cost by a factor of 2. Fling cost is increased to make up for its increasing effectiveness the longer the distance is (travel time is constant, meaning that speed increases with distance). The range of beacons is reduced compared to vanilla.
-- Increased slipstream cost by a factor of 1.4, optimal range by a factor of 5 and inaccuracy by a factor of 10. Effects of inaccuracy now start only beyond optimal range. Opening a slipstream to a very distant location will require either a ship-sized generator or a lot of FTL Energy. Opening it around the intended location and not 3 systems away will require a big ship.
+- Increased hyperdrive speed by a factor of 20. Hyperdrive speed ratio only slightly lower than vanilla to make up for its decreased effectiveness over very long distances. Cost is unchanged, meaning it costs more FTL Energy to get from system A to system B.
+- Increased fling beacon range by a factor of 4 and fling cost by a factor of 2. Fling cost is increased to make up for its increasing effectiveness the longer the distance is (travel time is constant, meaning that speed increases with distance). The range of beacons is extremely reduced compared to vanilla.
+- Increased slipstream cost by a factor of 1.4, optimal range by a factor of 5 and inaccuracy by a factor of 10. Effects of inaccuracy now start only beyond optimal range. Opening a slipstream to a very distant location will require either a ship-sized generator or a lot of FTL Energy. Opening it around the intended location and not 3 systems away will require a very big ship.
 - Increased jump drive range by a factor of 10. Jump drive is still the fastest and cheapest, but the safe range is half of vanilla.
-- Increased gate maintenance cost to 0.25 FTL/s. More gates are needed to get a good territory coverage, and juggling with gate activation and deactivation is an absolute must.
+- Increased gate maintenance cost to 0.25 FTL/s. More gates are needed for a good territory coverage, and juggling with gate activation and deactivation is an absolute must.
 
 [*] Game Options
 
 - Added Quick Start: when toggled on, empires will start with a number of assets to help them getting started in the game faster. This option is off by default.
 - Added Supermassive Black Holes: when toggled on, black holes at the center of galaxies are supermassive and thus much bigger. Much. BIGGER. (And make an equally bigger boom.)
 - Reduced the minimum and maximum values of the System Size slider to prevent systems that are too small or too large colliding each other. Added a tooltip warning to deactivate the Supermassive Black Holes option when reducing size (the size of this system is enforced and doesn't play well with reduced sizes).
-- Disable Starting Fleets has been removed to be merged with the new Quick Start Option.
+- Disable Starting Fleets has been removed to be merged with the new Quick Start option.
 - Default asteroid and orbital labor cost step increased to 100% (up from 50%).
 - Reactivated Legacy Exploration Mode from ABEM (default: off) as sensors are back.
 
 [*] Influence Cards
 
-- Slightly decreased the rarity of Cultivation.
+- Slightly increased the frequency of Cultivation.
 
 [*] Lifestyles
 
@@ -126,32 +133,35 @@ different methods preferable in different situations. Third: To tone down the ad
 
 [*] Orbitals
 
-- Activated and added support for orbital modules, an unfinished / unreleased vanilla feature for orbitals. Modules are add-ons that can be constructed on previously built orbitals. Some orbitals make use of this feature and this will be extended further in a future release.
+- Activated and added support for orbital modules, an unfinished / unreleased vanilla feature for orbitals. Modules are add-ons that can be constructed on previously built orbitals. Some orbitals make use of this feature and this will be extended further in a future version.
 - Commerce Stations now additionally cost 5 Influence and provide income, for each friendly planet in the system excluding the owner's, equal to 100k per planet Level starting from 1 and up to 300k. Only one Commerce Station may now be built per system.
 - Hydroponics Satellite now have an additional 50k maintenance cost, but cost 350 energy instead of 100 research to build.
 - Tactical Satellites now have an additional 25k maintenance cost.
 - Solar Satellites now have an additional 50k maintenance cost and cost 350 energy (down from 500) to build.
-- Added Telescope Array, which has 40% Telescope power of the quantum version. Costs 200k to build, requires no ore but has a 40k maintenance cost. Primarily designed for early scouting, when interstellar travel is a problem, and border control. Its Telescope ability only costs Energy (and no FTL Energy).
-- Added Phased Array Laser Drive. Has the 'Toggle Laser Propulsion Beam' ability, a laser transmitting photon momentum to a reflector panel (dubbed lightsail) on a ship and providing thrust. Range of 250k units.
+- Added Telescope Array, which has 40% Telescope power of the quantum version (i.e. 400,000 units). Costs 200k to build, requires no ore but has a 40k maintenance cost. Primarily designed for early scouting, when interstellar travel is a problem, and border control. Its Telescope ability only costs Energy (and no FTL Energy).
+- Added Phased Array Laser Drive. Has the 'Toggle Laser Propulsion Beam' ability, a laser transmitting photon momentum to a reflector panel (dubbed lightsail) on a ship and providing thrust. Range of 250k units. Build and maintenance costs of 100k and 10k, respectively.
 - Added Starport. Allows trade through its system. Provides 30k income for each owned and friendly planet in the system, up to 120k. Build and maintenance costs of 300k and 70k, respectively. Only one Starport may be constructed per system.
-- Added Long Haul Docking Bays Starport module. Allows global resource trade. Build and maintenance costs of 300k and 100k, respectively. Also costs 5 Influence to build.
+- Added Long Haul Docking Bays Starport module. Allows global resource trade. Build and maintenance costs of 200k and 130k, respectively. Also costs 5 Influence to build.
 - Added Staging Hub. Allows trade through its system. Can construct mining bases on asteroids. Has no innate labor, but planets can export their own labor to staging hubs within trade range at a 50% reduced rate. Adds 15 Defense Reserve when in orbit around a planet. Designed to fill various support roles, notably
-for use as a remote mining base, as the new balance makes tractoring ore asteroids around a pain. Build and maintenance costs of 200k and 20k, respectively.
-- Added Public Market Staging Hub module. Can import influence, energy, research and defense resources and generate 5k per imported pressure as special funds every minute. Build cost of 150k.
+for use as a remote mining base, as the new balance makes tractoring ore asteroids around a real pain. Build and maintenance costs of 200k and 20k, respectively.
+- Added Public Market Staging Hub module. Can import influence, energy, research and defense resources and generate 5k per imported pressure as special funds every minute. Build and maintenance costs of 150k and 10k, respectively.
 - Added Tactical Outpost module, buildable by starports and staging hubs. Generates 1 Defense worth of local defense ships. Support ships assigned to this orbital can independently move across the system to attack enemy fleets. Support ships set to Shield, Support or Artillery behavior will not leave the orbital. Build and maintenance costs of 100k and 30k, respectively.
-- Added Additional Armor Layer module, buildable by outposts and staging hubs. Adds 4000 armor and 2.5 damage resistance. Build and maintenance costs of 100k and 2.5k, respectively.
+- Added Additional Armor Layer module, buildable by outposts and staging hubs. Adds 5000 armor and 2.5 damage resistance. Build and maintenance costs of 100k and 2.5k, respectively.
 - Added Missile Rack module, buildable by outposts and staging hubs. Can fire missiles at hostile ships for 12 damage each. The number of available weapons increases with research and time. Build and maintenance cost of 50k and 15k, respectively.
-- Added Starbase, which has the same functions as an outpost, but with twice as many support capacity and ship spawn speed. Also has much better armor and is armed with lasers. Only one outpost or starbase can be constructed per system. Build and maintenance cost of 750k and 100k, respectively. Cannot be built by Evangelical and Pacifist lifestyle.
-- Added Additional Armor Layer module, buildable by starbases. Adds 8000 armor and 5 damage resistance. Build and maintenance costs of 200k and 5k, respectively.
+- Added Starbase, which has the same functions as an outpost, but with twice as many support capacity and ship spawn speed. Also has much better armor and is armed with lasers. Only one outpost or starbase can be constructed per system. Build and maintenance cost of 750k and 100k, respectively. Cannot be built by Evangelical and Pacifist lifestyles.
+- Added Additional Armor Layer module, buildable by starbases. Adds 10000 armor and 5 damage resistance. Build and maintenance costs of 200k and 5k, respectively.
 - Added Large Missile Rack module, buildable by starbases. Can fire missiles at hostile ships for 25 damage each. The number of available weapons increases with research and time. Build and maintenance cost of 80k and 25k, respectively.
 - Added Tactical Suite module, buildable by outposts and starbases. Support ships assigned to this orbital can independently move across the system to attack enemy fleets. Support ships set to Shield, Support or Artillery behavior will not leave the orbital. Build and maintenance costs of 100k and 30k, respectively.
 - Added Listening Post module, buildable by outposts and starbases. Grants a free Intelligence influence card against a random empire in the same system or an adjacent one every minute. Build cost of 150k. Also costs 5 Influence to build.
-- Added Zero-G Lab. Gives 1 Research generation and allows access to special modules and projects. Build and maintenance costs of 400k and 100k, respectively.
+- Added Zero-G Lab. Gives 1 Research generation and allows access to special modules and projects. Build and maintenance costs of 300k and 80k, respectively.
+- Added Hyperfield Crystallizer Zero-G Lab module. Unlocks the Hyperfield Crystallization Project. Will fix your FTL withdrawal for a short time. Build cost of 100k. Also costs 100 Ore to build.
+- Added Hypercharger Zero-G Lab module. Unlocks the Hypercharge Project. Useful for everyone but especially sublight races. Build cost of 750k. Also costs 1k Ore and 2 Hypercores to build.
 - Added Hyperfield Actuator. Generates 0.15 FTL Energy per second and stores 250 FTL Energy. Build and maintenance costs of 450k and 75k, respectively.
-- Added Tachyon Uplink. Unlocks the Tachyon Sensor subsystem when active. Build and maintenance costs of 1M and 500k, respectively. Requires 0.5 FTL maintenance. Can only be built in a Tachyon Nebula. Only one Tachyon Uplink may be constructed per system.
-- Added Recycling Facility, exclusive to Star Children: replacement for Megacity. Must be constructed in orbit of a planet. The planet this is in orbit of gains 1 Food resource. Adds 1 Influence Stake. Adds 1 Energy generation. Build and maintenance costs of 350k and 150k, respectively.
-- Added Ring Habitat, exclusive to Star Children: replacement for Arcology. Must be constructed in orbit of a planet. Increases the maximum population of that planet by 5. Costs 5 population from the Mothership in addition to its build cost. Up to three ring habitats may be constructed in orbit of every planet. Costs 2.5M, 2k Ore, 20 Influence, and 75 Labor.
-- Outposts can now be upgraded to starbases for the same cost and labor as building a starbase from scratch. Labor can now be exported to outposts.
+- Added Tachyon Uplink. Unlocks the Tachyon Sensors subsystem when active. Build and maintenance costs of 1M and 500k, respectively. Requires 0.5 FTL maintenance. Can only be built in a Tachyon Nebula. Only one Tachyon Uplink may be constructed per system.
+- Added Recycling Facility, exclusive to Star Children: replacement for Megacity. Must be constructed in orbit of a planet. The planet this is in orbit of gains 1 Water resource. Adds 1 Influence Stake. Adds 1 Energy generation. Build and maintenance costs of 350k and 150k, respectively.
+- Added Ring Habitat, exclusive to Star Children: replacement for Arcology. Must be constructed in orbit of a planet. Increases the maximum population of that planet by 5. Costs 5 population from the Mothership in addition to its build cost. Up to three ring habitats may be constructed in orbit of every planet. Build cost of 2.5M. Also costs 2k Ore, and 20 Influence to build.
+- Outposts can now be upgraded to starbases for the same cost and labor as building a starbase from scratch.
+- Labor can now be exported to outposts at a 50% reduced rate.
 - FTL Storage orbitals for Star Children with Flux FTL now generate 0.5 FTL Energy per second and store 600 FTL Energy to make up for the impossibility to build FTL Breeders. They also additionally cost 500 ore to build.
 - All orbitals now have a base sensor range of 10.000 units which can be upgraded through research.
 - Outpost health and armor have been increased, respectively, to 10000 (up from 6000) and 5000 (up from 4000).
@@ -163,15 +173,13 @@ for use as a remote mining base, as the new balance makes tractoring ore asteroi
 
 [*] Planets
 
-- Added gas giants, using previously unused vanilla low resolution textures. Gas giants can be colonized (more or less) and feature a new scalable resource designed to balance the increased scale of the game by providing increased propulsion speed and various pressure boosts. They are commonly found in all kinds of
-systems, but they are more difficult to level up due to their mostly useless biome: imperial buildings cannot be built on it and civilian tile development is extremely slow. They however typically have a large number of moons where bases can be constructed. Gas giants completely bypass resource scarcity and planet
-frequency options on purpose.
-- Added ice giants. As gas giants, their biome is useless but they also have a large number of moons, although slightly less than gas giants. Ice giants always have a basic non exportable water resource and additionally have one of the following resources: Water (common), Pekelm (uncommon) and Salts (uncommon). Water from ice giants gives 1 Influence pressure. Ice giants also bypass resource scarcity and planet frequency options.
+- Added gas giants, using previously unused vanilla low resolution textures. Gas giants can be colonized (more or less) and feature a new scalable resource designed to balance the increased scale of the game by providing increased propulsion speed and various pressure boosts. They are commonly found in all kinds of systems, but they are more difficult to level up due to their mostly useless biome: imperial buildings cannot be built on it and civilian tile development is extremely slow. They however typically have a large number of moons where bases can be constructed. Gas giants completely bypass resource scarcity and planet frequency options on purpose.
+- Added ice giants. As gas giants, their biome is useless but they also have a large number of moons, although slightly less than gas giants. Ice giants always have a basic non exportable water resource and additionally have one of the following Level 1 resources: Water (common), Pekelm (uncommon) and Salts (uncommon). Water from ice giants gives 1 Influence pressure. Ice giants also bypass resource scarcity and planet frequency options.
 - Destroyed planets now yield more asteroid with less ore.
 - Planets now have a base sensor range of 20.000 units which can be upgraded through research.
 - Slightly reduced pressure capacity of planets per level.
 - Reduced population growth by approximately 20%.
-- Added a new Project exclusive to planets, Planet Exploration. Sends an exploration team around the planet. May yield a random discovery. This feature is similar to how anomalies work, with smaller bonuses, but available a (limited) number of times per planet. Homeworlds have a special set of (more beneficial) anomalies.
+- Added a new Project exclusive to planets, Planet Exploration. Sends an exploration team around the planet, which may discover a site of interest. This feature is similar to how anomalies work, with smaller bonuses, but available a (limited) number of times per planet. This feature is a work in progress and will be extended in future versions. Homeworlds, notably, will have a special set of (more beneficial) results.
 - Fixed a vanilla bug with asteroid fields orbiting Local Asteroid Field Planets not being rendered in certain circumstances.
 - Local Asteroid Field planets now have more and bigger asteroids orbiting closer to them (this is a purely cosmetic change).
 - Removed starting Labor, income and pressure cap bonuses from the homeworld.
@@ -182,8 +190,9 @@ frequency options on purpose.
 - Laboratories now also grants 2 additional Research generation to zero-G labs.
 - Added Scanning and Scanning 2 nodes. Increases all sensor ranges by 10% and 20%, respectively.
 - Added the Dedicated Hauling Architecture node. Unlocks the Hauler Hull subsystem for use on flagships.
-- Added the Phasing Sensors node. Unlocks the Phasing Sensors subsystem for use on flagships and stations.
-- Added the Tachyon Sensors node. Unlocks the Tachyon Uplink Facility orbital. Unlocks the Tachyon Sensors subsystem for use on flagships and stations with an active Tachyon Uplink.
+- Added the Particle Phasing node. Unlocks the Phasing Sensors subsystem for use on flagships and stations.
+- Added the Tachyon Harnessing node. Unlocks the Tachyon Uplink Facility orbital. Unlocks the Tachyon Sensors subsystem for use on flagships and stations with an active Tachyon Uplink.
+- Kinetics and Kinetics 2 now upgrade weapon damage by 10% (down from 17%) and 20% (down from 35%), respectively.
 
 [*] Resources
 
@@ -194,7 +203,7 @@ frequency options on purpose.
 - FTL Crystals planets now provide 0.5/1/1.5/2/3/5/10 FTL/s.
 - Added Rare Gases, a new scalable resource found on gas giants only. Increases all ship engine thrust (including colony ships) by a cumulative bonus of 0%/5%/10%/30%/60%/120%/200%. Does not increase turn rate nor hyperdrive speed. Gains 1 Energy pressure per level starting from level 1, 1 Defense pressure per level starting from level 2, 1 Research pressure per level starting from level 3, 1 Influence pressure per level starting from level 4 and 1 Money pressure per level starting from level 5. Cannot be exported.
 *** Sublight species are strongly advised to heavily invest in developing those planets!
-- Available ore on asteroids has been reduced to anywhere from 50 to 1250 ore (down from 500 to 10000). Default ore asteroid chance per system has been changed to 90% (up from 45%). In addition, systems with ore asteroids are very likely to have a LOT of them.
+- Available Ore on asteroids has been reduced to anywhere from 50 to 1250 Ore (down from 500 to 10000). Default Ore asteroid chance per system has been changed to 90% (up from 45%). In addition, systems with Ore asteroids are very likely to have a LOT of them.
 - Moderately increased resource asteroid chance. Slightly decreased Construction Materials and Morphic Materials asteroid chance. Moderately decreased FTL Shards asteroid chance.
 - Added a 5% chance for systems to have one or more asteroid belts. These have a chance to contain resource asteroids equal to 1/30th of the resource asteroid chance.
 - Black holes now have a big, thick asteroid belt beyond their accretion disk.
@@ -211,7 +220,7 @@ frequency options on purpose.
 - Empires now have an additional an additional Explosives asteroid in an adjacent system.
 - Empires now have an additional an additional FTL Crystals asteroid in a neighboring system.
 - Empires now have an additional an additional Neutronium asteroid in a neighboring system.
-- Empires now have 6k worth of ore asteroids in their home system instead of one 6k ore asteroid.
+- Empires now have 6k worth of Ore asteroids in their home system instead of one 6k Ore asteroid.
 - Empires now have an additional anomaly in their home system.
 - Empires now have an additional Comet in their home system.
 - Empires no longer have 2 guaranteed Water planets in adjacent systems.
@@ -224,14 +233,14 @@ frequency options on purpose.
 - Added Phasing Sensors. Increases sight range by a moderate amount, decreasing as the subsystem's size increases. Requires Power. Requires increasingly high amounts of Power and Control as the subsystem's size increases. Sinew halves the Control requirements.
 - Ra-added and overhauled Tachyon Sensors from ABEM. Increases sight range by a high amount, decreasing as the subsystem's size increases. Requires an active Tachyon Uplink orbital to function. Requires increasingly high amounts of Control as the subsystem's size increases. Sinew halves the Control requirements.
 - Added Phased Array Laser Drive. Allows station designs with the same functionalities as the orbital of the same name, with scaling.
-- Added Lightsail, a reflector panel allowing to use the momentum of photons as actual thrust. Does not need fuel, very low maintenance cost. Lightsails on the outside of the ship do not use up interior space. Thrust is not improved by research. Requires to be within range of an active laser propulsion beam to function a full efficiency, or a near a star to function at low efficiency.
+- Added Lightsail, a reflector panel allowing to use the momentum of photons as actual thrust. Does not need fuel, very low maintenance cost. Lightsails on the outside of the ship do not use up interior space. Thrust is not improved by research. Requires to be within range of an active laser propulsion beam to function at full efficiency, or near a star to function at low efficiency.
 - Added High Impulse System, a railgun exclusive modification. Knockbacks the target on impact. Nullifies armor piercing.
 - Added Neutronium Re-chambering, a railgun exclusive modification. Increases piercing by 50% and damage by 10%. Very high build cost with significant labor cost.
 - Increased most weapon ranges by a factor of 2. Energy Bomb, Plasma Thrower, Pulse Bolt and Subspace Shredder ranges are unchanged. The Flak Battery range formula has been tweaked to keep a much more linear and slow progression relative to ship size.
-- Increased Planetary Cannon, Planetary Defense Grid and Ancient Gravitational Collapser ranges by a factor of 4.
-- Increased Fleet Computer raiding range bonus (and base raiding range) by a factor of 6.
+- Increased Planetary Cannon, Planetary Defense Grid and Ancient Gravitational Collapser ranges by a factor of 2.
+- Increased Fleet Computer raiding range bonus (and base raiding range) by a factor of 3.
 - Superstructure Hull now provides less build and labor cost reduction, but its ore cost is drastically reduced. Maintenance cost reduction is unchanged.
-- Added Laser Drive Power subsystem stat (for laser drives).
+- Added Laser Drive Power subsystem stat for laser drives.
 - Added Impulse subsystem stat for railguns.
 - Added Points of Impact, Fallout Duration and Supply Cost subsystem stats for carpet bombs.
 
@@ -241,7 +250,7 @@ frequency options on purpose.
 - Increased scale of stars by a factor of 10.
 - Increased scale of planets by a factor of 10.
 - Increased scale of planet gravity wells by a factor relative to its planet's 'mass'.
-- Increased scale of ringworld gravity wells to their system's radius to simulate them having no gravity well (they have no core), but instead objects actually orbiting around the star. As a side effect, orbitals restricted to planet gravity well can be built anywhere in the system, which seems completely reasonable for ringworlds.
+- Increased scale of ringworld gravity wells to their system's radius to simulate them having no gravity well (they have no core), but instead objects actually orbiting around the star. As a side effect, orbitals restricted to planet gravity well can be built anywhere in the system, which is completely reasonable for ringworlds.
 - Increased scale of asteroids by a factor of 2.
 - Decreased scale of ships by a factor of 0.5.
 - Increased default system spacing by a factor of around 23 (150.000 units). System spacing can no longer be reduced below the default value.
@@ -250,7 +259,7 @@ frequency options on purpose.
 - Increased chance of binary systems.
 - Stars in binary systems can now have much more spacing.
 - Black holes in the core of spiral and cluster galaxies are now supermassive if the Supermassive Black Holes game option is toggled on.
-*** The massive scale of the supermassive black holes accretion disks impacts system performances the higher the game speed is. Consider turning this option off if you experience stuttering.
+*** The massive scale of the supermassive black holes accretion disks impacts more and more system performances the higher the game speed is. Consider turning this option off if you experience stuttering.
 - The guaranteed moon around the level 1 planet in the home system has moved to the homeworld.
 
 [*] User Interface
@@ -266,5 +275,7 @@ frequency options on purpose.
 
 [*] Known issues
 
-- Stations with the Phased Array Laser Drive subsystem will not show the range of their Laser Propulsion Beam ability (this is not the case with the orbital of the same name). This is a technical limitation that will be addressed in a future release.
-- Modules available to build on orbitals build instantly. It is unknown if this is an originally intended behavior but there is no vanilla code to handle construction queues. This may or may not be changed in a future release.
+- Stations with the Phased Array Laser Drive subsystem will not show the range of their Laser Propulsion Beam ability (this is not the case with the orbital of the same name). This is a technical limitation that will be addressed in a future version.
+- Modules available to build on orbitals build instantly. It is unknown if this is an originally intended behavior but there is no vanilla code to handle construction queues. This may or may not be changed in a future version.
+- The user interface may take of several seconds to update when new sites of interest are discovered or explored on planets in multiplayer games (the host is unaffected).
+- Notifications when planet exploration reveals a new site of interest are not displayed in multiplayer games (the host is unaffected).

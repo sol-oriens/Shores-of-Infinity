@@ -2,13 +2,13 @@ System: Orathi
 	Position: (0, 0, 0)
 	Homeworld: False
 
-	//RS - Scaling
+	//SoI - Scaling
 	MakeStar(Temperature = 1000, Radius = 2000)
 	ExpandSystem(5000)
 
 	TriggerRegion(SetSystemAssignGroup(-2))
 
-	//RS - Scaling
+	//SoI - Scaling
 	MakePlanet(AncientHubworld, Radius = 240, Conditions = False)
 		Rename(Orathi Prime)
 
@@ -25,17 +25,17 @@ System: Orathi
 
 		AddResource(Money, +2.5)
 
-	//RS - Scaling
+	//SoI - Scaling
 	MakePlanet(RandomLevel:1, Radius = 160, Conditions = False)
 		AddPlanetResource(Water)
 		AddPlanetResource(Meat)
 
-	//RS - Scaling
+	//SoI - Scaling
 	MakePlanet(RandomLevel:1, Radius = 160, Conditions = False)
 		AddPlanetResource(Water)
 		AddPlanetResource(Fruit)
 
-	//RS - Scaling
+	//SoI - Scaling
 	ExpandSystem(7500)
 
 	MakeAsteroid()

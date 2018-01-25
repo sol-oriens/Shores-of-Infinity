@@ -1,4 +1,4 @@
-//RS - Scaling
+//SoI - Scaling
 const double MAX_SIZE = 30000.0; //Controls factor by which ship/fleet icons start to scale down
 const double APPROACH_EPSILON = 0.0002;
 

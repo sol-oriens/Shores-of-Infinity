@@ -1,15 +1,15 @@
 System: HomeSystem
 
-	//RS - Scaling
+	//SoI - Scaling
 	MakeStar(Temperature = 400:13000, Radius = 650:850)
 		BonusHealth(20000000000)
 
-		//RS - Scaling
+		//SoI - Scaling
 		ExpandSystem(1850:2850)
 
 	RepeatHomeworlds()
 
-		//RS - Scaling
+		//SoI - Scaling
 		MakePlanet(RandomType:Food:Common, Radius = 100, Grid Size = (18, 11), Conditions = False, Moons = False)
 			BonusHealth(5000000000)
 			AddPlanetResource(Water)
@@ -38,10 +38,10 @@ System: HomeSystem
 	MakeAsteroid(Cargo = Ore, Cargo Amount = 250)
 	MakeAsteroid(Resource = Distributed)
 	MakeAsteroid(Resource = Pekelm)
-		addon_options::QuickStartOption()
+		QuickStartOption()
 			SetMine()
 	MakeAsteroid(Resource = AsteroidFTLPermanent)
-		addon_options::QuickStartOption()
+		QuickStartOption()
 			SetMine()
 
 	MakeAnomaly()

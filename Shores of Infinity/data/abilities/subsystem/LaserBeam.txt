@@ -8,7 +8,7 @@ Ability: LaserBeam
   TargetFilterOwned(ship)
   TargetFilterFlagship(ship, Allow Stations = False)
   TargetFilterDesignTag(ship, Lightsail)
-  ABEM_hooks::TargetFilterNotStatusCount(ship, LaserSail, 2)
+  addon_target_filters::TargetFilterNotStatusCount(ship, LaserSail, 2)
 
   IsToggleTarget(ship, Check Range = True, Range Margin = 1.0, Channels = False)
   PersistentBeamEffect(ship, #ff0400, Tractor, Width = 0.3)

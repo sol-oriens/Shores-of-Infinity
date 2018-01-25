@@ -2,7 +2,7 @@ Module: FTLStorage
 	Name: #ORB_FTL_STORAGE
 	Blurb: #ORB_FTL_STORAGE_DESC
 	Description: #ORB_FTL_STORAGE_DESC
-	
+
 	Icon: GuiOrbitalIcons::19
 	Strategic Icon: OrbitalIcons::19
 	Model: FTLStorage
@@ -22,7 +22,7 @@ Module: FTLStorage
 
 	AddFTLStorage(300)
 
-	Module: FTLStorageFLUX
+	Module: FTLStorageFlux
 		Name: #ORB_FTL_STORAGE
 		Blurb: #ORB_FTL_STORAGE_FLUX_DESC
 		Description: #ORB_FTL_STORAGE_FLUX_DESC

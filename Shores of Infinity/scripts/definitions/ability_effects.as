@@ -1257,7 +1257,7 @@ class SpawnStarAt : AbilityHook {
 	Document doc("Spawn a new star at the target position.");
 	Argument destination(TT_Point);
 
-	//RS - Scaling: (dolynick) for some reason this value has to be about x3 as large as it should be
+	//SoI - Scaling: (dolynick) for some reason this value has to be about x3 as large as it should be
 	Argument system_radius(AT_Range, "22500", doc="Radius of the created system, if in open space.");
 
 #section server
@@ -1276,7 +1276,7 @@ class SpawnStarAt : AbilityHook {
 		hook.instantiate();
 		hook.arguments[0].set(14000, 29800);
 
-		//RS - Scaling
+		//SoI - Scaling
 		hook.arguments[1].set(850, 1250);
 
 		Object@ current;

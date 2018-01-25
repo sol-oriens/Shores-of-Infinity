@@ -62,13 +62,13 @@ class ClustersMap : Map {
 
 		double roomRadius = spacing * 1.5 * sqrt(double(sysPerRoom)) + spacing;
 
-		//RS - Scaling: apply a factor to center room radius to make room for the supermassive blackhole
+		//SoI - Scaling: apply a factor to center room radius to make room for the supermassive blackhole
 		double centerSpacing = spacing * 2;
 		double centerRoomRadius = roomRadius;
 		if(config::SUPERMASSIVE_BLACK_HOLES > 0)
 			centerRoomRadius = centerSpacing * 1.5 * sqrt(double(sysPerRoom)) + centerSpacing;
 
-		//RS - Scaling: this is not used, so no scaling needed
+		//SoI - Scaling: this is not used, so no scaling needed
 		double glxRadius = roomRadius * sqrt(double(roomCnt));
 
 		double roomHeightVar = flatten ? 0.0 : roomRadius * 0.2;
@@ -137,7 +137,7 @@ class ClustersMap : Map {
 			}
 
 			//Proceed to next room position
-			//RS - Scaling: rescale the supermassive black hole system radius
+			//SoI - Scaling: rescale the supermassive black hole system radius
 			double tmpRadius = 0.0;
 			if(roomCnt - i - 1 > 0 && config::SUPERMASSIVE_BLACK_HOLES > 0) {
 				tmpRadius = roomRadius;
@@ -161,7 +161,7 @@ class ClustersMap : Map {
 				circleCnt = 0;
 			}
 
-			//RS - Scaling: return radius back to the original value
+			//SoI - Scaling: return radius back to the original value
 			if(roomCnt - i - 1 > 0 && config::SUPERMASSIVE_BLACK_HOLES > 0)
 				roomRadius = tmpRadius;
 		}
@@ -244,7 +244,7 @@ class ClustersMap : Map {
 				}
 
 				//Proceed to next system position
-				//RS - Scaling: rescale the supermassive black hole system spacing
+				//SoI - Scaling: rescale the supermassive black hole system spacing
 				double tmpSpacing = 0.0;
 				if(i == 0 && n == 0 && config::SUPERMASSIVE_BLACK_HOLES > 0) {
 					tmpSpacing = spacing;
@@ -262,7 +262,7 @@ class ClustersMap : Map {
 					circle += 1;
 				}
 
-				//RS - Scaling: return system spacing back to the original value
+				//SoI - Scaling: return system spacing back to the original value
 				if(i == 0 && n == 0 && config::SUPERMASSIVE_BLACK_HOLES > 0)
 					spacing = tmpSpacing;
 			}

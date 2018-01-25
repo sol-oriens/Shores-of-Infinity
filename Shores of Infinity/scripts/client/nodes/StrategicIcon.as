@@ -106,13 +106,13 @@ class StrategicIcon {
 	}
 };
 
-//RS - Scaling
+//SoI - Scaling
 const double OUTSIDE_DISTANCE = 200000.0;
 const double OUTSIDE_SIZE_MAX = 250000.0;
 
 const double ANIMATE_TIME = 0.45;
 
-//RS - Scaling
+//SoI - Scaling
 const double FADE_DIST_MIN = 750; //Distance at which icon starts to appear
 const double FADE_DIST_MAX = 1000; //Distance at which icon completes appearing
 
@@ -174,7 +174,7 @@ class StrategicIconNodeScript : StrategicIcon {
 
 		double objDist = getCameraDistance(object.position);
 
-		//RS - Scaling
+		//SoI - Scaling
 		double fadeDist = 2.5e5 * max(5.0, object.radius);
 
 		if(objDist > fadeDist)

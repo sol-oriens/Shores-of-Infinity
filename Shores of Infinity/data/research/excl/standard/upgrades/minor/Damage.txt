@@ -1,7 +1,7 @@
 Technology: Damage
 	Name: #R_IMP_DAMAGE
-	Blurb: #R_IMP_DAMAGE_BLURB:17%
-	Description: #R_IMP_DAMAGE_DESC:17%
+	Blurb: #R_IMP_DAMAGE_BLURB:10%
+	Description: #R_IMP_DAMAGE_DESC:10%
 
 	Icon: techImpact * #ff8000
 	Color: #ff8000
@@ -12,13 +12,13 @@ Technology: Damage
 	Point Cost: 500
 	Time Cost: 60
 
-	AddModifier( tag/Weapon::DamageFactor(1.17) )
-	ModAttribute(StaticDamageFactor, Multiply, 1.17)
+	AddModifier( tag/Weapon::DamageFactor(1.1) )
+	ModAttribute(StaticDamageFactor, Multiply, 1.1)
 
 Technology: Damage2
 	Name: #R_IMP_DAMAGE2
-	Blurb: #R_IMP_DAMAGE_BLURB:35%
-	Description: #R_IMP_DAMAGE_DESC:35%
+	Blurb: #R_IMP_DAMAGE_BLURB:20%
+	Description: #R_IMP_DAMAGE_DESC:20%
 
 	Icon: techImpact2*#ffff00
 	Color: #ff8000
@@ -29,5 +29,5 @@ Technology: Damage2
 	Point Cost: 850
 	Time Cost: 80
 
-	AddModifier( tag/Weapon::DamageFactor(1.35) )
-	ModAttribute(StaticDamageFactor, Multiply, 1.35)
+	AddModifier( tag/Weapon::DamageFactor(1.2) )
+	ModAttribute(StaticDamageFactor, Multiply, 1.2)

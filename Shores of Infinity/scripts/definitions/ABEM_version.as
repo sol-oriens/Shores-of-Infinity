@@ -1,5 +1,7 @@
 import version;
 
+// ABEMMOD's last revision was 724.
+const string MOD_REVISION = "733"; 
 const array<string> VERSIONS = {
 	"v2.0.3",
 };
@@ -8,10 +10,8 @@ const array<string> REVISIONS = {
 	"5101",
 	"5095",
 };
-const string MOD_NAME = "Shores of Infinity v0.1.0b";
-const string MOD_REVISION = "3";
-const string MOD_VERSION = MOD_NAME + " (revision " + MOD_REVISION + ") for Star Ruler 2 " + VERSIONS[0] + " (revision " + REVISIONS[0]
-	+ ", currently using " + GAME_VERSION + " " + SCRIPT_VERSION + ").\nBased on Rising Stars v1.2.0.";
+const string MOD_NAME = "Rising Stars v1.2.0";
+const string MOD_VERSION = MOD_NAME + " (revision " + MOD_REVISION + ") for Star Ruler 2 " + VERSIONS[0] + " (revision " + REVISIONS[0] + ", currently using " + GAME_VERSION + " " + SCRIPT_VERSION + ")";
 
 string getLowestSupported(string input) {
 	print(input.split("; ")[0]);
@@ -43,12 +43,12 @@ bool checkSupported() {
 	}
 }
 
-/*bool checkDOF() {
+bool checkDOF() {
 	auto@ gateHull = getSubsystemDef("GateHull");
 	bool result = gateHull !is null;
 	if(!result)
 		error("DOF Support Library missing or out of date - Stargate Integration is missing!");
 	return result;
-}*/
+}
 
 //bool MOD_SUPPORTS_VERSION = checkSupported();

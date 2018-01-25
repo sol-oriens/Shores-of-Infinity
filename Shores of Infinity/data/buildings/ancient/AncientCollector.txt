@@ -12,7 +12,7 @@ Building: AncientCollector
 
 	In Queue: True
 
-	addon_requirements::RequireNativeResource(RareGases, Hide = True)
+	addon_requirement_effects::RequireNativeResource(RareGases, Hide = True)
 	RequireStatus(AncientReplicator)
 	RequireStatusToProgress(AncientReplicator)
 	RequireNotStatus(Ringworld)

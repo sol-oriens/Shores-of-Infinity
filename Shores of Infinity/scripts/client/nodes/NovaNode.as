@@ -23,7 +23,7 @@ final class NovaNodeScript {
 
 			alpha = 1.0 - (life / duration);
 
-			//RS - Scaling
+			//SoI - Scaling
 			node.scale = 10000.0 + 10000.0 * life / duration;
 
 			node.rebuildTransform();

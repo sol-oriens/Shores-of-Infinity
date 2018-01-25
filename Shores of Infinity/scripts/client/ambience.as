@@ -52,7 +52,7 @@ final class AmbienceGroup {
 				if(volume > 0) {
 					volume = max(volume - time, 0.0);
 
-					//RS - Scaling
+					//SoI - Scaling
 					sound.volume = volume * sqrt(active.scale / 20);
 				}
 				else {
@@ -84,7 +84,7 @@ final class AmbienceGroup {
 				}
 				volume = min(1.0, volume+time);
 				
-				//RS - Scaling
+				//SoI - Scaling
 				sound.volume = volume * sqrt(entry.scale / 20);
 			}
 		}

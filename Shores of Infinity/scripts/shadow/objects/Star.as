@@ -6,7 +6,7 @@ class StarScript {
 	void syncInitial(Star& star, Message& msg) {
 		star.temperature = msg.read_float();
 
-		//RS - Scaling: increased light reach
+		//SoI - Scaling: increased light reach
 		lightDesc.att_quadratic = 1.f/(8000.f*8000.f);
 
 		double temp = star.temperature;

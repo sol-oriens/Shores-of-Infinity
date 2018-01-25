@@ -32,7 +32,7 @@ final class StarScript {
 		if(star.owner is null)
 			@star.owner = defaultEmpire;
 
-		//RS - Scaling: increased light reach
+		//SoI - Scaling: increased light reach
 		lightDesc.att_quadratic = 1.f/(8000.f*8000.f);
 
 		double temp = star.temperature;
@@ -121,13 +121,13 @@ final class StarScript {
 	}
 
 	void postInit(Star& star) {
-		//RS - Scaling: scaled sound is too loud
+		//SoI - Scaling: scaled sound is too loud
 		double soundRadius = star.radius;
 		maxHealth = star.MaxHealth;
 		maxShield = star.MaxShield;
 		//Blackholes need a 'bigger' sound
 		if(star.temperature == 0.0) {
-		//RS - Scaling: supermassive black holes need reduced sound from their radius
+		//SoI - Scaling: supermassive black holes need reduced sound from their radius
 		//Minimum black hole radius / 10 * scaling factor
 			if (soundRadius >= 180 * 25) {
 					soundRadius /= 25;
@@ -185,14 +185,14 @@ final class StarScript {
 		if(!game_ending) {
 			double explRad = star.radius;
 			if(star.temperature == 0.0) {
-				//RS - Scaling
+				//SoI - Scaling
 				explRad *= 200.0;
 
 				for(uint i = 0, cnt = systemCount; i < cnt; ++i) {
 					auto@ sys = getSystem(i);
 					double dist = star.position.distanceTo(sys.position);
 
-					//RS - Scaling
+					//SoI - Scaling
 					if(dist < 1000000.0) {
 						double factor = sqr(1.0 - (dist / 1000000));
 						sys.object.addStarDPS(factor * star.MaxHealth * 0.08);

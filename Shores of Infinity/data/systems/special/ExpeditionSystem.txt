@@ -2,7 +2,7 @@ System: ExpeditionSystem
 	Inherit: BaseSystem
 	Frequency: 0
 
-	//RS - Scaling
+	//SoI - Scaling
 	MakeStar(Temperature = 4000:12000, Radius = 650:850)
 	ExpandSystem(1850:2850)
 

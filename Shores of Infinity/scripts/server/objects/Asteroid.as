@@ -9,7 +9,7 @@ Asteroid@ createAsteroid(const vec3d& position, Region@ region = null, bool dela
 	ObjectDesc desc;
 	desc.type = OT_Asteroid;
 
-	//RS - Scaling
+	//SoI - Scaling
 	desc.radius = 10.0;
 
 	desc.position = position;

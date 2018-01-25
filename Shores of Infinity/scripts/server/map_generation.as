@@ -424,7 +424,7 @@ class MapGeneration {
 		AngularItem[] items(16);
 		uint cnt = systemData.length;
 
-		//RS - Scaling: link distance
+		//SoI - Scaling: link distance
 		double DistFactor = 20.0;
 
 		for(uint i = 0; i < cnt; ++i) {

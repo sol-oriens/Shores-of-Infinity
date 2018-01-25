@@ -5,7 +5,7 @@ import design_settings;
 const double SUPPORT_EXPIRE_TIME = 3.0 * 60.0;
 
 //Max distance a support ship can find a leader to attach to
-//RS - Scaling: increased range
+//SoI - Scaling: increased range
 const double MAX_LEADER_RESCUE_DIST = 3000.0;
 const double MAX_LEADER_RESCUE_DIST_SQ = MAX_LEADER_RESCUE_DIST * MAX_LEADER_RESCUE_DIST;
 const double MAX_SUPPORT_ABANDON_DIST = 7500.0;

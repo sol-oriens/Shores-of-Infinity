@@ -11,7 +11,7 @@ Construction: ExplorePlanet
 	OnStart(AddStatus(Exploring))
 	OnCancel(RemoveStatusInstance(Exploring))
 
-	ABEM_sites::AddSite(Start Scanned = True, Chance = 1.0, Status = ExploredPlanet)
+	AddSite(Start Scanned = True, Chance = 1.0, Status = ExploredPlanet)
 	RemoveStatusInstance(Exploring)
 
   RequirePlanet()

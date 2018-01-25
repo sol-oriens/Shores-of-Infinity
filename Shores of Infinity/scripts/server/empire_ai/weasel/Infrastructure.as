@@ -293,7 +293,7 @@ final class SystemCheck {
     OrbitalAI@ orbital;
     _isUnderAttack = this.ai.obj.ContestedMask & ai.mask != 0;
     /*if (_isUnderAttack && isBuilding()) {
-      //TODO: Cancel order
+      //SoI - TODO: Cancel order
     }*/
     if (isBuilding) {
       for (int i = 0, cnt = orders.length; i < cnt; ++i) {
@@ -429,7 +429,7 @@ class PlanetCheck {
     int resId = this.ai.obj.primaryResourceType;
     if (resId > -1) {
       const ResourceType@ type = getResource(resId);
-      //TODO: Now that giants can have different resources this should be optimised with planet flags
+      //SoI - TODO: Now that giants can have different resources this should be optimised with planet flags
       if (type.ident == "RareGases")
         _isGasGiant = true;
       else if (type.ident =="IcyWater"

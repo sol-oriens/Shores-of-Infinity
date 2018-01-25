@@ -2,7 +2,7 @@ System: RichAsteroidBelt
 	Frequency: 0.01
 	Unique: Galaxy
 
-	//RS - Scaling
+	//SoI - Scaling
 	MakeStar(Temperature = 4520, Radius = 740)
 	ExpandSystem(1000)
 

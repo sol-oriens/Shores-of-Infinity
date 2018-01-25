@@ -1,7 +1,7 @@
 Building: HealthComplex
 	Name: #BLD_HEALTH_COMPLEX
 	Description: #BLD_HEALTH_COMPLEX_DESC
-	
+
 	Sprite: BldHealthComplex
 
 	Category: Infrastructure
@@ -18,7 +18,7 @@ Building: HealthComplex
 
 	TriggerStartConstruction( AddStatus(HealthComplexCost) )
 	TriggerCancelConstruction( RemoveStatusInstance(HealthComplexCost) )
-	ConsumeResearchStatusCount(HealthComplexCost, Base Amount = 100, Amount = 100)
+	addon_consume_effects::ConsumeResearchStatusCount(HealthComplexCost, Base Amount = 100, Amount = 100)
 
   AddMaxPopulation(1)
 	ModPopulationGrowth(0.1)

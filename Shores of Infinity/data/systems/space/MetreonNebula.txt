@@ -1,7 +1,7 @@
 System: MetreonNebula
 	Frequency: 0
 
-	//RS - Scaling
+	//SoI - Scaling
 	ExpandSystem(30000:40000)
 
 	Repeat(2:5)

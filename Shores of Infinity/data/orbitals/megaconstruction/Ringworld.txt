@@ -26,6 +26,6 @@ Module: Ringworld
 
 	OnEnable(GiveAchievement(ACH_RINGWORLD))
 
-	//RS - Scaling
+	//SoI - Scaling
 	OnEnable(SpawnPlanet(Ringworld, Owned = True, Add Status = Ringworld, Radius = 5500, Physics = False))
 	OnEnable(Destroy())

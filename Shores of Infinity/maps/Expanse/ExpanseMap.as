@@ -152,7 +152,7 @@ class ExpanseMap : Map {
 			uint sysCount = sysPerRoom;
 			angle = 0.0;
 
-			//RS - Scaling
+			//SoI - Scaling
 			radius = i == 0 ? (9000 * 20) : 0;
 
 			angleStep = twopi;

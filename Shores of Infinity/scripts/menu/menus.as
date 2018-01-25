@@ -9,6 +9,7 @@ import elements.GuiPanel;
 import dialogs.MessageDialog;
 import version;
 import ABEM_version;
+import SoI_version;
 from gui import animate_speed, animate_time, animate_remove;
 
 enum MenuAnimation {
@@ -61,10 +62,20 @@ string backgroundFile;
 string latestSave;
 
 void init() {
-	//Show the version
-	@version = GuiText(null, Alignment(Right - 1000, Bottom - 40, Right - 4, Bottom - 4));
+	//Show the version of Shores of Infinity
+	@version = GuiText(null, Alignment(Right - 1000, Bottom - 46, Right - 4, Bottom - 10));
 	version.horizAlign = 1.0;
-	version.text = "Mod: " + MOD_VERSION;
+	version.text = "Mod: " + SoI::MOD_VERSION;
+	version.color = Color(0xaaaaaaaa);
+	// Check if mod is compatible with current game version, spew out alarming colors and errors if not
+	if(!SoI::checkSupported()) {
+		version.color = Color(0xff0000ff);
+		version.text = version.text + " (UNSUPPORTED VERSION)";
+	}
+	//Show the version of Rising Stars
+	@version = GuiText(null, Alignment(Right - 1000, Bottom - 20, Right - 4, Bottom));
+	version.horizAlign = 1.0;
+	version.text = "Based on: " + SoI::RS_MOD_VERSION;
 	version.color = Color(0xaaaaaaaa);
 	// Check if mod is compatible with current game version, spew out alarming colors and errors if not
 	//if(!MOD_SUPPORTS_VERSION) {
@@ -134,14 +145,14 @@ void init() {
 	else
 		logo.load("data/images/sr_logo.png");
 
-	//if(!checkDOF()) {
+	if(!checkDOF()) {
 		/*if(STEAM_EQUIV_BUILD) {
 			message(locale::DOF_MISSING_STEAM);
 		}
 		else {
 			message(locale::DOF_MISSING_OTHER);
 		}*/
-	//}
+	}
 }
 
 void tick(double time) {

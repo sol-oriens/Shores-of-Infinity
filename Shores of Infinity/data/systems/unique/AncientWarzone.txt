@@ -2,7 +2,7 @@ System: AncientWarzone
 	Frequency: 0.01
 	Unique: Global
 
-	//RS - Scaling
+	//SoI - Scaling
 	MakeStar(Temperature = 4520, Radius = 740)
 	ExpandSystem(1000)
 

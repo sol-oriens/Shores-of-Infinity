@@ -7,7 +7,7 @@ Module: ArmorLayer
 	Standalone: False
 	Core: False
 
-	Armor: 4000
+	Armor: 5000
 
 	Build Cost: 100
 	Maintenance: 2.5
@@ -26,7 +26,7 @@ Module: HeavyArmorLayer
 	Standalone: False
 	Core: False
 
-	Armor: 8000
+	Armor: 10000
 
 	Build Cost: 200
 	Maintenance: 5

@@ -1,4 +1,4 @@
-//RS - Scaling: orbit speed accelerated 30 times
+//SoI - Scaling: orbit speed accelerated 30 times
 const double orbitSpeedFactor = 60.0;
 
 tidy class Orbit : Component_Orbit, Savable {

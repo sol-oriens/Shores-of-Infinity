@@ -24,8 +24,8 @@ Subsystem: Lightsail
 	LaserThrustMinBoost := 0.0
 	LaserThrustMaxBoost := 5.0
 
-	Hook: ABEM_hooks::SolarThrust(SolarThrustMinBoost, SolarThrustMaxBoost)
-	Hook: ABEM_hooks::LaserThrust(LaserThrustMinBoost, LaserThrustMaxBoost)
+	Hook: addon_subsystem_effects::SolarThrust(SolarThrustMinBoost, SolarThrustMaxBoost)
+	Hook: addon_subsystem_effects::LaserThrust(LaserThrustMinBoost, LaserThrustMaxBoost)
 
 	Requires:
 		Command = 1

@@ -20,7 +20,7 @@ vec3d mapLeft;
 vec3d mapRight;
 double galaxyRadius = 0;
 
-//RS - Scaling
+//SoI - Scaling
 const double GALAXY_MIN_SPACING = 2400000.0;
 const double GALAXY_MAX_SPACING = 4800000.0;
 const double GALAXY_HEIGHT_MARGIN = 150000.0;

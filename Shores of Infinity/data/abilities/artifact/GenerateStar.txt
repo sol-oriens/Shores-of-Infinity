@@ -9,11 +9,11 @@ Ability: GenerateStar
 
 	Target: dest = Point
 
-	//RS - Scaling
+	//SoI - Scaling
 	TargetFilterInUniverseBounds(dest, 80000)
 	TargetFilterNotInSystem(dest, 80000)
 
 	SpawnStarAt(dest)
 	
-	//RS - Scaling
+	//SoI - Scaling
 	Repeat(3:6, SpawnArtifactAround(dest, 8000:20000, ProtoPlanet))

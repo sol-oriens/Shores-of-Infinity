@@ -118,7 +118,7 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 
 	bool FreeRaiding = false;
 
-	//RS - Scaling: increased range
+	//SoI - Scaling: increased range
 	double RaidRange = 3000.0;
 
 	//Whether to automaticall pluck supports of planets

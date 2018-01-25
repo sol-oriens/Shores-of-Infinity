@@ -17,7 +17,7 @@ Building: AncientStripTransmuter
 
 	In Queue: True
 
-	addon_requirements::ConflictNativeResource(RareGases, Hide = True)
+	addon_requirement_effects::ConflictNativeResource(RareGases, Hide = True)
 	RequireStatus(AncientReplicator)
 	RequireStatusToProgress(AncientReplicator)
 	RequireUnlockTag(AdvancedCores)

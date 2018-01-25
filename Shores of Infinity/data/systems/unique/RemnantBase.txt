@@ -2,7 +2,7 @@ System: RemnantBase
 	Frequency: 0.01
 	Unique: Global
 
-	//RS - Scaling
+	//SoI - Scaling
 	MakeStar(Temperature = 5778, Radius = 750)
 	ExpandSystem(1000)
 

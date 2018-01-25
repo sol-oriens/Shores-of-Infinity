@@ -30,7 +30,7 @@ void init(Empire& emp) {
 	emp.initResearch();
 	emp.initAttributes();
 
-	//RS - Base FTL generation and storage removed
+	//SoI - Base FTL generation and storage removed
 	//emp.modFTLCapacity(+250);
 	//emp.modFTLIncome(+1);
 

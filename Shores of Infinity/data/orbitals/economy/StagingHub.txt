@@ -47,6 +47,7 @@ Module: StagingHubMarket
 	Core: False
 
 	Build Cost: 150
+	Maintenance: 10
 
 	RequireOnOrbital(StagingHub)
 

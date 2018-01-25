@@ -3,7 +3,7 @@ import maps;
 
 const int DEFAULT_SYSTEM_COUNT = 60;
 
-//RS - Scaling
+//SoI - Scaling
 const double DEFAULT_SPACING = 150000.0;
 const double MIN_SPACING = 150000.0;
 

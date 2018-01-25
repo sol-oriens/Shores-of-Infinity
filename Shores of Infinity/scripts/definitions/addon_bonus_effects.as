@@ -8,7 +8,7 @@ class AddSite : BonusEffect {
 	Argument type(AT_Anomaly, "distributed", doc="Type of site to spawn. Defaults to randomized.");
 	Argument start_scanned(AT_Boolean, "False", doc="Whether the site starts out scanned by the empire that triggered this.");
   Argument chance(AT_Range, "1.0", doc="Chance that this hook may activate.");
-  Argument status(AT_Status, "", doc="Type of status effect to create of failure.");
+  Argument status(AT_Status, "", doc="Type of status effect to create on failure.");
 
 	const SiteType@ siteType;
 

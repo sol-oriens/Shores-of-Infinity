@@ -1,7 +1,7 @@
 //Radius added to every entry
 const double ExtraRadius = 100.0;
 
-//RS - Scaling: increased border visibility
+//SoI - Scaling: increased border visibility
 const double BorderThickness = 1000.0;
 
 bool SHOW_TERRITORY_BORDERS = true;

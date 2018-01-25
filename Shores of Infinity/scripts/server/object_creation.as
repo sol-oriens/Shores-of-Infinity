@@ -7,7 +7,7 @@ from civilians import getCivilianName;
 //Base acceleration of a colony ship
 const double COLONYSHIP_BASE_ACCEL = 5.5;
 
-//RS - Scaling
+//SoI - Scaling
 const double shipVolumePower = 5.0;
 
 const double stationRadiusFactor = 1.3;

@@ -361,7 +361,7 @@ ORB_RECYCLING_FACILITY_DESC: <<
 
 	Must be constructed in orbit of a planet.
 
-	The planet this is in orbit of gains 1 Food resource.
+	The planet this is in orbit of gains 1 Water resource.
 
 	Adds 1 Influence Stake.
 

@@ -15,7 +15,7 @@ final class GasSprite {
 	GasSprite(const vec3d& pos, double Scale, uint col, bool structured, int baseAlpha = 0) {
 		position = pos;
 
-		//RS - Scaling: scale the galaxy gas a bit bigger than general scale to obtain a thicker gas plane
+		//SoI - Scaling: scale the galaxy gas a bit bigger than general scale to obtain a thicker gas plane
 		scale = Scale * 2.0 * 25.0;
 
 		baseCol = col & 0xffffff00;
@@ -80,7 +80,7 @@ final class GalaxyGasScript {
 				continue;
 			}
 
-			//RS - Scaling
+			//SoI - Scaling
 			double fadeOut = ((sortDist / 600000.0) - 0.3);
 
 			int trueAlpha = sprite.trueAlpha;

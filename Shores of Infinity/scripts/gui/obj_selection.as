@@ -405,7 +405,7 @@ void dragSelect(const recti& box) {
 	return 16000.0;
 }*/
 
-//RS - Scaling: icon selection max distance
+//SoI - Scaling: icon selection max distance
 const double MAX_SUPPORT_SELECT_DIST = 1000.0;
 const double MAX_PLANET_SELECT_DIST = 1560000.0;
 const double MAX_PLANET_PHYS_SEL_DIST = 20000.0;

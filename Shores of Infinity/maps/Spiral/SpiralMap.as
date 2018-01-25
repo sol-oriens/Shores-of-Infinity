@@ -60,11 +60,11 @@ class SpiralMap : Map {
 
 		double systemSpacing = modSpacing(getSetting(M_SystemSpacing, DEFAULT_SPACING));
 
-		//RS - Scaling: increased height spacing
+		//SoI - Scaling: increased height spacing
 		const double coreHeightVariation = flatten ? 0.0 : 2000.0;
 		const double heightVariation = flatten ? 0.0 : 800.0;
 
-		//RS - Scaling: apply a facor to system spacing to make room for the supermassive blackhole
+		//SoI - Scaling: apply a facor to system spacing to make room for the supermassive blackhole
 		double tempSpacing = systemSpacing;
 		if(systemCount > 50 && config::SUPERMASSIVE_BLACK_HOLES > 0)
 			systemSpacing *= 2;
@@ -105,7 +105,7 @@ class SpiralMap : Map {
 				maxRadius = sqrt(goalArea/pi - minRadius*minRadius);
 			}
 
-			//RS - Scaling: return system spacing back to the original value
+			//SoI - Scaling: return system spacing back to the original value
 			if(systemCount > 50 && config::SUPERMASSIVE_BLACK_HOLES > 0) {
 				systemSpacing = tempSpacing;
 			}
@@ -194,7 +194,7 @@ class SpiralMap : Map {
 
 					pos = vec3d(cos(angle) * rad, 0.0, sin(angle) * rad);
 
-					//RS - Scaling
+					//SoI - Scaling
 					rSq += systemSpacing * 8000.0 * 20;
 
 					bool validPos = true;
@@ -209,10 +209,10 @@ class SpiralMap : Map {
 						break;
 				}
 
-				//RS - Scaling
+				//SoI - Scaling
 				rSq += systemSpacing * 10000.0 * 20;
 				if((j+1)%10 == 0) //Disrupt periodic structure that tends to form
-					//RS - Scaling
+					//SoI - Scaling
 					rSq += systemSpacing * 10000.0 * 10;
 
 				if(recent.length < maxRing)

@@ -24,6 +24,7 @@ from constructions import IConstructionHook;
 import random_events;
 import cargo;
 import generic_hooks;
+import addon_bonus_effects;
 import void gainRandomCard(Empire@ emp) from "card_effects";
 
 #section server
@@ -2886,7 +2887,7 @@ class GenerateSystem : EmpireTrigger {
 				}
 			}
 
-			//RS - Scaling
+			//SoI - Scaling
 			vec2d offset = random2d(60000.0 + offSystem.radius * randomd(1.5, 5.0));
 
 			vec3d offPosition = offSystem.position;
@@ -2898,7 +2899,7 @@ class GenerateSystem : EmpireTrigger {
 			for(uint i = 0, cnt = systemCount; i < cnt; ++i) {
 				auto@ sys = getSystem(i);
 
-				//RS - Scaling
+				//SoI - Scaling
 				if(sys.position.distanceToSQ(offPosition) < sqr(sys.radius + 60000.0)) {
 					overlaps = true;
 					break;
@@ -2923,7 +2924,7 @@ class GenerateSystem : EmpireTrigger {
 		if(vision_to_empire.boolean && emp !is null && emp.valid)
 			@hook = GiveVision(emp);
 
-		//RS - Scaling
+		//SoI - Scaling
 		generateNewSystem(position, hook=hook, radius=5000.0, type=system_type.str, name=name);
 	}
 #section all
