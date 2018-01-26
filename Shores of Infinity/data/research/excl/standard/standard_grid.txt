@@ -128,7 +128,6 @@ Grid: StandardResearch
 	FactoryLabor2: 5,-8
 	ArmorDR2: 7,-8
 	ArmorHealth: 3,-7
-	ArmorHealth: 4,-7
 	BuildCost: 4,-12
 	OrbitalConstruction: 0,-7
 	OrbitalConstruction2: 0,-12
@@ -233,7 +232,7 @@ Grid: StandardResearch
 	FTLHurdle: 3,12
 	FTLStorage: 2,13
 	GravitonChanneling: -1,10
-	FlagDamage: -1,11
+	Damage: -1,11
 	GravitonCondenser: 0,12
 	FlareBomb: 1,12
 	Thrust: -4,8
@@ -277,9 +276,9 @@ Grid: StandardResearch
 	FTLHurdle: 1,17
 	EnergyHurdle: -5,4
 	SupportSupplyUse2: -6,4
-	SupportDamage: -6,12
+	Damage: -6,12
 	Thrust2: -7,13
-	EnergyHurdle3: -7,14
+	AoERadius: -7,14
 	VacuumTelescope: -3,16
 	HyperfieldSequencing: -4,17
 	InfluenceHurdle: -9,1
@@ -332,9 +331,9 @@ Grid: StandardResearch
 	BeamCycling: 13,2
 	HyperLaser: 13,3
 	JuggernautHull: 16,1
-	SupportCap: 12,2
+	ProjTracking: 12,2
 	Damage2: 14,2
-	InfiniteDamage: 15,2
+	Tactics: 15,2
 	SupportSize: 1,-9
 	ParticleLance: 6,18
 	Flagship: 13,-4
@@ -343,7 +342,7 @@ Grid: StandardResearch
 	SupportCap: 14,-2
 	FleetComputer: 13,-1
 	AoERadius2: 14,1
-	ProjTracking: 12,1
+	SupportCap: 12,1
 	SpinalMountHull: 13,-5
 	Flagship2: 15,-4
 	Support2: 15,-2
@@ -352,10 +351,6 @@ Grid: StandardResearch
 	SupplyStorage2: -9,3
 	Prosperity: -10,2
 	SupplyUse2: -7,4
-	Tactics: 12,-3
-	Health: 13,-3
-	AoERadius2: 14,-3
-	Damage2: 15,-3
 	Flagship3: 17,-4
 	Support4: 17,-2
 	FlagHealth2: 18,-4
@@ -364,9 +359,9 @@ Grid: StandardResearch
 	Support3: 19,-2
 	EnergyHurdle3: -7,-9
 	Terraforming: -7,-10
-	Thrust2: -8,15
+	EnergyHurdle3: -8,15
 	MatterDisruptor: -7,11
-	InfiniteThrust: -8,16
+	Thrust2: -8,16
 	PlanetSupport2: -13,0
 	InfiniteSupport: -13,1
 	Senate: -12,-1
@@ -378,8 +373,8 @@ Grid: StandardResearch
 	ArmorHealth: 5,-7
 	PiercingEnhancement: 8,-6
 	ArmorHealth: 6,-9
-	ArmorHealth2: 7,-10
-	InfiniteHealth: 7,-11
+	ArmorHealth: 7,-10
+	ArmorHealth2: 7,-11
 	KnockbackEnhancement: 6,-2
 	KeyRailgunKnockback: 5,-3
 	InfluenceHurdle: -7,-5
@@ -391,7 +386,10 @@ Grid: StandardResearch
 	Energy: 4,9
 	Ramjet: 0,6
 	Sensors: -4,-9
-	FlagDamage: -7,12
 	Health: -5,-2
 	ImpDecaySpeed: -6,-1
 	CivConstruction2: -3,-12
+	InfiniteDamage: 15,3
+	InfiniteThrust: -9,17
+	Health: 13,-3
+	InfiniteHealth: 8,-12

@@ -1,7 +1,7 @@
 Technology: ArmorHealth
 	Name: #R_IMP_ARMOR_HEALTH
-	Blurb: #R_IMP_ARMOR_HEALTH_BLURB:15%
-	Description: #R_IMP_ARMOR_HEALTH_DESC:15%
+	Blurb: #R_IMP_ARMOR_HEALTH_BLURB:10%
+	Description: #R_IMP_ARMOR_HEALTH_DESC:10%
 
 	Icon: techArmoring
 	Color: #a9a9a9
@@ -12,14 +12,14 @@ Technology: ArmorHealth
 	Point Cost: 500
 	Time Cost: 60
 
-	AddModifier(tag/IsArmor::HpFactor(1.15))
-	AddModifier(ImpactLevelFactor(1.15))
-	ModAttribute(OrbitalArmorMod, Multiply, 1.25)
+	AddModifier(tag/IsArmor::HpFactor(1.1))
+	AddModifier(ImpactLevelFactor(1.1))
+	ModAttribute(OrbitalArmorMod, Multiply, 1.2)
 
 Technology: ArmorHealth2
 	Name: #R_IMP_ARMOR_HEALTH2
-	Blurb: #R_IMP_ARMOR_HEALTH_BLURB:30%
-	Description: #R_IMP_ARMOR_HEALTH_DESC:30%
+	Blurb: #R_IMP_ARMOR_HEALTH_BLURB:20%
+	Description: #R_IMP_ARMOR_HEALTH_DESC:20%
 
 	Icon: techArmoring * #a85f5f
 	Color: #a9a9a9
@@ -30,6 +30,6 @@ Technology: ArmorHealth2
 	Point Cost: 700
 	Time Cost: 80
 
-	AddModifier(tag/IsArmor::HpFactor(1.3))
-	AddModifier(ImpactLevelFactor(1.3))
-	ModAttribute(OrbitalArmorMod, Multiply, 1.5)
+	AddModifier(tag/IsArmor::HpFactor(1.2))
+	AddModifier(ImpactLevelFactor(1.2))
+	ModAttribute(OrbitalArmorMod, Multiply, 1.4)

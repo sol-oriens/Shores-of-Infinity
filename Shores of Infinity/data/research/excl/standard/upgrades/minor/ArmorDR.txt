@@ -16,8 +16,8 @@ Technology: ArmorDR
 
 Technology: ArmorDR2
 	Name: #R_IMP_ARMOR_DR2
-	Blurb: #R_IMP_ARMOR_DR_BLURB:25%
-	Description: #R_IMP_ARMOR_DR_DESC:25%
+	Blurb: #R_IMP_ARMOR_DR_BLURB:20%
+	Description: #R_IMP_ARMOR_DR_DESC:20%
 
 	Icon: techReinforcement * #a85f5f
 	Color: #a9a9a9
@@ -28,4 +28,4 @@ Technology: ArmorDR2
 	Point Cost: 700
 	Time Cost: 80
 
-	AddModifier(any::ArmorResistFactor(1.25))
+	AddModifier(any::ArmorResistFactor(1.2))

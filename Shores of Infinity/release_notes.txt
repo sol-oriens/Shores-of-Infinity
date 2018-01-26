@@ -198,6 +198,9 @@ for use as a remote mining base, as the new balance makes tractoring ore asteroi
 - Added the Particle Phasing node. Unlocks the Phasing Sensors subsystem for use on flagships and stations.
 - Added the Tachyon Harnessing node. Unlocks the Tachyon Uplink Facility orbital. Unlocks the Tachyon Sensors subsystem for use on flagships and stations with an active Tachyon Uplink.
 - Kinetics and Kinetics 2 now upgrade weapon damage by 10% (down from 17%) and 20% (down from 35%), respectively.
+- Armoring and Armoring 2 now upgrade armor health by 10% (down from 15%) and 20% (down from 30%), respectively.
+- Reinforcement 2 now upgrades armor resistance by 20% (down from 25%).
+- Repair and Repair 2 now upgrade repair rate by 20% (down from 50%) and 40% (down from 100%), respectively.
 
 [*] Resources
 
