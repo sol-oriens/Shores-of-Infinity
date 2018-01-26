@@ -241,7 +241,7 @@ for use as a remote mining base, as the new balance makes tractoring ore asteroi
 - Superstructure Hull now provides less build and labor cost reduction, but its ore cost is drastically reduced. Maintenance cost reduction is unchanged.
 - Added Laser Drive Power subsystem stat for laser drives.
 - Added Impulse subsystem stat for railguns.
-- Added Points of Impact, Fallout Duration and Supply Cost subsystem stats for carpet bombs.
+- Added Points of Impact, Devastation Duration and Supply Cost subsystem stats for carpet bombs.
 
 [*] Systems
 
