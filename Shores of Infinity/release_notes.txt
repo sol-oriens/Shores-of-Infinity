@@ -32,7 +32,7 @@ Competitive multiplayer games are discouraged until balance is fine-tuned.
 [*] Game Options
 
 - Added Automatically Claim Spatial Anomalies: When toggled on, spatial anomalies in your tradable area will automatically be claimed into your territory. Toggled off by default.
-*** This adds the possibility to activate or deactivate the feature created by Dalo Lorn. Thanks to new enhancements this has little to no impact on AI expansion capabilities in normal game conditions (read: reasonable nebula frequency).
+*** This adds the possibility to activate or deactivate the feature created by Dalo Lorn. Thanks to new improvements this has little to no impact on AI expansion capabilities in normal game conditions (read: reasonable nebula frequency).
 
 [*] Orbitals
 
@@ -122,6 +122,12 @@ different methods preferable in different situations. Third: To tone down the ad
 - Default asteroid and orbital labor cost step increased to 100% (up from 50%).
 - Reactivated Legacy Exploration Mode from ABEM (default: off) as sensors are back.
 
+[*] Gameplay
+
+- Welfare option base threshold is now 200k (down from 350k).
+- Ships now always repair at a rate defined by their design and no longer receive a boost when out of combat (sourced from DOF).
+- Ship repair rate is now always reduced by an effectiveness below the base rate whether in combat or not.
+
 [*] Influence Cards
 
 - Slightly increased the frequency of Cultivation.
@@ -195,7 +201,6 @@ for use as a remote mining base, as the new balance makes tractoring ore asteroi
 
 [*] Resources
 
-- Welfare option base threshold is now 200k (down from 350k).
 - Guaranteed resources on planets in systems adjacent to starting systems can now spawn farther in the neighborhood to counterbalance the addition of nebulae and planetless systems, which can deadlock the distribution.
 - Added FTL Crystals asteroids: provide 1 FTL/s and add 250 FTL storage. These are not consumed when mined (but they can be captured...). Spawn frequency is slightly lower than FTL shards.
 - FTL Shards asteroids now permanently add 500 FTL storage (up from 100).

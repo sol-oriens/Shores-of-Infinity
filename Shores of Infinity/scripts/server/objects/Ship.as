@@ -1219,14 +1219,14 @@ tidy class ShipScript {
 			shieldDelta = true;
 		}
 
-		//Repair out of combat
+		//Repair out of combat (SoI - and actually, also in combat...)
 		double damage = bp.design.totalHP - (bp.currentHP + bp.removedHP);
 		if(currentRepair > 0.f && (damage > 0.f || wreckage > 0.f)) {
 			double repairFact = 1.0;
+			repairFact *= min(bp.shipEffectiveness, 1.0);
 			bool inCombat = ship.inCombat;
 			if(inCombat) {
 				repairFact *= COMBAT_REPAIR_MOD;
-				repairFact *= min(bp.shipEffectiveness, 1.0);
 			}
 			if(repairFact != 0) {
 				double repairAmt = currentRepair * repairFact * time;
@@ -1245,9 +1245,10 @@ tidy class ShipScript {
 					else if(ship.Supply < repairCost)
 						repairAmt *= ship.Supply / repairCost;
 				}
-				else {
+				//SoI - Disabled potential repair boost out of combat
+				/*else {
 					repairAmt = max(repairAmt, 0.01 * bp.design.totalHP * repairFact * time);
-				}
+				}*/
 				if(repairAmt != 0) {
 					if(wreckage > 0.f) {
 						double repWreckage = repairAmt * wreckage / (wreckage + damage);
