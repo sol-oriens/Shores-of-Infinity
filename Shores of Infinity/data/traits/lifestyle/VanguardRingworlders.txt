@@ -2,6 +2,7 @@ Trait: VanguardRingworlders
 	Name: #TRAIT_VANGUARD_RINGWORLDER
 	Description: #TRAIT_VANGUARD_RINGWORLDER_DESC
 	Order: 13
+	Available: False
 
 	Icon: PlanetType::14
 	Color: #8f8f8f
@@ -10,7 +11,8 @@ Trait: VanguardRingworlders
 	Unique: Lifestyle
 	AI Support: False
 
-	TriggerHomeworld(SpawnPlanet(Ringworld, Owned = True, Add Status = RRInitialRingworld, Radius = 750, Physics = False))
+	//SoI - Scaling
+	TriggerHomeworld(SpawnPlanet(Ringworld, Owned = True, Add Status = RRInitialRingworld, Radius = 5500, Physics = False))
 	TriggerHomeworld(DestroySystemPlanet(1, Quiet = True))
 	TriggerHomeworld(DestroySystemPlanet(2, Quiet = True))
 	TriggerHomeworld(DestroySystemPlanet(3, Quiet = True))

@@ -171,16 +171,16 @@ Preset: Alipha
 	Trait: Technicists
 	Trait: Innovative
 
-Preset: Bluuhbi
-	Name: #RACE_VANGUARD_RINGWORLDER
-	Tagline: #RACE_VANGUARD_RINGWORLDER_TAGLINE
-	Lore: #RACE_VANGUARD_RINGWORLDER_LORE
-	Portrait: emp_portrait_blobman
-	Shipset: Moirai
-	Hard: True
-	AI Support: False
-
-	Trait: Theocracy
-	Trait: Fling
-	Trait: VanguardRingworlders
-	Trait: Prideful
+//Preset: Bluuhbi
+//	Name: #RACE_VANGUARD_RINGWORLDER
+//	Tagline: #RACE_VANGUARD_RINGWORLDER_TAGLINE
+//	Lore: #RACE_VANGUARD_RINGWORLDER_LORE
+//	Portrait: emp_portrait_blobman
+//	Shipset: Moirai
+//	Hard: True
+//	AI Support: False
+//
+//	Trait: Theocracy
+//	Trait: Fling
+//	Trait: VanguardRingworlders
+//	Trait: Prideful
