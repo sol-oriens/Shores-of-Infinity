@@ -26,6 +26,8 @@ NGTT_ANOMALY_SYSTEM_OCCURANCE: <<
 	[b]WARNING: Setting this to maximum will cause all non-homeworld, non-unique systems (Orathi, galactic black hole) to be spatial anomalies. This will drastically affect gameplay within the galaxy, and is not recommended![/b]
 >>
 
+NG_ASTEROID_BELT_OCCURANCE: Asteroid Belts
+
 NGTT_SYSTEM_SIZE: Disable Supermassive Black Holes if setting this lower than 100%.
 
 NG_SUPERMASSIVE_BLACK_HOLES: Supermassive Black Holes

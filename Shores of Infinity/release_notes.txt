@@ -205,9 +205,8 @@ for use as a remote mining base, as the new balance makes tractoring ore asteroi
 *** Sublight species are strongly advised to heavily invest in developing those planets!
 - Available Ore on asteroids has been reduced to anywhere from 50 to 1250 Ore (down from 500 to 10000). Default Ore asteroid chance per system has been changed to 90% (up from 45%). In addition, systems with Ore asteroids are very likely to have a LOT of them.
 - Moderately increased resource asteroid chance. Slightly decreased Construction Materials and Morphic Materials asteroid chance. Moderately decreased FTL Shards asteroid chance.
-- Added a 5% chance for systems to have one or more asteroid belts. These have a chance to contain resource asteroids equal to 1/30th of the resource asteroid chance.
+- Added a 25% default (configurable) chance for systems to have one or more asteroid belts. Each asteroid of the belt has a chance to contain one or more resource equal to the resource asteroid chance divided by a quarter of the number of asteroids in the belt.
 - Black holes now have a big, thick asteroid belt beyond their accretion disk.
-- Increased default resource asteroid chance to 60% (up from 45%).
 - Renamed Electronics resource to Semiconductors.
 - Greatly reduced the number of Water resources and slightly reduced the number of Food resources on regular planets.
 - Water asteroids are now much more frequent.
@@ -267,6 +266,7 @@ for use as a remote mining base, as the new balance makes tractoring ore asteroi
 - Reduced Ore Asteroid strategic icon size by a factor of 3 so their sheer number does not disturb strategic icon system display when zoomed out.
 - Fixed a vanilla bug where the dry dock construction menu would list different versions of a design under certain circumstances.
 - Fixed a vanilla bug where persistent beam effects were not restored upon loading a save file.
+- Fixed a vanilla bug where strategic icons of Ore asteroids spawned when a planet is destroyed were incorrectly set to resource asteroid icons.
 - Fixed an vanilla issue with strategic icon positions not always updating correctly when zooming due to the engine squaring already huge rescaled distances, resulting in a memory overflow.
 
 [*] Other

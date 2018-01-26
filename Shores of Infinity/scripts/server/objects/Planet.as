@@ -185,14 +185,18 @@ tidy class PlanetScript {
 		if(!game_ending && !quietDestruction) {
 			playParticleSystem("PlanetExplosion", planet.position, planet.rotation, planet.radius, planet.visibleMask);
 
-			double totChance = config::ASTEROID_OCCURANCE + config::RESOURCE_ASTEROID_OCCURANCE;
-			double resChance = config::RESOURCE_ASTEROID_OCCURANCE;
+			uint count = randomi(10, 20);
+
+			double resFactor = config::RESOURCE_ASTEROID_OCCURANCE / (count / 4);
+			double totChance = config::ASTEROID_OCCURANCE + resFactor;
+			double resChance = resFactor;
+
 			if(totChance > 0) {
-				for(uint i = 0, cnt = randomi(10,20); i < cnt; ++i) {
+				for(uint i = 0, cnt = count; i < cnt; ++i) {
 					vec3d pos = planet.position;
 					pos += random3d(80 + planet.radius);
 
-					Asteroid@ roid = createAsteroid(pos);
+					Asteroid@ roid = createAsteroid(pos, planet.region, delay = true);
 					Region@ reg = planet.region;
 					if(reg !is null) {
 						roid.orbitAround(reg.position);
@@ -204,7 +208,7 @@ tidy class PlanetScript {
 					if(roll >= resChance) {
 						auto@ cargo = getCargoType("Ore");
 						if(cargo !is null)
-							roid.addCargo(cargo.id, randomd(50, 1000));
+							roid.addCargo(cargo.id, randomd(50, 1250));
 					}
 					else {
 						do {

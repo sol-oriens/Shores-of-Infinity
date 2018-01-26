@@ -1069,10 +1069,12 @@ class MakeAsteroidBelt : MapHook {
 			beltRadius = min(beltRadius, 1.0 * system.radius);
 		}
 
-		double totChance = config::ASTEROID_OCCURANCE + config::RESOURCE_ASTEROID_OCCURANCE;
-		double resChance = config::RESOURCE_ASTEROID_OCCURANCE / 30;
-
 		uint count = uint(arguments[0].fromRange());
+
+		double resFactor = config::RESOURCE_ASTEROID_OCCURANCE / (count / 4);
+		double totChance = config::ASTEROID_OCCURANCE + resFactor;
+		double resChance = resFactor;
+
 		uint remaining = count;
 		uint layers = uint(arguments[5].fromRange());
 		if (layers == 0) {
@@ -1090,11 +1092,11 @@ class MakeAsteroidBelt : MapHook {
 				layercnt += remaining;
 			for(uint i = 0, cnt = layercnt; i < cnt; ++i) {
 				angle += twopi / double(cnt);
-				double ang = angle + randomd(-0.25,0.25) * twopi / double(cnt);
+				double ang = angle + randomd(-0.25, 0.25) * twopi / double(cnt);
 
 				vec3d pos = system.position + vec3d(cos(ang) * beltRadius, randomd(-50.0, 50.0), sin(ang) * beltRadius);
 
-				Asteroid@ roid = createAsteroid(pos, system.object, delay=true);
+				Asteroid@ roid = createAsteroid(pos, system.object, delay = true);
 				roid.orbitAround(system.position);
 				roid.orbitSpin(randomd(20.0, 60.0));
 				@current = roid;
@@ -1384,6 +1386,7 @@ class MakeAdjacentAsteroid : MapHook {
 		}
 		return MapHook::instantiate();
 	}
+
 	void trigger(SystemData@ data, SystemDesc@ system, Object@& current) const override {
 		if(system.adjacent.length == 0)
 			return;
