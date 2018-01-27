@@ -2,7 +2,7 @@ Module: LaserDrive
 	Name: #ORB_LASER_DRIVE
 	Blurb: #ORB_LASER_DRIVE_BLURB
 	Description: #ORB_LASER_DRIVE_DESC
-	
+
 	Icon: GuiOrbitalIcons::13
 	Strategic Icon: OrbitalIcons::13
 	Model: SolarEngine
@@ -22,5 +22,5 @@ Module: LaserDrive
 
   FacesOrbitCenter()
 
-  ShowRange(250000, #00ff00)
+  ShowRange(350000, #00ff00)
   GrantAbility(LaserBeam)
