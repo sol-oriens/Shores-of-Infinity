@@ -324,6 +324,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 
 	void initSurface(Object& obj, int width, int height, const Biome@ base, const Biome@ two, const Biome@ three, const ResourceType@ res) {
 		//Set biomes
+		//SoI - TODO: Refactor to fully dynamic biome number management
 		if (base !is two && two !is three)
 		{
 			biomes.length = 3;
@@ -348,7 +349,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		if (biomes.length > 2)
 			grid.generateContinent(three);
 		if (biomes.length > 1)
-		grid.rotateFor(base);
+			grid.rotateFor(base);
 
 		//Create icon
 		Planet@ pl = cast<Planet>(obj);
@@ -422,6 +423,15 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		originalSurfaceSize = grid.size;
 	}
 
+	uint getBiomeId(uint index) {
+			return biomes[index].id;
+	}
+
+	uint get_biomeCount() const {
+		return biomes.length;
+	}
+
+	//SoI - TODO: Yuck...
 	uint get_Biome0() {
 		return biome0;
 	}

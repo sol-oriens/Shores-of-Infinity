@@ -376,7 +376,11 @@ class RequirePlanet : Requirement {
 	}
 
 	bool canSettle(Planet& planet) {
-		return getBiome(planet.Biome0).settleable || getBiome(planet.Biome1).settleable || getBiome(planet.Biome2).settleable;
+		for (uint i = 0, cnt = planet.biomeCount; i < cnt; ++i) {
+			if (getBiome(planet.getBiomeId(i)).settleable)
+				return true;
+		}
+		return false;
 	}
 };
 

@@ -5,7 +5,7 @@ restricted local:
 	bool hasSite(uint id);
 	Site@[] selectSite(uint index);
 	Site@[] refreshCurrentSite();
-	uint get_siteCount();
+	uint get_siteCount() const;
 remote:
 	void chooseSiteOption(uint siteId, uint optionId);
 	void destroySite(uint siteId);
