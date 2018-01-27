@@ -369,6 +369,14 @@ tidy class SurfaceGrid : PlanetSurface {
 		return weight;
 	}
 
+	bool canSettle() {
+		for(uint i = 0, cnt = biomes.length; i < cnt; ++i) {
+			if (::getBiome(biomes[i]).settleable)
+				return true;
+		}
+		return false;
+	}
+
 	vec2u findSettleTile() {
 		double totalWeight = 0;
 		for(uint i = 0, cnt = biomes.length; i < cnt; ++i)
@@ -461,7 +469,8 @@ tidy class SurfaceGrid : PlanetSurface {
 	void colonize(Object& obj) {
 		if(usableTiles > 0)
 			return;
-
+		if (!canSettle())
+			return;
 		//Find the first tile to make usable
 		for(uint i = 0, cnt = obj.owner.ColonizeDevelopTiles; i < cnt; ++i) {
 			vec2u start = findSettleTile();

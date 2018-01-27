@@ -6,7 +6,7 @@ Construction: DevelopSurface
 	Name: #C_TERRAFORMING
 	Icon: SequesteredSociety
 
-	RequirePlanet()
+	RequirePlanet(Settleable = True)
 	RequireNotTrait(StarChildren)
 	RequireNotTrait(Ancient)
 	ConsumeCargo(Ore,500)

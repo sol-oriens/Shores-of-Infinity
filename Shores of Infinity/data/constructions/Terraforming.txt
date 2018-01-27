@@ -7,7 +7,7 @@ Construction: TerraformIN
 	Description: #C_EXPAND_SUBSURFACE_DESC
 
 	//RequireUnlockTag(TerraformSurface)
-	RequirePlanet()
+	RequirePlanet(Settleable = True)
 	OnStart(AddStatus(TerraformStacks))
 	OnStart(AddStatus(BuildingSubsurface))
 	AddLaborCostStatusCount(TerraformStacks, Multiply = 1.5)
@@ -23,7 +23,7 @@ Construction: TerraformIN
 	RemoveStatusInstance(BuildingSubsurface)
 
 	RequireNotTrait(StarChildren)
-	
+
 Construction: Terraform
 	Name: #C_SUBSURFACE_HABITATS
 	Icon: DesignationIcons::10
@@ -35,7 +35,7 @@ Construction: Terraform
 	RequireNotStatus(TerraformStacks)
 	RequireNotStatus(FloatingContinent)
 	ConsumeCargo(Ore, 1000)
-	RequirePlanet()
+	RequirePlanet(Settleable = True)
 	AddSurfaceArea(Artificial, (10, 2), Separate = True, Developed = False, Vertical = True)
 	OnStart(AddStatus(TerraformStacks))
 	OnStart(AddStatus(BuildingSubsurface))

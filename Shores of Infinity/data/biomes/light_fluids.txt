@@ -2,12 +2,13 @@ Biome: LightFluids
 	Name: #BIOME_LIGHT_FLUIDS
 
 	Buildable: False
+	Settleable: False
 
 	Temperature: 0
 	Humidity: 0
 
 	UseWeight: 0
-	BuildTime: 50
+	BuildTime: 0
 	Frequency: 0
 
 	Color: #ff0000
