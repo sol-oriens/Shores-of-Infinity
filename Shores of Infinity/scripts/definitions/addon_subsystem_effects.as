@@ -77,11 +77,10 @@ class SolarThrust : SubsystemEffect {
 
 class LaserThrust : SubsystemEffect {
 	Document doc("Modify the ship's thrust based on how much laser light it is getting.");
+	Argument status(AT_Status, doc="Status to check for laser thrust. Requires a variable status effect.");
 	Argument min_boost(AT_Decimal, doc="Minimum boost when receiving no laser or far away from the laser source.");
 	Argument max_boost(AT_Decimal, doc="Maximum boost when close to a powerful laser.");
 	Argument step(AT_Decimal, "0.05", doc="Only apply changes in steps of this size.");
-
-	uint laserSailStatusId = uint(getStatusID("LaserSail"));
 
 #section server
 	void tick(SubsystemEvent& event, double time) const override {
@@ -112,10 +111,10 @@ class LaserThrust : SubsystemEffect {
 			double laserFactor = 0.0;
 
 			for(uint i = 0, cnt = obj.statusEffectCount; i < cnt; ++i) {
-				if (obj.statusEffectType[i] == laserSailStatusId) {
+				if (obj.statusEffectType[i] == uint(status.integer)) {
 					double variable = obj.variable[i];
 					if (variable != -1.0)
-						laserFactor = variable;
+						laserFactor += variable;
 					Object@ origin = obj.statusEffectOriginObject[i];
 					if (origin !is null)
 						laserFactor *= (1.0 - (obj.position.distanceTo(origin.position) / 250000.0));

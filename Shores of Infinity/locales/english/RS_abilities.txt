@@ -95,6 +95,10 @@ ABL_HYPERBEAM: Hyperpropulsion Beam
 ABL_HYPERBEAM_DESC: <<
 	A beam focusing energy extracted from a hypercore to heat exchangers on the engines of a ship, resulting in a powerful thermal reaction granting them an acceleration boost defying conventional physics. Energy consumption rate and overheating prevent the beam to be maintained for extended periods of time. Pilots must be aware of physics limitations once back into conventional thrust.
 >>
+ABL_REPAIR_BAY: Repair
+ABL_REPAIR_BAY_DESC: <<
+	Repairs another flagship, station or orbital in the same system and not in combat with an efficiency proportional to the current Labor of this object. This is in addition of the target's own repair capabilities.
+>>
 ABL_SELF_DESTRUCT: Initiate Self-Destruct
 ABL_SELF_DESTRUCT_DESC: Activate the self-destruct device contained on this ship, detonating the ship in a fiery inferno.
 

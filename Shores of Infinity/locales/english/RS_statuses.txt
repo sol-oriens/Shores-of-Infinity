@@ -58,6 +58,10 @@ STATUS_FAST_RECHARGE_DESC: <<
 STATUS_STELLAR_SHIELD_DESC: <<
 	This stellar object is being protected from Graviton Condenser attacks. If the shield is powerful enough, the only way to destroy the object is to destroy the shield generator, which is probably located on a nearby flagship, orbital or planet.
 >>
+STATUS_REPAIRED: Repaired
+STATUS_REPAIRED_DESC: <<
+	This object is currently receiving additional repairs from an external source.
+>>
 STATUS_BOARDED: Boarded
 STATUS_BOARDED_DESC: <<
 	This object is currently being boarded and is taking damage to various subsystems. No more boarding parties can be sent to the object until the boarding action ends.

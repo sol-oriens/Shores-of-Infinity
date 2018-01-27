@@ -48,6 +48,7 @@ server:
 	void consumeSupplyPct(double pct);
 	bool consumeMinSupply(double amount);
 	void refundSupply(double amount);
+	bool get_isDamaged();
 	void repairShip(double amount);
 	void makeNotFree();
 	void setHealthPct(float pct);
@@ -190,6 +191,7 @@ server:
 	void setDerelict(bool value);
 	void setContested(bool value);
 	void addSection(uint modId);
+	bool get_isDamaged();
 	void modMaxArmor(double value);
 	void modMaxHealth(double value);
 	void modMaxShield(double value);

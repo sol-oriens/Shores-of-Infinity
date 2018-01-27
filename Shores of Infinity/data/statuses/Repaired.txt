@@ -1,0 +1,5 @@
+Status: Repaired
+	Name: #STATUS_REPAIRED
+	Description: #STATUS_REPAIRED_DESC
+	Visible To: Owner
+	Icon: ResourceIcon::6

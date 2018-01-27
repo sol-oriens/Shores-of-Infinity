@@ -871,6 +871,10 @@ tidy class ShipScript {
 		barDelta = true;
 	}
 
+	bool get_isDamaged(Ship& ship) {
+		return needRepair;
+	}
+
 	void repairShip(Ship& ship, double amount) {
 		ship.blueprint.repair(ship, amount);
 	}
@@ -1220,7 +1224,13 @@ tidy class ShipScript {
 		}
 
 		//Repair out of combat (SoI - and actually, also in combat...)
+		// SoI - bp.removedHP is bugged doesn't ever seem to return to the exact value of bp.design.totalHP (difference of 0.01)
+		// Also when substracting from bp.design.totalHP in this case a range overflow occurs for some reason
+		// There is probably a better solution but this hack will do for now
+		if (int(bp.currentHP) == int(bp.design.totalHP))
+			bp.currentHP = bp.design.totalHP;
 		double damage = bp.design.totalHP - (bp.currentHP + bp.removedHP);
+		//print("damage = " + damage);
 		if(currentRepair > 0.f && (damage > 0.f || wreckage > 0.f)) {
 			double repairFact = 1.0;
 			repairFact *= min(bp.shipEffectiveness, 1.0);

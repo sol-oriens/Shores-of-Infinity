@@ -127,6 +127,7 @@ different methods preferable in different situations. Third: To tone down the ad
 - Welfare option base threshold is now 200k (down from 350k).
 - Ships now always repair at a rate defined by their design and no longer receive a boost when out of combat (sourced from DOF).
 - Ship repair rate is now always reduced by an effectiveness below the base rate whether in combat or not.
+- Fixed a vanilla bug where a weird rounding error would prevent ships from ever stopping to repair.
 
 [*] Influence Cards
 
@@ -246,6 +247,7 @@ for use as a remote mining base, as the new balance makes tractoring ore asteroi
 - Increased Planetary Cannon, Planetary Defense Grid and Ancient Gravitational Collapser ranges by a factor of 2.
 - Increased Fleet Computer raiding range bonus (and base raiding range) by a factor of 3.
 - Superstructure Hull now provides less build and labor cost reduction, but its ore cost is drastically reduced. Maintenance cost reduction is unchanged.
+- Construction Bay now provides the Repair ability, which can repair another flagship, station or orbital in the same system and not in combat with an efficiency proportional to its current Labor. This is in addition of the target's own repair capabilities.
 - Added Laser Drive Power subsystem stat for laser drives.
 - Added Impulse subsystem stat for railguns.
 - Added Points of Impact, Devastation Duration and Supply Cost subsystem stats for carpet bombs.
@@ -274,7 +276,7 @@ for use as a remote mining base, as the new balance makes tractoring ore asteroi
 - Fixed a vanilla bug where the dry dock construction menu would list different versions of a design under certain circumstances.
 - Fixed a vanilla bug where persistent beam effects were not restored upon loading a save file.
 - Fixed a vanilla bug where strategic icons of Ore asteroids spawned when a planet is destroyed were incorrectly set to resource asteroid icons.
-- Fixed an vanilla issue with strategic icon positions not always updating correctly when zooming due to the engine squaring already huge rescaled distances, resulting in a memory overflow.
+- Fixed an vanilla issue with strategic icon positions not always updating correctly when zooming due to the engine squaring already huge rescaled distances, resulting in a range overflow.
 
 [*] Other
 

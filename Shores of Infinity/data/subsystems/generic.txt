@@ -38,6 +38,10 @@ Template: var/Repair
 	Modifier: RepairFactor(factor)
 		Repair := Repair * factor
 
+Template: var/TargetRepair
+	Modifier: RepairFactor(factor)
+		TargetRepair := TargetRepair * factor
+
 Template: var/DamageResist
 	Modifier: DamageResistFactor(factor)
 		DamageResist := DamageResist * factor
@@ -53,7 +57,7 @@ Template: var/ShieldCapacity
 Template: var/ShieldRegen
 	Modifier: ShieldRegenFactor(factor)
 		ShieldRegen := ShieldRegen * factor
-		
+
 Template: var/CargoStorage
 	Modifier: CargoStorageFactor(factor)
 		CargoStorage := CargoStorage * factor

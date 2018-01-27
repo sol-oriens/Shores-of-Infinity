@@ -1,0 +1,14 @@
+Ability: RepairBay
+	Name: #ABL_REPAIR_BAY
+	Description: #ABL_REPAIR_BAY_DESC
+	Icon: ResourceIcon::6
+
+	Target: ship = Object
+
+	TargetFilterSameRegion(ship)
+	TargetFilterOwned(ship)
+	Either(TargetFilterFlagship(ship, Allow Stations = True), TargetFilterType(ship, Orbital))
+	TargetFilterNotInCombat(ship)
+	IsToggleTarget(ship, Check Range = True, Range Margin = 1.0, Channels = False)
+
+	ABEM_hooks::RepairPerSecondFromSubsystem(ship, Sys.TargetRepair:0, Status = Repaired)

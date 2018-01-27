@@ -639,6 +639,10 @@ tidy class OrbitalScript {
 		else return 1;
 	}
 
+	bool get_isDamaged(Orbital& obj) {
+		return Health < MaxHealth || Armor < MaxArmor;
+	}
+
 	void addSection(Orbital& obj, uint typeId) {
 		auto@ type = getOrbitalModule(typeId);
 		if(type is null)
