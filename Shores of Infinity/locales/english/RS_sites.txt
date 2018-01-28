@@ -70,7 +70,7 @@ SITE_UNIVERSITY_COLLEGE_SCIENCES: <<|
 	[right][b][color=#ff0000]Unknown results.[/color][/b][/right]
 >>
 SITE_UNIVERSITY_COLLEGE_SCIENCES_SUCCESS: <<|
-	As expected, the college of science is a scattered but huge trove of knowledge. Your scientists are sure to make good use of this civilization's legacy.
+	As expected, the college of science is but a scattered huge trove of knowledge. Your scientists are sure to make good use of this civilization's legacy.
 
 	[b][color=#842cdb]You have gained $1 research points.[/color][/b]
 >>
