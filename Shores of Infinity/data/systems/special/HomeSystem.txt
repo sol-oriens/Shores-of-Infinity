@@ -53,7 +53,9 @@ System: HomeSystem
 	GuaranteeAdjacentResource(RandomType:Food:Common, Distance = 3)
 	GuaranteeAdjacentResource(RandomLevel:2:Common, Distance = 3)
 
+	MakeAdjacentAsteroid(Resource = Distributed)
 	MakeAdjacentAsteroid(Resource = Explosives)
+	MakeAdjacentAsteroid(Resource = Distributed, Farther = True)
 	MakeAdjacentAsteroid(Resource = AsteroidFTLPermanent, Farther = True)
 	MakeAdjacentAsteroid(Resource = Neutronium, Farther = True)
 

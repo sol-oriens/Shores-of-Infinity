@@ -1,6 +1,6 @@
-System: BinarySystem
-	Inherit: BaseSystem
-	Frequency: 0.2
+System: TernarySystem
+	Inherit: OuterSystem
+	Frequency: 0.09
 
 	//SoI - Scaling
 	MakeStar(Temperature = 2000:9000, Radius = 1250:2000, Suffix = A, Moves = True)
@@ -11,6 +11,11 @@ System: BinarySystem
 	MakeStar(Temperature = 7000:29800, Radius = 1050:1650, Suffix = B, Moves = True)
 	ExpandSystem(4000)
 		SetupOrbit(Radius = 2500:8500, Orbit Pct = 0.9)
+
+	//SoI - Scaling
+	MakeStar(Temperature = 7000:29800, Radius = 1050:1650, Suffix = C, Moves = True)
+	ExpandSystem(4000)
+		SetupOrbit(Radius = 11500:12000, Orbit Pct = 0.55)
 
 	ExpandSystem(3000:4000)
 

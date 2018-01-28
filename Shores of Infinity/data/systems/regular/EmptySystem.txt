@@ -10,4 +10,7 @@ System: EmptySystem
 	RepeatChance(Chance = $ASTEROID_BELT_OCCURANCE, Repeat Modifier = 0.999999)
 		MakeAsteroidBelt()
 
+	RepeatChance(Chance = $RESOURCE_ASTEROID_OCCURANCE, Repeat Modifier = 0.1)
+		MakeAsteroid(Resource = Distributed)
+
 	AddQuality(+100)

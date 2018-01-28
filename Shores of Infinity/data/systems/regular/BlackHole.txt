@@ -1,0 +1,16 @@
+System: BlackHole
+	Frequency: 0.0225
+
+	//SoI - Scaling
+	MakeBlackhole()
+	ExpandSystem(5000)
+
+	MakeAsteroidBelt(Count = 60:120, Radius = 3000)
+
+	MakeAsteroidBelt(Radius = 3000)
+
+	RepeatModified(1:3, $PLANET_FREQUENCY)
+		//SoI - Scaling
+		MakePlanet(Orbit Spacing = 600:1000)
+
+	AddQuality(+250)

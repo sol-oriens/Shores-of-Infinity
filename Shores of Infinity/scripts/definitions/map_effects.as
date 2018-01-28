@@ -1038,7 +1038,7 @@ class MakeAsteroidBelt : MapHook {
 	Argument cargo(AT_Cargo, "Ore", doc="Type of cargo to create on the asteroid belt.");
 	Argument cargo_amount(AT_Range, "50:500", doc="Amount of cargo for the asteroids to have.");
 	Argument distribution_chance(AT_Decimal, "0.4", doc="For distributed resources, chance to add additional resource. Repeats until failure.");
-	Argument radius(AT_Custom, "random", doc="Numeric radius of the belt. \"Random\" for random radius. \"Edge\" for radius near the edge.");
+	Argument radius(AT_Custom, "random", doc="Numeric radius of the belt. \"Random\" for random radius. \"Inner\" for radius near the core. \"Outer\" for radius near the edge.");
 	Argument layers(AT_Decimal, "0", doc="Number of successive layers of asteroids in the belt. Number of layers relative to asteroid count if 0.");
 
 	bool instantiate() {
@@ -1063,7 +1063,7 @@ class MakeAsteroidBelt : MapHook {
 		else {
 			beltRadius = toDouble(radius.str);
 			if (beltRadius == 0) {
-				error("Invalid radius value: "+ escape(radius.str));
+				error("MakeAsteroidBelt: Invalid radius value: "+ escape(radius.str));
 				return;
 			}
 			beltRadius = min(beltRadius, 1.0 * system.radius);

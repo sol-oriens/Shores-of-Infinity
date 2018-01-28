@@ -1,16 +1,16 @@
-System: EmptyAncientSystem
-	Inherit: BaseSystem
-	Frequency: 0.065
+System: EmptyBlackHole
+	Frequency: 0.0225
 
 	//SoI - Scaling
-	MakeStar(Temperature = 1000:2500, Radius = 1250:2000)
+	MakeBlackhole()
+	ExpandSystem(5000)
 
-	ExpandSystem(17500:20000)
+	MakeAsteroidBelt(Count = 60:120, Radius = 3000)
 
 	RepeatChance(Chance = $ASTEROID_BELT_OCCURANCE, Repeat Modifier = 0.9999999)
-		MakeAsteroidBelt()
+		MakeAsteroidBelt(Radius = Outer)
 
 	RepeatChance(Chance = $RESOURCE_ASTEROID_OCCURANCE, Repeat Modifier = 0.1)
 		MakeAsteroid(Resource = Distributed)
 
-	AddQuality(+200)
+	AddQuality(+300)

@@ -1,4 +1,4 @@
-System: BlackHole
+System: CreepBlackHole
 	Frequency: 0
 
 	//SoI - Scaling

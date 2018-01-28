@@ -5,6 +5,19 @@ System: BaseSystem
 	Inherit: BaseIceGiants
 	Inherit: BaseOuterRim
 	Inherit: BaseRemnants
+	Inherit: BaseAsteroidBelt
+	Inherit: BaseAsteroids
+	Inherit: BaseAnomalies
+	Inherit: BaseArtifacts
+
+System: OuterSystem
+	//Caution: this is a load order
+	Inherit: BaseInnerRim
+	Inherit: BaseGasGiants
+	Inherit: BaseIceGiants
+	Inherit: BaseOuterRim
+	Inherit: BaseRemnants
+	Inherit: OuterAsteroidBelt
 	Inherit: BaseAsteroids
 	Inherit: BaseAnomalies
 	Inherit: BaseArtifacts
@@ -24,9 +37,15 @@ System: BaseOuterRim
 	ExpandSystem(1000)
 	ExpandSystemMinimum()
 
-System: BaseAsteroids
+System: BaseAsteroidBelt
 	RepeatChance(Chance = $ASTEROID_BELT_OCCURANCE, Repeat Modifier = 0.99999)
 		MakeAsteroidBelt()
+
+System: OuterAsteroidBelt
+	RepeatChance(Chance = $ASTEROID_BELT_OCCURANCE, Repeat Modifier = 0.99999)
+		MakeAsteroidBelt(Radius = Outer)
+
+System: BaseAsteroids
 	RepeatChance(Chance = $ASTEROID_OCCURANCE, Repeat Modifier = 0.999999)
 		MakeAsteroid(Cargo = Ore)
 	RepeatChance(Chance = $RESOURCE_ASTEROID_OCCURANCE, Repeat Modifier = 0.7)

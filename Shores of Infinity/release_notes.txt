@@ -8,12 +8,23 @@ v0.1.1b
 
 - Moved the Systems per Wormhole and Minimum Wormholes per Galaxy options to the Advanced page
 - Updated the description of Systems per Wormhole and Minimum Wormholes per Galaxy options to reflect gameplay changes.
-- Systems per Wormhole now default to 15 (down from 30).
-- Minimum Wormholes per Galaxy now default to 4.
+- Systems per Wormhole now defaults to 15 (down from 30).
+- Minimum Wormholes per Galaxy now defaults to 4.
 
 [*] Gameplay
 
 - Wormholes now spawn even in a single galaxy game.
+
+[*] Resources
+
+- Empires now have an additional random resource asteroid in an adjacent system.
+- Empires now have an additional random resource asteroid in a neighboring system.
+
+[*] Systems
+
+- Added ternary systems.
+- Black holes that do not host a Guardian and an Ancient Hubworld can now spawn like regular systems at a very low frequency. They have a greatly increased chance of hiding valuable asteroids and artifacts.
+- Systems with no planet now have an increased chance of having at least one resource asteroid.
 
 v0.1.0b
 
