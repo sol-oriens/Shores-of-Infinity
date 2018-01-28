@@ -2095,8 +2095,8 @@ class SiteStudy : GuiMarkupContextOption {
 		@this.siteType = getSiteType(typeId);
 		@this.fromObj = obj;
 		@this.parent = parent;
-		//super(format("[offset=10][b]$2[/b][/offset]",
-		super(format("[offset=10][color=$5][b]$2[/b][/color] [offset=260]([loc=SIZE/] $3)[/offset][/offset]",
+		//super(format("[offset=10][color=$5][b]$2[/b][/color] [offset=260]([loc=SIZE/] $3)[/offset][/offset]",
+		super(format("[offset=10][b]$2[/b][/offset]",
 				toString(colors::White),
 				siteType.name,
 				standardize(1, true),

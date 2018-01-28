@@ -9,7 +9,11 @@ Movement has been rebalanced to achieve a more realistic feel and, combined with
 Resources and economy have been rebalanced to support these changes in a way that gameplay progression still feels dynamic and rewarding. Some existing buildings and orbitals have been modified and new ones have been added to boost economy where needed (including budget). New synergies allow to take advantage of the environment or of the presence of other infrastructure.
 This new balance is also designed to make infrastructure building and careful expansion a (hopefully) viable alternative to fast expansion and allow smaller, well developed empires to compete with larger empires with empty systems and planets.
 
-*** The universe arrangement has been revised to be closer to current scientific knowledge.
+*** The universe arrangement has been revised to be closer to current scientific knowledge, including two common planet types: gas and ice giants.
+
+*** Planets can be explored in order to discover sites of interests whose study may help your progression.
+
+*** The research grid has been completely rearranged into a thematic structure designed to maximize options.
 
 *** The game AI has been improved. It is a work in progress and most of the current improvements are a basis for future features but some of them already have a visible impact.
 
@@ -187,6 +191,7 @@ for use as a remote mining base, as the new balance makes tractoring ore asteroi
 - Slightly reduced pressure capacity of planets per level.
 - Reduced population growth by approximately 20%.
 - Added a new Project exclusive to planets, Planet Exploration. Sends an exploration team around the planet, which may discover a site of interest. This feature is similar to how anomalies work, with smaller bonuses, but available a (limited) number of times per planet. This feature is a work in progress and will be extended in future versions. Homeworlds, notably, will have a special set of (more beneficial) results.
+*** Discovered sites can be viewed by either clicking on the related notification or on the planet icon in the planet overlay, besides the drydock icon.
 - Fixed a vanilla bug with asteroid fields orbiting Local Asteroid Field Planets not being rendered in certain circumstances.
 - Local Asteroid Field planets now have more and bigger asteroids orbiting closer to them (this is a purely cosmetic change).
 - Removed starting Labor, income and pressure cap bonuses from the homeworld.

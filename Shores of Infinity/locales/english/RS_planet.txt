@@ -1,7 +1,7 @@
 TT_EXPLORE_PLANET: <<
 	[b]Study Discovered Sites[/b]
 
-	Study one of the sites that have been discovered on this planet.
+	Study one of the sites of interest that have been discovered on this planet.
 >>
 BIOME_LIGHT_FLUIDS: Fluids
 BIOME_HEAVY_FLUIDS: Fluids

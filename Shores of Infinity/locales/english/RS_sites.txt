@@ -1,4 +1,4 @@
-SITE: Site
+SITE: Site of Interest
 SITE_CHOICES: Options
 SITE_P_ANCIENT_RUINS: Ancient Ruins
 SITE_P_ODDITY: Oddity
