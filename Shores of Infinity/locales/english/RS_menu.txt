@@ -132,10 +132,10 @@ NG_ASTEROID_MASS: Asteroid Mass
 NGTT_ASTEROID_MASS: The mass of all the asteroids in the universe. (Developer note: Alternatively, the average mass of said asteroids.)
 
 NG_SYSTEMS_PER_WORMHOLE: Systems per Wormhole
-NGTT_SYSTEMS_PER_WORMHOLE: In a multi-galaxy game, how many star systems must exist in a galaxy(?) in order for a wormhole to another galaxy to spawn.
+NGTT_SYSTEMS_PER_WORMHOLE: Threshold number of systems for which one new wormhole will be created in a given galaxy.
 
 NG_GALAXY_MIN_WORMHOLES: Minimum Wormholes per Galaxy
-NGTT_GALAXY_MIN_WORMHOLES: In a multi-galaxy game, how many wormholes must exist in a galaxy regardless of the galaxy's size and the game's 'Systems per Wormhole' setting.
+NGTT_GALAXY_MIN_WORMHOLES: How many wormholes must exist in a galaxy regardless of the galaxy's size and the game's 'Systems per Wormhole' setting.
 
 NG_ARTIFACTS_SEEDSHIP_DEATH: Artifacts From Seed Ship Death
 NGTT_ARTIFACTS_SEEDSHIP_DEATH: How many artifacts are spawned when a seed ship is destroyed.

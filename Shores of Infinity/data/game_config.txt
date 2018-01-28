@@ -42,8 +42,8 @@ CARD_STACK_PER_PLAYER: 1
 CARD_STACK_DRAW_INTERVAL: 30
 
 //The amount of wormholes in multi-galaxy games.
-SYSTEMS_PER_WORMHOLE: 30
-GALAXY_MIN_WORMHOLES: 2
+SYSTEMS_PER_WORMHOLE: 15
+GALAXY_MIN_WORMHOLES: 4
 
 //Stored energy increment that halves energy generation.
 ENERGY_EFFICIENCY_STEP: 500

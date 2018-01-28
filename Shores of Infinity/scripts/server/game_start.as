@@ -243,7 +243,8 @@ void init() {
 	regenerateRegionGroups();
 
 	//Generate wormholes in case of multiple galaxies
-	if(galaxies.length > 1) {
+	//SoI - Changed this to be always on even with only one galaxy
+	//if(galaxies.length > 1) {
 		uint totalSystems = 0;
 		for(uint i = 0, cnt = galaxies.length; i < cnt; ++i)
 			totalSystems += galaxies[i].systems.length;
@@ -307,7 +308,7 @@ void init() {
 				@otherGlx = null;
 			}
 		}
-	}
+	//}
 
 	end = getExactTime();
 	info("Map generation: "+toString((end - start)*1000,1)+"ms");

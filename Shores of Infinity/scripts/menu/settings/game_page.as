@@ -87,6 +87,8 @@ class AdvancedGamePage : GameSettingsPage {
 		Toggle(locale::NG_HIDE_EMPIRE_RELATIONS, "HIDE_EMPIRE_RELATIONS", halfWidth=true, tooltip=locale::NGTT_HIDE_EMPIRE_RELATIONS);
 		Toggle(locale::NG_TEAMS_START_CLOSE, "TEAMS_START_CLOSE", halfWidth=true, tooltip=locale::NGTT_TEAMS_START_CLOSE);
 		Toggle(locale::NG_FIRST_CONTACT, "FIRST_CONTACT", halfWidth=true, tooltip=locale::NGTT_FIRST_CONTACT);
+		Number(locale::NG_SYSTEMS_PER_WORMHOLE, "SYSTEMS_PER_WORMHOLE", min=5, step=5, tooltip=locale::NGTT_SYSTEMS_PER_WORMHOLE);
+		Number(locale::NG_GALAXY_MIN_WORMHOLES, "GALAXY_MIN_WORMHOLES", max=15, step=1, tooltip=locale::NGTT_GALAXY_MIN_WORMHOLES);
 		Number(locale::NG_CARD_STACK_INTERVAL, "CARD_STACK_DRAW_INTERVAL", step=15, min=15, max=360, tooltip=locale::NGTT_CARD_STACK_INTERVAL);
 		Number(locale::NG_ENERGY_EFFICIENCY_STEP, "ENERGY_EFFICIENCY_STEP", step=25, min=100, max=5000, tooltip=locale::NGTT_ENERGY_EFFICIENCY_STEP);
 		Number(locale::NG_ENERGY_PER_SEEDSHIP, "ENERGY_PER_SEEDSHIP", step=100, min=500, tooltip=locale::NGTT_ENERGY_PER_SEEDSHIP);
@@ -114,8 +116,6 @@ class CrazyGamePage : GameSettingsPage {
 		Title(locale::NG_UNIVERSE_GENERATION);
 		Occurance(locale::NG_ASTEROID_PERMANENT_FREQ, "ASTEROID_PERMANENT_FREQ", max=5.0, tooltip=locale::NGTT_ASTEROID_PERMANENT_FREQ);
 		Number(locale::NG_ASTEROID_MASS, "ASTEROID_MASS", step=500, tooltip=locale::NGTT_ASTEROID_MASS);
-		Number(locale::NG_SYSTEMS_PER_WORMHOLE, "SYSTEMS_PER_WORMHOLE", min=5, step=5, tooltip=locale::NGTT_SYSTEMS_PER_WORMHOLE);
-		Number(locale::NG_GALAXY_MIN_WORMHOLES, "GALAXY_MIN_WORMHOLES", max=15, step=1, tooltip=locale::NGTT_GALAXY_MIN_WORMHOLES);
 
 		emptyline();
 		Title(locale::NG_GAME_OPTIONS);

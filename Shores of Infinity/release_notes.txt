@@ -1,3 +1,20 @@
+v0.1.1b
+
+************************
+*** Detailed Changes ***
+************************
+
+[*] Game Options
+
+- Moved the Systems per Wormhole and Minimum Wormholes per Galaxy options to the Advanced page
+- Updated the description of Systems per Wormhole and Minimum Wormholes per Galaxy options to reflect gameplay changes.
+- Systems per Wormhole now default to 15 (down from 30).
+- Minimum Wormholes per Galaxy now default to 4.
+
+[*] Gameplay
+
+- Wormholes now spawn even in a single galaxy game.
+
 v0.1.0b
 
 **************************
