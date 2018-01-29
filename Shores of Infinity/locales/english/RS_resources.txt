@@ -206,7 +206,7 @@ TECHNOFARM_DESC: <<
 >>
 RAREGASES: Rare Gases
 RAREGASES_BLURB: <<
-	[font=Small]Increases all ship engine thrust by a cumulative bonus of [levels=$1;#ffb4b6]0%/5%/10%/30%/60%/120%/200%[/levels]. Gains various pressures per level.[/font]
+	[font=Small]Increases all ship engine thrust by a cumulative bonus of [levels=$1;#ffb4b6]0%/2.5%/5%/10%/30%/60%/120%[/levels]. Gains various pressures per level.[/font]
 	 Cannot be exported.
 >>
 RAREGASES_DESC: <<
@@ -214,26 +214,27 @@ RAREGASES_DESC: <<
 
 	[b]If this planet is Level 1 or higher:[/b]
 	[offset=30]The planet gains 1 Energy pressure per Level.[/offset]
-	[offset=30]Ships gain 5% extra acceleration.[/offset]
+	[offset=30]Ships gain 2.5% extra acceleration.[/offset]
 
 	[b]If this planet is Level 2 or higher:[/b]
 	[offset=30]The planet gains 1 Defense pressure per Level starting from Level 2.[/offset]
-	[offset=30]Ships gain 10% extra acceleration.[/offset]
+	[offset=30]Ships gain 5% extra acceleration.[/offset]
 
 	[b]If this planet is Level 3 or higher:[/b]
 	[offset=30]The planet gains 1 Research pressure per Level starting from Level 3.[/offset]
-	[offset=30]Ships gain 30% extra acceleration.[/offset]
+	[offset=30]Ships gain 10% extra acceleration.[/offset]
 
 	[b]If this planet is Level 4 or higher:[/b]
 	[offset=30]The planet gains 1 Influence pressure per Level starting from Level 4.[/offset]
-	[offset=30]Ships gain 60% extra acceleration.[/offset]
+	[offset=30]Ships gain 30% extra acceleration.[/offset]
 
 	[b]If this planet is Level 5 or higher:[/b]
 	[offset=30]The planet gains 1 Money pressure per Level starting from Level 5.[/offset]
-	[offset=30]Ships gain 120% extra acceleration.[/offset]
+	[offset=30]Ships gain 60% extra acceleration.[/offset]
 
 	[b]If this planet is Level 6:[/b]
-	[offset=30]Ships gain 200% extra acceleration.[/offset]
+	[offset=30]Ships gain 120% extra acceleration.[/offset]
+
 
 	[i][color=#aaa]This resource is a scalable resource and cannot be exported or used to level up. Its bonuses depend on the level of the planet.[/color][/i]
 >>
@@ -252,6 +253,10 @@ ASTEROID_FTL_PERMANENT_DESC: <<|
 	Permanently generates 1 FTL per second and adds 250 FTL storage.
 
 	Does not need to be exported.
+>>
+ASTEROID_MONEY: Gold Traces
+ASTEROID_MONEY_DESC: <<|
+	Adds 20k special funds every 60 seconds for a limited time.
 >>
 C_HYPERCORE: Hypercore
 C_HYPERCORE_DESC: <<
