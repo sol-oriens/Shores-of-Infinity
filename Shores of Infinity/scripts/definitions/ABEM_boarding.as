@@ -46,13 +46,16 @@ class BoardShip : StatusHook {
 		double defenders = 0;
 		Ship@ ship = cast<Ship>(obj);
 		if(ship !is null)
-			defenders = ship.blueprint.getEfficiencySum(SubsystemVariable(getSubsystemVariable(defenseValue.str)), ST_SecuritySystem, true);
+			defenders = ship.blueprint.getEfficiencySum(SubsystemVariable(getSubsystemVariable(defenseValue.str)), ST_BoardingDefense, true);
 		Orbital@ orb = cast<Orbital>(obj);
 		if(defenders <= 0) // TODO: Make it possible to define custom boarding strength for various orbitals.
 			defenders = defaultDefenders.decimal;
 
 		if(obj.owner is defaultEmpire)
 			defenders = 0;
+			
+		print("Starting boarders: " + boarders);
+		print("Starting defenders: " + defenders);
 
 		info.boarders = boarders;
 		info.defenders = defenders;
@@ -110,7 +113,7 @@ class BoardShip : StatusHook {
 			
 		// Damaging a Security Station will reduce the ship's defense strength, and we need to remember that.
 		if(info.targetShip !is null)
-			info.defenders = info.targetShip.blueprint.getEfficiencySum(SubsystemVariable(getSubsystemVariable(defenseValue.str)), ST_SecuritySystem, true);
+			info.defenders = info.targetShip.blueprint.getEfficiencySum(SubsystemVariable(getSubsystemVariable(defenseValue.str)), ST_BoardingDefense, true);
 		
 		// The boarders' casualties grow exponentially if they don't have a significant advantage over the defenders. If their relative strength is great enough, their casualties will be negligible.
 		double advantageMult = 1;
@@ -118,7 +121,9 @@ class BoardShip : StatusHook {
 		if(ratio > 2)
 			advantageMult = ratio / 2;
 		
+		// double currentBoarders = info.boarders;
 		info.boarders -= info.defenders / (ratio * advantageMult * 10) * BOARDING_TICKRATE;
+		// print("Boarding tick killed " + (currentBoarders - info.boarders) + " boarders, " + info.boarders + " remaining");
 		
 		return info.boarders > 0;
 	}
@@ -150,6 +155,8 @@ class BoardShip : StatusHook {
 		else {
 			@dmg.target = info.targetOrbital;
 			double maxDamage = (info.targetOrbital.maxHealth + info.targetOrbital.maxArmor) * randomd(5.0, 15.0); // While we want to bring the station below the 25% health threshold, we don't want to destroy the station.
+			if(dmg.damage > maxDamage)
+				dmg.damage = maxDamage;
 			
 			info.targetOrbital.damage(dmg, 0, vec2d(0, 0));
 			return true;
