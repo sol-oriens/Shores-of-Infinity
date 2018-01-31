@@ -4,6 +4,10 @@ v0.1.1b
 *** Detailed Changes ***
 ************************
 
+[*] FTL
+
+- Reduced flux jump cooldown by a factor of 20.
+
 [*] Game Options
 
 - Moved the Systems per Wormhole and Minimum Wormholes per Galaxy options to the Advanced page
@@ -17,6 +21,7 @@ v0.1.1b
 
 [*] Resources
 
+- Experimentaly changed Rare Gases acceleration bonus to 0%/2.5%/5%/10%/30%/60%/120% (down from 0%/5%/10%/30%/60%/120%/200%).
 - Empires now have an additional random resource asteroid in an adjacent system.
 - Empires now have an additional random resource asteroid in a neighboring system.
 

@@ -368,7 +368,7 @@ void commitFlux(Object& obj, const vec3d& pos) {
 
 	if(obj.hasStatuses) {
 		double dist = fluxPos.distanceTo(obj.position);
-		double cd = dist / FLUX_CD_RANGE;
+		double cd = dist / FLUX_CD_RANGE / 20;
 		obj.addStatus(fluxStatus, timer=cd);
 	}
 
