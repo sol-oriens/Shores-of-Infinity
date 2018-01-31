@@ -206,7 +206,7 @@ TECHNOFARM_DESC: <<
 >>
 RAREGASES: Rare Gases
 RAREGASES_BLURB: <<
-	[font=Small]Increases all ship engine thrust by a cumulative bonus of [levels=$1;#ffb4b6]0%/2.5%/5%/10%/30%/60%/120%[/levels]. Gains various pressures per level.[/font]
+	[font=Small]Increases ship engine thrust by a cumulative bonus of [levels=$1;#ffb4b6]0%/2.5%/5%/10%/30%/60%/120%[/levels]. Gains various pressures per level.[/font]
 	 Cannot be exported.
 >>
 RAREGASES_DESC: <<

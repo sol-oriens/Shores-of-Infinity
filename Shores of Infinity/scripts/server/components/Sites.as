@@ -34,20 +34,18 @@ tidy class Sites : Component_Sites, SiteContainer, Savable {
 	}
 
 	uint getSiteId(uint index) {
-		Site@ site = sites[index];
+		auto@ site = sites[index];
 		return site.id;
 	}
 
 	uint getSiteTypeId(uint siteId) {
-		Site@ site = getSiteById(siteId);
+		auto@ site = getSiteById(siteId);
 		return site.type.id;
 	}
 
 	bool hasSite(uint id) {
-		Site@ site = getSiteById(id);
-		if (site !is null)
-			return true;
-		return false;
+		auto@ site = getSiteById(id);
+		return site !is null;
 	}
 
 	void selectSite(uint id) {
@@ -73,7 +71,7 @@ tidy class Sites : Component_Sites, SiteContainer, Savable {
 	}
 
 	uint spawnSite(Object& owner, uint typeId) {
-		Site@ site = Site();
+		auto@ site = Site();
 		site.create(owner, typeId);
 		create(site);
 		return site.id;
@@ -95,7 +93,7 @@ tidy class Sites : Component_Sites, SiteContainer, Savable {
 	}
 
 	void addProgressToSite(Object& owner, Empire@ emp, uint siteId, float amount) {
-		Site@ site = getSiteById(siteId);
+		auto@ site = getSiteById(siteId);
 		float p = 1.f;
 		if (p >= 1.f) {
 			notifySite(owner, emp, siteId, site.type.id);
