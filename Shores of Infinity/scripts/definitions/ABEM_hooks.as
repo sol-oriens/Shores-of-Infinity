@@ -748,7 +748,7 @@ class ApplyTargetOwnedVariableStatusEffect : AbilityHook {
 };
 
 class RepairPerSecondFromSubsystem : AbilityHook {
-	Document doc("Repair the flagship or orbital this is applied to for an amount depending of a subsystem variable.");
+	Document doc("Repairs the flagship or orbital this is applied to for an amount depending of a subsystem variable.");
 	Argument objTarg(TT_Object);
 	Argument sysData(AT_SysVar, doc="Subsystem variable to get the repair amount from.");
 	Argument status(AT_Status, doc="Status to apply to the target.");
@@ -793,9 +793,8 @@ class RepairPerSecondFromSubsystem : AbilityHook {
 		sysVar *= time;
 		if(target.isShip) {
 			auto@ ship = cast<Ship>(target);
-			if (ship.isDamaged) {
+			if (ship.isDamaged)
 				ship.repairShip(sysVar);
-			}
 			else {
 				Target newTarg = storeTarg;
 				@newTarg.obj = null;
@@ -804,9 +803,8 @@ class RepairPerSecondFromSubsystem : AbilityHook {
 		}
 		else if(target.isOrbital) {
 			auto@ orbital = cast<Orbital>(target);
-			if (orbital.isDamaged) {
+			if (orbital.isDamaged)
 				orbital.repairOrbital(sysVar);
-			}
 			else {
 				Target newTarg = storeTarg;
 				@newTarg.obj = null;

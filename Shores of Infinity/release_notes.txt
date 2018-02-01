@@ -6,7 +6,7 @@ v0.1.1b
 
 *** Minor additions, adjustments and fixes related to gameplay.
 
-*** Ancient lifestyles now have more building options on gas and ice giants. Their balance is not achieved though.
+*** Ancient lifestyles now have more building options on gas and ice giants. Their balance is still a work in progress though.
 
 *** The first of new system types has been added.
 
@@ -44,6 +44,7 @@ v0.1.1b
 [*] Resources
 
 - Experimentally changed Rare Gases acceleration bonus to 0%/2.5%/5%/10%/30%/60%/120% (down from 0%/5%/10%/30%/60%/120%/200%).
+- Slightly increased the frequency of comets.
 - Empires now have an additional random resource asteroid in an adjacent system.
 - Empires now have an additional random resource asteroid in a neighboring system.
 
@@ -52,6 +53,8 @@ v0.1.1b
 - Added ternary systems.
 - Black holes that do not host a Guardian and an Ancient Hubworld can now spawn like regular systems at a very low frequency. They have a greatly increased chance of hiding valuable asteroids and artifacts.
 - Systems with no planet now have an increased chance of having at least one resource asteroid.
+- Slightly increased the average number of planets per system.
+- Slightly increased the frequency of ice giants.
 
 v0.1.0b
 
@@ -321,7 +324,7 @@ Competitive multiplayer games are not recommended until balance is fine-tuned.
 - Increased scale of ringworld gravity wells to their system's radius.
 - Increased scale of asteroids by a factor of 2.
 - Decreased scale of ships by a factor of 0.5.
-- Increased default system spacing by a factor of around 23 (150.000 units). System spacing can no longer be reduced below the default value.
+- Increased default system spacing by a factor of around 23 (150,000 units). System spacing can no longer be reduced below the default value.
 - Increased variance in vertical spacing of systems in the core of spiral galaxies.
 - Increased variance in planet number per system, possibly down to 0. Systems with no planets have a greatly increased chance of hiding valuable asteroids and artifacts.
 - Increased chance of binary systems.
