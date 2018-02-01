@@ -29,6 +29,11 @@ v0.1.1b
 - Wormholes now spawn even in a single galaxy game.
 - Fixed a bug incorrectly generating Influence points when the Quick Start option is enabled.
 
+[*] Planets
+
+- Altered the workings of one particular site of interest.
+- Increased the size of moon bases to 6 x 6 (up from 5 x 5).
+
 [*] Resources
 
 - Experimentally changed Rare Gases acceleration bonus to 0%/2.5%/5%/10%/30%/60%/120% (down from 0%/5%/10%/30%/60%/120%/200%).
