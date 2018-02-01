@@ -17,14 +17,14 @@ Site: GoldVein
 			SendMessage(#SITE_GOLD_VEIN_DIG_FAIL)
 
 		Result: 30%
-			SendMessage(#SITE_GOLD_VEIN_DIG_POOR:150)
+			SendMessage(#SITE_GOLD_VEIN_DIG_POOR:30:15)
 
-			AddMoney(150)
+			AddStatus(Site_GoldVeinSmall, 150)
 
 		Result: 20%
-			SendMessage(#SITE_GOLD_VEIN_DIG_POOR:250)
+			SendMessage(#SITE_GOLD_VEIN_DIG_POOR:60:15)
 
-			AddMoney(250)
+			AddStatus(Site_GoldVeinBig, 150)
 
 		Result: 25%
 			SendMessage(#SITE_GOLD_VEIN_DIG_RICH:1)

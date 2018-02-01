@@ -221,7 +221,7 @@ SITE_GOLD_VEIN_DIG_FAIL: <<|
 SITE_GOLD_VEIN_DIG_POOR: <<|
 	There is indeed a gold vein here, but it is tiny and will deplete very quickly.
 
-	[b][color=#d1cb6a]You have gained §$1k[/color][/b]
+	[b][color=#d1cb6a]You will gain §$1k bonus income for $2 minutes.[/color][/b]
 >>
 SITE_GOLD_VEIN_DIG_RICH: <<|
 	The sensors were correct, there is a rich gold vein underground. Mining is underway.

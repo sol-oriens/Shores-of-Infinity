@@ -1,0 +1,7 @@
+Status: Site_GoldVeinSmall
+	Name: #STATUS_SITE_GOLDVEIN
+	Description: #STATUS_SITE_GOLDVEIN_DESC
+	Visible To: Owner
+	Icon: ResourceIcons::30
+
+	AddIncome(30)

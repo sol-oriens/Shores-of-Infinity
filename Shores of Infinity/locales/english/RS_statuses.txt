@@ -142,3 +142,7 @@ STATUS_FAST_RECHARGE_ADAPTED_DESC: <<
 
 	While out of combat, all ships in the fleet receive an additional 25 shield regeneration, plus 0.01% of the ship's shield capacity. Additionally, the fleet's flagship receives a 20% boost to shield capacity.
 >>
+STATUS_SITE_GOLDVEIN: Gold Vein
+STATUS_SITE_GOLDVEIN_DESC: <<
+	A gold vein was discovered on this planet and is generating income for a limited time.
+>>
