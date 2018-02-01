@@ -7,6 +7,7 @@ import object_creation;
 import traits;
 import maps;
 from empire import Creeps, Pirates, majorEmpireCount, initEmpireDesigns;
+from traits import getTraitID;
 import void addModifierToEmpire(Empire@ emp, const string& spec) from "bonus_effects";
 
 #priority init 5000
@@ -76,7 +77,10 @@ void init() {
 
 			emp.addTrait(trait.id);
 		}
-	
+
+		//Add the global trait
+		emp.addTrait(getTraitID("Global"));
+
 			//Apply generic AI cheats
 		if(settings.type != ET_Player) {
 			if(settings.cheatWealth > 0) {
@@ -140,12 +144,12 @@ void init() {
 				emp.cheatLevel += 1;
 			}
 		}
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 	}
 
 	//Create game empires
@@ -192,7 +196,7 @@ void init() {
 			if(def !is hd)
 				Creeps.setUnlocked(def, true);
 			Pirates.setUnlocked(def, true);
-			
+
 			for(uint n = 0, ncnt = def.moduleCount; n < ncnt; ++n) {
 				Creeps.setUnlocked(def, def.modules[n], true);
 				Pirates.setUnlocked(def, def.modules[n], true);

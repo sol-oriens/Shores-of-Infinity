@@ -22,6 +22,7 @@ v0.1.1b
 - Updated the description of Systems per Wormhole and Minimum Wormholes per Galaxy options to reflect gameplay changes.
 - Systems per Wormhole now defaults to 15 (down from 30).
 - Minimum Wormholes per Galaxy now defaults to 4.
+- Empires now start with 500k special funds if the Quick Start option is selected.
 
 [*] Gameplay
 
@@ -30,7 +31,7 @@ v0.1.1b
 
 [*] Resources
 
-- Experimentaly changed Rare Gases acceleration bonus to 0%/2.5%/5%/10%/30%/60%/120% (down from 0%/5%/10%/30%/60%/120%/200%).
+- Experimentally changed Rare Gases acceleration bonus to 0%/2.5%/5%/10%/30%/60%/120% (down from 0%/5%/10%/30%/60%/120%/200%).
 - Empires now have an additional random resource asteroid in an adjacent system.
 - Empires now have an additional random resource asteroid in a neighboring system.
 

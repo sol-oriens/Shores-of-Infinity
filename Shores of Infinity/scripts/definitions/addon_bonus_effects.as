@@ -53,3 +53,33 @@ class AddSite : BonusEffect {
 	}
 #section all
 };
+
+class QuickStartOption : EmpireTrigger {
+  Document doc("Executes a hook only if the player selected the Quick Start game option..");
+	Argument hookID(AT_Hook, "bonus_effects::EmpireTrigger");
+
+  BonusEffect@ hook;
+
+	bool withHook(const string& str) {
+		@hook = cast<BonusEffect>(parseHook(str, "bonus_effects::"));
+		if(hook is null) {
+			error("QuickStartOption(): could not find inner hook: " + escape(str));
+			return false;
+		}
+		return true;
+	}
+
+	bool instantiate() {
+    if (config::QUICK_START == 0)
+      return false;
+		if(!withHook(arguments[0].str))
+			return false;
+    return BonusEffect::instantiate();
+	}
+
+#section server
+	void activate(Object@ obj, Empire@ emp) const override {
+		hook.activate(obj, emp);
+	}
+#section all
+};
