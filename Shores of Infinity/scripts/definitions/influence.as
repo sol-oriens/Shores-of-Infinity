@@ -523,6 +523,12 @@ tidy class InfluenceCard : Serializable, Savable {
 				if(emp is owner)
 					continue;
 
+				//This a a ugly fix for a bug I have no better solution for
+				//This is related to RebateInfluenceBuys being 'magically' set to 1 when ownership of an asteroid is applied during map generation
+				//The end result is that all other empires gain influence when the owner gets a card, forever
+				if (gameTime == 0 && emp.RebateInfluenceBuys != 0)
+					emp.RebateInfluenceBuys = 0;
+
 				double rebate = emp.RebateInfluenceBuys;
 				if(rebate != 0)
 					emp.addInfluence(+rebate);

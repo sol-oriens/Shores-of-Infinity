@@ -1,5 +1,13 @@
 v0.1.1b
 
+**************************
+*** Release Highlights ***
+**************************
+
+*** Minor additions, adjustments and fixes related to gameplay.
+
+*** The first of new system types has been added.
+
 ************************
 *** Detailed Changes ***
 ************************
@@ -18,6 +26,7 @@ v0.1.1b
 [*] Gameplay
 
 - Wormholes now spawn even in a single galaxy game.
+- Fixed a bug incorrectly generating Influence points when the Quick Start option is enabled.
 
 [*] Resources
 
