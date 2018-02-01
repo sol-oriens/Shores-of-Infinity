@@ -1,0 +1,6 @@
+Status: IceGiant
+	Name: #ICE_GIANT
+	Description: #ICE_GIANT_DESC
+	Icon: PlanetType::11
+	Color: #00ff00
+	Collapses: True

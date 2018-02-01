@@ -210,7 +210,7 @@ RAREGASES_BLURB: <<
 	 Cannot be exported.
 >>
 RAREGASES_DESC: <<
-	The atmosphere of gas giants contains a multitude of gas isotopes that only exist in small quantities elsewhere in the universe. Due to their nature, gas giants are very difficult to colonize and using their many moons as bases is critical. However, the exploitation of the gases provides a lot of energy and other materials as well as extremely potent chemicals to enhance propulsion systems.
+	The fluids in the atmosphere of this planet provide a lot of energy and other materials as well as extremely potent chemicals to enhance propulsion systems.
 
 	[b]If this planet is Level 1 or higher:[/b]
 	[offset=30]The planet gains 1 Energy pressure per Level.[/offset]

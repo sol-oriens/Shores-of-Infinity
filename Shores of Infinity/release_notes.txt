@@ -6,11 +6,18 @@ v0.1.1b
 
 *** Minor additions, adjustments and fixes related to gameplay.
 
+*** Ancient lifestyles now have more building options on gas and ice giants. Their balance is not achieved though.
+
 *** The first of new system types has been added.
 
 ************************
 *** Detailed Changes ***
 ************************
+
+[*] Buildings
+
+- Increased the size of collectors to 6 x 6 (up from 5 x 5).
+- increased the size of harvesters to 6 x 4 (up from 5 x 3).
 
 [*] FTL
 

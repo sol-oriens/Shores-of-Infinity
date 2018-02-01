@@ -337,6 +337,7 @@ class MakePlanet : MapHook {
 	Argument classification(AT_Custom, "Rocky", doc="'Gas' for a gas planet, 'Icy' for an icy planet. Any other value defaults to a rocky planet.");
 	Argument giant(AT_Boolean, "False", doc="Whether the planet is giant.");
 	Argument force_native_biome(AT_Boolean, "False", doc="Whether to force the resource native biome on the whole planet surface");
+	Argument add_status(AT_Status, EMPTY_DEFAULT, doc="A status to add to the planet after it is spawned.");
 	Argument physics(AT_Boolean, "True", doc="Whether the planet should be a physical object.");
 
 	bool instantiate() override {
@@ -597,6 +598,9 @@ class MakePlanet : MapHook {
 		//Place in region
 		system.object.enterRegion(planet);
 		plNode.hintParentObject(system.object, false);
+
+		if(add_status.integer != -1)
+			planet.addStatus(add_status.integer);
 
 		@current = planet;
 	}

@@ -142,6 +142,14 @@ STATUS_FAST_RECHARGE_ADAPTED_DESC: <<
 
 	While out of combat, all ships in the fleet receive an additional 25 shield regeneration, plus 0.01% of the ship's shield capacity. Additionally, the fleet's flagship receives a 20% boost to shield capacity.
 >>
+GAS_GIANT: Gas Giant
+GAS_GIANT_DESC: <<
+	The atmosphere of gas giants contains a multitude of light fluids and some of them only exist in small quantities elsewhere in the universe. Due to their nature, gas giants are very difficult to colonize and using their many moons as bases is critical. However, their exploitation provides a lot of useful resources.
+>>
+ICE_GIANT: Ice Giant
+ICE_GIANT_DESC: <<
+	Ice giants are mainly composed of heavy elements such as oxygen, carbon and sulfur. Water is usually abundant in their atmosphere in a supercritical fluid state, but some also contain other types of elements in very large quantities.
+>>
 STATUS_SITE_GOLDVEIN: Gold Vein
 STATUS_SITE_GOLDVEIN_DESC: <<
 	A gold vein was discovered on this planet and is generating income for a limited time.
