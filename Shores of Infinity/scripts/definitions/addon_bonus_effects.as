@@ -70,8 +70,6 @@ class QuickStartOption : EmpireTrigger {
 	}
 
 	bool instantiate() {
-    if (config::QUICK_START == 0)
-      return false;
 		if(!withHook(arguments[0].str))
 			return false;
     return BonusEffect::instantiate();
@@ -79,7 +77,8 @@ class QuickStartOption : EmpireTrigger {
 
 #section server
 	void activate(Object@ obj, Empire@ emp) const override {
-		hook.activate(obj, emp);
+    if (config::QUICK_START != 0)
+		  hook.activate(obj, emp);
 	}
 #section all
 };
