@@ -23,18 +23,18 @@ v0.1.1b
 
 - Reduced flux jump cooldown by a factor of 20.
 
-[*] Game Options
-
-- Moved the Systems per Wormhole and Minimum Wormholes per Galaxy options to the Advanced page
-- Updated the description of Systems per Wormhole and Minimum Wormholes per Galaxy options to reflect gameplay changes.
-- Systems per Wormhole now defaults to 15 (down from 30).
-- Minimum Wormholes per Galaxy now defaults to 4.
-- Empires now start with 500k special funds if the Quick Start option is selected.
-
 [*] Gameplay
 
 - Wormholes now spawn even in a single galaxy game.
 - Fixed a bug incorrectly generating Influence points when the Quick Start option is enabled.
+
+[*] Game Options
+
+- Moved the Systems per Wormhole and Minimum Wormholes per Galaxy options to the Advanced page.
+- Updated the description of Systems per Wormhole and Minimum Wormholes per Galaxy options to reflect gameplay changes.
+- Systems per Wormhole now defaults to 15 (down from 30).
+- Minimum Wormholes per Galaxy now defaults to 4 (up from 2).
+- Empires now start with 500k special funds if the Quick Start option is selected.
 
 [*] Planets
 
@@ -133,7 +133,7 @@ Competitive multiplayer games are not recommended until balance is fine-tuned.
 [*] Artificial Intelligence
 
 - AIs are now able to build and prioritize outposts to protect their territory or expand beyond systems without planets or resources (including nebulae). Evangelical lifestyles will build star temples instead.
-- AIs now expand outside their territory when they are out of other options.
+- AIs now expand outside their trade area when they are out of other options.
 - AIs now build moon bases on planets when needed (excepted, of course, Star Children).
 - AIs now slow down or even temporarily stop their colonization effort when necessary in order to maintain a budget buffer for other expenditures.
 - Colonization prioritization has been revised and all randomness in the decision process has been replaced by a deterministic weighting.
@@ -174,6 +174,14 @@ Competitive multiplayer games are not recommended until balance is fine-tuned.
 - Increased jump drive range by a factor of 10. Jump drive is still the fastest and cheapest, but the safe range is half of vanilla.
 - Increased gate maintenance cost to 0.25 FTL/s. More gates are needed for a good territory coverage, and juggling with gate activation and deactivation is an absolute must.
 
+[*] Gameplay
+
+- Welfare option base threshold is now 200k (down from 350k).
+- Ships now always repair at a rate defined by their design and no longer receive a boost when out of combat (sourced from DOF).
+- Ship repair rate is now always reduced by an effectiveness below the base rate whether in combat or not.
+- Fixed a vanilla bug where a weird rounding error would prevent ships from ever stopping to repair.
+- Fixed a vanilla bug where status stacks spent to build certain things (like troop pods filled with troops) would only ever refund one instance instead of the correct amount when refunded.
+
 [*] Game Options
 
 - Added Quick Start: when toggled on, empires will start with a number of assets to help them getting started in the game faster. This option is off by default.
@@ -182,14 +190,6 @@ Competitive multiplayer games are not recommended until balance is fine-tuned.
 - Disable Starting Fleets has been removed to be merged with the new Quick Start option.
 - Default asteroid and orbital labor cost step increased to 100% (up from 50%).
 - Reactivated Legacy Exploration Mode from ABEM (default: off) as sensors are back.
-
-[*] Gameplay
-
-- Welfare option base threshold is now 200k (down from 350k).
-- Ships now always repair at a rate defined by their design and no longer receive a boost when out of combat (sourced from DOF).
-- Ship repair rate is now always reduced by an effectiveness below the base rate whether in combat or not.
-- Fixed a vanilla bug where a weird rounding error would prevent ships from ever stopping to repair.
-- Fixed a vanilla bug where status stacks spent to build certain things (like troop pods filled with troops) would only ever refund one instance instead of the correct amount when refunded.
 
 [*] Influence Cards
 
