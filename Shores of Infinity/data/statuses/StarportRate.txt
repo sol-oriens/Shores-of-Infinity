@@ -1,0 +1,14 @@
+Status: StarportRateOreRateMine
+	Visible To: Nobody
+
+	TriggerPeriodic(AddCargo(Ore, 0.25), Interval = 6)
+
+Status: StarportRateOreRate
+	Visible To: Nobody
+
+	TriggerPeriodic(AddCargo(Ore, 0.25), Interval = 1)
+
+Status: StarportRateBaseMaterial
+	Visible To: Nobody
+
+	TriggerPeriodic(AddCargo(BaseMaterial, 0.25), Interval = 6)

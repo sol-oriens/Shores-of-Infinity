@@ -85,6 +85,8 @@ ORB_STARPORT_DESC: <<
 
 	Increases the civilian production of Labor, Influence, Energy and Research on all owned planets in the system by 10%.
 
+	Increases the import rate of Ore and Base Material in the system by 25%.
+
 	Can be upgraded to allow global resource trade.
 
 	Can store 2.5k units of cargo.
