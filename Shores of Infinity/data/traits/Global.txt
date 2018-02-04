@@ -1,5 +1,5 @@
 Trait: Global
 	Available: False
 
-//This is used to execute hooks on all player empires
-	QuickStartOption(AddMoney(500))
+	//This is used to execute hooks on all player empires
+	ActiveConfigOption(AddMoney(500), QUICK_START)

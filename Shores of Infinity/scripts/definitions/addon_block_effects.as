@@ -1,13 +1,13 @@
 import hooks;
 from block_effects import BlockEffect;
 
-class QuickStartOption : BlockEffect {
-	Document doc("Inner hooks in this block are exectuted only if the player selected the Quick Start game option.");
+class ActiveConfigOption : BlockEffect {
+	Document doc("Inner hooks in this block are exectuted only if a config option has a particular value.");
+	Argument option(AT_Custom, doc="Config option to check.");
+	Argument value(AT_Decimal, "1.0", doc="Value for the option to check for.");
 
 	bool prepare(Argument@& dat) const override {
-		if (config::QUICK_START == 0)
-			return false;
-		return true;
+		return config::get(option.str) == value.decimal;
 	}
 
 	bool feed(Argument@& dat, Hook@& hook, uint& num) const override {
