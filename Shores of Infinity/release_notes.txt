@@ -16,6 +16,11 @@ v0.1.2b
 - Increased collector base and maintenance costs to 200k (up from 150k) and 80k (up from 0), respectively. Also increased build time to 1m30 (up from 1m).
 - Increased harvester base cost to 400k (up from 350k).
 
+[*] Game Options
+
+- Locked Minerals/Ore Asteroids at 99% for performance reasons.
+- Removed Asteroid Belts. The default 25% chance is still applied. See above.
+
 [*] Orbitals
 
 - Starports now increase the civilian production of Labor, Influence, Energy and Research on all owned planets in the system by 10%.

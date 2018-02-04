@@ -1053,7 +1053,7 @@ class MakeAsteroidBelt : MapHook {
 
 #section server
 	void trigger(SystemData@ data, SystemDesc@ system, Object@& current) const override {
-		if(config::ASTEROID_OCCURANCE == 0 && config::RESOURCE_ASTEROID_OCCURANCE == 0)
+		if(config::ASTEROID_OCCURANCE == 0)
 			return;
 
 		//Allow to specify a fixed radius or specific keywords
