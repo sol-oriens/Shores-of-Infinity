@@ -1,3 +1,25 @@
+v0.1.2b
+
+**************************
+*** Release Highlights ***
+**************************
+
+*** Minor additions, adjustments and fixes related to gameplay.
+
+************************
+*** Detailed Changes ***
+************************
+
+[*] Buildings
+
+- Fixed the tooltips for harvester and simulator incorrectly stating that they consume 1 Base Material / minute (instead of 10 / minute).
+- Increased collector base and maintenance costs to 200k (up from 150k) and 80k (up from 0), respectively. Also increased build time to 1m30 (up from 1m).
+- Increased harvester base cost to 400k (up from 350k).
+
+[*] Orbitals
+
+- Starports now increase the civilian production of Labor, Influence, Energy and Research on all owned planets in the system by 10%.
+
 v0.1.1b
 
 **************************
@@ -157,8 +179,8 @@ Competitive multiplayer games are not recommended until balance is fine-tuned.
 - Added Healthcare Complex. Adds 1 Population and increases Population growth by 10%. Base build and maintenance costs of 85k and 20k, respectively. Also costs 100 Research to build and 100 more for each Healthcare Complex already built or currently building on the planet. Cannot be built by Mechanoid lifestyles.
 - Added Arcology. Adds 5 Population and replaces 5 cities. Costs 2.5M, 2k Ore, 20 Influence, and 75 Labor.
 - Added Collector, exclusive to Ancient races: equivalent to a Core for gas giants. Can only be constructed on Rare Gases resources. Produces 100% of the pressure that the planet's native resource gives. Pressure from asteroids imported at this planet is automatically produced.
-- Added Harvester, exclusive to Ancient races: equivalent to an Infuser for gas giants. Can only be constructed on Rare Gases resources. Increases the level of this planet by 1. Uses 2 Ore per second and 1 Base Materials per minute.
-- Added Simulator, exclusive to Ancient races: replacement for Arcology. Increases the income of a planet by 250k. Costs 2.5M, and 20 Influence. Uses 1 Base Materials per minute.
+- Added Harvester, exclusive to Ancient races: equivalent to an Infuser for gas giants. Can only be constructed on Rare Gases resources. Increases the level of this planet by 1. Uses 2 Ore per second and 1 Base Material per minute.
+- Added Simulator, exclusive to Ancient races: replacement for Arcology. Increases the income of a planet by 250k. Costs 2.5M, and 20 Influence. Uses 1 Base Material per minute.
 
 [*] Cargo
 
