@@ -32,6 +32,7 @@ class ShipPopup : Popup {
 	GuiBlueprint@ bpdisp;
 	GuiText@ name;
 	GuiText@ ownerName;
+	GuiText@ speed;
 
 	GuiSprite@ shieldIcon;
 	GuiProgressbar@ health;
@@ -52,6 +53,9 @@ class ShipPopup : Popup {
 		@name = GuiText(this, Alignment(Left+40, Top+6, Right-4, Top+28));
 		@ownerName = GuiText(this, Alignment(Left+40, Top+28, Right-6, Top+46));
 		ownerName.horizAlign = 1.0;
+
+		@speed = GuiText(this, Alignment(Right-100, Bottom-95, Right-6, Bottom-80));
+		speed.horizAlign = 1.0;
 
 		@bpdisp = GuiBlueprint(this, Alignment(Left+4, Top+50, Right-4, Bottom-80));
 		bpdisp.popHover = true;
@@ -483,6 +487,9 @@ class ShipPopup : Popup {
 			else
 				ownerName.font = FT_Normal;
 		}
+
+		//Update speed
+		speed.text = toString(ship.velocity.length, 0) + " u/s";
 
 		//Update whatever health is displayed
 		updateHealthBar();
