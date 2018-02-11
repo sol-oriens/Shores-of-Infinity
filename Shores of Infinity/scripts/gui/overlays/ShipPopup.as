@@ -489,7 +489,10 @@ class ShipPopup : Popup {
 		}
 
 		//Update speed
-		speed.text = toString(ship.velocity.length, 0) + " u/s";
+		if (origObject.hasMover)
+			speed.text = toString(ship.velocity.length, 0) + " u/s";
+		else
+			speed.text = "";
 
 		//Update whatever health is displayed
 		updateHealthBar();
