@@ -206,11 +206,11 @@ TECHNOFARM_DESC: <<
 >>
 RAREGASES: Rare Gases
 RAREGASES_BLURB: <<
-	[font=Small]Increases all ship engine thrust by a cumulative bonus of [levels=$1;#ffb4b6]0%/2.5%/5%/10%/30%/60%/120%[/levels]. Gains various pressures per level.[/font]
+	[font=Small]Increases ship engine thrust by a cumulative bonus of [levels=$1;#ffb4b6]0%/2.5%/5%/10%/30%/60%/120%[/levels]. Gains various pressures per level.[/font]
 	 Cannot be exported.
 >>
 RAREGASES_DESC: <<
-	The atmosphere of gas giants contains a multitude of gas isotopes that only exist in small quantities elsewhere in the universe. Due to their nature, gas giants are very difficult to colonize and using their many moons as bases is critical. However, the exploitation of the gases provides a lot of energy and other materials as well as extremely potent chemicals to enhance propulsion systems.
+	The fluids in the atmosphere of this planet provide a lot of energy and other materials as well as extremely potent chemicals to enhance propulsion systems.
 
 	[b]If this planet is Level 1 or higher:[/b]
 	[offset=30]The planet gains 1 Energy pressure per Level.[/offset]

@@ -1,0 +1,9 @@
+Status: Starport
+	Visible To: Nobody
+
+	Unique: True
+
+	ModCivResourceMult(Labor, 0.1)
+	ModCivResourceMult(Influence, 0.1)
+	ModCivResourceMult(Energy, 0.1)
+	ModCivResourceMult(Research, 0.1)

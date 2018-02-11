@@ -5,9 +5,9 @@ Building: AncientHarvester
 
 	Category: Infrastructure
 
-	Size: 5x3
+	Size: 6x4
 
-	Base Cost: 350
+	Base Cost: 400
 	Base Maintenance: 50
 	Build Time: 100
 

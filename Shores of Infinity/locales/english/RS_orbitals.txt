@@ -79,9 +79,13 @@ ORB_STARBASE_DESC: <<
 ORB_STARPORT: Starport
 ORB_STARPORT_BLURB: Allows trade through its system. Generates income per friendly planet. Can store 2.5k units of cargo.
 ORB_STARPORT_DESC: <<
-	[color=#aaa][i]A docking station for civilian and military ships and a transit point for interstellar trade greatly facilitating planetary exporting. A market area also allows small scale commerce with friendly planets.[/i][/color]
+	[color=#aaa][i]A docking station for civilian and military ships and a transit point for interstellar trade greatly facilitating planetary imports. A market area also allows small scale commerce with friendly planets.[/i][/color]
 
 	Provides 30k income for each owned and friendly planet in the system belonging to another empire you are at peace with or yours, up to 120k.
+
+	Increases the civilian production of Labor, Influence, Energy and Research on all owned planets in the system by 10%.
+
+	Increases the import rate of Ore and Base Material in the system by 25%.
 
 	Can be upgraded to allow global resource trade.
 
@@ -108,7 +112,7 @@ ORB_STAGING_HUB_DESC: <<|
 
 	Can be upgraded to sell imported resources.
 
-	Adds 15 Defense Reserve when in orbit around a planet.
+	Adds 15 Defense Reserve when in orbit around an owned planet.
 
 	Can store 5k units of cargo.
 

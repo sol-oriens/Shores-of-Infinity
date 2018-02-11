@@ -10,7 +10,7 @@ System: HomeSystem
 	RepeatHomeworlds()
 
 		//SoI - Scaling
-		MakePlanet(RandomType:Food:Common, Radius = 100, Grid Size = (18, 11), Conditions = False, Moons = False)
+		MakePlanet(Resource = RandomType:Food:Common, Radius = 100, Grid Size = (18, 11), Conditions = False, Moons = False)
 			BonusHealth(5000000000)
 			AddPlanetResource(Water)
 			AddPopulation(3.0)
@@ -19,14 +19,14 @@ System: HomeSystem
 			ForceUsefulSurface(0.8, Forest)
 			MakeMoon()
 
-	MakePlanet(RandomType:Food:Common, Conditions = False, Moons = False)
-	MakePlanet(Water, Conditions = False, Moons = False)
-	MakePlanet(RandomLevel:1:Common, Conditions = False, Moons = False)
-	MakePlanet(Resource = RareGases, Classification = Gas, Giant = True, Force Native Biome = True)
-	MakePlanet(Resource = RareGases, Classification = Gas, Giant = True, Force Native Biome = True)
-	MakePlanet(Resource = IcyWater, Classification = Icy, Giant = True, Force Native Biome = True)
+	MakePlanet(Resource = RandomType:Food:Common, Conditions = False, Moons = False)
+	MakePlanet(Resource = Water, Conditions = False, Moons = False)
+	MakePlanet(Resource = RandomLevel:1:Common, Conditions = False, Moons = False)
+	MakePlanet(Resource = RareGases, Classification = Gas, Giant = True, Force Native Biome = True, Add Status = GasGiant)
+	MakePlanet(Resource = RareGases, Classification = Gas, Giant = True, Force Native Biome = True, Add Status = GasGiant)
+	MakePlanet(Resource = IcyWater, Classification = Icy, Giant = True, Force Native Biome = True, Add Status = IceGiant)
 		AddPlanetResource(LocalIcyWater)
-	MakePlanet(Resource = IcyPekelm, Classification = Icy, Giant = True, Force Native Biome = True)
+	MakePlanet(Resource = IcyPekelm, Classification = Icy, Giant = True, Force Native Biome = True, Add Status = IceGiant)
 		AddPlanetResource(LocalIcyWater)
 
 	MakeAsteroid(Cargo = Ore, Cargo Amount = 1200)
@@ -38,10 +38,10 @@ System: HomeSystem
 	MakeAsteroid(Cargo = Ore, Cargo Amount = 250)
 	MakeAsteroid(Resource = Distributed)
 	MakeAsteroid(Resource = Pekelm)
-		QuickStartOption()
+		ActiveConfigOption(QUICK_START)
 			SetMine()
 	MakeAsteroid(Resource = AsteroidFTLPermanent)
-		QuickStartOption()
+		ActiveConfigOption(QUICK_START)
 			SetMine()
 
 	MakeAnomaly()

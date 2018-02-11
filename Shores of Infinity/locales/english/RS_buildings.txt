@@ -209,6 +209,7 @@ BLD_ANCIENT_COLLECTOR_DESC: <<
 	[color=#aaa][i]A facility managing the building and maintenance of transorbital drones designed to harvest rare gas molecules found in gas giants and carry them to the facility where they are then stored and refined.[/i][/color]
 
 	Can only be constructed on Rare Gases resources. Produces 100% of the pressure that the planet's native resource gives.
+
 	Pressure from asteroids imported at this planet is automatically produced.
 
 	[bbloc=#TIP_CONTROL_HUB/]
@@ -220,7 +221,7 @@ BLD_ANCIENT_HARVESTER_DESC: <<
 	Can only be constructed on Rare Gases resources. Increases the level of this planet by 1.
 
 	[b][img=ResourceIconsSmall::65;20/] [color=#91692c]Ore Used:[/color][/b][offset=150]2 / second[/offset]
-	[bbloc=#TIP_CONSUME_BASE_MATERIAL:1/]
+	[bbloc=#TIP_CONSUME_BASE_MATERIAL:10/]
 >>
 BLD_ANCIENT_SIMULATOR: Simulator
 BLD_ANCIENT_SIMULATOR_DESC: <<
@@ -228,7 +229,7 @@ BLD_ANCIENT_SIMULATOR_DESC: <<
 
 	Increases the income of this planet by 250k.
 
-	[bbloc=#TIP_CONSUME_BASE_MATERIAL:1/]
+	[bbloc=#TIP_CONSUME_BASE_MATERIAL:10/]
 >>
 BLD_DEFENSE_GRID_DESC: <<
 	A massive field of missile silos located on the surface of the planet, capable of firing at nearby enemy fleets.

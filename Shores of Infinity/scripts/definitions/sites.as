@@ -149,8 +149,6 @@ class Site : Serializable, Savable {
 
 	bool choiceDelta = false;
 
-	Site() {}
-
 	void create(Object& owner, uint typeId) {
 		@obj = owner;
 		siteTypeId = typeId;
@@ -231,7 +229,7 @@ class Site : Serializable, Savable {
 	}
 
 	void chooseOption(uint option) {
-		Planet@ pl = cast<Planet>(obj);
+		auto@ pl = cast<Planet>(obj);
 		if (pl !is null) {
 			pl.chooseSiteOption(id, option);
 		}
@@ -336,11 +334,11 @@ class Site : Serializable, Savable {
 void parseLine(string& line, SiteType@ site, SiteResult@ result, ReadFile@ file) {
 	//Try to find the design
 	if(line.findFirst("(") == -1) {
-		error("Invalid line during " + site.ident+": "+escape(line));
+		error("Invalid line for " + site.ident +": "+ escape(line));
 	}
 	else {
 		if(site.options.length == 0) {
-			error("Missing 'Pickup:' line for: "+escape(line));
+			error("Missing 'Option:' line for: "+ escape(line));
 			return;
 		}
 
@@ -392,7 +390,7 @@ void loadSite(const string& filename) {
 				@site = SiteType();
 			site.ident = value;
 			if(site.ident.length == 0)
-				site.ident = filename+"__"+index;
+				site.ident = filename + "__" + index;
 
 			@opt = null;
 			++index;
@@ -482,7 +480,7 @@ void loadSite(const string& filename) {
 			state.matName = site.matName;
 			state.spriteName = site.spriteName;
 			if(state.ident.length == 0)
-				state.ident = site.ident+"__state__"+site.states.length;
+				state.ident = site.ident + "__state__" + site.states.length;
 			site.states.insertLast(state);
 		}
 		else if(key == "Result") {
@@ -557,14 +555,14 @@ void init() {
 			auto@ opt = type.options[o];
 			for(uint n = 0, ncnt = opt.hooks.length; n < ncnt; ++n) {
 				if(!cast<Hook>(opt.hooks[n]).instantiate())
-					error("Could not instantiate hook: "+addrstr(opt.hooks[n])+" in "+type.ident);
+					error("Could not instantiate hook: "+ addrstr(opt.hooks[n]) + " in " + type.ident);
 				opt.hooks[n].init(type);
 			}
 			for(uint n = 0, ncnt = opt.results.length; n < ncnt; ++n) {
 				auto@ res = opt.results[n];
 				for(uint j = 0, jcnt = res.hooks.length; j < jcnt; ++j) {
 					if(!cast<Hook>(res.hooks[j]).instantiate())
-						error("Could not instantiate hook: "+addrstr(res.hooks[j])+" in "+type.ident);
+						error("Could not instantiate hook: "+ addrstr(res.hooks[j]) +" in "+type.ident);
 					res.hooks[j].init(type);
 				}
 			}
@@ -577,7 +575,7 @@ void init() {
 				if(opt !is null)
 					state.options.insertLast(opt);
 				else
-					error("Could not find option: "+state.def_options[n]);
+					error("Could not find option: " + state.def_options[n]);
 			}
 		}
 	}
@@ -647,7 +645,6 @@ void addSiteType(SiteType@ type) {
 	idents.set(type.ident, @type);
 
 	terrestrialSiteTypes.add(type);
-	//print("add " + type.id + " name = " + type.name + " length = " + siteTypes.length);
 }
 
 void saveIdentifiers(SaveFile& file) {

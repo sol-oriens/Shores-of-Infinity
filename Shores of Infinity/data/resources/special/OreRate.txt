@@ -13,6 +13,7 @@ Resource: OreRateMine
 	Stealable: False
 
 	TriggerPeriodic(AddCargo(Ore, 1), Interval = 6)
+	addon_resource_effects::OnExportAddStatus(StarportRateOreRateMine, Destination Flag = Starport)
 
 Resource: OreRate
 	Name: #R_ORE_RATE
@@ -29,6 +30,7 @@ Resource: OreRate
 	Stealable: False
 
 	TriggerPeriodic(AddCargo(Ore, 1), Interval = 1)
+	addon_resource_effects::OnExportAddStatus(StarportRateOreRate, Destination Flag = Starport)
 	IfAttributeGTE(OptimizedCores, 1, TriggerPeriodic(AddCargo(Ore, 0.5), Interval = 1))
 
 	OnExportMoveLocalCargo(Ore)

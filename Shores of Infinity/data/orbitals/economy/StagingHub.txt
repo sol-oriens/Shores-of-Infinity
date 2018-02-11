@@ -33,7 +33,7 @@ Module: StagingHub
 
 	GiveTrade()
 
-	AddStatusToOrbitingPlanet(StagingHub, Set Origin Empire = True)
+	AddStatusToOrbitingPlanet(StagingHub, Set Origin Empire = True, Only Owned = True)
 
 	AddCargoStorage(5000)
 

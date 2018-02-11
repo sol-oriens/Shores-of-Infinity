@@ -12,6 +12,7 @@ Building: AncientRefinery
 
 	In Queue: True
 
+	addon_requirement_effects::ConflictNativeResource(RareGases, Hide = True)
 	RequireStatus(AncientReplicator)
 	RequireStatusToProgress(AncientReplicator)
 

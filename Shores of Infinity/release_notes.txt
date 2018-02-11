@@ -1,22 +1,78 @@
-v0.1.1b
+v0.1.2b
+
+**************************
+*** Release Highlights ***
+**************************
+
+*** Minor additions, adjustments and fixes related to gameplay.
 
 ************************
 *** Detailed Changes ***
 ************************
 
+[*] Buildings
+
+- Fixed the tooltips for harvester and simulator incorrectly stating that they consume 1 Base Material / minute (instead of 10 / minute).
+- Increased collector base and maintenance costs to 200k (up from 150k) and 80k (up from 0), respectively. Also increased build time to 1m30 (up from 1m).
+- Increased harvester base cost to 400k (up from 350k).
+
 [*] Game Options
 
-- Moved the Systems per Wormhole and Minimum Wormholes per Galaxy options to the Advanced page
-- Updated the description of Systems per Wormhole and Minimum Wormholes per Galaxy options to reflect gameplay changes.
-- Systems per Wormhole now defaults to 15 (down from 30).
-- Minimum Wormholes per Galaxy now defaults to 4.
+- Locked Minerals/Ore Asteroids at 99% for performance reasons.
+- Removed Asteroid Belts. The default 25% chance is still applied. See above.
+
+[*] Orbitals
+
+- Starports now increase the civilian production of Labor, Influence, Energy and Research on all owned planets in the system by 10%.
+- Starports now increase the import rate of Ore and Base Material in the system by 25%.
+
+v0.1.1b
+
+**************************
+*** Release Highlights ***
+**************************
+
+*** Minor additions, adjustments and fixes related to gameplay.
+
+*** Ancient lifestyles now have more building options on gas and ice giants. Their balance is still a work in progress though.
+
+*** The first of new system types has been added.
+
+************************
+*** Detailed Changes ***
+************************
+
+[*] Buildings
+
+- Increased the size of collectors to 6 x 6 (up from 5 x 5).
+- increased the size of harvesters to 6 x 4 (up from 5 x 3).
+
+[*] FTL
+
+- Reduced flux jump cooldown by a factor of 20.
 
 [*] Gameplay
 
 - Wormholes now spawn even in a single galaxy game.
+- Fixed a bug incorrectly generating Influence points when the Quick Start option is enabled.
+
+[*] Game Options
+
+- Moved the Systems per Wormhole and Minimum Wormholes per Galaxy options to the Advanced page.
+- Updated the description of Systems per Wormhole and Minimum Wormholes per Galaxy options to reflect gameplay changes.
+- Systems per Wormhole now defaults to 15 (down from 30).
+- Minimum Wormholes per Galaxy now defaults to 4 (up from 2).
+- Empires now start with 500k special funds if the Quick Start option is selected.
+
+[*] Planets
+
+- Altered the workings of one particular site of interest.
+- Increased the size of moon bases to 6 x 6 (up from 5 x 5).
 
 [*] Resources
 
+- Experimentally changed Rare Gases acceleration bonus to 0%/2.5%/5%/10%/30%/60%/120% (down from 0%/5%/10%/30%/60%/120%/200%).
+- Slightly increased the frequency of comets.
 - Empires now have an additional random resource asteroid in an adjacent system.
 - Empires now have an additional random resource asteroid in a neighboring system.
 
@@ -25,6 +81,8 @@ v0.1.1b
 - Added ternary systems.
 - Black holes that do not host a Guardian and an Ancient Hubworld can now spawn like regular systems at a very low frequency. They have a greatly increased chance of hiding valuable asteroids and artifacts.
 - Systems with no planet now have an increased chance of having at least one resource asteroid.
+- Slightly increased the average number of planets per system.
+- Slightly increased the frequency of ice giants.
 
 v0.1.0b
 
@@ -103,7 +161,7 @@ Competitive multiplayer games are not recommended until balance is fine-tuned.
 [*] Artificial Intelligence
 
 - AIs are now able to build and prioritize outposts to protect their territory or expand beyond systems without planets or resources (including nebulae). Evangelical lifestyles will build star temples instead.
-- AIs now expand outside their territory when they are out of other options.
+- AIs now expand outside their trade area when they are out of other options.
 - AIs now build moon bases on planets when needed (excepted, of course, Star Children).
 - AIs now slow down or even temporarily stop their colonization effort when necessary in order to maintain a budget buffer for other expenditures.
 - Colonization prioritization has been revised and all randomness in the decision process has been replaced by a deterministic weighting.
@@ -127,8 +185,8 @@ Competitive multiplayer games are not recommended until balance is fine-tuned.
 - Added Healthcare Complex. Adds 1 Population and increases Population growth by 10%. Base build and maintenance costs of 85k and 20k, respectively. Also costs 100 Research to build and 100 more for each Healthcare Complex already built or currently building on the planet. Cannot be built by Mechanoid lifestyles.
 - Added Arcology. Adds 5 Population and replaces 5 cities. Costs 2.5M, 2k Ore, 20 Influence, and 75 Labor.
 - Added Collector, exclusive to Ancient races: equivalent to a Core for gas giants. Can only be constructed on Rare Gases resources. Produces 100% of the pressure that the planet's native resource gives. Pressure from asteroids imported at this planet is automatically produced.
-- Added Harvester, exclusive to Ancient races: equivalent to an Infuser for gas giants. Can only be constructed on Rare Gases resources. Increases the level of this planet by 1. Uses 2 Ore per second and 1 Base Materials per minute.
-- Added Simulator, exclusive to Ancient races: replacement for Arcology. Increases the income of a planet by 250k. Costs 2.5M, and 20 Influence. Uses 1 Base Materials per minute.
+- Added Harvester, exclusive to Ancient races: equivalent to an Infuser for gas giants. Can only be constructed on Rare Gases resources. Increases the level of this planet by 1. Uses 2 Ore per second and 1 Base Material per minute.
+- Added Simulator, exclusive to Ancient races: replacement for Arcology. Increases the income of a planet by 250k. Costs 2.5M, and 20 Influence. Uses 1 Base Material per minute.
 
 [*] Cargo
 
@@ -144,6 +202,14 @@ Competitive multiplayer games are not recommended until balance is fine-tuned.
 - Increased jump drive range by a factor of 10. Jump drive is still the fastest and cheapest, but the safe range is half of vanilla.
 - Increased gate maintenance cost to 0.25 FTL/s. More gates are needed for a good territory coverage, and juggling with gate activation and deactivation is an absolute must.
 
+[*] Gameplay
+
+- Welfare option base threshold is now 200k (down from 350k).
+- Ships now always repair at a rate defined by their design and no longer receive a boost when out of combat (sourced from DOF).
+- Ship repair rate is now always reduced by an effectiveness below the base rate whether in combat or not.
+- Fixed a vanilla bug where a weird rounding error would prevent ships from ever stopping to repair.
+- Fixed a vanilla bug where status stacks spent to build certain things (like troop pods filled with troops) would only ever refund one instance instead of the correct amount when refunded.
+
 [*] Game Options
 
 - Added Quick Start: when toggled on, empires will start with a number of assets to help them getting started in the game faster. This option is off by default.
@@ -152,14 +218,6 @@ Competitive multiplayer games are not recommended until balance is fine-tuned.
 - Disable Starting Fleets has been removed to be merged with the new Quick Start option.
 - Default asteroid and orbital labor cost step increased to 100% (up from 50%).
 - Reactivated Legacy Exploration Mode from ABEM (default: off) as sensors are back.
-
-[*] Gameplay
-
-- Welfare option base threshold is now 200k (down from 350k).
-- Ships now always repair at a rate defined by their design and no longer receive a boost when out of combat (sourced from DOF).
-- Ship repair rate is now always reduced by an effectiveness below the base rate whether in combat or not.
-- Fixed a vanilla bug where a weird rounding error would prevent ships from ever stopping to repair.
-- Fixed a vanilla bug where status stacks spent to build certain things (like troop pods filled with troops) would only ever refund one instance instead of the correct amount when refunded.
 
 [*] Influence Cards
 
@@ -294,7 +352,7 @@ Competitive multiplayer games are not recommended until balance is fine-tuned.
 - Increased scale of ringworld gravity wells to their system's radius.
 - Increased scale of asteroids by a factor of 2.
 - Decreased scale of ships by a factor of 0.5.
-- Increased default system spacing by a factor of around 23 (150.000 units). System spacing can no longer be reduced below the default value.
+- Increased default system spacing by a factor of around 23 (150,000 units). System spacing can no longer be reduced below the default value.
 - Increased variance in vertical spacing of systems in the core of spiral galaxies.
 - Increased variance in planet number per system, possibly down to 0. Systems with no planets have a greatly increased chance of hiding valuable asteroids and artifacts.
 - Increased chance of binary systems.

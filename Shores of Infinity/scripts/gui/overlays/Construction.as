@@ -998,10 +998,10 @@ class ConstructionDisplay : DisplayBox {
 				if(dsg.hasTag(ST_Satellite))
 					continue;
 				menu.addOption(FlagshipDrydock(obj, dsg, forEmp));
-				menu.list.sortDesc();
-				menu.updateAbsolutePosition();
 			}
 		}
+		menu.list.sortDesc();
+		menu.updateAbsolutePosition();
 	}
 
 	void openStudyMenu() {

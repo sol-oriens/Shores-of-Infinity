@@ -18,6 +18,9 @@ Building: AncientStripTransmuter
 	In Queue: True
 
 	addon_requirement_effects::ConflictNativeResource(RareGases, Hide = True)
+	addon_requirement_effects::ConflictNativeResource(IcyWater, Hide = True)
+	addon_requirement_effects::ConflictNativeResource(IcyPekelm, Hide = True)
+	addon_requirement_effects::ConflictNativeResource(IcySalts, Hide = True)
 	RequireStatus(AncientReplicator)
 	RequireStatusToProgress(AncientReplicator)
 	RequireUnlockTag(AdvancedCores)

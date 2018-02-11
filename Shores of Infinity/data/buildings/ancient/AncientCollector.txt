@@ -5,10 +5,12 @@ Building: AncientCollector
 
 	Category: ControlHubs
 
-	Size: 5x5
+	Size: 6x6
 
-	Base Cost: 150
-	Build Time: 60
+	Base Cost: 200
+	Base Maintenance: 80
+
+	Build Time: 90
 
 	In Queue: True
 
