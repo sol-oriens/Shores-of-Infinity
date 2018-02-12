@@ -489,7 +489,7 @@ class ShipPopup : Popup {
 		}
 
 		//Update speed
-		if (origObject.hasMover)
+		if (origObject.hasMover && ship.isMoving)
 			speed.text = toString(ship.velocity.length, 0) + " u/s";
 		else
 			speed.text = "";
