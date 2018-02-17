@@ -54,7 +54,7 @@ class ShipPopup : Popup {
 		@ownerName = GuiText(this, Alignment(Left+40, Top+28, Right-6, Top+46));
 		ownerName.horizAlign = 1.0;
 
-		@speed = GuiText(this, Alignment(Right-100, Bottom-95, Right-6, Bottom-80));
+		@speed = GuiText(this, Alignment(Left+6, Bottom-95, Right-6, Bottom-80));
 		speed.horizAlign = 1.0;
 
 		@bpdisp = GuiBlueprint(this, Alignment(Left+4, Top+50, Right-4, Bottom-80));
@@ -489,8 +489,8 @@ class ShipPopup : Popup {
 		}
 
 		//Update speed
-		if (origObject.hasMover && ship.isMoving)
-			speed.text = toString(ship.velocity.length, 0) + " u/s";
+		if (origObject.hasMover)
+			speed.text = toString(ship.relativisticSpeed) + " c (" + toString(ship.speed, 2) + " u/s)";
 		else
 			speed.text = "";
 

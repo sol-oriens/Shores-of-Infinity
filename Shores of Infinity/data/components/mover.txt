@@ -2,6 +2,8 @@ Object.Mover : components.Mover::Mover {
 local safe:
 	bool get_inFTL() const;
 	bool get_isMoving() const;
+	double get_speed() const;
+	double get_relativisticSpeed() const;
 	double get_maxAcceleration() const;
 
 restricted local:
@@ -43,10 +45,10 @@ server:
 	void flagPositionUpdate();
 	void modAccelerationBonus(double mod);
 	void forceLockTo(Object@ obj);
-	
+
 	void impulse(vec3d ForceSeconds);
 	void rotate(quaterniond rot);
-	
+
 	safe bool get_leaderLock() const;
 	void set_leaderLock(bool doLock);
 

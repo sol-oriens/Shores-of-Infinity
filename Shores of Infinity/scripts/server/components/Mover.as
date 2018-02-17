@@ -3,6 +3,9 @@ from regions.regions import getRegion;
 import saving;
 import ftl;
 
+//Maximum sublight speed limit, that is, the speed of light, aka c, ported to a scale-relative manageable value in game
+const double c = 10.0;
+
 const double straighDot = 0.99999;
 
 //Rotation rate in radians/s
@@ -26,20 +29,20 @@ double timeToTarg(double a, const vec3d& offset, const vec3d& relVel) {
 	if(speed < 0.05) {
 		return sqrt(4.0 * dist / a);
 	}
-	
+
 	double velDot = 1.0;
 	if(dist > 0.001)
 		velDot = relVel.dot(offset) / (dist * speed);
 	if(velDot > straighDot) {
 		//We must accelerate up to the target speed before hitting the point
-		
+
 		// d = 1/2 a * t^2 (where t = v/a)
 		double accelDist = 0.5 * speed * speed / a;
-		
+
 		if(accelDist > dist) {
 			//return (speed / a) + sqrt(4.0 * (accelDist - dist) / a);
 			//return (speed / a) + (accelDist - dist) / speed;
-			
+
 			return lowerQuadratic(-a, 2.0 * speed, dist - accelDist);
 		}
 		else {
@@ -52,7 +55,7 @@ double timeToTarg(double a, const vec3d& offset, const vec3d& relVel) {
 	else if(velDot < -straighDot) {
 		double deccelTime = speed / a;
 		double deccelDist = deccelTime * speed * 0.5;
-		
+
 		//We either need to slow down, or accelerate to a maximum velocity
 		if(deccelDist < dist) {
 			double totalTime = sqrt(4.0 * (deccelDist + dist) / a);
@@ -66,23 +69,23 @@ double timeToTarg(double a, const vec3d& offset, const vec3d& relVel) {
 		vec3d linearVel = offset.normalized(speed * velDot);
 		vec3d latVel = relVel - linearVel;
 		vec3d zero;
-		
+
 		double aToward = 0.7;
-		
+
 		double rangeLow = 0.0001, rangeHigh = 0.9999;
 		double t = 0, leastErr = 99999999.0;
 		for(uint i = 0; i < 15; ++i) {
 			double aLat = sqrt(1.0 - (aToward * aToward));
-		
+
 			double tToward = timeToTarg(aToward * a, offset, linearVel);
 			double tLat = timeToTarg(aLat * a, zero, latVel);
-				
+
 			double err = abs(tToward - tLat);
 			if(err < leastErr) {
 				leastErr = err;
 				t = (tToward + tLat) * 0.5;
 			}
-			
+
 			if(err < 0.02)
 				break;
 			else if(tToward > tLat) {
@@ -94,14 +97,14 @@ double timeToTarg(double a, const vec3d& offset, const vec3d& relVel) {
 				aToward = (rangeLow + rangeHigh) * 0.5;
 			}
 		}
-		
+
 		return t;
 	}
 }
-	
+
 vec3d accToGoal(double a, double& maxTime, const vec3d& offset, const vec3d& relVel) {
 	double dist = offset.length, speed = relVel.length;
-	
+
 	if(speed < 0.05) {
 		//Accelerates for half the time, decelerates for half the time
 		maxTime = sqrt(4.0 * dist / a) * 0.5;
@@ -113,10 +116,10 @@ vec3d accToGoal(double a, double& maxTime, const vec3d& offset, const vec3d& rel
 			velDot = relVel.dot(offset) / (dist * speed);
 		if(velDot > straighDot) {
 			//We must accelerate up to the target speed before hitting the point
-			
+
 			// d = 1/2 a * t^2 (where t = v/a)
 			double accelDist = 0.5 * speed * speed / a;
-			
+
 			if(accelDist > dist) {
 				//error(accelDist + " vs " + dist);
 				//maxTime = sqrt(4.0 * (accelDist - dist) / a) * 0.5;
@@ -151,29 +154,29 @@ vec3d accToGoal(double a, double& maxTime, const vec3d& offset, const vec3d& rel
 			vec3d linearVel = offset.normalized(speed * velDot);
 			vec3d latVel = relVel - linearVel;
 			vec3d zero;
-			
+
 			double rangeLow = 0.0001, rangeHigh = 0.9999;
 			double aToward = 0.7;
 			double aLat;
-			
+
 			double t = 0, leastErr = 999999999.0;
-			
+
 			for(uint i = 0; i < 15; ++i) {
 				aLat = sqrt(1.0 - (aToward * aToward));
-			
+
 				double tToward = timeToTarg(aToward * a, offset, linearVel);
 				//double tLat = timeToTarg(aLat * a, zero, latVel);
-				
+
 				double tLat = latVel.length / (aLat * a);
 				double latDist = latVel.length * tLat * 0.5;
 				tLat += sqrt(4.0 * latDist / (aLat * a));
-				
+
 				double err = abs(tToward - tLat);
 				if(err < leastErr) {
 					leastErr = err;
 					t = (tToward + tLat) * 0.5;
 				}
-				
+
 				if(err < 0.02)
 					break;
 				else if(tToward > tLat) {
@@ -186,13 +189,13 @@ vec3d accToGoal(double a, double& maxTime, const vec3d& offset, const vec3d& rel
 				}
 			}
 			aLat = sqrt(1.0 - (aToward * aToward));
-			
+
 			double maxT1 = 0, maxT2 = 0;
-			
+
 			vec3d linAcc = accToGoal(aToward * a, maxT1, offset, linearVel);
 			//vec3d latAcc = accToGoal(aLat * a, maxT2, zero, latVel);
 			vec3d latAcc = latVel.normalize(aLat * a); maxT2 = latVel.length / (aLat * a);
-			
+
 			maxTime = min(maxT1, maxT2);
 			return latAcc + linAcc;
 		}
@@ -218,11 +221,12 @@ tidy class Mover : Component_Mover, Savable {
 	float rotSpeed = shipRotSpeed;
 	bool vectorMovement = false;
 	bool fleetRelative = true;
-	
+
 	const Object@ colliding;
 
 	double accel = 1.0;
 	double accelBonus = 0;
+	double gamma = 0;
 	bool moving = false;
 	bool rotating = false;
 	bool moverDelta = false;
@@ -243,6 +247,7 @@ tidy class Mover : Component_Mover, Savable {
 		data >> accel;
 		if(data >= SV_0100)
 			data >> accelBonus;
+		data >> gamma;
 		data >> moving;
 		data >> rotating;
 		data >> lockTo;
@@ -277,12 +282,13 @@ tidy class Mover : Component_Mover, Savable {
 		if(data >= SV_0067)
 			data >> prevPathId;
 	}
-	
+
 	void save(SaveFile& data) {
 		data << target;
 		data << destination;
 		data << accel;
 		data << accelBonus;
+		data << gamma;
 		data << moving;
 		data << rotating;
 		data << lockTo;
@@ -340,7 +346,7 @@ tidy class Mover : Component_Mover, Savable {
 		}
 		return lockTo;
 	}
-	
+
 	double get_ftlSpeed() {
 		return FTLSpeed;
 	}
@@ -383,7 +389,7 @@ tidy class Mover : Component_Mover, Savable {
 		moverDelta = true;
 		posDelta = true;
 	}
-	
+
 	bool get_isColliding() const {
 		return colliding !is null;
 	}
@@ -395,7 +401,7 @@ tidy class Mover : Component_Mover, Savable {
 	bool get_isMoving(const Object& obj) const {
 		return moving || rotating || FTL;
 	}
-	
+
 	vec3d get_internalDestination() const {
 		return destination;
 	}
@@ -447,7 +453,7 @@ tidy class Mover : Component_Mover, Savable {
 	void getMovePath(const Object& obj) const {
 		if(path is null)
 			return;
-	
+
 		Object@ prev;
 		for(uint i = 0, cnt = path.length; i < cnt; ++i) {
 			auto@ node = path[i];
@@ -456,6 +462,16 @@ tidy class Mover : Component_Mover, Savable {
 			if(node.pathExit !is null)
 				yield(node.pathExit);
 		}
+	}
+
+	double get_speed(const Object& obj) const {
+		double v = obj.velocity.length;
+		return v;
+	}
+
+	double get_relativisticSpeed(const Object& obj) const {
+		double v = obj.velocity.length;
+		return v / c;
 	}
 
 	double get_maxAcceleration() const {
@@ -488,11 +504,11 @@ tidy class Mover : Component_Mover, Savable {
 		accelBonus += mod;
 		moverDelta = true;
 	}
-	
+
 	bool get_leaderLock() {
 		return fleetRelative;
 	}
-	
+
 	void set_leaderLock(bool doLock) {
 		if(fleetRelative != doLock) {
 			fleetRelative = doLock;
@@ -501,7 +517,7 @@ tidy class Mover : Component_Mover, Savable {
 				moverDelta = true;
 		}
 	}
-	
+
 	void impulse(Object& obj, vec3d ForceSeconds) {
 		obj.velocity += ForceSeconds;
 		moving = true;
@@ -511,13 +527,13 @@ tidy class Mover : Component_Mover, Savable {
 		if(obj.hasOrbit && obj.inOrbit)
 			obj.stopOrbit();
 	}
-	
+
 	void rotate(Object& obj, quaterniond rot) {
 		obj.rotation *= rot;
 		rotating = true;
 		moverDelta = true;
 	}
-	
+
 	double timeToTarget(Object& obj, double a, const vec3d& point, const vec3d& velocity) {
 		//NOTE: The engine implements an identical implementation of timeToTarg for performance reasons
 		//return timeToTarg(a, point - obj.position, velocity - obj.velocity);
@@ -561,7 +577,7 @@ tidy class Mover : Component_Mover, Savable {
 			}
 		}
 	}
-	
+
 	vec3d accelToGoal(Object& obj, double a, double& maxTime, const vec3d& point, const vec3d& velocity) {
 		vec3d offset = point - obj.position;
 		vec3d relVel = velocity - obj.velocity;
@@ -569,6 +585,7 @@ tidy class Mover : Component_Mover, Savable {
 	}
 
 	double moverTick(Object& obj, double time) {
+
 		if(time <= 0)
 			return 0.1;
 
@@ -603,7 +620,7 @@ tidy class Mover : Component_Mover, Savable {
 						dist = d;
 					}
 				}
-				
+
 				if(nearest !is null && colliding is null) {
 					for(int i = 0; i < TARGET_COUNT; ++i) {
 						const Object@ other = nearest.targets[i];
@@ -642,7 +659,7 @@ tidy class Mover : Component_Mover, Savable {
 
 		vec3d dest, destVel, destAccel;
 		PathNode@ pathNode;
-		
+
 		{
 			double dot = targRot.dot(obj.rotation);
 			if(dot < 0.999) {
@@ -668,7 +685,7 @@ tidy class Mover : Component_Mover, Savable {
 		Object@ leader = obj;
 		if(obj.hasSupportAI)
 			@leader = cast<Ship>(obj).Leader;
-		
+
 		double doneRange = obj.radius;
 
 		if(FTL) {
@@ -684,7 +701,7 @@ tidy class Mover : Component_Mover, Savable {
 				obj.acceleration = vec3d();
 				targRot = (!rotating && inCombat) ? combatFacing : targFacing;
 				FTL = false;
-			
+
 				if(obj.hasLeaderAI)
 					playParticleSystem("FTLExit", obj.position, obj.rotation, obj.radius * 4.0, obj.visibleMask);
 			}
@@ -709,7 +726,6 @@ tidy class Mover : Component_Mover, Savable {
 					return 0.5;
 				}
 			}
-
 			//Check for path invalidation
 			if(prevPathId != 0 && prevPathId != obj.owner.PathId.value)
 				updatePath(obj);
@@ -746,7 +762,7 @@ tidy class Mover : Component_Mover, Savable {
 					dest = lockTo.position + lockOffset;
 					destVel = lockTo.velocity;
 					destAccel = lockTo.acceleration;
-					
+
 					//Compensate for varying tick times
 					double tDiff = (obj.lastTick + time) - lockTo.lastTick;
 					if(tDiff != 0.0) {
@@ -759,14 +775,14 @@ tidy class Mover : Component_Mover, Savable {
 						dest = target.position;
 						destVel = target.velocity;
 						destAccel = target.acceleration;
-						
+
 						//Compensate for varying tick times
 						double tDiff = (obj.lastTick + time) - target.lastTick;
 						if(tDiff != 0.0) {
 							dest += (destVel + (destAccel * (tDiff * 0.5))) * tDiff;
 							destVel += destAccel * tDiff;
 						}
-						
+
 						//Try to reach the target at a particular distance
 						//NOTE: This is inaccurate (the angle of the target will change during target prediction)
 						//		However, because we iterate over small time steps, the error should be relatively small
@@ -809,12 +825,23 @@ tidy class Mover : Component_Mover, Savable {
 				destAccel = vec3d();
 			}
 		}
-		
+
 		doneRange *= doneRange;
 		compDestination = dest;
 
 		double a = accel;
-		
+		double v = obj.speed;
+
+		//This both prevents velocity to ever reaching 1 c either by calculation or roundup
+		if (v >= 0.999994 * c) {
+			obj.velocity *= 0.999994;
+			v = obj.speed;
+		}
+		//Lorentz factor
+		gamma = 1 / sqrt(1 - (sqr(v) / sqr(c)));
+		//Apply gamma to acceleration
+		a /= gamma;
+
 		obj.position += obj.velocity * time;
 
 		if(obj.owner.ForbidDeepSpace != 0) {
@@ -836,7 +863,7 @@ tidy class Mover : Component_Mover, Savable {
 				}
 			}
 		}
-		
+
 		if(!isLocked && (a <= 0.0000001 || a != a)) {
 			double speed = obj.velocity.length;
 			double tickAccel = 0.1 * time;
@@ -863,14 +890,14 @@ tidy class Mover : Component_Mover, Savable {
 				return 0.125;
 			}
 		}
-		
+
 		//Check if we can decellerate to our target this tick
 		double tGoal = newtonArrivalTime(a, dest - obj.position, destVel - obj.velocity);
 		if(tGoal > 1.0e4 || tGoal != tGoal) {
 			//We might not be able to reach the target (infinite time), so make sure we're working with a vaguely sensible timeline
 			tGoal = 1.0e4;
 		}
-		
+
 		if(pathNode !is null && (tGoal <= time || tGoal <= 1.0 || (obj.position + obj.velocity).distanceToSQ(dest) < doneRange)) {
 			if(pathNode.pathEntry !is null) {
 				playParticleSystem("GateFlash", obj.position, obj.rotation, obj.radius, obj.visibleMask, false);
@@ -941,12 +968,12 @@ tidy class Mover : Component_Mover, Savable {
 				double tOff = tGoal - time;
 				vec3d predDest = dest + (destVel + (destAccel * (tOff * 0.5))) * tOff;
 				vec3d predVel = destVel + destAccel * tOff;
-			
+
 				double requires = newtonArrivalTime(a, predDest - obj.position, predVel - obj.velocity);
 				//We may be near a case where we can't reach the target
 				if(requires > 1.0e4 || requires != requires)
 					break;
-				
+
 				if(abs(requires - tGoal) < 0.02 || requires <= time) {
 					tGoal = requires;
 					break;
@@ -955,19 +982,19 @@ tidy class Mover : Component_Mover, Savable {
 					double diff = abs(requires - tGoal) * 0.1;
 					vec3d primeDest = predDest + (predVel + (destAccel * (diff * 0.5))) * diff;
 					vec3d primeVel = predVel + destAccel * diff;
-					
+
 					double then = timeToTarget(obj, a, primeDest, primeVel);
-					
+
 					//Move to a guess for the next 0
 					double slope = ((then - requires) / diff) - 1.0;
 					double y = then - (requires + diff);
 					tGoal = (requires + diff) - y / slope;
 				}
 			}
-			
+
 			vec3d prevPos = obj.position;
 			vec3d prevVel = obj.velocity;
-			
+
 			if(tGoal > 1.0) {
 				if(leader !is obj && cast<Ship>(leader) !is null) {
 					if(obj.isDetached)
@@ -990,13 +1017,19 @@ tidy class Mover : Component_Mover, Savable {
 						double take = 0;
 						obj.acceleration = accToGoal(a, take, dest - obj.position, destVel - obj.velocity);
 						take = min(timeLeft, max(take, 0.01));
+
+						//Apply gamma to calculations
+						obj.acceleration /= gamma;
+
 						obj.position += obj.acceleration * (take * take * 0.5);
 						obj.velocity += obj.acceleration * take;
 						timeLeft -= take;
 					} while(timeLeft > 0.0001);
 
 					if(!vectorMovement) {
-						if((leader is obj || cast<Ship>(leader) is null) && obj.acceleration.lengthSQ > 0.01 && tGoal > 1.0)
+						//The obj.acceleration.lengthSQ condition causes the ship to rotate as acceleration becomes infinitesimal when approaching c, so removing it.
+						//if((leader is obj || cast<Ship>(leader) is null) && obj.acceleration.lengthSQ > 0.01 && tGoal > 1.0)
+						if((leader is obj || cast<Ship>(leader) is null) && tGoal > 1.0)
 							targRot = quaterniond_fromVecToVec(vec3d_front(), dest - obj.position, vec3d_up());
 					}
 				}
@@ -1009,11 +1042,11 @@ tidy class Mover : Component_Mover, Savable {
 				obj.velocity = destVel;
 				obj.acceleration = destAccel;
 			}
-			
+
 			//double trueAcc = prevVel.distanceTo(obj.velocity) / time;
 			//if(trueAcc - a > 0.001)
 			//	error(trueAcc + " > " + a);
-			
+
 			isLocked = false;
 			return tGoal * 0.5;
 		}
@@ -1044,25 +1077,25 @@ tidy class Mover : Component_Mover, Savable {
 		if(syncedID == moveID)
 			syncedID = -1;
 	}
-	
+
 	PathNode@ dodge(Object& obj, const line3dd& line, Object@ ignore, Object@& prev) {
 		auto@ obstacle = trace(line, 0x1);
 		if(obstacle is null || obstacle is ignore || obstacle is prev || !(obstacle.isStar || obstacle.isPlanet))
 			return null;
-		
+
 		double baseDist = line.start.distanceTo(obstacle.position);
-		
+
 		@prev = obstacle;
-		
+
 		double dist = (obj.radius + obstacle.radius) * 2.0;
 		dist = max(dist, sqrt(baseDist));
-		
+
 		vec3d pt = line.getClosestPoint(obstacle.position, false);
 		if(pt != obstacle.position)
 			pt = obstacle.position + (pt - obstacle.position).normalized(dist);
 		else
 			pt = obstacle.position + quaterniond_fromAxisAngle(line.direction, randomd(-pi,pi)) * line.direction.cross(vec3d_up()).normalized(dist);
-		
+
 		PathNode node;
 		node.pathTo = pt;
 		node.dist = (dist + (pt - line.start).normalize().dot(pt - obstacle.position)); //The less perpendicular the course, the further away we can start changing course
@@ -1076,7 +1109,7 @@ tidy class Mover : Component_Mover, Savable {
 			@temp = array<PathNode@>();
 		@path = null;
 		pathOddityGates(obj.owner, temp, obj.position, point, maxAcceleration);
-		
+
 		if(maxAcceleration > 0) {
 			Object@ prev;
 			vec3d from = obj.position + obj.velocity * (obj.velocity.length / (maxAcceleration * 2.0));
@@ -1099,7 +1132,7 @@ tidy class Mover : Component_Mover, Savable {
 				if(node !is null)
 					temp.insertAt(i, @node);
 			}
-			
+
 			if(temp.length > 0) {
 				auto@ f = temp.last;
 				if(f.pathExit !is null)
@@ -1107,7 +1140,7 @@ tidy class Mover : Component_Mover, Savable {
 				else
 					from = f.pathTo;
 			}
-			
+
 			while(temp.length < 50) {
 				line3dd line(from, point);
 				auto@ node = dodge(obj, line, targ, prev);
@@ -1117,7 +1150,7 @@ tidy class Mover : Component_Mover, Savable {
 				from = node.pathTo;
 			}
 		}
-		
+
 		if(temp.length > 0)
 			@path = temp;
 		prevPathId = obj.owner.PathId.value;
@@ -1145,7 +1178,7 @@ tidy class Mover : Component_Mover, Savable {
 			moverDelta = true;
 		}
 	}
-	
+
 	bool isOnMoveOrder(int id) {
 		return !FTL && id == moveID && moving;
 	}
@@ -1261,7 +1294,7 @@ tidy class Mover : Component_Mover, Savable {
 			facingDelta = true;
 			targFacing = rotation;
 		}
-		
+
 		if(obj.rotation.dot(targFacing) > 0.999) {
 			return true;
 		}
@@ -1304,7 +1337,7 @@ tidy class Mover : Component_Mover, Savable {
 		posDelta = true;
 		obj.wake();
 	}
-	
+
 	bool writeMoverDelta(const Object& obj, Message& msg) {
 		const Ship@ ship = cast<const Ship@>(obj);
 		if(syncedID != moveID || moverDelta) {
@@ -1395,7 +1428,7 @@ tidy class Mover : Component_Mover, Savable {
 			msg << float(rotSpeed);
 		}
 		msg.writeBit(vectorMovement);
-		
+
 		if(targRot == targFacing) {
 			msg.write1();
 			msg.writeRotation(targRot);
@@ -1405,7 +1438,7 @@ tidy class Mover : Component_Mover, Savable {
 			msg.writeRotation(targRot);
 			msg.writeRotation(targFacing);
 		}
-		
+
 		msg << moving;
 		msg << rotating;
 		msg << FTL;
@@ -1471,7 +1504,7 @@ tidy class Mover : Component_Mover, Savable {
 		else
 			rotSpeed = shipRotSpeed;
 		vectorMovement = msg.readBit();
-		
+
 		if(msg.readBit()) {
 			targFacing = msg.readRotation();
 			targRot = targFacing;
@@ -1488,7 +1521,7 @@ tidy class Mover : Component_Mover, Savable {
 		msg >> FTL;
 		if(FTL)
 			FTLSpeed = msg.read_float();
-		
+
 		msg >> inCombat;
 		if(inCombat)
 			combatFacing = msg.readRotation();
@@ -1510,7 +1543,7 @@ tidy class Mover : Component_Mover, Savable {
 				msg >> path[i];
 			}
 		}
-		
+
 		if(prevFTL && !FTL)
 			obj.velocity = vec3d();
 
