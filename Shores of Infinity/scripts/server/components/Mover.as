@@ -4,7 +4,7 @@ import saving;
 import ftl;
 
 //Maximum sublight speed limit, that is, the speed of light, aka c, ported to a scale-relative manageable value in game
-const double c = 10.0;
+double c = config::LIGHT_SPEED;
 
 const double straighDot = 0.99999;
 

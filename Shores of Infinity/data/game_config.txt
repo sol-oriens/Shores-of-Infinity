@@ -90,10 +90,13 @@ PLANET_FREQUENCY: 1.0
 //Frequency of artifacts
 ARTIFACT_FREQUENCY: 0.25
 
+//Speed of light
+LIGHT_SPEED: 1000.0
+
 //System size modifier
 SYSTEM_SIZE: 1.0
 
-//Whether black holes at the center of galaxies are supermassive.
+//Whether black holes at the center of galaxies are supermassive
 SUPERMASSIVE_BLACK_HOLES: 1.0
 
 //Whether to enable civilian trade
