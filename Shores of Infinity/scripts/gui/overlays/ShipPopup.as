@@ -32,8 +32,8 @@ class ShipPopup : Popup {
 	GuiBlueprint@ bpdisp;
 	GuiText@ name;
 	GuiText@ ownerName;
-	GuiText@ speed;
 
+	GuiProgressbar@ speed;
 	GuiSprite@ shieldIcon;
 	GuiProgressbar@ health;
 	GuiProgressbar@ strength;
@@ -48,20 +48,21 @@ class ShipPopup : Popup {
 
 	ShipPopup(BaseGuiElement@ parent) {
 		super(parent);
-		size = vec2i(190, 220);
+		size = vec2i(190, 240);
 
 		@name = GuiText(this, Alignment(Left+40, Top+6, Right-4, Top+28));
 		@ownerName = GuiText(this, Alignment(Left+40, Top+28, Right-6, Top+46));
 		ownerName.horizAlign = 1.0;
 
-		@speed = GuiText(this, Alignment(Left+6, Bottom-95, Right-6, Bottom-80));
-		speed.horizAlign = 1.0;
-
-		@bpdisp = GuiBlueprint(this, Alignment(Left+4, Top+50, Right-4, Bottom-80));
+		@bpdisp = GuiBlueprint(this, Alignment(Left+4, Top+50, Right-4, Bottom-100));
 		bpdisp.popHover = true;
 		bpdisp.popSize = vec2i(77, 40);
 
 		@cargo = GuiCargoDisplay(bpdisp, Alignment(Left, Top, Right, Top+25));
+
+		@speed = GuiProgressbar(this, Alignment(Left+3, Bottom-100, Right-4, Bottom-80));
+		speed.frontColor = Color(0xffff00ff);
+		GuiSprite spdIcon(speed, Alignment(Left, Top, Left+24, Bottom), icons::Speed);
 
 		GuiSkinElement band(this, Alignment(Left+3, Bottom-80, Right-4, Bottom-50), SS_NULL);
 
@@ -489,8 +490,10 @@ class ShipPopup : Popup {
 		}
 
 		//Update speed
-		if (origObject.hasMover)
-			speed.text = toString(ship.relativisticSpeed) + " c (" + toString(ship.speed, 2) + " u/s)";
+		if (origObject.hasMover) {
+			speed.progress = ship.relativisticSpeed;
+			speed.text = toString(ship.relativisticSpeed) + "c (" + toString(ship.speed, 2) + "u/s)";
+		}
 		else
 			speed.text = "";
 
