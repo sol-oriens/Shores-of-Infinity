@@ -540,9 +540,9 @@ class MakePlanet : MapHook {
 		plNode.planetType = planet.PlanetType;
 
 		//Setup rings
-		//SoI - Gas Giants: gas giants always have rings
-		//SoI - Ice Giants: ice giants always have rings
-		if ((resource !is null && giant.boolean) || (rings.boolean && randomi(0,9) == 0)) {
+		//SoI - Gas Giants: gas giants almost always have rings
+		//SoI - Ice Giants: ice giants almost always have rings
+		if (rings.boolean && (giant.boolean && randomi(0,9) < 9 || !giant.boolean && randomi(0,9) == 0)) {
 			uint style = randomi();
 			plNode.addRing(style);
 			planet.setRing(style);
