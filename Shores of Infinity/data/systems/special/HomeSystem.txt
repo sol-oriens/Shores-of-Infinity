@@ -22,7 +22,7 @@ System: HomeSystem
 	MakePlanet(Resource = RandomType:Food:Common, Conditions = False, Moons = False)
 	MakePlanet(Resource = Water, Conditions = False, Moons = False)
 	MakePlanet(Resource = RandomLevel:1:Common, Conditions = False, Moons = False)
-	MakePlanet(Resource = RareGases, Classification = Gas, Giant = True, Force Native Biome = True, Add Status = GasGiant)
+	MakePlanet(Resource = MetallicGases, Classification = Gas, Giant = True, Force Native Biome = True, Add Status = GasGiant)
 	MakePlanet(Resource = RareGases, Classification = Gas, Giant = True, Force Native Biome = True, Add Status = GasGiant)
 	MakePlanet(Resource = IcyWater, Classification = Icy, Giant = True, Force Native Biome = True, Add Status = IceGiant)
 		AddPlanetResource(LocalIcyWater)
@@ -43,6 +43,8 @@ System: HomeSystem
 	MakeAsteroid(Resource = AsteroidFTLPermanent)
 		ActiveConfigOption(QUICK_START)
 			SetMine()
+	MakeAsteroid(Resource = Explosives)
+	MakeAsteroid(Resource = Neutronium)
 
 	MakeAnomaly()
 	MakeArtifact(Type = Comet)
@@ -54,10 +56,8 @@ System: HomeSystem
 	GuaranteeAdjacentResource(RandomLevel:2:Common, Distance = 3)
 
 	MakeAdjacentAsteroid(Resource = Distributed)
-	MakeAdjacentAsteroid(Resource = Explosives)
 	MakeAdjacentAsteroid(Resource = Distributed, Farther = True)
 	MakeAdjacentAsteroid(Resource = AsteroidFTLPermanent, Farther = True)
-	MakeAdjacentAsteroid(Resource = Neutronium, Farther = True)
 
 	AddAdjacentArtifacts(2)
 	MakeAdjacentCreepCamp(SmallCamp, Place Far = True)

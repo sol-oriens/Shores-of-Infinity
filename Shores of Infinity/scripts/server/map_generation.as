@@ -425,7 +425,7 @@ class MapGeneration {
 		uint cnt = systemData.length;
 
 		//SoI - Scaling: link distance
-		double DistFactor = 20.0;
+		double DistFactor = 40.0;
 
 		for(uint i = 0; i < cnt; ++i) {
 			SystemData@ desc = systemData[i];

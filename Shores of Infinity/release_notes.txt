@@ -36,6 +36,8 @@ v0.2.0b
 - Slightly increased the frequency of Water on planets.
 - Added Metallic Gases, a new scalable resource found on gas giants only. Increases Labor generation and civilian Energy pressure by 0%/5%/10%/30%/60%/120%/200%. Cannot be exported.
 - Reverted Rare Gases acceleration bonus to 0%/5%/10%/30%/60%/120%/200% (up from 0%/2.5%/5%/10%/30%/60%/120%).
+- Moved the guaranteed Explosives asteroid in the home system.
+- Moved the guaranteed Neutronium asteroid in the home system.
 
 [*] Systems
 
