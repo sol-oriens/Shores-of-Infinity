@@ -62,7 +62,6 @@ class ShipPopup : Popup {
 
 		@speed = GuiProgressbar(this, Alignment(Left+3, Bottom-100, Right-4, Bottom-80));
 		speed.frontColor = Color(0xffff00ff);
-		GuiSprite spdIcon(speed, Alignment(Left, Top, Left+24, Bottom), icons::Speed);
 
 		GuiSkinElement band(this, Alignment(Left+3, Bottom-80, Right-4, Bottom-50), SS_NULL);
 
