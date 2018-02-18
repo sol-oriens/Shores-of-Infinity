@@ -4,7 +4,7 @@ Ability: LaserBeam
   Icon: Laser
 
   Target: ship = Object
-  Range: 350000
+  Range: 700000
   TargetFilterOwned(ship)
   TargetFilterFlagship(ship, Allow Stations = False)
   TargetFilterDesignTag(ship, Lightsail)

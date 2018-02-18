@@ -207,7 +207,6 @@ TECHNOFARM_DESC: <<
 METALLICGASES: Metallic Gases
 METALLICGASES_BLURB: <<
 	[font=Small]Increases Labor generation and civilian Energy pressure by [levels=$1;#00c0ff]0%/5%/10%/30%/60%/120%/200%[/levels].[/font]
-	Cannot be exported.
 >>
 METALLICGASES_DESC: <<
 	The atmosphere of this planet is mainly composed of elements which, under immense pressure effects, turn into electrical conductors. The in situ use of these properties is very beneficial to any industry.
@@ -219,7 +218,6 @@ METALLICGASES_DESC: <<
 RAREGASES: Rare Gases
 RAREGASES_BLURB: <<
 	[font=Small]Increases ship engine thrust by a cumulative bonus of [levels=$1;#ffb4b6]0%/5%/10%/30%/60%/120%/200%[/levels]. Gains various pressures per level.[/font]
-	 Cannot be exported.
 >>
 RAREGASES_DESC: <<
 	The fluids in the atmosphere of this planet provide a lot of energy and other materials as well as extremely potent chemicals to enhance propulsion systems.

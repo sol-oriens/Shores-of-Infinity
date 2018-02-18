@@ -18,10 +18,10 @@ Ability: TelescopeArray
 	Icon: VoteIcons::3
 	Activate Sound: telescope_activate
 
-	DistanceEnergyCost(targ, 0.0003)
+	DistanceEnergyCost(targ, 0.00015)
 
 	Target: targ = Object
-	Range: 400000
+	Range: 800000
 	Cooldown: 60
 	Hotkey: T
 	TargetFilterRegion(targ)
@@ -35,10 +35,10 @@ Ability: TelescopeArrayDistant
 	Activate Sound: telescope_activate
 
 	DistanceEnergyCost(targ, 0.0005)
-	ConsumeDistanceFTL(targ, Base Cost = 10, Distance Cost = 0.00015)
+	ConsumeDistanceFTL(targ, Base Cost = 10, Distance Cost = 0.000075)
 
 	Target: targ = Object
-	Range: 1000000
+	Range: 2000000
 	Cooldown: 180
 	Hotkey: T
 	TargetFilterRegion(targ)

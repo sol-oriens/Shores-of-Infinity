@@ -21,14 +21,14 @@ Module: Telescope
 	Labor Cost: 15
 	Maintenance: 40
 
-	ShowRange(400000, #00ff00)
+	ShowRange(800000, #00ff00)
 	GrantAbility(TelescopeArray)
 
 Module: QuantumTelescope
 	Name: #ORB_QUANTUM_TELESCOPE
 	Blurb: #ORB_QUANTUM_TELESCOPE_BLURB
 	Description: #ORB_QUANTUM_TELESCOPE_DESC
-	
+
 	Icon: GuiOrbitalIcons::17
 	Strategic Icon: OrbitalIcons::17
 	Icon Size: 0.02
@@ -48,5 +48,5 @@ Module: QuantumTelescope
 
 	ConsumeCargo(Ore, 750)
 
-	ShowRange(1000000, #00ff00)
+	ShowRange(2000000, #00ff00)
 	GrantAbility(TelescopeArrayDistant)

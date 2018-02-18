@@ -22,5 +22,5 @@ Module: LaserDrive
 
   FacesOrbitCenter()
 
-  ShowRange(350000, #00ff00)
+  ShowRange(700000, #00ff00)
   GrantAbility(LaserBeam)

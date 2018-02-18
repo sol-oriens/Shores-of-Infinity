@@ -28,6 +28,8 @@ v0.2.0b
 [*] Orbitals
 
 - Fling beacon maintenance cost is now 150k (down from 200k).
+- Increased the range of the 'Telescope' abilities on telescope arrays and quantum telescope arrays to 800k units (up from 400k units) and 2M units (up from 1M units), respectively. Decreased the energy cost by half.
+- Increased the range of the 'Toggle Laser Propulsion Beam' ability on phased array laser drives to 700k units (up from 350k units).
 
 [*] Resources
 
@@ -41,6 +43,10 @@ v0.2.0b
 - Decreased scale of orbitals by a factor of 0.5.
 - Increased default system spacing by a factor of 2 (300,000 units). The total factor compared to vanilla is now around 46.
 - Greatly increased the average number of planets per system.
+
+[*] Subsystems
+
+- Increased the range of the 'Toggle Laser Propulsion Beam' ability on phased array laser drives to 700k units (up from 350k units).
 
 [*] User Interface
 
