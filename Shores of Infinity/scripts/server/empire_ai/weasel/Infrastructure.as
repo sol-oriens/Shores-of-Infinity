@@ -53,6 +53,8 @@ enum FocusType {
 }
 
 int moonBaseStatusId = -1;
+int gasGiantStatusId = -1;
+int iceGiantStatusId = -1;
 
 final class OwnedSystemEvents : IOwnedSystemEvents {
   Infrastructure@ infrastructure;
@@ -426,17 +428,10 @@ class PlanetCheck {
     @this.ai = ai;
     _checkInTime = gameTime;
 
-    int resId = this.ai.obj.primaryResourceType;
-    if (resId > -1) {
-      const ResourceType@ type = getResource(resId);
-      //SoI - TODO: Now that giants can have different resources this should be optimised with planet flags
-      if (type.ident == "RareGases")
-        _isGasGiant = true;
-      else if (type.ident =="IcyWater"
-        || type.ident == "IcyPekelm"
-        || type.ident == "IcySalts")
-        _isIceGiant = true;
-    }
+    if (this.ai.obj.getStatusStackCountAny(gasGiantStatusId) > 0)
+      _isGasGiant = true;
+    else if (this.ai.obj.getStatusStackCountAny(iceGiantStatusId) > 0)
+      _isIceGiant = true;
   }
 
   double get_checkInTime() const { return _checkInTime; }
@@ -575,6 +570,8 @@ final class Infrastructure : AIComponent {
 		@waterClass = getResourceClass("WaterType");
 		@scalableClass = getResourceClass("Scalable");
     moonBaseStatusId = getStatusID("MoonBase");
+    gasGiantStatusId = getStatusID("GasGiant");
+    iceGiantStatusId = getStatusID("IceGiant");
 
     systems.registerOwnedSystemEvents(OwnedSystemEvents(this));
     systems.registerOutsideBorderSystemEvents(OutsideBorderSystemEvents(this));
