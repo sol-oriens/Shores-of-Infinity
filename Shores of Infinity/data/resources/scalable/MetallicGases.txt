@@ -1,0 +1,38 @@
+Resource: MetallicGases
+	Name: #METALLICGASES
+	Blurb: #METALLICGASES_BLURB
+	Description: #METALLICGASES_DESC
+	Native Biome: LightFluids
+	Class: Scalable
+
+	Small Icon: ResourceIconsSmall::41*#e8e7e7
+	Icon: ResourceIconsSmall::41*#e8e7e7
+	Pressure: 2 Energy
+
+	Distribution: 0
+	Frequency: 0
+
+	Rarity: Uncommon
+	Limitless Level: True
+	Can Be Terraformed: False
+	Exportable: False
+
+	Planet Classification: Gas
+
+	IfLevel(1, AddLaborFactor(0.05), Exact = True )
+	IfLevel(1, ModCivResourceMult(Energy, 0.05), Exact = True )
+
+	IfLevel(2, AddLaborFactor(0.1), Exact = True )
+	IfLevel(2, ModCivResourceMult(Energy, 0.1), Exact = True )
+
+	IfLevel(3, AddLaborFactor(0.3), Exact = True )
+	IfLevel(3, ModCivResourceMult(Energy, 0.3), Exact = True )
+
+	IfLevel(4, AddLaborFactor(0.6), Exact = True )
+	IfLevel(4, ModCivResourceMult(Energy, 0.6), Exact = True )
+
+	IfLevel(5, AddLaborFactor(1.2), Exact = True )
+	IfLevel(5, ModCivResourceMult(Energy, 1.2), Exact = True )
+
+	IfLevel(6, AddLaborFactor(2.0), Exact = True )
+	IfLevel(6, ModCivResourceMult(Energy, 2.0), Exact = True )

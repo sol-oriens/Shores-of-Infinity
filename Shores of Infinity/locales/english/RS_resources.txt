@@ -204,9 +204,21 @@ TECHNOFARM_DESC: <<
 
 	Cannot be exported.
 >>
+METALLICGASES: Metallic Gases
+METALLICGASES_BLURB: <<
+	[font=Small]Increases Labor generation and civilian Energy pressure by [levels=$1;#00c0ff]0%/5%/10%/30%/60%/120%/200%[/levels].[/font]
+	Cannot be exported.
+>>
+METALLICGASES_DESC: <<
+	The atmosphere of this planet is mainly composed of elements which, under immense pressure effects, turn into electrical conductors. The in situ use of these properties is very beneficial to any industry.
+
+	Increases Labor generation and civilian Energy pressure by [levels=$1;#00c0ff]0%/5%/10%/30%/60%/120%/200%[/levels].
+
+	[i][color=#aaa]This resource is a scalable resource and cannot be exported or used to level up. Its bonuses depend on the level of the planet.[/color][/i]
+>>
 RAREGASES: Rare Gases
 RAREGASES_BLURB: <<
-	[font=Small]Increases ship engine thrust by a cumulative bonus of [levels=$1;#ffb4b6]0%/2.5%/5%/10%/30%/60%/120%[/levels]. Gains various pressures per level.[/font]
+	[font=Small]Increases ship engine thrust by a cumulative bonus of [levels=$1;#ffb4b6]0%/5%/10%/30%/60%/120%/200%[/levels]. Gains various pressures per level.[/font]
 	 Cannot be exported.
 >>
 RAREGASES_DESC: <<
@@ -214,27 +226,26 @@ RAREGASES_DESC: <<
 
 	[b]If this planet is Level 1 or higher:[/b]
 	[offset=30]The planet gains 1 Energy pressure per Level.[/offset]
-	[offset=30]Ships gain 2.5% extra acceleration.[/offset]
+	[offset=30]Ships gain a 5% cumulative acceleration bonus.[/offset]
 
 	[b]If this planet is Level 2 or higher:[/b]
 	[offset=30]The planet gains 1 Defense pressure per Level starting from Level 2.[/offset]
-	[offset=30]Ships gain 5% extra acceleration.[/offset]
+	[offset=30]Ships gain a 10% cumulative acceleration bonus.[/offset]
 
 	[b]If this planet is Level 3 or higher:[/b]
 	[offset=30]The planet gains 1 Research pressure per Level starting from Level 3.[/offset]
-	[offset=30]Ships gain 10% extra acceleration.[/offset]
+	[offset=30]Ships gain a 30% cumulative acceleration bonus.[/offset]
 
 	[b]If this planet is Level 4 or higher:[/b]
 	[offset=30]The planet gains 1 Influence pressure per Level starting from Level 4.[/offset]
-	[offset=30]Ships gain 30% extra acceleration.[/offset]
+	[offset=30]Ships gain a 60% cumulative acceleration bonus.[/offset]
 
 	[b]If this planet is Level 5 or higher:[/b]
 	[offset=30]The planet gains 1 Money pressure per Level starting from Level 5.[/offset]
-	[offset=30]Ships gain 60% extra acceleration.[/offset]
+	[offset=30]Ships gain a 120% cumulative acceleration bonus.[/offset]
 
 	[b]If this planet is Level 6:[/b]
-	[offset=30]Ships gain 120% extra acceleration.[/offset]
-
+	[offset=30]Ships gain a 200% cumulative acceleration bonus.[/offset]
 
 	[i][color=#aaa]This resource is a scalable resource and cannot be exported or used to level up. Its bonuses depend on the level of the planet.[/color][/i]
 >>
