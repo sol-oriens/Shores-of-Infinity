@@ -1,7 +1,7 @@
 import orbitals;
 from nodes.FleetPlane import SHOW_FLEET_PLANES;
 
-//SoI - Scaling: icon size
+//SoI - Scaling: max icon size
 const double MAX_SIZE = 10000.0;
 
 final class OrbitalNodeScript {
@@ -50,6 +50,7 @@ final class OrbitalNodeScript {
 
 		//SoI - Scaling
 		if(node.sortDistance > 1000.0 && def.distantIcon.valid) {
+			//SoI - Scaling: orbital icon size
 			double size = obj.radius * def.iconSize;
 			size *= node.sortDistance * 0.09;
 			size = min(size, MAX_SIZE);

@@ -206,7 +206,7 @@ double slipstreamInaccuracy(Object& obj, const vec3d& position) {
 
 	if(dist <= optDist)
 		return 0;
-	return (dist - optDist) * 0.1;
+	return (dist - optDist) * 0.05;
 }
 
 bool canSlipstreamTo(Object& obj, const vec3d& point) {
@@ -368,7 +368,7 @@ void commitFlux(Object& obj, const vec3d& pos) {
 
 	if(obj.hasStatuses) {
 		double dist = fluxPos.distanceTo(obj.position);
-		double cd = dist / FLUX_CD_RANGE / 20;
+		double cd = dist / FLUX_CD_RANGE / 40;
 		obj.addStatus(fluxStatus, timer=cd);
 	}
 

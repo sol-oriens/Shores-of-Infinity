@@ -7,7 +7,7 @@ Resource: Water
 	Icon: ResourceIcons::0
 	Small Icon: ResourceIconsSmall::18
 
-	Distribution: 1.2
+	Distribution: 1.6
 
 	Level: 0
 

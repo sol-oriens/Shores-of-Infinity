@@ -16,7 +16,7 @@ final class GasSprite {
 		position = pos;
 
 		//SoI - Scaling: scale the galaxy gas a bit bigger than general scale to obtain a thicker gas plane
-		scale = Scale * 2.0 * 25.0;
+		scale = Scale * 2.0 * 50.0;
 
 		baseCol = col & 0xffffff00;
 		trueAlpha = int(col & 0xff);

@@ -33,7 +33,7 @@ final class StarScript {
 			@star.owner = defaultEmpire;
 
 		//SoI - Scaling: increased light reach
-		lightDesc.att_quadratic = 1.f/(8000.f*8000.f);
+		lightDesc.att_quadratic = 1.f/(10000.f*10000.f);
 
 		double temp = star.temperature;
 		Node@ node;

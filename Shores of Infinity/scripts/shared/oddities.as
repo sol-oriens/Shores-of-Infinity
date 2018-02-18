@@ -65,7 +65,7 @@ StrategicIconNode@ makeOddityVisuals(Oddity& obj, uint type, bool fromCreation =
 			pos.z += off.y;
 
 			//SoI - Scaling: rescale the galaxy gas sprite down when rendering a nebula
-			double rad = obj.radius * 0.65 * 0.04;
+			double rad = obj.radius * 0.65 / 50.0;
 
 			Colorf hsv;
 			hsv.fromHSV(h + normald(-70.0,70.0), clamp(s * normald(0.6,1.4), 0.0, 1.0), v);

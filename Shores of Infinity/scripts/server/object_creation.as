@@ -7,10 +7,12 @@ from civilians import getCivilianName;
 //Base acceleration of a colony ship
 const double COLONYSHIP_BASE_ACCEL = 5.5;
 
-//SoI - Scaling
-const double shipVolumePower = 5.0;
+//SoI - Scaling: ship size
+const double shipVolumePower = 40.0;
 
 const double stationRadiusFactor = 1.3;
+
+const double orbitalRadiusFactor = 0.5;
 
 ColonyShip@ createColonizer(Object& from, Object& to, double population, double accMod) {
 	ObjectDesc colDesc;
@@ -222,7 +224,7 @@ Orbital@ createOrbital(const vec3d& at, const OrbitalModule@ core, Empire@ owner
 		oDesc.name = nameOverride;
 	else
 		oDesc.name = core.name;
-	oDesc.radius = core.size;
+	oDesc.radius = core.size * orbitalRadiusFactor;
 	oDesc.position = at;
 
 	Object@ obj = makeObject(oDesc);

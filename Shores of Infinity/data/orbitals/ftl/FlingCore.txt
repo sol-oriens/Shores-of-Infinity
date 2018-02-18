@@ -2,7 +2,7 @@ Module: FlingCore
 	Name: #ORB_FLING_CORE
 	Blurb: #ORB_FLING_CORE_BLURB
 	Description: #ORB_FLING_CORE_DESC
-	
+
 	Icon: GuiOrbitalIcons::2
 	Strategic Icon: OrbitalIcons::2
 	Icon Size: 0.04
@@ -21,7 +21,7 @@ Module: FlingCore
 	Can Fling: False
 
 	Build Cost: 400
-	Maintenance: 200
+	Maintenance: 150
 	Labor Cost: 20
 
 	ConsumeFTL(250) #version>=147

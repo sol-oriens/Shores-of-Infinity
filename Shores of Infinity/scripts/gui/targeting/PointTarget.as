@@ -299,13 +299,13 @@ class PointDisplay : TargetVisuals {
 	string showDistanceInfo(PointTarget& target) {
 		string dist;
 		if (target.distance <= 999)
-			dist = toString(target.distance, 0) + " u";
+			dist = toString(target.distance, 0) + "u";
 		else if (target.distance <= 999999)
-			dist = toString(target.distance / 1000, 2) + " kU";
+			dist = toString(target.distance / 1000, 2) + "kU";
 		else if (target.distance <= 999999999)
-			dist = toString(target.distance / 1000000, 2) + " MU";
+			dist = toString(target.distance / 1000000, 2) + "MU";
 		else
-			dist = toString(target.distance / 1000000000, 2) + " GU";
+			dist = toString(target.distance / 1000000000, 2) + "GU";
 
 		return " (" + dist + ")";
 	}

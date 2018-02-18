@@ -19,5 +19,5 @@ System: TernarySystem
 
 	ExpandSystem(3000:4000)
 
-	RepeatModified(1:5, $PLANET_FREQUENCY)
+	RepeatModified(1:10, $PLANET_FREQUENCY)
 		MakePlanet()

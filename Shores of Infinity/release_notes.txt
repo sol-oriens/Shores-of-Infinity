@@ -1,3 +1,50 @@
+v0.2.0b
+
+**************************
+*** Release Highlights ***
+**************************
+
+*** The scale of the game has been refined.
+
+************************
+*** Detailed Changes ***
+************************
+
+[*] FTL
+
+- Increased hyperdrive speed by a factor of 2. The total factor compared to vanilla is now 40.
+- Increased slipstream optimal range by a factor of 2 and decreased inaccuracy by a factor of 5. The total increase factor compared to vanilla are now 10 for optimal range and 5 for inaccuracy.
+- Slipstream cost has been reverted to vanilla value.
+- Increased jumpdrive range by a factor of 2. The total factor compared to vanilla is now 20.
+- Reduced flux jump cooldown by a factor of 20. The total factor compared to vanilla is now 40.
+
+[*] Gameplay
+
+- Relativistic physics now affect sublight speed.
+*** The closer the velocity of a ship is to the speed of light, the lesser acceleration has an actual effect on this ship. This also means that sublight speed can never reach, let alone exceed, the speed of light. The speed of light, for practical reasons regarding scale versus playability, has arbitrarily been set to x u/s.
+- ETA calculations for colonization orders now take relativistic speeds into account.
+
+[*] Orbitals
+
+- Fling beacon maintenance cost is now 150k (down from 200k).
+
+[*] Resources
+
+- Slightly increased the frequency of Water on planets.
+
+[*] Systems
+
+- Decreased scale of ships by a factor of 0.125. The total factor compared to vanilla is now 0.0625.
+- Decreased scale of orbitals by a factor of 0.5.
+- Increased default system spacing by a factor of 2 (300,000 units). The total factor compared to vanilla is now around 46.
+- Greatly increased the average number of planets per system.
+
+[*] User Interface
+
+- Changed the display to show distances starting from 1,000 units and beyond with metric prefixes rather than in units only when targeting a destination for FTL orders.
+*** This system was chosen over realistic units (astronomical units, parsecs or even light years) because they cannot be realistically represented in the game, and thus don't really make sense.
+- Added current speed both in u/s and relative to the speed of light (as a factor of c) in the ship info popup. Orbit velocity is displayed as well.
+
 v0.1.2b
 
 **************************

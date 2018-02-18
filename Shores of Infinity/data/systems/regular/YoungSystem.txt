@@ -8,7 +8,7 @@ System: YoungSystem
 
 	AddQuality(-100)
 
-	RepeatModified(1:2, $PLANET_FREQUENCY)
+	RepeatModified(1:5, $PLANET_FREQUENCY)
 		MakePlanet()
 
 	RepeatChance(Chance = 0.8, Repeat Modifier = 0.5)
