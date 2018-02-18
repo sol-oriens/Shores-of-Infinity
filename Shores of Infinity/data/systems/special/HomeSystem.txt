@@ -43,8 +43,6 @@ System: HomeSystem
 	MakeAsteroid(Resource = AsteroidFTLPermanent)
 		ActiveConfigOption(QUICK_START)
 			SetMine()
-	MakeAsteroid(Resource = Explosives)
-	MakeAsteroid(Resource = Neutronium)
 
 	MakeAnomaly()
 	MakeArtifact(Type = Comet)
@@ -56,6 +54,8 @@ System: HomeSystem
 	GuaranteeAdjacentResource(RandomLevel:2:Common, Distance = 3)
 
 	MakeAdjacentAsteroid(Resource = Distributed)
+	MakeAdjacentAsteroid(Resource = Explosives)
+	MakeAdjacentAsteroid(Resource = Neutronium)
 	MakeAdjacentAsteroid(Resource = Distributed, Farther = True)
 	MakeAdjacentAsteroid(Resource = AsteroidFTLPermanent, Farther = True)
 
