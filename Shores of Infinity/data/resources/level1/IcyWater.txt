@@ -2,7 +2,6 @@ Resource: IcyWater
 	Name: #WATER
 	Blurb: #WATER_BLURB
 	Native Biome: HeavyFluids
-	Class: WaterType
 
 	Icon: ResourceIcons::0
 	Small Icon: ResourceIconsSmall::18
@@ -16,3 +15,5 @@ Resource: IcyWater
 	Planet Classification: Icy
 
 	Pressure: 1 Influence
+
+	AddDummyResource(Water)
