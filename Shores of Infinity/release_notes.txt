@@ -24,7 +24,7 @@ v0.2.0b
 - Relativistic physics now affect sublight speed.
 *** The closer the velocity of a ship is to the speed of light, the lesser acceleration has an actual effect on this ship. This also means that sublight speed can never reach, let alone exceed, the speed of light. The speed of light, for practical reasons regarding scale versus playability, has arbitrarily been set to x u/s.
 - ETA calculations for colonization orders now take relativistic speeds into account.
-- Added an icon for remnant pickups in order for them to remain easily visible when zoomed out at much greater distances than vanilla.
+- Fixed bugs where the 'Toggle Laser Propulsion Beam' and 'Repair' abilities would not work properly after loading a previous save.
 
 [*] Orbitals
 
@@ -55,7 +55,8 @@ v0.2.0b
 
 - Changed the display to show distances starting from 1,000 units and beyond with metric prefixes rather than in units only when targeting a destination for FTL orders.
 *** This system was chosen over realistic units (astronomical units, parsecs or even light years) because they cannot be realistically represented in the game, and thus don't really make sense.
-- Added current speed both in u/s and relative to the speed of light (as a factor of c) in the ship info popup. Orbit velocity is displayed as well.
+- Added current speed both in u/s and relative to the speed of light (as a factor of c) in the ship info popup. Orbital velocity is displayed as well.
+- Added an icon for remnant pickups in order for them to remain easily visible when zoomed out at much greater distances than vanilla.
 
 v0.1.2b
 

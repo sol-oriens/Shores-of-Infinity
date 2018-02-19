@@ -744,6 +744,18 @@ class ApplyTargetOwnedVariableStatusEffect : AbilityHook {
 			data.store(statusId);
 		}
 	}
+
+	void save(Ability@ abl, any@ data, SaveFile& file) const{
+		int statusId = -1;
+		data.retrieve(statusId);
+		file << statusId;
+	}
+
+	void load(Ability@ abl, any@ data, SaveFile& file) const{
+		int statusId = -1;
+		file >> statusId;
+		data.store(statusId);
+	}
 #section all
 };
 
@@ -811,6 +823,18 @@ class RepairPerSecondFromSubsystem : AbilityHook {
 				abl.changeTarget(objTarg, newTarg);
 			}
 		}
+	}
+
+	void save(Ability@ abl, any@ data, SaveFile& file) const{
+		int statusId = -1;
+		data.retrieve(statusId);
+		file << statusId;
+	}
+
+	void load(Ability@ abl, any@ data, SaveFile& file) const{
+		int statusId = -1;
+		file >> statusId;
+		data.store(statusId);
 	}
 #section all
 };
