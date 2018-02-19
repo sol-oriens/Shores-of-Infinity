@@ -2899,7 +2899,7 @@ class GenerateSystem : EmpireTrigger {
 			for(uint i = 0, cnt = systemCount; i < cnt; ++i) {
 				auto@ sys = getSystem(i);
 
-				//SoI - : overlap check distance
+				//SoI - Scaling: overlap check distance
 				if(sys.position.distanceToSQ(offPosition) < sqr(sys.radius + 120000.0)) {
 					overlaps = true;
 					break;

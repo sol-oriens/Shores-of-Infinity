@@ -2,6 +2,7 @@ Module: SolarSatellite
 	Name: #ORB_SOLAR_SATELLITE
 	Blurb: #ORB_SOLAR_SATELLITE_BLURB
 	Description: #ORB_SOLAR_SATELLITE_DESC
+	
 	Icon: GuiOrbitalIcons::13
 	Distant Icon: OrbitalIcons::13
 
