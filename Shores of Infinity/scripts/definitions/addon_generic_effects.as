@@ -7,7 +7,7 @@ class SystemData {
 };
 
 class AddStatusToPlanetsInSystem : GenericEffect {
-	Document doc("Add an instance of a status effect to the planet this is orbiting.");
+	Document doc("Add an instance of a status effect to the planets in the system this is in.");
 	Argument status(AT_Status, doc="Type of status effect to create.");
 	Argument set_origin_empire(AT_Boolean, "False", doc="Whether to record the empire triggering this hook into the origin empire field of the resulting status. If not set, any hooks that refer to Origin Empire cannot not apply. Status effects with different origin empires set do not collapse into stacks.");
 	Argument set_origin_object(AT_Boolean, "False", doc="Whether to record the object triggering this hook into the origin object field of the resulting status. If not set, any hooks that refer to Origin Object cannot not apply. Status effects with different origin objects set do not collapse into stacks.");
