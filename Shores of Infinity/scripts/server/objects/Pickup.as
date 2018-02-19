@@ -3,8 +3,11 @@ import camps;
 import saving;
 import regions.regions;
 import attributes;
+from orbitals import getOrbitalModule;
 
 tidy class PickupScript {
+	PickupNode@ node;
+
 	void postInit(Pickup& obj) {
 		obj.initPickup();
 	}
@@ -31,6 +34,14 @@ tidy class PickupScript {
 	}
 
 	void postLoad(Pickup& obj) {
+		@node = cast<PickupNode>(bindNode(obj, "PickupNode"));
+		if(node !is null) {
+			auto@ orbital = getOrbitalModule("ResearchLab");
+			if (orbital !is null) {
+				node.establish(obj, orbital.id);
+			}
+		}
+
 		cast<PickupControl>(obj.PickupControl).postLoad(obj);
 	}
 

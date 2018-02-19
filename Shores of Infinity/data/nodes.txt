@@ -41,6 +41,11 @@ Node OrbitalNode from nodes.OrbitalNode::OrbitalNodeScript {
 	void setFleetPlane(double radius);
 }
 
+Node PickupNode from nodes.PickupNode::PickupNodeScript {
+	void establish(Pickup& obj, uint typeId);
+	void setFleetPlane(double radius);
+}
+
 Node FleetPlaneNode from nodes.FleetPlane::FleetPlaneNodeScript {
 	void establish(Object& obj, double radius);
 	void set_hasSupply(bool hasSupply);

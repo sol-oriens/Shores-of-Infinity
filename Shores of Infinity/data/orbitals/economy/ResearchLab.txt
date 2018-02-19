@@ -4,6 +4,7 @@ Module: ResearchLab
 	Description: #ORB_RESEARCH_LAB_DESC
 
 	Icon: GuiOrbitalIcons::12
+	Distant Icon: OrbitalIcons::12
 	Strategic Icon: OrbitalIcons::12
 	Model: Research_Station
 	Material: GenericPBR_Research_Station

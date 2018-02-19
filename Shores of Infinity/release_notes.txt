@@ -24,6 +24,7 @@ v0.2.0b
 - Relativistic physics now affect sublight speed.
 *** The closer the velocity of a ship is to the speed of light, the lesser acceleration has an actual effect on this ship. This also means that sublight speed can never reach, let alone exceed, the speed of light. The speed of light, for practical reasons regarding scale versus playability, has arbitrarily been set to x u/s.
 - ETA calculations for colonization orders now take relativistic speeds into account.
+- Added an icon for remnant pickups in order for them to remain easily visible when zoomed out at much greater distances than vanilla.
 
 [*] Orbitals
 
@@ -37,7 +38,7 @@ v0.2.0b
 - Added Metallic Gases, a new scalable resource found on gas giants only. Increases Labor generation and civilian Energy pressure by 0%/5%/10%/30%/60%/120%/200%. Cannot be exported.
 - Reverted Rare Gases acceleration bonus to 0%/5%/10%/30%/60%/120%/200% (up from 0%/2.5%/5%/10%/30%/60%/120%).
 - Moved the guaranteed Neutronium asteroid closer to the home system.
-- Fixed a bug where Level 1 Water resources from ice giants could fill either Water requirements or Level requirements to level a planet up, but not both at the same time. 
+- Fixed a bug where Level 1 Water resources from ice giants could fill either Water requirements or Level requirements to level a planet up, but not both at the same time.
 
 [*] Systems
 
