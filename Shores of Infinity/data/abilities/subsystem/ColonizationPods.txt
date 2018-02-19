@@ -1,0 +1,16 @@
+Ability: ColonizationPods
+	Name: #ABL_COLONIZATIONPODS
+	Description: #ABL_COLONIZATIONPODS_DESC
+	Icon: AbilityIcons::2
+
+	Range: 100
+
+	Target: targ = Object
+	
+	TargetFilterType(targ, Planet)
+	TargetFilterNotQuarantined(targ)
+	TargetFilterSpace(targ)
+
+	ConsumeStatus(Settlers, Hide = True)
+	Trigger(targ, GivePopulation(1))
+	Trigger(targ, TakeControl())

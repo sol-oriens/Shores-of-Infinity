@@ -1,0 +1,25 @@
+Construction: Settlers
+	Name: #CONS_SETTLERS
+	Description: #CONS_SETTLERS_DESC
+
+	Category: Infrastructure
+	In Context: True
+
+	Time Cost: 120
+
+	Target: targ = Object
+	Icon: TroopPods
+
+	RequireNotTrait(Mechanoid)
+	RequireNotTrait(StarChildren)
+	RequireNotTrait(Ancient)
+	RequireNotTrait(Extragalactic)
+
+	TargetFilterSameRegion(targ)
+	TargetFilterType(targ, Ship)
+	TargetFilterDesignTag(targ, Settlers)
+	TargetFilterFewerStatusesThanVar(targ, Settlers, Sys.SettlerStorage)
+
+	ConsumePopulation(1)
+
+	Trigger(targ, AddStatus(Settlers))

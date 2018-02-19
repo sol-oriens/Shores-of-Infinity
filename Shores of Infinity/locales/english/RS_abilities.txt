@@ -11,6 +11,10 @@ ABL_PROGENITOR_COMMANDCODES_DESC: <<
 	Properly reactivating the fleets will require some energy, though, and we do not have the codes for the great Guardians that watch over the Hubworlds.
 >>
 ABL_RECALL: Recall
+ABL_COLONIZATIONPODS: Drop Colonization Pods
+ABL_COLONIZATIONPODS_DESC: <<
+	Drop colonization pods on the target planet, establishing a new colony.
+>>
 ABL_BOARDING_PARTY: Send Boarding Party
 ABL_BOARDING_PARTY_DESC: <<
 	Transports a boarding party to the target object, initiating a boarding action.

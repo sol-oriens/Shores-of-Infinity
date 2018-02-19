@@ -1,0 +1,8 @@
+Status: Settlers
+	Name: #STATUS_SETTLERS
+	Description: #STATUS_SETTLERS_DESC
+	Icon: AbilityIcons::2
+	Visible To: Owner
+	Collapses: True
+
+	addon_status_effects::BudgetMaintenance(80)

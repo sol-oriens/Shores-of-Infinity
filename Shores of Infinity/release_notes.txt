@@ -50,6 +50,8 @@ v0.2.0b
 [*] Subsystems
 
 - Increased the range of the 'Toggle Laser Propulsion Beam' ability on phased array laser drives to 700k units (up from 350k units).
+- Added Colonization Pods. Can colonize a planet, without commissioning civilian colonizers, with the benefits of imperial-class equipment such as extra protection or FTL infrastructures. Settlers must be embarked manually from a planet up to the maximum population storage. One billion settlers is dropped for each colonized planet. Significant amounts of Control are required to support the settlers. Colonization Pods overall maintenance cost is higher than the equivalent amount of civilian colonizers.
+- Added Population design stat for Colonization Pods.
 
 [*] User Interface
 

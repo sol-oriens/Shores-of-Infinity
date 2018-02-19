@@ -132,6 +132,8 @@ STAGING_HUB_ASTEROID_MORPH_DESC: <<
 
 	The targeted Ore asteroid is transformed into an asteroid containing one or more resources available to build a mining base on.
 >>
+CONS_SETTLERS: Embark Settlers
+CONS_SETTLERS_DESC: Get 1 billion population aboard the target flagship.
 CONS_BOARDING_PARTY: Train Boarding Party
 CONS_BOARDING_PARTY_DESC: Train a new batch of troops to replace the target flagship's boarding parties.
 CONS_CORE_DEFENSE: High-Security Core

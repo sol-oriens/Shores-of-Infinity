@@ -261,6 +261,13 @@ SubsystemStat: BombardCost
 
 	Variable: BombardCost
 
+SubsystemStat: SettlerPop
+	Name: #S_SETTLERPOP
+	Icon: AttributeIcons::1
+	Color: #ff8080
+
+	Variable: SettlerPop
+
 // *************************************
 // *********HEX-SPECIFIC STATS**********
 // *************************************
