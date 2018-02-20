@@ -98,7 +98,7 @@ tidy class ConstructionConstructible : Constructible {
 			curLabor = timeProgress;
 		}
 		cons.tick(this, time);
-		return isTimed ? TR_VanishLabor : TR_UsedLabor;
+		return isTimed ? TR_UnusedLabor : TR_UsedLabor;
 	}
 
 	void cancel(Object& obj) override {
