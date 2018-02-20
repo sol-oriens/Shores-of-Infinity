@@ -112,7 +112,7 @@ tidy class GenericEffect : Hook, IResourceHook, IBuildingHook, ISiteHook, IStatu
 
 	//For use as a site hook
 	void init(SiteType@ type) {}
-	void choose(Site@ site, Empire@ emp) const override { enable(site.obj, null); }
+	void choose(Site@ site, Empire@ emp) const override { enable(site.obj, null); } //SoI - TODO: this is ugly and leads to errors with hooks that require data
 	bool giveOption(Site@ site, Empire@ emp) const override { return true; }
 
 	//Lets this be used as a status hook
