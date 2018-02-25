@@ -33,7 +33,8 @@ final class StarScript {
 			@star.owner = defaultEmpire;
 
 		//SoI - Scaling: increased light reach
-		lightDesc.att_quadratic = 1.f/(10000.f*10000.f);
+		float scale = 8000.f;
+		lightDesc.att_quadratic = 1.f / (scale * scale);
 
 		double temp = star.temperature;
 		Node@ node;
@@ -129,9 +130,9 @@ final class StarScript {
 		if(star.temperature == 0.0) {
 		//SoI - Scaling: supermassive black holes need reduced sound from their radius
 		//Minimum black hole radius / 10 * scaling factor
-			if (soundRadius >= 180 * 25) {
-					soundRadius /= 25;
-			}
+			if (soundRadius >= 180 * 25)
+					soundRadius /= (25);
+
 			soundRadius *= 10.0;
 		}
 		addAmbientSource(CURRENT_PLAYER, "star_rumble", star.id, star.position, soundRadius);
@@ -186,15 +187,15 @@ final class StarScript {
 			double explRad = star.radius;
 			if(star.temperature == 0.0) {
 				//SoI - Scaling
-				explRad *= 200.0;
+				explRad *= (200.0 * config::SCALE_STARS);
 
 				for(uint i = 0, cnt = systemCount; i < cnt; ++i) {
 					auto@ sys = getSystem(i);
 					double dist = star.position.distanceTo(sys.position);
 
 					//SoI - Scaling
-					if(dist < 1000000.0) {
-						double factor = sqr(1.0 - (dist / 1000000));
+					if(dist < 1000000.0 * config::SCALE_STARS) {
+						double factor = sqr(1.0 - (dist / (1000000 * config::SCALE_STARS)));
 						sys.object.addStarDPS(factor * star.MaxHealth * 0.08);
 					}
 				}

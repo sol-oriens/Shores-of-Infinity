@@ -7,7 +7,8 @@ class StarScript {
 		star.temperature = msg.read_float();
 
 		//SoI - Scaling: increased light reach
-		lightDesc.att_quadratic = 1.f/(8000.f*8000.f);
+		float scale = 8000.f;
+		lightDesc.att_quadratic = 1.f / (scale * scale);
 
 		double temp = star.temperature;
 		Node@ node;

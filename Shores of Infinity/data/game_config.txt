@@ -93,6 +93,15 @@ ARTIFACT_FREQUENCY: 0.25
 //Speed of light
 LIGHT_SPEED: 1000.0
 
+//Scale of system spacing (has an effect on global variables such as galaxy gas, light reach and sound effects)
+SCALE_SPACING: 1.0
+
+//Scale of stars
+SCALE_STARS: 1.0
+
+//Scale of planets
+SCALE_PLANETS: 1.0
+
 //System size modifier
 SYSTEM_SIZE: 1.0
 

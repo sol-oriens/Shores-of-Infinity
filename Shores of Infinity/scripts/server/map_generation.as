@@ -1,4 +1,5 @@
 #priority init 1500
+
 import object_creation;
 import map_systems;
 from map_systems import IMapHook;
@@ -425,7 +426,7 @@ class MapGeneration {
 		uint cnt = systemData.length;
 
 		//SoI - Scaling: link distance
-		double DistFactor = 40.0;
+		double DistFactor = 40.0 * config::SCALE_SPACING;
 
 		for(uint i = 0; i < cnt; ++i) {
 			SystemData@ desc = systemData[i];

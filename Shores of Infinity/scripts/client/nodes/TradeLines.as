@@ -71,7 +71,7 @@ class TradeLinesNodeScript {
 			line.path.end -= off * line.to.radius;
 
 			//SoI - Scaling
-			line.side = (quaterniond_fromAxisAngle(vec3d_up(), pi * 0.5) * off) * 64.0;
+			line.side = (quaterniond_fromAxisAngle(vec3d_up(), pi * 0.5) * off) * 64.0 * config::SCALE_SPACING;
 
 			line.path.start -= line.side;
 			line.path.end -= line.side;

@@ -178,11 +178,12 @@ class ActivateNearOwnedSystem : ArtifactAI {
 	bool consider(Artifacts& ai, ArtifactConsider& c, double& value) const override {
 		Region@ best = cast<Region>(ai.consider.OwnedSystems(this));
 		if(best !is null) {
+			double dist = min_distance.decimal * config::SCALE_SPACING;
 			vec3d position = best.position;
-			vec2d offset = random2d(best.radius + min_distance.decimal, best.radius + min_distance.decimal * 2.0);
+			vec2d offset = random2d(best.radius + dist, best.radius + dist * 2.0);
 			position.x += offset.x;
 			position.z += offset.y;
-			position.y += min_distance.decimal * randomd(0.0, 0.25);
+			position.y += dist * randomd(0.0, 0.25);
 
 			if(!c.canTargetPosition(position))
 				return false;

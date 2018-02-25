@@ -2888,7 +2888,7 @@ class GenerateSystem : EmpireTrigger {
 			}
 
 			//SoI - Scaling: system distance
-			vec2d offset = random2d(120000.0 + offSystem.radius * randomd(1.5, 5.0));
+			vec2d offset = random2d(120000.0 * config::SCALE_SPACING + offSystem.radius * randomd(1.5, 5.0));
 
 			vec3d offPosition = offSystem.position;
 			offPosition.x += offset.x;
@@ -2900,7 +2900,7 @@ class GenerateSystem : EmpireTrigger {
 				auto@ sys = getSystem(i);
 
 				//SoI - Scaling: overlap check distance
-				if(sys.position.distanceToSQ(offPosition) < sqr(sys.radius + 120000.0)) {
+				if(sys.position.distanceToSQ(offPosition) < sqr(sys.radius + 120000.0 * config::SCALE_SPACING)) {
 					overlaps = true;
 					break;
 				}
@@ -2925,7 +2925,7 @@ class GenerateSystem : EmpireTrigger {
 			@hook = GiveVision(emp);
 
 		//SoI - Scaling: generated system size
-		generateNewSystem(position, hook=hook, radius=5000.0, type=system_type.str, name=name);
+		generateNewSystem(position, hook = hook, radius = 5000.0 * config::SCALE_SPACING, type = system_type.str, name = name);
 	}
 #section all
 };

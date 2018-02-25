@@ -1277,7 +1277,7 @@ class SpawnStarAt : AbilityHook {
 		hook.arguments[0].set(14000, 29800);
 
 		//SoI - Scaling
-		hook.arguments[1].set(850, 1250);
+		hook.arguments[1].set(850 * config::SCALE_STARS, 1250 * config::SCALE_STARS);
 
 		Object@ current;
 		hook.trigger(null, null, current);

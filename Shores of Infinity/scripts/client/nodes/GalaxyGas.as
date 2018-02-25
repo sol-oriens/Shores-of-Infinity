@@ -16,7 +16,7 @@ final class GasSprite {
 		position = pos;
 
 		//SoI - Scaling: scale the galaxy gas a bit bigger than general scale to obtain a thicker gas plane
-		scale = Scale * 2.0 * 50.0;
+		scale = Scale * 2.0 * 50.0 * config::SCALE_SPACING;
 
 		baseCol = col & 0xffffff00;
 		trueAlpha = int(col & 0xff);
@@ -81,7 +81,7 @@ final class GalaxyGasScript {
 			}
 
 			//SoI - Scaling
-			double fadeOut = ((sortDist / 600000.0) - 0.3);
+			double fadeOut = ((sortDist / (1200000.0 * config::SCALE_SPACING)) - 0.3);
 
 			int trueAlpha = sprite.trueAlpha;
 			int a = fadeOut < 1.0 ? int(double(trueAlpha) * fadeOut) : trueAlpha;

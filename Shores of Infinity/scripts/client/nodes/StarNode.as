@@ -1,4 +1,3 @@
-
 //Draws the physical star, its corona, and a distant star sprite
 final class StarNodeScript {
 	//double coronaRot = randomd(-pi,pi);
@@ -11,7 +10,7 @@ final class StarNodeScript {
 	void render(Node& node) {
 
 		//SoI - Scaling
-		double dist = node.sortDistance / (1000.0 * node.abs_scale * pixelSizeRatio);
+		double dist = node.sortDistance / (2000.0 * config::SCALE_SPACING * node.abs_scale * pixelSizeRatio);
 
 		if(dist < 1.0) {
 			drawBuffers();
@@ -56,7 +55,7 @@ final class StarNodeScript {
 			col.a = dist > 1.0 ? 255 : int((dist - 0.5)*255.0/0.5);
 
 			//SoI - Scaling
-			renderBillboard(material::DistantStar, node.abs_position, node.abs_scale * 128.0, 0.0, col);
+			renderBillboard(material::DistantStar, node.abs_position, node.abs_scale * 256.0 * config::SCALE_SPACING, 0.0, col);
 		}
 	}
 };

@@ -48,10 +48,10 @@ class MakeStar : MapHook {
 	void trigger(SystemData@ data, SystemDesc@ system, Object@& current) const override {
 		double temp = 0.0;
 		if(arguments[0].isRange && arguments[4].boolean)
-			temp = normald(arguments[0].decimal,arguments[1].decimal2);
+			temp = normald(arguments[0].decimal, arguments[1].decimal2 * config::SCALE_STARS);
 		else
 			temp = arguments[0].fromRange();
-		double radius = arguments[1].fromRange();
+		double radius = arguments[1].fromRange() * config::SCALE_STARS;
 		vec3d pos = arguments[2].fromPosition();
 
 		//Create star
@@ -86,7 +86,7 @@ class MakeStar : MapHook {
 			node.hintParentObject(system.object, false);
 
 		//SoI - Scaling: rescale HP back to vanilla size ratio
-		double hp = AVG_STAR_HEALTH * (radius / 750.0);
+		double hp = AVG_STAR_HEALTH * (radius / (750.0 * config::SCALE_STARS));
 		star.Health = hp;
 		star.MaxHealth = hp;
 
@@ -94,7 +94,8 @@ class MakeStar : MapHook {
 		LightDesc lightDesc;
 
 		//SoI - Scaling: increased light reach
-		lightDesc.att_quadratic = 1.f/(8000.f*8000.f);
+		float scale = 8000.f;
+		lightDesc.att_quadratic = 1.f / (scale * scale);
 
 		lightDesc.position = vec3f(star.position);
 		lightDesc.diffuse = node.color * 1.0f;
@@ -127,7 +128,7 @@ class MakeBlackhole : MapHook {
 
 #section server
 	void trigger(SystemData@ data, SystemDesc@ system, Object@& current) const override {
-		double radius = arguments[0].fromRange();
+		double radius = arguments[0].fromRange() * config::SCALE_STARS;
 		vec3d pos = arguments[1].fromPosition();
 
 		//SoI - Scaling: make supermassive black holes supermassive
@@ -402,11 +403,11 @@ class MakePlanet : MapHook {
 			switch (planetClass)
 			{
 				case PC_Gas:
-					radius = radius += 140;
+					radius += 140;
 					spacing = randomd(5250, 5450);
 					break;
 				case PC_Icy:
-					radius = radius += 100;
+					radius+= 100;
 					spacing = randomd(5000, 5200);
 					break;
 				default:
@@ -414,6 +415,9 @@ class MakePlanet : MapHook {
 					spacing = randomd(5250, 5450);
 			}
 		}
+
+		radius *= config::SCALE_PLANETS;
+		spacing *= config::SCALE_PLANETS;
 
 		system.radius += spacing;
 
@@ -468,16 +472,14 @@ class MakePlanet : MapHook {
 		//SoI - Scaling: rescale radius for grid size calculation
 		double scaledradius = 0;
 
-		//SoI - Gas Giants: apply a specific formula scaling down the grid more to avoid a big surface displaying a scroll bar before even displaying moon bases
-		//SoI - Ice Giants: apply a specific formula scaling down the grid more to avoid a big surface displaying a scroll bar before even displaying moon bases
+		//SoI - Gas Giants: force the grid to a specific size to avoid a big surface displaying a scroll bar before even displaying moon bases
+		//SoI - Ice Giants: force the grid to a specific size to avoid a big surface displaying a scroll bar before even displaying moon bases
 		//The loss of space is not a problem since the biome is useless anyway
-		if (resource !is null && giant.boolean && (planetClass == PC_Gas || planetClass == PC_Icy)) {
-			//min_planet_radius + 100 * (radius / 2 - min_planet_radius) / (max_planet_radius - min_planet_radius)
-			scaledradius = 190 + 100 * (radius / 2 - 190) / 160;
-		}
+		if (resource !is null && giant.boolean && (planetClass == PC_Gas || planetClass == PC_Icy))
+			scaledradius = 160;
 		else
 			//min_planet_radius + 100 * (radius - min_planet_radius) / (max_planet_radius - min_planet_radius)
-	 		scaledradius = 60 + 100 * (radius - 60) / 80;
+			scaledradius = 60 * config::SCALE_PLANETS + 100 * (radius - 60 * config::SCALE_PLANETS) / (140 * config::SCALE_PLANETS - 60 * config::SCALE_PLANETS);
 
 		double sizeFact = clamp(scaledradius / 100.0, 0.1, 5.0);
 
@@ -698,7 +700,7 @@ class ExpandSystem : MapHook {
 
 #section server
 	void trigger(SystemData@ data, SystemDesc@ system, Object@& current) const override {
-		system.radius += arguments[0].fromRange();
+		system.radius += arguments[0].fromRange() * config::SCALE_STARS;
 	}
 #section all
 };
@@ -711,7 +713,7 @@ class ExpandSystemMinimum : MapHook {
 
 #section server
 	void trigger(SystemData@ data, SystemDesc@ system, Object@& current) const override {
-		double radius = arguments[0].fromRange();
+		double radius = arguments[0].fromRange() * config::SCALE_STARS;
 		if (system.radius < radius)
 			system.radius = radius;
 	}
@@ -732,7 +734,7 @@ class SetupOrbit : MapHook {
 		if(cur is null || !cur.hasOrbit)
 			return;
 
-		double radius = arguments[0].fromRange();
+		double radius = arguments[0].fromRange() * config::SCALE_STARS;
 		vec3d pos = arguments[1].fromPosition() + system.position;
 		double pct = arguments[2].fromRange();
 		vec2d off = random2d();
@@ -1985,11 +1987,11 @@ vec2d get2dPos(SystemDesc@ system, double radiusFactor = 1.0, double edgeOffset 
 	double minRadius = 0.25 * system.radius;
 
 	vec2d pos = random2d(minRadius, maxRadius);
-	if (pos.x <= 4000.0 && pos.y <= 4000.0)
-		if (maxRadius > 5000.0)
-			pos = random2d(4000.0, maxRadius);
+	if (pos.x <= 4000.0 * config::SCALE_STARS && pos.y <= 4000.0 * config::SCALE_STARS)
+		if (maxRadius > 5000.0 * config::SCALE_STARS)
+			pos = random2d(4000.0 * config::SCALE_STARS, maxRadius);
 		else
-			pos = random2d(4000.0, 4500.0);
+			pos = random2d(4000.0 * config::SCALE_STARS, 4500.0 * config::SCALE_STARS);
 
 	return pos;
 }

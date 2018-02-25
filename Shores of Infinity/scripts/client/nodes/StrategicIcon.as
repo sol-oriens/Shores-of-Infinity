@@ -107,8 +107,8 @@ class StrategicIcon {
 };
 
 //SoI - Scaling
-const double OUTSIDE_DISTANCE = 200000.0;
-const double OUTSIDE_SIZE_MAX = 250000.0;
+const double OUTSIDE_DISTANCE = 120000.0 * config::SCALE_PLANETS * 1.66667;
+const double OUTSIDE_SIZE_MAX = 250000.0 * config::SCALE_PLANETS;
 
 const double ANIMATE_TIME = 0.45;
 
@@ -175,7 +175,7 @@ class StrategicIconNodeScript : StrategicIcon {
 		double objDist = getCameraDistance(object.position);
 
 		//SoI - Scaling
-		double fadeDist = 2.5e5 * max(5.0, object.radius);
+		double fadeDist = 1.0e5 * config::SCALE_PLANETS * 2.5 * max(5.0, object.radius);
 
 		if(objDist > fadeDist)
 			return false;

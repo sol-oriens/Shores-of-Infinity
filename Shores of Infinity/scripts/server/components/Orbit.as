@@ -1,5 +1,5 @@
-//SoI - Scaling: orbit speed accelerated 30 times
-const double orbitSpeedFactor = 60.0;
+//SoI - Scaling: orbital velocity accelerated 15 times
+const double orbitSpeedFactor = 30.0;
 
 tidy class Orbit : Component_Orbit, Savable {
 	Object@ center_obj;

@@ -407,10 +407,10 @@ void dragSelect(const recti& box) {
 
 //SoI - Scaling: icon selection max distance
 const double MAX_SUPPORT_SELECT_DIST = 1000.0;
-const double MAX_PLANET_SELECT_DIST = 1560000.0;
-const double MAX_PLANET_PHYS_SEL_DIST = 20000.0;
-const double MAX_ORBITAL_SELECT_DIST = 520000.0;
-const double MAX_PICKUP_SELECT_DIST = 200000.0;
+const double MAX_PLANET_SELECT_DIST = 1560000.0 * config::SCALE_SPACING;
+const double MAX_PLANET_PHYS_SEL_DIST = 20000.0 * config::SCALE_SPACING;
+const double MAX_ORBITAL_SELECT_DIST = 520000.0 * config::SCALE_SPACING;
+const double MAX_PICKUP_SELECT_DIST = 200000.0 * config::SCALE_SPACING;
 const double MAX_COLSHIP_SELECT_DIST = 12000.0;
 const double MAX_CIVILIAN_SELECT_DIST = 1500.0;
 
