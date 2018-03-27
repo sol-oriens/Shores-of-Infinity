@@ -18,12 +18,12 @@ bool canHyperdrive(Object& obj) {
 
 double hyperdriveSpeed(Object& obj) {
 	Ship@ ship = cast<Ship>(obj);
-	return ship.blueprint.getEfficiencySum(SV_HyperdriveSpeed);
+	return ship.blueprint.getEfficiencySum(SV_HyperdriveSpeed) * config::SCALE_SPACING;
 }
 
 double hyperdriveMaxSpeed(Object& obj) {
 	Ship@ ship = cast<Ship>(obj);
-	return ship.blueprint.design.total(SV_HyperdriveSpeed);
+	return ship.blueprint.design.total(SV_HyperdriveSpeed) * config::SCALE_SPACING;
 }
 
 int hyperdriveCost(Object& obj, const vec3d& position) {
@@ -35,7 +35,7 @@ int hyperdriveCost(Object& obj, const vec3d& position) {
 	Empire@ owner = obj.owner;
 	if(reg !is null && owner !is null && reg.FreeFTLMask & owner.mask != 0)
 		return 0;
-	return ceil(log(dsg.size) * (dsg.total(HV_Mass)*0.5/dsg.size) * sqrt(position.distanceTo(obj.position)) * HYPERDRIVE_COST + HYPERDRIVE_START_COST + owner.HyperdriveStartCostMod) * owner.FTLCostFactor;
+	return ceil(log(dsg.size) * (dsg.total(HV_Mass)*0.5/dsg.size) * sqrt(position.distanceTo(obj.position) / config::SCALE_SPACING) * HYPERDRIVE_COST + HYPERDRIVE_START_COST + owner.HyperdriveStartCostMod) * owner.FTLCostFactor;
 }
 
 int hyperdriveCost(array<Object@>& objects, const vec3d& destination) {
@@ -68,7 +68,7 @@ bool canHyperdriveTo(Object& obj, const vec3d& pos) {
 	return !isFTLBlocked(obj, pos);
 }
 
-const double FLING_BEACON_RANGE = 50000.0;
+const double FLING_BEACON_RANGE = 50000.0 * config::SCALE_SPACING;
 const double FLING_BEACON_RANGE_SQ = sqr(FLING_BEACON_RANGE);
 const double FLING_COST = 16.0;
 const double FLING_CHARGE_TIME = 15.0;
@@ -164,7 +164,7 @@ int slipstreamCost(Object& obj, int scale, double distance) {
 		return 0;
 	Ship@ ship = cast<Ship>(obj);
 	double baseCost = ship.blueprint.design.total(SV_SlipstreamCost);
-	double optDist = ship.blueprint.design.total(SV_SlipstreamOptimalDistance);
+	double optDist = ship.blueprint.design.total(SV_SlipstreamOptimalDistance) * config::SCALE_SPACING;
 	if(distance < optDist)
 		return baseCost * obj.owner.FTLCostFactor;
 	return baseCost * ceil(distance / optDist) * obj.owner.FTLCostFactor;
@@ -179,7 +179,7 @@ double slipstreamRange(Object& obj, int scale, int stored) {
 		return INFINITY;
 
 	double baseCost = ship.blueprint.design.total(SV_SlipstreamCost);
-	double optDist = ship.blueprint.design.total(SV_SlipstreamOptimalDistance);
+	double optDist = ship.blueprint.design.total(SV_SlipstreamOptimalDistance) * config::SCALE_SPACING;
 
 	if(stored < baseCost)
 		return 0.0;
@@ -201,7 +201,7 @@ void slipstreamModifyPosition(Object& obj, vec3d& position) {
 double slipstreamInaccuracy(Object& obj, const vec3d& position) {
 	Ship@ ship = cast<Ship>(obj);
 
-	double optDist = ship.blueprint.design.total(SV_SlipstreamOptimalDistance);
+	double optDist = ship.blueprint.design.total(SV_SlipstreamOptimalDistance) * config::SCALE_SPACING;
 	double dist = obj.position.distanceTo(position);
 
 	if(dist <= optDist)
@@ -266,7 +266,7 @@ int jumpdriveCost(Object& obj, const vec3d& fromPos, const vec3d& position) {
 	double dist = position.distanceTo(fromPos);
 	dist = min(dist, jumpdriveRange(obj));
 
-	return ceil(log(dsg.size) * (dsg.total(HV_Mass)*0.5/dsg.size) * sqrt(dist) * JUMPDRIVE_COST + JUMPDRIVE_START_COST) * owner.FTLCostFactor;
+	return ceil(log(dsg.size) * (dsg.total(HV_Mass)*0.5/dsg.size) * sqrt(dist / config::SCALE_SPACING) * JUMPDRIVE_COST + JUMPDRIVE_START_COST) * owner.FTLCostFactor;
 }
 
 int jumpdriveCost(Object& obj, const vec3d& position) {
@@ -281,7 +281,7 @@ int jumpdriveCost(Object& obj, const vec3d& position) {
 	double dist = position.distanceTo(obj.position);
 	dist = min(dist, jumpdriveRange(obj));
 
-	return ceil(log(dsg.size) * (dsg.total(HV_Mass)*0.5/dsg.size) * sqrt(dist) * JUMPDRIVE_COST + JUMPDRIVE_START_COST) * owner.FTLCostFactor;
+	return ceil(log(dsg.size) * (dsg.total(HV_Mass)*0.5/dsg.size) * sqrt(dist / config::SCALE_SPACING) * JUMPDRIVE_COST + JUMPDRIVE_START_COST) * owner.FTLCostFactor;
 }
 
 int jumpdriveCost(array<Object@>& objects, const vec3d& destination) {
@@ -296,19 +296,19 @@ int jumpdriveCost(array<Object@>& objects, const vec3d& destination) {
 
 double jumpdriveRange(Object& obj) {
 	Ship@ ship = cast<Ship>(obj);
-	return ship.blueprint.design.total(SV_JumpRange);
+	return ship.blueprint.design.total(SV_JumpRange) * config::SCALE_SPACING;
 }
 
 double jumpdriveRange(Object& obj, int scale, int stored) {
 	Ship@ ship = cast<Ship>(obj);
-	return ship.blueprint.design.total(SV_JumpRange);
+	return ship.blueprint.design.total(SV_JumpRange) * config::SCALE_SPACING;
 }
 
 bool canJumpdriveTo(Object& obj, const vec3d& pos) {
 	return !isFTLBlocked(obj, pos);
 }
 
-const double FLUX_CD_RANGE = 300.0;
+const double FLUX_CD_RANGE = 12000.0;
 
 bool canFluxTo(Object& obj, const vec3d& pos) {
 	if(obj.owner.HasFlux == 0)
@@ -368,7 +368,7 @@ void commitFlux(Object& obj, const vec3d& pos) {
 
 	if(obj.hasStatuses) {
 		double dist = fluxPos.distanceTo(obj.position);
-		double cd = dist / FLUX_CD_RANGE / 40;
+		double cd = dist / config::SCALE_SPACING / FLUX_CD_RANGE;
 		obj.addStatus(fluxStatus, timer=cd);
 	}
 
