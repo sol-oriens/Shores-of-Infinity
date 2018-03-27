@@ -5,7 +5,7 @@ double einsteinArrivalTime(double acceleration, vec3d distance, vec3d velocity) 
   double a = acceleration;
   double d = distance.length;
   double v = velocity.length;
-  double c = config::LIGHT_SPEED;
+  double c = config::LIGHT_SPEED * config::SCALE_SPACING;
 
   //TODO: the formula to choose which method of calculation to use may be inaccurate and needs more test data
   //At c = 1000, the distance at which newtonArrivalTime and einsteinArrivalTime roughly give the same results is about 350,000 units
