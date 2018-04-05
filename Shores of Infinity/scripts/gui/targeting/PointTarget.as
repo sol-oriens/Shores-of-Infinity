@@ -301,11 +301,11 @@ class PointDisplay : TargetVisuals {
 		if (target.distance <= 999)
 			dist = toString(target.distance, 0) + "u";
 		else if (target.distance <= 999999)
-			dist = toString(target.distance / 1000, 2) + "kU";
+			dist = toString(target.distance / 1000, 2) + "ku";
 		else if (target.distance <= 999999999)
-			dist = toString(target.distance / 1000000, 2) + "MU";
+			dist = toString(target.distance / 1000000, 2) + "Mu";
 		else
-			dist = toString(target.distance / 1000000000, 2) + "GU";
+			dist = toString(target.distance / 1000000000, 2) + "Gu";
 
 		return " (" + dist + ")";
 	}
