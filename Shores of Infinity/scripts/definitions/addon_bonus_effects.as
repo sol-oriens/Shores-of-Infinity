@@ -3,6 +3,73 @@ import generic_hooks;
 import sites;
 from sites import ISiteHook, SiteHook;
 
+class ActiveConfigOption : EmpireTrigger {
+  Document doc("Executes a hook only if a config option has a particular value.");
+	Argument hookID(AT_Hook, "bonus_effects::EmpireTrigger");
+  Argument option(AT_Custom, doc="Config option to check.");
+	Argument value(AT_Decimal, "1.0", doc="Value for the option to check for.");
+
+  BonusEffect@ hook;
+
+	bool withHook(const string& str) {
+		@hook = cast<BonusEffect>(parseHook(str, "bonus_effects::"));
+		if(hook is null) {
+			error("ActiveConfigOption(): could not find inner hook: " + escape(str));
+			return false;
+		}
+		return true;
+	}
+
+	bool instantiate() {
+		if(!withHook(arguments[0].str))
+			return false;
+    return BonusEffect::instantiate();
+	}
+
+#section server
+	void activate(Object@ obj, Empire@ emp) const override {
+    if (config::get(option.str) == value.decimal)
+		  hook.activate(obj, emp);
+	}
+#section all
+};
+
+class AddModifierFromConfigOption : EmpireTrigger {
+	TechAddModifier@ mod;
+	string spec;
+  Document doc("Adds a subsystem modifier based on the value of a config option.");
+  Argument modifier(AT_Custom, doc="Name of the modifier to add, without brackets nor value.");
+  Argument option(AT_Custom, doc="Config option to check to get the modifier value.");
+
+	bool instantiate() override {
+    array<string> argNames(1);
+    double value = config::get(option.str);
+    string funcName = modifier.str + "(" + value + ")";
+
+		@mod = parseModifier(funcName);
+		if(mod is null) {
+			error("Invalid modifier: "+ funcName);
+			return false;
+		}
+
+    //Feed the modifier argument value with the value read from the config
+    argNames[0] = toString(value);
+    mod.arguments = argNames;
+
+		return BonusEffect::instantiate();
+	}
+
+#section server
+	void preInit(Empire& emp, any@ data) const override { activate(null, emp); }
+	void init(Empire& emp, any@ data) const override {}
+
+	void activate(Object@ obj, Empire@ emp) const {
+		if(emp !is null)
+			mod.apply(emp);
+	}
+#section all
+};
+
 class AddSite : BonusEffect {
   Document doc("Add a site on the target planet.");
 	Argument type(AT_Anomaly, "distributed", doc="Type of site to spawn. Defaults to randomized.");
@@ -50,37 +117,6 @@ class AddSite : BonusEffect {
     uint siteId = planet.spawnSite(type.id);
     if(start_scanned.boolean && emp !is null)
 			planet.addProgressToSite(emp, siteId, 10000000000.f);
-	}
-#section all
-};
-
-class ActiveConfigOption : EmpireTrigger {
-  Document doc("Executes a hook only if a config option has a particular value.");
-	Argument hookID(AT_Hook, "bonus_effects::EmpireTrigger");
-  Argument option(AT_Custom, doc="Config option to check.");
-	Argument value(AT_Decimal, "1.0", doc="Value for the option to check for.");
-
-  BonusEffect@ hook;
-
-	bool withHook(const string& str) {
-		@hook = cast<BonusEffect>(parseHook(str, "bonus_effects::"));
-		if(hook is null) {
-			error("ActiveOption(): could not find inner hook: " + escape(str));
-			return false;
-		}
-		return true;
-	}
-
-	bool instantiate() {
-		if(!withHook(arguments[0].str))
-			return false;
-    return BonusEffect::instantiate();
-	}
-
-#section server
-	void activate(Object@ obj, Empire@ emp) const override {
-    if (config::get(option.str) == value.decimal)
-		  hook.activate(obj, emp);
 	}
 #section all
 };

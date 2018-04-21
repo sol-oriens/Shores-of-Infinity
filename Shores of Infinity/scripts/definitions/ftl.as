@@ -18,12 +18,12 @@ bool canHyperdrive(Object& obj) {
 
 double hyperdriveSpeed(Object& obj) {
 	Ship@ ship = cast<Ship>(obj);
-	return ship.blueprint.getEfficiencySum(SV_HyperdriveSpeed) * config::SCALE_SPACING;
+	return ship.blueprint.getEfficiencySum(SV_HyperdriveSpeed);
 }
 
 double hyperdriveMaxSpeed(Object& obj) {
 	Ship@ ship = cast<Ship>(obj);
-	return ship.blueprint.design.total(SV_HyperdriveSpeed) * config::SCALE_SPACING;
+	return ship.blueprint.design.total(SV_HyperdriveSpeed);
 }
 
 int hyperdriveCost(Object& obj, const vec3d& position) {
@@ -164,7 +164,7 @@ int slipstreamCost(Object& obj, int scale, double distance) {
 		return 0;
 	Ship@ ship = cast<Ship>(obj);
 	double baseCost = ship.blueprint.design.total(SV_SlipstreamCost);
-	double optDist = ship.blueprint.design.total(SV_SlipstreamOptimalDistance) * config::SCALE_SPACING;
+	double optDist = ship.blueprint.design.total(SV_SlipstreamOptimalDistance);
 	if(distance < optDist)
 		return baseCost * obj.owner.FTLCostFactor;
 	return baseCost * ceil(distance / optDist) * obj.owner.FTLCostFactor;
@@ -179,7 +179,7 @@ double slipstreamRange(Object& obj, int scale, int stored) {
 		return INFINITY;
 
 	double baseCost = ship.blueprint.design.total(SV_SlipstreamCost);
-	double optDist = ship.blueprint.design.total(SV_SlipstreamOptimalDistance) * config::SCALE_SPACING;
+	double optDist = ship.blueprint.design.total(SV_SlipstreamOptimalDistance);
 
 	if(stored < baseCost)
 		return 0.0;
@@ -296,12 +296,12 @@ int jumpdriveCost(array<Object@>& objects, const vec3d& destination) {
 
 double jumpdriveRange(Object& obj) {
 	Ship@ ship = cast<Ship>(obj);
-	return ship.blueprint.design.total(SV_JumpRange) * config::SCALE_SPACING;
+	return ship.blueprint.design.total(SV_JumpRange);
 }
 
 double jumpdriveRange(Object& obj, int scale, int stored) {
 	Ship@ ship = cast<Ship>(obj);
-	return ship.blueprint.design.total(SV_JumpRange) * config::SCALE_SPACING;
+	return ship.blueprint.design.total(SV_JumpRange);
 }
 
 bool canJumpdriveTo(Object& obj, const vec3d& pos) {

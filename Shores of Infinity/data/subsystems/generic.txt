@@ -26,6 +26,10 @@ Template: hexVar/Mass
 	Modifier: CoreMassFactor(factor)
 		Hex.Mass := if(IsCore, Hex.Mass * factor, Hex.Mass)
 
+Template: var/Scale
+	Modifier: ScaleFactor(factor)
+		Scale := Scale * factor
+
 Template: var/Speed
 	Modifier: SpeedFactor(factor)
 		Speed := Speed * factor

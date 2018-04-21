@@ -10,12 +10,15 @@ Subsystem: Hyperdrive
 	Tags: Engine, Hyperdrive, HasInternals, Hyperengine
 	Hull: Flagship
 
+	Scale := 1
 	Size := HexSize * Hexes
-	HyperdriveSpeed := 128000.0 * Size / ShipSize
+
 	Hex.Mass := HexSize
 
 	Hex.Resistance := 0.2
 	Hex.HP := 18 * HexSize
+
+	HyperdriveSpeed := 128000.0 * Scale * Size / ShipSize
 
 	Requires:
 		Command = 1

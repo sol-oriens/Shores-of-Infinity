@@ -9,13 +9,15 @@ Subsystem: Jumpdrive
 	Tags: Engine, Jumpdrive, HasInternals, Hyperengine
 	Hull: Flagship
 
+	Scale := 1
 	Size := HexSize * Hexes
+
 	Hex.Mass := HexSize
 
 	Hex.Resistance := 0.2
 	Hex.HP := 18 * HexSize
 
-	JumpRange := 3400000 * Size / ShipSize
+	JumpRange := 3400000 * Scale * Size / ShipSize
 
 	Requires:
 		Command = max(floor(Hexes / 3), 1)
