@@ -276,6 +276,7 @@ class ConsumeDistanceFTL : AbilityHook {
 	Argument obey_free_ftl(AT_Boolean, "True", doc="Whether to reduce the cost to 0 if departing from a free ftl system.");
 	Argument obey_block_ftl(AT_Boolean, "True", doc="Whether to disable the ability if departing or arriving in a blocked ftl system.");
 	Argument path_distance(AT_Boolean, "False", doc="If set, use total path distance taking into account gates, slipstreams and wormholes.");
+	Argument scaled(AT_Boolean, "False", doc="Scale the distance cost to match game settings.");
 
 	double getCost(const Ability@ abl, const Targets@ targs) const{
 		double cost = base_cost.decimal;
@@ -289,6 +290,8 @@ class ConsumeDistanceFTL : AbilityHook {
 				dist = getPathDistance(t.obj.position, abl.obj.position);
 #section all
 			}
+			if (scaled.boolean)
+				dist /= config::SCALE_SPACING;
 			cost += distance_cost.decimal * dist;
 			cost += sqrt_cost.decimal * sqrt(dist);
 		}
@@ -1355,6 +1358,7 @@ class DistanceEnergyCost : AbilityHook {
 	Argument base_cost(AT_Decimal, "0", doc="Base cost per distance.");
 	Argument sqrt_cost(AT_Decimal, "0", doc="Cost per square root of distance.");
 	Argument square_cost(AT_Decimal, "0", doc="Cost per squared distance.");
+	Argument scaled(AT_Boolean, "False", doc="Scale the distance cost to match game settings.");
 
 	void modEnergyCost(const Ability@ abl, const Targets@ targs, double& cost) const override {
 		if(abl.obj is null || targs is null)
@@ -1366,6 +1370,8 @@ class DistanceEnergyCost : AbilityHook {
 		else if(tt.type == TT_Object && tt.obj !is null)
 			point = tt.obj.position;
 		double dist = point.distanceTo(abl.obj.position);
+		if (scaled.boolean)
+			dist /= config::SCALE_SPACING;
 		if(base_cost.decimal != 0)
 			cost += base_cost.decimal * dist;
 		if(sqrt_cost.decimal != 0)

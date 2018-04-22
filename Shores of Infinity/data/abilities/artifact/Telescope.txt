@@ -18,7 +18,7 @@ Ability: TelescopeArray
 	Icon: VoteIcons::3
 	Activate Sound: telescope_activate
 
-	DistanceEnergyCost(targ, 0.00015)
+	DistanceEnergyCost(targ, 0.00015, Scaled = True)
 
 	Target: targ = Object
 	Range: 800000
@@ -35,8 +35,8 @@ Ability: TelescopeArrayDistant
 	Icon: VoteIcons::3
 	Activate Sound: telescope_activate
 
-	DistanceEnergyCost(targ, 0.0005)
-	ConsumeDistanceFTL(targ, Base Cost = 10, Distance Cost = 0.000075)
+	DistanceEnergyCost(targ, 0.0005, Scaled = True)
+	ConsumeDistanceFTL(targ, Base Cost = 10, Distance Cost = 0.000075, Scaled = True)
 
 	Target: targ = Object
 	Range: 2000000
