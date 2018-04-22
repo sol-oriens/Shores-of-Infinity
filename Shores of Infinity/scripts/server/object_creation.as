@@ -5,14 +5,13 @@ from designs import getDesignMesh;
 from civilians import getCivilianName;
 
 //Base acceleration of a colony ship
-const double COLONYSHIP_BASE_ACCEL = 5.5;
+const double COLONYSHIP_BASE_ACCEL = 5.5 * config::SCALE_SPACING;
 
 //SoI - Scaling: ship size
-const double shipVolumePower = 40.0;
-
-const double stationRadiusFactor = 1.3;
-
-const double orbitalRadiusFactor = 0.5;
+const double shipVolumePower = 5.0;
+const double shipRadiusFactor = 0.25;
+const double stationRadiusFactor = 0.325;
+const double orbitalRadiusFactor = 1.0;
 
 ColonyShip@ createColonizer(Object& from, Object& to, double population, double accMod) {
 	ObjectDesc colDesc;
@@ -88,7 +87,7 @@ Ship@ createShip(vec3d position, const Design@ design, Empire@ owner, Object@ gr
 	if(design.hasTag(ST_Station))
 		shipDesc.radius = stationRadiusFactor * pow(design.size,1.0/shipVolumePower) * design.hull.modelScale;
 	else
-		shipDesc.radius = pow(design.size,1.0/shipVolumePower) * design.hull.modelScale;
+		shipDesc.radius = shipRadiusFactor * pow(design.size,1.0/shipVolumePower) * design.hull.modelScale;
 	shipDesc.position = position;
 	if(memorable)
 		shipDesc.flags |= objMemorable;
@@ -147,7 +146,7 @@ Ship@ createShip(Object& at, const Design@ design, Empire@ owner = null, Object@
 	if(design.hasTag(ST_Station))
 		shipDesc.radius = stationRadiusFactor * pow(design.size,1.0/shipVolumePower) * design.hull.modelScale;
 	else
-		shipDesc.radius = pow(design.size,1.0/shipVolumePower) * design.hull.modelScale;
+		shipDesc.radius = shipRadiusFactor * pow(design.size,1.0/shipVolumePower) * design.hull.modelScale;
 
 	if(design.hasTag(ST_Satellite)) {
 		Object@ spawnAt = at;

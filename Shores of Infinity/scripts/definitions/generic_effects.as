@@ -3955,12 +3955,12 @@ class AddAccelerationBonus : GenericEffect, TriggerableGeneric {
 			}
 		}
 		if(obj.hasMover)
-			obj.modAccelerationBonus(+amount.decimal);
+			obj.modAccelerationBonus(+(amount.decimal * config::SCALE_SPACING));
 	}
 
 	void disable(Object& obj, any@ data) const override {
 		if(obj.hasMover)
-			obj.modAccelerationBonus(-amount.decimal);
+			obj.modAccelerationBonus(-(amount.decimal) * config::SCALE_SPACING);
 	}
 #section all
 };
