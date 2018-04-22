@@ -36,7 +36,6 @@ class ActiveConfigOption : EmpireTrigger {
 
 class AddModifierFromConfigOption : EmpireTrigger {
 	TechAddModifier@ mod;
-	string spec;
   Document doc("Adds a subsystem modifier based on the value of a config option.");
   Argument modifier(AT_Custom, doc="Name of the modifier to add, without brackets nor value.");
   Argument option(AT_Custom, doc="Config option to check to get the modifier value.");

@@ -21,7 +21,7 @@ Module: Telescope
 	Labor Cost: 15
 	Maintenance: 40
 
-	ShowRange(800000, #00ff00)
+	ShowRange(800000, #00ff00, Scaled = True)
 	GrantAbility(TelescopeArray)
 
 Module: QuantumTelescope
@@ -48,5 +48,5 @@ Module: QuantumTelescope
 
 	ConsumeCargo(Ore, 750)
 
-	ShowRange(2000000, #00ff00)
+	ShowRange(2000000, #00ff00, Scaled = True)
 	GrantAbility(TelescopeArrayDistant)

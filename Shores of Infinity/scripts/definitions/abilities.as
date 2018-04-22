@@ -2,6 +2,7 @@ import saving;
 import hooks;
 import icons;
 import util.formatting;
+import util.configLocale;
 
 export AbilityType, Ability;
 export getAbilityTypeCount, getAbilityType;
@@ -449,15 +450,16 @@ void parseLine(string& line, AbilityType@ type, ReadFile@ file) {
 
 void loadAbilities(const string& filename) {
 	ReadFile file(filename, true);
-	
+
 	string key, value;
 	AbilityType@ type;
-	
+	bool scaleRange = false;
+
 	uint index = 0;
 	while(file++) {
 		key = file.key;
 		value = file.value;
-		
+
 		if(file.fullLine) {
 			string line = file.line;
 			parseLine(line, type, file);
@@ -475,7 +477,7 @@ void loadAbilities(const string& filename) {
 			type.name = localize(value);
 		}
 		else if(key.equals_nocase("Description")) {
-			type.description = localize(value);
+			type.description = localize(configLocale(value));
 		}
 		else if(key.equals_nocase("Icon")) {
 			type.icon = getSprite(value);
@@ -486,8 +488,16 @@ void loadAbilities(const string& filename) {
 		else if(key.equals_nocase("Cooldown")) {
 			type.cooldown = toDouble(value);
 		}
+		else if(key.equals_nocase("Scale Range")) {
+			scaleRange = toBool(value);
+			if (type.range != 0)
+				type.range *= config::SCALE_SPACING;
+		}
 		else if(key.equals_nocase("Range")) {
-			type.range = toDouble(value);
+			if (scaleRange)
+				type.range = toDouble(value) * config::SCALE_SPACING;
+			else
+				type.range = toDouble(value);
 		}
 		else if(key.equals_nocase("Hide Global")) {
 			type.hideGlobal = toBool(value);
@@ -524,7 +534,7 @@ void loadAbilities(const string& filename) {
 			parseLine(line, type, file);
 		}
 	}
-	
+
 	if(type !is null)
 		addAbilityType(type);
 }

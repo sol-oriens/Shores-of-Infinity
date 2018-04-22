@@ -4467,6 +4467,7 @@ class ShowRange : GenericEffect, ShowsRange {
 	Argument range(AT_Decimal, doc="Range to show.");
 	Argument color(AT_Color, doc="Color of the range circle.");
 	Argument selected_only(AT_Boolean, "False", doc="Only show the range if selected, or when hovered too.");
+	Argument scaled(AT_Boolean, "False", doc="Scale the distance to match game settings.");
 
 	Color bColor;
 
@@ -4477,6 +4478,8 @@ class ShowRange : GenericEffect, ShowsRange {
 
 	bool getShowRange(Object& obj, double& range, Color& color) const override {
 		range = this.range.decimal;
+		if (scaled.boolean)
+			range *= config::SCALE_SPACING;
 		color = bColor;
 		return !selected_only.boolean || obj.selected;
 	}

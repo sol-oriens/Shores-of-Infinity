@@ -14,7 +14,7 @@ Ability: Telescope
 
 Ability: TelescopeArray
 	Name: #ABL_TELESCOPE
-	Description: #ABL_TELESCOPE_ARRAY_DESC:300000
+	Description: #ABL_TELESCOPE_ARRAY_DESC^SCALE_SPACING:800000
 	Icon: VoteIcons::3
 	Activate Sound: telescope_activate
 
@@ -22,6 +22,7 @@ Ability: TelescopeArray
 
 	Target: targ = Object
 	Range: 800000
+	Scale Range: True
 	Cooldown: 60
 	Hotkey: T
 	TargetFilterRegion(targ)
@@ -30,7 +31,7 @@ Ability: TelescopeArray
 
 Ability: TelescopeArrayDistant
 	Name: #ABL_TELESCOPE
-	Description: #ABL_TELESCOPE_ARRAY_DESC:1000000
+	Description: #ABL_TELESCOPE_ARRAY_DESC^SCALE_SPACING:2000000
 	Icon: VoteIcons::3
 	Activate Sound: telescope_activate
 
@@ -39,6 +40,7 @@ Ability: TelescopeArrayDistant
 
 	Target: targ = Object
 	Range: 2000000
+	Scale Range: True
 	Cooldown: 180
 	Hotkey: T
 	TargetFilterRegion(targ)
