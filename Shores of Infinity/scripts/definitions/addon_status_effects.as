@@ -5,7 +5,7 @@ from resources import MoneyType;
 
 class BudgetMaintenance : StatusHook {
 	Document doc("This status requires a maintenance cost.");
-	Argument amount(AT_Decimal, "0", doc="Base amount of energy per second it costs.");
+	Argument amount(AT_Decimal, "0", doc="Base amount of money it costs.");
 	Argument per_shipsize(AT_Decimal, "0", doc="When on a ship, increase maintenance cost by the ship design size multiplied by this.");
 
 #section server

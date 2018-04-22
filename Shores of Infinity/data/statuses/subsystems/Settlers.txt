@@ -5,4 +5,4 @@ Status: Settlers
 	Visible To: Owner
 	Collapses: True
 
-	addon_status_effects::BudgetMaintenance(80)
+	addon_status_effects::BudgetMaintenance(160)

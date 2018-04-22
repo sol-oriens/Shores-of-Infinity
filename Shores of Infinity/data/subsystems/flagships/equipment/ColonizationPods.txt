@@ -12,14 +12,14 @@ Subsystem: ColonizationPods
 
 	Hex.LaborCost := 0.30 * HexSize + 0.8
 	Hex.BuildCost := 1.5 * HexSize + 2
-	Hex.MaintainCost := 2 * HexSize + 2 - (4 * HexSize / ShipSize^0.5)
+	Hex.MaintainCost := 1.2 * HexSize + 2 - (4 * HexSize / ShipSize^0.5)
 
 	Size := HexSize * Hexes
 	Hex.Mass := HexSize
 
-	SettlerPop := floor(Size / 34)
+	SettlerPop := floor(Size / 1088)
 
-	SettlerStorageMaintCost := 20.0 * SettlerPop
+	SettlerStorageMaintCost := 100.0 * SettlerPop
 	SettlerStorage := SettlerPop
 
 	Hex.HP := 18 * HexSize

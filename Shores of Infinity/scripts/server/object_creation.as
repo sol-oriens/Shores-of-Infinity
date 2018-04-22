@@ -17,7 +17,7 @@ ColonyShip@ createColonizer(Object& from, Object& to, double population, double 
 	ObjectDesc colDesc;
 	colDesc.type = OT_ColonyShip;
 	colDesc.name = locale::COLONY_SHIP;
-	colDesc.radius = 4.0 * pow(population / 0.0625, 1.0 / 3.0);
+	colDesc.radius = shipRadiusFactor * pow(32.0, 1.0 / shipVolumePower);
 	colDesc.delayedCreation = true;
 	if(from.owner.ColonizerName.length != 0)
 		colDesc.name = from.owner.ColonizerName;
@@ -44,7 +44,7 @@ ColonyShip@ createColonizer(Empire@ owner, vec3d from, Object& to, double popula
 	ObjectDesc colDesc;
 	colDesc.type = OT_ColonyShip;
 	colDesc.name = locale::COLONY_SHIP;
-	colDesc.radius = 4.0 * pow(population / 0.0625, 1.0 / 3.0);
+	colDesc.radius = shipRadiusFactor * pow(64.0, 1.0 / shipVolumePower);
 	colDesc.delayedCreation = true;
 	if(owner.ColonizerName.length != 0)
 		colDesc.name = owner.ColonizerName;
@@ -85,9 +85,9 @@ Ship@ createShip(vec3d position, const Design@ design, Empire@ owner, Object@ gr
 	@shipDesc.owner = owner;
 	shipDesc.name = design.name;
 	if(design.hasTag(ST_Station))
-		shipDesc.radius = stationRadiusFactor * pow(design.size,1.0/shipVolumePower) * design.hull.modelScale;
+		shipDesc.radius = stationRadiusFactor * pow(design.size, 1.0 / shipVolumePower) * design.hull.modelScale;
 	else
-		shipDesc.radius = shipRadiusFactor * pow(design.size,1.0/shipVolumePower) * design.hull.modelScale;
+		shipDesc.radius = shipRadiusFactor * pow(design.size , 1.0 / shipVolumePower) * design.hull.modelScale;
 	shipDesc.position = position;
 	if(memorable)
 		shipDesc.flags |= objMemorable;
@@ -144,9 +144,9 @@ Ship@ createShip(Object& at, const Design@ design, Empire@ owner = null, Object@
 	@shipDesc.owner = owner;
 	shipDesc.name = design.name;
 	if(design.hasTag(ST_Station))
-		shipDesc.radius = stationRadiusFactor * pow(design.size,1.0/shipVolumePower) * design.hull.modelScale;
+		shipDesc.radius = stationRadiusFactor * pow(design.size, 1.0 / shipVolumePower) * design.hull.modelScale;
 	else
-		shipDesc.radius = shipRadiusFactor * pow(design.size,1.0/shipVolumePower) * design.hull.modelScale;
+		shipDesc.radius = shipRadiusFactor * pow(design.size, 1.0 / shipVolumePower) * design.hull.modelScale;
 
 	if(design.hasTag(ST_Satellite)) {
 		Object@ spawnAt = at;
