@@ -6,6 +6,7 @@ v0.2.0b
 
 *** The scale of the game has been refined.
 *** Some elements of relativistic physics have been implemented: the speed of light is now a determined in-game constant and nothing can go beyond it except while using FTL means. Acceleration is also adversely affected by the current speed relative to the speed of light.
+*** This version introduces a new type of Project for planets, Policies, which allow to buy specific influence cards at will in exchange for a high costs and a long build time, equivalent to 3 budget cycles.
 
 ************************
 *** Detailed Changes ***
@@ -35,6 +36,8 @@ v0.2.0b
 
 [*] Planets
 
+- Added a new Policy: Call To Arms. Yields one Patriotic Surge influence card. Build cost of 250k. Also cost 5 Influence. Cannot be built by Pacifist lifestyles.
+- Added a new Policy: Grain Reserves. Yields one Harvest influence card. Build cost of 600k. Also costs 20 Influence. Requires a Grain native resource. Cannot be built by Mechanoid and Ancient lifestyles.
 - Slowed down moon rotation and orbit speeds.
 
 [*] Resources

@@ -1,0 +1,17 @@
+Construction: DefensePolicy
+	Name: #C_DEFENSE_POLICY
+	Description: #C_DEFENSE_POLICY_DESC
+
+	Icon: StatusWar
+
+	Category: Policies
+	In Context: True
+
+	Build Cost: 250
+	Time Cost: 540
+
+	ConsumeInfluence(5)
+
+	RequireNotTrait(Pacifist)
+
+	GainInfluenceCard(Uprising)

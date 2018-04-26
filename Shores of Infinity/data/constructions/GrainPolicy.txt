@@ -1,0 +1,19 @@
+Construction: GrainPolicy
+	Name: #C_GRAIN_POLICY
+	Description: #C_GRAIN_POLICY_DESC
+
+	Icon: ResourceIconsSmall::20
+
+	Category: Policies
+	In Context: True
+
+	Build Cost: 600
+	Time Cost: 540
+
+	ConsumeInfluence(20)
+
+	RequireNotTrait(Mechanoid)
+	RequireNotTrait(Ancient)
+	addon_requirement_effects::RequireNativeResource(Grain, Hide = True)
+
+	GainInfluenceCard(Harvest)

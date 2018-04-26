@@ -48,6 +48,18 @@ C_EXPLORE_PLANET_DESC: <<
 
 	Sends an exploration team around the planet. May yield a random discovery.
 >>
+C_DEFENSE_POLICY: Call To Arms
+C_DEFENSE_POLICY_DESC: <<
+	[color=#aaa][i]Compulsory military service and patriotic propaganda provide increased population readiness and willingness for resistance during invasion.[/i][/color]
+
+	Yields one Patriotic Surge influence card.
+>>
+C_GRAIN_POLICY: Grain Reserves
+C_GRAIN_POLICY_DESC: <<
+	[color=#aaa][i]Harsh austerity and anti-waste measures coupled with increased financing of distribution logistics allow to decrease both food consumption and cultivation in order to constitute over time a reserve of unplanted seeds sizeable enough to create an entirely new renewable source of grain.[/i][/color]
+
+	Yields one Harvest influence card.
+>>
 C_FLING_UNLOCK: Refined Beacon Architecture
 C_FLING_UNLOCK_DESC: <<
 	Use the data collected during the construction and use of this fling beacon to improve your beacon designs, allowing for smaller, cheaper fling beacons to be constructed.
