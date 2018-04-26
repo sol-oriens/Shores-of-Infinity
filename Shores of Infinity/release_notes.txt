@@ -25,12 +25,17 @@ v0.2.0b
 *** The closer the velocity of a ship is to the speed of light, the lesser acceleration has an actual effect on this ship. This also means that sublight speed can never reach, let alone exceed, the speed of light. The speed of light, for practical reasons regarding scale versus playability, has arbitrarily been set to x u/s.
 - ETA calculations for colonization orders now take relativistic speeds into account.
 - Fixed bugs where the 'Toggle Laser Propulsion Beam' and 'Repair' abilities would not work properly after loading a previous save.
+- Changed projects with no labor cost to not consume labor storage if available.
 
 [*] Orbitals
 
 - Fling beacon maintenance cost is now 150k (down from 200k).
 - Increased the range of the 'Telescope' abilities on telescope arrays and quantum telescope arrays to 800k units (up from 400k units) and 2M units (up from 1M units), respectively. Decreased the energy cost by half.
 - Increased the range of the 'Toggle Laser Propulsion Beam' ability on phased array laser drives to 700k units (up from 350k units).
+
+[*] Planets
+
+- Slowed down moon rotation and orbit speeds.
 
 [*] Resources
 
@@ -42,15 +47,14 @@ v0.2.0b
 
 [*] Systems
 
-- Decreased scale of ships by a factor of 0.125. The total factor compared to vanilla is now 0.0625.
-- Decreased scale of orbitals by a factor of 0.5.
 - Increased default system spacing by a factor of 2 (300,000 units). The total factor compared to vanilla is now around 46.
 - Greatly increased the average number of planets per system.
+- Decreased base scale of ships by a factor of 0.25.
 
 [*] Subsystems
 
 - Increased the range of the 'Toggle Laser Propulsion Beam' ability on phased array laser drives to 700k units (up from 350k units).
-- Added Colonization Pods. Can colonize a planet, without commissioning civilian colonizers, with the benefits of imperial-class equipment such as extra protection or FTL infrastructures. Settlers must be embarked manually from a planet up to the maximum population storage. One billion settlers is dropped for each colonized planet. Significant amounts of Control are required to support the settlers. Colonization Pods overall maintenance cost is higher than the equivalent amount of civilian colonizers.
+- Added Colonization Pods. Can colonize a planet without commissioning civilian colonizers, with the benefits of imperial-class equipment such as extra protection or FTL infrastructures. Settlers must be embarked manually from a planet up to the maximum population storage. One billion settlers is dropped for each colonized planet. Significant amounts of Control are required to support the settlers. Colonization Pods overall maintenance cost is much higher than the equivalent amount of civilian colonizers.
 - Added Population design stat for Colonization Pods.
 
 [*] User Interface

@@ -276,9 +276,11 @@ final class PlanetNodeScript {
 				auto@ dat = moons[i];
 
 				uint st = dat.style;
-				double rot = fraction(gameTime / (1.0 + 12.0 * double(st % 256) / 255.0)) * twopi;
+				//SoI - Scaling: slowed downed moon rotation speeds.
+				double rot = fraction((gameTime / 5) / (1.0 + 12.0 * double(st % 256) / 255.0)) * twopi;
 				st >>= 8;
-				double angle = fraction(gameTime / (10.0 + 40.0 * double(st % 256) / 255.0)) * twopi;
+				//SoI - Scaling: slowed downed moon orbit speed.
+				double angle = fraction((gameTime / 20) / (10.0 + 40.0 * double(st % 256) / 255.0)) * twopi;
 				st >>= 8;
 				double distance = double(st % 256) / 255.0 * 7.0 + 2.0;
 				st >>= 8;
