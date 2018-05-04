@@ -2,7 +2,7 @@ Construction: DefensePolicy
 	Name: #C_DEFENSE_POLICY
 	Description: #C_DEFENSE_POLICY_DESC
 
-	Icon: StatusWar
+	Icon: AttributeIcons::4
 
 	Category: Policies
 	In Context: True
@@ -12,6 +12,6 @@ Construction: DefensePolicy
 
 	ConsumeInfluence(5)
 
-	RequireNotTrait(Pacifist)
+	RequireNotTrait(Pacifists)
 
 	GainInfluenceCard(Uprising)

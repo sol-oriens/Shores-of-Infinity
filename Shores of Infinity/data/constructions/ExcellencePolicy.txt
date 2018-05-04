@@ -1,0 +1,15 @@
+Construction: ExcellencePolicy
+	Name: #C_EXCELLENCE_POLICY
+	Description: #C_EXCELLENCE_POLICY_DESC
+
+	Icon: VoteIcons::1
+
+	Category: Policies
+	In Context: True
+
+	Build Cost: 450
+	Time Cost: 540
+
+	ConsumeInfluence(10)
+
+	GainInfluenceCard(Enhance)

@@ -1,6 +1,6 @@
-Construction: GrainPolicy
-	Name: #C_GRAIN_POLICY
-	Description: #C_GRAIN_POLICY_DESC
+Construction: FoodPolicy
+	Name: #C_FOOD_POLICY
+	Description: #C_FOOD_POLICY_DESC
 
 	Icon: ResourceIconsSmall::20
 

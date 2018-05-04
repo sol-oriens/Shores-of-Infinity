@@ -37,7 +37,9 @@ v0.2.0b
 [*] Planets
 
 - Added a new Policy: Call To Arms. Yields one Patriotic Surge influence card. Build cost of 250k. Also cost 5 Influence. Cannot be built by Pacifist lifestyles.
-- Added a new Policy: Grain Reserves. Yields one Harvest influence card. Build cost of 600k. Also costs 20 Influence. Requires a Grain native resource. Cannot be built by Mechanoid and Ancient lifestyles.
+- Added a new Policy: Crop Regulation. Yields one Harvest influence card. Build cost of 600k. Also costs 20 Influence. Requires a Grain native resource. Cannot be built by Mechanoid and Ancient lifestyles.
+- Added a new Policy: Economic Endeavor. Yields one Profiteering influence card. Build cost of 150k. Also costs 10 Influence.
+- Added a new Policy: Scholarship Support. Yields one Enhance influence card. Build cost of 450k. Also costs 10 Influence.
 - Slowed down moon rotation and orbit speeds.
 
 [*] Resources

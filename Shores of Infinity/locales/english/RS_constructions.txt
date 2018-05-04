@@ -50,15 +50,27 @@ C_EXPLORE_PLANET_DESC: <<
 >>
 C_DEFENSE_POLICY: Call To Arms
 C_DEFENSE_POLICY_DESC: <<
-	[color=#aaa][i]Compulsory military service and patriotic propaganda provide increased population readiness and willingness for resistance during invasion.[/i][/color]
+	[color=#aaa][i]Compulsory military service and patriotic propaganda provide new soldiers as well as increased population readiness and willingness for resistance during invasion.[/i][/color]
 
 	Yields one Patriotic Surge influence card.
 >>
-C_GRAIN_POLICY: Grain Reserves
-C_GRAIN_POLICY_DESC: <<
+C_FOOD_POLICY: Crop Regulation
+C_FOOD_POLICY_DESC: <<
 	[color=#aaa][i]Harsh austerity and anti-waste measures coupled with increased financing of distribution logistics allow to decrease both food consumption and cultivation in order to constitute over time a reserve of unplanted seeds sizeable enough to create an entirely new renewable source of grain.[/i][/color]
 
 	Yields one Harvest influence card.
+>>
+C_MONEY_POLICY: Economic Endeavor
+C_MONEY_POLICY_DESC: <<
+	[color=#aaa][i]State-owned loans and public works contracts to support economical development eventually yield returns on investments.[/i][/color]
+
+	Yields one Profiteering influence card.
+>>
+C_EXCELLENCE_POLICY: Scholarship Support
+C_EXCELLENCE_POLICY_DESC: <<
+	[color=#aaa][i]Concerted efforts from academic instances to provide better education and better access to it, with the help of additional budget to said instances and grants to students, lead to an influx of highly qualified graduates.[/i][/color]
+
+	Yields one Enhance influence card.
 >>
 C_FLING_UNLOCK: Refined Beacon Architecture
 C_FLING_UNLOCK_DESC: <<
