@@ -4,7 +4,7 @@ v0.2.0b
 *** Release Highlights ***
 **************************
 
-*** The scale of the game has been refined.
+*** The scale of the game has been fine-tuned.
 *** Some elements of relativistic physics have been implemented: the speed of light is now a determined in-game constant and nothing can go beyond it except while using FTL means. Acceleration is also adversely affected by the current speed relative to the speed of light.
 *** This version introduces a new type of Project for planets, Policies, which allow to buy specific influence cards at will in exchange for a high costs and a long build time, equivalent to 3 budget cycles.
 
@@ -22,8 +22,8 @@ v0.2.0b
 
 [*] Gameplay
 
-- Relativistic physics now affect sublight speed.
-*** The closer the velocity of a ship is to the speed of light, the lesser acceleration has an actual effect on this ship. This also means that sublight speed can never reach, let alone exceed, the speed of light. The speed of light, for practical reasons regarding scale versus playability, has arbitrarily been set to x u/s.
+- Relativistic physics now affect sublight speed by applying the Lorentz factor to acceleration.
+*** The closer the velocity of a ship is to the speed of light, the lesser acceleration has an actual effect on this ship. This also means that sublight speed can never reach, let alone exceed, the speed of light. The speed of light, for practical reasons regarding scale versus playability, has arbitrarily been set to 1000 u/s.
 - ETA calculations for colonization orders now take relativistic speeds into account.
 - Fixed bugs where the 'Toggle Laser Propulsion Beam' and 'Repair' abilities would not work properly after loading a previous save.
 - Changed projects with no labor cost to not consume labor storage if available.
@@ -41,12 +41,14 @@ v0.2.0b
 - Added a new Policy: Economic Endeavor. Yields one Profiteering influence card. Build cost of 150k. Also costs 10 Influence.
 - Added a new Policy: Scholarship Support. Yields one Enhance influence card. Build cost of 450k. Also costs 10 Influence.
 - Slowed down moon rotation and orbit speeds.
+- Moon bases built by the related Foundation trait now consumes the available moon to build a base on on the homeworld.
+- Fixed a bug where moon bases built by the related Foundation trait would only be 5x5 size instead of 6x6.
 
 [*] Resources
 
 - Slightly increased the frequency of Water on planets.
 - Added Metallic Gases, a new scalable resource found on gas giants only. Increases Labor generation and civilian Energy pressure by 0%/5%/10%/30%/60%/120%/200%. Cannot be exported.
-- Reverted Rare Gases acceleration bonus to 0%/5%/10%/30%/60%/120%/200% (up from 0%/2.5%/5%/10%/30%/60%/120%).
+- Reverted Rare Gases acceleration bonus to 0%/5%/10%/30%/60%/120%/200% (up from 0%/2.5%/5%/10%/30%/60%/120%). As gas giants can now have different resources, this one will be much rarer.
 - Moved the guaranteed Neutronium asteroid closer to the home system.
 - Fixed a bug where Level 1 Water resources from ice giants could fill either Water requirements or Level requirements to level a planet up, but not both at the same time.
 - Lowered the priority of Ore in the planet resource list. This allows primary resources to keep being displayed first in the planet resource list, but it is now required to export Ore by right-clicking the target planet in all cases.
