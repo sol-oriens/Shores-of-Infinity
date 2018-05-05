@@ -119,7 +119,7 @@ ORB_STAGING_HUB_DESC: <<|
 	[i]Can be built in systems you do not own planets in, expanding your empire border.[/i]
 >>
 ORB_STAGING_HUB_MARKET: Public Market
-ORB_STAGING_HUB_MARKET_DESC <<
+ORB_STAGING_HUB_MARKET_DESC: <<
 	[color=#aaa][i]Additional warehouse space along with a management area to store and sell imported resources to private buyers. As these trades are made outside the civilian sector, all profits are state-owned.[/i][/color]
 
 	Can import influence, energy, research and defense resources and generate 5k per imported pressure as special funds every minute.
