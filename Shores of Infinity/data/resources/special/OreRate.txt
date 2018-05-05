@@ -5,6 +5,7 @@ Resource: OreRateMine
 
 	Icon: ResourceIconsSmall::65
 	Small Icon: ResourceIconsSmall::65
+	Display Weight: -5
 
 	Rarity: Common
 	Distribution: 0
