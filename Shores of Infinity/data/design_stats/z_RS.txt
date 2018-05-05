@@ -51,6 +51,14 @@ GlobalStat: PlanetMiningRate
 
 	Variable: PlanetMiningRate
 
+GlobalStat: ShipPop
+	Name: #S_SHIPPOP
+	Description: #STT_SHIPPOP
+	Icon: ResourceIcon::8
+	Color: #ff8080
+
+	Variable: ShipPopStorage
+
 // *************************************
 // ******SUBSYSTEM-SPECIFIC STATS*******
 // *************************************
@@ -260,13 +268,6 @@ SubsystemStat: BombardCost
 	Color: #ff8931
 
 	Variable: BombardCost
-
-SubsystemStat: SettlerPop
-	Name: #S_SETTLERPOP
-	Icon: AttributeIcons::1
-	Color: #ff8080
-
-	Variable: SettlerPop
 
 // *************************************
 // *********HEX-SPECIFIC STATS**********

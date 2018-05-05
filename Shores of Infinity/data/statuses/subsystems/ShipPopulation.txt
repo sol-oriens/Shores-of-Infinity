@@ -1,0 +1,8 @@
+Status: ShipPopulation
+	Name: #STATUS_SHIP_POPULATION
+	Description: #STATUS_SHIP_POPULATION_DESC
+	Icon: ResourceIcon::8
+	Visible To: Owner
+	Collapses: True
+
+	RepeatStacks(AddMoneyIncome(15))

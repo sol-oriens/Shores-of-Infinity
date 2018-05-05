@@ -1,5 +1,101 @@
 import hooks;
 import generic_hooks;
+from empire_effects import PeriodicData;
+
+class AddStatusStacks : GenericEffect {
+  Document doc("Add stacks of a status effect to the object every set interval.");
+	Argument type(AT_Status, doc="Type of status effect to create.");
+  Argument stacks(AT_Integer, "1", doc="Number of stacks to add");
+  Argument random_stack_margin(AT_Integer, "0", doc="Random margin for the stacks added.");
+  Argument duration(AT_Decimal, "-1", doc="Duration to add the status stacks for, -1 for permanent.");
+	Argument set_origin_empire(AT_Boolean, "False", doc="Whether to record the empire triggering this hook into the origin empire field of the resulting status. If not set, any hooks that refer to Origin Empire cannot not apply. Status effects with different origin empires set do not collapse into stacks.");
+	Argument set_origin_object(AT_Boolean, "False", doc="Whether to record the object triggering this hook into the origin object field of the resulting status. If not set, any hooks that refer to Origin Object cannot not apply. Status effects with different origin objects set do not collapse into stacks.");
+	Argument max_stacks(AT_Integer, "0", doc="If set to more than 0, never add stacks beyond a certain amount.");
+  Argument interval(AT_Decimal, "0", doc="Interval in seconds between triggers, 0 for only one trigger.");
+  Argument trigger_immediate(AT_Boolean, "True", doc="Whether to first trigger the effect right away before starting the timer. Must be true if there is only one trigger.");
+  Argument random_interval_margin(AT_Decimal, "0", doc="Random margin for the interval. Not used if if there is only one trigger.");
+
+  #section server
+  	double getTimer() const {
+  		double timer = interval.decimal;
+      if (timer > 0) {
+    		double margin = random_interval_margin.decimal;
+    		if (margin != 0)
+    			timer *= randomd(1.0 - margin, 1.0 + margin);
+      }
+  		return timer;
+  	}
+
+    void addStatusStacks(Object& obj) {
+      if (obj is null)
+        return;
+      Empire@ origEmp = null;
+      if (set_origin_empire.boolean)
+        @origEmp = obj.owner;
+      Object@ origObj = null;
+      if (set_origin_object.boolean)
+        @origObj = obj;
+      uint actualStacks = uint(stacks.integer);
+      uint randomMargin = uint(random_stack_margin.integer);
+      if (randomMargin > 0)
+        actualStacks += max(1, randomi(1.0 - randomMargin, 1.0 + randomMargin));
+      if (max_stacks.integer > 0) {
+        uint currentStacks = obj.getStatusStackCount(type.integer, originEmpire=origEmp, originObject=origObj);
+        uint maxStacks = uint(max_stacks.integer);
+        if (currentStacks >= maxStacks)
+          return;
+        else if (actualStacks + currentStacks > maxStacks)
+          actualStacks -= (maxStacks - currentStacks);
+      }
+      for (uint i = 0, cnt = actualStacks; i < cnt; ++i)
+        obj.addStatus(uint(type.integer), duration.decimal, originEmpire=origEmp, originObject=origObj);
+    }
+
+  	void enable(Object& obj, any@ data) const override {
+  		PeriodicData@ dat;
+  		if (!data.retrieve(@dat)) {
+  			@dat = PeriodicData();
+  			dat.timer = getTimer();
+  			data.store(@dat);
+  		}
+
+  		if (trigger_immediate.boolean) {
+        addStatusStacks(obj);
+  			dat.count += 1;
+  		}
+  	}
+
+  	void tick(Object& obj, any@ data, double tick) const override {
+      if (interval.decimal > 0) {
+    		PeriodicData@ dat;
+    		data.retrieve(@dat);
+
+    		dat.timer -= tick;
+    		if (dat.timer <= 0.0) {
+          addStatusStacks(obj);
+  				dat.count += 1;
+    			dat.timer += getTimer();
+    		}
+      }
+  	}
+
+    void save(any@ data, SaveFile& file) const override {
+  		PeriodicData@ dat;
+  		data.retrieve(@dat);
+
+  		file << dat.timer;
+  		file << dat.count;
+  	}
+
+  	void load(any@ data, SaveFile& file) const override {
+  		PeriodicData dat;
+  		data.store(@dat);
+
+  		file >> dat.timer;
+  		file >> dat.count;
+  	}
+  #section all
+};
 
 class SystemData {
   array<Object@> data;
@@ -37,8 +133,8 @@ class AddStatusToPlanetsInSystem : GenericEffect {
           bool found = false;
           for(uint i = 0; i < plCnt; ++i) {
             Object@ pl = obj.region.planets[i];
-              if (pl !is null && pl is prevObj)
-                found = true;
+            if (pl !is null && pl is prevObj)
+              found = true;
           }
           if (!found) {
             prevObj.removeStatusInstanceOfType(status.integer);
@@ -47,39 +143,39 @@ class AddStatusToPlanetsInSystem : GenericEffect {
         }
       }
 
-      for(uint i = 0; i < plCnt; ++i) {
+      for (uint i = 0; i < plCnt; ++i) {
         Object@ newObj = obj.region.planets[i];
         if(newObj is null)
           continue;
 
-      	if(newObj !is null && only_owned.boolean) {
+      	if (newObj !is null && only_owned.boolean) {
       		Empire@ owner = obj.owner;
       		Empire@ otherOwner = newObj.owner;
 
-      		if(owner !is otherOwner) {
-      			if(!allow_space.boolean || otherOwner.valid) {
+      		if (owner !is otherOwner) {
+      			if (!allow_space.boolean || otherOwner.valid) {
       				@newObj = null;
       			}
       		}
       	}
 
-      	if(newObj !is null && newObj.hasSurfaceComponent) {
-      		if(newObj.quarantined && !allow_quarantined.boolean) {
+      	if (newObj !is null && newObj.hasSurfaceComponent) {
+      		if (newObj.quarantined && !allow_quarantined.boolean) {
       			@newObj = null;
       		}
       	}
 
-        if(newObj is null)
+        if (newObj is null)
           continue;
 
         Empire@ origEmp = null;
-        if(set_origin_empire.boolean)
+        if (set_origin_empire.boolean)
           @origEmp = obj.owner;
         Object@ origObj = null;
-        if(set_origin_object.boolean)
+        if (set_origin_object.boolean)
           @origObj = obj;
 
-        if(newObj !is null && prevObjs.data.find(newObj) == -1) {
+        if (newObj !is null && prevObjs.data.find(newObj) == -1) {
           newObj.addStatus(status.integer, originEmpire=origEmp, originObject=origObj);
           prevObjs.data.insertLast(newObj);
         }

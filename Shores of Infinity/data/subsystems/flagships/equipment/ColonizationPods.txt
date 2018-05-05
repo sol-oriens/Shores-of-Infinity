@@ -8,7 +8,7 @@ Subsystem: ColonizationPods
 	Tags: DefaultUnlock, Category:Equipment, Settlers, NonContiguous, NoCore
 	Tags: Ability:ColonizationPods
 	Tags: HasInternals
-	Hull: Flagship, Station
+	Hull: Flagship
 
 	Hex.LaborCost := 0.30 * HexSize + 0.8
 	Hex.BuildCost := 1.5 * HexSize + 2
@@ -19,13 +19,14 @@ Subsystem: ColonizationPods
 
 	SettlerPop := floor(Size / 1088)
 
-	SettlerStorageMaintCost := 100.0 * SettlerPop
-	SettlerStorage := SettlerPop
+	SettlerCost := 250 * SettlerPop
+	SettlerLabor := 10 * SettlerPop
+	ShipPopStorage := SettlerPop
 
 	Hex.HP := 18 * HexSize
 	Hex.Resistance := 0.2
 
-	Hook: LimitStatusStacks(Settlers, SettlerStorage)
+	Hook: LimitStatusStacks(Settlers, SettlerPop)
 
 	Requires:
 		Command = ceil(Hexes * 0.6)
@@ -35,6 +36,7 @@ Subsystem: ColonizationPods
 		Message: #ERROR_TOO_SMALL
 
 	Module: Default
-		Hex.MaintainCost := Hex.MaintainCost + SettlerStorageMaintCost / Hexes
+		Hex.BuildCost := Hex.BuildCost + (SettlerCost / Hexes)
+		Hex.LaborCost := Hex.LaborCost + (SettlerLabor / Hexes)
 
 		Sprite: TroopPods

@@ -18,7 +18,8 @@ Construction: Settlers
 	TargetFilterSameRegion(targ)
 	TargetFilterType(targ, Ship)
 	TargetFilterDesignTag(targ, Settlers)
-	TargetFilterFewerStatusesThanVar(targ, Settlers, Sys.SettlerStorage)
+	TargetFilterFewerStatusesThanVar(targ, Settlers, Sys.ShipPopStorage)
+	TargetFilterFewerStatusesThanVar(targ, ShipPopulation, Sys.ShipPopStorage)
 
 	ConsumePopulation(1)
 

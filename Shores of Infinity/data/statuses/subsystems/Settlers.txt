@@ -1,8 +1,8 @@
 Status: Settlers
 	Name: #STATUS_SETTLERS
 	Description: #STATUS_SETTLERS_DESC
-	Icon: AbilityIcons::2
+	Icon: ResourceIcon::8
 	Visible To: Owner
 	Collapses: True
 
-	addon_status_effects::BudgetMaintenance(160, Type = Colonizers)
+	RepeatStacks(addon_status_effects::BudgetMaintenance(160, Type = Colonizers))

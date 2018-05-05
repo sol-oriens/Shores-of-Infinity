@@ -556,7 +556,6 @@ class AddStatus : BonusEffect {
 		Object@ origObj = null;
 		if(set_origin_object.boolean)
 			@origObj = obj;
-
 		if(max_stacks.integer > 0) {
 			if(obj.getStatusStackCount(type.integer, originEmpire=origEmp, originObject=origObj) >= uint(max_stacks.integer))
 				return;

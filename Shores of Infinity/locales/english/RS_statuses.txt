@@ -118,6 +118,8 @@ STATUS_EXPLORED_PLANET: Explored
 STATUS_EXPLORED_PLANET_DESC: <<
 	This planet has been fully explored.
 >>
+STATUS_SHIP_POPULATION: Carrying population
+STATUS_SHIP_POPULATION_DESC: This ship is carrying civilian population.
 STATUS_SETTLERS: Carrying settlers
 STATUS_SETTLERS_DESC: This ship is carrying settlers and necessary equipment to colonize a planet.
 STATUS_BOARDING_TROOPS: Carrying Boarding Parties

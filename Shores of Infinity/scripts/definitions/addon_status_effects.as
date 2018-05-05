@@ -40,7 +40,6 @@ class BudgetMaintenance : StatusHook {
 
 		if(obj.owner !is null)
 			obj.owner.modMaintenance(maintData.amount, maintData.type);
-			//obj.owner.modMaintenance(amt, MoT_Colonizers);
 		data.store(@maintData);
 	}
 

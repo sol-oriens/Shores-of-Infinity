@@ -6,11 +6,11 @@ Ability: ColonizationPods
 	Range: 100
 
 	Target: targ = Object
-	
+
 	TargetFilterType(targ, Planet)
 	TargetFilterNotQuarantined(targ)
 	TargetFilterSpace(targ)
 
-	ConsumeStatus(Settlers, Hide = True)
+	addon_ability_effects::ConsumeEitherStatuses(Settlers, ShipPopulation, Hide = True)
 	Trigger(targ, GivePopulation(1))
 	Trigger(targ, TakeControl())
