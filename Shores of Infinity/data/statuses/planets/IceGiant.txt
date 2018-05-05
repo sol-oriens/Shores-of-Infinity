@@ -4,3 +4,4 @@ Status: IceGiant
 	Icon: PlanetType::11
 	Color: #00ff00
 	Collapses: True
+	Visible To: Global

@@ -4,3 +4,4 @@ Status: GasGiant
 	Icon: PlanetType::13
 	Color: #00ff00
 	Collapses: True
+	Visible To: Global
