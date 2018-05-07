@@ -42,7 +42,7 @@ Subsystem: HabitatModule
 		Sprite: TroopPods
 
 Subsystem: StarHabitatModule
-	Name: #S_HABITAT_MODULE_STAR
+	Name: #S_HABITAT_MODULE
 	Description: #S_HABITAT_MODULE_DESC
 	BaseColor: #ffffff
 	TypeColor: #ffffff
