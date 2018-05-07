@@ -5,7 +5,7 @@ Subsystem: HabitatModule
 	TypeColor: #ffffff
 	Elevation: 2
 
-	Tags: DefaultUnlock, Category:Equipment, Habitat, NonContiguous, NoCore
+	Tags: Category:Equipment, Habitat, NonContiguous, NoCore
 	Tags: HasInternals
 	Hull: Flagship, Station
 
@@ -26,6 +26,49 @@ Subsystem: HabitatModule
 	Hex.Resistance := 0.2
 
 	Hook: addon_generic_effects::AddStatusStacks(ShipPopulation, 1, 0, -1, False, False, Sum.ShipPopStorage, 120, False, 0)
+	Hook: LimitStatusStacks(ShipPopulation, Sum.ShipPopStorage)
+
+	Requires:
+		Command = ceil(Hexes * 0.6)
+
+	Assert: HabitatPop >= 1
+		Unique: True
+		Message: #ERROR_TOO_SMALL
+
+	Module: Default
+		Hex.BuildCost := Hex.BuildCost + (HabitatCost / Hexes)
+		Hex.LaborCost := Hex.LaborCost + (HabitatLabor / Hexes)
+
+		Sprite: TroopPods
+
+Subsystem: StarHabitatModule
+	Name: #S_HABITAT_MODULE_STAR
+	Description: #S_HABITAT_MODULE_DESC
+	BaseColor: #ffffff
+	TypeColor: #ffffff
+	Elevation: 2
+
+	Tags: Category:Equipment, Habitat, NonContiguous, NoCore
+	Tags: HasInternals
+	Hull: Flagship, Station
+
+	Hex.LaborCost := 0.30 * HexSize + 0.8
+	Hex.BuildCost := 1.5 * HexSize + 2
+	Hex.MaintainCost := 0.8 * HexSize + 2 - (4 * HexSize / ShipSize^0.5)
+
+	Size := HexSize * Hexes
+	Hex.Mass := HexSize
+
+	HabitatPop := floor(Size / 363)
+
+	HabitatCost := 500 * HabitatPop
+	HabitatLabor := 20 * HabitatPop
+	ShipPopStorage := HabitatPop
+
+	Hex.HP := 18 * HexSize
+	Hex.Resistance := 0.2
+
+	Hook: addon_generic_effects::AddStatusStacks(MothershipPopulation, 1, 0, -1, False, False, Sum.ShipPopStorage, 120, False, 0)
 	Hook: LimitStatusStacks(ShipPopulation, Sum.ShipPopStorage)
 
 	Requires:

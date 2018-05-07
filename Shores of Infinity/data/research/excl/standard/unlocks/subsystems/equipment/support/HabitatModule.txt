@@ -1,0 +1,16 @@
+Technology: HabitatModule
+	Name: #R_SYS_HABITAT_MODULE
+	Description: #R_SYS_HABITAT_MODULE_DESC
+
+	Icon: TroopPods
+	Color: #dd3b4e
+
+	Category: Equipment - Support
+	Class: Unlock
+
+	Point Cost: 600
+	Time Cost: 120
+
+	SkipOnUnlockedSubsystem(HabitatModule)
+	UnlockSubsystem(HabitatModule)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)

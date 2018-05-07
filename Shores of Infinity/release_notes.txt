@@ -6,6 +6,8 @@ v0.2.0b
 
 *** The scale of the game has been fine-tuned.
 *** Some elements of relativistic physics have been implemented: the speed of light is now a determined in-game constant and nothing can go beyond it except while using FTL means. Acceleration is also adversely affected by the current speed relative to the speed of light.
+*** New subsystems have been added to provide a (costly) way to mitigate long colony ship travel times and / or open options to create independent space-based settlements.
+*** Some mechanics of the Star Children lifestyle have been overhauled, both to adequately fit it to the balance of the mod and to increase its flavor.
 *** This version introduces a new type of Project for planets, Policies, which allow to buy specific influence cards at will in exchange for a high costs and a long build time, equivalent to 3 budget cycles.
 
 ************************
@@ -28,6 +30,13 @@ v0.2.0b
 - Fixed bugs where the 'Toggle Laser Propulsion Beam' and 'Repair' abilities would not work properly after loading a previous save.
 - Changed projects with no labor cost to not consume labor storage if available.
 
+[*] Lifestyles
+
+- Star Children motherships no longer get population growth and labor generation simply by virtue of being motherships, but these characteristics are now provided by their subsystems.
+- Since the population of the motherships is now hosted in habitat module, the maximum population a mothership can support depends of the size of said module (and the size of the ship).
+- Population inside a Star Children mothership now provides 30k income (up from 15k).
+- Default mothership designs have been updated to reflect the gameplay changes for Star Children and also as a tutorial on how to design motherships.
+
 [*] Orbitals
 
 - Fling beacon maintenance cost is now 150k (down from 200k).
@@ -43,6 +52,10 @@ v0.2.0b
 - Slowed down moon rotation and orbit speeds.
 - Moon bases built by the related Foundation trait now consumes the available moon to build a base on on the homeworld.
 - Fixed a bug where moon bases built by the related Foundation trait would only be 5x5 size instead of 6x6.
+
+[*] Research
+
+- Added the Closed Ecological Life Support node. Unlocks the Habitat Module subsystem for use on flagships and stations.
 
 [*] Resources
 
@@ -63,8 +76,10 @@ v0.2.0b
 [*] Subsystems
 
 - Increased the range of the 'Toggle Laser Propulsion Beam' ability on phased array laser drives to 700k units (up from 350k units).
-- Added Colonization Pods. Can colonize a planet without commissioning civilian colonizers, with the benefits of imperial-class equipment such as extra protection or FTL infrastructures. Settlers must be embarked manually from a planet up to the maximum population storage. One billion settlers is dropped for each colonized planet. Significant amounts of Control are required to support the settlers. Colonization Pods overall maintenance cost is much higher than the equivalent amount of civilian colonizers.
-- Added Population design stat for Colonization Pods.
+- Added Colonization Pods. Can colonize a planet without commissioning civilian colonizers, with the benefits of imperial-class equipment such as extra protection or FTL infrastructures. Settlers must be embarked manually from a planet up to the maximum population storage. One billion settlers is dropped for each colonized planet. Significant amounts of Control are required to support the settlers. Requires a significant amount of space. Additional maintenance cost once pods are loaded is higher than the equivalent amount of civilian colonizers.
+- Added Habitat Module. Can support population. The population will grow and provide income as if on a planet, but at a greatly reduced rate. Can share population with Colonization Pods, allowing to colonize planets with the population already on board. Significant amounts of Control are required to support the population. Requires a significant amount of space.
+- As masters of life among the stars, the Habitat Module for Star Children is a more efficient version unlocked at game start.
+- Added Population design stat for Colonization Pods and Habitat Modules.
 
 [*] User Interface
 

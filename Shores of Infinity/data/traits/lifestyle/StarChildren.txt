@@ -30,6 +30,7 @@ Trait: StarChildren
 	IfHaveTrait(Flux, LoadDesigns(starchildren/other))
 
 	UnlockSubsystem(MothershipHull)
+	UnlockSubsystem(StarHabitatModule)
 
 	TriggerHomeworld(SpawnShip(Mothership, Set Home = True))
 	TriggerHomeworld(DestroySystemPlanet(0, Quiet = True))

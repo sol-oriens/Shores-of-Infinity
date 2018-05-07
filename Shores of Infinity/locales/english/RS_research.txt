@@ -56,6 +56,15 @@ R_STAR_ARCOLOGY_DESC: <<
 	[i][bbloc=#ORB_STAR_RING_HABITAT_DESC/][/i]
 >>
 
+R_SYS_HABITAT_MODULE: Closed Ecological Life Support
+R_SYS_HABITAT_MODULE_DESC: <<
+	[i][color=#aaa]The mastery of the delicate balance required to sustain a small scale closed loop ecology allows life support systems that don't require external supplies other than the energy needed to run them. Free of the burden of supply costs and storage space, truly independent colonies can at last strive in the void.[/color][/i]
+
+	Unlocks the Habitat Module subsystem for use on flagships and stations.
+
+	[i][bbloc=#S_HABITAT_MODULE_DESC/][/i]
+>>
+
 R_IMP_PLANET_SUPPORT_DESC: <<
 	[i][color=#aaa]More focused and effective command of orbital defense vessels.[/color][/i]
 

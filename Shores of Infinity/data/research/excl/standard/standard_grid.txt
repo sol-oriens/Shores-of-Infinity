@@ -393,3 +393,4 @@ Grid: StandardResearch
 	InfiniteThrust: -9,17
 	Health: 13,-3
 	InfiniteHealth: 8,-12
+	HabitatModule: -7,-8

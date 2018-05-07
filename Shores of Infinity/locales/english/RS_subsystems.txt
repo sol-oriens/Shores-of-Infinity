@@ -407,7 +407,7 @@ S_HABITAT_MODULE: Habitat Module
 S_HABITAT_MODULE_DESC: <<
 	Pressurized living quarters designed to support long term habitation.
 
-	[img=Plus]Can support population. The population will grow and provide income as if on a planet, but at a reduced rate.[/img]
+	[img=Plus]Can support population. The population will grow and provide income as if on a planet, but at a greatly reduced rate.[/img]
 	[img=Plus]Can share population with Colonization Pods, allowing to colonize planets with the population already on board.[/img]
 	[img=Minus]Significant amounts of [b][color=#00ff80]Control[/color][/b] are required to support the population.[/img]
 	[img=Minus]Requires a significant amount of space.[/img]
@@ -421,7 +421,6 @@ S_COLONIZATIONPODS_DESC: <<
 	[img=Minus]Settlers must be embarked manually from a planet up to the maximum population storage. One billion settlers is dropped for each colonized planet.[/img]
 	[img=Minus]Significant amounts of [b][color=#00ff80]Control[/color][/b] are required to support the settlers.[/img]
 	[img=Minus]Requires a significant amount of space.[/img]
-	[img=Minus]Very high maintenance cost.[/img]
 	[img=Minus]Additional maintenance cost once pods are loaded is higher than the equivalent amount of civilian colonizers.[/img]
 >>
 
