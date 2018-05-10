@@ -2,8 +2,8 @@ Technology: HabitatModule
 	Name: #R_SYS_HABITAT_MODULE
 	Description: #R_SYS_HABITAT_MODULE_DESC
 
-	Icon: TroopPods
-	Color: #dd3b4e
+	Icon: SupportCommand * #edbb99
+	Color: #edbb99
 
 	Category: Equipment - Support
 	Class: Unlock
@@ -13,4 +13,20 @@ Technology: HabitatModule
 
 	SkipOnUnlockedSubsystem(HabitatModule)
 	UnlockSubsystem(HabitatModule)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)
+
+Technology: StarHabitatModule
+	Name: #R_STAR_HABITAT_MODULE
+	Description: #R_STAR_HABITAT_MODULE_DESC
+
+	Icon: SupportCommand * #edbb99
+	Color: #edbb99
+
+	Point Cost: 600
+	Time Cost: 120
+
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+	Class: BigUpgrade
+
+	AddModifier(StarHabitatModule::HabitatPopulationFactor(1.25))
 	ModAttribute(ProgenitorTechProgress, Add, 1.5)

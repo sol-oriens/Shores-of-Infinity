@@ -64,6 +64,12 @@ R_SYS_HABITAT_MODULE_DESC: <<
 
 	[i][bbloc=#S_HABITAT_MODULE_DESC/][/i]
 >>
+R_STAR_HABITAT_MODULE: Ultra Modularization
+R_STAR_HABITAT_MODULE_DESC: <<
+	[i][color=#aaa]Extensive tests and innovative furniture designs allowed us to find a way to optimize every available inch of space in our living quarters and shrink them as much as physically possible without loss of comfort... Well, almost.[/color][/i]
+
+	Increases the Population supported by Living Quarters by 25%.
+>>
 
 R_IMP_PLANET_SUPPORT_DESC: <<
 	[i][color=#aaa]More focused and effective command of orbital defense vessels.[/color][/i]
