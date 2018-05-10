@@ -17,4 +17,4 @@ Technology: Simulator
 
 	SkipOnUnlockedSubsystem(Simulator)
 	UnlockSubsystem(Simulator)
-	ModAttribute(ProgenitorTechProgress, Add, 2)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)
