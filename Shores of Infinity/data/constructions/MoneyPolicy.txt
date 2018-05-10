@@ -12,4 +12,6 @@ Construction: MoneyPolicy
 
 	ConsumeInfluence(10)
 
+	addon_requirement_effects::RequirePopulation()
+
 	GainInfluenceCard(Profiteering)

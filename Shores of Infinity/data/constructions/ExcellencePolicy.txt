@@ -12,4 +12,6 @@ Construction: ExcellencePolicy
 
 	ConsumeInfluence(10)
 
+	addon_requirement_effects::RequirePopulation()
+
 	GainInfluenceCard(Enhance)

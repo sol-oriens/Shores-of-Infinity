@@ -13,5 +13,6 @@ Construction: DefensePolicy
 	ConsumeInfluence(5)
 
 	RequireNotTrait(Pacifists)
+	addon_requirement_effects::RequirePopulation()
 
 	GainInfluenceCard(Uprising)
