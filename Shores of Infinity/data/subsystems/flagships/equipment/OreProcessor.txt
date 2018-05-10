@@ -20,7 +20,7 @@ Subsystem: OreProcessor
 	Hook: AddCargoStorage(CargoStorage)
 	Hook: AddPermanentStatus(CanTakeCargo)
 
-	Assert: Sum.LaborIncome > 0
+	Assert: Sum.HasConstructionBay > 0
 		Message: #REQUIRE_CONSTRUCTION_BAY
 
 	Module: Default

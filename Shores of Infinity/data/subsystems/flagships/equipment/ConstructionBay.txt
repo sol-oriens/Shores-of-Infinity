@@ -14,6 +14,8 @@ Subsystem: ConstructionBay
 	LaborIncome := Size / 4
 	TargetRepair := LaborIncome * 8
 
+	HasConstructionBay := 1
+
 	Hook: AllowConstruction(True, False, False)
 	Hook: AddLaborIncome(LaborIncome)
 	Hook: AddPermanentStatus(ConstructionBay)

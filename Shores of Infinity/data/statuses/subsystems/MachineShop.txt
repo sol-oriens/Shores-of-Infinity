@@ -1,0 +1,6 @@
+Status: MachineShop
+	Name: #S_MACHINE_SHOP
+	Description: #STATUS_MACHINE_SHOP_DESC
+	Icon: SupplyStorage * #b3b6b7
+
+	AddLaborEmpireAttribute(FactoryLaborMod)

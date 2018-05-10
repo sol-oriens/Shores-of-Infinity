@@ -51,6 +51,14 @@ GlobalStat: PlanetMiningRate
 
 	Variable: PlanetMiningRate
 
+GlobalStat: LaborStorage
+	Name: #S_LABORSTORAGE
+	Description: #STT_LABORSTORAGE
+	Icon: Warehouse
+	Color: #3fe7b2
+
+	Variable: LaborStorage
+
 GlobalStat: ShipPop
 	Name: #S_SHIPPOP
 	Description: #STT_SHIPPOP

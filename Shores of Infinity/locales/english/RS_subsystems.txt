@@ -67,6 +67,8 @@ STT_HULLSTRENGTH: <<
 >>
 S_PLANETMININGRATE: Mining Rate
 STT_PLANETMININGRATE: The rate at which this ship can mine materials from planets and put them into cargo storage.
+S_LABORSTORAGE: Labor Storage
+STT_LABORSTORAGE: The amount of Labor the ship can store.
 S_REPAIR: Repair Rate
 STT_REPAIR: The amount of hitpoints the ship can repair per second while out of combat.
 S_REPAIR_COMBAT: In-Combat Repair Rate
@@ -403,12 +405,30 @@ S_CARGO_HULL: Hauler Hull
 S_MINER_HULL: Miner Hull
 S_PROGENITOR_ARMOR: Progenitor Armor
 
+S_MACHINE_SHOP: Machine Shop
+S_MACHINE_SHOP_DESC: <<
+	An array of workshops and assembly lines providing the same range of building options as ground factories as well as storage areas for spare parts.
+
+	[img=Plus]Provides Labor and Labor Storage.[/img]
+	[img=Plus]Gains Labor from Metallurgy research.[/img]
+	[img=Plus]Can build ships, orbitals, asteroid bases and terraform planets.[/img]
+	[img=Minus]Provides much less Labor than a Construction Bay of equivalent size.[/img]
+>>
+
 S_HABITAT_MODULE: Habitat Module
 S_HABITAT_MODULE_DESC: <<
 	Pressurized living quarters designed to support long term habitation.
 
 	[img=Plus]Can support population. The population will grow and provide income as if on a planet, but at a greatly reduced rate.[/img]
 	[img=Plus]Can share population with Colonization Pods, allowing to colonize planets with the population already on board.[/img]
+	[img=Minus]Significant amounts of [b][color=#00ff80]Control[/color][/b] are required to support the population.[/img]
+	[img=Minus]Requires a significant amount of space.[/img]
+>>
+S_STAR_HABITAT_MODULE: Living Quarters
+S_STAR_HABITAT_MODULE_DESC: <<
+	Pressurized living quarters designed to support long term habitation.
+
+	[img=Plus]Can support population. The population will grow and provide income as if on a planet, but at a greatly reduced rate.[/img]
 	[img=Minus]Significant amounts of [b][color=#00ff80]Control[/color][/b] are required to support the population.[/img]
 	[img=Minus]Requires a significant amount of space.[/img]
 >>
