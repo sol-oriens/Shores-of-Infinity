@@ -39,4 +39,4 @@ Subsystem: ColonizationPods
 		Hex.BuildCost := Hex.BuildCost + (SettlerCost / Hexes)
 		Hex.LaborCost := Hex.LaborCost + (SettlerLabor / Hexes)
 
-		Sprite: TroopPods
+		Sprite: TroopPods * #d6eaf8

@@ -9,6 +9,8 @@ Trait: Mechanoid
 	Category: Lifestyle
 	Unique: Lifestyle
 
+	ForbidSubsystem(ColonizationPods)
+
 	AddStatusOwnedPlanets(Mechanoid)
 	OnHomeworld(AddResource(Labor, -1)) #version>=147
 	TriggerHomeworld(GivePopulation(3))

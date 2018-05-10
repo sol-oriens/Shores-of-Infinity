@@ -10,6 +10,8 @@ Trait: Extragalactic //Planetary Planetary
 	Category: Lifestyle
 	Unique: Lifestyle
 
+	ForbidSubsystem(ColonizationPods)
+
 	ModAttribute(PopulationGrowthFactor, Multiply, 0)
 	ModAttribute(ForbidColonization, Add, 1)
 	ModAttribute(NoAutoColonize, Add, 1)

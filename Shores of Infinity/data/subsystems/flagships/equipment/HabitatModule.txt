@@ -39,11 +39,11 @@ Subsystem: HabitatModule
 		Hex.BuildCost := Hex.BuildCost + (HabitatCost / Hexes)
 		Hex.LaborCost := Hex.LaborCost + (HabitatLabor / Hexes)
 
-		Sprite: TroopPods
+		Sprite: SupportCommand * #edbb99
 
 Subsystem: StarHabitatModule
-	Name: #S_HABITAT_MODULE
-	Description: #S_HABITAT_MODULE_DESC
+	Name: #S_STAR_HABITAT_MODULE
+	Description: #S_STAR_HABITAT_MODULE_DESC
 	BaseColor: #ffffff
 	TypeColor: #ffffff
 	Elevation: 2
@@ -53,8 +53,8 @@ Subsystem: StarHabitatModule
 	Hull: Flagship, Station
 
 	Hex.LaborCost := 0.30 * HexSize + 0.8
-	Hex.BuildCost := 1.5 * HexSize + 2
-	Hex.MaintainCost := 0.8 * HexSize + 2 - (4 * HexSize / ShipSize^0.5)
+	Hex.BuildCost := 1.0 * HexSize + 2
+	Hex.MaintainCost := 0.5 * HexSize + 2 - (4 * HexSize / ShipSize^0.5)
 
 	Size := HexSize * Hexes
 	Hex.Mass := HexSize
@@ -82,4 +82,4 @@ Subsystem: StarHabitatModule
 		Hex.BuildCost := Hex.BuildCost + (HabitatCost / Hexes)
 		Hex.LaborCost := Hex.LaborCost + (HabitatLabor / Hexes)
 
-		Sprite: TroopPods
+		Sprite: SupportCommand * #edbb99

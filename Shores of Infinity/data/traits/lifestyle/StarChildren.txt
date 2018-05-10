@@ -29,6 +29,7 @@ Trait: StarChildren
 	IfHaveTrait(Sublight, LoadDesigns(starchildren/other))
 	IfHaveTrait(Flux, LoadDesigns(starchildren/other))
 
+	ForbidSubsystem(ColonizationPods)
 	UnlockSubsystem(MothershipHull)
 	UnlockSubsystem(StarHabitatModule)
 

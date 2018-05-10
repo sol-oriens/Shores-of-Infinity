@@ -16,6 +16,7 @@ Trait: Ancient
 	ForbidSubsystem(CrewDeck)
 	ForbidSubsystem(FissionGen)
 	ForbidSubsystem(FusionGen)
+	ForbidSubsystem(ColonizationPods)
 	UnlockSubsystem(AncientCore)
 	UnlockSubsystem(SupportAncientCore)
 

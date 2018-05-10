@@ -20,6 +20,7 @@ Trait: Verdant
 
 	ForbidSubsystem(CrewControl)
 	ForbidSubsystem(CrewDeck)
+	ForbidSubsystem(ColonizationPods)
 	UnlockSubsystem(VerdantSinew)
 	UnlockSubsystem(VerdantSupportSinew)
 
