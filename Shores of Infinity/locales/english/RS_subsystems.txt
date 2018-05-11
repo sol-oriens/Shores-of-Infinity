@@ -437,11 +437,20 @@ S_COLONIZATIONPODS: Colonization Pods
 S_COLONIZATIONPODS_DESC: <<
 	An array of drop pods loaded with settlers and equipment that can be launched at a planet in order to colonize it.
 
-	[img=Plus]Can colonize a planet without commissioning civilian colony ships, with the benefits of imperial-class equipment such as extra protection or FTL infrastructures.[/img]
+	[img=Plus]Can colonize a planet without commissioning civilian colony ships, with the benefits of imperial-class equipment such as extra protection or FTL systems.[/img]
 	[img=Minus]Settlers must be embarked manually from a planet up to the maximum population storage. One billion settlers is dropped for each colonized planet.[/img]
 	[img=Minus]Significant amounts of [b][color=#00ff80]Control[/color][/b] are required to support the settlers.[/img]
 	[img=Minus]Requires a significant amount of space.[/img]
 	[img=Minus]Additional maintenance cost once pods are loaded is higher than the equivalent amount of civilian colonizers.[/img]
+>>
+
+S_ANCIENT_REPLICATOR: Replicator
+S_ANCIENT_REPLICATOR_DESC : <<
+	A Replicator system reengineered to fit into a ship.
+
+	[img=Plus]Has the same abilities as an Orbital Replicator, with the benefits of imperial-class equipment such as extra protection or FTL systems.[/img]
+	[img=Minus]Must cover at least two thirds of the entire ship.[/img]
+	[img=MenuIcons::3;20]Costs decrease with size.[/img]
 >>
 
 S_CARGO_HULL_DESC: <<

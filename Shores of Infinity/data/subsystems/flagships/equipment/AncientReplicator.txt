@@ -1,0 +1,38 @@
+Subsystem: AncientReplicator
+	Name: #S_ANCIENT_REPLICATOR
+	Description: #S_ANCIENT_REPLICATOR_DESC
+	BaseColor: #626567
+	TypeColor: #626567
+	Elevation: 0
+	EvaluationOrder: 100
+
+	Tags: Category:Equipment, HasInternals, CannotDonate
+	Hull: Flagship
+
+	Size := HexSize * Hexes
+	Hex.Mass := HexSize
+
+	Hex.Resistance := 0.2
+	Hex.HP := 18 * HexSize
+
+	Hook: AddPermanentStatus(AncientReplicatorSys)
+
+	Requires:
+		Command = 1
+
+	Module: Core
+		Sprite: ComputerCore * #626567
+
+		Hex.BuildCost := 100000 / Size
+		Hex.LaborCost := 120 / (Size * 0.1)
+		Hex.MaintainCost := 0
+		Hex.OreCost := 300
+
+	Module: Default
+		Hex.BuildCost := 12500 / Size
+		Hex.LaborCost := 20 / (Size * 0.1)
+		Hex.MaintainCost := 0
+		Hex.OreCost := 45
+
+	Assert: (Size / ShipSize > 0.66) && ShipSize >= 128
+		Message: #ERROR_TOO_SMALL

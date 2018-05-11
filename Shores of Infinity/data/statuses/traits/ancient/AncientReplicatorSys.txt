@@ -1,0 +1,6 @@
+Status: AncientReplicatorSys
+	Name: #ORB_ANCIENT_REPLICATOR
+	Description: #ORB_ANCIENT_REPLICATOR_DESC
+	Icon: GuiOrbitalIcons::20
+
+	AddStatusToOrbitingPlanet(AncientReplicator, Only Owned = True, Allow Space = True, Set Origin Empire = True)

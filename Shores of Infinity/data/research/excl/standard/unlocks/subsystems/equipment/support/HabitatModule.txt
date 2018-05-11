@@ -30,3 +30,20 @@ Technology: StarHabitatModule
 
 	AddModifier(StarHabitatModule::HabitatPopulationFactor(1.25))
 	ModAttribute(ProgenitorTechProgress, Add, 1.5)
+
+Technology: AncientHabitatModule
+	Name: #R_ANCIENT_HABITAT_MODULE
+	Description: #R_ANCIENT_HABITAT_MODULE_DESC
+
+	Icon: ComputerCore * #626567
+	Color: #626567
+
+	Point Cost: 600
+	Time Cost: 120
+
+	Category: Equipment - Support
+	Class: Unlock
+
+	SkipOnUnlockedSubsystem(AncientReplicator)
+	UnlockSubsystem(AncientReplicator)
+	ModAttribute(ProgenitorTechProgress, Add, 1.5)

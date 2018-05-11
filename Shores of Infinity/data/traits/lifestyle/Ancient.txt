@@ -71,6 +71,7 @@ Trait: Ancient
 	ReplaceTechnologyNodes(Population, FoundryLabor)
 	ReplaceTechnologyNodes(HydroponicsSatellite, AncientHydroponics)
 	ReplaceTechnologyNodes(Terraforming, AtroanTerraforming)
+	ReplaceTechnologyNodes(HabitatModule, AncientHabitatModule)
 
 	//ReplaceTechnologyNodes(TerraformSpec1, AtroanTerraformSpec1)
 	//ReplaceTechnologyNodes(TerraformSpec2, AtroanTerraformSpec2)

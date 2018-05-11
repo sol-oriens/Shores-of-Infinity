@@ -71,6 +71,15 @@ R_STAR_HABITAT_MODULE_DESC: <<
 	Increases the Population supported by Living Quarters by 25%.
 >>
 
+R_ANCIENT_HABITAT_MODULE: Ship-Mounted Replicators
+R_ANCIENT_HABITAT_MODULE_DESC: <<
+	[i][color=#aaa]This second-generation Replicator relies on less bulky components and is modular enough to accommodate all kinds of ship designs.[/color][/i]
+
+	Unlocks the Replicator subsystem for use on flagships.
+
+	[i][bbloc=#S_ANCIENT_REPLICATOR_DESC/][/i]
+>>
+
 R_IMP_PLANET_SUPPORT_DESC: <<
 	[i][color=#aaa]More focused and effective command of orbital defense vessels.[/color][/i]
 
