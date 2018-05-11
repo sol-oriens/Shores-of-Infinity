@@ -18,6 +18,10 @@ v0.2.0b
 *** Detailed Changes ***
 ************************
 
+[*] Buildings
+
+- The Flux trait no longer gives access to the FTL Breeder (see Orbitals).
+
 [*] FTL
 
 - Increased hyperdrive speed by a factor of 2. The total factor compared to vanilla is now 40.
@@ -46,6 +50,8 @@ v0.2.0b
 - Fling beacon maintenance cost is now 150k (down from 200k).
 - Increased the range of the 'Telescope' abilities on telescope arrays and quantum telescope arrays to 800k units (up from 400k units) and 2M units (up from 1M units), respectively. Decreased the energy cost by half.
 - Increased the range of the 'Toggle Laser Propulsion Beam' ability on phased array laser drives to 700k units (up from 350k units).
+- Star Children with the Flux trait no longer have access to a special FTL Storage orbital generating FTL (see below).
+- FTL Actuators now generate 0.5 FTL/s instead of 0.15 FTL/s when the Flux trait is taken.
 
 [*] Planets
 

@@ -54,9 +54,6 @@ ORB_SHIPYARD_DESC: <<|
 
 	Can store 25k units of cargo.
 >>
-ORB_FTL_STORAGE_FLUX_DESC: <<
-	Stores 600 FTL Energy.
->>
 ORB_STARBASE: Starbase
 ORB_STARBASE_BLURB: Heavy defense installation. Allows trade through its system. Generates defense ships and protects planets in the system from being captured.
 ORB_STARBASE_DESC: <<
@@ -156,6 +153,13 @@ ORB_FTL_HARVESTER_DESC: <<
 	Stores 250 [img=$FTL;22/] FTL Energy.
 
 	[img=$FTL;22][b][color=#00c0ffff]FTL[/color][/b] [offset=120]0.15 /s[/offset][/img]
+>>
+ORB_FLUX_FTL_HARVESTER_DESC: <<
+	[color=#aaa][i]A facility that can slowly tap into the hyperfield to extract its particles.[/i][/color]
+
+	Stores 250 [img=$FTL;22/] FTL Energy.
+
+	[img=$FTL;22][b][color=#00c0ffff]FTL[/color][/b] [offset=120]0.5 /s[/offset][/img]
 >>
 ORB_TELESCOPE: Telescope Array
 ORB_TELESCOPE_BLURB: Allows temporary vision of nearby star systems.

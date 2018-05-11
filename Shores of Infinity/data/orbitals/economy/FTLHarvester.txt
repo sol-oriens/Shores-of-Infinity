@@ -21,3 +21,27 @@ Module: FTLHarvester
 
 	AddFTLStorage(250)
   AddFTLIncome(0.15)
+
+Module: FluxFTLHarvester
+	Name: #ORB_FTL_HARVESTER
+	Blurb: #ORB_FTL_HARVESTER_BLURB
+	Description: #ORB_FLUX_FTL_HARVESTER_DESC
+
+	Icon: GuiOrbitalIcons::19
+	Strategic Icon: OrbitalIcons::19
+	Model: FTLStorage
+	Material: GenericPBR_FTLStorage
+
+	Size: 13
+
+	Health: 6000
+	Armor: 4000
+
+	Build Cost: 450
+	Maintenance: 75
+	Labor Cost: 25
+
+	RequireTrait(Flux)
+
+	AddFTLStorage(250)
+  AddFTLIncome(0.5)
