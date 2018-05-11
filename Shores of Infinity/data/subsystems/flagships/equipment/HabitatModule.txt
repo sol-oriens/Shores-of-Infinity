@@ -11,7 +11,8 @@ Subsystem: HabitatModule
 
 	Hex.LaborCost := 0.30 * HexSize + 0.8
 	Hex.BuildCost := 1.5 * HexSize + 2
-	Hex.MaintainCost := 0.8 * HexSize + 2 - (4 * HexSize / ShipSize^0.5)
+	Hex.MaintainCost := 0.03 * HexSize + 2 - (4 * HexSize / ShipSize^0.5)
+	InfluenceBuildCost := ceil(Size / 10)
 
 	Size := HexSize * Hexes
 	Hex.Mass := HexSize
@@ -54,7 +55,7 @@ Subsystem: StarHabitatModule
 
 	Hex.LaborCost := 0.30 * HexSize + 0.8
 	Hex.BuildCost := 1.0 * HexSize + 2
-	Hex.MaintainCost := 0.5 * HexSize + 2 - (4 * HexSize / ShipSize^0.5)
+	Hex.MaintainCost := 0.02 * HexSize + 2 - (4 * HexSize / ShipSize^0.5)
 
 	Size := HexSize * Hexes
 	Hex.Mass := HexSize
@@ -71,8 +72,11 @@ Subsystem: StarHabitatModule
 	Hook: addon_generic_effects::AddStatusStacks(MothershipPopulation, 1, 0, -1, False, False, Sum.ShipPopStorage, 120, False, 0)
 	Hook: LimitStatusStacks(ShipPopulation, Sum.ShipPopStorage)
 
+	Modifier: HabitatPopulationFactor(Factor)
+		HabitatPop := HabitatPop * Factor
+
 	Requires:
-		Command = ceil(Hexes * 0.6)
+		Command = ceil(Hexes * 0.4)
 
 	Assert: HabitatPop >= 1
 		Unique: True

@@ -5,7 +5,7 @@ Subsystem: MachineShop
 	TypeColor: #b3b6b7
 	Elevation: 1
 
-	Tags: DefaultUnlock, Category:Equipment, HasInternals, NonContiguous, NoCore
+	Tags: DefaultUnlock, Category:Equipment, BaseCost, HasInternals, NonContiguous, NoCore
 	Hull: Flagship, Station
 
 	Size := HexSize * Hexes
@@ -26,6 +26,6 @@ Subsystem: MachineShop
 	Module: Default
 		Sprite: SupplyStorage * #b3b6b7
 
-		Hex.BuildCost := Size * 6
-		Hex.LaborCost := Size * 0.5
-		Hex.MaintainCost := Size * 2.5
+		Hex.BuildCost := Hex.BuildCost + LaborIncome * 60
+		Hex.LaborCost := Hex.BuildCost + LaborIncome * 3
+		Hex.MaintainCost := Hex.MaintainCost + LaborIncome * 25
