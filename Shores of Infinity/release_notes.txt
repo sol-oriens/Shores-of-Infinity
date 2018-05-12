@@ -20,7 +20,8 @@ v0.2.0b
 
 [*] Buildings
 
-- The Flux trait no longer gives access to the FTL Breeder (see Orbitals).
+- The Flux trait no longer gives access to the FTL Breeder Reactor (see Orbitals).
+- Reverted FTL Breeder Reactor to vanilla costs.
 
 [*] FTL
 
