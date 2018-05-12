@@ -12,7 +12,6 @@ Trait: Mechanoid
 	ForbidSubsystem(ColonizationPods)
 
 	AddStatusOwnedPlanets(Mechanoid)
-	OnHomeworld(AddResource(Labor, -1)) #version>=147
 	TriggerHomeworld(GivePopulation(3))
 	TriggerHomeworld(DestroyBuildingAt((4, 3), Undevelop = True))
 	TriggerHomeworld(TerraformTo(Unobtanium))
@@ -30,3 +29,5 @@ Trait: Mechanoid
 	ReplaceTechnologyNodes(ConstructionBay, FactoryLabor)
 	ReplaceTechnologyNodes(OreProcessor, FactoryLabor)
 	ReplaceTechnologyNodes(HydroponicsSatellite, MechanoidHydroponics)
+
+	AddStoredFTL(100)
