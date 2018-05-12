@@ -76,7 +76,7 @@ R_STAR_HABITAT_MODULE: Ultra Modularization
 R_STAR_HABITAT_MODULE_DESC: <<
 	[i][color=#aaa]Extensive tests and innovative furniture designs allowed us to find a way to optimize every available inch of space in our living quarters and shrink them as much as physically possible without loss of comfort... Well, almost.[/color][/i]
 
-	Increases the Population supported by Living Quarters by 25%.
+	Increases the Population supported by Living Quarters by 20%.
 >>
 
 R_ANCIENT_HABITAT_MODULE: Ship-Mounted Replicators

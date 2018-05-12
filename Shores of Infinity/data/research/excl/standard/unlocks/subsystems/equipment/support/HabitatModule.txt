@@ -43,7 +43,7 @@ Technology: StarHabitatModule
 	Category: Racial/DLC Replacements (DO NOT PLACE)
 	Class: BigUpgrade
 
-	AddModifier(StarHabitatModule::HabitatPopulationFactor(1.25))
+	AddModifier(StarHabitatModule::HabitatPopulationFactor(1.2))
 	ModAttribute(ProgenitorTechProgress, Add, 1.5)
 
 Technology: AncientHabitatModule
