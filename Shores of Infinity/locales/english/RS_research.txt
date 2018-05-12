@@ -64,6 +64,14 @@ R_SYS_HABITAT_MODULE_DESC: <<
 
 	[i][bbloc=#S_HABITAT_MODULE_DESC/][/i]
 >>
+
+R_MECHANOID_HABITAT_MODULE: Actuator Optimization
+R_MECHANOID_HABITAT_MODULE_DESC: <<
+	[i][color=#aaa]Optimizations on hyperfield actuators modules fit in the standard planetary unit design results in a substantial increase of extracted particles on a mass scale.[/color][/i]
+
+	Increases planet FTL generation per Level by 25%.
+>>
+
 R_STAR_HABITAT_MODULE: Ultra Modularization
 R_STAR_HABITAT_MODULE_DESC: <<
 	[i][color=#aaa]Extensive tests and innovative furniture designs allowed us to find a way to optimize every available inch of space in our living quarters and shrink them as much as physically possible without loss of comfort... Well, almost.[/color][/i]

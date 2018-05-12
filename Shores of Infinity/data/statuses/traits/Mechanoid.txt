@@ -3,8 +3,9 @@ Status: Mechanoid
 	Collapses: True
 
 	PerPopulationAddResource(1.0, Labor, Overpop Factor = False)
-	RepeatPlanetLevel(empire_effects::AddFTLIncome(0.1))
+	RepeatPlanetLevel(empire_effects::AddFTLIncome(0.08))
 	RepeatPlanetLevel(empire_effects::AddFTLStorage(100))
+	IfTagUnlocked(MechanoidHabitatModule, RepeatPlanetLevel(empire_effects::AddFTLIncome(0.02)))
 
 	GrantAbility(MechanoidColonize)
 	GrantAbility(MechanoidColonize5)

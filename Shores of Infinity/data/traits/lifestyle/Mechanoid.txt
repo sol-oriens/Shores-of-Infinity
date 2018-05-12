@@ -29,5 +29,6 @@ Trait: Mechanoid
 	ReplaceTechnologyNodes(ConstructionBay, FactoryLabor)
 	ReplaceTechnologyNodes(OreProcessor, FactoryLabor)
 	ReplaceTechnologyNodes(HydroponicsSatellite, MechanoidHydroponics)
+	ReplaceTechnologyNodes(HabitatModule, MechanoidHabitatModule)
 
 	AddStoredFTL(100)
