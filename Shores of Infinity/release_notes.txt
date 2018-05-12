@@ -69,6 +69,9 @@ v0.2.0b
 [*] Research
 
 - Added the Closed Ecological Life Support node. Unlocks the Habitat Module subsystem for use on flagships and stations.
+- Added the Actuator Optimization node, exclusive to Mechanoids. Increases planet FTL generation per Level by 25%.
+- Added the Ultra Modularization node, exclusive to Star Children. Increases the Population supported by Living Quarters by 20%.
+- Added the Ship-Mounted Replicators node, exclusive to Ancients. Unlocks the Replicator subsystem for use on flagships.
 
 [*] Resources
 
