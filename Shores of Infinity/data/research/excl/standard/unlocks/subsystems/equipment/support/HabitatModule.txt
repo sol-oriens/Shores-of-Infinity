@@ -15,6 +15,21 @@ Technology: HabitatModule
 	UnlockSubsystem(HabitatModule)
 	ModAttribute(ProgenitorTechProgress, Add, 1.5)
 
+Technology: MechanoidHabitatModule
+	Name: #R_MECHANOID_HABITAT_MODULE
+	Description: #R_MECHANOID_HABITAT_MODULE_DESC
+
+	Icon: FtlIcon
+	Color: #00ff00
+
+	Point Cost: 600
+	Time Cost: 120
+
+	Category: Racial/DLC Replacements (DO NOT PLACE)
+	Class: BigUpgrade
+
+	UnlockTag(MechanoidHabitatModule)
+
 Technology: StarHabitatModule
 	Name: #R_STAR_HABITAT_MODULE
 	Description: #R_STAR_HABITAT_MODULE_DESC
