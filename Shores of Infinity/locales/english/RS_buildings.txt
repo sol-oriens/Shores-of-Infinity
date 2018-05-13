@@ -2,6 +2,7 @@ BLD_SPACE_ELEVATOR_DESC: <<
 	[color=#aaa][i]A ribbon-like tether reaching vertically into space can be used to significantly increase the efficiency of transporting materials into space.[/i][/color]
 
 	Increases the construction speed of support ships on this planet by 40%.
+
 	Adds 1 money generation per Planet Level starting from Level 1 if a Starport is present in the system.
 
 	[i]Only one Space Elevator may be constructed per planet.[/i]
@@ -12,6 +13,7 @@ BLD_ARCOLOGY_DESC: <<
 	[color=#aaa][i]The ultimate settlement, designed for self-sufficiency. An arcology is a city-in-a-giant-building: residential areas, business and shopping centers, factories, parks, farms, water and waste processing units, all operating in a closed circuit. Nothing needs to enter an arcology to sustain it, and nothing needs to exit. Except tax...[/i][/color]
 
 	Replaces up to 5 regular cities.
+
 	Adds 5 population.
 >>
 
@@ -20,6 +22,7 @@ BLD_HEALTH_COMPLEX_DESC: <<
 	[color=#aaa][i]Keeping people healthy leads to longer lifespans, ultimately increasing population. Featuring a top-notch hospital, a convalescent home and a disease research center, this complex greatly enhances a planet's capacity to keep local bacteria and viruses at bay and people at work.[/i][/color]
 
 	Adds 1 population.
+
 	Increases population growth by 10%.
 >>
 
@@ -28,6 +31,7 @@ BLD_ECX_FACTORY_DESC: <<
 	[color=#aaa][i]A state-of-the art factory allowing mass production of electronic components.[/i][/color]
 
 	Can replace a Level 1 resource.
+
 	Adds 3 Money pressure.
 
 	[bbloc=#TIP_CONSUME_ORE:8/]
@@ -38,8 +42,11 @@ BLD_MINE_DESC: <<
 	[color=#aaa][i]An enormous installation blanketed with unending underground galleries and deep bore holes, some of them extending down to the core of the planet, used to extract ore, construction materials and any other useful resource. While not nearly as effective as asteroid mining, planet mining is an order of magnitude easier from a logistical standpoint.[/i][/color]
 
 	Adds an Ore resource that can be exported and generates [b]10 ore per minute[/b] at its destination.
+
 	Adds 2 labor pressure.
+
 	Increases the pressure given by native Titanium 2.
+
 	Increases the pressure given by Native Gold by 1.
 >>
 
@@ -48,6 +55,7 @@ BLD_NRG_FACTORY_DESC: <<
 	[color=#aaa][i]An advanced installation for fossil fuel extraction, processing and storage. Significantly increases energy income and money coming with it.[/i][/color]
 
 	Adds 1 Energy pressure and 1 Money pressure.
+
 	Increases the pressure given by native Natural Gas or Oil by 1.
 >>
 

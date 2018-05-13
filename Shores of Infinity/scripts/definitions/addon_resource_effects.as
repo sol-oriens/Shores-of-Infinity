@@ -8,7 +8,7 @@ class StatusData {
 };
 
 class OnExportAddStatus : ResourceHook {
-	Document doc("All cargo of a particular type on this object is moved to wherever this resource is exported.");
+	Document doc("Add a status to the object this resource is exported to.");
   Argument status(AT_Status, doc="Type of status effect to create.");
   Argument source_Flag(AT_SystemFlag, "NoFlag", doc="Identifier for the source system flag to check. Can be set to any arbitrary name, and the matching system flag will be created.");
 	Argument destination_Flag(AT_SystemFlag, "NoFlag", doc="Identifier for the destination system flag to check. Can be set to any arbitrary name, and the matching system flag will be created.");
