@@ -7,3 +7,7 @@ Status: Starport
 	ModCivResourceMult(Influence, 0.1)
 	ModCivResourceMult(Energy, 0.1)
 	ModCivResourceMult(Research, 0.1)
+	IfHaveTrait(StarChildren, ProduceAllPressure(Labor, 0.1))
+	IfHaveTrait(StarChildren, ProduceAllPressure(Influence, 0.1))
+	IfHaveTrait(StarChildren, ProduceAllPressure(Energy, 0.1))
+	IfHaveTrait(StarChildren, ProduceAllPressure(Research, 0.1))

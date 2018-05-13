@@ -1,0 +1,4 @@
+Status: Dryport
+  Visible To: Nobody
+
+  PlanetLevelIncomeMod(+30, +20, Step = +10)

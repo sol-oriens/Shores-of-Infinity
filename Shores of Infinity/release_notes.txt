@@ -41,19 +41,23 @@ v0.2.0b
 
 [*] Lifestyles
 
-- Star Children motherships no longer get population growth and labor generation simply by virtue of being motherships, but these characteristics are now provided by their subsystems.
-- Since the population of a mothership is now hosted in a habitat module, the maximum population a mothership can support depends of the size of said module.
-- Population inside a Star Children mothership now provides 30k income (up from 15k).
+- Star Children Mothership Hulls no longer have population growth and labor generation simply by virtue of being motherships, but these characteristics are now provided by their subsystems.
+- Since the population of a mothership is now hosted in Living Quarters, the maximum population a mothership can support depends of the size of said subsystem.
+- Population inside a Star Children Living Quarters now provides 45k income (up from 15k).
 - Default mothership designs have been updated to reflect the gameplay changes for Star Children and also as a tutorial on how to design motherships.
 - Mechanoids now natively generate 0.1 FTL/s and gain 100 FTL storage for each planet level on every owned planet.
-- Fixed Mechanoids incorrectly starting with 1 less Labor generation than they should.
+- Fixed Mechanoids incorrectly starting with 1 less Labor generation on their homeworld than they should.
 
 [*] Orbitals
 
+- Added Dryport. Reduces income penalty of Level 0 planets by 30k. Increases income of Level 1 planets by 20k. Increases income of planets of Level 2 or more by 10k. Build and maintenance costs of 200k and 20k, respectively. Cannot be built by Ancient and Extragalactic lifesyles.
+- Added Processing Center Dryport module. Adds 2 pressure capacity to the planet the Dryport is in orbit of. Build and maintenance costs of 100k and 5k, respectively.
+- Added Space Hook Dryport module, exclusive to Star Children. Increases the construction speed of support ships on this planet by 40%. Adds 1 money generation per Planet Level starting from Level 1 if a Starport is present in the system. Build cost of 750k. Also cost 1k Ore to build.
+- Starports now also increase the production of Labor, Influence, Energy and Research on all owned planets in the system by 10% for Star Children lifestyles.
 - Fling beacon maintenance cost is now 150k (down from 200k).
 - Increased the range of the 'Telescope' abilities on telescope arrays and quantum telescope arrays to 800k units (up from 400k units) and 2M units (up from 1M units), respectively. Decreased the energy cost by half.
 - Increased the range of the 'Toggle Laser Propulsion Beam' ability on phased array laser drives to 700k units (up from 350k units).
-- Star Children with the Flux trait no longer have access to a special FTL Storage orbital generating FTL (see below).
+- Star Children lifestyles with the Flux trait no longer have access to a special FTL Storage orbital generating FTL (see below).
 - FTL Actuators now generate 0.5 FTL/s instead of 0.15 FTL/s when the Flux trait is taken.
 
 [*] Planets

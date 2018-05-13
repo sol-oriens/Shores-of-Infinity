@@ -449,6 +449,7 @@ class LimitInOrbitStatus : OrbitalEffect {
 	Argument status(AT_Status, doc="Status type to check for.");
 	Argument max_stacks(AT_Integer, "1", doc="Maximum stacks for the orbital.");
 	Argument min_distance(AT_Decimal, "5", doc="Minimum distance this needs to be from the planet.");
+	Argument max_distance(AT_Decimal, "0", doc="Maximum distance this needs to be from the planet. 0 for maximum orbit distance.");
 
 	string getBuildError(Object@ obj, const vec3d& pos) const {
 		Region@ target = getRegion(pos);
@@ -457,8 +458,13 @@ class LimitInOrbitStatus : OrbitalEffect {
 		Object@ orbit = target.getOrbitObject(pos);
 		if(orbit is null || obj is null || orbit.owner !is obj.owner)
 			return locale::OERR_PLANET_ORBIT;
-		if(orbit.position.distanceTo(pos) < orbit.radius + min_distance.decimal)
+		double dist = orbit.position.distanceTo(pos);
+		if(dist < orbit.radius + min_distance.decimal)
 			return locale::OERR_PLANET_ORBIT;
+		double maxDist = max_distance.decimal * config::SCALE_PLANETS;
+		if (maxDist > 0 && dist > orbit.radius + maxDist)
+			return locale::OERR_CLOSE_PLANET_ORBIT;
+
 		return format(locale::OERR_PLANET_LIMIT, max_stacks.integer);
 	}
 
@@ -471,7 +477,11 @@ class LimitInOrbitStatus : OrbitalEffect {
 		if(orbit is null || obj is null || obj.owner !is orbit.owner)
 			return false;
 
-		if(orbit.position.distanceTo(pos) < orbit.radius + min_distance.decimal)
+		double dist = orbit.position.distanceTo(pos);
+		if(dist < orbit.radius + min_distance.decimal)
+			return false;
+		double maxDist = max_distance.decimal * config::SCALE_PLANETS;
+		if (maxDist > 0 && dist > orbit.radius + maxDist)
 			return false;
 
 		int count = orbit.getStatusStackCountAny(status.integer);

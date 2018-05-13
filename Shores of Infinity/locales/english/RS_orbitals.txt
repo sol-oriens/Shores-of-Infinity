@@ -1,4 +1,5 @@
 OERR_PLANET_LIMIT: Maximum $1 per planet orbit allowed.
+OERR_CLOSE_PLANET_ORBIT: Must be built in close planetary orbit.
 ORB_TRADE_OUTPOST_BLURB: Allows trade through its system. Generates defense ships and protects planets in the system from being captured. Can store 1k units of cargo.
 ORB_TRADE_OUTPOST_DESC: <<|
 	A small outpost that allows your civilian ships to travel through the
@@ -203,6 +204,31 @@ ORB_TACHYON_UPLINK_DESC: <<
 	[i]Only one Tachyon Uplink may be constructed per system.[/i]
 
 	[img=$FTL;22][b][color=#00c0ffff]FTL[/color][/b] [offset=120]0.5 /s[/offset][/img]
+>>
+ORB_DRYPORT: Dryport
+ORB_DRYPORT_BLURB: Stuff
+ORB_DRYPORT_DESC: <<
+	[color=#aaa][i]A low orbit facility designed to centralize and improve the transit of goods and materials to and from the planet it is orbiting.[/i][/color]
+
+	Reduces income penalty of Level 0 planets by 30k.
+	Increases income of Level 1 planets by 20k.
+	Increases income of planets of Level 2 or more by 10k.
+
+	[i]Only one Dryport may be constructed per planet.[/i]
+>>
+ORB_PROCESSING_CENTER: Processing Center
+ORB_PROCESSING_CENTER_DESC: <<
+	[color=#aaa][i]An off world multipurpose production facility outsourcing planetary resource exploitation.[/i][/color]
+
+	Adds 2 pressure capacity to the planet the Dryport is in orbit of.
+>>
+ORB_SPACE_HOOK: Space Hook
+ORB_SPACE_HOOK_DESC: <<
+	[color=#aaa][i]A ribbon-like tether hanging from this facility down to low ground altitude can be used to significantly increase the efficiency of transporting materials into space.[/i][/color]
+
+	Increases the construction speed of support ships on this planet by 40%.
+
+	Adds 1 money generation per Planet Level starting from Level 1 if a Starport is present in the system.
 >>
 ORB_SHIELD_CHARGER: Power Transmitter
 ORB_SHIELD_CHARGER_BLURB: Recharges the shields of allied fleets in the system.

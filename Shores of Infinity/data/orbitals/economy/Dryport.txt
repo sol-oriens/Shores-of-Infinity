@@ -1,0 +1,68 @@
+Module: Dryport
+	Name: #ORB_DRYPORT
+	Blurb: #ORB_DRYPORT_BLURB
+	Description: #ORB_DRYPORT_DESC
+
+	Icon: GuiOrbitalIcons::15
+	Strategic Icon: OrbitalIcons::15
+	Model: CommerceStation
+	Material: GenericPBR_CommerceStation
+
+	Size: 6
+
+	Standalone: False
+	Core: True
+
+	Health: 6000
+	Armor: 4000
+
+	Build Cost: 200
+	Maintenance: 20
+	Labor Cost: 10
+
+	RequireNotTrait(Ancient)
+	RequireNotTrait(Extragalactic)
+
+	LimitInOrbitStatus(Dryport, Max Distance = 50)
+
+	AllowConstruction()
+
+	AddStatusToOrbitingPlanet(Dryport, Set Origin Empire = True, Only Owned = True)
+
+	AddCargoStorage(5000)
+
+Module: ProcessingCenter
+	Name: #ORB_PROCESSING_CENTER
+	Description: #ORB_PROCESSING_CENTER_DESC
+
+	Icon: AttributeIcons::0
+
+	Standalone: False
+	Core: False
+
+	Build Cost: 100
+	Maintenance: 5
+
+	RequireNotTrait(StarChildren)
+	RequireNotTrait(Ancient)
+	RequireOnOrbital(Dryport)
+
+	AddStatusToOrbitingPlanet(ProcessingCenter, Set Origin Empire = True, Only Owned = True)
+
+Module: SpaceHook
+	Name: #ORB_SPACE_HOOK
+	Description: #ORB_SPACE_HOOK_DESC
+
+	Icon: MenuIcons::13
+
+	Standalone: False
+	Core: False
+
+	Build Cost: 750
+
+	ConsumeCargo(Ore, 1000)
+
+	RequireTrait(StarChildren)
+	RequireOnOrbital(Dryport)
+
+	AddStatusToOrbitingPlanet(SpaceHook, Set Origin Empire = True, Only Owned = True)
