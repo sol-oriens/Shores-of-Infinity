@@ -29,7 +29,7 @@ Module: Dryport
 
 	AddStatusToOrbitingPlanet(Dryport, Set Origin Empire = True, Only Owned = True)
 
-	AddCargoStorage(5000)
+	AddCargoStorage(2500)
 
 Module: ProcessingCenter
 	Name: #ORB_PROCESSING_CENTER

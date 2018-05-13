@@ -206,13 +206,15 @@ ORB_TACHYON_UPLINK_DESC: <<
 	[img=$FTL;22][b][color=#00c0ffff]FTL[/color][/b] [offset=120]0.5 /s[/offset][/img]
 >>
 ORB_DRYPORT: Dryport
-ORB_DRYPORT_BLURB: Stuff
+ORB_DRYPORT_BLURB: Increases income. Gives access to planetary improvements. Can store 5k units of cargo.
 ORB_DRYPORT_DESC: <<
 	[color=#aaa][i]A low orbit facility designed to centralize and improve the transit of goods and materials to and from the planet it is orbiting.[/i][/color]
 
 	Reduces income penalty of Level 0 planets by 30k.
 	Increases income of Level 1 planets by 20k.
 	Increases income of planets of Level 2 or more by 10k.
+
+	Can store 2.5k units of cargo.
 
 	[i]Only one Dryport may be constructed per planet.[/i]
 >>
