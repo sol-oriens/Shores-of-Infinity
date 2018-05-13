@@ -47,6 +47,7 @@ Module: ProcessingCenter
 	RequireNotTrait(Ancient)
 	RequireOnOrbital(Dryport)
 
+	AddStatus(DryportProcessingCenter)
 	AddStatusToOrbitingPlanet(ProcessingCenter, Set Origin Empire = True, Only Owned = True)
 
 Module: SpaceHook
@@ -65,4 +66,5 @@ Module: SpaceHook
 	RequireTrait(StarChildren)
 	RequireOnOrbital(Dryport)
 
+	AddStatus(DryportSpaceHook)
 	AddStatusToOrbitingPlanet(SpaceHook, Set Origin Empire = True, Only Owned = True)

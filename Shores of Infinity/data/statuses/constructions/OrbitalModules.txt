@@ -62,6 +62,22 @@ Status: StagingHubMarket
 
 	Unique: True
 
+Status: DryportProcessingCenter
+	Name: #STATUS_DRYPORT_PROCESSING_CENTER
+	Description: #STATUS_DRYPORT_PROCESSING_CENTER_DESC
+	Visible To: Owner
+	Icon: AttributeIcons::0
+
+	Unique: True
+
+Status: DryportSpaceHook
+	Name: #STATUS_DRYPORT_SPACE_HOOK
+	Description: #STATUS_DRYPORT_SPACE_HOOK_DESC
+	Visible To: Owner
+	Icon: MenuIcons::13
+
+	Unique: True
+
 Status: StarportDockingBays
 	Name: #STATUS_STARPORT_DOCKING_BAYS
 	Description: #STATUS_STARPORT_DOCKING_BAYS_DESC

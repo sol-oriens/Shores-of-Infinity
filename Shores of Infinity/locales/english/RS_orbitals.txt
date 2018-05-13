@@ -212,7 +212,7 @@ ORB_DRYPORT_DESC: <<
 
 	Reduces income penalty of Level 0 planets by 30k.
 	Increases income of Level 1 planets by 20k.
-	Increases income of planets of Level 2 or more by 10k.
+	Increases income of planets of Level 2 or more by +10k per Level.
 
 	Can store 2.5k units of cargo.
 
@@ -222,7 +222,7 @@ ORB_PROCESSING_CENTER: Processing Center
 ORB_PROCESSING_CENTER_DESC: <<
 	[color=#aaa][i]An off world multipurpose production facility outsourcing planetary resource exploitation.[/i][/color]
 
-	Adds 2 pressure capacity to the planet the Dryport is in orbit of.
+	Adds 1 pressure capacity to the planet the Dryport is in orbit of.
 >>
 ORB_SPACE_HOOK: Space Hook
 ORB_SPACE_HOOK_DESC: <<

@@ -32,6 +32,14 @@ STATUS_LISTENING_POST: Listening Post Module
 STATUS_LISTENING_POST_DESC: <<
 	This orbital has a Listening Post module installed.
 >>
+STATUS_DRYPORT_PROCESSING_CENTER: Processing Center
+STATUS_DRYPORT_PROCESSING_CENTER_DESC: <<
+	This orbital has a Processing Center module installed.
+>>
+STATUS_DRYPORT_SPACE_HOOK: Space Hook
+STATUS_DRYPORT_SPACE_HOOK_DESC: <<
+	This orbital has a Space Hook module installed.
+>>
 STATUS_STARPORT_DOCKING_BAYS: Long Haul Docking Bays Module
 STATUS_STARPORT_DOCKING_BAYS_DESC: <<
 	This Starport has a Long Haul Docking Bays module installed.
