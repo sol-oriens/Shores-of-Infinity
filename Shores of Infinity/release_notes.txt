@@ -51,7 +51,7 @@ v0.2.0b
 [*] Orbitals
 
 - Added Dryport. Reduces income penalty of Level 0 planets by 30k. Increases income of Level 1 planets by 20k. Increases income of planets of Level 2 or more by 10k. Build and maintenance costs of 200k and 20k, respectively. Cannot be built by Ancient and Extragalactic lifesyles.
-- Added Processing Center Dryport module. Adds 2 pressure capacity to the planet the Dryport is in orbit of. Build and maintenance costs of 100k and 5k, respectively.
+- Added Processing Center Dryport module. Adds 1 pressure capacity to the planet the Dryport is in orbit of. Build and maintenance costs of 100k and 5k, respectively.
 - Added Space Hook Dryport module, exclusive to Star Children. Increases the construction speed of support ships on this planet by 40%. Adds 1 money generation per Planet Level starting from Level 1 if a Starport is present in the system. Build cost of 750k. Also cost 1k Ore to build.
 - Starports now also increase the production of Labor, Influence, Energy and Research on all owned planets in the system by 10% for Star Children lifestyles.
 - Fling beacon maintenance cost is now 150k (down from 200k).
