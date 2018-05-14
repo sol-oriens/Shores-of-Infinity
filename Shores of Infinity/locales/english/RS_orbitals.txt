@@ -211,8 +211,7 @@ ORB_DRYPORT_DESC: <<
 	[color=#aaa][i]A low orbit facility designed to centralize and improve the transit of goods and materials to and from the planet it is orbiting.[/i][/color]
 
 	Reduces income penalty of Level 0 planets by 30k.
-	Increases income of Level 1 planets by 20k.
-	Increases income of planets of Level 2 or more by +10k per Level.
+	Increases income of Level 1 planets by 20k + 10k per additional Level.
 
 	Can store 2.5k units of cargo.
 
