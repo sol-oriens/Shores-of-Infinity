@@ -1,6 +1,28 @@
 import hooks;
 import generic_hooks;
+from generic_effects import IfHook;
 from empire_effects import PeriodicData;
+
+tidy final class IfNativeEither : IfHook {
+	Document doc("Only apply the inner hook if the planet this is being executed on has a particular native resource.");
+	Argument resource1(AT_PlanetResource, doc="First planetary resource to check for.");
+  Argument resource2(AT_PlanetResource, doc="Second planetary resource to check for.");
+	Argument hookID(AT_Hook, "planet_effects::GenericEffect");
+
+	bool instantiate() override {
+		if(!withHook(hookID.str))
+			return false;
+		return GenericEffect::instantiate();
+	}
+
+	bool condition(Object& obj) const override {
+		for(uint i = 0, cnt = obj.nativeResourceCount; i < cnt; ++i) {
+			if(obj.nativeResourceType[i] == uint(resource1.integer) || obj.nativeResourceType[i] == uint(resource2.integer))
+				return true;
+		}
+		return false;
+	}
+};
 
 class AddStatusStacks : GenericEffect {
   Document doc("Add stacks of a status effect to the object every set interval.");

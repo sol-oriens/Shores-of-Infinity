@@ -1,0 +1,21 @@
+Resource: Ammonia
+	Name: #AMMONIA
+	Description: #AMMONIA_DESC
+	Native Biome: LightFluids
+
+	Small Icon: ResourceIconsSmall::41*#f6ff33
+	Icon: ResourceIconsSmall::41*#f6ff33
+
+	Distribution: 0
+	Frequency: 0
+
+	Level: 1
+	Affinity: Energy + Defense
+	Can Be Terraformed: False
+
+	Planet Classification: Gas
+
+	Pressure: 1 Energy
+	Pressure: 1 Defense
+
+	addon_generic_effects::IfNativeEither(Grain, Fruit, AddStatus(Ammonia))

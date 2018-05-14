@@ -22,7 +22,7 @@ System: HomeSystem
 	MakePlanet(Resource = RandomType:Food:Common, Conditions = False, Moons = False)
 	MakePlanet(Resource = Water, Conditions = False, Moons = False)
 	MakePlanet(Resource = RandomLevel:1:Common, Conditions = False, Moons = False)
-	MakePlanet(Resource = MetallicGases, Classification = Gas, Giant = True, Force Native Biome = True, Add Status = GasGiant)
+	MakePlanet(Resource = Ammonia, Classification = Gas, Giant = True, Force Native Biome = True, Add Status = GasGiant)
 	MakePlanet(Resource = RareGases, Classification = Gas, Giant = True, Force Native Biome = True, Add Status = GasGiant)
 	MakePlanet(Resource = IcyWater, Classification = Icy, Giant = True, Force Native Biome = True, Add Status = IceGiant)
 		AddPlanetResource(LocalIcyWater)

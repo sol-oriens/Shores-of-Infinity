@@ -79,9 +79,10 @@ v0.2.0b
 
 [*] Resources
 
-- Slightly increased the frequency of Water on planets.
+- Added Ammonia, a new tier 1 resource found on gas giants only. Adds 1 Energy and 1 Defense pressures. Counts as a Food resource if the consuming planet has a Grain or Fruit native resource, once per planet.
 - Added Metallic Gases, a new scalable resource found on gas giants only. Increases Labor generation and civilian Energy pressure by 0%/5%/10%/30%/60%/120%/200%. Cannot be exported.
 - Reverted Rare Gases acceleration bonus to 0%/5%/10%/30%/60%/120%/200% (up from 0%/2.5%/5%/10%/30%/60%/120%). As gas giants can now have different resources, this one will be much rarer.
+- Slightly increased the frequency of Water on planets.
 - Moved the guaranteed Neutronium asteroid closer to the home system.
 - Fixed a bug where Level 1 Water resources from ice giants could fill either Water requirements or Level requirements to level a planet up, but not both at the same time.
 - Lowered the priority of Ore in the planet resource list. This allows primary resources to keep being displayed first in the planet resource list, but it is now required to export Ore by right-clicking the target planet in all cases.
