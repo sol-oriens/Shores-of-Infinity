@@ -10,6 +10,8 @@ v0.2.0b
 
 *** New subsystems have been added to provide a (costly) way to mitigate long colony ship travel times and / or open options to create independent space-based settlements.
 
+*** Resource variety on gas giants has been increased.
+
 *** Some mechanics of the Star Children and Mechanoid lifestyles have been overhauled, both to adequately fit it to the balance of the mod and to increase their flavor.
 
 *** This version introduces a new type of Project for populated settlements, Policies, which allows to buy specific influence cards at will in exchange for high costs and a long build time, equivalent to 3 budget cycles.
