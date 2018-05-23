@@ -10,13 +10,18 @@ Subsystem: ExperimentalHyperdrive
 	Tags: Engine, Hyperdrive, HasInternals, Hyperengine, BadFiller
 	Hull: Flagship
 
+	Scale := 1
 	Size := HexSize * Hexes
-	HyperdriveSpeed := 1600.0 * Size / ShipSize
+
 	Hex.Mass := HexSize * 2
 
 	Hex.Resistance := 0.2
 	Hex.HP := 12 * HexSize
+
+	HyperdriveSpeed := 64000.0 * Scale * Size / ShipSize
+	
 	Hook: AddStatus(HasPrototypeHyperdrive)
+
 	Assert: TagCount.Hyperdrive == 1
 		Unique: True
 		Message: #ERROR_PROTOTYPE_HYPERDRIVE
