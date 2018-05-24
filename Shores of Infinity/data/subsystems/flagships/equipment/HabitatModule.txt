@@ -60,7 +60,8 @@ Subsystem: StarHabitatModule
 	Size := HexSize * Hexes
 	Hex.Mass := HexSize
 
-	HabitatPop := floor(Size / 363)
+	PopValue := Size / 363
+	HabitatPop := floor(PopValue)
 
 	HabitatCost := 500 * HabitatPop
 	HabitatLabor := 20 * HabitatPop
@@ -73,7 +74,7 @@ Subsystem: StarHabitatModule
 	Hook: LimitStatusStacks(ShipPopulation, Sum.ShipPopStorage)
 
 	Modifier: HabitatPopulationFactor(Factor)
-		HabitatPop := HabitatPop * Factor
+		PopValue := PopValue * Factor
 
 	Requires:
 		Command = ceil(Hexes * 0.4)
