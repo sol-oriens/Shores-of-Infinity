@@ -5,7 +5,7 @@ Status: Mothership
 
 	CannotFireOutsideOwnedSpace()
 
-	OnEnable(AddStatus(MothershipPopulation), 4)
+	OnEnable(AddStatus(MothershipPopulation))
 	OnDisable(RemoveStatus(MothershipPopulation))
 
 	CopyLaborFromOrbitPlanet()
