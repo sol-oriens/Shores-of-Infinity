@@ -2,7 +2,7 @@
 	"__VERSION__": 1,
 	"name": "Miner Mothership",
 	"size": 3072,
-	"hull": "VolkurFlagTiny",
+	"hull": "$1FlagTiny",
 	"type": "Flagship",
 	"gridWidth": 34,
 	"gridHeight": 28,
