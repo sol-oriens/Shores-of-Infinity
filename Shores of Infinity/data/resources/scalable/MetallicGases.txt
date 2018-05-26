@@ -5,8 +5,8 @@ Resource: MetallicGases
 	Native Biome: LightFluids
 	Class: Scalable
 
-	Small Icon: ResourceIconsSmall::41*#e8e7e7
-	Icon: ResourceIconsSmall::41*#e8e7e7
+	Small Icon: MetallicGases
+	Icon: MetallicGases*#e8e7e7
 	Pressure: 2 Energy
 
 	Distribution: 0

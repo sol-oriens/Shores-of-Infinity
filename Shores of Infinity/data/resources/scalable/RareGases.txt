@@ -5,8 +5,8 @@ Resource: RareGases
 	Native Biome: LightFluids
 	Class: Scalable
 
-	Small Icon: ResourceIconsSmall::41*#af5a53
-	Icon: ResourceIconsSmall::41*#af5a53
+	Small Icon: RareGases
+	Icon: RareGases*#af5a53
 	Pressure: 1 Energy
 
 	Distribution: 0

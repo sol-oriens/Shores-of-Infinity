@@ -1,0 +1,11 @@
+Material: Ammonia
+	Inherit: Image2D
+	Texture: data/images/ammonia.png
+
+Material: MetallicGases
+	Inherit: Image2D
+	Texture: data/images/metallicgases.png
+
+Material: RareGases
+	Inherit: Image2D
+	Texture: data/images/raregases.png

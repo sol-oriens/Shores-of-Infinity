@@ -3,8 +3,8 @@ Resource: Ammonia
 	Description: #AMMONIA_DESC
 	Native Biome: LightFluids
 
-	Small Icon: ResourceIconsSmall::41*#f6ff33
-	Icon: ResourceIconsSmall::41*#f6ff33
+	Small Icon: Ammonia
+	Icon: Ammonia
 
 	Distribution: 0
 	Frequency: 0
