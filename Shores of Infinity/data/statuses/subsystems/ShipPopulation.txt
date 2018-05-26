@@ -5,4 +5,4 @@ Status: ShipPopulation
 	Visible To: Owner
 	Collapses: True
 
-	RepeatStacks(AddMoneyIncome(35))
+	RepeatStacks(AddMoneyIncome(15))
