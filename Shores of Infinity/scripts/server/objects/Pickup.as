@@ -12,6 +12,16 @@ tidy class PickupScript {
 		obj.initPickup();
 	}
 
+	void setIcon(Pickup& obj) {
+		@node = cast<PickupNode>(bindNode(obj, "PickupNode"));
+		if(node !is null) {
+			auto@ orbital = getOrbitalModule("ResearchLab");
+			if (orbital !is null) {
+				node.establish(obj, orbital.id);
+			}
+		}
+	}
+
 	void syncInitial(const Pickup& obj, Message& msg) {
 		msg << obj.PickupType;
 		obj.writePickup(msg);
@@ -34,14 +44,6 @@ tidy class PickupScript {
 	}
 
 	void postLoad(Pickup& obj) {
-		@node = cast<PickupNode>(bindNode(obj, "PickupNode"));
-		if(node !is null) {
-			auto@ orbital = getOrbitalModule("ResearchLab");
-			if (orbital !is null) {
-				node.establish(obj, orbital.id);
-			}
-		}
-
 		cast<PickupControl>(obj.PickupControl).postLoad(obj);
 	}
 
@@ -68,6 +70,7 @@ tidy class PickupControl : Component_PickupControl {
 	}
 
 	void generateMesh(Object& obj) {
+
 		MeshDesc mesh;
 		@mesh.model = type.model;
 		@mesh.material = type.material;
@@ -97,6 +100,7 @@ tidy class PickupControl : Component_PickupControl {
 
 		obj.PickupType = type.id;
 		generateMesh(obj);
+		obj.setIcon();
 
 		if(msg >= SV_0095) {
 			if(msg.readBit())
@@ -128,6 +132,7 @@ tidy class PickupControl : Component_PickupControl {
 		pickup.name = type.getName(pickup);
 		pickup.radius = type.physicalSize;
 		generateMesh(obj);
+		pickup.setIcon();
 	}
 
 	bool claimPickupDelta() {

@@ -281,6 +281,8 @@ Pickup : objects.Pickup::PickupScript {
 	PickupControl control
 visible:
 	int PickupType = -1
+server:
+	void setIcon();
 }
 
 Asteroid : objects.Asteroid::AsteroidScript {

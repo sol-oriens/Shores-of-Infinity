@@ -35,12 +35,13 @@ final class PickupNodeScript {
 			renderPlane(material::FleetCircle, node.abs_position, fleetPlane, color);
 		}
 
-		node.applyTransform();
+		//Commenting this keeps the model from being rendered, only keeping the icon visible
+		/*node.applyTransform();
 
 		def.material.switchTo();
 		def.model.draw();
 
-		undoTransform();
+		undoTransform();*/
 
 		//SoI - Scaling
 		if(node.sortDistance > 1000.0 && def.distantIcon.valid) {
