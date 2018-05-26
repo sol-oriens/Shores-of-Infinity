@@ -28,6 +28,8 @@ ERROR_FTLJAMMER: The FTL Jammer must be at least size 100. Increase the jammer's
 ERROR_MAX_SIZE: $1 has a maximum size of $2.
 ERROR_DRONEWEAPON: Boring Drone Launcher is not large enough to hold any drones. Increase the launcher's hex count or the ship's size.
 ERROR_MUST_HAVE_SELFDESTRUCT: Bombship Hull must have a Self-Destruct Device.
+ERROR_MUST_HAVE_STAR_HABITAT: Mothership Hull must have Living Quarters.
+ERROR_MUST_HAVE_MACHINE_SHOP: Mothership Hull must have a Machine Shop.
 ERROR_SPECIFIC_SIZE: $1 must be exactly size $2.
 ERROR_CANNOT_BOARD: $1 cannot have boarding parties.
 ERROR_LAUNCHTUBE: Cannot have more than 6 tubes per launcher.
@@ -75,6 +77,8 @@ S_REPAIR_COMBAT: In-Combat Repair Rate
 STT_REPAIR_COMBAT: The amount of hitpoints the ship can repair per second while in combat.
 S_SHIPPOP: Population
 STT_SHIPPOP: Maximum Population able to embark the ship.
+S_POPINCOME: Population Income
+STT_POPINCOME: The money income from the population aboard the ship.
 S_IMPULSE_EFFECT: Impulse
 S_REGENPERSECOND: Regeneration Rate
 S_SENSORMULT: Sensor Multiplier

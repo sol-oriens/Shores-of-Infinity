@@ -67,6 +67,15 @@ GlobalStat: ShipPop
 
 	Variable: ShipPopStorage
 
+GlobalStat: PopIncome
+	Name: #S_POPINCOME
+	Description: #STT_POPINCOME
+	Icon: ResourceIcon::0
+	Color: #d1cb6a
+	Suffix: k
+
+	Variable: PopIncome
+
 // *************************************
 // ******SUBSYSTEM-SPECIFIC STATS*******
 // *************************************

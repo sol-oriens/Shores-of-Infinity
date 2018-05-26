@@ -18,6 +18,7 @@ Subsystem: HabitatModule
 	Hex.Mass := HexSize
 
 	HabitatPop := floor(Size / 544)
+	PopIncome := HabitatPop * 15
 
 	HabitatCost := 500 * HabitatPop
 	HabitatLabor := 20 * HabitatPop
@@ -53,6 +54,8 @@ Subsystem: StarHabitatModule
 	Tags: HasInternals
 	Hull: Flagship, Station
 
+	HasStarHabitat := 1
+
 	Hex.LaborCost := 0.30 * HexSize + 0.8
 	Hex.BuildCost := 1.0 * HexSize + 2
 	Hex.MaintainCost := 0.02 * HexSize + 2 - (4 * HexSize / ShipSize^0.5)
@@ -62,6 +65,7 @@ Subsystem: StarHabitatModule
 
 	PopValue := Size / 363
 	HabitatPop := floor(PopValue)
+	PopIncome := HabitatPop * 15
 
 	HabitatCost := 500 * HabitatPop
 	HabitatLabor := 20 * HabitatPop
@@ -77,7 +81,7 @@ Subsystem: StarHabitatModule
 		PopValue := PopValue * Factor
 
 	Requires:
-		Command = ceil(Hexes * 0.4)
+		Command = ceil(Hexes * 0.3)
 
 	Assert: HabitatPop >= 1
 		Unique: True

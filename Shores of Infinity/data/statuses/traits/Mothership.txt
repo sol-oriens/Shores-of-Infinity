@@ -5,15 +5,9 @@ Status: Mothership
 
 	CannotFireOutsideOwnedSpace()
 
-	OnEnable(AddStatus(MothershipPopulation), 5)
+	OnEnable(AddStatus(MothershipPopulation), 4)
 	OnDisable(RemoveStatus(MothershipPopulation))
 
-	TriggerPeriodic(AddStatus(MothershipPopulation, Max Stacks = 16), 50)
-
-	AllowConstruction(Ships = True, Orbitals = True, Asteroids = True, Terraforming = True)
-
-	AddLaborIncome(7)
-	AddLaborEmpireAttribute(FactoryLaborMod)
 	CopyLaborFromOrbitPlanet()
 
 	IsHomeObject()

@@ -43,11 +43,10 @@ v0.2.0b
 
 [*] Lifestyles
 
-- Star Children Mothership Hulls no longer have population growth and labor generation simply by virtue of being motherships, but these characteristics are now provided by their subsystems.
+- Star Children motherships no longer have population growth and labor generation simply by virtue of being motherships, but these characteristics are now provided by their subsystems.
 - Since the population of a mothership is now hosted in Living Quarters, the maximum population a mothership can support depends of the size of said subsystem.
-- Population inside a Star Children Living Quarters now provides 45k income (up from 15k).
 - Default mothership designs have been updated to reflect the gameplay changes for Star Children and also as a tutorial on how to design motherships.
-- Mechanoids now natively generate 0.1 FTL/s and gain 100 FTL storage for each planet level on every owned planet.
+- Mechanoids now natively generate 0.08 FTL/s and gain 100 FTL storage for each planet level on every owned planet.
 - Fixed Mechanoids incorrectly starting with 1 less Labor generation on their homeworld than they should.
 
 [*] Orbitals
@@ -104,7 +103,10 @@ v0.2.0b
 - Added Living Quarters, exclusive to Star Children. As masters of life among the stars, Star Children have this more efficient version of the Habitat Module unlocked at game start.
 - Added Replicator, exclusive to Ancients. Has the same abilities as an Orbital Replicator, with the benefits of imperial-class equipment such as extra protection or FTL systems. Must cover at least two thirds of the entire ship. Costs decrease with size.
 - Added Machine Shop. Provides Labor and Labor Storage. Gains Labor from Metallurgy research. Can build ships, orbitals, asteroid bases and terraform planets. Provides much less Labor than a Construction Bay of equivalent size.
-- Added Population design stat for Colonization Pods and Habitat Modules.
+- Mothership Hull no longer provides free population, labor generation, support command and cargo storage and instead provides bonuses to these values.
+- Mothership Hull now requires a minimum size of 3000 as well as Living Quarters and a Machine Shop.
+- Added Population design stat for Colonization Pods, Habitat Modules and Living Quarters.
+- Added Population Income design stat for Habitat Modules and Living Quarters.
 - Added Labor Storage design stat for Ore Processors and Machine Shops.
 
 [*] User Interface

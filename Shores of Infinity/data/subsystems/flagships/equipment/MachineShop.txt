@@ -8,6 +8,8 @@ Subsystem: MachineShop
 	Tags: DefaultUnlock, Category:Equipment, BaseCost, HasInternals, NonContiguous, NoCore
 	Hull: Flagship, Station
 
+	HasMachineShop := 1
+
 	Size := HexSize * Hexes
 
 	LaborIncome := Size / 10
