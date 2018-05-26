@@ -31,7 +31,7 @@ class StrategicIcon {
 		if(animate_pct > 0 && animate_pct < 1)
 			return;
 
-		if(wasVisible && animate_pct >= 1 && strategicPos.distanceTo(position) > POS_CHANGE_THRES) {
+		if(wasVisible && animate_pct >= 1 && strategicPos.distanceToSQ(position) > POS_CHANGE_THRES) {
 			animPos = strategicPos;
 			animate_pct = 0;
 		}
