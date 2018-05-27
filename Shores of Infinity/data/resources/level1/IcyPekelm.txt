@@ -16,5 +16,8 @@ Resource: IcyPekelm
 
 	Planet Classification: Icy
 
+	Secondary Resource: LocalIcyWater
+
 	Pressure: 3 Defense
+
 	ModColonyShipAccel(+1.0)

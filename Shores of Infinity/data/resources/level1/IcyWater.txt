@@ -14,6 +14,8 @@ Resource: IcyWater
 
 	Planet Classification: Icy
 
+	Secondary Resource: LocalIcyWater
+
 	Pressure: 1 Influence
 
 	AddDummyResource(Water)

@@ -24,12 +24,11 @@ System: OuterSystem
 
 System: BaseGasGiants
 	RepeatChance(Chance = 0.7, Repeat Modifier = 0.6)
-		MakePlanet(Resource = Weighted, Classification = Gas, Giant = True, Force Native biome = True, Add Status = GasGiant)
+		MakePlanet(Resource = Weighted, Secondary Resource = Ruled, Classification = Gas, Giant = True, Force Native biome = True, Add Status = GasGiant)
 
 System: BaseIceGiants
 	RepeatChance(Chance = 0.5, Repeat Modifier = 0.3)
-		MakePlanet(Resource = Weighted, Classification = Icy, Giant = True, Force Native Biome = True, Add Status = IceGiant)
-		AddPlanetResource(LocalIcyWater)
+		MakePlanet(Resource = Weighted, Secondary Resource = Ruled, Classification = Icy, Giant = True, Force Native Biome = True, Add Status = IceGiant)
 
 System: BaseInnerRim
 

@@ -1,0 +1,18 @@
+Resource: CommonGases
+	Name: #COMMON_GASES
+	Description: #COMMON_GASES_DESC
+	Native Biome: LightFluids
+
+	Icon: CommonGases
+	Small Icon: CommonGases
+	Display Weight: -10
+
+	Distribution: 0
+	Frequency: 0
+
+	Level: 0
+	Affinity: Energy
+	Exportable: False
+	Can Be Terraformed: False
+
+	Pressure: 2 Energy

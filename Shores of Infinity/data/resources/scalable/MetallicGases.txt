@@ -7,7 +7,6 @@ Resource: MetallicGases
 
 	Small Icon: MetallicGases
 	Icon: MetallicGases*#e8e7e7
-	Pressure: 2 Energy
 
 	Distribution: 0
 	Frequency: 0
@@ -18,6 +17,10 @@ Resource: MetallicGases
 	Exportable: False
 
 	Planet Classification: Gas
+
+	Secondary Resource: CommonGases
+
+	Pressure: 2 Energy
 
 	IfLevel(1, AddLaborFactor(0.05), Exact = True )
 	IfLevel(1, ModCivResourceMult(Energy, 0.05), Exact = True )

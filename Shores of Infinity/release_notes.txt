@@ -40,6 +40,7 @@ v0.2.0b
 - ETA calculations for colonization orders now take relativistic speeds into account.
 - Fixed bugs where the 'Toggle Laser Propulsion Beam' and 'Repair' abilities would not work properly after loading a previous save.
 - Changed projects with no labor cost to not consume labor storage if available.
+- Fixed a bug where planet resource icons would not appear immediately when entering an unexplored system with Legacy Exploration Mode off.
 
 [*] Game Options
 
@@ -75,6 +76,7 @@ v0.2.0b
 - Added a new Policy: Scholarship Support. Yields one Enhance influence card. Build cost of 450k. Also costs 10 Influence.
 - Slowed down moon rotation and orbit speeds.
 - Moon bases built by the related Foundation trait now consumes the available moon to build a base on on the homeworld.
+- Gas giants now always have a non-exportable Common Gases resource in addition to their primary resource, similarly to Water on ice giants.
 - Fixed a bug where moon bases built by the related Foundation trait would only be 5x5 size instead of 6x6.
 
 [*] Research
@@ -86,6 +88,7 @@ v0.2.0b
 
 [*] Resources
 
+- Added Common Gases, a new tier 0 resource found on gas giants only. Adds 2 Energy pressure. Cannot be exported.
 - Added Ammonia, a new tier 1 resource found on gas giants only. Adds 1 Energy and 1 Defense pressures. Counts as a Food resource if the consuming planet has a Grain or Fruit native resource, once per planet.
 - Added Metallic Gases, a new scalable resource found on gas giants only. Increases Labor generation and civilian Energy pressure by 0%/5%/10%/30%/60%/120%/200%. Cannot be exported.
 - Reverted Rare Gases acceleration bonus to 0%/5%/10%/30%/60%/120%/200% (up from 0%/2.5%/5%/10%/30%/60%/120%). As gas giants can now have different resources, this one will be much rarer.

@@ -15,6 +15,8 @@ Resource: Ammonia
 
 	Planet Classification: Gas
 
+	Secondary Resource: CommonGases
+
 	Pressure: 1 Energy
 	Pressure: 1 Defense
 

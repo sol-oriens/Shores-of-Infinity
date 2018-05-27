@@ -7,7 +7,6 @@ Resource: RareGases
 
 	Small Icon: RareGases
 	Icon: RareGases*#af5a53
-	Pressure: 1 Energy
 
 	Distribution: 0
 	Frequency: 0
@@ -18,6 +17,10 @@ Resource: RareGases
 	Exportable: False
 
 	Planet Classification: Gas
+
+	Secondary Resource: CommonGases
+
+	Pressure: 1 Energy
 
 	IfLevel(1, AddPressure(Energy, 1))
 

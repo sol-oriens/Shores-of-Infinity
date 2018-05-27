@@ -16,6 +16,8 @@ Resource: IcySalts
 
 	Planet Classification: Icy
 
+	Secondary Resource: LocalIcyWater
+
 	Display Requirement: False
 
 	Pressure: 1 Money
