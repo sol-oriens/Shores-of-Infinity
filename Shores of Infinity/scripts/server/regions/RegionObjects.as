@@ -2305,8 +2305,10 @@ tidy class RegionObjects : Component_RegionObjects, Savable {
 						region.DonateVisionMask = mask;
 					else
 						region.DonateVisionMask = donateMask;
-					for(uint i = 0, cnt = planetList.length; i < cnt; ++i)
+					for(uint i = 0, cnt = planetList.length; i < cnt; ++i) {
 						planetList[i].memoryMask |= mask;
+						planetList[i].giveBasicIconVision(playerEmpire);
+					}
 				}
 				else
 					region.DonateVisionMask = mask;
