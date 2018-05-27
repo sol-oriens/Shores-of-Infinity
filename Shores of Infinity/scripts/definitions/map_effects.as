@@ -325,6 +325,7 @@ class MakePlanet : MapHook {
 
 	Document doc("Create a new planet in the system.");
 	Argument resource(AT_Custom, "distributed", doc="The primary resource on the planet. 'distributed' to randomize.");
+	Argument secondary_resource(AT_Custom, "none", doc="The secondary resource on the planet. Cannot be randomized. Should be Level 0 and non-exportable. Use with caution.");
 
 	//SoI - Scaling
 	Argument radius(AT_Range, "60:140", doc="Size of the planet, can be a random range.");
@@ -343,11 +344,11 @@ class MakePlanet : MapHook {
 
 	bool instantiate() override {
 		//Get resource selection mode
-		if(arguments[0].str.equals_nocase("distributed"))
+		if(resource.str.equals_nocase("distributed"))
 			distribute = true;
-		else if(arguments[0].str.equals_nocase("weighted"))
+		else if(resource.str.equals_nocase("weighted"))
 			weight = true;
-		else if(!parseResourceSpec(resPossib, arguments[0].str))
+		else if(!parseResourceSpec(resPossib, resource.str))
 			return false;
 		//Get planet classification
 		if (classification.str.equals_nocase("gas"))
@@ -391,11 +392,10 @@ class MakePlanet : MapHook {
 		if(resource !is null)
 			markResourceUsed(resource);
 
-
-		double radius = arguments[1].decimal;
-		if(arguments[1].isRange)
-			radius = normald(arguments[1].decimal, arguments[1].decimal2);
-		double spacing = arguments[2].fromRange() * config::SYSTEM_SIZE;
+		double planetRadius = radius.decimal;
+		if(radius.isRange)
+			planetRadius = normald(radius.decimal, radius.decimal2);
+		double spacing = orbit_spacing.fromRange() * config::SYSTEM_SIZE;
 
 		//SoI - Gas Giants: make gas giants giant
 		//SoI - Ice Giants: make ice giants giant
@@ -403,20 +403,20 @@ class MakePlanet : MapHook {
 			switch (planetClass)
 			{
 				case PC_Gas:
-					radius += 140;
+					planetRadius += 140;
 					spacing = randomd(5250, 5450);
 					break;
 				case PC_Icy:
-					radius+= 100;
+					planetRadius += 100;
 					spacing = randomd(5000, 5200);
 					break;
 				default:
-					radius = radius += 140;
+					planetRadius += 140;
 					spacing = randomd(5250, 5450);
 			}
 		}
 
-		radius *= config::SCALE_PLANETS;
+		planetRadius *= config::SCALE_PLANETS;
 		spacing *= config::SCALE_PLANETS;
 
 		system.radius += spacing;
@@ -434,7 +434,7 @@ class MakePlanet : MapHook {
 		planetDesc.type = OT_Planet;
 		planetDesc.delayedCreation = true;
 		@planetDesc.owner = null;
-		planetDesc.radius = radius;
+		planetDesc.radius = planetRadius;
 		planetDesc.position = system.position + offset;
 
 		if(!physics.boolean) {
@@ -470,23 +470,23 @@ class MakePlanet : MapHook {
 
 		//Figure out planet size
 		//SoI - Scaling: rescale radius for grid size calculation
-		double scaledradius = 0;
+		double scaledRadius = 0;
 
 		//SoI - Gas Giants: force the grid to a specific size to avoid a big surface displaying a scroll bar before even displaying moon bases
 		//SoI - Ice Giants: force the grid to a specific size to avoid a big surface displaying a scroll bar before even displaying moon bases
 		//The loss of space is not a problem since the biome is useless anyway
 		if (resource !is null && giant.boolean && (planetClass == PC_Gas || planetClass == PC_Icy))
-			scaledradius = 160;
+			scaledRadius = 160;
 		else
 			//min_planet_radius + 100 * (radius - min_planet_radius) / (max_planet_radius - min_planet_radius)
-			scaledradius = 60 * config::SCALE_PLANETS + 100 * (radius - 60 * config::SCALE_PLANETS) / (140 * config::SCALE_PLANETS - 60 * config::SCALE_PLANETS);
+			scaledRadius = 60 * config::SCALE_PLANETS + 100 * (planetRadius - 60 * config::SCALE_PLANETS) / (140 * config::SCALE_PLANETS - 60 * config::SCALE_PLANETS);
 
-		double sizeFact = clamp(scaledradius / 100.0, 0.1, 5.0);
+		double sizeFact = clamp(scaledRadius / 100.0, 0.1, 5.0);
 
 		int gridW = round(AVG_PLANET_GRID_WIDTH * sizeFact);
 		int gridH = round(AVG_PLANET_GRID_HEIGHT * sizeFact);
 
-		vec2d givenGrid = arguments[3].fromPosition2D();
+		vec2d givenGrid = grid_size.fromPosition2D();
 		if(givenGrid.x > 0)
 			gridW = ceil(givenGrid.x);
 		if(givenGrid.y > 0)
@@ -513,7 +513,7 @@ class MakePlanet : MapHook {
 		{
 			//Planet volume is generally related to mass which governs gravity well size
 			//Get the planet volume
-			double volume = pow(radius, 3.0) * 4 / 3 * pi;
+			double volume = pow(planetRadius, 3.0) * 4 / 3 * pi;
 			//Apply a cube root and a "clever" factor
 			planet.OrbitSize = pow(volume, 1.0/3.0) * 5.5;
 		}
@@ -595,6 +595,15 @@ class MakePlanet : MapHook {
 				planet.addMoon();
 				planet.addStatus(getStatusID("Moon"));
 			}
+		}
+
+		//Add a secondary resource if any
+		if (secondary_resource.str != "none") {
+			AddPlanetResource secondaryResourceHook;
+			secondaryResourceHook.initClass();
+			secondaryResourceHook.resID.str = secondary_resource.str;
+			secondaryResourceHook.instantiate();
+			secondaryResourceHook.trigger(data, system, planet);
 		}
 
 		//Place in region
