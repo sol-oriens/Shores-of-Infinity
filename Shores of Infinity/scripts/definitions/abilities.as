@@ -16,6 +16,7 @@ tidy final class AbilityType {
 	double energyCost = 0.0;
 	double cooldown = 0.0;
 	double range = INFINITY;
+	bool scaleRange = false;
 	Sprite icon = icons::Ability;
 	Targets targets;
 	int objectCast = -1;
@@ -103,6 +104,8 @@ tidy class Ability : Serializable, Savable {
 	}
 
 	double getRange(const Targets@ targs = null) const {
+		if (type.scaleRange)
+			return type.range * config::SCALE_SPACING;
 		return type.range;
 	}
 
@@ -453,7 +456,6 @@ void loadAbilities(const string& filename) {
 
 	string key, value;
 	AbilityType@ type;
-	bool scaleRange = false;
 
 	uint index = 0;
 	while(file++) {
@@ -489,15 +491,10 @@ void loadAbilities(const string& filename) {
 			type.cooldown = toDouble(value);
 		}
 		else if(key.equals_nocase("Scale Range")) {
-			scaleRange = toBool(value);
-			if (type.range != 0)
-				type.range *= config::SCALE_SPACING;
+			type.scaleRange = toBool(value);
 		}
 		else if(key.equals_nocase("Range")) {
-			if (scaleRange)
-				type.range = toDouble(value) * config::SCALE_SPACING;
-			else
-				type.range = toDouble(value);
+			type.range = toDouble(value);
 		}
 		else if(key.equals_nocase("Hide Global")) {
 			type.hideGlobal = toBool(value);
