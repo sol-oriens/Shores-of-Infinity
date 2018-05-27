@@ -34,7 +34,7 @@ class SpiralMap : Map {
 #section client
 	void makeSettings() {
 		Number(locale::SYSTEM_COUNT, M_SystemCount, DEFAULT_SYSTEM_COUNT, decimals=0, step=10, min=4, halfWidth=true);
-		Number(locale::SYSTEM_SPACING, M_SystemSpacing, DEFAULT_SPACING, decimals=0, step=1000, min=MIN_SPACING, halfWidth=true);
+		Number(locale::SYSTEM_SPACING, M_SystemSpacing, 1.0, decimals=1, step=0.1, min=0.5, max=1.5, halfWidth=true);
 		Number(locale::NEBULA_FREQ, M_NebulaFreq, 0.05f, max=1, decimals=2, step=0.01f, halfWidth=false, tooltip=locale::NGTT_ANOMALY_SYSTEM_OCCURANCE);
 		Toggle(locale::FLATTEN, M_Flatten, false);
 	}
@@ -58,7 +58,7 @@ class SpiralMap : Map {
 		uint perArm = (systemCount - coreSystems) / armCount;
 		coreSystems = systemCount - (perArm * armCount);
 
-		double systemSpacing = modSpacing(getSetting(M_SystemSpacing, DEFAULT_SPACING));
+		double systemSpacing = modSpacing(DEFAULT_SPACING * getSetting(M_SystemSpacing, 1.0));
 
 		//SoI - Scaling: increased height spacing
 		const double coreHeightVariation = flatten ? 0.0 : 2000.0;

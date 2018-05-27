@@ -29,6 +29,14 @@ class GamePage : GameSettingsPage {
 		Toggle(locale::NG_SUPERMASSIVE_BLACK_HOLES, "SUPERMASSIVE_BLACK_HOLES", halfWidth=true, tooltip=locale::NGTT_SUPERMASSIVE_BLACK_HOLES);
 
 		emptyline();
+
+		Title(locale::NG_SCALE);
+		Number(locale::NG_SCALE_STARS, "SCALE_STARS", step=1, min=1, max=3, tooltip=locale::NGTT_SCALE);
+		Number(locale::NG_SCALE_PLANETS, "SCALE_PLANETS", step=1, min=1, max=3, tooltip=locale::NGTT_SCALE);
+		Number(locale::NG_SCALE_SPACING, "SCALE_SPACING", step=1, min=1, max=5, tooltip=locale::NGTT_SCALE);
+
+		emptyline();
+
 		Title(locale::NG_GAME_OPTIONS);
 //		Occurance(locale::NG_RANDOM_EVENTS, "RANDOM_EVENT_OCCURRENCE", max=3.0);
 		Toggle(locale::NG_ENABLE_DREAD_PIRATE, "ENABLE_DREAD_PIRATE", halfWidth=true, tooltip=locale::NGTT_ENABLE_DREAD_PIRATE);

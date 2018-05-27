@@ -20,7 +20,7 @@ class DumbbellMap : Map {
 	double nebulaFreq;
 	bool hasAnomalies;
 #section all
-	
+
 	DumbbellMap() {
 		super();
 
@@ -36,7 +36,7 @@ class DumbbellMap : Map {
 #section client
 	void makeSettings() {
 		Number(locale::SYSTEM_COUNT, M_SystemCount, DEFAULT_SYSTEM_COUNT, decimals=0, step=10, min=10, halfWidth=true);
-		Number(locale::SYSTEM_SPACING, M_SystemSpacing, DEFAULT_SPACING, decimals=0, step=1000, min=MIN_SPACING, halfWidth=true);
+		Number(locale::SYSTEM_SPACING, M_SystemSpacing, 1.0, decimals=1, step=0.1, min=0.5, max=1.5, halfWidth=true);
 		Number(locale::NEBULA_FREQ, M_NebulaFreq, 0.05f, max=1, decimals=2, step=0.01f, halfWidth=false, tooltip=locale::NGTT_ANOMALY_SYSTEM_OCCURANCE);
 		Toggle(locale::FLATTEN, M_Flatten, false, halfWidth=true);
 		Toggle(locale::PERFECT_MIRROR, M_Mirror, false, halfWidth=true, tooltip=locale::TT_PERFECT_MIRROR);
@@ -45,12 +45,12 @@ class DumbbellMap : Map {
 #section server
 	void placeSystems() {
 		uint systemCount = uint(getSetting(M_SystemCount, DEFAULT_SYSTEM_COUNT));
-		double spacing = modSpacing(getSetting(M_SystemSpacing, DEFAULT_SPACING));
+		double spacing = modSpacing(DEFAULT_SPACING * getSetting(M_SystemSpacing, 1.0));
 		nebulaFreq = getSetting(M_NebulaFreq, 0.2f);
 		hasAnomalies = nebulaFreq > 0.0;
 		bool flatten = getSetting(M_Flatten, 0.0) != 0.0;
 		bool mirror = getSetting(M_Mirror, 0.0) != 0.0;
-		
+
 		hasAnomalies = hasAnomalies && anomalyList !is null;
 
 		//Calculate values
@@ -72,7 +72,7 @@ class DumbbellMap : Map {
 				auto@ other = systemData[i];
 				vec3d pos = other.position;
 				pos.z = -pos.z;
-				
+
 				auto@ sys = addSystem(pos, mirrorSystem = other);
 
 				if(possibleHomeworlds.find(other) != -1)

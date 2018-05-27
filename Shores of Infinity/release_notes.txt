@@ -41,6 +41,12 @@ v0.2.0b
 - Fixed bugs where the 'Toggle Laser Propulsion Beam' and 'Repair' abilities would not work properly after loading a previous save.
 - Changed projects with no labor cost to not consume labor storage if available.
 
+[*] Game Options
+
+- Added Star Scale, Planet Scale and System Spacing Scale. These options apply a multiplier to the base scale of stars, planets and system spacing, respectively. All drive speeds and FTL costs are scaled with system spacing.
+*** It is strongly advised to set the same multiplier for stars and planets and a multiplier at least equal for system spacing in order to avoid object collisions in the generated universe.
+*** WARNING: Stars scaled above 1 require longer loading times and may cause extensive stutters while zooming in.
+
 [*] Lifestyles
 
 - Star Children motherships no longer have population growth and labor generation simply by virtue of being motherships, but these characteristics are now provided by their subsystems.

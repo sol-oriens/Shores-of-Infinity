@@ -49,7 +49,7 @@ class InvasionMap : Map {
 	void makeSettings() {
 		Toggle(locale::FLATTEN, M_Flatten, false, halfWidth=true);
 		Toggle(locale::ALLOW_WAR, M_AllowWar, false, halfWidth=true);
-		Number(locale::SYSTEM_SPACING, M_SystemSpacing, DEFAULT_SPACING, decimals=0, step=1000, min=MIN_SPACING, halfWidth=false);
+		Number(locale::SYSTEM_SPACING, M_SystemSpacing, 1.0, decimals=1, step=0.1, min=0.5, max=1.5, halfWidth=true);
 
 		auto@ diff = Dropdown(locale::INV_DIFFICULTY, "INVASION_DIFFICULTY");
 		diff.addOption(locale::EASY, 0.25);
@@ -76,7 +76,7 @@ class InvasionMap : Map {
 	}
 
 	void placeSystems() {
-		double spacing = modSpacing(getSetting(M_SystemSpacing, DEFAULT_SPACING));
+		double spacing = modSpacing(DEFAULT_SPACING * getSetting(M_SystemSpacing, 1.0));
 		bool flatten = getSetting(M_Flatten, 0.0) != 0.0;
 
 		uint players = estPlayerCount;
@@ -189,7 +189,7 @@ class InvasionMap : Map {
 
 			Pirates.setHostile(emp, false);
 			emp.setHostile(Pirates, false);
-			
+
 			Creeps.setHostile(Pirates, false);
 			Pirates.setHostile(Creeps, false);
 

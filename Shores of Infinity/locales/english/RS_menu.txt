@@ -41,6 +41,20 @@ NGTT_BLACK_HOLE_OCCURANCE: <<
 	Multiplier to the base frequency at which black hole systems occur in the universe. Does not affect the black holes spawned at the center of large galaxies.
 >>
 
+NG_SCALE: Universe Scale
+NG_SCALE_STARS: Star Scale
+NG_SCALE_PLANETS: Planet Scale
+NG_SCALE_SPACING: System Spacing Scale
+NGTT_SCALE: <<
+	Multiplier to the base scale of the universe.
+
+	[i]It is strongly advised to set the same multiplier for stars and planets and a multiplier at least equal for system spacing in order to avoid object collisions in the generated universe.[/i]
+
+	Note: All drive speeds and FTL costs are scaled with system spacing.
+
+	[b]WARNING: Stars scaled above 1 require longer loading times and may cause extensive stutters while zooming in.[/b]
+>>
+
 NG_SENSOR_OPTIONS: Sensor Options
 NG_SENSOR_MULT: Global Sensor Multiplier
 NGTT_SENSOR_MULT: The number by which all sight ranges in the game are multiplied. This is applied after all other sensor modifiers; useful when modifying the System Size option among other things.
@@ -155,6 +169,7 @@ NGTT_RESEARCH_DECAY_MULT: <<
 
 	Can be set to 0%, preventing research decay altogether.
 >>
+
 DOF_MISSING_BASE: <<
 	You do not appear to have the latest version of the DOF support library installed. This may cause certain assets to fail to load, and will also prevent various shipsets from functioning.
 >>
