@@ -15,11 +15,13 @@ interface AIOrbitals : ConsiderComponent {
 enum OrbitalUse {
 	OU_TradeOutpost,
 	OU_Shipyard,
+	OU_Starport,
 };
 
 const array<string> OrbitalUseName = {
 	"TradeOutpost",
 	"Shipyard",
+	"Starport",
 };
 
 class OrbitalAIHook : Hook, ConsiderHook {

@@ -34,6 +34,8 @@ Module: Starport
 	FriendlyPlanetMoney(To Self = 30, To Other = 30, Count Self = True, Max Money = 120)
 	addon_generic_effects::AddStatusToPlanetsInSystem(Starport, Set Origin Empire = True, Only Owned = True)
 
+	AI: RegisterForUse(Starport)
+
 Module: StarportDockingBays
 	Name: #ORB_STARPORT_DOCKING_BAYS
 	Description: #ORB_STARPORT_DOCKING_BAYS_DESC

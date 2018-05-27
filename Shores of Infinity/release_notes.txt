@@ -20,6 +20,10 @@ v0.2.0b
 *** Detailed Changes ***
 ************************
 
+[*] Artificial Intelligence
+
+- AIs now build starports in systems where they own 3 planets or more.
+
 [*] Buildings
 
 - The Flux trait no longer gives access to the FTL Breeder Reactor (see Orbitals).

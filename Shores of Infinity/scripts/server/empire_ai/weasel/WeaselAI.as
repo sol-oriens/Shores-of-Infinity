@@ -339,6 +339,7 @@ final class AIDefs {
 	const BuildingType@ LaborStorage;
 	const OrbitalModule@ Shipyard;
 	const OrbitalModule@ TradeOutpost;
+	const OrbitalModule@ Starport;
 	const ConstructionType@ MoonBase;
 };
 

@@ -544,7 +544,7 @@ class Planets : AIComponent, AIConstructions {
 		switch(use) {
 			case CU_MoonBase:
 				@ai.defs.MoonBase = type;
-			break;
+				break;
 		}
 	}
 

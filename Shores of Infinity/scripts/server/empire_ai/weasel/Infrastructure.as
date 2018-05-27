@@ -17,6 +17,7 @@ import ABEM_data;
 import util.lookup;
 
 from statuses import getStatusID;
+from traits import getTraitID;
 
 enum ResourcePreference {
   RP_None,
@@ -35,6 +36,7 @@ enum SystemArea {
 
 enum SystemBuildAction {
   BA_BuildOutpost,
+  BA_BuildStarport,
 };
 
 enum PlanetBuildAction {
@@ -298,25 +300,28 @@ final class SystemCheck {
       //SoI - TODO: Cancel order
     }*/
     if (isBuilding) {
+      array<SystemOrder@> ordersToRemove;
       for (int i = 0, cnt = orders.length; i < cnt; ++i) {
         auto@ order = orders[i];
         if (!order.isValid) {
-          orders.remove(order);
+          ordersToRemove.insertLast(order);
           @order = null;
         }
         else if (order.isComplete) {
           if (infrastructure.log)
             ai.print("order complete");
-          orders.remove(order);
+          ordersToRemove.insertLast(order);
           @order = null;
         }
         else if (!order.isInProgress && order.expires < gameTime) {
           if (infrastructure.log)
             ai.print("order expired, gameTime = " + gameTime);
-          orders.remove(order);
+          ordersToRemove.insertLast(order);
           @order = null;
         }
       }
+      for (int i = 0, cnt = ordersToRemove.length; i < cnt; ++i)
+        orders.remove(ordersToRemove[i]);
     }
   }
 
@@ -411,7 +416,7 @@ final class SystemCheck {
   }
 };
 
-class PlanetCheck {
+final class PlanetCheck {
   PlanetAI@ ai;
 
   array<PlanetOrder@> orders;
@@ -480,25 +485,28 @@ class PlanetCheck {
       _isSystemUnderAttack = sysAI.obj.ContestedMask & ai.mask != 0;
 
     if (isBuilding) {
+      array<PlanetOrder@> ordersToRemove;
       for (int i = 0, cnt = orders.length; i < cnt; ++i) {
         auto@ order = orders[i];
         if (!order.isValid) {
-          orders.remove(order);
+          ordersToRemove.insertLast(order);
           @order = null;
         }
         else if (order.isComplete) {
           if (infrastructure.log)
             ai.print("planet order complete");
-          orders.remove(order);
+          ordersToRemove.insertLast(order);
           @order = null;
         }
         else if (!order.isInProgress && order.expires < gameTime) {
           if (infrastructure.log)
             ai.print("planet order expired, gameTime = " + gameTime);
-          orders.remove(order);
+          ordersToRemove.insertLast(order);
           @order = null;
         }
       }
+      for (int i = 0, cnt = ordersToRemove.length; i < cnt; ++i)
+        orders.remove(ordersToRemove[i]);
     }
   }
 
@@ -556,6 +564,9 @@ final class Infrastructure : AIComponent {
   SystemCheck@ homeSystem;
   NextAction@ nextAction;
 
+  //Unlock tracking
+  bool canBuildMoonBase = true;
+
   void create() {
     @colonization = cast<Colonization>(ai.colonization);
     @development = cast<Development>(ai.development);
@@ -576,6 +587,9 @@ final class Infrastructure : AIComponent {
     systems.registerOwnedSystemEvents(OwnedSystemEvents(this));
     systems.registerOutsideBorderSystemEvents(OutsideBorderSystemEvents(this));
     planets.registerPlanetEvents(PlanetEvents(this));
+
+    if (ai.empire.hasTrait(getTraitID("StarChildren")))
+      canBuildMoonBase = false;
 	}
 
   void save(SaveFile& file) {
@@ -671,6 +685,7 @@ final class Infrastructure : AIComponent {
   void focusTick(double time) override {
     SystemCheck@ sys;
     PlanetCheck@ pl;
+    SystemBuildLocation loc;
 
     bool critical = false;
     double w;
@@ -684,14 +699,22 @@ final class Infrastructure : AIComponent {
         //Evaluate current weight
         w = sys.check(ai);
         if (w > bestWeight) {
-          //Check if an outpost is needed
           if (_focus == FT_None || _focus == FT_Outpost) {
-            SystemBuildLocation loc;
+            //Check if an outpost is needed
             if (shouldHaveOutpost(sys, SA_Core, loc)) {
               @nextAction = SystemAction(sys, BA_BuildOutpost, loc);
               bestWeight = w;
               if (log)
                 ai.print("outpost considered for owned system with weight: " + w, sys.ai.obj);
+            }
+          }
+          if (_focus == FT_None) {
+            //Check if a starport is needed
+            if (shouldHaveStarport(sys, SA_Core, loc)) {
+              @nextAction = SystemAction(sys, BA_BuildStarport, loc);
+              bestWeight = w;
+              if (log)
+                ai.print("starport considered for owned system with weight: " + w, sys.ai.obj);
             }
           }
         }
@@ -709,9 +732,8 @@ final class Infrastructure : AIComponent {
           //Evaluate current weight
           w = sys.check(ai);
           if (w > bestWeight) {
-            //Check if an outpost is needed
             if (_focus == FT_None || _focus == FT_Outpost) {
-              SystemBuildLocation loc;
+              //Check if an outpost is needed
               if (shouldHaveOutpost(sys, SA_Tradable, loc)) {
                 @nextAction = SystemAction(sys, BA_BuildOutpost, loc);
                 bestWeight = w;
@@ -735,8 +757,8 @@ final class Infrastructure : AIComponent {
           //Evaluate current weight
           w = pl.check(ai);
           if (w > bestWeight) {
-          //Check if a moon base is needed
-            if (shouldHaveMoonBase(pl)) {
+            //Check if a moon base is needed
+            if (canBuildMoonBase && shouldHaveMoonBase(pl)) {
               @nextAction = PlanetAction(pl, BA_BuildMoonBase);
               bestWeight = w;
               if (log)
@@ -780,6 +802,26 @@ final class Infrastructure : AIComponent {
             }
             if (log)
               ai.print("outpost ordered", sys.ai.obj);
+            break;
+          case BA_BuildStarport:
+            switch (next.loc) {
+              case BL_InSystem:
+                sys.buildInSystem(this, construction, ai.defs.Starport, next.priority, next.force);
+                break;
+              case BL_AtSystemEdge:
+                sys.buildAtSystemEdge(this, construction, ai.defs.Starport, next.priority, next.force);
+                break;
+              case BL_AtBestPlanet:
+                  @obj = getBestPlanet(sys);
+                  if (obj !is null) {
+                    sys.buildAtPlanet(this, construction, cast<Planet>(obj), ai.defs.Starport, next.priority, next.force);
+                  }
+                break;
+              default:
+                ai.print("ERROR: undefined infrastructure building location for starport");
+            }
+            if (log)
+              ai.print("starport ordered", sys.ai.obj);
             break;
           default:
             ai.print("ERROR: undefined infrastructure building action for system");
@@ -903,8 +945,8 @@ final class Infrastructure : AIComponent {
           if (sys.ai.planets.length > 0)
             loc = BL_AtBestPlanet;
           return true;
-        case SA_Tradable:
         //Outside systems might have an outpost if they are of some interest
+        case SA_Tradable:
           //The system has no planets but is not empty space, it needs an outpost to allow expansion
           if (sys.ai.planets.length == 0 && sys.nebulaFlag == -1)
             return true;
@@ -922,6 +964,53 @@ final class Infrastructure : AIComponent {
               return true;
           }
           return false;
+        default:
+          return false;
+      }
+    }
+    return false;
+  }
+
+  bool shouldHaveStarport(SystemCheck& sys, SystemArea area, SystemBuildLocation&out loc) {
+    loc = BL_InSystem;
+
+    uint presentMask = sys.ai.seenPresent;
+    //Starports should only be built in core systems.
+    if (area != SA_Core)
+      return false;
+    //Make sure we did not previously built a starport here
+    if (orbitals.haveInSystem(ai.defs.Starport, sys.ai.obj))
+      return false;
+    //Make sure we are not already building a starport here
+    if (isBuilding(sys, ai.defs.Starport))
+      return false;
+    //Hostile systems should be ignored until cleared
+    if (presentMask & ai.enemyMask != 0)
+      return false;
+    //Remnants are considered hostile
+    if (sys.ai.pickupProtectors.length > 0)
+      return false;
+    //Nebulae have no use for a starport
+    if (sys.nebulaFlag != -1)
+        return false;
+    else {
+      Planet@ planet;
+      ResourceType@ type;
+
+      switch(area) {
+        //Owned systems should have a starport if more than 3 planets are colonized
+        case SA_Core:
+          if (sys.ai.planets.length >= 3) {
+            uint count = 0;
+            for(uint i = 0, cnt = sys.ai.planets.length; i < cnt; ++i) {
+              if (sys.ai.planets[i].owner is ai.empire)
+                ++count;
+            }
+            if (count >= 3) {
+              loc = BL_AtBestPlanet;
+              return true;
+            }
+          }
         default:
           return false;
       }

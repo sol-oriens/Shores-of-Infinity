@@ -119,9 +119,13 @@ class Orbitals : AIComponent, AIOrbitals {
 		switch(use) {
 			case OU_TradeOutpost:
 				@ai.defs.TradeOutpost = type;
+				break;
 			case OU_Shipyard:
 				@ai.defs.Shipyard = type;
-			break;
+				break;
+			case OU_Starport:
+				@ai.defs.Starport = type;
+				break;
 		}
 	}
 
