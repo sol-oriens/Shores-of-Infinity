@@ -98,6 +98,7 @@ tidy final class ResourceType {
 	string nativeBiome;
 	string className;
 	string dlc;
+	array<string> secondaryResources;
 	uint level = 0;
 	Sprite icon;
 	Sprite smallIcon;
@@ -1601,6 +1602,9 @@ void loadResources(const string& filename) {
 				int amt = toInt(parts[0]);
 				r.tilePressure[resource] += amt;
 			}
+		}
+		else if (key.equals_nocase("Secondary Resource")) {
+			r.secondaryResources.insertLast(value);
 		}
 		else if(key.equals_nocase("AI")) {
 			auto@ hook = parseHook(value, "ai.resources::", instantiate=false, file=file);

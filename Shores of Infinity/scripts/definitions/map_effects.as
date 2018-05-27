@@ -325,7 +325,7 @@ class MakePlanet : MapHook {
 
 	Document doc("Create a new planet in the system.");
 	Argument resource(AT_Custom, "distributed", doc="The primary resource on the planet. 'distributed' to randomize.");
-	Argument secondary_resource(AT_Custom, "none", doc="The secondary resource on the planet. Cannot be randomized. Should be Level 0 and non-exportable. Use with caution.");
+	Argument secondary_resource(AT_Custom, "none", doc="The secondary resource on the planet. 'ruled' to correlate the secondary resource with the resources defined by the primary resource. Should be Level 0 and non-exportable. Use with caution.");
 
 	//SoI - Scaling
 	Argument radius(AT_Range, "60:140", doc="Size of the planet, can be a random range.");
@@ -598,12 +598,26 @@ class MakePlanet : MapHook {
 		}
 
 		//Add a secondary resource if any
-		if (secondary_resource.str != "none") {
-			AddPlanetResource secondaryResourceHook;
-			secondaryResourceHook.initClass();
-			secondaryResourceHook.resID.str = secondary_resource.str;
-			secondaryResourceHook.instantiate();
-			secondaryResourceHook.trigger(data, system, planet);
+		if (!secondary_resource.str.equals_nocase("none")) {
+			string secondaryResourceSpec = "";
+			if (secondary_resource.str.equals_nocase("ruled")) {
+				//Get the resource spec
+				for (uint i = 0, cnt = resource.secondaryResources.length; i < cnt; ++i) {
+					if (secondaryResourceSpec.length > 0)
+						secondaryResourceSpec += ":";
+					secondaryResourceSpec += resource.secondaryResources[i];
+				}
+			}
+			else
+				secondaryResourceSpec = secondary_resource.str;
+
+			if (secondaryResourceSpec.length > 0) {
+				AddPlanetResource secondaryResourceHook;
+				secondaryResourceHook.initClass();
+				secondaryResourceHook.resID.str = secondaryResourceSpec;
+				secondaryResourceHook.instantiate();
+				secondaryResourceHook.trigger(data, system, planet);
+			}
 		}
 
 		//Place in region
@@ -615,6 +629,7 @@ class MakePlanet : MapHook {
 
 		@current = planet;
 	}
+
 #section all
 };
 
