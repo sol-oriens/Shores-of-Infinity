@@ -1450,7 +1450,7 @@ class SpawnPlanet : BonusEffect {
 				point.z += off.y;
 			}
 		}
-		auto@ planet = spawnPlanetSpec(point, resource.str, true, radius.fromRange(), physics.boolean);
+		auto@ planet = spawnPlanetSpec(point, resource.str, true, radius.fromRange() * config::SCALE_PLANETS, physics.boolean);
 		if(owned.boolean && emp !is null)
 			planet.colonyShipArrival(emp, 1.0);
 		if(add_status.integer != -1)
