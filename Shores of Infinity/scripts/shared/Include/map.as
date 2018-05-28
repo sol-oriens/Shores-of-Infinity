@@ -5,8 +5,8 @@ import maps;
 const int DEFAULT_SYSTEM_COUNT = 60;
 
 //SoI - Scaling: default system spacing
-const double DEFAULT_SPACING = 300000.0 * config::SCALE_SPACING;
-const double MIN_SPACING = 300000.0 * config::SCALE_SPACING;
+const double DEFAULT_SPACING = 300000.0;
+const double MIN_SPACING = 300000.0;
 
 void init() {
 	auto@ mapClass = getClass("Map");

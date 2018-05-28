@@ -85,7 +85,7 @@ class ExpanseMap : Map {
 		loadMap("maps/Expanse/coreMap.txt").generate(this);
 
 		//Generate base clusters
-		double spacing = modSpacing(DEFAULT_SPACING * getSetting(M_SystemSpacing, 1.0));
+		double spacing = modSpacing(DEFAULT_SPACING * config::SCALE_SPACING * getSetting(M_SystemSpacing, 1.0));
 		//nebulaFreq = getSetting(M_NebulaFreq, 0.2f);
 		//hasAnomalies = nebulaFreq > 0.0;
 		hasAnomalies = false;

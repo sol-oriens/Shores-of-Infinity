@@ -76,7 +76,7 @@ class InvasionMap : Map {
 	}
 
 	void placeSystems() {
-		double spacing = modSpacing(DEFAULT_SPACING * getSetting(M_SystemSpacing, 1.0));
+		double spacing = modSpacing(DEFAULT_SPACING * config::SCALE_SPACING * getSetting(M_SystemSpacing, 1.0));
 		bool flatten = getSetting(M_Flatten, 0.0) != 0.0;
 
 		uint players = estPlayerCount;
