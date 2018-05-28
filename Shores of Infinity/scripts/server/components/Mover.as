@@ -3,9 +3,6 @@ from regions.regions import getRegion;
 import saving;
 import ftl;
 
-//Maximum sublight speed limit, that is, the speed of light, aka c, ported to a scale-relative manageable value in game
-double c = config::LIGHT_SPEED * config::SCALE_SPACING;
-
 const double straighDot = 0.99999;
 
 //Rotation rate in radians/s
@@ -203,6 +200,9 @@ vec3d accToGoal(double a, double& maxTime, const vec3d& offset, const vec3d& rel
 }
 
 tidy class Mover : Component_Mover, Savable {
+	//Maximum sublight speed limit, that is, the speed of light, aka c, ported to a scale-relative manageable value in game
+	private double c = config::LIGHT_SPEED * config::SCALE_SPACING;
+
 	Object@ target;
 	vec3d destination;
 	quaterniond prevFormationDest;
