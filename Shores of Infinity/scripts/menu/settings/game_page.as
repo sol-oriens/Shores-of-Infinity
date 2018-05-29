@@ -31,8 +31,8 @@ class GamePage : GameSettingsPage {
 		emptyline();
 
 		Title(locale::NG_SCALE);
-		Number(locale::NG_SCALE_STARS, "SCALE_STARS", step=1, min=1, max=3, tooltip=locale::NGTT_SCALE);
-		Number(locale::NG_SCALE_PLANETS, "SCALE_PLANETS", step=1, min=1, max=3, tooltip=locale::NGTT_SCALE);
+		Number(locale::NG_SCALE_STARS, "SCALE_STARS", step=1, min=1, max=3, tooltip=locale::NGTT_SCALE, halfWidth=true);
+		Number(locale::NG_SCALE_PLANETS, "SCALE_PLANETS", step=1, min=1, max=3, tooltip=locale::NGTT_SCALE, halfWidth=true);
 		Number(locale::NG_SCALE_SPACING, "SCALE_SPACING", step=1, min=1, max=5, tooltip=locale::NGTT_SCALE);
 
 		emptyline();
