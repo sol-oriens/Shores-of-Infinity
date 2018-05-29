@@ -4,33 +4,34 @@ Subsystem: BoosterEngine
 	BaseColor: #8872bb
 	TypeColor: #8872bb
 	Elevation: 0
-	
+
 	Tags: ExteriorCore, HasInternals, NoBackWall, TurnToThrust
 	Tags: SecondaryThrust, RangeForRaid
 	Tags: HeraldsDLC
 	Tags: Category:Propulsion
 	Hull: Support
-	
+
 	OnCheckErrors: designs::checkCoreFacingBackwards
 
+	Scale := 1
 	Size := HexSize * Hexes
 
-	BoostThrust := 100 * Size
+	BoostThrust := 100 * Scale * Size
 	TurnThrust := 5.0 * Size
 
 	Hex.Mass := 0.5 * HexSize
-	
+
 	Hex.Resistance := 0.2
 	Hex.HP := 22 * HexSize
-	
+
 	Hex.BuildCost := 1.2 * HexSize
 	Hex.LaborCost := 0.1 * HexSize
 
 	Requires:
 		Command = 2
-	
+
 	Module: Default
-	
+
 	Module: Core
 		Sprite: BoosterEngine
 		Hex.HP := 2 * Hex.HP

@@ -5,29 +5,31 @@ Subsystem: SupportRocketEngine
 	TypeColor: #f9e146
 	Picture: RocketEngine
 	Elevation: 0
-	
+
 	Tags: ExteriorCore, DefaultUnlock, Engine, GivesThrust, HasInternals, NoBackWall, TurnToThrust
 	Tags: Category:Propulsion
 	Hull: Support
-	
+
 	OnCheckErrors: designs::checkCoreFacingBackwards
 
+	Scale := 1
 	Size := HexSize * Hexes
-	Thrust := 24 * Size
+
+	Thrust := 24 * Scale * Size
 	TurnThrust := 1.5 * Size
 	Hex.Mass := HexSize
-	
+
 	Hex.Resistance := 0.2
 	Hex.HP := 18 * HexSize
-	
+
 	Hex.BuildCost := 1 * HexSize
 	Hex.LaborCost := 0.13 * HexSize
-	
+
 	Requires:
 		Command = 1
-	
+
 	Module: Default
-	
+
 	Module: Core
 		Sprite: RocketEngine
 		Hex.HP := 2 * Hex.HP
