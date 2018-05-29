@@ -6,20 +6,21 @@ import attributes;
 from orbitals import getOrbitalModule;
 
 tidy class PickupScript {
-	PickupNode@ node;
+	StrategicIconNode@ icon;
 
 	void postInit(Pickup& obj) {
 		obj.initPickup();
 	}
 
 	void setIcon(Pickup& obj) {
-		@node = cast<PickupNode>(bindNode(obj, "PickupNode"));
-		if(node !is null) {
-			auto@ orbital = getOrbitalModule("ResearchLab");
-			if (orbital !is null) {
-				node.establish(obj, orbital.id);
-			}
-		}
+		auto@ type = getOrbitalModule("RemnantEnergyCore");
+		@icon = StrategicIconNode();
+		if(type.strategicIcon.sheet !is null)
+			icon.establish(obj, type.iconSize, type.strategicIcon.sheet, type.strategicIcon.index);
+		else if(type.strategicIcon.mat !is null)
+			icon.establish(obj, type.iconSize, type.strategicIcon.mat);
+		if(obj.region !is null)
+			obj.region.addStrategicIcon(0, obj, icon);
 	}
 
 	void syncInitial(const Pickup& obj, Message& msg) {
@@ -36,6 +37,12 @@ tidy class PickupScript {
 	}
 
 	void destroy(Pickup& obj) {
+		if(icon !is null) {
+			if(obj.region !is null)
+				obj.region.removeStrategicIcon(0, icon);
+			icon.markForDeletion();
+			@icon = null;
+		}
 		leaveRegion(obj);
 	}
 
@@ -78,10 +85,6 @@ tidy class PickupControl : Component_PickupControl {
 		mesh.iconIndex = type.iconIndex;
 		mesh.memorable = true;
 		bindMesh(obj, mesh);
-
-		Node@ node = obj.getNode();
-		node.customColor = true;
-		node.color = Color(0x998888ff);
 	}
 
 	void setCampType(uint id) {
