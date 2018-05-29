@@ -8,19 +8,27 @@ import system_flags;
 import regions.regions;
 import systems;
 
+import util.einsteinArrivalTime;
+
 from orders import OrderType;
 
 const double REJUMP_MIN_DIST = 8000.0;
 
 class Jumpdrive : FTL {
 	Development@ development;
+	Budget@ budget;
 	Fleets@ fleets;
 
 	int safetyFlag = -1;
 	array<Region@> safeRegions;
 
+	private double _maxSublightEta = 900 * config::SCALE_SPACING;
+
+	double get_maxSublightEta() const override { return _maxSublightEta; }
+
 	void create() override {
 		@development = cast<Development>(ai.development);
+		@budget = cast<Budget>(ai.budget);
 		@fleets = cast<Fleets>(ai.fleets);
 
 		safetyFlag = getSystemFlag("JumpdriveSafety");
@@ -47,9 +55,9 @@ class Jumpdrive : FTL {
 	}
 
 	double subETA(Object& obj, const vec3d& position) {
-		return newtonArrivalTime(obj.maxAcceleration, position - obj.position, vec3d());
+		return einsteinArrivalTime(obj.maxAcceleration, position - obj.position, vec3d());
 	}
-	
+
 	bool shouldJD(Object& obj, const vec3d& position, uint priority) {
 		//This makes me sad
 		if(position.distanceTo(obj.position) < 3000)
@@ -181,6 +189,11 @@ class Jumpdrive : FTL {
 			vec3d toPosition = flAI.obj.position + vec3d(0, 0, dist);
 			highestCost = max(highestCost, double(jumpdriveCost(flAI.obj, toPosition)));
 		}
+
+		//If we have a comfortable budget, double our requirements
+		if (ai.empire.EstNextBudget > budget.highThreshold)
+			highestCost *= 2;
+
 		development.aimFTLStorage = highestCost / (1.0 - ai.behavior.ftlReservePctCritical - ai.behavior.ftlReservePctNormal);
 
 		//Disable systems that are no longer safe

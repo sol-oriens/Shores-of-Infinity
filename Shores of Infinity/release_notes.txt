@@ -23,6 +23,9 @@ v0.2.0b
 [*] Artificial Intelligence
 
 - AIs now build starports in systems where they own 3 planets or more.
+- AIs using hyperdrives, jumpdrives or fling beacons now build more FTL storage when they can safely do so.
+- AIs using hyperdrives or jumpdrives now refrain from sublight movement when the ETA is unreasonable.
+- AIs may now engage hyperdrives for in-system movement.
 
 [*] Buildings
 

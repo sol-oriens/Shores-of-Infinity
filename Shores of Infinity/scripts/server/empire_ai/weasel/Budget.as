@@ -427,7 +427,7 @@ final class Budget : AIComponent {
 		if (ai.empire.EstNextBudget > criticalThreshold && !_askedFocus && !_focusing) {
 			_focus = type;
 			//If we are still at the start of a turn, focus immediately, else wait until next turn
-			//The second condition compensate for slight timing inaccuracies and execution delay
+			//The second condition compensates for slight timing inaccuracies and execution delay
 			if (Progress < 0.33 || Progress > 0.995) {
 				_focusing = true;
 				_askedFocus = false;

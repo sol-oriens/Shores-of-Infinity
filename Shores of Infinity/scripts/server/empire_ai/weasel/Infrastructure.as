@@ -300,28 +300,28 @@ final class SystemCheck {
       //SoI - TODO: Cancel order
     }*/
     if (isBuilding) {
-      array<SystemOrder@> ordersToRemove;
-      for (int i = 0, cnt = orders.length; i < cnt; ++i) {
+      for (uint i = 0, cnt = orders.length; i < cnt; ++i) {
         auto@ order = orders[i];
         if (!order.isValid) {
-          ordersToRemove.insertLast(order);
+          orders.remove(order);
           @order = null;
+          --i; --cnt;
         }
         else if (order.isComplete) {
           if (infrastructure.log)
             ai.print("order complete");
-          ordersToRemove.insertLast(order);
+          orders.remove(order);
           @order = null;
+          --i; --cnt;
         }
         else if (!order.isInProgress && order.expires < gameTime) {
           if (infrastructure.log)
             ai.print("order expired, gameTime = " + gameTime);
-          ordersToRemove.insertLast(order);
+          orders.remove(order);
           @order = null;
+          --i; --cnt;
         }
       }
-      for (int i = 0, cnt = ordersToRemove.length; i < cnt; ++i)
-        orders.remove(ordersToRemove[i]);
     }
   }
 
@@ -485,28 +485,28 @@ final class PlanetCheck {
       _isSystemUnderAttack = sysAI.obj.ContestedMask & ai.mask != 0;
 
     if (isBuilding) {
-      array<PlanetOrder@> ordersToRemove;
-      for (int i = 0, cnt = orders.length; i < cnt; ++i) {
+      for (uint i = 0, cnt = orders.length; i < cnt; ++i) {
         auto@ order = orders[i];
         if (!order.isValid) {
-          ordersToRemove.insertLast(order);
+          orders.remove(order);
           @order = null;
+          --i; --cnt;
         }
         else if (order.isComplete) {
           if (infrastructure.log)
             ai.print("planet order complete");
-          ordersToRemove.insertLast(order);
+          orders.remove(order);
           @order = null;
+          --i; --cnt;
         }
         else if (!order.isInProgress && order.expires < gameTime) {
           if (infrastructure.log)
             ai.print("planet order expired, gameTime = " + gameTime);
-          ordersToRemove.insertLast(order);
+          orders.remove(order);
           @order = null;
+          --i; --cnt;
         }
       }
-      for (int i = 0, cnt = ordersToRemove.length; i < cnt; ++i)
-        orders.remove(ordersToRemove[i]);
     }
   }
 
