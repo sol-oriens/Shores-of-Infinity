@@ -21,6 +21,9 @@ tidy class PickupScript {
 			icon.establish(obj, type.iconSize, type.strategicIcon.mat);
 		if(obj.region !is null)
 			obj.region.addStrategicIcon(0, obj, icon);
+
+		auto@ node = obj.getNode();
+		node.memorable = true;
 	}
 
 	void syncInitial(const Pickup& obj, Message& msg) {
