@@ -61,5 +61,5 @@ System: BaseRemnants
 System: BaseArtifacts
 	RepeatQuality(Chance = $ARTIFACT_FREQUENCY, Repeat Modifier = 0.25, Quality Step = 200)
 		MakeArtifact()
-	RepeatChance(Chance = 0.5, Repeat Modifier = 0.8)
+	RepeatChance(Chance = 0.4, Repeat Modifier = 0.8)
 		MakeArtifact(Type = Comet)
