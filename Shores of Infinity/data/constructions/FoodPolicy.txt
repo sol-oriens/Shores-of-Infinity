@@ -15,6 +15,6 @@ Construction: FoodPolicy
 	RequireNotTrait(Mechanoid)
 	RequireNotTrait(Ancient)
 	addon_requirement_effects::RequirePopulation()
-	addon_requirement_effects::RequireNativeResource(Grain, Hide = True)
+	addon_requirement_effects::RequireNativeResource(Grain, Primary = False Hide = True)
 
 	GainInfluenceCard(Harvest)

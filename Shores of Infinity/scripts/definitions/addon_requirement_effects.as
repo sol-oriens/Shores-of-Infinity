@@ -5,7 +5,8 @@ import resources;
 
 class RequireNativeResource : Requirement {
 	Document doc("This can only work if the planet has a particular resource.");
-	Argument resource(AT_Custom, doc="Resource to require.");
+	Argument resource(AT_PlanetResource, doc="Resource to require.");
+	Argument primary(AT_Boolean, "True", doc="Whether the resource must be the primary resource.");
 	Argument hide(AT_Boolean, "True", doc="Hide when unavailable.");
 
 	bool meets(Object& obj, bool ignoreState = false) const override {
@@ -13,16 +14,21 @@ class RequireNativeResource : Requirement {
 			return true;
 		if(!obj.hasResources)
 			return false;
-		auto@ res = getResource(obj.primaryResourceType);
-		if(res is null)
+		if (primary.boolean)
+			return obj.primaryResourceType == uint(resource.integer);
+		else {
+			for(uint i = 0, cnt = obj.nativeResourceCount; i < cnt; ++i) {
+				if(obj.nativeResourceType[i] == uint(resource.integer))
+					return true;
+			}
 			return false;
-		return res.ident.equals_nocase(resource.str);
+		}
 	}
 };
 
 class ConflictNativeResource : Requirement {
 	Document doc("This can only work if the planet has a different resource than a particular resource.");
-	Argument resource(AT_Custom, doc="Resource to conflict with.");
+	Argument resource(AT_PlanetResource, doc="Resource to conflict with.");
 	Argument hide(AT_Boolean, "True", doc="Hide when unavailable.");
 
 	bool meets(Object& obj, bool ignoreState = false) const override {
@@ -30,10 +36,7 @@ class ConflictNativeResource : Requirement {
 			return true;
 		if(!obj.hasResources)
 			return false;
-		auto@ res = getResource(obj.primaryResourceType);
-		if(res is null)
-			return false;
-		return !res.ident.equals_nocase(resource.str);
+		return obj.primaryResourceType != uint(resource.integer);
 	}
 };
 
