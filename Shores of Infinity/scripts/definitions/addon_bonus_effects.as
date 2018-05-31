@@ -5,8 +5,8 @@ from sites import ISiteHook, SiteHook;
 
 class ActiveConfigOption : EmpireTrigger {
   Document doc("Executes a hook only if a config option has a particular value.");
-	Argument hookID(AT_Hook, "bonus_effects::EmpireTrigger");
   Argument option(AT_Custom, doc="Config option to check.");
+  Argument hookID(AT_Hook, "bonus_effects::EmpireTrigger");
 	Argument value(AT_Decimal, "1.0", doc="Value for the option to check for.");
 
   BonusEffect@ hook;
@@ -21,7 +21,7 @@ class ActiveConfigOption : EmpireTrigger {
 	}
 
 	bool instantiate() {
-		if(!withHook(arguments[0].str))
+		if(!withHook(hookID.str))
 			return false;
     return BonusEffect::instantiate();
 	}
@@ -37,8 +37,8 @@ class ActiveConfigOption : EmpireTrigger {
 class AddModifierFromConfigOption : EmpireTrigger {
 	TechAddModifier@ mod;
   Document doc("Adds a subsystem modifier based on the value of a config option.");
-  Argument modifier(AT_Custom, doc="Name of the modifier to add, without brackets nor value.");
   Argument option(AT_Custom, doc="Config option to check to get the modifier value.");
+  Argument modifier(AT_Custom, doc="Name of the modifier to add, without brackets nor value.");
 
 	bool instantiate() override {
     array<string> argNames(1);

@@ -1,6 +1,16 @@
 Trait: Global
 	Available: False
 
+	//This is used to execute hooks on all empires
+	AddModifierFromConfigOption(SCALE_SPACING, ScaleFactor)
+
+Trait: Global_Player
+	Available: False
+
 	//This is used to execute hooks on all player empires
-	ActiveConfigOption(AddMoney(500), QUICK_START)
-	AddModifierFromConfigOption(ScaleFactor, SCALE_SPACING)
+	ActiveConfigOption(QUICK_START, AddMoney(500))
+
+Trait: Global_Non_Player
+	Available: False
+
+	//This is used to execute hooks on all non-player empires
