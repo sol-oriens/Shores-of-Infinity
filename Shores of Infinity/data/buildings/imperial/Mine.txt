@@ -24,5 +24,7 @@ Building: Mine
 	AddPlanetResource(OreRateMine)
 
 	AddPressure(Labor, 2)
+	IfNative(Iron, ImproveNativeResourcePressure(2))
 	IfNative(Titanium, ImproveNativeResourcePressure(2))
+	IfNative(Coal, ImproveNativeResourcePressure(1))
 	IfNative(NativeGold, ImproveNativeResourcePressure(1))

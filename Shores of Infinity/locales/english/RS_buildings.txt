@@ -45,9 +45,9 @@ BLD_MINE_DESC: <<
 
 	Adds 2 labor pressure.
 
-	Increases the pressure given by native Titanium 2.
+	Increases the pressure given by native Iron and Titanium by 2.
 
-	Increases the pressure given by Native Gold by 1.
+	Increases the pressure given by Coal and Native Gold by 1.
 >>
 
 BLD_NRG_FACTORY: Fossil Fuel Facility

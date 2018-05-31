@@ -24,11 +24,13 @@ v0.2.0b
 
 - AIs now build starports in systems where they own 3 planets or more.
 - AIs using hyperdrives, jumpdrives or fling beacons now build more FTL storage when they can safely do so.
-- AIs using hyperdrives or jumpdrives now refrain from sublight movement when the ETA is unreasonable.
+- AIs using hyperdrives or jumpdrives now refrain from sublight movement when the ETA is unreasonable. The ETA calculations take relativistic speeds into account.
 - AIs may now engage hyperdrives for in-system movement.
 
 [*] Buildings
 
+- Mining Complex now also increases the pressure given by native Iron by 2 and Coal by 1.
+- Healthcare Complex base maintenance cost is now 15k (down from 20k).
 - The Flux trait no longer gives access to the FTL Breeder Reactor (see Orbitals).
 - Reverted FTL Breeder Reactor to vanilla costs.
 
@@ -44,7 +46,7 @@ v0.2.0b
 
 - Relativistic physics now affect sublight speed by applying the Lorentz factor to acceleration.
 *** The closer the velocity of a ship is to the speed of light, the lesser acceleration has an actual effect on this ship. This also means that sublight speed can never reach, let alone exceed, the speed of light. The speed of light, for practical reasons regarding scale versus playability, has arbitrarily been set to 1000 u/s.
-- ETA calculations for colonization orders now take relativistic speeds into account.
+- The ETA calculation display for colonization orders now take relativistic speeds into account.
 - Fixed bugs where the 'Toggle Laser Propulsion Beam' and 'Repair' abilities would not work properly after loading a previous save.
 - Changed projects with no labor cost to not consume labor storage if available.
 - Fixed a bug where planet resource icons would not appear immediately when entering an unexplored system with Legacy Exploration Mode off.
@@ -70,8 +72,8 @@ v0.2.0b
 - Added Space Hook Dryport module, exclusive to Star Children. Increases the construction speed of support ships on this planet by 40%. Adds 1 money generation per Planet Level starting from Level 1 if a Starport is present in the system. Build cost of 750k. Also cost 1k Ore to build.
 - Starports now also increase the production of Labor, Influence, Energy and Research on all owned planets in the system by 10% for Star Children lifestyles.
 - Fling beacon maintenance cost is now 150k (down from 200k).
-- Increased the range of the 'Telescope' abilities on telescope arrays and quantum telescope arrays to 800k units (up from 400k units) and 2M units (up from 1M units), respectively. Decreased the energy cost by half.
-- Increased the range of the 'Toggle Laser Propulsion Beam' ability on phased array laser drives to 700k units (up from 350k units).
+- Increased the range of the 'Telescope' abilities on telescope arrays and quantum telescope arrays to 800k units (up from 400k units) and 2M units (up from 1M units), respectively. The range of this ability increases with the system spacing scale setting. Decreased the energy cost by half.
+- Increased the range of the 'Toggle Laser Propulsion Beam' ability on phased array laser drives to 700k units (up from 350k units). The range of this ability increases with the system spacing scale setting.
 - Star Children lifestyles with the Flux trait no longer have access to a special FTL Storage orbital generating FTL (see below).
 - FTL Actuators now generate 0.5 FTL/s instead of 0.15 FTL/s when the Flux trait is taken.
 
@@ -98,7 +100,7 @@ v0.2.0b
 - Added Common Gases, a new tier 0 resource found on gas giants only. Adds 2 Energy pressure. Cannot be exported.
 - Added Ammonia, a new tier 1 resource found on gas giants only. Adds 1 Energy and 1 Defense pressures. Counts as a Food resource if the consuming planet has a Grain or Fruit native resource, once per planet.
 - Added Metallic Gases, a new scalable resource found on gas giants only. Increases Labor generation and civilian Energy pressure by 0%/5%/10%/30%/60%/120%/200%. Cannot be exported.
-- Reverted Rare Gases acceleration bonus to 0%/5%/10%/30%/60%/120%/200% (up from 0%/2.5%/5%/10%/30%/60%/120%). As gas giants can now have different resources, this one will be much rarer.
+- Reverted Rare Gases acceleration bonus to 0%/5%/10%/30%/60%/120%/200% (up from 0%/2.5%/5%/10%/30%/60%/120%).
 - Slightly increased the frequency of Water on planets.
 - Moved the guaranteed Neutronium asteroid closer to the home system.
 - Fixed a bug where Level 1 Water resources from ice giants could fill either Water requirements or Level requirements to level a planet up, but not both at the same time.
