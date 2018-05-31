@@ -15,4 +15,4 @@ Construction: DefensePolicy
 	RequireNotTrait(Pacifists)
 	addon_requirement_effects::RequirePopulation()
 
-	GainInfluenceCard(Uprising)
+	GainInfluenceCard(Uprising, Quality = 0:2)

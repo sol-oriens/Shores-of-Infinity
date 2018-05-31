@@ -7,11 +7,11 @@ Construction: MoneyPolicy
 	Category: Policies
 	In Context: True
 
-	Build Cost: 150
+	Build Cost: 200
 	Time Cost: 540
 
-	ConsumeInfluence(10)
+	ConsumeInfluence(15)
 
 	addon_requirement_effects::RequirePopulation()
 
-	GainInfluenceCard(Profiteering)
+	GainInfluenceCard(Profiteering, Quality = 0:2)
