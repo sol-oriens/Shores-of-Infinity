@@ -889,6 +889,9 @@ tidy final class AddTurret : GenericEffect {
 				return false;
 			}
 
+			if(name.equals_nocase("Range"))
+				value *= config::SCALE_SPACING;
+
 			effector[index] = value;
 #section client
 			if(name.equals_nocase("Range"))
