@@ -10,7 +10,7 @@ void setStrategicIconsShown(bool enabled) {
 	SHOW_STRATEGIC_ICONS = enabled;
 }
 
-const double POS_CHANGE_THRES = 1000.0;
+const double POS_CHANGE_THRES = 40000.0 * config::SCALE_SPACING;
 class StrategicIcon {
 	double animate_pct = 0;
 	float lastDist = -1e10f;
