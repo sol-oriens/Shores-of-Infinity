@@ -106,6 +106,7 @@ v0.2.0b
 - Fixed a bug where Level 1 Water resources from ice giants could fill either Water requirements or Level requirements to level a planet up, but not both at the same time.
 - Lowered the priority of Ore in the planet resource list. This allows primary resources to keep being displayed first in the planet resource list, but it is now required to export Ore by right-clicking the target planet in all cases.
 - Fixed a bug where Ore would replace the primary native resource of a planet in some cases.
+- Fixed FTL giving 0.5 FTL/s more than intended at level 3 and higher.
 
 [*] Systems
 

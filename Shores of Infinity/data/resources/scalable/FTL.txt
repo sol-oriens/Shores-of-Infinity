@@ -15,18 +15,15 @@ Resource: FTL
 	Limitless Level: True
 	Exportable: False
 
-	IfType(Planet, AddFTLIncome(+1)) #version<105
-	IfType(Planet, AddFTLStorage(+250)) #version<105
+	AddFTLIncome(+0.5)
+	IfLevel(1, AddFTLIncome(+0.5))
+	IfLevel(2, AddFTLIncome(+0.5))
+	IfLevel(3, AddFTLIncome(+0.5))
+	IfLevel(4, AddFTLIncome(+1.0))
+	IfLevel(5, AddFTLIncome(+2.0))
+	IfLevel(6, AddFTLIncome(+5.0))
 
-	AddFTLIncome(+0.5) #version>=105
-	IfLevel(1, AddFTLIncome(+0.5)) #version>=105
-	IfLevel(2, AddFTLIncome(+0.5)) #version>=105
-	IfLevel(3, AddFTLIncome(+1.0)) #version>=105
-	IfLevel(4, AddFTLIncome(+1.0)) #version>=105
-	IfLevel(5, AddFTLIncome(+2.0)) #version>=105
-	IfLevel(6, AddFTLIncome(+5.0)) #version>=105
-
-	IfLevel(5, FreeFTLSystem()) #version>=105
-	IfLevel(4, GrantAllFleetVision(System Space = False, Deep Space = False, In FTL = True)) #version>=107
-	IfLevel(4, GrantAllFleetVision(Flagships = False, Stations = True, Require Status = GateUnpacked)) #version>=125
-	IfLevel(4, GrantAllOddityGateVision()) #version>=125
+	IfLevel(5, FreeFTLSystem())
+	IfLevel(4, GrantAllFleetVision(System Space = False, Deep Space = False, In FTL = True))
+	IfLevel(4, GrantAllFleetVision(Flagships = False, Stations = True, Require Status = GateUnpacked))
+	IfLevel(4, GrantAllOddityGateVision())
