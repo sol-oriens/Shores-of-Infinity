@@ -15,8 +15,6 @@ tidy final class AbilityType {
 	string description;
 	double energyCost = 0.0;
 	double cooldown = 0.0;
-	double range = INFINITY;
-	bool scaleRange = false;
 	Sprite icon = icons::Ability;
 	Targets targets;
 	int objectCast = -1;
@@ -26,6 +24,14 @@ tidy final class AbilityType {
 	const SoundSource@ activateSound;
 
 	array<IAbilityHook@> hooks;
+
+	private double _range = INFINITY;
+	bool scaleRange = false;
+
+	double range {
+		get const { return scaleRange ? _range * config::SCALE_SPACING : _range; }
+		set { _range = value; }
+	}
 };
 
 interface IAbilityHook {
@@ -104,8 +110,6 @@ tidy class Ability : Serializable, Savable {
 	}
 
 	double getRange(const Targets@ targs = null) const {
-		if (type.scaleRange)
-			return type.range * config::SCALE_SPACING;
 		return type.range;
 	}
 
