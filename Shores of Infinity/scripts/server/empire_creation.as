@@ -80,6 +80,7 @@ void init() {
 
 		//Add the global trait
 		emp.addTrait(getTraitID("Global"));
+		emp.addTrait(getTraitID("Global_Player"));
 
 			//Apply generic AI cheats
 		if(settings.type != ET_Player) {
@@ -176,6 +177,12 @@ void init() {
 		Pirates.flagID = flag.id;
 		@Pirates.flag = getMaterial(Creeps.flagDef);
 		@Pirates.shipset = getShipset("Tyrant");
+
+		//Add the global traits
+		Creeps.addTrait(getTraitID("Global"));
+		Creeps.addTrait(getTraitID("Global_Non_Player"));
+		Pirates.addTrait(getTraitID("Global"));
+		Pirates.addTrait(getTraitID("Global_Non_Player"));
 
 		//Everyone hates creeps and pirates
 		for(uint i = 0, cnt = getEmpireCount(); i < cnt; ++i) {

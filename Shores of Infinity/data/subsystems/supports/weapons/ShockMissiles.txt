@@ -9,8 +9,10 @@ Subsystem: ShockMissiles
 	Tags: ExteriorCore, Weapon, IsExplosiveWeapon, HasInternals, SecondaryDPS
 	Hull: Support, Satellite
 
+	Scale := 1
 	Size := HexSize * Hexes
-	Range := Size * 2 + 1600
+
+	Range := Scale * (Size * 2 + 1600)
 	Damage := Size * 22.0
 	Reload := 6.0 * min(1.0 + Size/512, 2.0)
 	Speed := 125

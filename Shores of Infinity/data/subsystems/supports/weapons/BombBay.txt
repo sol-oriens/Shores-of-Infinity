@@ -10,8 +10,9 @@ Subsystem: BombBay
 	Tags: ExteriorCore, Weapon, DefaultUnlock, HasInternals, MainDPS
 	Hull: Support, Satellite
 
+	Scale := 1
 	Size := HexSize * Hexes
-	Range := Size + 500
+	Range := Scale * (Size + 500)
 	Damage := Size * 30
 	Reload := 60 * min(1.0 + Size/512, 5/3)
 	Radius := 30 + (log(Size) / log(2) * 10)

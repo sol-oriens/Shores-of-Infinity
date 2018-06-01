@@ -33,6 +33,7 @@ v0.2.0b
 - Healthcare Complex base maintenance cost is now 15k (down from 20k).
 - The Flux trait no longer gives access to the FTL Breeder Reactor (see Orbitals).
 - Reverted FTL Breeder Reactor to vanilla costs.
+- Updated Factory graphics.
 
 [*] FTL
 
@@ -53,7 +54,7 @@ v0.2.0b
 
 [*] Game Options
 
-- Added Star Scale, Planet Scale and System Spacing Scale. These options apply a multiplier to the base scale of stars, planets and system spacing, respectively. All drive speeds and FTL costs are scaled with system spacing.
+- Added Star Scale, Planet Scale and System Spacing Scale. These options apply a multiplier to the base scale of stars, planets and system spacing, respectively. All drive speeds, weapon ranges and FTL costs are scaled with system spacing.
 *** It is strongly advised to set the same multiplier for stars and planets and a multiplier at least equal for system spacing in order to avoid object collisions in the generated universe.
 *** WARNING: Stars scaled above 1 require longer loading times and may cause extensive stutters while zooming in.
 
@@ -81,7 +82,7 @@ v0.2.0b
 
 - Added a new Policy: Call To Arms. Yields one Patriotic Surge influence card. Build cost of 250k. Also cost 5 Influence. Cannot be built by Pacifist lifestyles.
 - Added a new Policy: Crop Regulation. Yields one Harvest influence card. Build cost of 600k. Also costs 20 Influence. Requires a Grain native resource. Cannot be built by Mechanoid and Ancient lifestyles.
-- Added a new Policy: Economic Endeavor. Yields one Profiteering influence card. Build cost of 150k. Also costs 10 Influence.
+- Added a new Policy: Economic Endeavor. Yields one Profiteering influence card. Build cost of 200k. Also costs 15 Influence.
 - Added a new Policy: Scholarship Support. Yields one Enhance influence card. Build cost of 450k. Also costs 10 Influence.
 - Slowed down moon rotation and orbit speeds.
 - Moon bases built by the related Foundation trait now consumes the available moon to build a base on on the homeworld.
@@ -107,6 +108,7 @@ v0.2.0b
 - Lowered the priority of Ore in the planet resource list. This allows primary resources to keep being displayed first in the planet resource list, but it is now required to export Ore by right-clicking the target planet in all cases.
 - Fixed a bug where Ore would replace the primary native resource of a planet in some cases.
 - Fixed FTL giving 0.5 FTL/s more than intended at level 3 and higher.
+- Updated Rare Gases icon.
 
 [*] Systems
 
@@ -133,7 +135,7 @@ v0.2.0b
 - Changed the display to show distances starting from 1,000 units and beyond with metric prefixes rather than in units only when targeting a destination for FTL orders.
 *** This system was chosen over realistic units (astronomical units, parsecs or even light years) because they cannot be realistically represented in the game, and thus don't really make sense.
 - Added current speed both in u/s and relative to the speed of light (as a factor of c) in the ship info popup. Orbital velocity is displayed as well.
-- Added an icon for remnant pickups in order for them to remain easily visible when zoomed out at much greater distances than vanilla.
+- Added a strategic icon for remnant pickups in order for them to remain easily visible when zoomed out at much greater distances than vanilla.
 
 v0.1.2b
 

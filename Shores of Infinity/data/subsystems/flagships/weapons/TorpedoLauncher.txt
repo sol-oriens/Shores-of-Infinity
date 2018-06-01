@@ -11,8 +11,10 @@ Subsystem: TorpedoLauncher
 	Tags: ExteriorCore, Weapon, DefaultUnlock, IsExplosiveWeapon, HasInternals, SecondaryDPS, Homing
 	Hull: Flagship, Station
 
+	Scale := 1
 	Size := HexSize * Hexes
-	Range := Size * 7 + 3000
+
+	Range := Scale * (Size * 7 + 3000)
 	Reload := 40 * min(1.0 + Size/1024, 1.5)
 	Speed := max(65, Range / 40)
 	Tracking := 0.8

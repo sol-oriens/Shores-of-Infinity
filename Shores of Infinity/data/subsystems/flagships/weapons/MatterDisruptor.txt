@@ -11,9 +11,10 @@ Subsystem: MatterDisruptor
 	Tags: ExteriorCore, Weapon,  IsProjWeapon, IsRailgun, HasInternals, MainDPS
 	Hull: Flagship, Station
 
+	Scale := 1
 	Size := HexSize * Hexes
 
-	Range := Size * 2 + 1000
+	Range := Scale * (Size * 2 + 1000)
 	Damage := Size * 16.25
 	Reload := 10.5 * min(1.0 + Size/512, 2.0)
 	Speed := max(110, Range / 15)

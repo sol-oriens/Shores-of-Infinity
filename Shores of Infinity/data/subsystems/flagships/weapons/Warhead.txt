@@ -10,8 +10,10 @@ Subsystem: Warhead
 	Tags: ExteriorCore, Weapon, IsExplosiveWeapon, HasInternals, Homing
 	Hull: Flagship, Station
 
+	Scale := 1
 	Size := HexSize * Hexes
-	Range := Size * 2 + 2400
+
+	Range := Scale * (Size * 2 + 2400)
 	Damage := Size * 128
 	Reload := 5.0 * min(1.0 + Size/512, 2.0)
 	Speed := max(40, Range / 90)

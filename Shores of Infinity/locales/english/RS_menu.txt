@@ -50,7 +50,7 @@ NGTT_SCALE: <<
 
 	[i]It is strongly advised to set the same multiplier for stars and planets and a multiplier at least equal for system spacing in order to avoid object collisions in the generated universe.[/i]
 
-	Note: All drive speeds and FTL costs are scaled with system spacing.
+	Note: All drive speeds, weapon ranges and FTL costs are scaled with system spacing.
 
 	[b]WARNING: Stars scaled above 1 require longer loading times and may cause extensive stutters while zooming in.[/b]
 >>

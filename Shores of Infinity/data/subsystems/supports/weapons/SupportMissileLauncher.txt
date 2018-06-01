@@ -10,8 +10,10 @@ Subsystem: SupportMissileLauncher
 	Tags: ExteriorCore, Weapon, DefaultUnlock, IsExplosiveWeapon, HasInternals
 	Hull: Support, Satellite
 
+	Scale := 1
 	Size := HexSize * Hexes
-	Range := Size * 5.5 + 1400
+
+	Range := Scale * (Size * 5.5 + 1400)
 	Damage := Size * 10
 	Reload := 4.75 * min(1.0 + Size/512, 2.0)
 	Speed := max(80, Range / 20)

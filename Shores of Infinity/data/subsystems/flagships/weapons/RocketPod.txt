@@ -11,8 +11,10 @@ Subsystem: RocketPod
 	Tags: ExteriorCore, Weapon, DefaultUnlock, HasInternals, MainDPS, Homing
 	Hull: Flagship, Station
 
+	Scale := 1
 	Size := HexSize * Hexes
-	Range := Size * 2 + 500
+
+	Range := Scale * (Size * 2 + 500)
 	Damage := Size * 5.0
 	Reload := 7 * min(1.0 + Size/512, 2.0)
 	Speed := max(105, Range / 12)
