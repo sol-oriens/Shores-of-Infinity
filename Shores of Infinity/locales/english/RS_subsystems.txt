@@ -33,6 +33,7 @@ ERROR_MUST_HAVE_MACHINE_SHOP: Mothership Hull must have a Machine Shop.
 ERROR_SPECIFIC_SIZE: $1 must be exactly size $2.
 ERROR_CANNOT_BOARD: $1 cannot have boarding parties.
 ERROR_LAUNCHTUBE: Cannot have more than 6 tubes per launcher.
+ERROR_MOD: Cannot have more than 1 mod of the same type per weapon.
 ERROR_EXCLUSIVE_MOD: Cannot have more than 1 exclusive mod per weapon.
 
 // *********************************************************
@@ -319,6 +320,14 @@ S_PIERCING_ENHANCEMENT_DESC: <<
 	[img=Plus]Increases piercing by 50% and damage by 10%.[/img]
 	[img=Minus]Very high build cost with significant labor cost.[/img]
 	[img=MenuIcons::3;20][template=subsys_ref;Railgun/] exclusive modification.[/img]
+>>
+S_FIREARC_ENHANCEMENT: Advanced Gimbals
+S_FIREARC_ENHANCEMENT_DESC: <<
+	Mounts the laser on a re-engineered turret allowing a larger fire arc but which hinders power distribution.
+
+	[img=Plus]Increases fire arc by 50%.[/img]
+	[img=Minus]Decreases maximum duration of the beam by 20% and increases cooldown by 1.5s.[/img]
+	[img=MenuIcons::3;20][template=subsys_ref;Laser/] and [template=subsys_ref;VoidRay/] modification.[/img]
 >>
 MUONBATTERY_NAME: Muon Projector Battery
 MUON_CANNON_NAME: Muon Projector

@@ -27,6 +27,7 @@ Subsystem: RailgunBattery
 	ImpulseFlag := 0
 	ImpulseBonus := 0
 	Impulse := ImpulseFlag * ImpulseBonus * Size
+	
 	ExclusiveMod := 0
 
 	Hex.HP := 27 * HexSize

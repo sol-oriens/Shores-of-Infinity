@@ -551,6 +551,15 @@ R_MOD_PIERCING_ENHANCEMENT_DESC: <<
 	[i][bbloc=#S_PIERCING_ENHANCEMENT_DESC/][i]
 >>
 
+R_MOD_FIREARC_ENHANCEMENT: Advanced Gimbals
+R_MOD_FIREARC_ENHANCEMENT_DESC : <<
+	[color=#aaa][i]The main drawback of laser weapon systems is the large space required for the connection to their power source, which limits turret efficiency. This redesigned turret with cutting-edge gimbal systems significantly offsets this drawback while having a limited impact on power distribution.[/i][/color]
+
+	Unlocks the Advanced Gimbals weapon modification for use on flagships and supports.
+
+	[i][bbloc=#S_FIREARC_ENHANCEMENT_DESC/][i]
+>>
+
 ************************************
 *** SPECIALIZATION TECHS GO HERE ***
 ************************************

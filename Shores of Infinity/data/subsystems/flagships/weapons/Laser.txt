@@ -23,6 +23,8 @@ Subsystem: Laser
 	FireArc := 0.1666 * pi
 	PowerUse := 7 * Size
 
+	FireArcMod := 0
+
 	Hex.HP := 12 * HexSize
 	Hex.Resistance := 0.2
 	Hex.Mass := HexSize
@@ -44,6 +46,20 @@ Subsystem: Laser
 		Hex.DamageResist := ShipSize / 64.0
 		Effect: DamageResist
 			Resist = Hex.DamageResist
+
+	Module: FireArcEnhancement
+		Sprite: MetalGear
+		Name: S_FIREARC_ENHANCEMENT
+		Description: S_FIREARC_ENHANCEMENT_DESC
+		Duration := Duration * 0.8
+		Cooldown := Cooldown + 1.5
+		FireArc := FireArc * 1.5
+		FireArcMod := FireArcMod + 1
+		Hex.BuildCost := 5 * Hex.BuildCost
+		Hex.LaborCost := 5 * Hex.LaborCost
+		Assert: FireArcMod < 2
+			Message: ERROR_MOD
+			Unique: True
 
 	Effector: Laser
 		Range = Range

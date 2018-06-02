@@ -1,0 +1,16 @@
+Technology: FireArcEnhancement
+	Name: #R_MOD_FIREARC_ENHANCEMENT
+	Description: #R_MOD_FIREARC_ENHANCEMENT_DESC
+
+	Icon: MetalGear
+	Color: #f9464d
+
+	Category: Weapon Modifications
+	Class: Unlock
+
+	Point Cost: 500
+	Time Cost: 90
+
+	SkipOnUnlockedModule(FireArcEnhancement)
+	UnlockModule(FireArcEnhancement)
+	ModAttribute(ProgenitorTechProgress, Add, 0.2)

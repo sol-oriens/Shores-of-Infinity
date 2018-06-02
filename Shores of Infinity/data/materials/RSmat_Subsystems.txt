@@ -118,6 +118,9 @@ SpriteSheet: MatterDisruptor
 Material: Ammo
 Inherit: RSSubsystem
 Texture: data/images/subsystems/ammo.png
+Material: MetalGear
+Inherit: RSSubsystem
+Texture: data/images/subsystems/metalgear.png
 
 // *********************************************************
 // **********************SENSORS****************************
