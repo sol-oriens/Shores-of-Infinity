@@ -27,7 +27,7 @@ v0.2.0b
 - AIs now build starports in systems where they own 3 planets or more.
 - AIs using hyperdrives, jumpdrives or fling beacons now build more FTL storage when they can safely do so.
 - AIs using hyperdrives or jumpdrives now refrain from sublight movement when the ETA is unreasonable. The ETA calculations take relativistic speeds into account.
-- AIs may now engage hyperdrives for in-system movement.
+- AIs may now engage hyperdrives more frequently, including for in-system movement.
 
 [*] Buildings
 
@@ -51,7 +51,8 @@ v0.2.0b
 [*] Gameplay
 
 - Relativistic physics now affect sublight speed by applying the Lorentz factor to acceleration.
-*** The closer the velocity of a ship is to the speed of light, the lesser acceleration has an actual effect on this ship. This also means that sublight speed can never reach, let alone exceed, the speed of light. The speed of light, for practical reasons regarding scale versus playability, has arbitrarily been set to 1000 u/s.
+*** The closer the velocity of a ship is to the speed of light, the lesser acceleration has an actual effect on this ship. This also means that sublight speed can never reach, let alone exceed, the speed of light.
+- The speed of light constant, 'c', has been defined in the game. For practical reasons regarding scale versus playability, it has arbitrarily been set to 1000 u/s (multiplied by system spacing scale).
 - The ETA calculation display for colonization orders now take relativistic speeds into account.
 - Fixed bugs where the 'Toggle Laser Propulsion Beam' and 'Repair' abilities would not work properly after loading a previous save.
 - Changed projects with no labor cost to not consume labor storage if available.
@@ -91,13 +92,14 @@ v0.2.0b
 - Added a new Policy: Scholarship Support. Yields one Enhance influence card. Build cost of 450k. Also costs 10 Influence.
 - Added 2 new sites of interest.
 - Slowed down moon rotation and orbit speeds.
-- Moon bases built by the related Foundation trait now consumes the available moon to build a base on on the homeworld.
+- Moon bases built by the related Foundation trait now consumes the available moon base slot on the homeworld.
 - Gas giants now always have a non-exportable Common Gases resource in addition to their primary resource, similarly to Water on ice giants.
-- Fixed a bug where moon bases built by the related Foundation trait would only be 5x5 size instead of 6x6.
+- Fixed a bug where moon bases built by the related Foundation trait would only have a size of 5x5 instead of 6x6.
 
 [*] Research
 
-- Added the Closed Ecological Life Support node. Unlocks the Habitat Module subsystem for use on flagships and stations.
+- Added the Advanced Gimbals node. Unlocks the Advanced Gimbals weapon modification.
+- Added the Closed Ecological Life Support node. Unlocks the Habitat Module subsystem for use on flagships and stations. Unavailable to Mechanoid, Star Children and Ancient lifestyles.
 - Added the Actuator Optimization node, exclusive to Mechanoids. Increases planet FTL generation per Level by 25%.
 - Added the Ultra Modularization node, exclusive to Star Children. Increases the Population supported by Living Quarters by 20%.
 - Added the Ship-Mounted Replicators node, exclusive to Ancients. Unlocks the Replicator subsystem for use on flagships.
@@ -513,7 +515,7 @@ Competitive multiplayer games are not recommended until balance is fine-tuned.
 - Fixed a vanilla bug where the dry dock construction menu would list different versions of a design under certain circumstances.
 - Fixed a vanilla bug where persistent beam effects were not restored upon loading a save file.
 - Fixed a vanilla bug where strategic icons of Ore asteroids spawned when a planet is destroyed were incorrectly set to resource asteroid icons.
-- Fixed an vanilla issue with strategic icon positions not always updating correctly when zooming due to the engine squaring already huge rescaled distances, resulting in a range overflow.
+- Fixed an vanilla issue with strategic icon positions not always updating correctly when zooming.
 
 [*] Known issues
 
