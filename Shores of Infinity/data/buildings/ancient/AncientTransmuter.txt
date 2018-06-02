@@ -12,12 +12,10 @@ Building: AncientTransmuter
 
 	In Queue: True
 
-	addon_requirement_effects::ConflictNativeResource(RareGases, Hide = True)
-	addon_requirement_effects::ConflictNativeResource(IcyWater, Hide = True)
-	addon_requirement_effects::ConflictNativeResource(IcyPekelm, Hide = True)
-	addon_requirement_effects::ConflictNativeResource(IcySalts, Hide = True)
 	RequireStatus(AncientReplicator)
 	RequireStatusToProgress(AncientReplicator)
+	RequireNotStatus(GasGiant)
+	RequireNotStatus(IceGiant)
 	ConflictBuilding(AncientCore, Hide = True)
 	ConflictBuilding(AncientTransmuter, Hide = True)
 	ConflictBuilding(AncientMiner, Hide = True)

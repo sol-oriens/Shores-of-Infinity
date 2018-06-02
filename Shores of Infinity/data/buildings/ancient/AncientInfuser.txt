@@ -13,6 +13,7 @@ Building: AncientInfuser
 
 	In Queue: True
 
+	addon_requirement_effects::ConflictNativeResource(MetallicGases, Hide = True)
 	addon_requirement_effects::ConflictNativeResource(RareGases, Hide = True)
 	RequireNativeClass(Scalable)
 	RequireStatus(AncientReplicator)

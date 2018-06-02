@@ -214,11 +214,9 @@ BLD_ANCIENT_STRIP_TRANSMUTER_DESC: <<
 >>
 BLD_ANCIENT_COLLECTOR: Collector
 BLD_ANCIENT_COLLECTOR_DESC: <<
-	[color=#aaa][i]A facility managing the building and maintenance of transorbital drones designed to harvest rare gas molecules found in gas giants and carry them to the facility where they are then stored and refined.[/i][/color]
+	[color=#aaa][i]A facility managing the building and maintenance of trans-orbital drones designed to harvest gaseous matter found in gas and ice giants and carry them to the facility where they are then stored and refined.[/i][/color]
 
-	Can only be constructed on Rare Gases resources. Produces 100% of the pressure that the planet's native resource gives.
-
-	Pressure from asteroids imported at this planet is automatically produced.
+	Can only be constructed on gas and ice giants. Produces 100% of the pressure that the planet's native resources gives.
 
 	[bbloc=#TIP_CONTROL_HUB/]
 >>

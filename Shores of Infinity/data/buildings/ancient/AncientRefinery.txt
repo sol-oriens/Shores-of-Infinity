@@ -12,9 +12,10 @@ Building: AncientRefinery
 
 	In Queue: True
 
-	addon_requirement_effects::ConflictNativeResource(RareGases, Hide = True)
 	RequireStatus(AncientReplicator)
 	RequireStatusToProgress(AncientReplicator)
+	RequireNotStatus(GasGiant)
+	RequireNotStatus(IceGiant)
 
 	ShowAttributeValue(Additional Resource Production, AtroanAdaptation2, Multiplier = 15.0, Icon = AffinityIcons::11, Suffix = %, Hide Zero = True)
 	ActiveWhenCargoConsumed(BaseMaterial, 1, 6, Repeat(3, AddStatus(AncientProduce)), Inactive Status = AncientRequireBaseMat)

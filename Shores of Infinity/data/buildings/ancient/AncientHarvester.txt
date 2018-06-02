@@ -13,7 +13,7 @@ Building: AncientHarvester
 
 	In Queue: True
 
-	addon_requirement_effects::RequireNativeResource(RareGases, Hide = True)
+	RequireEither( addon_requirement_effects::RequireNativeResource(MetallicGases, Hide = True), addon_requirement_effects::RequireNativeResource(RareGases, Hide = True) )
 	RequireStatus(AncientReplicator)
 	RequireStatusToProgress(AncientReplicator)
 
