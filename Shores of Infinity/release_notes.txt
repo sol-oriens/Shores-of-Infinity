@@ -4,6 +4,8 @@ v0.2.0b
 *** Release Highlights ***
 **************************
 
+*** The underlying Rising Stars version has been updated to 1.2.1. Only bug fixes and a few minor features have been carried over.
+
 *** The scale of the game has been fine-tuned.
 
 *** Some elements of relativistic physics have been implemented: the speed of light is now a determined in-game constant and nothing can go beyond it except while using FTL means. Acceleration is also adversely affected by the current speed relative to the speed of light.

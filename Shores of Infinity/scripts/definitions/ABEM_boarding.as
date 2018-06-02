@@ -41,7 +41,7 @@ class BoardShip : StatusHook {
 			boarders = caster.blueprint.getEfficiencySum(SubsystemVariable(getSubsystemVariable(value.str)), ST_Boarders, true);
 		if(boarders <= 0)
 			boarders = defaultBoarders.decimal;
-		
+
 		// Calculating defender strength.
 		double defenders = 0;
 		Ship@ ship = cast<Ship>(obj);
@@ -53,9 +53,9 @@ class BoardShip : StatusHook {
 
 		if(obj.owner is defaultEmpire)
 			defenders = 0;
-			
-		print("Starting boarders: " + boarders);
-		print("Starting defenders: " + defenders);
+
+		//print("Starting boarders: " + boarders);
+		//print("Starting defenders: " + defenders);
 
 		info.boarders = boarders;
 		info.defenders = defenders;
@@ -70,7 +70,7 @@ class BoardShip : StatusHook {
 	void pickSubsystem(BoardingData& info) {
 		if(info.targetShip is null) // Can't pick subsystems on an orbital. Orbitals take direct health damage instead, and are captured when health reaches 25%.
 			return;
-		
+
 		Blueprint@ blueprint = info.targetShip.blueprint;
 		uint cnt = blueprint.design.subsystemCount;
 		// First, let's try finding a security station capable of fighting us.
@@ -83,51 +83,51 @@ class BoardShip : StatusHook {
 				return;
 			}
 		}
-		
+
 		// This could theoretically backfire if there are absolutely no valid subsystems to target... but at that point we may have a bigger issue to deal with.
 		while(true) {
 			uint index = randomi(0, cnt-1);
 			const Subsystem@ sys = blueprint.design.subsystems[index];
-			
+
 			if(sys.type.hasTag(ST_Volatile)) // Antimatter Reactors are too dangerous to board.
 				continue;
-			
+
 			if(sys.type.hasTag(ST_NoWall) || sys.type.hasTag(ST_IsArmor) || sys.type.hasTag(ST_ExternalSpace) || sys.type.hasTag(ST_FauxExterior) || sys.type.hasTag(ST_Forcefield) || sys.type.hasTag(ST_PassExterior)) // This should prevent attacks against all armor, sensors and Solar Panels.
 				continue;
-				
+
 			if(sys.type.hasTag(ST_Applied) || sys.type.hasTag(ST_HullSystem)) // This should prevent attacks against applied subsystems or hulls.
 				continue;
-				
+
 			if(blueprint.getSysStatus(index).status != ES_Active) // This should prevent attacks against disabled subsystems.
 				continue;
-				
+
 			info.locationIndex = index;
 			return;
 		}
 	}
-	
+
 	// Damages the boarding party, and returns true if there are still any troops left.
 	bool combatTick(BoardingData& info) {
 		if(info.boarders <= 0)
 			return false;
-			
+
 		// Damaging a Security Station will reduce the ship's defense strength, and we need to remember that.
 		if(info.targetShip !is null)
 			info.defenders = info.targetShip.blueprint.getEfficiencySum(SubsystemVariable(getSubsystemVariable(defenseValue.str)), ST_BoardingDefense, true);
-		
+
 		// The boarders' casualties grow exponentially if they don't have a significant advantage over the defenders. If their relative strength is great enough, their casualties will be negligible.
 		double advantageMult = 1;
 		double ratio = info.boarders / info.defenders;
 		if(ratio > 2)
 			advantageMult = ratio / 2;
-		
+
 		// double currentBoarders = info.boarders;
 		info.boarders -= info.defenders / (ratio * advantageMult * 10) * BOARDING_TICKRATE;
 		// print("Boarding tick killed " + (currentBoarders - info.boarders) + " boarders, " + info.boarders + " remaining");
-		
+
 		return info.boarders > 0;
 	}
-	
+
 	// Damages the subsystem the boarding party is currently attacking, and returns true if the subsystem is still operational.
 	bool damageTick(BoardingData& info, Status@ status, bool isShip) {
 		DamageEvent dmg;
@@ -140,16 +140,16 @@ class BoardShip : StatusHook {
 			uint cnt = location.hexCount;
 			vec2u hex = location.hexagon(randomi(0, cnt-1));
 			HexGridAdjacency dir = HexGridAdjacency(randomi(0, 5));
-			
-			
+
+
 			@dmg.target = info.targetShip;
 			double maxDamage = info.targetShip.blueprint.design.size * 0.5 * BOARDING_TICKRATE; // We won't deal more than 0.5*ShipSize damage per second, no matter how many troops we have onboard. We're trying to sabotage or capture the ship, not destroy it outright - this should still be enough to destroy a hex or two each second.
 			if(dmg.damage > maxDamage)
 				dmg.damage = maxDamage;
-				
+
 			info.targetShip.blueprint.damage(info.targetShip, dmg, hex, dir, false);
 			info.targetShip.recordDamage(status.originObject);
-			
+
 			return info.targetShip.blueprint.getSysStatus(info.locationIndex).status == ES_Active;
 		}
 		else {
@@ -157,16 +157,16 @@ class BoardShip : StatusHook {
 			double maxDamage = (info.targetOrbital.maxHealth + info.targetOrbital.maxArmor) * randomd(5.0, 15.0); // While we want to bring the station below the 25% health threshold, we don't want to destroy the station.
 			if(dmg.damage > maxDamage)
 				dmg.damage = maxDamage;
-			
+
 			info.targetOrbital.damage(dmg, 0, vec2d(0, 0));
 			return true;
 		}
 	}
-	
+
 	bool onTick(Object& obj, Status@ status, any@ data, double time) override {
 		BoardingData@ info;
 		data.retrieve(@info);
-		
+
 		// If we've only just loaded, we need to recache target data.
 		if(info.justLoaded) {
 			@info.targetOrbital = cast<Orbital>(obj);
@@ -177,11 +177,11 @@ class BoardShip : StatusHook {
 			}
 			info.justLoaded = false;
 		}
-		
+
 		if(info.targetOrbital !is null) // Constantly check if we've captured an orbital, regardless of the boarding tickrate.
 			if((info.targetOrbital.health + info.targetOrbital.armor) / (info.targetOrbital.maxHealth + info.targetOrbital.maxArmor) < 0.25)
 				@obj.owner = defaultEmpire;
-					
+
 		if(obj.owner is defaultEmpire) {
 			if(obj.hasStatusEffect(getStatusID("DerelictShip")))
 				obj.removeStatusType(getStatusID("DerelictShip"));
@@ -196,13 +196,13 @@ class BoardShip : StatusHook {
 		}
 		else {
 			obj.engaged = true;
-			info.timer += time;	
-			
+			info.timer += time;
+
 			// We want a constant tick rate to ensure that the results of combatTick() are always the same. It doesn't matter what that rate is, but it has to be constant.
 			while(info.timer >= BOARDING_TICKRATE)
 			{
 				info.timer -= BOARDING_TICKRATE;
-			
+
 				if(info.targetShip !is null) {
 					if(!damageTick(info, status, true))
 						pickSubsystem(info);
@@ -219,15 +219,15 @@ class BoardShip : StatusHook {
 		data.store(@info);
 		return true;
 	}
-	
+
 	void save(Status@ status, any@ data, SaveFile& file) override {
 		BoardingData@ info;
 		data.retrieve(@info);
-		
+
 		if(info is null) {
 			double nil = 0;
 			file << nil;
-			file << nil; 
+			file << nil;
 			file << nil;
 			file << UINT_MAX;
 			file << nil;
@@ -242,18 +242,18 @@ class BoardShip : StatusHook {
 			file << info.reactivationTimer;
 		}
 	}
-	
+
 	void load(Status@ status, any@ data, SaveFile& file) override {
 		BoardingData info;
 		data.store(@info);
-		
+
 		file >> info.boarders;
 		file >> info.originalBoarders;
 		file >> info.defenders;
 		file >> info.locationIndex;
 		file >> info.timer;
 		file >> info.reactivationTimer;
-		
+
 		// Tell onTick() to reconstruct target data.
 		info.justLoaded = true;
 	}
