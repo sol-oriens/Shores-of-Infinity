@@ -41,6 +41,7 @@ v0.2.0b
 
 [*] FTL
 
+- Sublight has been regretfully sacrificed on the altar of balance. It will be reincarnated in a future version.
 - Increased hyperdrive speed by a factor of 2. The total factor compared to vanilla is now 40.
 - Increased slipstream optimal range by a factor of 2 and decreased inaccuracy by a factor of 5. The total increase factor compared to vanilla are now 10 for optimal range and 5 for inaccuracy.
 - Slipstream cost has been reverted to vanilla value.

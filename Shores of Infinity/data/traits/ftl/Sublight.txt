@@ -1,4 +1,5 @@
 Trait: Sublight
+	Available: False
 	Name: #TRAIT_SUBLIGHT
 	Description: #TRAIT_SUBLIGHT_DESC
 	Order: 50
@@ -13,7 +14,7 @@ Trait: Sublight
 
 	IfNotHaveTrait(Technicists, LoadDesigns(default), LoadDesigns(technicist/default))
 	IfNotHaveTrait(Technicists, LoadDesigns(not_hyperdrive), LoadDesigns(technicist/not_hyperdrive))
-	
+
 	IfHaveTrait(Verdant, LoadDesigns(verdant/default))
 	IfHaveTrait(Verdant, LoadDesigns(verdant/not_hyperdrive))
 

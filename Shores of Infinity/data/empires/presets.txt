@@ -138,7 +138,7 @@ Preset: First
 	DLC: Heralds
 
 	Trait: Empire
-	Trait: Sublight
+	Trait: Flux
 	Trait: Ancient
 	Trait: Workshop
 
