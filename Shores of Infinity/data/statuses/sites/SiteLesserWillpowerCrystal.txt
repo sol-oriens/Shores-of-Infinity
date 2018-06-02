@@ -1,0 +1,8 @@
+Status: SiteLesserWillpowerCrystal
+	Name: #STATUS_SITE_LESSER_WILLPOWER_CRYSTAL
+	Description: #STATUS_SITE_LESSER_WILLPOWER_CRYSTAL_DESC
+	Visible To: Owner
+	Icon: ResourceIcons::22 * #3a3a3a
+
+	AddPressure(Influence, 1)
+	ProduceAllPressure(Influence, 0.2)

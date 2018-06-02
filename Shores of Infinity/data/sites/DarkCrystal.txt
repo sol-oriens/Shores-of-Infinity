@@ -1,0 +1,26 @@
+Site: DarkCrystal
+	Name: #SITE_P_ODDITY
+	Description: #SITE_NAR_ODDITY
+
+	State:
+		Narrative: #SITE_NAR_DARK_CRYSTAL
+
+		Sprite: ResourceIcons::22 * #3a3a3a
+
+		Choice: Withdraw
+		Choice: Study
+
+	Option: Withdraw
+		Icon: MenuIcons::12
+		Description: #SITE_DARK_CRYSTAL_WITHDRAW
+
+	Option: Study
+		Icon: ResourceIcon::4
+		Description: #SITE_DARK_CRYSTAL_STUDY
+
+		Result: 20%
+			SendMessage(#SITE_DARK_CRYSTAL_STUDY_SUCCESS)
+			AddStatus(SiteLesserWillpowerCrystal)
+
+		Result: 80%
+			SendMessage(#SITE_DARK_CRYSTAL_STUDY_FAIL)

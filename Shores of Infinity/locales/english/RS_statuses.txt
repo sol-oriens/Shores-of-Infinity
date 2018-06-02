@@ -165,7 +165,11 @@ ICE_GIANT: Ice Giant
 ICE_GIANT_DESC: <<
 	Ice giants are mainly composed of heavy elements such as oxygen, carbon and sulfur. Water is usually abundant in their atmosphere in a supercritical fluid state, but some also contain other types of elements in very large quantities.
 >>
-STATUS_SITE_GOLDVEIN: Gold Vein
-STATUS_SITE_GOLDVEIN_DESC: <<
+STATUS_SITE_GOLD_VEIN: Gold Vein
+STATUS_SITE_GOLD_VEIN_DESC: <<
 	A gold vein was discovered on this planet and is generating income for a limited time.
+>>
+STATUS_SITE_LESSER_WILLPOWER_CRYSTAL: Lesser Willpower Crystal
+STATUS_SITE_LESSER_WILLPOWER_CRYSTAL_DESC: <<
+	A Willpower Crystal on this planet provides 1 Influence pressure and 20% of all Influence pressure as Influence generation.
 >>

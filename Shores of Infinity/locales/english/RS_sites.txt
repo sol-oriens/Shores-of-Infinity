@@ -168,14 +168,34 @@ SITE_CRYSTALLINE_FORMATION_DRAW: <<|
 SITE_CRYSTALLINE_FORMATION_ENERGIZE: <<|
 	One of your scientists believes that directing a powerful energy burst towards the base may trigger a self-sufficient chain reaction, essentially transforming the structure into a extremely powerful reactor.
 
-	[right][b][color=#42b4bd]+$1 Energy generation.[/color][color=#ff0000] May be dangerous.[/color][/b][/right]
+	[right][b][color=#42b4bd]+$1 Energy generation.[/color] [color=#ff0000]May be dangerous.[/color][/b][/right]
 >>
 SITE_CRYSTALLINE_FORMATION_ENERGIZE_FAIL: <<|
 	Unfortunately, the triggered reaction went completely out of control and made the structure into a bomb whose explosion vaporized everything across a large distance, including the crystalline formation itself and your unfortunate team.
 >>
 
+SITE_NAR_DARK_CRYSTAL: <<|
+	Hidden in a cavern, your explorer team found a huge crystal emerging from the rock. They have no clue as to how it ended up here, and it seemingly cannot be moved. Sensors are going nuts in its vicinity and your team reports feeling uneasy around it.
+>>
+SITE_DARK_CRYSTAL_WITHDRAW: <<|
+	It may be dangerous to stay here. Withdraw your team and leave the crystal alone.
+>>
+SITE_DARK_CRYSTAL_STUDY: <<|
+	Stay and study the crystal. Its might hide incredible secrets.
+
+	[right][b][color=#ff0000]May be dangerous.[/color][/b][/right]
+>>
+SITE_DARK_CRYSTAL_STUDY_SUCCESS: <<|
+	After a long time, your team reports that it is possible to attune one to the crystal and draw its power, some kind of aura that seemingly bends other's will to one's own.
+
+	[b][color=#4141ff]+1 Influence pressure and +20% Influence pressure as Influence generation.[/color][/b]
+>>
+SITE_DARK_CRYSTAL_STUDY_FAIL: <<|
+	Something went wrong. The last report received from your team is a short holovid recording showing figures, that may or may not be your team members, pounce on one another. Strange, eerie screams can be heard during the whole record.
+>>
+
 SITE_NAR_CONTAMINATED_CAVERN: <<|
-While exploring a deep underground cavern, your explorer team discovered the remains of a previous team gone missing. Once brought back to civilization for examination, it quickly became clear that they were somehow infected by a parasitic microorganism. Despite the drastic quarantine measures immediately applied, it is now too late: it is spreading at an alarming rate and already contaminated most of the planet.
+	While exploring a deep underground cavern, your explorer team discovered the remains of a previous team gone missing. Once brought back to civilization for examination, it quickly became clear that they were somehow infected by a parasitic microorganism. Despite the drastic quarantine measures immediately applied, it is now too late: it is spreading at an alarming rate and already contaminated most of the planet.
 >>
 SITE_CONTAMINATED_CAVERN_GROWTH: <<|
 	Further analysis of the microorganism reveals that it is a parasitic nanomachine blending in organic life forms and mechanical entities alike. While it is damaging to cortex tissues and IA neural networks in the long term, it greatly enhances self-replication and production abilities.
@@ -231,4 +251,14 @@ SITE_GOLD_VEIN_DIG_RICH: <<|
 
 SITE_NAR_OIL_DEPOSITS: <<|
 	Sensors revealed multiple large oil deposits.
+>>
+SITE_OIL_DEPOSITS_EXTRACT: <<|
+	Build a rig on the site and commence extraction.
+
+	[right][b][color=#42b4bd]+$1 Energy generation.[/color][/b][/right]
+>>
+SITE_OIL_DEPOSITS_BINGO: <<|
+	The deposits are abundant and extend deep underground. Extraction promises to be very lucrative.
+
+	[right][b][color=#d1cb6a]+$1 Energy and Money pressure[/color][/b][/right]
 >>

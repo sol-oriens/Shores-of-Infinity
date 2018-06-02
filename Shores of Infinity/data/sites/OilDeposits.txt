@@ -1,0 +1,24 @@
+Site: OilDeposits
+	Name: #SITE_P_RESOURCE_DEPOSITS
+	Description: #SITE_NAR_RESOURCE_DEPOSITS
+
+	State:
+		Narrative: #SITE_NAR_OIL_DEPOSITS
+
+		Sprite: ResourceIcons::8
+
+		Choice: Extract
+		Choice: Bingo = 15%
+
+	Option: Extract
+		Icon: ResourceIconsSmall::7
+		Description: #SITE_OIL_DEPOSITS_EXTRACT:1
+
+		AddResource(Energy, +1)
+
+	Option: Bingo
+		Icon: ResourceIcon::0
+		Description: #SITE_OIL_DEPOSITS_BINGO:1
+
+		AddPressure(Energy, 1)
+		AddPressure(Money, 1)

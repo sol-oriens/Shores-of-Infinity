@@ -19,12 +19,12 @@ Site: GoldVein
 		Result: 30%
 			SendMessage(#SITE_GOLD_VEIN_DIG_POOR:30:15)
 
-			AddStatus(Site_GoldVeinSmall, 150)
+			AddStatus(SiteGoldVeinSmall, 150)
 
 		Result: 20%
 			SendMessage(#SITE_GOLD_VEIN_DIG_POOR:60:15)
 
-			AddStatus(Site_GoldVeinBig, 150)
+			AddStatus(SiteGoldVeinBig, 150)
 
 		Result: 25%
 			SendMessage(#SITE_GOLD_VEIN_DIG_RICH:1)
