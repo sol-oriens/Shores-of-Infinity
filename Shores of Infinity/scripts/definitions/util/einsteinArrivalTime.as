@@ -1,5 +1,5 @@
 //Calculates an estimated time of arrival similar to newtonArrivalTime but taking into account the light speed limitations
-//This formula works only for distances where gamma has a significant effect and actually estimates less time than newtonArrivalTime for shorter distances
+//This formula works only for distances where gamma has a significant effect and is less accurate than newtonArrivalTime for shorter distances
 //For this reason the returned result is calculated by newtonArrivalTime in this case.
 double einsteinArrivalTime(double acceleration, vec3d distance, vec3d velocity) {
   double a = acceleration;

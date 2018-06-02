@@ -31,6 +31,8 @@ v0.2.0b
 
 - Mining Complex now also increases the pressure given by native Iron by 2 and Coal by 1.
 - Healthcare Complex base maintenance cost is now 15k (down from 20k).
+- Ancient Collectors can now be built on all gas and ice giants but can no longer produce asteroid pressure.
+- Ancient Cores can no longer be built on ice giants.
 - The Flux trait no longer gives access to the FTL Breeder Reactor (see Orbitals).
 - Reverted FTL Breeder Reactor to vanilla costs.
 - Updated Factory graphics.
@@ -84,6 +86,7 @@ v0.2.0b
 - Added a new Policy: Crop Regulation. Yields one Harvest influence card. Build cost of 600k. Also costs 20 Influence. Requires a Grain native resource. Cannot be built by Mechanoid and Ancient lifestyles.
 - Added a new Policy: Economic Endeavor. Yields one Profiteering influence card. Build cost of 200k. Also costs 15 Influence.
 - Added a new Policy: Scholarship Support. Yields one Enhance influence card. Build cost of 450k. Also costs 10 Influence.
+- Added 2 new sites of interest.
 - Slowed down moon rotation and orbit speeds.
 - Moon bases built by the related Foundation trait now consumes the available moon to build a base on on the homeworld.
 - Gas giants now always have a non-exportable Common Gases resource in addition to their primary resource, similarly to Water on ice giants.
@@ -126,6 +129,7 @@ v0.2.0b
 - Added Machine Shop. Provides Labor and Labor Storage. Gains Labor from Metallurgy research. Can build ships, orbitals, asteroid bases and terraform planets. Provides much less Labor than a Construction Bay of equivalent size.
 - Mothership Hull no longer provides free population, labor generation, support command and cargo storage and instead provides bonuses to these values.
 - Mothership Hull now requires a minimum size of 3000 as well as Living Quarters and a Machine Shop.
+- Added Advanced Gimbals, a laser and adaptive laser modification. Increases fire arc by 50%. Decreases maximum duration of the beam by 20% and increases cooldown by 1.5s.
 - Added Population design stat for Colonization Pods, Habitat Modules and Living Quarters.
 - Added Population Income design stat for Habitat Modules and Living Quarters.
 - Added Labor Storage design stat for Ore Processors and Machine Shops.
