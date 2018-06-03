@@ -171,11 +171,11 @@ Preset: Alipha
 	Trait: Technicists
 	Trait: Innovative
 
-//Preset: Bluuhbi
+//Preset: Ventari
 //	Name: #RACE_VANGUARD_RINGWORLDER
 //	Tagline: #RACE_VANGUARD_RINGWORLDER_TAGLINE
 //	Lore: #RACE_VANGUARD_RINGWORLDER_LORE
-//	Portrait: emp_portrait_blobman
+//	Portrait: emp_portrait_cyborg
 //	Shipset: Moirai
 //	Hard: True
 //	AI Support: False

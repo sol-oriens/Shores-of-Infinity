@@ -166,7 +166,7 @@ SITE_CRYSTALLINE_FORMATION_DRAW: <<|
 	[right][b][color=#42b4bd]+$1 Energy generation.[/color][/b][/right]
 >>
 SITE_CRYSTALLINE_FORMATION_ENERGIZE: <<|
-	One of your scientists believes that directing a powerful energy burst towards the base may trigger a self-sufficient chain reaction, essentially transforming the structure into a extremely powerful reactor.
+	One of your scientists believes that directing a powerful energy burst towards the base may trigger a self-sufficient chain reaction, essentially transforming the structure into an extremely powerful reactor.
 
 	[right][b][color=#42b4bd]+$1 Energy generation.[/color] [color=#ff0000]May be dangerous.[/color][/b][/right]
 >>

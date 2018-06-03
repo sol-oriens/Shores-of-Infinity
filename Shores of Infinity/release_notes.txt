@@ -57,6 +57,7 @@ v0.2.0b
 - Fixed bugs where the 'Toggle Laser Propulsion Beam' and 'Repair' abilities would not work properly after loading a previous save.
 - Changed projects with no labor cost to not consume labor storage if available.
 - Fixed a bug where planet resource icons would not appear immediately when entering an unexplored system with Legacy Exploration Mode off.
+- The Atroans race preset now has Flux instead of Sublight as their FTL method.
 
 [*] Game Options
 
