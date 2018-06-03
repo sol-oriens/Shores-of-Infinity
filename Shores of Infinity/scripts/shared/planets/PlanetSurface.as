@@ -42,15 +42,15 @@ void renderSurfaceData(Object& obj, PlanetSurface& surface, Image& output, const
 	const Biome@ biome0;
 	const Biome@ biome1;
 	const Biome@ biome2;
-print("surface.biomes.length: " + surface.biomes.length);
-	if(surface.biomes.length == 1) {
+
+	if(obj.biomeCount == 1) {
 		@biome0 = getBiome(obj.Biome0);
 	}
-	else if(surface.biomes.length == 2) {
+	else if(obj.biomeCount == 2) {
 		@biome0 = getBiome(obj.Biome0);
 		@biome1 = getBiome(obj.Biome1);
 	}
-	else if(surface.biomes.length >= 3) {
+	else if(obj.biomeCount >= 3) {
 		@biome0 = getBiome(obj.Biome0);
 		@biome1 = getBiome(obj.Biome1);
 		@biome2 = getBiome(obj.Biome2);

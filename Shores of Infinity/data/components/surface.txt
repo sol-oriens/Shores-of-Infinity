@@ -91,7 +91,7 @@ server:
 
 	void giveBasicIconVision(Empire@ emp);
 
-	void initSurface(int width, int height, uint baseBiome, uint biomeTwo, uint biomeThree, uint resourceId);
+	void initSurface(uint resourceId, int width, int height, uint baseBiome, int biomeTwo = -1, int biomeThree = -1, int biomeFour = -1, int biomeFive = -1, int biomeSix = -1, int biomeSeven = -1);
 	void destroySurface();
 	void regenSurface(int width, int height, uint biomeCount);
 	int getBuildingAt(uint x, uint y);

@@ -318,38 +318,58 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		}
 	}
 
-	void initSurface(Object& obj, int width, int height, uint one, uint two, uint three, uint resource) {
-		initSurface(obj, width, height, getBiome(one), getBiome(two), getBiome(three), getResource(resource));
+	void setBiomeIds() {
+		biome0 = biomes[0].id;
+		biome1 = biomes[0].id;
+		biome2 = biomes[0].id;
+		if(biomes.length >= 1)
+			biome0 = biomes[0].id;
+		if(biomes.length >= 2)
+			biome1 = biomes[1].id;
+		if(biomes.length >= 3)
+			biome2 = biomes[2].id;
 	}
 
-	void initSurface(Object& obj, int width, int height, const Biome@ base, const Biome@ two, const Biome@ three, const ResourceType@ res) {
-		//Set biomes
-		//SoI - TODO: Refactor to fully dynamic biome number management
-		if (base !is two && two !is three)
-		{
-			biomes.length = 3;
-			@biomes[1] = two;
-			@biomes[2] = three;
+	void initSurface(Object& obj, uint resource, int width, int height, uint one, int two = -1, int three = -1, int four = -1, int five = -1, int six = -1, int seven = -1) {
+		//May the gods of clever code forgive me...
+		array<const Biome@> biomes;
 
-			biome1 = two.id;
-			biome2 = three.id;
-		}
-		else {
-			biomes.length = 1;
-			biome1 = base.id;
-			biome2 = base.id;
-		}
-		@biomes[0] = base;
-		biome0 = base.id;
+		biomes.insertLast(getBiome(one));
+		if (two != -1)
+			biomes.insertLast(getBiome(two));
+		if (three != -1)
+			biomes.insertLast(getBiome(three));
+		if (four != -1)
+			biomes.insertLast(getBiome(four));
+		if (five != -1)
+			biomes.insertLast(getBiome(five));
+		if (six != -1)
+			biomes.insertLast(getBiome(six));
+		if (seven != -1)
+			biomes.insertLast(getBiome(seven));
+
+		initSurface(obj, width, height, biomes, getResource(resource));
+	}
+
+	void initSurface(Object& obj, int width, int height, array<const Biome@> biomes, const ResourceType@ res) {
+		//Set biomes
+		this.biomes = biomes;
+		biome0 = biomes[0].id;
+		biome1 = biomes[0].id;
+		biome2 = biomes[0].id;
+		if (biomes.length >= 2)
+			biome1 = biomes[1].id;
+		if (biomes.length >= 3)
+			biome2 = biomes[2].id;
 
 		//Generate grid
-		grid.create(width, height, base);
+		grid.create(width, height, biomes[0]);
 		if (biomes.length > 1)
-			grid.generateContinent(two);
+			grid.generateContinent(biomes[1]);
 		if (biomes.length > 2)
-			grid.generateContinent(three);
+			grid.generateContinent(biomes[2]);
 		if (biomes.length > 1)
-			grid.rotateFor(base);
+			grid.rotateFor(biomes[0]);
 
 		//Create icon
 		Planet@ pl = cast<Planet>(obj);
@@ -406,12 +426,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		if(biomes[0] is null)
 			@biomes[0] = getDistributedBiome();
 
-		if(biomes.length >= 1)
-			biome0 = biomes[0].id;
-		if(biomes.length >= 2)
-			biome1 = biomes[1].id;
-		if(biomes.length >= 3)
-			biome2 = biomes[2].id;
+		setBiomeIds();
 
 		grid.create(width, height, biomes[0]);
 		for(uint i = 1; i < biomeCount; ++i)
@@ -560,12 +575,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		}
 
 		++SurfaceModId;
-		if(biomes.length >= 1)
-			biome0 = biomes[0].id;
-		if(biomes.length >= 2)
-			biome1 = biomes[1].id;
-		if(biomes.length >= 3)
-			biome2 = biomes[2].id;
+		setBiomeIds();
 	}
 
 	void mirrorSurfaceFrom(Object& obj, Object& other) {
@@ -586,12 +596,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		}
 
 		++SurfaceModId;
-		if(biomes.length >= 1)
-			biome0 = biomes[0].id;
-		if(biomes.length >= 2)
-			biome1 = biomes[1].id;
-		if(biomes.length >= 3)
-			biome2 = biomes[2].id;
+		setBiomeIds();
 	}
 
 	void removeFinalSurfaceRows(Object& obj, uint rows = 1) {

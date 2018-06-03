@@ -526,14 +526,14 @@ class MakePlanet : MapHook {
 		uint resId = uint(-1);
 		if(resource !is null)
 			resId = resource.id;
+
 		//SoI - Gas Giants: force gas giants to their base biome only
 		//SoI - Ice Giants: force ice giants to their base biome only
 		if (resource !is null && force_native_biome.boolean) {
-			//SoI - TODO: Refactor surface creation to avoid this ugly hack
-			planet.initSurface(gridW, gridH, biome1.id, biome1.id, biome1.id, resId);
+			planet.initSurface(resId, gridW, gridH, biome1.id);
 		}
 		else {
-			planet.initSurface(gridW, gridH, biome1.id, biome2.id, biome3.id, resId);
+			planet.initSurface(resId, gridW, gridH, biome1.id, biome2.id, biome3.id);
 		}
 
 		//Make node
