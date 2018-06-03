@@ -53,7 +53,7 @@ local safe:
 
 local:
 	uint get_biomeCount() const;
-	uint getBiomeId(uint index);
+	uint get_biomeId(uint index) const;
 	uint getBuildingCount(uint buildingId) const;
 	uint get_buildingType(uint index) const;
 

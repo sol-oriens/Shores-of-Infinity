@@ -423,7 +423,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		originalSurfaceSize = grid.size;
 	}
 
-	uint getBiomeId(uint index) {
+	uint get_biomeId(uint index) const {
 			return biomes[index].id;
 	}
 
