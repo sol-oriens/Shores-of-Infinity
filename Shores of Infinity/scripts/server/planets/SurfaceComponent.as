@@ -330,8 +330,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 			biome2 = biomes[2].id;
 	}
 
-	void initSurface(Object& obj, uint resource, int width, int height, uint one, int two = -1, int three = -1, int four = -1, int five = -1, int six = -1, int seven = -1) {
-		//May the gods of clever code forgive me...
+	void initSurface(Object& obj, uint resource, int width, int height, uint one, int two = -1, int three = -1) {
 		array<const Biome@> biomes;
 
 		biomes.insertLast(getBiome(one));
@@ -339,14 +338,6 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 			biomes.insertLast(getBiome(two));
 		if (three != -1)
 			biomes.insertLast(getBiome(three));
-		if (four != -1)
-			biomes.insertLast(getBiome(four));
-		if (five != -1)
-			biomes.insertLast(getBiome(five));
-		if (six != -1)
-			biomes.insertLast(getBiome(six));
-		if (seven != -1)
-			biomes.insertLast(getBiome(seven));
 
 		initSurface(obj, width, height, biomes, getResource(resource));
 	}
@@ -364,10 +355,8 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 
 		//Generate grid
 		grid.create(width, height, biomes[0]);
-		if (biomes.length > 1)
-			grid.generateContinent(biomes[1]);
-		if (biomes.length > 2)
-			grid.generateContinent(biomes[2]);
+		for (uint i = 1, cnt = biomes.length; i < cnt; ++i)
+			grid.generateContinent(biomes[i]);
 		if (biomes.length > 1)
 			grid.rotateFor(biomes[0]);
 
@@ -446,7 +435,6 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		return biomes.length;
 	}
 
-	//SoI - TODO: Yuck...
 	uint get_Biome0() {
 		return biome0;
 	}
