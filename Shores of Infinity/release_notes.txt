@@ -1,3 +1,9 @@
+v0.2.1b
+
+[*] Resources
+
+Fixed a bug where Level 1 Salts resources from ice giants could fill either Food requirements or Level requirements to level a planet up, but not both at the same time.
+
 v0.2.0b
 
 **************************

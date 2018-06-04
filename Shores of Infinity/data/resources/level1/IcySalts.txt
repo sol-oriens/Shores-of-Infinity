@@ -1,7 +1,6 @@
 Resource: IcySalts
 	Name: #SALTS
 	Description: #SALTS_DESC
-	Class: Food
 	Native Biome: HeavyFluids
 
 	Icon: ResourceIcons::23
@@ -25,3 +24,5 @@ Resource: IcySalts
 	Pressure: 1 Influence
 	Pressure: 1 Defense
 	Pressure: 1 Energy
+
+	AddDummyResource(Salts)
