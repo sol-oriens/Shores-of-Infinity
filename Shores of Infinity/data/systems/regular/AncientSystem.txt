@@ -1,6 +1,6 @@
 System: AncientSystem
 	Inherit: BaseSystem
-	Frequency: 0.15
+	Frequency: 0.14
 
 	//SoI - Scaling
 	MakeStar(Temperature = 1000:2500, Radius = 1250:2000)

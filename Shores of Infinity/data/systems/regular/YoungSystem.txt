@@ -1,6 +1,6 @@
 System: YoungSystem
 	Inherit: BaseSystem
-	Frequency: 0.155
+	Frequency: 0.145
 
 	//SoI - Scaling
 	MakeStar(Temperature = 6000:29800, Radius = 850:1650, NormalTempRange = true)

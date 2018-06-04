@@ -1,5 +1,5 @@
 System: BlackHole
-	Frequency: 0.02
+	Frequency: 0.01
 
 	//SoI - Scaling
 	MakeBlackhole()
