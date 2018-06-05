@@ -10,10 +10,9 @@ Subsystem: ParticleLance
 	Tags: ExteriorCore, Weapon, IsProjWeapon, HasInternals, MainDPS
 	Hull: Flagship, Station
 
-	Scale := 1
 	Size := HexSize * Hexes
 
-	Range := Scale * (Size * 2 + 1000)
+	Range := $SCALE_SPACING * (Size * 2 + 1000)
 	Damage := Size * 1.25
 	Reload := 5.0 * min(1.0 + Size/512, 2.0)
 	Speed := max(60, Range / 30)

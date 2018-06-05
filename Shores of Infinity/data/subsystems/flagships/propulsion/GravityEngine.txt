@@ -10,10 +10,9 @@ Subsystem: GravityEngine
 	Tags: Engine, GivesThrust, HasInternals
 	Hull: Flagship
 
-	Scale := 1
 	Size := HexSize * Hexes
 
-	Thrust := 28 * Scale * Size
+	Thrust := 28 * $SCALE_SPACING * Size
 	TurnThrust := 2.0 * Size
 	PowerUse := 5 * Size
 	Hex.Mass := HexSize

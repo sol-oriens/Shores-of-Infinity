@@ -9,10 +9,9 @@ Subsystem: MuonCannon
 	Tags: ExteriorCore, Weapon, IsProjWeapon, IsRailgun, HasInternals
 	Hull: Support, Satellite
 
-	Scale := 1
 	Size := HexSize * Hexes
 
-	Range := Scale * (Size * 2 + 960)
+	Range := $SCALE_SPACING * (Size * 2 + 960)
 	Damage := Size * 1
 	Reload := 0.8 * min(1.0 + Size/512, 2.0)
 	Speed := max(90, Range / 16)

@@ -12,10 +12,9 @@ Subsystem: IonEngine
 
 	OnCheckErrors: designs::checkCoreFacingBackwards
 
-	Scale := 1
 	Size := HexSize * Hexes
 
-	Thrust := 22 * Scale * Size
+	Thrust := 22 * $SCALE_SPACING * Size
 	TurnThrust := 2.0 * Size
 	PowerUse := 1.5 * Size
 	Hex.Mass := HexSize

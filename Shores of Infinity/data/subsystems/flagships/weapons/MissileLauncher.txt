@@ -11,10 +11,9 @@ Subsystem: MissileLauncher
 	Tags: ExteriorCore, Weapon, DefaultUnlock, IsExplosiveWeapon, HasInternals, MainDPS, Homing
 	Hull: Flagship, Station
 
-	Scale := 1
 	Size := HexSize * Hexes
 
-	Range := Scale * (Size * 5.5 + 1900)
+	Range := $SCALE_SPACING * (Size * 5.5 + 1900)
 	Damage := Size * 13.5
 	PodSize := 1
 	Reload := (4.75 * min(1.0 + Size/512, 2.0)) * PodSize

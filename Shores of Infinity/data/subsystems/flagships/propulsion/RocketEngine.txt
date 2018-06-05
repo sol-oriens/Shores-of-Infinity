@@ -12,10 +12,9 @@ Subsystem: RocketEngine
 
 	OnCheckErrors: designs::checkCoreFacingBackwards
 
-	Scale := 1
 	Size := HexSize * Hexes
-	
-	Thrust := 35 * Scale * Size
+
+	Thrust := 35 * $SCALE_SPACING * Size
 	TurnThrust := 0.75 * Size
 	Hex.Mass := HexSize
 

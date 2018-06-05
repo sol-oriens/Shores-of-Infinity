@@ -10,10 +10,9 @@ Subsystem: Ramjet
 	Tags: HeraldsDLC
 	Hull: Flagship
 
-	Scale := 1
 	Size := HexSize * Hexes
 
-	Thrust := 18 * Scale * Size
+	Thrust := 18 * $SCALE_SPACING * Size
 	TurnThrust := 0.75 * Size
 
 	SupplyGain := 0

@@ -11,10 +11,9 @@ Subsystem: RailgunBattery
 	Tags: ExteriorCore, Weapon, DefaultUnlock, IsProjWeapon, IsRailgun, HasInternals, MainDPS
 	Hull: Flagship, Station
 
-	Scale := 1
 	Size := HexSize * Hexes
 
-	Range := Scale * (Size * 4 + 1200)
+	Range := $SCALE_SPACING * (Size * 4 + 1200)
 	Damage := Size * 3.25
 	Reload := 1.05 * min(1.0 + Size/512, 2.0)
 	Speed := max(110, Range / 15)
@@ -27,7 +26,7 @@ Subsystem: RailgunBattery
 	ImpulseFlag := 0
 	ImpulseBonus := 0
 	Impulse := ImpulseFlag * ImpulseBonus * Size
-	
+
 	ExclusiveMod := 0
 
 	Hex.HP := 27 * HexSize

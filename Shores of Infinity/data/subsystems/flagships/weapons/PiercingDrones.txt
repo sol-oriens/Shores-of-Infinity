@@ -12,10 +12,9 @@ Subsystem: PiercingDrones
 
 	Lifetime := 15
 
-	Scale := 1
 	Size := HexSize * Hexes
 
-	Range := Scale * (Size * 2 + 1400)
+	Range := $SCALE_SPACING * (Size * 2 + 1400)
 	Damage := 75
 	PodSize := floor(Size)
 	Reload := 20 * max(1.0 + Size/512, 2.0)

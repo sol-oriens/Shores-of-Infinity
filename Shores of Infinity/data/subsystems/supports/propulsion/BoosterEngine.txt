@@ -13,10 +13,9 @@ Subsystem: BoosterEngine
 
 	OnCheckErrors: designs::checkCoreFacingBackwards
 
-	Scale := 1
 	Size := HexSize * Hexes
 
-	BoostThrust := 100 * Scale * Size
+	BoostThrust := 100 * $SCALE_SPACING * Size
 	TurnThrust := 5.0 * Size
 
 	Hex.Mass := 0.5 * HexSize

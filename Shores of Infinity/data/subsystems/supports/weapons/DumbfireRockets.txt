@@ -10,10 +10,9 @@ Subsystem: DumbfireRockets
 	Tags: ExteriorCore, Weapon, DefaultUnlock, HasInternals, MainDPS
 	Hull: Support
 
-	Scale := 1
 	Size := HexSize * Hexes
 
-	Range := Scale * (Size * 2 + 300)
+	Range := $SCALE_SPACING * (Size * 2 + 300)
 	Damage := Size * 5.0
 	Reload := 15 * min(1.0 + Size/512, 2.0)
 	Speed := max(140, Range / 12)

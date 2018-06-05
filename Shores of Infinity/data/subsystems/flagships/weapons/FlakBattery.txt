@@ -12,10 +12,9 @@ Subsystem: FlakBattery
 	Tags: HeraldsDLC
 	Hull: Flagship, Station
 
-	Scale := 1
 	Size := HexSize * Hexes
 
-	Range := Scale * (ShipSize^(1.0/2.5) * 20 + 300)
+	Range := $SCALE_SPACING * (ShipSize^(1.0/2.5) * 20 + 300)
 
 	Damage := Size * 4.0
 	Reload := 0.3

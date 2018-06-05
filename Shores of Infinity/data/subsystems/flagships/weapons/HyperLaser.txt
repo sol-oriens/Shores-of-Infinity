@@ -11,13 +11,12 @@ Subsystem: HyperLaser
 	Tags: ExteriorCore, Weapon, IsBeamWeapon, HasInternals, MainDPS
 	Hull: Flagship, Station
 
-	Scale := 1
 	Size := HexSize * Hexes
 
 	BeamDPS := 10 * Size
 	Duration := 0.75
 	Cooldown := 5 * min(1.0 + Size/1024, 1.5)
-	Range := Scale * (Size * 2 + 1100)
+	Range := $SCALE_SPACING * (Size * 2 + 1100)
 	Tracking := 0.8
 	SupplyCost := Size * 0.75
 	PowerUse := 8 * Size

@@ -10,10 +10,9 @@ Subsystem: SupportPlasmaThrower
 	Tags: HeraldsDLC
 	Hull: Support, Satellite
 
-	Scale := 1
 	Size := HexSize * Hexes
 
-	Range := Scale * (Size + 500)
+	Range := $SCALE_SPACING * (Size + 500)
 
 	Duration := 5 * (1.0 + Size/64)
 	DamageOverTime := (Size * 5.0) / Duration

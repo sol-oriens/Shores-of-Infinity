@@ -11,13 +11,12 @@ Subsystem: Disruptor
 	Tags: ExteriorCore, Weapon, IsBeamWeapon, HasInternals, MainDPS
 	Hull: Flagship, Station
 
-	Scale := 1
 	Size := HexSize * Hexes
 
 	BeamDPS := 1.5 * Size
 	Duration := 10
 	Cooldown := 6 * min(1.0 + Size/512, 2.0)
-	Range := Scale * (Size * 2 + 500)
+	Range := $SCALE_SPACING * (Size * 2 + 500)
 	Tracking := 0.5
 	SupplyCost := Size * 0.75
 	FireArc := 0.25 * pi
