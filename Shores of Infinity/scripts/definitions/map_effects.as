@@ -47,12 +47,12 @@ class MakeStar : MapHook {
 #section server
 	void trigger(SystemData@ data, SystemDesc@ system, Object@& current) const override {
 		double temp = 0.0;
-		if(arguments[0].isRange && arguments[4].boolean)
-			temp = normald(arguments[0].decimal, arguments[1].decimal2 * config::SCALE_STARS);
+		if(tempK.isRange && arguments[4].boolean)
+			temp = normald(tempK.decimal, rad.decimal2 * config::SCALE_STARS);
 		else
-			temp = arguments[0].fromRange();
-		double radius = arguments[1].fromRange() * config::SCALE_STARS;
-		vec3d pos = arguments[2].fromPosition();
+			temp = tempK.fromRange();
+		double radius = rad.fromRange() * config::SCALE_STARS;
+		vec3d pos = position.fromPosition();
 
 		//Create star
 		ObjectDesc starDesc;
@@ -60,7 +60,7 @@ class MakeStar : MapHook {
 		starDesc.flags |= objNoDamage;
 		if(system !is null) {
 			starDesc.name = format(locale::SYSTEM_STAR, system.name);
-			if(arguments[3].str.length > 0)
+			if(suffix.str.length > 0)
 				starDesc.name += " "+arguments[3].str;
 			starDesc.position = system.position + pos;
 		}
@@ -114,8 +114,69 @@ class MakeStar : MapHook {
 #section all
 };
 
+//MakeNeutronStar(<Radius> = 20, <Position> = (0, 0, 0))
+// Generate a neutron star with the specified radius and position.
+class MakeNeutronStar : MapHook {
+	double NEUTRON_STAR_HEALTH = 20000000000;
+
+	Document doc("Creates a neutron star in the system.");
+
+	Argument position("Position", AT_Position, "(0, 0, 0)", doc="Position relative to the center of the system to create the star.");
+
+#section server
+	void trigger(SystemData@ data, SystemDesc@ system, Object@& current) const override {
+		double radius = 200.0 * config::SCALE_STARS;
+		vec3d pos = arguments[0].fromPosition();
+
+		//Create star
+		ObjectDesc starDesc;
+		starDesc.type = OT_Star;
+		starDesc.flags |= objNoDamage;
+		starDesc.name = format(locale::SYSTEM_STAR, system.name);
+		starDesc.position = system.position + pos;
+		starDesc.radius = radius;
+		starDesc.delayedCreation = true;
+
+		Star@ star = cast<Star>(makeObject(starDesc));
+		star.alwaysVisible = true;
+
+		@star.region = system.object;
+		star.temperature = 600000.0;
+		star.finalizeCreation();
+		system.object.enterRegion(star);
+
+		star.Health = NEUTRON_STAR_HEALTH;
+		star.MaxHealth = NEUTRON_STAR_HEALTH;
+
+		//Create star node
+		Node@ node = bindNode(star, "NeutronStarNode");
+		node.color = blackBody(16000.0, max((16000.0 + 15000.0) / 40000.0, 1.0));
+		node.hintParentObject(system.object, false);
+		cast<NeutronStarNode>(node).establish(star);
+
+		//Create light
+		LightDesc lightDesc;
+
+		//SoI - Scaling: increased light reach
+		float scale = 8000.f;
+		lightDesc.att_quadratic = 1.f / (scale * scale);
+
+		lightDesc.position = vec3f(star.position);
+		lightDesc.diffuse = node.color * 1.0f;
+		lightDesc.diffuse.a = 0.f;
+		lightDesc.specular = lightDesc.diffuse;
+		lightDesc.radius = star.radius;
+		makeLight(lightDesc);
+
+		if(data !is null)
+			@data.star = star;
+		@current = star;
+	}
+#section all
+};
+
 //MakeBlackhole(<Radius> = 20, <Position> = (0, 0, 0))
-// Generate a star with the specified temperature, radius and position.
+// Generate a black hole with the specified radius and position.
 class MakeBlackhole : MapHook {
 	double BLACKHOLE_HEALTH = 200000000000;
 
@@ -128,8 +189,8 @@ class MakeBlackhole : MapHook {
 
 #section server
 	void trigger(SystemData@ data, SystemDesc@ system, Object@& current) const override {
-		double radius = arguments[0].fromRange() * config::SCALE_STARS;
-		vec3d pos = arguments[1].fromPosition();
+		double radius = rad.fromRange() * config::SCALE_STARS;
+		vec3d pos = position.fromPosition();
 
 		//SoI - Scaling: make supermassive black holes supermassive
 		double healthFactor = 1.0;
