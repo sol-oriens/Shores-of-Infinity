@@ -14,9 +14,9 @@ Subsystem: Lightsail
 	TurnThrust := 0.0
 
 	PhotonRecycling := 1
-	SolarPower := 1 * (PhotonRecycling * $SCALE_SPACING * Size * 20) / (Scale * Size + 10)
+	SolarPower := 1 * (PhotonRecycling * $SCALE_SPACING * Size * 20) / ($SCALE_SPACING * Size + 10)
 	SolarThrust := 100 * SolarPower //This is a replica of the hook formula with maximum values for design stats and is not used for actual acceleration
-	LaserPower := 1 * (PhotonRecycling * $SCALE_SPACING * Size * 20) / (Scale * Size + 10)
+	LaserPower := 1 * (PhotonRecycling * $SCALE_SPACING * Size * 20) / ($SCALE_SPACING * Size + 10)
 	LaserThrust := 100 * LaserPower * 5 //This is a replica of the hook formula with maximum values for design stats and is not used for actual acceleration
 	ExternalThrust := max(SolarThrust, LaserThrust)
 
