@@ -1,6 +1,7 @@
 
 //Draws a neutron star and its accretion disk
 final class NeutronStarNodeScript {
+	double storedTime = 0;
 	double rotation = 0;
 
 	NeutronStarNodeScript(Node& node) {
@@ -35,7 +36,10 @@ final class NeutronStarNodeScript {
 			col.r = 64;
 			col.g = 128;
 
-			rotation += 0.05;
+
+			double elapsedTime = storedTime - gameTime;
+			storedTime = gameTime;
+			rotation += elapsedTime;
 			if (rotation > pi * 2)
 				rotation = 0;
 			renderBillboard(material::DistantStar, node.abs_position, node.abs_scale * 15, rotation, col);

@@ -1,0 +1,16 @@
+System: EmptyNeutron
+	Frequency: 0.02
+
+	//SoI - Scaling
+	MakeNeutronStar()
+	ExpandSystem(5000)
+
+	MakeAsteroidBelt(Count = 60:120, Radius = 3000)
+
+	RepeatChance(Chance = $ASTEROID_BELT_OCCURANCE, Repeat Modifier = 0.9999999)
+		MakeAsteroidBelt(Radius = Outer)
+
+	RepeatChance(Chance = $RESOURCE_ASTEROID_OCCURANCE, Repeat Modifier = 0.1)
+		MakeAsteroid(Resource = Distributed)
+
+	AddQuality(+200)

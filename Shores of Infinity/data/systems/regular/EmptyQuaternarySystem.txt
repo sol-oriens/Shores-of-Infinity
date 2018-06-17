@@ -20,7 +20,7 @@ System: EmptyQuaternarySystem
 	//SoI - Scaling
 	MakeStar(Temperature = 7000:29800, Radius = 1050:1650, Suffix = D, Moves = True)
 	ExpandSystem(4000)
-		SetupOrbit(Radius = 10500:12000, Orbit Pct = 0.7)
+		SetupOrbit(Radius = 10500:12000, Orbit Pct = 0.5)
 
 	ExpandSystem(3000:4000)
 

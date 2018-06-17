@@ -39,9 +39,14 @@ final class StarScript {
 		double temp = star.temperature;
 		Node@ node;
 		double soundRadius = star.radius;
-		if(temp > 0.0) {
+		if (temp > 0.0 && temp < 300000.0) {
 			@node = bindNode(star, "StarNode");
 			node.color = blackBody(temp, max((temp + 15000.0) / 40000.0, 1.0));
+		}
+		else if (temp >= 300000.0 && temp <= 600000.0) {
+			@node = bindNode(star, "NeutronStarNode");
+			node.color = blackBody(16000.0, max((16000.0 + 15000.0) / 40000.0, 1.0));
+			cast<NeutronStarNode>(node).establish(star);
 		}
 		else {
 			@node = bindNode(star, "BlackholeNode");
