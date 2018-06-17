@@ -1,0 +1,14 @@
+Trait: ForgottenKnowledge
+	Name: #TRAIT_FORGOTTEN_KNOWLEDGE
+	Description: #TRAIT_FORGOTTEN_KNOWLEDGE_DESC
+	Category: Foundation
+	Order: 7
+
+	Conflict: Mechanoid
+
+	Color: #ffaaaa
+	Icon: EditIcons::6
+
+	Gives Points: 1
+
+	ModAttributeTimed(FactoryLaborMod, Add, -1, 600.0)

@@ -10,6 +10,10 @@ TRAIT_TECHNICISTS_DESC: <<
 TRAIT_INEFFICIENT_DESC: All weapons drain $1 more supply when firing.
 TRAIT_SEQUESTERED_SOCIETY_DESC: We have lived a quiet life so far but now is the time to reach for the stars. Your homeworld begins with 25 tiles fully developed and has an additional 5 Pressure Capacity.
 TRAIT_INDUSTRIOUS_DESC: Civilian labor generation on the homeworld is increased by $1.
+TRAIT_FORGOTTEN_KNOWLEDGE: Forgotten Knowledge
+TRAIT_FORGOTTEN_KNOWLEDGE_DESC: <<
+	Robotics are partially forgotten knowledge and need rediscovery to operate optimally. All factories generate 1 less labor for the first 10 minutes of the game.
+>>
 TRAIT_PACIFISTS: Pacifists
 TRAIT_PACIFISTS_DESC: <<
 	[img=ResourceIconsSmall::61;22]Starts with an Allondium on their homeworld.[/img]
