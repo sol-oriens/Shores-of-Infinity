@@ -1,8 +1,16 @@
 v0.2.1b
 
+[*] Foundation Traits
+
+- Added Forgotten Knowledge. Robotics are partially forgotten knowledge and need rediscovery to operate optimally. All factories generate 1 less labor for the first 10 minutes of the game.
+
+[*] Gameplay
+
+- Overhauled Atroan preset.
+
 [*] Resources
 
-Fixed a bug where Level 1 Salts resources from ice giants could fill either Food requirements or Level requirements to level a planet up, but not both at the same time.
+- Fixed a bug where Level 1 Salts resources from ice giants could fill either Food requirements or Level requirements to level a planet up, but not both at the same time.
 
 v0.2.0b
 

@@ -141,6 +141,8 @@ Preset: First
 	Trait: Flux
 	Trait: Ancient
 	Trait: Workshop
+	Trait: ForgottenKnowledge
+	Trait: Sedentary
 
 Preset: Ulthaar
 	Name: #RACE_PROGENITORS
