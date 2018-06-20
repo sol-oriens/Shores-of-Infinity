@@ -2,7 +2,7 @@
 const double ExtraRadius = 100.0;
 
 //SoI - Scaling: increased border visibility
-const double BorderThickness = 1000.0;
+const double BorderThickness = 2000.0 * config::SCALE_SPACING;
 
 bool SHOW_TERRITORY_BORDERS = true;
 void setTerritoryBordersShown(bool enabled) {

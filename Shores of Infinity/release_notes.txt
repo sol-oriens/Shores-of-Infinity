@@ -6,7 +6,8 @@ v0.2.1b
 
 [*] Gameplay
 
-- Overhauled Atroan preset.
+- Overhauled Atroans preset and fixed an issue where the trait points total was negative, leading to the preset being invalidated at game start.
+- Fixed a vanilla bug where elapsed time was not tracked correctly for empire-related attributes.
 
 [*] Resources
 
@@ -16,6 +17,12 @@ v0.2.1b
 
 - Added quaternary systems.
 - Added neutron stars.
+
+[*] User Interface
+
+- Adapted trade line visibility to the scale of the game.
+- Increased territory border width.
+
 
 v0.2.0b
 
@@ -96,7 +103,7 @@ v0.2.0b
 
 - Added Dryport. Reduces income penalty of Level 0 planets by 30k. Increases income of Level 1 planets by 20k + 10k per additional Level. Build and maintenance costs of 200k and 20k, respectively. Cannot be built by Ancient and Extragalactic lifesyles.
 - Added Processing Center Dryport module. Adds 1 pressure capacity to the planet the Dryport is in orbit of. Build and maintenance costs of 100k and 5k, respectively.
-- Added Space Hook Dryport module, exclusive to Star Children. Increases the construction speed of support ships on this planet by 40%. Adds 1 money generation per Planet Level starting from Level 1 if a Starport is present in the system. Build cost of 750k. Also cost 1k Ore to build.
+- Added Space Hook Dryport module, exclusive to Star Children. Increases the construction speed of support ships on this planet by 40%. Adds 1 money generation per Planet Level starting from Level 1 if a Starport is present in the system. Build cost of 750k. Also costs 1k Ore to build.
 - Starports now also increase the production of Labor, Influence, Energy and Research on all owned planets in the system by 10% for Star Children lifestyles.
 - Fling beacon maintenance cost is now 150k (down from 200k).
 - Increased the range of the 'Telescope' abilities on telescope arrays and quantum telescope arrays to 800k units (up from 400k units) and 2M units (up from 1M units), respectively. The range of this ability increases with the system spacing scale setting. Decreased the energy cost by half.
