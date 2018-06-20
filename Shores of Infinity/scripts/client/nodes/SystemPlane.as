@@ -152,10 +152,13 @@ class SystemPlaneNodeScript {
 			d.type = DebrisType(randomi(DT_METAL_START,DT_METAL_END));
 			vec2d off = random2d(200.0, innerRadius);
 			d.pos = position + random3d(spread);
-			d.scale = randomd(1.0,2.0);
+			
+			//SoI - Scaling: metal debris scale
+			d.scale = randomd(4.0, 6.0);
+			
 			d.axis = random3d(1.0);
 			d.rotSpeed = randomd(pi * -0.125, pi * 0.125);
-			double dist = cameraPos.distanceTo(d.pos);			
+			double dist = cameraPos.distanceTo(d.pos);
 			d.vel = random3d(-8.0,8.0);
 			d.life = randomd(30.0,60.0);
 			d.spawnTime = frameGameTime;
@@ -172,7 +175,10 @@ class SystemPlaneNodeScript {
 				d.type = DebrisType(randomi(DT_ROCK_START,DT_ROCK_END));
 				vec2d off = random2d(200.0, innerRadius);
 				d.pos = origin + vec3d(off.x, randomd(-15.0,15.0), off.y);
-				d.scale = randomd(1.0,2.0);
+				
+				//SoI - Scaling: rock debris scale
+				d.scale = randomd(5.0, 7.0);
+				
 				d.axis = random3d(1.0);
 				d.rotSpeed = randomd(pi * -0.125, pi * 0.125);
 				double dist = cameraPos.distanceTo(d.pos);
@@ -197,6 +203,8 @@ class SystemPlaneNodeScript {
 			d.life -= time;
 			d.pos += d.vel * time;
 			d.dist = cam.distanceTo(d.pos) / (pixelSizeRatio * d.scale);
+			
+			//SoI - Scaling
 			d.draw = d.dist < 2000.0 && isSphereVisible(d.pos, d.scale);
 			
 			if(d.life <= 0 && !d.draw) {
@@ -211,7 +219,7 @@ class SystemPlaneNodeScript {
 	
 	void renderDebris() {
 		float curTime = frameGameTime;
-		for(uint i = 0, cnt = debris.length; i < cnt; ++i) {	
+		for(uint i = 0, cnt = debris.length; i < cnt; ++i) {
 			auto@ d = debris[i];
 			if(!d.draw)
 				continue;
@@ -219,7 +227,7 @@ class SystemPlaneNodeScript {
 			applyTransform(d.pos, d.scale, d.rot);
 			shader::LIFE = curTime - d.spawnTime;
 			switch(d.type) {
-				case DT_Rock00:	
+				case DT_Rock00:
 					material::AsteroidPegmatite.switchTo();
 					model::Asteroid1_lod2.draw(d.dist); break;
 				case DT_Rock01:
@@ -231,7 +239,7 @@ class SystemPlaneNodeScript {
 				case DT_Rock03:
 					material::AsteroidPegmatite.switchTo();
 					model::Asteroid4_lod2.draw(d.dist); break;
-				case DT_Rock04:	
+				case DT_Rock04:
 					material::AsteroidPegmatite.switchTo();
 					model::Asteroid1_lod2.draw(d.dist); break;
 				case DT_Rock05:
@@ -243,7 +251,7 @@ class SystemPlaneNodeScript {
 				case DT_Rock07:
 					material::AsteroidPegmatite.switchTo();
 					model::Asteroid4_lod2.draw(d.dist); break;
-				case DT_Rock08:	
+				case DT_Rock08:
 					material::AsteroidMagnetite.switchTo();
 					model::Asteroid1_lod2.draw(d.dist); break;
 				case DT_Rock09:
@@ -255,7 +263,7 @@ class SystemPlaneNodeScript {
 				case DT_Rock11:
 					material::AsteroidMagnetite.switchTo();
 					model::Asteroid4_lod2.draw(d.dist); break;
-				case DT_Metal00:	
+				case DT_Metal00:
 					material::Debris.switchTo();
 					model::Wreckage00.draw(d.dist); break;
 				case DT_Metal01:
@@ -273,7 +281,7 @@ class SystemPlaneNodeScript {
 				case DT_Metal05:
 					material::Debris.switchTo();
 					model::Wreckage05.draw(d.dist); break;
-				case DT_Metal06:	
+				case DT_Metal06:
 					material::Debris.switchTo();
 					model::Wreckage06.draw(d.dist); break;
 				case DT_Metal07:
@@ -291,7 +299,7 @@ class SystemPlaneNodeScript {
 				case DT_Metal11:
 					material::Debris.switchTo();
 					model::Wreckage11.draw(d.dist); break;
-				case DT_Metal12:	
+				case DT_Metal12:
 					material::Debris.switchTo();
 					model::Wreckage12.draw(d.dist); break;
 				case DT_Metal13:
@@ -309,7 +317,7 @@ class SystemPlaneNodeScript {
 				case DT_Metal17:
 					material::Debris.switchTo();
 					model::Wreckage17.draw(d.dist); break;
-				case DT_Metal18:	
+				case DT_Metal18:
 					material::Debris.switchTo();
 					model::Wreckage18.draw(d.dist); break;
 				case DT_Metal19:
@@ -327,7 +335,7 @@ class SystemPlaneNodeScript {
 				case DT_Metal23:
 					material::Debris.switchTo();
 					model::Wreckage23.draw(d.dist); break;
-				case DT_Metal24:	
+				case DT_Metal24:
 					material::Debris.switchTo();
 					model::Wreckage24.draw(d.dist); break;
 				case DT_Metal25:
@@ -345,7 +353,7 @@ class SystemPlaneNodeScript {
 				case DT_Metal29:
 					material::Debris.switchTo();
 					model::Wreckage29.draw(d.dist); break;
-				case DT_Metal30:	
+				case DT_Metal30:
 					material::Debris.switchTo();
 					model::Wreckage30.draw(d.dist); break;
 				case DT_Metal31:
