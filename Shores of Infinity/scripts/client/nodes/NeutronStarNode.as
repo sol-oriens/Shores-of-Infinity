@@ -11,9 +11,9 @@ final class NeutronStarNodeScript {
 	}
 
 	void establish(Node& node, Star& star) {
-		auto@ gfx = PersistentGfx();
+		/*auto@ gfx = PersistentGfx();
 		gfx.establish(star, "BlackholeGlitter");
-		gfx.rotate(quaterniond_fromAxisAngle(vec3d_right(), pi * 0.5));
+		gfx.rotate(quaterniond_fromAxisAngle(vec3d_right(), pi * 0.5));*/
 	}
 
 	bool preRender(Node& node) {
@@ -30,11 +30,11 @@ final class NeutronStarNodeScript {
 			upLeft *= node.abs_scale * 1.5;
 			upRight *= node.abs_scale * 1.5;
 
-			renderPlane(material::AccretionDisk, node.abs_position, node.abs_scale * 20.0, Color(0xffffffff));
+			renderPlane(material::AccretionDisk, node.abs_position, node.abs_scale * 10.0, Color(0xffffffff));
 
 			Color col(node.color);
 			col.r = 64;
-			col.g = 128;
+			col.g = 64;
 
 
 			double elapsedTime = storedTime - gameTime;

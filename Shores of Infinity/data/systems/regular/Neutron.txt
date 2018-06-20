@@ -5,9 +5,9 @@ System: Neutron
 	MakeNeutronStar()
 	ExpandSystem(5000)
 
-	MakeAsteroidBelt(Count = 60:120, Radius = 3000)
+	MakeAsteroidBelt(Count = 60:120, Radius = 1500)
 
-	MakeAsteroidBelt(Radius = 3000)
+	MakeAsteroidBelt(Radius = 1500)
 
 	RepeatModified(1:4, $PLANET_FREQUENCY)
 		//SoI - Scaling
