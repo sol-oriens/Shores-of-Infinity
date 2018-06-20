@@ -1,5 +1,17 @@
 v0.2.1b
 
+**************************
+*** Release Highlights ***
+**************************
+
+*** Minor additions, adjustments and fixes related to gameplay.
+
+*** Two new system types have been added.
+
+************************
+*** Detailed Changes ***
+************************
+
 [*] Foundation Traits
 
 - Added Forgotten Knowledge. Robotics are partially forgotten knowledge and need rediscovery to operate optimally. All factories generate 1 less labor for the first 10 minutes of the game.
@@ -22,7 +34,6 @@ v0.2.1b
 
 - Adapted trade line visibility to the scale of the game.
 - Increased territory border width.
-
 
 v0.2.0b
 
