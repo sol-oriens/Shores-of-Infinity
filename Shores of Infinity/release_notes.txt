@@ -21,6 +21,10 @@ v0.2.1b
 - Overhauled Atroans preset and fixed an issue where the trait points total was negative, leading to the preset being invalidated at game start.
 - Fixed a vanilla bug where elapsed time was not tracked correctly for empire-related attributes.
 
+[*] Lifestyles
+
+- Ancient lifestyle now costs 2 points (down from 3), as the mass reduction buildings are much less of an advantage with the hard limit of the speed of light.
+
 [*] Resources
 
 - Fixed a bug where Level 1 Salts resources from ice giants could fill either Food requirements or Level requirements to level a planet up, but not both at the same time.
