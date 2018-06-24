@@ -61,7 +61,7 @@ tidy class Sites : Component_Sites, SiteContainer, Savable {
 			yield(currentSite);
 	}
 
-	uint get_siteCount() const{
+	uint get_siteCount() const {
 		return sites.length;
 	}
 

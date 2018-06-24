@@ -260,8 +260,7 @@ class Site : Serializable, Savable {
 			msg.writeSmall(options[i].id);
 
 		if(state is null) {
-			uint id = uint(-1);
-			msg.writeSmall(id);
+			msg.writeSmall(0);
 		}
 		else
 			msg.writeSmall(state.id);

@@ -118,9 +118,7 @@ final class SystemOrder {
   }
 
   bool get_isValid() const {
-    if (_construction !is null)
-      return true;
-    return false;
+    return _construction !is null;
   }
 
   bool get_isInProgress() const {
@@ -166,9 +164,7 @@ final class PlanetOrder {
   }
 
   bool get_isValid() const {
-    if (_construction !is null)
-      return true;
-    return false;
+    return _construction !is null;
   }
 
   bool get_isInProgress() const {
@@ -767,6 +763,7 @@ final class Infrastructure : AIComponent {
                 //The first moon base on gas or ice giants must be built as soon as possible
                 nextAction.priority = 2.0;
                 critical = true;
+                break;
               }
             }
           }
