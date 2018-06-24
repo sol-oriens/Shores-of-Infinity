@@ -84,7 +84,7 @@ class DumbbellMap : Map {
 	}
 
 	void genBell(vec3d around, double radius, uint systemCount) {
-		double spacing = modSpacing(getSetting(M_SystemSpacing, DEFAULT_SPACING));
+		double spacing = modSpacing(DEFAULT_SPACING * config::SCALE_SPACING * getSetting(M_SystemSpacing, 1.0));
 		bool flatten = getSetting(M_Flatten, 0.0) != 0.0;
 
 		Poisson2D gen;
@@ -119,7 +119,7 @@ class DumbbellMap : Map {
 	}
 
 	void genCorridor(vec3d origin, vec3d dest, uint systemWidth, int quality = 0) {
-		double spacing = modSpacing(getSetting(M_SystemSpacing, DEFAULT_SPACING));
+		double spacing = modSpacing(DEFAULT_SPACING * config::SCALE_SPACING * getSetting(M_SystemSpacing, 1.0));
 		bool flatten = getSetting(M_Flatten, 0.0) != 0.0;
 
 		double wstep = 1.0 / ceil(sqrt(double(systemWidth)) / 0.75);
