@@ -12,8 +12,8 @@ enum SettlementFocusId {
   SFID_Basic,             //Default
   SFID_Money,             //Capitalism government
   SFID_MoneyExtreme,      //Capitalism government
-  SFID_Influence,         //Theocracy governement
-  SFID_InfluenceExtreme,  //Theocracy governement
+  SFID_Influence,         //Theocracy government
+  SFID_InfluenceExtreme,  //Theocracy government
   SFID_Defense,           //Empire government
   SFID_DefenseExtreme,    //Empire government
   SFID_Labor,             //Communism government
