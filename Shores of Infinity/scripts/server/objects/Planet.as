@@ -38,6 +38,7 @@ tidy class PlanetScript {
 	void save(Planet& planet, SaveFile& file) {
 		saveObjectStates(planet, file);
 		file << cast<Savable>(planet.Orbit);
+		file << cast<Savable>(planet.Settlement);
 		file << cast<Savable>(planet.Construction);
 		file << cast<Savable>(planet.SurfaceComponent);
 		file << cast<Savable>(planet.Resources);
@@ -83,6 +84,7 @@ tidy class PlanetScript {
 		timer = -float(uint8(planet.id)) / 255.0;
 		loadObjectStates(planet, file);
 		file >> cast<Savable>(planet.Orbit);
+		file >> cast<Savable>(planet.Settlement);
 		file >> cast<Savable>(planet.Construction);
 		file >> cast<Savable>(planet.SurfaceComponent);
 		file >> cast<Savable>(planet.Resources);
@@ -228,6 +230,7 @@ tidy class PlanetScript {
 		planet.destroySurface();
 		planet.leaderDestroy();
 		planet.destroyStatus();
+		planet.destroySites();
 		leaveRegion(planet);
 
 		if(planet.owner !is null) {
@@ -253,6 +256,7 @@ tidy class PlanetScript {
 			if(planet.owner.GloryMode == 1 && (planet.inCombat || planet.engaged)) {
 				planet.owner.Glory += 100 * planet.Population;
 			}
+			planet.initSettlement(planet.owner);
 		}
 		planet.clearRally();
 		if(planet.hasAbilities)

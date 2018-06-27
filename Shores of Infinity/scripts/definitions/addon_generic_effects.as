@@ -248,3 +248,21 @@ class AddStatusToPlanetsInSystem : GenericEffect {
 	}
 #section all
 };
+
+class AllowSettlement : GenericEffect {
+	Document doc("Permits the ship to be a settlement for civilians. Does not work on orbitals.");
+
+#section server
+	void enable(Object& obj, any@ data) const override {
+		if(!obj.hasSettlement) {
+			if(obj.isShip) {
+				auto@ ship = cast<Ship>(obj);
+				ship.activateSettlement();
+				ship.initSettlement(ship.owner);
+			}
+			else
+				return;
+		}
+	}
+#section all
+};

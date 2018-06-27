@@ -113,6 +113,14 @@ tidy class ShipScript {
 		else {
 			file << false;
 		}
+		
+		if(ship.hasSettlement) {
+			file << true;
+			file << cast<Savable>(ship.Settlement);
+		}
+		else {
+			file << false;
+		}
 
 		if(ship.hasConstruction) {
 			file << true;
@@ -200,6 +208,12 @@ tidy class ShipScript {
 				ship.activateCargo();
 				file >> cast<Savable>(ship.Cargo);
 			}
+		}
+		
+		file >> has;
+		if(has) {
+			ship.activateSettlement();
+			file >> cast<Savable>(ship.Settlement);
 		}
 
 		if(file >= SV_0108) {
@@ -802,6 +816,9 @@ tidy class ShipScript {
 			}
 			else
 				ship.owner.TotalSupportsActive += 1;
+				
+			if (ship.hasSettlement)
+				ship.initSettlement(ship.owner);
 		}
 		if(ship.hasAbilities)
 			ship.abilityOwnerChange(prevOwner, ship.owner);

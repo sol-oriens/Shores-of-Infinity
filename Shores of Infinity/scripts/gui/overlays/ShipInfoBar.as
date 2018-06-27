@@ -15,7 +15,7 @@ import util.formatting;
 import statuses;
 from statuses import getStatusID;
 import icons;
-from overlays.Construction import ConstructionOverlay;
+from overlays.ActionMenu import ActionMenuOverlay;
 from obj_selection import isSelected, selectObject, clearSelection, addToSelection;
 from tabs.GalaxyTab import zoomTabTo, openOverlay, toggleSupportOverlay;
 
@@ -23,7 +23,7 @@ bool SHIP_INFOBAR_EXPANDED = false;
 
 class ShipInfoBar : InfoBar {
 	Ship@ ship;
-	ConstructionOverlay@ construction;
+	ActionMenuOverlay@ actionMenu;
 
 	GuiBlueprint@ bpdisp;
 
@@ -154,8 +154,8 @@ class ShipInfoBar : InfoBar {
 	}
 
 	void remove() override {
-		if(construction !is null)
-			construction.remove();
+		if(actionMenu !is null)
+			actionMenu.remove();
 		InfoBar::remove();
 	}
 
@@ -226,10 +226,10 @@ class ShipInfoBar : InfoBar {
 	}
 
 	bool showManage(Object@ obj) override {
-		if(construction !is null)
-			construction.remove();
-		if(obj.hasConstruction && obj.owner.controlled) {
-			@construction = ConstructionOverlay(findTab(), obj);
+		if(actionMenu !is null)
+			actionMenu.remove();
+		if((obj.hasSettlement || obj.hasConstruction) && obj.owner.controlled) {
+			@actionMenu = ActionMenuOverlay(findTab(), obj);
 			return false;
 		}
 		if(!expanded)
@@ -570,13 +570,13 @@ class ShipInfoBar : InfoBar {
 			groupdisp.visible = false;
 		}
 
-		if(construction !is null) {
-			if(construction.parent is null) {
-				@construction = null;
+		if(actionMenu !is null) {
+			if(actionMenu.parent is null) {
+				@actionMenu = null;
 				visible = true;
 			}
 			else
-				construction.update(time);
+				actionMenu.update(time);
 		}
 
 		//Update ship data

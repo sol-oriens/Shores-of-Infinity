@@ -91,6 +91,13 @@ tidy class Sites : Component_Sites, SiteContainer, Savable {
 		if (site !is null)
 			sites.remove(site);
 	}
+	
+	void destroySites(Object& owner) {
+		Lock lck(mtx);
+		for (uint i = 0, cnt = sites.length; i < cnt; ++i) {
+			sites.remove(sites[i]);
+		}
+	}
 
 	void addProgressToSite(Object& owner, Empire@ emp, uint siteId, float amount) {
 		auto@ site = getSiteById(siteId);

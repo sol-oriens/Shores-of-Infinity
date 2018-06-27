@@ -12,6 +12,7 @@ remote:
 	void addProgressToSite(Empire@ emp, uint siteId, float amount);
 server:
 	uint spawnSite(uint typeId);
+	void destroySites();
 	void writeSites(Message& msg) const;
 shadow:
 	void readSites(Message& msg);

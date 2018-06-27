@@ -28,7 +28,9 @@ import systems;
 import cargo;
 import statuses;
 import traits;
-import overlays.Construction;
+from overlays.Settlement import SettlementDisplay, SettlementParent;
+from overlays.Construction import ConstructionDisplay, ConstructionParent;
+from overlays.ActionMenu import ActionMenuDisplay, ActionMenuParent;
 from elements.GuiResources import LEVEL_REQ;
 from tabs.PlanetsTab import PlanetTree;
 from gui import animate_time;
@@ -47,13 +49,15 @@ Resources available;
 bool SHOW_PLANET_TREE = false;
 
 // {{{ Overlay
-class PlanetOverlay : GuiOverlay, ConstructionParent {
+class PlanetOverlay : GuiOverlay, ActionMenuParent, SettlementParent, ConstructionParent {
 	Gui3DObject@ objView;
 	Planet@ obj;
 	bool closing = false;
 
 	SurfaceDisplay@ surface;
 	ResourceDisplay@ resources;
+	ActionMenuDisplay@ actionMenu;
+	SettlementDisplay@ settlement;
 	ConstructionDisplay@ construction;
 	Resource[] resList;
 
@@ -85,8 +89,12 @@ class PlanetOverlay : GuiOverlay, ConstructionParent {
 		updateAbsolutePosition();
 
 		vec2i origin = targPos.center;
+		@settlement = SettlementDisplay(this, origin, Alignment(Right-offset-WIDTH,
+					Top+BORDER+40, Right-offset, Bottom-BORDER));
 		@construction = ConstructionDisplay(this, origin, Alignment(Right-offset-WIDTH,
-					Top+BORDER, Right-offset, Bottom-BORDER));
+					Top+BORDER+40, Right-offset, Bottom-BORDER));
+		@actionMenu = ActionMenuDisplay(this, origin, Alignment(Right-offset-WIDTH,
+			Top+BORDER, Right-offset, Top+BORDER+40));
 		@surface = SurfaceDisplay(this, origin, Alignment(Left+offset,
 					Top+BORDER, Right-offset-BORDER-WIDTH, Top+0.6f-BORDER/2));
 		@resources = ResourceDisplay(this, origin, Alignment(Left+offset,
@@ -115,6 +123,8 @@ class PlanetOverlay : GuiOverlay, ConstructionParent {
 					//Start showing all the data
 					surface.animate();
 					resources.animate();
+					actionMenu.animate();
+					settlement.animate(visible = false);
 					construction.animate();
 
 					return true;
@@ -149,6 +159,8 @@ class PlanetOverlay : GuiOverlay, ConstructionParent {
 
 		surface.visible = false;
 		resources.visible = false;
+		actionMenu.visible = false;
+		settlement.visible = false;
 		construction.visible = false;
 
 		vec2i parSize = parent.size;
@@ -171,10 +183,20 @@ class PlanetOverlay : GuiOverlay, ConstructionParent {
 
 	void triggerUpdate() {
 	}
+	
+	SettlementDisplay@ get_settlementDisplay() const {
+		return settlement;
+	}
+	
+  ConstructionDisplay@ get_constructionDisplay() const {
+		return construction;
+	}
 
 	void update(double time) {
 		surface.update(time);
 		resources.update(time);
+		actionMenu.update(time);
+		settlement.update(time);
 		construction.update(time);
 	}
 
