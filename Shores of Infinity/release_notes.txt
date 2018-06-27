@@ -1,3 +1,21 @@
+v0.2.2b
+
+**************************
+*** Release Highlights ***
+**************************
+
+*** Fixes related to gameplay.
+
+************************
+*** Detailed Changes ***
+************************
+
+[*] Gameplay
+
+- Added a fail-safe in case system spacing has a value below the minimum allowed (150k units) during map generation.
+- Fixed an issue with dumbbell galaxy generation partially failing.
+- Fixed a vanilla bug where ore asteroids in the mirrored part of a dumbbell galaxy generated with the 'Perfect Mirror' option had a resource asteroid strategic icon.
+
 v0.2.1b
 
 **************************

@@ -59,6 +59,7 @@ class SpiralMap : Map {
 		coreSystems = systemCount - (perArm * armCount);
 
 		double systemSpacing = modSpacing(DEFAULT_SPACING * config::SCALE_SPACING * getSetting(M_SystemSpacing, 1.0));
+		checkSpacing(systemSpacing);
 
 		//SoI - Scaling: increased height spacing
 		const double coreHeightVariation = flatten ? 0.0 : 2000.0;

@@ -46,6 +46,7 @@ class DumbbellMap : Map {
 	void placeSystems() {
 		uint systemCount = uint(getSetting(M_SystemCount, DEFAULT_SYSTEM_COUNT));
 		double spacing = modSpacing(DEFAULT_SPACING * config::SCALE_SPACING * getSetting(M_SystemSpacing, 1.0));
+		checkSpacing(spacing);
 		nebulaFreq = getSetting(M_NebulaFreq, 0.2f);
 		hasAnomalies = nebulaFreq > 0.0;
 		bool flatten = getSetting(M_Flatten, 0.0) != 0.0;
