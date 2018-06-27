@@ -6,7 +6,7 @@ const int DEFAULT_SYSTEM_COUNT = 60;
 
 //SoI - Scaling: default system spacing
 const double DEFAULT_SPACING = 300000.0;
-const double MIN_SPACING = 300000.0;
+const double MIN_SPACING = 150000.0;
 
 void init() {
 	auto@ mapClass = getClass("Map");
@@ -15,4 +15,14 @@ void init() {
 		if(cls !is mapClass && cls.implements(mapClass))
 			cls.create();
 	}
+}
+
+bool checkSpacing(double& spacing) {
+	if (spacing < MIN_SPACING) {
+		double prevSpacing = spacing;
+		spacing = MIN_SPACING;
+		error("Anomaly in system spacing detected: " + prevSpacing + ", forcing system spacing to: " + spacing);
+		return false;
+	}
+	return true;
 }
