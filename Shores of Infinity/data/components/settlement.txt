@@ -1,0 +1,15 @@
+Object.Settlement : components.Settlement::Settlement {
+restricted local:
+  uint get_morale() const;
+  void set_morale(uint value);
+  uint get_focusId() const;
+  void set_focusId(uint value);
+  bool get_autoFocus() const;
+  void set_autoFocus(bool value);
+  bool get_isSettlement() const;
+server:
+  void initSettlement(Empire& emp);
+  void writeSettlement(Message& msg) const;
+shadow:
+  void readSettlement(Message& msg);
+}

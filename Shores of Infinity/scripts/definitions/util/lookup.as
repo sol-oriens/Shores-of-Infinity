@@ -1,7 +1,7 @@
 //Search for a match in multiple values without a ugly
 //if (foo == bar) || (foo == baz) || ..." list
 //Allow a syntax close to a switch / case structure with variables
-class Lookup {
+final class Lookup {
 	private int _value;
 
 	Lookup(int value) {
@@ -13,6 +13,6 @@ class Lookup {
 			if (_value == values[i])
 				return true;
 		}
-			return false;
+		return false;
 	}
 };

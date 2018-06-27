@@ -27,6 +27,7 @@ Subsystem: HabitatModule
 	Hex.HP := 18 * HexSize
 	Hex.Resistance := 0.2
 
+	Hook: addon_generic_effects::AllowSettlement()
 	Hook: addon_generic_effects::AddStatusStacks(ShipPopulation, 1, 0, -1, False, False, Sum.ShipPopStorage, 100, False, 0)
 	Hook: LimitStatusStacks(ShipPopulation, Sum.ShipPopStorage)
 
@@ -74,6 +75,7 @@ Subsystem: StarHabitatModule
 	Hex.HP := 18 * HexSize
 	Hex.Resistance := 0.2
 
+	Hook: addon_generic_effects::AllowSettlement()
 	Hook: addon_generic_effects::AddStatusStacks(MothershipPopulation, 1, 0, -1, False, False, Sum.ShipPopStorage, 100, False, 0)
 	Hook: LimitStatusStacks(ShipPopulation, Sum.ShipPopStorage)
 

@@ -15,6 +15,7 @@ import ai.consider;
 import buildings;
 import saving;
 
+//Event callbacks definitions
 funcdef void PlanetAdded(PlanetAI& ai);
 funcdef void PlanetRemoved(PlanetAI& ai);
 

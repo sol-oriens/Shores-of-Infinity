@@ -1,0 +1,13 @@
+SETTLEMENT: Settlement
+
+MORALE: Morale
+MORALE_LOW: Low
+MORALE_MEDIUM: Medium
+MORALE_HIGH: High
+
+FOCUS_INPUT: Focus:
+FOCUS_BASIC: Colonial
+FOCUS_MONEY: Financial
+FOCUS_INFLUENCE: Spiritual
+FOCUS_DEFENSE: Territorial
+FOCUS_LABOR: Industrial
