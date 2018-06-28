@@ -10,7 +10,7 @@ namespace SoI {
 		"5101",
 		"5095",
 	};
-	const string MOD_NAME = "Shores of Infinity v0.2.2b";
+	const string MOD_NAME = "Shores of Infinity v0.2.3b";
 	const string MOD_REVISION = "1806280042";
 	const string MOD_VERSION = MOD_NAME + " (revision " + MOD_REVISION + ") for Star Ruler 2 " + VERSIONS[0] + " (revision " + REVISIONS[0]
 		+ ", currently using " + GAME_VERSION + " " + SCRIPT_VERSION + ")";
