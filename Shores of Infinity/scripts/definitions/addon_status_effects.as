@@ -22,11 +22,11 @@ class BudgetMaintenance : StatusHook {
 		if(per_shipsize.decimal != 0 && obj.isShip)
 			maintData.amount += cast<Ship>(obj).blueprint.design.size * per_shipsize.decimal;
 
-		if (type.str == "Buildings")
+		if (type.str.equals_nocase("Buildings"))
 			maintData.type = int(MoT_Buildings);
-		else if (type.str == "Colonizers")
+		else if (type.str.equals_nocase("Colonizers"))
 			maintData.type = int(MoT_Colonizers);
-		else if (type.str == "Planet Upkeep")
+		else if (type.str.equals_nocase("Planet Upkeep"))
 			maintData.type = int(MoT_Planet_Upkeep);
 		else
 			error("BudgetMaintenance: Invalid maintenance type specified.");

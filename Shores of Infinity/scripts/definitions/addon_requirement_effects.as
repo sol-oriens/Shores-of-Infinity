@@ -1,6 +1,6 @@
 import hooks;
 from requirement_effects import Requirement;
-from statuses import getStatusID;
+from settlements import shipPopulationStatus, mothershipPopulationStatus;
 import resources;
 
 class RequireNativeResource : Requirement {
@@ -42,13 +42,19 @@ class ConflictNativeResource : Requirement {
 
 class RequirePopulation : Requirement {
 	Document doc("This can only work if the object has a certain amount of population.");
-	Argument population(AT_Decimal, "1", doc="Minimum population needed.");
+	Argument min_population(AT_Decimal, "1", doc="Minimum population needed.");
+	Argument max_population(AT_Decimal, "-1", doc="Maximum population needed. -1 for no maximum");
 
 	bool meets(Object& obj, bool ignoreState = false) const override {
+		double minPop = min_population.decimal;
+		double maxPop = max_population.decimal;
 		if (obj.hasSurfaceComponent)
-			return obj.population >= population.decimal - 0.0001;
-		else if (obj.hasStatuses)
-			return obj.getStatusStackCountAny(getStatusID("ShipPopulation")) > 1 || obj.getStatusStackCountAny(getStatusID("MothershipPopulation")) > 1;
+			return obj.population >= minPop - 0.0001 && (maxPop == -1 || obj.population <= maxPop);
+		else if (obj.hasStatuses) {
+			int shipPop = obj.getStatusStackCountAny(shipPopulationStatus);
+			int mothershipPop = obj.getStatusStackCountAny(mothershipPopulationStatus);
+			return (shipPop >= minPop || mothershipPop >= minPop) && (maxPop == -1 || shipPop <= maxPop || mothershipPop <= maxPop);
+		}
 		return false;
 	}
 };

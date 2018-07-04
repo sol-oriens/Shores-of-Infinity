@@ -2,21 +2,11 @@ import settlements;
 
 from statuses import getStatusID;
 
-int shipPopulationStatusId = -1;
-int mothershipPopulationStatusId = -1;
-
 tidy class Settlement : Component_Settlement, Savable {
   Object@ obj;
   private uint _morale;
-  private uint _focusId;
+  private int _focusId;
   private bool _autoFocus;
-  
-  Settlement() {
-    if (shipPopulationStatusId == -1)
-      shipPopulationStatusId = getStatusID("ShipPopulation");
-    if (mothershipPopulationStatusId == -1)
-      mothershipPopulationStatusId = getStatusID("MothershipPopulation");
-  }
   
   bool get_isSettlement() const {
     if (obj is null)
@@ -24,7 +14,7 @@ tidy class Settlement : Component_Settlement, Savable {
     if (obj.hasSurfaceComponent)
 			return obj.population >= 1;
 		else if (obj.hasStatuses)
-			return obj.getStatusStackCountAny(shipPopulationStatusId) >= 1 || obj.getStatusStackCountAny(mothershipPopulationStatusId) >= 1;
+			return obj.getStatusStackCountAny(shipPopulationStatus) >= 1 || obj.getStatusStackCountAny(mothershipPopulationStatus) >= 1;
     return false;
   }
   
@@ -36,11 +26,11 @@ tidy class Settlement : Component_Settlement, Savable {
     _morale = value;
   }
   
-  uint get_focusId() const {
+  int get_focusId() const {
     return _focusId;
   }
   
-  void set_focusId(uint value) {
+  void set_focusId(int value) {
     _focusId = value;
   }
   
@@ -55,7 +45,8 @@ tidy class Settlement : Component_Settlement, Savable {
   void initSettlement(Object& owner, Empire& emp) {
     @obj = owner;
     _morale = SM_Medium;
-    _focusId = (getAvailableFoci(obj, emp)[0]).id;
+    SettlementFocus@[] foci = getAvailableFoci(obj, emp);
+    _focusId = foci.length > 0 ? int(foci[0].id) : -1;
     _autoFocus = true;
   }
   

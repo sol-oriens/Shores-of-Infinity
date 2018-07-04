@@ -5,6 +5,8 @@ import buildings;
 from buildings import IBuildingHook;
 import constructions;
 from constructions import IConstructionHook;
+import settlements;
+from settlements import ISettlementHook;
 import resources;
 from biomes import getBiome;
 
@@ -14,7 +16,7 @@ from construction.Constructible import Constructible;
 from influence_global import getSenateLeader;
 #section all
 
-class Requirement : Hook, IOrbitalEffect, IBuildingHook, IConstructionHook {
+class Requirement : Hook, IOrbitalEffect, IBuildingHook, IConstructionHook, ISettlementHook {
 	bool meets(Object& obj, bool ignoreState = false) const {
 		return true;
 	}
@@ -109,6 +111,11 @@ class Requirement : Hook, IOrbitalEffect, IBuildingHook, IConstructionHook {
 	bool getCost(Object& obj, string& value, Sprite& icon) const { return false; }
 	bool consume(Object& obj) const { return true; }
 	void reverse(Object& obj) const {}
+		
+	//Settlements
+	void enable(Object& obj, any@ data) const {}
+  void disable(Object& obj, any@ data) const {}
+	bool canEnable(Object& obj) const { return meets(obj); }
 };
 
 class RequireTrait : Requirement {

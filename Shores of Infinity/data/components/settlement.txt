@@ -2,8 +2,8 @@ Object.Settlement : components.Settlement::Settlement {
 restricted local:
   uint get_morale() const;
   void set_morale(uint value);
-  uint get_focusId() const;
-  void set_focusId(uint value);
+  int get_focusId() const;
+  void set_focusId(int value);
   bool get_autoFocus() const;
   void set_autoFocus(bool value);
   bool get_isSettlement() const;

@@ -1,0 +1,4 @@
+SettlementFocus: Colonial
+  Name: #FOCUS_BASIC
+  
+  addon_requirement_effects::RequirePopulation(Max Population = 3)

@@ -235,7 +235,7 @@ class SettlementDisplay : DisplayBox {
   }
 	
 	void updateFocusList() {
-		uint currentFocusId;
+		int currentFocusId;
 		if (obj.isPlanet)
 			currentFocusId = cast<Planet>(obj).focusId;
 		else if (obj.isShip) {
@@ -250,8 +250,8 @@ class SettlementDisplay : DisplayBox {
 		array<SettlementFocus@> foci = getAvailableFoci(obj, playerEmpire);
 		for (uint i = 0, cnt = foci.length; i < cnt; ++i) {
 			focusList.addItem(FocusElement(foci[i]));
-			if (foci[i].id == currentFocusId)
-			focusList.selected = i;
+			if (int(foci[i].id) == currentFocusId)
+				focusList.selected = i;
 		}
 	}
 };

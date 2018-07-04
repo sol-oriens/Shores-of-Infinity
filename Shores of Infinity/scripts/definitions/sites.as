@@ -331,7 +331,7 @@ class Site : Serializable, Savable {
 };
 
 void parseLine(string& line, SiteType@ site, SiteResult@ result, ReadFile@ file) {
-	//Try to find the design
+	//Try to find the hook
 	if(line.findFirst("(") == -1) {
 		error("Invalid line for " + site.ident +": "+ escape(line));
 	}
