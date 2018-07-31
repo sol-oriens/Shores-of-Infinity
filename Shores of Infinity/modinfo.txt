@@ -1,0 +1,52 @@
+	Name: Shores of Infinity
+	Description: <<
+		[b]BETA VERSION[/b]
+
+		Immerse yourself in a cosmos that looks and feels more realistic and bigger than ever in SR2. Experience a slower paced, more traditional 4X gameplay blended with the original real time aspect of the game. 
+		Evolve in a universe where each star system is a distant milestone promising a wealth of new resources and opportunities; where the speed of light is a real boundary and FTL is not an option.
+
+		Welcome to the Infinity. Don't lose your way en route to the next sun...
+
+		[i]This version is a beta. Balance is experimental and far from final. Game progression may also feel a bit slow, especially in the beginning of the game; this will be fine-tuned and balanced with more content in future versions.
+		Competitive multiplayer games are not recommended until balance is fine-tuned.[/i]
+
+		[h1]Current version: 0.2.3b[/h1]
+		[i]Based on Rising Stars v1.2.1[/i]
+
+		[h1][b]Features[/b][/h1]
+		- A universe with a scale closer to reality: stars dwarf planets, which dwarf ships. If you still feel a bit cramped, try visiting the local supermassive black hole.
+		- Gas and ice giants and their numerous moons are waiting for adventurous settlers.
+		- Relativistic physics elements, aka Einstein messing with Newton: sublight speed cannot exceed the speed of light and acceleration loses effectiveness as it gets closer to it.
+		- A new planet exploration option will widen your horizon below the stars.
+		- A new research grid maximizing options and logically organizing technologies in six wide areas: Governance, Engineering, Industry, Warfare, Harnessing, and Efficiency.
+		- A rebalanced gameplay progression and economy stressing the immensity of space as you climb the technological ladder to finally rule the stars.
+		- New buildings and orbitals introducing new ways to take advantage of the environment.
+		- New subsystems opening new gameplay options, including a weapon modification system.
+		- Overhauled mechanics for Mechanoid, Star Children and Ancient lifestyles.
+		- An improved AI with better budget management and new construction capabilities.
+		- Most features from Rising Stars up to the currently supported version.
+
+		[h1][b]Special Thanks[/b][/h1]
+		- The Star Ruler 2 dev team for creating such an open modding engine with almost endless possibilities.
+		- The ABEM / Rising Stars dev team and especially Dalo Lorn for their hard work who provided me with a huge starting point with their mod.
+		- dolynick whose work on rescaling the game for DOF saved me hours of research and work, that I could use to expand on it.
+
+		[h1][b]Links[/b][/h1]
+		[b]ModDB Link:[/b]
+
+
+		https://www.moddb.com/mods/shores-of-infinity
+
+
+
+		[b]Rising Stars:[/b]
+
+		http://steamcommunity.com/sharedfiles/filedetails/?id=812827373
+
+
+
+
+		[b]Rising Stars Discord chat:[/b]
+		https://discord.gg/sUJKJDc
+	>>
+	Compatibility: 200
