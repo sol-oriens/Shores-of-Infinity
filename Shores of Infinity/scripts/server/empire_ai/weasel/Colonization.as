@@ -961,7 +961,7 @@ final class Colonization : AIComponent {
 				_needsNewTerritory = true;
 			else {
 				_needsMoreTerritory = true;
-				_territoryRequests ++;
+				_territoryRequests++;
 			}
 		}
 		else {
