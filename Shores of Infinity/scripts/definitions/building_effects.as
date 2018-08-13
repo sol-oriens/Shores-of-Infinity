@@ -72,6 +72,28 @@ tidy final class TriggerConstructed : BuildingHook {
 #section all
 };
 
+tidy final class TriggerDestroyed : BuildingHook {
+	Document doc("Triggers another hook when a building is destroyed.");
+	Argument hook("Hook", AT_Hook, "bonus_effects::BonusEffect", doc="Hook to run.");
+	BonusEffect@ eff;
+
+	bool instantiate() override {
+		@eff = cast<BonusEffect>(parseHook(hook.str, "bonus_effects::", required=false));
+		if(eff is null) {
+			error("TriggerDestroyed(): could not find inner hook: "+escape(hook.str));
+			return false;
+		}
+		return BuildingHook::instantiate();
+	}
+
+#section server
+	void remove(Object& obj, SurfaceBuilding@ bld) const {
+		if(eff !is null)
+			eff.activate(obj, obj.owner);
+	}
+#section all
+};
+
 class ConstructibleIfAttributeGTE : BuildingHook {
 	Document doc("Only constructible if an empire attribute is greater than or equal to the specified value.");
 	Argument attribute("Attribute", AT_EmpAttribute, doc="Attribute to test, can be set to any arbitrary name to be created as a new attribute with starting value 0.");
