@@ -55,7 +55,7 @@ final class SystemCode {
 
 //Abstract description of a system
 final class SystemDesc : Serializable, Savable {
-	private double radius;
+	private double _radius;
 	
 	uint index;
 	string name;
@@ -73,12 +73,12 @@ final class SystemDesc : Serializable, Savable {
 	
 	double radius {
 		get const {
-			return this.radius;
+			return _radius;
 		}
 		set {
-			this.radius = value;
+			_radius = value;
 			if (object !is null)
-				object.OuterRadius = radius;
+				object.OuterRadius = _radius;
 		}
 	}
 
