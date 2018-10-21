@@ -5,6 +5,7 @@
 //
 import empire_ai.weasel.WeaselAI;
 
+import empire_ai.weasel.Events;
 import empire_ai.weasel.Colonization;
 import empire_ai.weasel.Development;
 import empire_ai.weasel.Construction;
@@ -12,6 +13,8 @@ import empire_ai.weasel.Budget;
 import empire_ai.weasel.Orbitals;
 import empire_ai.weasel.Systems;
 import empire_ai.weasel.Planets;
+
+import ai.events;
 
 import ABEM_data;
 import util.lookup;
@@ -65,12 +68,16 @@ final class OwnedSystemEvents : IOwnedSystemEvents {
      @this.infrastructure = infrastructure;
   }
 
-  void onOwnedSystemAdded(SystemAI& ai) {
-    infrastructure.registerOwnedSystemAdded(ai);
+  void onOwnedSystemAdded(ref& sender, EventArgs& args) {
+    SystemAI@ ai = cast<SystemAI>(sender);
+    if (ai !is null)
+      infrastructure.registerOwnedSystemAdded(ai);
   }
 
-  void onOwnedSystemRemoved(SystemAI& ai) {
-    infrastructure.registerOwnedSystemRemoved(ai);
+  void onOwnedSystemRemoved(ref& sender, EventArgs& args) {
+    SystemAI@ ai = cast<SystemAI>(sender);
+    if (ai !is null)
+      infrastructure.registerOwnedSystemRemoved(ai);
   }
 };
 
@@ -81,12 +88,16 @@ final class OutsideBorderSystemEvents : IOutsideBorderSystemEvents {
     @this.infrastructure = infrastructure;
   }
 
-  void onOutsideBorderSystemAdded(SystemAI& ai) {
-    infrastructure.registerOutsideBorderSystemAdded(ai);
+  void onOutsideBorderSystemAdded(ref& sender, EventArgs& args) {
+    SystemAI@ ai = cast<SystemAI>(sender);
+    if (ai !is null)
+      infrastructure.registerOutsideBorderSystemAdded(ai);
   }
 
-  void onOutsideBorderSystemRemoved(SystemAI& ai) {
-    infrastructure.registerOutsideBorderSystemRemoved(ai);
+  void onOutsideBorderSystemRemoved(ref& sender, EventArgs& args) {
+    SystemAI@ ai = cast<SystemAI>(sender);
+    if (ai !is null)
+      infrastructure.registerOutsideBorderSystemRemoved(ai);
   }
 };
 
@@ -97,14 +108,32 @@ final class PlanetEvents : IPlanetEvents {
     @this.infrastructure = infrastructure;
   }
 
-  void onPlanetAdded(PlanetAI& ai) {
-    infrastructure.registerPlanetAdded(ai);
+  void onPlanetAdded(ref& sender, EventArgs& args) {
+    PlanetAI@ ai = cast<PlanetAI>(sender);
+    if (ai !is null)
+      infrastructure.registerPlanetAdded(ai);
   }
 
-  void onPlanetRemoved(PlanetAI& ai) {
-    infrastructure.registerPlanetRemoved(ai);
+  void onPlanetRemoved(ref& sender, EventArgs& args) {
+    PlanetAI@ ai = cast<PlanetAI>(sender);
+    if (ai !is null)
+      infrastructure.registerPlanetRemoved(ai);
   }
 };
+
+final class OrbitalRequestEvents : IOrbitalRequestEvents {
+  Infrastructure@ infrastructure;
+  
+  OrbitalRequestEvents(Infrastructure& infrastructure) {
+    @this.infrastructure = infrastructure;
+  }
+  
+  void onOrbitalRequested(ref& sender, EventArgs& args) {
+    OrbitalRequestedEventArgs@ specs = cast<OrbitalRequestedEventArgs>(args);
+    if (specs !is null)
+      infrastructure.requestOrbital(specs.region, specs.module, specs.priority, specs.expire, specs.moneyType);
+  }
+}
 
 final class SystemOrder {
   private AllocateConstruction@ _construction;
@@ -380,35 +409,41 @@ final class SystemCheck {
     return weight;
   }
 
-  void buildInSystem(Infrastructure& infrastructure, Construction& construction, const OrbitalModule@ module, double priority = 1.0, bool force = false, double delay = 600) {
+  SystemOrder@ buildInSystem(Infrastructure& infrastructure, Construction& construction, const OrbitalModule@ module, double priority = 1.0, bool force = false, double delay = 600, uint moneyType = BT_Infrastructure) {
     vec3d pos = ai.obj.position;
     vec2d offset = random2d(ai.obj.radius * 0.4, ai.obj.radius * 0.7);
     pos.x += offset.x;
     pos.z += offset.y;
 
-    BuildOrbital@ orbital = construction.buildOrbital(module, pos, priority, force);
+    BuildOrbital@ orbital = construction.buildOrbital(module, pos, priority, force, moneyType);
     auto@ order = SystemOrder(orbital);
     order.expires = gameTime + delay;
     orders.insertLast(order);
+    
+    return order;
   }
 
-  void buildAtSystemEdge(Infrastructure& infrastructure, Construction& construction, const OrbitalModule@ module, double priority = 1.0, bool force = false, double delay = 600) {
+  SystemOrder@ buildAtSystemEdge(Infrastructure& infrastructure, Construction& construction, const OrbitalModule@ module, double priority = 1.0, bool force = false, double delay = 600, uint moneyType = BT_Infrastructure) {
     vec3d pos = ai.obj.position;
     vec2d offset = random2d(ai.obj.radius * 0.8, ai.obj.radius * 0.9);
     pos.x += offset.x;
     pos.z += offset.y;
 
-    BuildOrbital@ orbital = construction.buildOrbital(module, pos, priority, force);
+    BuildOrbital@ orbital = construction.buildOrbital(module, pos, priority, force, moneyType);
     auto@ order = SystemOrder(orbital);
     order.expires = gameTime + delay;
     orders.insertLast(order);
+    
+    return order;
   }
 
-  void buildAtPlanet(Infrastructure& infrastructure, Construction& construction, Planet& planet, const OrbitalModule@ module, double priority = 1.0, bool force = false, double delay = 600) {
-    BuildOrbital@ orbital = construction.buildLocalOrbital(module, planet, priority, force);
+  SystemOrder@ buildAtPlanet(Infrastructure& infrastructure, Construction& construction, Planet& planet, const OrbitalModule@ module, double priority = 1.0, bool force = false, double delay = 600, uint moneyType = BT_Infrastructure) {
+    BuildOrbital@ orbital = construction.buildLocalOrbital(module, planet, priority, force, moneyType);
     auto@ order = SystemOrder(orbital);
     order.expires = gameTime + delay;
     orders.insertLast(order);
+    
+    return order;
   }
 };
 
@@ -531,11 +566,13 @@ final class PlanetCheck {
     return _weight;
   }
 
-  void build(Infrastructure& infrastructure, Construction& construction, const ConstructionType@ consType, double priority = 1.0, bool force = false, bool critical = false, double delay = 600) {
-      ConstructionRequest@ request = infrastructure.planets.requestConstruction(ai, ai.obj, consType, priority, gameTime + delay, BT_Infrastructure);
+  PlanetOrder@ build(Infrastructure& infrastructure, Construction& construction, const ConstructionType@ consType, double priority = 1.0, bool force = false, bool critical = false, double delay = 600, uint moneyType = BT_Infrastructure) {
+      ConstructionRequest@ request = infrastructure.planets.requestConstruction(ai, ai.obj, consType, priority, gameTime + delay, moneyType);
       auto@ order = PlanetOrder(request);
       order.expires = gameTime + delay;
       orders.insertLast(order);
+      
+      return order;
   }
 };
 
@@ -545,12 +582,13 @@ final class Infrastructure : AIComponent {
   //Current focus
   private uint _focus = FT_None;
 
+  Events@ events;
   Colonization@ colonization;
   Development@ development;
   Construction@ construction;
   Orbitals@ orbitals;
-	Systems@ systems;
   Planets@ planets;
+	Systems@ systems;
   Budget@ budget;
 
   array<SystemCheck@> checkedOwnedSystems; //Includes border systems
@@ -564,12 +602,13 @@ final class Infrastructure : AIComponent {
   bool canBuildMoonBase = true;
 
   void create() {
+    @events = cast<Events>(ai.events);
     @colonization = cast<Colonization>(ai.colonization);
     @development = cast<Development>(ai.development);
     @construction = cast<Construction>(ai.construction);
 		@orbitals = cast<Orbitals>(ai.orbitals);
-		@systems = cast<Systems>(ai.systems);
     @planets = cast<Planets>(ai.planets);
+		@systems = cast<Systems>(ai.systems);
     @budget = cast<Budget>(ai.budget);
 
     //Cache expensive lookups
@@ -579,10 +618,10 @@ final class Infrastructure : AIComponent {
     moonBaseStatusId = getStatusID("MoonBase");
     gasGiantStatusId = getStatusID("GasGiant");
     iceGiantStatusId = getStatusID("IceGiant");
-
-    systems.registerOwnedSystemEvents(OwnedSystemEvents(this));
-    systems.registerOutsideBorderSystemEvents(OutsideBorderSystemEvents(this));
-    planets.registerPlanetEvents(PlanetEvents(this));
+    
+    events.registerOwnedSystemEvents(OwnedSystemEvents(this));
+    events.registerOutsideBorderSystemEvents(OutsideBorderSystemEvents(this));
+    events.registerPlanetEvents(PlanetEvents(this));
 
     if (ai.empire.hasTrait(getTraitID("StarChildren")))
       canBuildMoonBase = false;
@@ -896,6 +935,19 @@ final class Infrastructure : AIComponent {
         break;
       }
     }
+  }
+  
+  SystemOrder@ requestOrbital(Region@ region, const OrbitalModule@ module, double priority = 1.0, double expire = INFINITY, uint moneyType = BT_Infrastructure) {
+    SystemAI@ sysAI = systems.getAI(region);
+    if (sysAI !is null) {
+      for (uint i = 0, cnt = checkedOwnedSystems.length; i < cnt; ++i) {
+        if (sysAI is checkedOwnedSystems[i].ai)
+          return checkedOwnedSystems[i].buildInSystem(this, construction, module, priority, false, expire, moneyType);
+      }
+      ai.print("ERROR: requestOrbital: owned system not found.");
+      return null;
+    }
+    return null;
   }
 
   bool shouldHaveOutpost(SystemCheck& sys, SystemArea area, SystemBuildLocation&out loc) {

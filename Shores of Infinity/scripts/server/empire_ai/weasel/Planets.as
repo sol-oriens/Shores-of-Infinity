@@ -1,7 +1,11 @@
 import empire_ai.weasel.WeaselAI;
+
+import empire_ai.weasel.Events;
 import empire_ai.weasel.Resources;
 import empire_ai.weasel.Budget;
 import empire_ai.weasel.Systems;
+
+import ai.events;
 
 import planets.PlanetSurface;
 
@@ -14,15 +18,6 @@ import ai.consider;
 
 import buildings;
 import saving;
-
-//Event callbacks definitions
-funcdef void PlanetAdded(PlanetAI& ai);
-funcdef void PlanetRemoved(PlanetAI& ai);
-
-interface IPlanetEvents {
-	void onPlanetAdded(PlanetAI& ai);
-	void onPlanetRemoved(PlanetAI& ai);
-};
 
 final class BuildingRequest {
 	int id = -1;
@@ -479,6 +474,7 @@ final class AsteroidData {
 };
 
 class Planets : AIComponent, AIConstructions {
+	Events@ events;
 	Resources@ resources;
 	Budget@ budget;
 	Systems@ systems;
@@ -496,28 +492,8 @@ class Planets : AIComponent, AIConstructions {
 	array<ConstructionRequest@> constructionRequests;
 	int nextConstructionRequestId = 0;
 
-	//Event callbacks
-	array<PlanetAdded@> onPlanetAdded;
-	array<PlanetRemoved@> onPlanetRemoved;
-
-	//Event delegate registration
-	void registerPlanetEvents(IPlanetEvents& events) {
-			onPlanetAdded.insertLast(PlanetAdded(events.onPlanetAdded));
-			onPlanetRemoved.insertLast(PlanetRemoved(events.onPlanetRemoved));
-	}
-
-	//Event notifications
-	void notifyPlanetAdded(PlanetAI& ai) {
-		for (uint i = 0, cnt = onPlanetAdded.length; i < cnt; ++i)
-			onPlanetAdded[i](ai);
-	}
-
-	void notifyPlanetRemoved(PlanetAI& ai) {
-		for (uint i = 0, cnt = onPlanetRemoved.length; i < cnt; ++i)
-			onPlanetRemoved[i](ai);
-	}
-
 	void create() {
+		@events = cast<Events>(ai.events);
 		@resources = cast<Resources>(ai.resources);
 		@budget = cast<Budget>(ai.budget);
 		@systems = cast<Systems>(ai.systems);
@@ -820,7 +796,7 @@ class Planets : AIComponent, AIConstructions {
 			plAI.prevTick = gameTime;
 			planets.insertLast(plAI);
 			plAI.init(ai, this);
-			notifyPlanetAdded(plAI);
+			events.notifyPlanetAdded(plAI, EventArgs());
 		}
 		return plAI;
 	}
@@ -849,7 +825,7 @@ class Planets : AIComponent, AIConstructions {
 		plAI.remove(ai, this);
 		planets.remove(plAI);
 		bumped.remove(plAI);
-		notifyPlanetRemoved(plAI);
+		events.notifyPlanetRemoved(plAI, EventArgs());
 	}
 
 	void requestLevel(PlanetAI@ plAI, int toLevel, ImportData@ before = null) {
