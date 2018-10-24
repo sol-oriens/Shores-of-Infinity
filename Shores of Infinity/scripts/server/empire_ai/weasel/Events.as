@@ -8,100 +8,107 @@ import ai.events;
 
 final class Events : AIComponent {
   //Event callbacks
-  array<OwnedSystemAdded@> onOwnedSystemAdded;
-	array<OwnedSystemRemoved@> onOwnedSystemRemoved;
-	array<BorderSystemAdded@> onBorderSystemAdded;
-	array<BorderSystemRemoved@> onBorderSystemRemoved;
-	array<OutsideBorderSystemAdded@> onOutsideBorderSystemAdded;
-	array<OutsideBorderSystemRemoved@> onOutsideBorderSystemRemoved;
-  array<PlanetAdded@> onPlanetAdded;
-	array<PlanetRemoved@> onPlanetRemoved;
-  array<TradeRouteNeeded@> onTradeRouteNeeded;
-  array<OrbitalRequested@> onOrbitalRequested;
-  
+
+  private array<EventHandler@> _onOwnedSystemAdded;
+	private array<EventHandler@> _onOwnedSystemRemoved;
+	private array<EventHandler@> _onBorderSystemAdded;
+	private array<EventHandler@> _onBorderSystemRemoved;
+	private array<EventHandler@> _onOutsideBorderSystemAdded;
+	private array<EventHandler@> _onOutsideBorderSystemRemoved;
+  private array<EventHandler@> _onPlanetAdded;
+	private array<EventHandler@> _onPlanetRemoved;
+  private array<EventHandler@> _onTradeRouteNeeded;
+  private array<EventHandler@> _onOrbitalRequested;
+
+  void create() {
+  }
+
   //Event delegate registration
-  void registerOwnedSystemEvents(IOwnedSystemEvents& events) {
-		onOwnedSystemAdded.insertLast(OwnedSystemAdded(events.onOwnedSystemAdded));
-		onOwnedSystemRemoved.insertLast(OwnedSystemRemoved(events.onOwnedSystemRemoved));
+
+  Events@ opAddAssign(IOwnedSystemEvents& events) {
+		_onOwnedSystemAdded.insertLast(EventHandler(events.onOwnedSystemAdded));
+		_onOwnedSystemRemoved.insertLast(EventHandler(events.onOwnedSystemRemoved));
+    return this;
 	}
 
-	void registerBorderSystemEvents(IBorderSystemEvents& events) {
-		onBorderSystemAdded.insertLast(BorderSystemAdded(events.onBorderSystemAdded));
-		onBorderSystemRemoved.insertLast(BorderSystemRemoved(events.onBorderSystemRemoved));
+	Events@ opAddAssign(IBorderSystemEvents& events) {
+		_onBorderSystemAdded.insertLast(EventHandler(events.onBorderSystemAdded));
+		_onBorderSystemRemoved.insertLast(EventHandler(events.onBorderSystemRemoved));
+    return this;
 	}
 
-	void registerOutsideBorderSystemEvents(IOutsideBorderSystemEvents& events) {
-		onOutsideBorderSystemAdded.insertLast(OutsideBorderSystemAdded(events.onOutsideBorderSystemAdded));
-		onOutsideBorderSystemRemoved.insertLast(OutsideBorderSystemRemoved(events.onOutsideBorderSystemRemoved));
+	Events@ opAddAssign(IOutsideBorderSystemEvents& events) {
+		_onOutsideBorderSystemAdded.insertLast(EventHandler(events.onOutsideBorderSystemAdded));
+		_onOutsideBorderSystemRemoved.insertLast(EventHandler(events.onOutsideBorderSystemRemoved));
+    return this;
 	}
-  
-  void registerPlanetEvents(IPlanetEvents& events) {
-			onPlanetAdded.insertLast(PlanetAdded(events.onPlanetAdded));
-			onPlanetRemoved.insertLast(PlanetRemoved(events.onPlanetRemoved));
+
+  Events@ opAddAssign(IPlanetEvents& events) {
+		_onPlanetAdded.insertLast(EventHandler(events.onPlanetAdded));
+		_onPlanetRemoved.insertLast(EventHandler(events.onPlanetRemoved));
+    return this;
 	}
-  
-  void registerOrbitalRequestEvents(IOrbitalRequestEvents& events) {
-		onOrbitalRequested.insertLast(OrbitalRequested(events.onOrbitalRequested));
+
+  Events@ opAddAssign(ITradeRouteEvents& events) {
+    _onTradeRouteNeeded.insertLast(EventHandler(events.onTradeRouteNeeded));
+    return this;
+  }
+
+  Events@ opAddAssign(IOrbitalRequestEvents& events) {
+		_onOrbitalRequested.insertLast(EventHandler(events.onOrbitalRequested));
+    return this;
 	}
-  
+
   //Event notifications
+
+  private void raiseEvent(array<EventHandler@>& subscribed, ref@ sender, EventArgs& args) {
+		for (uint i = 0, cnt = subscribed.length; i < cnt; ++i)
+			subscribed[i](sender, args);
+	}
+
   void notifyOwnedSystemAdded(ref@ sender, EventArgs& args) {
-		for (uint i = 0, cnt = onOwnedSystemAdded.length; i < cnt; ++i)
-			onOwnedSystemAdded[i](sender, args);
+    raiseEvent(_onOwnedSystemAdded, sender, args);
 	}
 
 	void notifyOwnedSystemRemoved(ref@ sender, EventArgs& args) {
-		for (uint i = 0, cnt = onOwnedSystemRemoved.length; i < cnt; ++i)
-			onOwnedSystemRemoved[i](sender, args);
+		raiseEvent(_onOwnedSystemRemoved, sender, args);
 	}
 
 	void notifyBorderSystemAdded(ref@ sender, EventArgs& args) {
-		for (uint i = 0, cnt = onBorderSystemAdded.length; i < cnt; ++i)
-			onBorderSystemAdded[i](sender, args);
+    raiseEvent(_onBorderSystemAdded, sender, args);
 	}
 
 	void notifyBorderSystemRemoved(ref@ sender, EventArgs& args) {
-		for (uint i = 0, cnt = onBorderSystemRemoved.length; i < cnt; ++i)
-			onBorderSystemRemoved[i](sender, args);
+    raiseEvent(_onBorderSystemRemoved, sender, args);
 	}
 
 	void notifyOutsideBorderSystemAdded(ref@ sender, EventArgs& args) {
-		for (uint i = 0, cnt = onOutsideBorderSystemAdded.length; i < cnt; ++i)
-			onOutsideBorderSystemAdded[i](sender, args);
+    raiseEvent(_onOutsideBorderSystemAdded, sender, args);
 	}
 
 	void notifyOutsideBorderSystemRemoved(ref@ sender, EventArgs& args) {
-		for (uint i = 0, cnt = onOutsideBorderSystemRemoved.length; i < cnt; ++i)
-			onOutsideBorderSystemRemoved[i](sender, args);
+    raiseEvent(_onOutsideBorderSystemRemoved, sender, args);
 	}
-  
+
   void notifyPlanetAdded(ref@ sender, EventArgs& args) {
-		for (uint i = 0, cnt = onPlanetAdded.length; i < cnt; ++i)
-			onPlanetAdded[i](sender, args);
+    raiseEvent(_onPlanetAdded, sender, args);
 	}
 
 	void notifyPlanetRemoved(ref@ sender, EventArgs& args) {
-		for (uint i = 0, cnt = onPlanetRemoved.length; i < cnt; ++i)
-			onPlanetRemoved[i](sender, args);
+    raiseEvent(_onPlanetRemoved, sender, args);
 	}
-  
+
   void notifyTradeRouteNeeded(ref@ sender, EventArgs& args) {
-    for (uint i = 0, cnt = onTradeRouteNeeded.length; i < cnt; ++i) {
-      onTradeRouteNeeded[i](sender, args);
-    }
+    raiseEvent(_onTradeRouteNeeded, sender, args);
   }
-  
+
   void notifyOrbitalRequested(ref@ sender, EventArgs& args) {
-		for (uint i = 0, cnt = onOrbitalRequested.length; i < cnt; ++i)
-			onOrbitalRequested[i](sender, args);
+    raiseEvent(_onOrbitalRequested, sender, args);
 	}
-  
-  void create() {
-  }
-  
+
   void save(SaveFile& file) {
   }
-  
+
   void load(SaveFile& file) {
   }
 };

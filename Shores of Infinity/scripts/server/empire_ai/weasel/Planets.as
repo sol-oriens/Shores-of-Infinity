@@ -197,6 +197,7 @@ final class PlanetAI {
 
 	void init(AI& ai, Planets& planets) {
 		@resources = planets.resources.availableResource(obj);
+		planets.events.notifyPlanetAdded(this, EventArgs());
 	}
 
 	void save(Planets& planets, SaveFile& file) {
@@ -236,6 +237,7 @@ final class PlanetAI {
 			@claimedChain = null;
 		}
 		@resources = null;
+		planets.events.notifyPlanetRemoved(this, EventArgs());
 	}
 
 	void tick(AI& ai, Planets& planets, double time) {
@@ -796,7 +798,6 @@ class Planets : AIComponent, AIConstructions {
 			plAI.prevTick = gameTime;
 			planets.insertLast(plAI);
 			plAI.init(ai, this);
-			events.notifyPlanetAdded(plAI, EventArgs());
 		}
 		return plAI;
 	}
@@ -825,7 +826,6 @@ class Planets : AIComponent, AIConstructions {
 		plAI.remove(ai, this);
 		planets.remove(plAI);
 		bumped.remove(plAI);
-		events.notifyPlanetRemoved(plAI, EventArgs());
 	}
 
 	void requestLevel(PlanetAI@ plAI, int toLevel, ImportData@ before = null) {

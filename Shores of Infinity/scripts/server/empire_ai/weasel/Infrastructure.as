@@ -121,6 +121,20 @@ final class PlanetEvents : IPlanetEvents {
   }
 };
 
+final class TradeRouteEvents : ITradeRouteEvents {
+  Infrastructure@ infrastructure;
+  
+  TradeRouteEvents(Infrastructure& infrastructure) {
+    @this.infrastructure = infrastructure;
+  }
+  
+  void onTradeRouteNeeded(ref& sender, EventArgs& args) {
+    TradeRouteNeededEventArgs@ specs = cast<TradeRouteNeededEventArgs>(args);
+    if (specs !is null)
+      infrastructure.establishTradeRoute(specs.territory1, specs.territory2);
+  }
+}
+
 final class OrbitalRequestEvents : IOrbitalRequestEvents {
   Infrastructure@ infrastructure;
   
@@ -619,9 +633,10 @@ final class Infrastructure : AIComponent {
     gasGiantStatusId = getStatusID("GasGiant");
     iceGiantStatusId = getStatusID("IceGiant");
     
-    events.registerOwnedSystemEvents(OwnedSystemEvents(this));
-    events.registerOutsideBorderSystemEvents(OutsideBorderSystemEvents(this));
-    events.registerPlanetEvents(PlanetEvents(this));
+    events += OwnedSystemEvents(this);
+    events += OutsideBorderSystemEvents(this);
+    events += PlanetEvents(this);
+    events += TradeRouteEvents(this);
 
     if (ai.empire.hasTrait(getTraitID("StarChildren")))
       canBuildMoonBase = false;
@@ -935,6 +950,10 @@ final class Infrastructure : AIComponent {
         break;
       }
     }
+  }
+  
+  void establishTradeRoute(Territory@ territory1, Territory@ territory2) {
+    
   }
   
   SystemOrder@ requestOrbital(Region@ region, const OrbitalModule@ module, double priority = 1.0, double expire = INFINITY, uint moneyType = BT_Infrastructure) {

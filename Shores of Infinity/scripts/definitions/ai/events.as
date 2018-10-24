@@ -1,17 +1,8 @@
 from orbitals import OrbitalModule;
 
-//Event callbacks definitions
+//Event callback
 
-funcdef void OwnedSystemAdded(ref& sender, EventArgs& args);
-funcdef void OwnedSystemRemoved(ref& sender, EventArgs& args);
-funcdef void BorderSystemAdded(ref& sender, EventArgs& args);
-funcdef void BorderSystemRemoved(ref& sender, EventArgs& args);
-funcdef void OutsideBorderSystemAdded(ref& sender, EventArgs& args);
-funcdef void OutsideBorderSystemRemoved(ref& sender, EventArgs& args);
-funcdef void PlanetAdded(ref& sender, EventArgs& args);
-funcdef void PlanetRemoved(ref& sender, EventArgs& args);
-funcdef void TradeRouteNeeded(ref& sender, EventArgs& args);
-funcdef void OrbitalRequested(ref& sender, EventArgs& args);
+funcdef void EventHandler(ref& sender, EventArgs& args);
 
 //Event interfaces
 
@@ -35,7 +26,7 @@ interface IPlanetEvents {
 	void onPlanetRemoved(ref& sender, EventArgs& args);
 };
 
-interface ITradeRouteNeededEvents {
+interface ITradeRouteEvents {
   void onTradeRouteNeeded(ref& sender, EventArgs& args);
 };
 
@@ -46,20 +37,40 @@ interface IOrbitalRequestEvents {
 // Generic type for event arguments
 
 class EventArgs {
+	//This is used to hold instances that cannot be explicitly typed, because of circular imports for example
+	ref@ bag;
   
+	EventArgs() { }
+	
+	EventArgs(ref@ bag) {
+		@this.bag = bag;
+	}
 };
 
 // Specialized event arguments
 
 class TradeRouteNeededEventArgs : EventArgs {
-  Territory@ territory1;
-  Territory@ territory2;
+	Territory@ territory1;
+	Territory@ territory2;
+	
+	TradeRouteNeededEventArgs(Territory@ territory1, Territory@ territory2) {
+			@this.territory1 = territory1;
+			@this.territory2 = territory2;
+	}
 };
 
 class OrbitalRequestedEventArgs : EventArgs {
-  Region@ region;
-  const OrbitalModule@ module;
-  double priority;
-  double expire;
-  uint moneyType;
+	Region@ region;
+	const OrbitalModule@ module;
+	double priority;
+	double expire;
+	uint moneyType;
+	
+	OrbitalRequestedEventArgs(Region@ region, const OrbitalModule@ module, double priority, double expire, uint moneyType) {
+		@this.region = region;
+		@this.module = module;
+		this.priority = priority;
+		this.expire = expire;
+		this.moneyType = moneyType;
+	}
 };
