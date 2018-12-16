@@ -35,3 +35,5 @@ Module: TradeStation
 	GlobalTradeNode()
 
 	FriendlyPlanetMoney(To Self = 100, To Other = 100, Count Self = False, Max Money = 300, Per Level = True)
+	
+	AI: RegisterForTradeUse(TradeStation)

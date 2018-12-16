@@ -50,12 +50,12 @@ class EventArgs {
 // Specialized event arguments
 
 class TradeRouteNeededEventArgs : EventArgs {
-	Territory@ territory1;
-	Territory@ territory2;
+	Territory@ territoryA;
+	Territory@ territoryB;
 	
-	TradeRouteNeededEventArgs(Territory@ territory1, Territory@ territory2) {
-			@this.territory1 = territory1;
-			@this.territory2 = territory2;
+	TradeRouteNeededEventArgs(Territory@ territoryA, Territory@ territoryB) {
+			@this.territoryA = territoryA;
+			@this.territoryB = territoryB;
 	}
 };
 
@@ -63,14 +63,14 @@ class OrbitalRequestedEventArgs : EventArgs {
 	Region@ region;
 	const OrbitalModule@ module;
 	double priority;
-	double expire;
+	double expires;
 	uint moneyType;
 	
-	OrbitalRequestedEventArgs(Region@ region, const OrbitalModule@ module, double priority, double expire, uint moneyType) {
+	OrbitalRequestedEventArgs(Region@ region, const OrbitalModule@ module, double priority, double expires, uint moneyType) {
 		@this.region = region;
 		@this.module = module;
 		this.priority = priority;
-		this.expire = expire;
+		this.expires = expires;
 		this.moneyType = moneyType;
 	}
 };

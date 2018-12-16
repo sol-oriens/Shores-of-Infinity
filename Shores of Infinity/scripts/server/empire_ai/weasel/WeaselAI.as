@@ -338,10 +338,11 @@ final class AIBehavior {
 final class AIDefs {
 	const BuildingType@ Factory;
 	const BuildingType@ LaborStorage;
-	const OrbitalModule@ Shipyard;
-	const OrbitalModule@ TradeOutpost;
-	const OrbitalModule@ Starport;
 	const ConstructionType@ MoonBase;
+	const OrbitalModule@ Shipyard;
+	const OrbitalModule@ Starport;
+	const OrbitalModule@ TradeOutpost;
+	const OrbitalModule@ TradeStation;
 };
 
 final class AI : AIController, Savable {

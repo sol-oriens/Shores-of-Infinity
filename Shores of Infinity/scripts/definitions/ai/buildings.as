@@ -38,6 +38,10 @@ class BuildingAI : Hook, ConsiderHook {
 	Object@ considerBuild(Buildings& buildings, const BuildingType& type) const {
 		return null;
 	}
+	
+	Object@ considerBuild(Buildings& buildings, const BuildingType& type, const ref@ param) const {
+		return null;
+	}
 };
 
 class RegisterForUse : BuildingAI {
@@ -52,6 +56,41 @@ class RegisterForUse : BuildingAI {
 			}
 		}
 	}
+};
+
+class RegisterForLaborUse : BuildingAI {
+	Document doc("This building is used in a specific way to generate labor where needed. Only one building can be used for a specific specialized use.");
+	Argument use(AT_Custom, doc="Specialized usage for this orbital.");
+	
+	void register(Buildings& buildings, const BuildingType& type) const override {
+		for(uint i = 0, cnt = BuildingUseName.length; i < cnt; ++i) {
+			if(BuildingUseName[i] == use.str) {
+				buildings.registerUse(BuildingUse(i), type);
+				return;
+			}
+		}
+	}
+	
+	#section server
+		double consider(Considerer& cons, Object@ obj) const override {
+			return 1.0;
+		}
+	
+		Object@ considerBuild(Buildings& buildings, const BuildingType& type, const ref@ param) const override {
+			@buildings.consider.component = buildings;
+			@buildings.consider.building = type;
+			
+			const Territory@ territory = cast<Territory>(param);
+			if (territory !is null) {
+				Object@ result = buildings.consider.ImportantPlanetsInTerritory(this, territory);
+				if (result is null)
+					//Broaden our search
+					@result = buildings.consider.PlanetsInTerritory(this, territory);
+				return result;
+			}
+			return null;
+		}
+	#section all
 };
 
 class AsCreatedResource : BuildingAI {

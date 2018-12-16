@@ -18,16 +18,19 @@ import saving;
 import systems;
 import regions.regions;
 
+import ai.construction;
+
 from constructible import ConstructibleType;
 from constructions import ConstructionType, getConstructionType;
 
-class AllocateConstruction {
+class AllocateConstruction : IConstruction {
+	private bool _completed = false;
+	private bool _started = false;
+	
 	int id = -1;
 	uint moneyType = BT_Development;
 	Factory@ tryFactory;
 	double maxTime = INFINITY;
-	bool completed = false;
-	bool started = false;
 	double completedAt = 0;
 	AllocateBudget@ alloc;
 	int cost = 0;
@@ -36,13 +39,27 @@ class AllocateConstruction {
 
 	AllocateConstruction() {
 	}
+	
+	bool get_started() const {
+		return _started;
+	}
+	
+	bool completed {
+		get const {
+			return _completed;
+		}
+		
+		set {
+			_completed = value;
+		}
+	}
 
 	void _save(Construction& construction, SaveFile& file) {
 		file << moneyType;
 		construction.saveFactory(file, tryFactory);
 		file << maxTime;
-		file << completed;
-		file << started;
+		file << _completed;
+		file << _started;
 		file << completedAt;
 		construction.budget.saveAlloc(file, alloc);
 		file << cost;
@@ -58,8 +75,8 @@ class AllocateConstruction {
 		file >> moneyType;
 		@tryFactory = construction.loadFactory(file);
 		file >> maxTime;
-		file >> completed;
-		file >> started;
+		file >> _completed;
+		file >> _started;
 		file >> completedAt;
 		@alloc = construction.budget.loadAlloc(file);
 		file >> cost;
@@ -92,7 +109,7 @@ class AllocateConstruction {
 	}
 
 	void construct(AI& ai, Factory@ f) {
-		started = true;
+		_started = true;
 	}
 
 	string toString() {
@@ -356,9 +373,9 @@ class BuildStation : AllocateConstruction {
 	}
 };
 
-class BuildOrbital : AllocateConstruction {
+class BuildOrbital : AllocateConstruction, IOrbitalConstruction {
 	double baseLabor = 0.0;
-	const OrbitalModule@ module;
+	const OrbitalModule@ _module;
 	const Planet@ planet;
 	bool local = false;
 	vec3d position;
@@ -368,35 +385,39 @@ class BuildOrbital : AllocateConstruction {
 
 	BuildOrbital(const OrbitalModule@ module, const vec3d& position) {
 		this.position = position;
-		@this.module = module;
+		@this._module = module;
 		baseLabor = module.laborCost;
 	}
 
 	BuildOrbital(const OrbitalModule@ module, bool local) {
 		this.local = true;
-		@this.module = module;
+		@this._module = module;
 		baseLabor = module.laborCost;
 	}
 
 	BuildOrbital(const OrbitalModule@ module, const Planet@ planet) {
 		this.local = true;
 		@this.planet = planet;
-		@this.module = module;
+		@this._module = module;
 		baseLabor = module.laborCost;
+	}
+	
+	const OrbitalModule@ get_module() const {
+		return _module;
 	}
 
 	void save(Construction& construction, SaveFile& file) {
 		file << baseLabor;
 		file << position;
 		file << local;
-		file.writeIdentifier(SI_Orbital, module.id);
+		file.writeIdentifier(SI_Orbital, _module.id);
 	}
 
 	void load(Construction& construction, SaveFile& file) {
 		file >> baseLabor;
 		file >> position;
 		file >> local;
-		@module = getOrbitalModule(file.readIdentifier(SI_Orbital));
+		@_module = getOrbitalModule(file.readIdentifier(SI_Orbital));
 	}
 
 	double laborCost(AI& ai, Object@ obj) {
@@ -423,7 +444,7 @@ class BuildOrbital : AllocateConstruction {
 	}
 
 	bool canBuild(AI& ai, Factory@ f) override {
-		if(module is null)
+		if(_module is null)
 			return false;
 		if(!f.obj.canBuildOrbitals)
 			return false;
@@ -441,12 +462,12 @@ class BuildOrbital : AllocateConstruction {
 	}
 
 	void update(AI& ai, Factory@ f) {
-		double c = module.buildCost;
+		double c = _module.buildCost;
 		c *= f.obj.owner.OrbitalBuildCostFactor;
 		c *= f.obj.constructionCostMod;
 
 		cost = ceil(c);
-		maintenance = module.maintenance;
+		maintenance = _module.maintenance;
 
 		AllocateConstruction::update(ai, f);
 	}
@@ -469,12 +490,12 @@ class BuildOrbital : AllocateConstruction {
 				}
 			}
 		}
-		f.obj.buildOrbital(module.id, position);
+		f.obj.buildOrbital(_module.id, position);
 		AllocateConstruction::construct(ai, f);
 	}
 
 	string toString() {
-		return "orbital "+module.name;
+		return "orbital " + _module.name;
 	}
 };
 

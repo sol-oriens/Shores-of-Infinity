@@ -13,11 +13,14 @@ import empire_ai.weasel.Budget;
 import empire_ai.weasel.Orbitals;
 import empire_ai.weasel.Systems;
 import empire_ai.weasel.Planets;
+import empire_ai.weasel.Resources;
 
 import ai.events;
 
 import ABEM_data;
 import util.lookup;
+
+from ai.orbitals import RegisterForTradeUse;
 
 from statuses import getStatusID;
 from traits import getTraitID;
@@ -131,7 +134,7 @@ final class TradeRouteEvents : ITradeRouteEvents {
   void onTradeRouteNeeded(ref& sender, EventArgs& args) {
     TradeRouteNeededEventArgs@ specs = cast<TradeRouteNeededEventArgs>(args);
     if (specs !is null)
-      infrastructure.establishTradeRoute(specs.territory1, specs.territory2);
+      infrastructure.establishTradeRoute(specs.territoryA, specs.territoryB);
   }
 }
 
@@ -145,7 +148,7 @@ final class OrbitalRequestEvents : IOrbitalRequestEvents {
   void onOrbitalRequested(ref& sender, EventArgs& args) {
     OrbitalRequestedEventArgs@ specs = cast<OrbitalRequestedEventArgs>(args);
     if (specs !is null)
-      infrastructure.requestOrbital(specs.region, specs.module, specs.priority, specs.expire, specs.moneyType);
+      infrastructure.requestOrbital(specs.region, specs.module, specs.priority, specs.expires, specs.moneyType);
   }
 }
 
@@ -241,7 +244,7 @@ final class PlanetOrder {
   }
 };
 
-class NextAction {
+abstract class NextAction {
   double priority = 1.0;
   bool force = false;
   bool critical = false;
@@ -276,12 +279,25 @@ final class PlanetAction : NextAction {
   PlanetBuildAction get_action() const { return _action; }
 };
 
-final class SystemCheck {
+abstract class Check {
+  protected double _checkInTime = 0.0;
+  
+  Check() {
+    _checkInTime = gameTime;
+  }
+  
+  double get_checkInTime() const { return _checkInTime; }
+}
+
+namespace SystemCheck {
+  array<SystemOrder@> allOrders;
+}
+
+final class SystemCheck : Check {
   SystemAI@ ai;
 
   array<SystemOrder@> orders;
 
-  private double _checkInTime = 0.0;
   private double _weight = 0.0;
   private bool _isUnderAttack = false;
   private int _nebulaFlag = -1;
@@ -289,13 +305,12 @@ final class SystemCheck {
   SystemCheck() {}
 
   SystemCheck(Infrastructure& infrastructure, SystemAI& ai) {
+    super();
     @this.ai = ai;
-    _checkInTime = gameTime;
     if (ai.obj.isNebula)
       _nebulaFlag = infrastructure.identifyNebula(ai.obj);
   }
 
-  double get_checkInTime() const { return _checkInTime; }
   double get_weight() const { return _weight; }
   bool get_isUnderAttack() const { return _isUnderAttack; }
   int get_nebulaFlag() const { return _nebulaFlag; }
@@ -324,7 +339,7 @@ final class SystemCheck {
       auto@ order = SystemOrder();
 			order.load(infrastructure, file);
       if (order.isValid)
-        orders.insertLast(order);
+        addOrder(order);
 		}
     file >> _checkInTime;
     file >> _weight;
@@ -334,30 +349,37 @@ final class SystemCheck {
 
   void tick(AI& ai, Infrastructure& infrastructure, double time) {
     OrbitalAI@ orbital;
+    //Update hostile status
     _isUnderAttack = this.ai.obj.ContestedMask & ai.mask != 0;
-    /*if (_isUnderAttack && isBuilding()) {
-      //SoI - TODO: Cancel order
+    
+    //Cancel all orders if attacked
+    /*if (isUnderAttack && isBuilding) {
+      for (uint i = 0, cnt = orders.length; i < cnt; ++i) {
+        auto@ order = orders[i];
+        //SoI - TODO: Cancel not fully implemented, see Construction.as
+        infrastructure.construction.cancel(order.info);
+        removeOrder(order);
+        --i; --cnt;
+      }
     }*/
+    
     if (isBuilding) {
       for (uint i = 0, cnt = orders.length; i < cnt; ++i) {
         auto@ order = orders[i];
         if (!order.isValid) {
-          orders.remove(order);
-          @order = null;
+          removeOrder(order);
           --i; --cnt;
         }
         else if (order.isComplete) {
           if (infrastructure.log)
             ai.print("order complete");
-          orders.remove(order);
-          @order = null;
+          removeOrder(order);
           --i; --cnt;
         }
         else if (!order.isInProgress && order.expires < gameTime) {
           if (infrastructure.log)
             ai.print("order expired, gameTime = " + gameTime);
-          orders.remove(order);
-          @order = null;
+          removeOrder(order);
           --i; --cnt;
         }
       }
@@ -423,50 +445,64 @@ final class SystemCheck {
     return weight;
   }
 
-  SystemOrder@ buildInSystem(Infrastructure& infrastructure, Construction& construction, const OrbitalModule@ module, double priority = 1.0, bool force = false, double delay = 600, uint moneyType = BT_Infrastructure) {
+  SystemOrder@ buildInSystem(Infrastructure& infrastructure, const OrbitalModule@ module, double priority = 1.0, bool force = false, double delay = 600.0, uint moneyType = BT_Infrastructure) {
     vec3d pos = ai.obj.position;
     vec2d offset = random2d(ai.obj.radius * 0.4, ai.obj.radius * 0.7);
     pos.x += offset.x;
     pos.z += offset.y;
 
-    BuildOrbital@ orbital = construction.buildOrbital(module, pos, priority, force, moneyType);
+    BuildOrbital@ orbital = infrastructure.construction.buildOrbital(module, pos, priority, force, moneyType);
     auto@ order = SystemOrder(orbital);
     order.expires = gameTime + delay;
-    orders.insertLast(order);
+    addOrder(order);
     
     return order;
   }
 
-  SystemOrder@ buildAtSystemEdge(Infrastructure& infrastructure, Construction& construction, const OrbitalModule@ module, double priority = 1.0, bool force = false, double delay = 600, uint moneyType = BT_Infrastructure) {
+  SystemOrder@ buildAtSystemEdge(Infrastructure& infrastructure, const OrbitalModule@ module, double priority = 1.0, bool force = false, double delay = 600.0, uint moneyType = BT_Infrastructure) {
     vec3d pos = ai.obj.position;
     vec2d offset = random2d(ai.obj.radius * 0.8, ai.obj.radius * 0.9);
     pos.x += offset.x;
     pos.z += offset.y;
 
-    BuildOrbital@ orbital = construction.buildOrbital(module, pos, priority, force, moneyType);
+    BuildOrbital@ orbital = infrastructure.construction.buildOrbital(module, pos, priority, force, moneyType);
     auto@ order = SystemOrder(orbital);
     order.expires = gameTime + delay;
-    orders.insertLast(order);
+    addOrder(order);
     
     return order;
   }
 
-  SystemOrder@ buildAtPlanet(Infrastructure& infrastructure, Construction& construction, Planet& planet, const OrbitalModule@ module, double priority = 1.0, bool force = false, double delay = 600, uint moneyType = BT_Infrastructure) {
-    BuildOrbital@ orbital = construction.buildLocalOrbital(module, planet, priority, force, moneyType);
+  SystemOrder@ buildAtPlanet(Infrastructure& infrastructure, Planet& planet, const OrbitalModule@ module, double priority = 1.0, bool force = false, double delay = 600.0, uint moneyType = BT_Infrastructure) {
+    BuildOrbital@ orbital = infrastructure.construction.buildLocalOrbital(module, planet, priority, force, moneyType);
     auto@ order = SystemOrder(orbital);
     order.expires = gameTime + delay;
-    orders.insertLast(order);
+    addOrder(order);
     
     return order;
+  }
+  
+  void addOrder(SystemOrder@ order) {
+    orders.insertLast(order);
+    SystemCheck::allOrders.insertLast(order);
+  }
+  
+  void removeOrder(SystemOrder@ order) {
+    orders.remove(order);
+    SystemCheck::allOrders.remove(order);
+    @order = null;
   }
 };
 
-final class PlanetCheck {
+namespace PlanetCheck {
+  array<PlanetOrder@> allOrders;
+}
+
+final class PlanetCheck : Check {
   PlanetAI@ ai;
 
   array<PlanetOrder@> orders;
 
-  private double _checkInTime = 0.0;
   private double _weight = 0.0;
   private bool _isSystemUnderAttack = false;
   private bool _isGasGiant = false;
@@ -475,8 +511,8 @@ final class PlanetCheck {
   PlanetCheck() {}
 
   PlanetCheck(Infrastructure& infrastructure, PlanetAI& ai) {
+    super();
     @this.ai = ai;
-    _checkInTime = gameTime;
 
     if (this.ai.obj.getStatusStackCountAny(gasGiantStatusId) > 0)
       _isGasGiant = true;
@@ -484,7 +520,6 @@ final class PlanetCheck {
       _isIceGiant = true;
   }
 
-  double get_checkInTime() const { return _checkInTime; }
   double get_weight() const { return _weight; }
   bool get_isSystemUnderAttack() const { return _isSystemUnderAttack; }
   bool get_isGasGiant() const { return _isGasGiant; }
@@ -515,7 +550,7 @@ final class PlanetCheck {
       auto@ order = PlanetOrder();
 			order.load(infrastructure, file);
       if (order.isValid)
-        orders.insertLast(order);
+        addOrder(order);
 		}
     file >> _checkInTime;
     file >> _weight;
@@ -533,22 +568,19 @@ final class PlanetCheck {
       for (uint i = 0, cnt = orders.length; i < cnt; ++i) {
         auto@ order = orders[i];
         if (!order.isValid) {
-          orders.remove(order);
-          @order = null;
+          removeOrder(order);
           --i; --cnt;
         }
         else if (order.isComplete) {
           if (infrastructure.log)
             ai.print("planet order complete");
-          orders.remove(order);
-          @order = null;
+          removeOrder(order);
           --i; --cnt;
         }
         else if (!order.isInProgress && order.expires < gameTime) {
           if (infrastructure.log)
             ai.print("planet order expired, gameTime = " + gameTime);
-          orders.remove(order);
-          @order = null;
+          removeOrder(order);
           --i; --cnt;
         }
       }
@@ -580,15 +612,153 @@ final class PlanetCheck {
     return _weight;
   }
 
-  PlanetOrder@ build(Infrastructure& infrastructure, Construction& construction, const ConstructionType@ consType, double priority = 1.0, bool force = false, bool critical = false, double delay = 600, uint moneyType = BT_Infrastructure) {
+  PlanetOrder@ build(Infrastructure& infrastructure, const ConstructionType@ consType, double priority = 1.0, bool force = false, bool critical = false, double delay = 600.0, uint moneyType = BT_Infrastructure) {
       ConstructionRequest@ request = infrastructure.planets.requestConstruction(ai, ai.obj, consType, priority, gameTime + delay, moneyType);
       auto@ order = PlanetOrder(request);
       order.expires = gameTime + delay;
-      orders.insertLast(order);
+      addOrder(order);
       
       return order;
   }
+  
+  void addOrder(PlanetOrder@ order) {
+    orders.insertLast(order);
+    PlanetCheck::allOrders.insertLast(order);
+  }
+  
+  void removeOrder(PlanetOrder@ order) {
+    orders.remove(order);
+    PlanetCheck::allOrders.remove(order);
+    @order = null;
+  }
 };
+
+final class TradeRoute {
+  private Territory@ _territoryA;
+  private Territory@ _territoryB;
+  private Region@ _endpointA;
+  private Region@ _endpointB;
+  private SystemOrder@ _orderA;
+  private SystemOrder@ _orderB;
+  private bool _isEstablishing;
+  private bool _isWaitingForLabor;
+  private double _delay;
+  private double _sleep;
+  
+  TradeRoute() {}
+  
+  TradeRoute(Territory& territoryA, Territory& territoryB) {
+    @_territoryA = territoryA;
+    @_territoryB = territoryB;
+    _isEstablishing = false;
+    _isWaitingForLabor = false;
+    _delay = 0.0;
+    _sleep = 0.0;
+  }
+    
+  Territory@ get_territoryA() const { return _territoryA; }
+  Territory@ get_territoryB() const { return _territoryB; }
+  Region@ get_endpointA() const { return _endpointA; }
+  Region@ get_endpointB() const { return _endpointB; }
+  SystemOrder@ get_orderA() const { return _orderA; }
+  SystemOrder@ get_orderB() const { return _orderB; }
+  bool get_isEstablishing() const { return _isEstablishing; }
+  bool get_isWaitingForLabor() const { return _isWaitingForLabor; }
+  
+  void save(Infrastructure& infrastructure, SaveFile& file) {
+  }
+  
+  void load(Infrastructure& infrastructure, SaveFile& file) {
+  }
+  
+  void tick(AI& ai, Infrastructure& infrastructure, double time) {
+    if (_delay > 0.0 && _delay < gameTime) {
+      _isWaitingForLabor = false;
+      _delay = 0.0;
+    }
+  }
+  
+  void focusTick(AI& ai, Infrastructure& infrastructure, double time) {
+  }
+  
+  bool canEstablish(Infrastructure& infrastructure, bool&out buildAtA, bool&out canBuildAtA, bool&out buildAtB, bool&out canBuildAtB) {
+    //We're still sleeping
+    if (_sleep > gameTime)
+      return false;
+    //At least one building order is still pending
+    if (orderA !is null || orderB !is null)
+      return false;
+    
+    buildAtA = true;
+    buildAtB = true;
+    canBuildAtA = false;
+    canBuildAtB = false;
+    for (uint i = 0, cnt = infrastructure.checkedPlanets.length; i < cnt; ++i) {
+      Planet@ pl = infrastructure.checkedPlanets[i].ai.obj;
+      Territory@ t = pl.region.getTerritory(infrastructure.ai.empire);
+      if (t is territoryA) {
+        //Is there a global trade node here already
+        if (pl.region.GateMask & ~pl.owner.mask != 0) {
+          buildAtA = false;
+          @_endpointA = pl.region;
+        }
+        if (!canBuildAtA) {
+          //Is there a labor source in this territory
+          if (pl.laborIncome > 0 && pl.canBuildOrbitals)
+            canBuildAtA = true;
+        }
+      }
+      else if (t is territoryB) {
+        //Is there a global trade node here already
+        if (pl.region.GateMask & ~pl.owner.mask != 0) {
+          buildAtB = false;
+          @_endpointB = pl.region;
+        }
+        if (!canBuildAtB) {
+          //Is there a labor source in this territory
+          if (pl.laborIncome > 0 && pl.canBuildOrbitals)
+            canBuildAtB = true;
+        }
+      }
+      if (!buildAtA && !buildAtB) {
+        //Should not normally happen, except if trade if somehow disrupted despite global trade nodes
+        return false;
+      }
+      if (canBuildAtA && canBuildAtB) {
+        _isWaitingForLabor = false;
+        return true;
+      }
+    }
+    //These checks are expensive and don't need to be run frequently, so let's sleep for some time
+    _sleep = gameTime + 10.0;
+    return false;
+  }
+  
+  void establish(Infrastructure& infrastructure, Region@ regionA, Region@ regionB) {
+    SystemOrder@ orderA = null;
+    SystemOrder@ orderB = null;
+    if (regionA !is null) {
+      @orderA = infrastructure.requestOrbital(regionA, infrastructure.ai.defs.TradeStation);
+      @_endpointA = regionA;
+    }
+    if (regionB !is null) {
+      @orderB = infrastructure.requestOrbital(regionB, infrastructure.ai.defs.TradeStation);
+      @_endpointB = regionB;
+    }
+    if (orderA is null || orderB is null) {
+      infrastructure.ai.print("ERROR: could not establish trade route between " + regionA.name + " and " + regionB.name);
+      return;
+    }
+    @_orderA = orderA;
+    @_orderB = orderB;
+    _isEstablishing = true;
+  }
+  
+  void waitForLabor(double expires) {
+    _isWaitingForLabor = true;
+    _delay = gameTime + expires;
+  }
+}
 
 final class Infrastructure : AIComponent {
   const ResourceClass@ foodClass, waterClass, scalableClass;
@@ -604,15 +774,19 @@ final class Infrastructure : AIComponent {
   Planets@ planets;
 	Systems@ systems;
   Budget@ budget;
+  Resources@ resources;
 
   array<SystemCheck@> checkedOwnedSystems; //Includes border systems
   array<SystemCheck@> checkedOutsideSystems;
   array<PlanetCheck@> checkedPlanets;
+  
+  array<TradeRoute@> pendingRoutes;
 
   SystemCheck@ homeSystem;
   NextAction@ nextAction;
 
   //Unlock tracking
+  bool canBuildGate = false;
   bool canBuildMoonBase = true;
 
   void create() {
@@ -624,6 +798,7 @@ final class Infrastructure : AIComponent {
     @planets = cast<Planets>(ai.planets);
 		@systems = cast<Systems>(ai.systems);
     @budget = cast<Budget>(ai.budget);
+    @resources = cast<Resources>(ai.resources);
 
     //Cache expensive lookups
     @foodClass = getResourceClass("Food");
@@ -638,6 +813,8 @@ final class Infrastructure : AIComponent {
     events += PlanetEvents(this);
     events += TradeRouteEvents(this);
 
+    if (ai.empire.hasTrait(getTraitID("Gate")))
+      canBuildGate = true;
     if (ai.empire.hasTrait(getTraitID("StarChildren")))
       canBuildMoonBase = false;
 	}
@@ -717,6 +894,7 @@ final class Infrastructure : AIComponent {
   void tick(double time) override {
     SystemCheck@ sys;
     PlanetCheck@ pl;
+    TradeRoute@ route;
     //Perform routine duties
     for (uint i = 0, cnt = checkedOwnedSystems.length; i < cnt; ++i) {
       @sys = checkedOwnedSystems[i];
@@ -729,6 +907,10 @@ final class Infrastructure : AIComponent {
     for (uint i = 0, cnt = checkedPlanets.length; i < cnt; ++i) {
       @pl = checkedPlanets[i];
       pl.tick(ai, this, time);
+    }
+    for (uint i = 0, cnt = pendingRoutes.length; i < cnt; ++i) {
+      @route = pendingRoutes[i];
+      route.tick(ai, this, time);
     }
   }
 
@@ -837,15 +1019,15 @@ final class Infrastructure : AIComponent {
           case BA_BuildOutpost:
             switch (next.loc) {
               case BL_InSystem:
-                sys.buildInSystem(this, construction, ai.defs.TradeOutpost, next.priority, next.force);
+                sys.buildInSystem(this, ai.defs.TradeOutpost, next.priority, next.force);
                 break;
               case BL_AtSystemEdge:
-                sys.buildAtSystemEdge(this, construction, ai.defs.TradeOutpost, next.priority, next.force);
+                sys.buildAtSystemEdge(this, ai.defs.TradeOutpost, next.priority, next.force);
                 break;
               case BL_AtBestPlanet:
                   @obj = getBestPlanet(sys);
                   if (obj !is null) {
-                    sys.buildAtPlanet(this, construction, cast<Planet>(obj), ai.defs.TradeOutpost, next.priority, next.force);
+                    sys.buildAtPlanet(this, cast<Planet>(obj), ai.defs.TradeOutpost, next.priority, next.force);
                   }
                 break;
               default:
@@ -857,15 +1039,15 @@ final class Infrastructure : AIComponent {
           case BA_BuildStarport:
             switch (next.loc) {
               case BL_InSystem:
-                sys.buildInSystem(this, construction, ai.defs.Starport, next.priority, next.force);
+                sys.buildInSystem(this, ai.defs.Starport, next.priority, next.force);
                 break;
               case BL_AtSystemEdge:
-                sys.buildAtSystemEdge(this, construction, ai.defs.Starport, next.priority, next.force);
+                sys.buildAtSystemEdge(this, ai.defs.Starport, next.priority, next.force);
                 break;
               case BL_AtBestPlanet:
                   @obj = getBestPlanet(sys);
                   if (obj !is null) {
-                    sys.buildAtPlanet(this, construction, cast<Planet>(obj), ai.defs.Starport, next.priority, next.force);
+                    sys.buildAtPlanet(this, cast<Planet>(obj), ai.defs.Starport, next.priority, next.force);
                   }
                 break;
               default:
@@ -884,7 +1066,7 @@ final class Infrastructure : AIComponent {
           @pl = next.pl;
           switch (next.action) {
             case BA_BuildMoonBase:
-              pl.build(this, construction, ai.defs.MoonBase, next.priority, next.force, next.critical);
+              pl.build(this, ai.defs.MoonBase, next.priority, next.force, next.critical);
               if (log)
                 ai.print("moon base ordered", pl.ai.obj);
               break;
@@ -896,80 +1078,144 @@ final class Infrastructure : AIComponent {
 
       @nextAction = null;
     }
+    
+    //Manage any pending trading routes
+    TradeRoute@ route;
+    for (uint i = 0, cnt = pendingRoutes.length; i < cnt; ++i) {
+      @route = pendingRoutes[i];
+      bool buildAtA = true;
+      bool canBuildAtA = false;
+      bool buildAtB = true;
+      bool canBuildAtB = false;
+      
+      if (route.canEstablish(this, buildAtA, canBuildAtA, buildAtB, canBuildAtB)) {
+        Region@ regionA = null;
+        Region@ regionB = null;
+        if (buildAtA)
+          @regionA = getRouteEndpoint(route.territoryA);
+        if (buildAtB)
+          @regionB = getRouteEndpoint(route.territoryB);
+        if (regionA !is null && regionB !is null) {
+          route.establish(this, regionA, regionB);
+          if (log)
+            ai.print("trade route establishing between " + regionA.name + " and " + regionB.name);
+        }
+      }
+      else if (!route.isEstablishing && !route.isWaitingForLabor) {
+        Region@ regionA = null;
+        Region@ regionB = null;
+        double expires = 0.0;
+        if (!canBuildAtA)
+          @regionA = getLaborAt(route.territoryA, expires);
+        if (!canBuildAtB)
+          @regionB = getLaborAt(route.territoryB, expires);
+        route.waitForLabor(expires);
+        if (log) {
+          string location = "";
+          if (!canBuildAtA && regionA !is null)
+            location += " " + regionA.name;
+          if (!canBuildAtB && regionB !is null) {
+            if (location != "")
+              location += ", ";
+            location += " " + regionB.name;
+          }
+          if (location == "")
+            ai.print("trade route unable to get labor");
+          else
+            ai.print("trade route waiting for labor at:" + location);
+        }
+      }
+      if (route.endpointA !is null && route.endpointB !is null && resources.canTradeBetween(route.endpointA, route.endpointB)) {
+        pendingRoutes.remove(route);
+        if (log)
+          ai.print("trade route established between " + addrstr(route.territoryA) + " and " + addrstr(route.territoryB));
+      }
+      //Perform routine duties
+      route.focusTick(ai, this, time);
+    }
   }
 
   void registerOwnedSystemAdded(SystemAI& sysAI) {
     auto@ sys = SystemCheck(this, sysAI);
+    checkedOwnedSystems.insertLast(sys);
     if (log)
       ai.print("adding owned system: " + sysAI.obj.name);
-    checkedOwnedSystems.insertLast(sys);
   }
 
   void registerOwnedSystemRemoved(SystemAI& sysAI) {
-    if (log)
-      ai.print("removing owned system: " + sysAI.obj.name);
     for (uint i = 0, cnt = checkedOwnedSystems.length; i < cnt; ++i) {
       if (sysAI is checkedOwnedSystems[i].ai) {
         checkedOwnedSystems.removeAt(i);
         break;
       }
     }
+    if (log)
+      ai.print("removing owned system: " + sysAI.obj.name);
   }
 
   void registerOutsideBorderSystemAdded(SystemAI& sysAI) {
     auto@ sys = SystemCheck(this, sysAI);
+    checkedOutsideSystems.insertLast(sys);
     if (log)
       ai.print("adding outside system: " + sysAI.obj.name);
-    checkedOutsideSystems.insertLast(sys);
   }
 
   void registerOutsideBorderSystemRemoved(SystemAI& sysAI) {
-    if (log)
-      ai.print("removing outside system: " + sysAI.obj.name);
     for (uint i = 0, cnt = checkedOutsideSystems.length; i < cnt; ++i) {
       if (sysAI is checkedOutsideSystems[i].ai) {
         checkedOutsideSystems.removeAt(i);
         break;
       }
     }
+    if (log)
+      ai.print("removing outside system: " + sysAI.obj.name);
   }
 
   void registerPlanetAdded(PlanetAI& plAI) {
     auto@ pl = PlanetCheck(this, plAI);
+    checkedPlanets.insertLast(pl);
     if (log)
       ai.print("adding planet: " + plAI.obj.name);
-    checkedPlanets.insertLast(pl);
   }
 
   void registerPlanetRemoved(PlanetAI& plAI) {
-    if (log)
-      ai.print("removing planet: " + plAI.obj.name);
     for (uint i = 0, cnt = checkedPlanets.length; i < cnt; ++i) {
       if (plAI is checkedPlanets[i].ai) {
         checkedPlanets.removeAt(i);
         break;
       }
     }
+    if (log)
+      ai.print("removing planet: " + plAI.obj.name);
   }
   
-  void establishTradeRoute(Territory@ territory1, Territory@ territory2) {
-    
+  void establishTradeRoute(Territory@ territoryA, Territory@ territoryB) {
+    if (canBuildGate)
+      return;
+    if (hasPendingTradeRoute(territoryA, territoryB)) {
+      if (log)
+        ai.print("pending route detected between " + addrstr(territoryA) + " and " + addrstr(territoryB) + ", establishment canceled");
+      return;
+    }
+    pendingRoutes.insertLast(TradeRoute(territoryA, territoryB));
+    if (log)
+      ai.print("establishing trade route between " + addrstr(territoryA) + " and " + addrstr(territoryB));
   }
   
-  SystemOrder@ requestOrbital(Region@ region, const OrbitalModule@ module, double priority = 1.0, double expire = INFINITY, uint moneyType = BT_Infrastructure) {
+  SystemOrder@ requestOrbital(Region@ region, const OrbitalModule@ module, double priority = 1.0, double expires = INFINITY, uint moneyType = BT_Infrastructure) {
     SystemAI@ sysAI = systems.getAI(region);
     if (sysAI !is null) {
       for (uint i = 0, cnt = checkedOwnedSystems.length; i < cnt; ++i) {
         if (sysAI is checkedOwnedSystems[i].ai)
-          return checkedOwnedSystems[i].buildInSystem(this, construction, module, priority, false, expire, moneyType);
+          return checkedOwnedSystems[i].buildInSystem(this, module, priority, false, expires, moneyType);
       }
-      ai.print("ERROR: requestOrbital: owned system not found.");
+      ai.print("ERROR: requestOrbital: owned system not found: " + region.name);
       return null;
     }
     return null;
   }
 
-  bool shouldHaveOutpost(SystemCheck& sys, SystemArea area, SystemBuildLocation&out loc) {
+  bool shouldHaveOutpost(SystemCheck& sys, SystemArea area, SystemBuildLocation&out loc) const {
     loc = BL_InSystem;
 
     uint presentMask = sys.ai.seenPresent;
@@ -1039,7 +1285,7 @@ final class Infrastructure : AIComponent {
     return false;
   }
 
-  bool shouldHaveStarport(SystemCheck& sys, SystemArea area, SystemBuildLocation&out loc) {
+  bool shouldHaveStarport(SystemCheck& sys, SystemArea area, SystemBuildLocation&out loc) const {
     loc = BL_InSystem;
 
     uint presentMask = sys.ai.seenPresent;
@@ -1086,7 +1332,7 @@ final class Infrastructure : AIComponent {
     return false;
   }
 
-  bool shouldHaveMoonBase(PlanetCheck& pl) {
+  bool shouldHaveMoonBase(PlanetCheck& pl) const {
     if (pl.ai.obj.moonCount == 0)
       return false;
 		//Gas or ice giants should have a moon base if there is none already built regardless of any other condition
@@ -1100,17 +1346,64 @@ final class Infrastructure : AIComponent {
 		else if (pl.ai.obj.resourceLevel > 1 && pl.ai.obj.emptyDevelopedTiles < 9)
 			return true;
 		//The planet has either a scalable or level 3 or 2 resource and is short on empty developed tiles, it should have a moon base
-		/*if (type !is null && (type.cls is scalableClass || type.level == 3 || type.level == 2) plAI.obj.emptyDevelopedTiles < 9)
+		/*if (type !is null && (type.cls is scalableClass || type.level == 3 || type.level == 2) && pl.ai.obj.emptyDevelopedTiles < 9)
 			return true;*/
 
 		return false;
 	}
+  
+  Region@ getRouteEndpoint(Territory@ territory) {
+    const OrbitalModule@ module = ai.defs.TradeStation;
+    Region@ region = null;
+    for (uint i = 0, cnt = module.ai.length; i < cnt; ++i) {
+      auto@ hook = cast<RegisterForTradeUse>(module.ai[i]);
+      if (hook !is null) {
+        Object@ obj = hook.considerBuild(orbitals, module, territory);
+        if (obj !is null) {
+          @region = cast<Region>(obj);
+          break;
+        }
+      }
+    }
+    return region;
+  }
+  
+  Region@ getLaborAt(Territory@ territory, double&out expires) {
+    expires = 600.0;
+    //SoI - TODO: Handle more complex cases
+    
+    //Fallback solution: build a labor generation building
+    Planet@ pl = development.getLaborAt(territory, expires);
+    return pl.region;
+  }
+  
+  bool isBuilding(const OrbitalModule@ module) {
+    for (uint i = 0, cnt = SystemCheck::allOrders.length; i < cnt; ++i) {
+      auto@ orbital = cast<BuildOrbital>(SystemCheck::allOrders[i].info);
+      if (orbital !is null) {
+        if (orbital.module is module)
+          return true;
+      }
+    }
+    return false;
+  }
 
   bool isBuilding(SystemCheck& sys, const OrbitalModule@ module) {
     for (uint i = 0, cnt = sys.orders.length; i < cnt; ++i) {
       auto@ orbital = cast<BuildOrbital>(sys.orders[i].info);
       if (orbital !is null) {
         if (orbital.module is module)
+          return true;
+      }
+    }
+    return false;
+  }
+  
+  bool isBuilding(const ConstructionType@ consType) {
+    for (uint i = 0, cnt = PlanetCheck::allOrders.length; i < cnt; ++i) {
+      auto@ construction = cast<ConstructionRequest>(PlanetCheck::allOrders[i].info);
+      if (construction !is null) {
+        if (construction.type is consType)
           return true;
       }
     }
@@ -1124,6 +1417,14 @@ final class Infrastructure : AIComponent {
         if (construction.type is consType)
           return true;
       }
+    }
+    return false;
+  }
+  
+  bool hasPendingTradeRoute(Territory@ territoryA, Territory@ territoryB) {
+    for (uint i = 0, cnt = pendingRoutes.length; i < cnt; ++i) {
+      if (pendingRoutes[i].territoryA is territoryA && pendingRoutes[i].territoryB is territoryB)
+        return true;
     }
     return false;
   }

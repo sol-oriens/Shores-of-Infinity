@@ -10,6 +10,11 @@ v0.3.0b
 *** Detailed Changes ***
 ************************
 
+[*] Artificial Intelligence
+
+- AIs now build commerce stations to establish trade routes between their territories.
+- AIS now build a factory in territories where no labor is available to establish a trade route.
+
 [*] Buildings
 
 - Fixed a bug where the research cost was not updated when a Healthcare Complex is removed.
