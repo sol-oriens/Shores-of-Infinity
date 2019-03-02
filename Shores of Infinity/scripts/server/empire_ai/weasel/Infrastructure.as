@@ -15,6 +15,7 @@ import empire_ai.weasel.Systems;
 import empire_ai.weasel.Planets;
 import empire_ai.weasel.Resources;
 
+import ai.construction;
 import ai.events;
 
 import ABEM_data;
@@ -153,31 +154,23 @@ final class OrbitalRequestEvents : IOrbitalRequestEvents {
 }
 
 final class SystemOrder {
-  private AllocateConstruction@ _construction;
+  private IConstruction@ _construction;
 
   double expires = INFINITY;
 
   SystemOrder() {}
 
-  SystemOrder(AllocateConstruction@ construction) {
-    @_construction = construction;
+  SystemOrder(IConstruction@ construction) {
+    @_construction = (construction);
   }
 
-  bool get_isValid() const {
-    return _construction !is null;
-  }
+  bool get_isValid() const { return _construction !is null; }
 
-  bool get_isInProgress() const {
-    return _construction.started;
-  }
+  bool get_isInProgress() const { return _construction.started; }
 
-  bool get_isComplete() const {
-    return _construction.completed;
-  }
+  bool get_isComplete() const { return _construction.completed; }
 
-  AllocateConstruction@ get_info() const {
-    return _construction;
-  }
+  IConstruction@ get_info() const { return _construction; }
 
   void save(Infrastructure& infrastructure, SaveFile& file) {
     file << _construction.id;
@@ -199,31 +192,23 @@ final class SystemOrder {
 };
 
 final class PlanetOrder {
-  private ConstructionRequest@ _construction;
+  private IConstruction@ _construction;
 
   double expires = INFINITY;
 
   PlanetOrder() {}
 
-  PlanetOrder(ConstructionRequest@ construction) {
+  PlanetOrder(IConstruction@ construction) {
     @_construction = construction;
   }
 
-  bool get_isValid() const {
-    return _construction !is null;
-  }
+  bool get_isValid() const { return _construction !is null; }
 
-  bool get_isInProgress() const {
-    return _construction.built;
-  }
+  bool get_isInProgress() const { return _construction.started; }
 
-  bool get_isComplete() const {
-    return _construction.completed;
-  }
+  bool get_isComplete() const { return _construction.completed; }
 
-  ConstructionRequest@ get_info() const {
-    return _construction;
-  }
+  IConstruction@ get_info() const { return _construction; }
 
   void save(Infrastructure& infrastructure, SaveFile& file) {
     file << _construction.id;
@@ -1379,7 +1364,7 @@ final class Infrastructure : AIComponent {
   
   bool isBuilding(const OrbitalModule@ module) {
     for (uint i = 0, cnt = SystemCheck::allOrders.length; i < cnt; ++i) {
-      auto@ orbital = cast<BuildOrbital>(SystemCheck::allOrders[i].info);
+      auto@ orbital = cast<IOrbitalConstruction>(SystemCheck::allOrders[i].info);
       if (orbital !is null) {
         if (orbital.module is module)
           return true;
@@ -1390,7 +1375,7 @@ final class Infrastructure : AIComponent {
 
   bool isBuilding(SystemCheck& sys, const OrbitalModule@ module) {
     for (uint i = 0, cnt = sys.orders.length; i < cnt; ++i) {
-      auto@ orbital = cast<BuildOrbital>(sys.orders[i].info);
+      auto@ orbital = cast<IOrbitalConstruction>(sys.orders[i].info);
       if (orbital !is null) {
         if (orbital.module is module)
           return true;
@@ -1401,9 +1386,9 @@ final class Infrastructure : AIComponent {
   
   bool isBuilding(const ConstructionType@ consType) {
     for (uint i = 0, cnt = PlanetCheck::allOrders.length; i < cnt; ++i) {
-      auto@ construction = cast<ConstructionRequest>(PlanetCheck::allOrders[i].info);
-      if (construction !is null) {
-        if (construction.type is consType)
+      auto@ generic = cast<IGenericConstruction>(PlanetCheck::allOrders[i].info);
+      if (generic !is null) {
+        if (generic.construction is consType)
           return true;
       }
     }
@@ -1412,9 +1397,9 @@ final class Infrastructure : AIComponent {
 
   bool isBuilding(PlanetCheck& pl, const ConstructionType@ consType) {
     for (uint i = 0, cnt = pl.orders.length; i < cnt; ++i) {
-      auto@ construction = cast<ConstructionRequest>(pl.orders[i].info);
-      if (construction !is null) {
-        if (construction.type is consType)
+      auto@ generic = cast<IGenericConstruction>(pl.orders[i].info);
+      if (generic !is null) {
+        if (generic.construction is consType)
           return true;
       }
     }

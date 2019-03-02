@@ -8,7 +8,7 @@ import planet_levels;
 import buildings;
 
 import ai.consider;
-from ai.buildings import Buildings, BuildingAI, RegisterForLaborUse, BuildingUse;
+from ai.buildings import Buildings, BuildingAI, RegisterForLaborUse, AsCreatedResource, BuildingUse;
 from ai.resources import AIResources, ResourceAI;
 
 interface RaceDevelopment {
@@ -698,8 +698,8 @@ class Development : AIComponent, Buildings, ConsiderFilter, AIResources {
 									ai.print("AI hook generically requested building of type "+type.name, buildOn);
 
 								double priority = 1.0;
-								// Megafarms and hydrogenerators should be built as soon as possible
-								if (type.ident == "Farm" || type.ident == "Hydrogenator")
+								//Resource buildings should be built as soon as possible
+								if (cast<AsCreatedResource>(hook) !is null)
 									priority = 2.0;
 
 								auto@ req = planets.requestBuilding(plAI, type, priority, expire=ai.behavior.genericBuildExpire);

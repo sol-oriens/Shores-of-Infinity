@@ -5,6 +5,7 @@ import empire_ai.weasel.Resources;
 import empire_ai.weasel.Budget;
 import empire_ai.weasel.Systems;
 
+import ai.construction;
 import ai.events;
 
 import planets.PlanetSurface;
@@ -19,8 +20,8 @@ import ai.consider;
 import buildings;
 import saving;
 
-final class BuildingRequest {
-	int id = -1;
+final class BuildingRequest : IBuildingConstruction {
+	protected int _id = -1;
 	PlanetAI@ plAI;
 	AllocateBudget@ alloc;
 	const BuildingType@ type;
@@ -37,6 +38,20 @@ final class BuildingRequest {
 
 	BuildingRequest() {
 	}
+	
+	int id {
+		get const { return _id; }
+		set { _id = value; }
+	}
+	
+	bool get_started() const { return built; }
+	
+	bool completed {
+		get const { return getProgress() >= 1.0; }
+		set { }
+	}
+	
+	const BuildingType@ get_building() const { return type; }
 
 	void save(Planets& planets, SaveFile& file) {
 		planets.saveAI(file, plAI);
@@ -102,8 +117,8 @@ final class BuildingRequest {
 	}
 };
 
-final class ConstructionRequest {
-	int id = -1;
+final class ConstructionRequest : IGenericConstruction {
+	protected int _id = -1;
 	PlanetAI@ plAI;
 	AllocateBudget@ alloc;
 	const ConstructionType@ type;
@@ -119,10 +134,23 @@ final class ConstructionRequest {
 
 	ConstructionRequest() {
 	}
-
-	bool get_completed() const {
-		return getProgress() == -1.0;
+	
+	int id {
+		get const { return _id; }
+		set { _id = value; }
 	}
+	
+	bool get_started() const { return built; }
+	
+	bool completed {
+		get const {
+			double progress = getProgress();
+			return progress == -1.0 || progress >= 1.0;
+		}
+		set { }
+	}
+	
+	const ConstructionType@ get_construction() const { return type; }
 
 	void save(Planets& planets, SaveFile& file) {
 		planets.saveAI(file, plAI);
