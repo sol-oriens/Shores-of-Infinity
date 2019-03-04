@@ -7,6 +7,7 @@ tidy class Settlement : Component_Settlement, Savable {
   private uint _morale;
   private int _focusId;
   private bool _autoFocus;
+  private int[] _civilActIds;
   
   bool get_isSettlement() const {
     if (obj is null)
@@ -42,6 +43,27 @@ tidy class Settlement : Component_Settlement, Savable {
     _autoFocus = value;
   }
   
+  uint getCivilActId(uint index) const {
+    return _civilActIds[index];
+  }
+  
+  void addCivilAct(uint id) {
+    for(uint i = 0, cnt = _civilActIds.length; i < cnt; ++i) {
+      if (_civilActIds.find(id) != -1)
+        return;
+    }
+    _civilActIds.insertLast(id);
+    _civilActIds.sortAsc(); //Optimize lookups which will always occur incrementally
+  }
+  
+  void removeCivilAct(uint id) {
+    _civilActIds.remove(id);
+  }
+  
+  uint get_civilActCount() const {
+    return _civilActIds.length;
+  }
+  
   void initSettlement(Object& owner, Empire& emp) {
     @obj = owner;
     _morale = SM_Medium;
@@ -54,6 +76,10 @@ tidy class Settlement : Component_Settlement, Savable {
     file << _morale;
     file << _focusId;
     file << _autoFocus;
+    file << _civilActIds.length;
+    for(uint i = 0, cnt = _civilActIds.length; i < cnt; ++i) {
+      file << _civilActIds[i];
+    }
     
     file << obj;
   }
@@ -62,6 +88,12 @@ tidy class Settlement : Component_Settlement, Savable {
     file >> _morale;
     file >> _focusId;
     file >> _autoFocus;
+    uint cnt = 0;
+    file >> cnt;
+    _civilActIds.length = cnt;
+    for(uint i = 0; i < cnt; ++i) {
+      file >> _civilActIds[i];
+    }
     
     @obj = file.readObject();
   }
@@ -70,6 +102,15 @@ tidy class Settlement : Component_Settlement, Savable {
     msg.writeSmall(_morale);
     msg.writeSmall(_focusId);
     msg << _autoFocus;
+    if(_civilActIds.length == 0) {
+			msg.write0();
+			return;
+		}
+		msg.write1();
+    msg.writeSmall(_civilActIds.length);
+    for(uint i = 0, cnt = _civilActIds.length; i < cnt; ++i) {
+      msg << _civilActIds[i];
+    }
     
     msg << obj;
   }

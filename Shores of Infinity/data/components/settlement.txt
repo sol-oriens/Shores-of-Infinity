@@ -6,6 +6,10 @@ restricted local:
   void set_focusId(int value);
   bool get_autoFocus() const;
   void set_autoFocus(bool value);
+  uint getCivilActId(uint index) const;
+  void addCivilAct(uint id);
+  void removeCivilAct(uint id);
+  uint get_civilActCount() const
   bool get_isSettlement() const;
 server:
   void initSettlement(Empire& emp);

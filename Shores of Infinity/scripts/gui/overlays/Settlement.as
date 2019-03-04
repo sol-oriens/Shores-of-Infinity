@@ -1,11 +1,16 @@
 import elements.BaseGuiElement;
 import elements.GuiSkinElement;
 import elements.GuiText;
+import elements.GuiMarkupText;
 import elements.GuiSprite;
 import elements.GuiButton;
+import elements.GuiCheckbox;
 import elements.GuiDropdown;
 import elements.GuiOverlay;
+import elements.GuiAccordion;
 import elements.GuiPanel;
+import elements.MarkupTooltip;
+import icons;
 import settlements;
 
 from gui import animate_time;
@@ -115,11 +120,14 @@ class DisplayBox : BaseGuiElement {
 class SettlementDisplay : DisplayBox {
   Object@ obj;
   
-  GuiPanel@ panel;
-  GuiSkinElement@ nameBox, moraleBox, panelBox;
-	GuiText@ name, morale, focus;
+  GuiPanel@ upperPanel, middlePanel, civilActsPanel;
+  GuiSkinElement@ nameBox, moraleBox, upperPanelBox, middlePanelBox, civilActBox;
+	GuiText@ name, morale, focus, civilActs;
 	GuiDropdown@ focusList;
+	GuiAccordion@ civilActList;
   GuiSprite@ moraleIcon;
+	
+	GuiButton@ cancelCivilActsButton;
   
   SettlementDisplay(SettlementParent@ ov, vec2i origin, Alignment@ target) {
 		super(ov, origin, target);
@@ -135,19 +143,50 @@ class SettlementDisplay : DisplayBox {
 		@morale = GuiText(moraleBox, Alignment(Left+40, Top, Right-8, Bottom));
 		morale.font = FT_Medium;
     
-    //Panel
-    @panelBox = GuiSkinElement(this, Alignment(Left+8, Top+50, Right-8, Top+250), SS_PatternBox);
-    GuiSkinElement bottomBar(panelBox, Alignment(Left+4, Bottom-34, Right-4, Bottom), SS_PlainBox);
-    @panel = GuiPanel(panelBox, Alignment(Left, Top, Right, Bottom-34));
+    //Upper panel
+    @upperPanelBox = GuiSkinElement(this, Alignment(Left+8, Top+50, Right-8, Top+250), SS_DesignOverviewBG);
+    GuiSkinElement upperPanelBottomBar(upperPanelBox, Alignment(Left+4, Bottom-34, Right-4, Bottom), SS_PlainBox);
+    @upperPanel = GuiPanel(upperPanelBox, Alignment(Left, Top, Right, Bottom-34));
     
-		@focus = GuiText(panelBox, Alignment(Left+8, Top+2, Left+0.5f-4, Height=32), locale::FOCUS_INPUT);
-		@focusList = GuiDropdown(panelBox, Alignment(Left+0.5f+4, Top+2, Right-4, Height=32));
+		@focus = GuiText(upperPanelBox, Alignment(Left+8, Top+2, Left+0.5f-4, Height=32), locale::FOCUS_INPUT);
+		@focusList = GuiDropdown(upperPanelBox, Alignment(Left+0.5f+4, Top+2, Right-4, Height=32));
+		
+		//Middle panel
+		@middlePanelBox = GuiSkinElement(this, Alignment(Left+8, Top+250+10, Right-8, Top+650+10), SS_DesignOverviewBG);
+    middlePanelBox.color = Color(0x6dd6caff);
+		GuiSkinElement middlePanelBottomBar(middlePanelBox, Alignment(Left+4, Bottom-34, Right-4, Bottom), SS_PlainBox);
+    @middlePanel = GuiPanel(middlePanelBox, Alignment(Left, Top, Right, Bottom-34));
+		
+		@civilActs = GuiText(middlePanelBox, Alignment(Left+8, Top, Right, Top+30), locale::CIVIL_ACTS);
+		civilActs.font = FT_Medium;
+		
+		@civilActsPanel = GuiPanel(middlePanel, Alignment(Left+8, Top+34, Right, Bottom));
+		@civilActList = GuiAccordion(civilActsPanel, recti(0, 0, 500, 50));
+		civilActList.multiple = true;
+		civilActList.clickableHeaders = true;
+		
+		@cancelCivilActsButton = GuiButton(middlePanelBox, Alignment(Right-8-32, Bottom-32, Width=30, Height=30));
+		cancelCivilActsButton.style = SS_IconToggle;
+		cancelCivilActsButton.color = Color(0x00ff00ff);
+		cancelCivilActsButton.setIcon(icons::Clear);
+		setMarkupTooltip(cancelCivilActsButton, locale::TT_CANCEL_CIVIL_ACTS, width=300);
 		
 		if (obj.owner is playerEmpire) {
 			updateMorale();
 			updateFocusList();
+			updateCivilActList();
 		}
   }
+	
+	void updateAbsolutePosition() {
+		DisplayBox::updateAbsolutePosition();
+		if(civilActList !is null) {
+			if(civilActsPanel.vert.visible)
+				civilActList.size = vec2i(civilActsPanel.size.width - 20, civilActList.size.height);
+			else
+				civilActList.size = vec2i(civilActsPanel.size.width, civilActList.size.height);
+		}
+	}
 	
 	bool onGuiEvent(const GuiEvent& evt) override {
 		switch(evt.type) {
@@ -163,8 +202,14 @@ class SettlementDisplay : DisplayBox {
 						if (ship.hasSettlement)
 							ship.focusId = focusElement.focus.id;
 					}
+					return true;
 				}
-				return true;
+				break;
+			case GUI_Clicked:
+				if (evt.caller is cancelCivilActsButton) {
+					return true;
+				}
+				break;
 		}
 		return BaseGuiElement::onGuiEvent(evt);
 	}
@@ -180,6 +225,7 @@ class SettlementDisplay : DisplayBox {
 				if (obj.owner is playerEmpire) {
 					updateMorale();
 					updateFocusList();
+					updateCivilActList();
 				}
 				longTimer = 5.0;
 			}
@@ -196,12 +242,12 @@ class SettlementDisplay : DisplayBox {
       if (isSettlement) {
         nameBox.visible = true;
 				moraleBox.visible = true;
-        panelBox.visible = true;
+        upperPanelBox.visible = true;
       }
       else {
         nameBox.visible = false;
 				moraleBox.visible = false;
-        panelBox.visible = false;
+        upperPanelBox.visible = false;
       }
     }
   }
@@ -250,9 +296,80 @@ class SettlementDisplay : DisplayBox {
 		array<SettlementFocus@> foci = getAvailableFoci(obj, playerEmpire);
 		for (uint i = 0, cnt = foci.length; i < cnt; ++i) {
 			focusList.addItem(FocusElement(foci[i]));
-			if (int(foci[i].id) == currentFocusId)
+			if (int(foci[i].id) == currentFocusId) {
 				focusList.selected = i;
+				break;
+			}
 		}
+	}
+	
+	void updateCivilActList() {
+		civilActList.clearSections();
+		
+		array<GuiListbox@> cats;
+		array<string> catNames;
+		array<CivilAct@> civilActs = getAvailableCivilActs(obj, playerEmpire);
+		for(uint i = 0, cnt = civilActs.length; i < cnt; ++i) {
+			auto@ civilAct = civilActs[i];
+			
+			GuiListbox@ list;
+			for(uint n = 0, ncnt = cats.length; n < ncnt; ++n) {
+				if(catNames[n] == civilAct.category) {
+					@list = cats[n];
+					break;
+				}
+			}
+
+			if(list is null) {
+				@list = GuiListbox(this, recti(0, 0, 100, 20));
+				list.style = SS_NULL;
+				list.itemHeight = 30;
+				list.multiple = true;
+
+				MarkupTooltip tt(400, 0.f, true, true);
+				tt.Lazy = true;
+				tt.LazyUpdate = false;
+				tt.Padding = 4;
+				@list.tooltipObject = tt;
+
+				catNames.insertLast(civilAct.category);
+				cats.insertLast(list);
+			}
+
+			list.addItem(CivilActElement(this, civilAct, obj));
+		}
+
+		uint[] foundIds;
+		for(uint i = 0, cnt = cats.length; i < cnt; ++i) {
+			auto@ list = cats[i];
+			list.sortDesc();
+
+			string title = localize("#CIVIL_ACT_CAT_"+catNames[i]);
+			if(title[0] == '#')
+				title = catNames[i];
+
+			uint sec = civilActList.addSection(title, list);
+			civilActList.openSection(sec);
+			list.updateHover();
+			
+			for(uint j = 0, jcnt = obj.get_civilActCount(); j < jcnt; ++j) {
+				uint id = obj.getCivilActId(j);
+				if (foundIds.find(id) != -1)
+					continue;
+				for(uint k = 0, kcnt = list.itemCount; k < kcnt; ++k) {
+					auto@ ele = cast<CivilActElement>(list.getItemElement(k));
+					if (ele.civilAct.id == id) {
+						list.SelectedItems[k] = true;
+						ele.selected = true;
+						foundIds.insertLast(id);
+						break;
+					}
+				}
+			}
+		}
+		
+		updateAbsolutePosition();
+		gui_root.updateHover();
 	}
 };
 
@@ -262,5 +379,48 @@ class FocusElement : GuiListText {
 	FocusElement(const SettlementFocus& focus) {
 			@this.focus = focus;
 			super(focus.name);
+	}
+};
+
+class CivilActElement : GuiListText {
+	const CivilAct@ civilAct;
+	Object@ obj;
+	Color nameColor = colors::White;
+	
+	bool selected = false;
+
+	CivilActElement(SettlementDisplay@ disp, const CivilAct@ civilAct, Object@ obj) {
+		super(civilAct.name);
+		@this.civilAct = civilAct;
+		@this.obj = obj;
+	}
+
+	void draw(GuiListbox@ ele, uint flags, const recti& pos) override {
+		const Font@ font = ele.skin.getFont(ele.TextFont);
+		
+		//Background element
+		ele.skin.draw(SS_GlowButton, flags, pos);
+		
+		//Name
+		font.draw(pos=pos.padded(4, 0, 0, 0), vertAlign=0.5, text=text, ellipsis=locale::ELLIPSIS, color=nameColor);
+	}
+	
+	bool onMouseEvent(const MouseEvent& event) override {
+		switch(event.type) {
+			case MET_Button_Up:
+				if(event.button == 0) {
+					if (selected == false) {
+						obj.addCivilAct(civilAct.id);
+						selected = true;
+					}
+					else {
+						obj.removeCivilAct(civilAct.id);
+						selected = false;
+					}
+					return false; //So the active visual effect can occur
+				}
+			break;
+		}
+		return false;
 	}
 };

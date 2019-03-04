@@ -1,0 +1,7 @@
+CivilAct: CrimeControl
+  Name: #CIVIL_ACT_CRIME_CONTROL
+  Category: Campaigns
+  
+CivilAct: Stockpiling Protocol
+  Name: #CIVIL_ACT_STOCKPILING_PROTOCOL
+  Category: Campaigns
