@@ -1,0 +1,23 @@
+SettlementFocus: Financial
+  Name: #FOCUS_MONEY
+  
+  RequireTrait(Capitalism)
+  addon_requirement_effects::RequirePopulation(5)
+  
+SettlementFocus: Spiritual
+  Name: #FOCUS_INFLUENCE
+  
+  RequireTrait(Theocracy)
+  addon_requirement_effects::RequirePopulation(5)
+  
+SettlementFocus: Territorial
+  Name: #FOCUS_DEFENSE
+  
+  RequireTrait(Empire)
+  addon_requirement_effects::RequirePopulation(5)
+
+SettlementFocus: Industrial
+  Name: #FOCUS_LABOR
+  
+  RequireTrait(Communism)
+  addon_requirement_effects::RequirePopulation(5)
