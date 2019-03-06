@@ -5,12 +5,20 @@
 
 import empire_ai.weasel.WeaselAI;
 
+import empire_ai.weasel.Development;
+
 import research;
 
 class Research : AIComponent {
+	Development@ development;
+	
 	TechnologyGrid grid;
 	array<TechnologyNode@> immediateQueue;
-
+	
+  void create() {
+	  @development = cast<Development>(ai.development);
+	}
+	
 	void save(SaveFile& file) {
 		uint cnt = immediateQueue.length;
 		file << cnt;
@@ -192,6 +200,9 @@ class Research : AIComponent {
 				}
 			}
 		}
+		
+		//Update research generation rate goal
+		development.aimResearchRate = clamp(gameTime / (20.0 * 60.0) - 0.5, 0.0, 2.5);
 	}
 };
 

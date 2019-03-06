@@ -111,6 +111,7 @@ class Development : AIComponent, Buildings, ConsiderFilter, AIResources {
 	array<ExportData@> aiResources;
 
 	double aimFTLStorage = 0.0;
+	double aimResearchRate = 0.0;
 
 	bool managePlanetPressure = true;
 	bool manageAsteroidPressure = true;
@@ -244,6 +245,13 @@ class Development : AIComponent, Buildings, ConsiderFilter, AIResources {
 		if(aimFTLStorage <= capacity)
 			return false;
 		if(ai.empire.FTLStored < capacity * 0.5)
+			return false;
+		return true;
+	}
+	
+	bool requestsResearchGeneration() {
+		double rate = ai.empire.ResearchRate;
+		if (aimResearchRate <= rate)
 			return false;
 		return true;
 	}

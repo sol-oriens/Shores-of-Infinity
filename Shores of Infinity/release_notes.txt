@@ -14,6 +14,7 @@ v0.3.0b
 
 - AIs now build commerce stations to establish trade routes between their territories.
 - AIS now build a factory in territories where no labor is available to establish a trade route.
+- AIs now build research complexes if their research generation rate is too low.
 
 [*] Buildings
 

@@ -9,6 +9,7 @@ interface Buildings : ConsiderComponent {
 	Considerer@ get_consider();
 
 	bool requestsFTLStorage();
+	bool requestsResearchGeneration();
 
 	bool isBuilding(const BuildingType& type);
 	bool isFocus(Object@ obj);
@@ -171,6 +172,40 @@ class AsFTLStorage : BuildingAI {
 		if(!buildings.requestsFTLStorage())
 			return null;
 		if(buildings.isBuilding(type))
+			return null;
+		@buildings.consider.component = buildings;
+		@buildings.consider.building = type;
+		return buildings.consider.SomePlanets(this);
+	}
+#section all
+};
+
+class AsResearchGeneration : BuildingAI {
+	Document doc("This building is built whenever more research generation is requested.");
+
+#section server
+	double consider(Considerer& cons, Object@ obj) const override {
+		if (cast<Buildings>(cons.component).isFocus(obj))
+			return 0.0;
+		if (obj.emptyDevelopedTiles < 10)
+			return 0.0;
+		if (!cons.building.canBuildOn(obj, ignoreState=true))
+			return 0.0;
+		for(uint i = 0, cnt = cons.building.maintainAffinities.length; i < cnt; ++i) {
+			if (obj.hasBiome(cons.building.maintainAffinities[i].biome.id))
+				return 2.0;
+		}
+		for(uint i = 0, cnt = cons.building.buildAffinities.length; i < cnt; ++i) {
+			if (obj.hasBiome(cons.building.buildAffinities[i].biome.id))
+				return 1.5;
+		}
+		return 1.0;
+	}
+
+	Object@ considerBuild(Buildings& buildings, const BuildingType& type) const override {
+		if (!buildings.requestsResearchGeneration())
+			return null;
+		if (buildings.isBuilding(type))
 			return null;
 		@buildings.consider.component = buildings;
 		@buildings.consider.building = type;
