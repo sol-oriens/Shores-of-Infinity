@@ -20,6 +20,11 @@ v0.3.0b
 
 - Fixed a bug where the research cost was not updated when a Healthcare Complex is removed.
 
+[*] Planets
+
+- Added an icon for the Moon Base project.
+- Infrastructural Development no longer costs ore and labor and now costs 200k with a build time of 45s instead.
+
 v0.2.3b
 
 **************************

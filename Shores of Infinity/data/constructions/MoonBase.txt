@@ -2,6 +2,8 @@ Construction: MoonBase
 	Name: #CONS_MOON_BASE
 	Description: #CONS_MOON_BASE_DESC
 
+	Icon: DwarfPlanet
+	
 	Category: Infrastructure
 
 	Time Cost: 120
