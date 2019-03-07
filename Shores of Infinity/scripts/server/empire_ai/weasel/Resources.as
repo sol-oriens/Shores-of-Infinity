@@ -233,7 +233,7 @@ final class Resources : AIComponent {
 				if(!av.usable || av.obj is null || !av.obj.valid || av.obj.owner !is ai.empire)
 					continue;
 				//Check if a trade route exists between the two locations
-				if(!canTradeBetween(av.obj, req.obj)) {
+				if(!canTradeBetween(av.obj, req.obj) && av.obj.region !is null && req.obj.region !is null) {
 					auto@ territoryA = av.obj.region.getTerritory(ai.empire);
 					auto@ territoryB = req.obj.region.getTerritory(ai.empire);
 					if (territoryA !is territoryB) {
