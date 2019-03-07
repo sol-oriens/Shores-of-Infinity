@@ -16,7 +16,7 @@ C_TERRAFORMING_DESC: <<
 
 	An industrial-scale project sponsored by the empire can accelerate the process considerably, for a price.[/i][/color]
 
-	Develops up to 15 randomly selected tiles.
+	Develops up to 20 randomly selected tiles.
 >>
 C_HABITATRING_DESC: <<
 	[color=#aaa][i]Constructing a large ring-shaped station encircling the planet provides more space for the construction of important infrastructure.[/i][/color]
