@@ -279,12 +279,14 @@ class Consider : AIComponent, Considerer {
 			if(obj !is null) {
 				if(cfilter !is null && !cfilter.filter(obj))
 					continue;
-				if (obj.region.getTerritory(ai.empire) !is territory)
-					continue;
-				double w = hook.consider(this, obj);
-				if(w > bestWeight) {
-					bestWeight = w;
-					@best = obj;
+				if (obj.region !is null) {
+					if (obj.region.getTerritory(ai.empire) !is territory)
+						continue;
+					double w = hook.consider(this, obj);
+					if(w > bestWeight) {
+						bestWeight = w;
+						@best = obj;
+					}
 				}
 			}
 		}
@@ -321,12 +323,14 @@ class Consider : AIComponent, Considerer {
 			if(obj !is null) {
 				if(cfilter !is null && !cfilter.filter(obj))
 					continue;
-				if (obj.region.getTerritory(ai.empire) !is territory)
-					continue;
-				double w = hook.consider(this, obj);
-				if(w > bestWeight) {
-					bestWeight = w;
-					@best = obj;
+				if (obj.region !is null) {
+					if (obj.region.getTerritory(ai.empire) !is territory)
+						continue;
+					double w = hook.consider(this, obj);
+					if(w > bestWeight) {
+						bestWeight = w;
+						@best = obj;
+					}
 				}
 			}
 		}

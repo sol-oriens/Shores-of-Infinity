@@ -680,38 +680,40 @@ final class TradeRoute {
     canBuildAtB = false;
     for (uint i = 0, cnt = infrastructure.checkedPlanets.length; i < cnt; ++i) {
       Planet@ pl = infrastructure.checkedPlanets[i].ai.obj;
-      Territory@ t = pl.region.getTerritory(infrastructure.ai.empire);
-      if (t is territoryA) {
-        //Is there a global trade node here already
-        if (pl.region.GateMask & ~pl.owner.mask != 0) {
-          buildAtA = false;
-          @_endpointA = pl.region;
+      if (pl.region !is null) {
+        Territory@ t = pl.region.getTerritory(infrastructure.ai.empire);
+        if (t is territoryA) {
+          //Is there a global trade node here already
+          if (pl.region.GateMask & ~pl.owner.mask != 0) {
+            buildAtA = false;
+            @_endpointA = pl.region;
+          }
+          if (!canBuildAtA) {
+            //Is there a labor source in this territory
+            if (pl.laborIncome > 0 && pl.canBuildOrbitals)
+              canBuildAtA = true;
+          }
         }
-        if (!canBuildAtA) {
-          //Is there a labor source in this territory
-          if (pl.laborIncome > 0 && pl.canBuildOrbitals)
-            canBuildAtA = true;
+        else if (t is territoryB) {
+          //Is there a global trade node here already
+          if (pl.region.GateMask & ~pl.owner.mask != 0) {
+            buildAtB = false;
+            @_endpointB = pl.region;
+          }
+          if (!canBuildAtB) {
+            //Is there a labor source in this territory
+            if (pl.laborIncome > 0 && pl.canBuildOrbitals)
+              canBuildAtB = true;
+          }
         }
-      }
-      else if (t is territoryB) {
-        //Is there a global trade node here already
-        if (pl.region.GateMask & ~pl.owner.mask != 0) {
-          buildAtB = false;
-          @_endpointB = pl.region;
+        if (!buildAtA && !buildAtB) {
+          //Should not normally happen, except if trade if somehow disrupted despite global trade nodes
+          return false;
         }
-        if (!canBuildAtB) {
-          //Is there a labor source in this territory
-          if (pl.laborIncome > 0 && pl.canBuildOrbitals)
-            canBuildAtB = true;
+        if (canBuildAtA && canBuildAtB) {
+          _isWaitingForLabor = false;
+          return true;
         }
-      }
-      if (!buildAtA && !buildAtB) {
-        //Should not normally happen, except if trade if somehow disrupted despite global trade nodes
-        return false;
-      }
-      if (canBuildAtA && canBuildAtB) {
-        _isWaitingForLabor = false;
-        return true;
       }
     }
     //These checks are expensive and don't need to be run frequently, so let's sleep for some time
@@ -1112,6 +1114,7 @@ final class Infrastructure : AIComponent {
       }
       if (route.endpointA !is null && route.endpointB !is null && resources.canTradeBetween(route.endpointA, route.endpointB)) {
         pendingRoutes.remove(route);
+        --i; --cnt;
         if (log)
           ai.print("trade route established between " + addrstr(route.territoryA) + " and " + addrstr(route.territoryB));
       }
