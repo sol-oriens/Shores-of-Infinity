@@ -23,10 +23,10 @@ array<Sprite> CivilianIcons = {
 	Sprite(spritesheet::OrbitalIcons, 0),
 };
 
-const double CIV_SIZE_MIN = 2.0;
-const double CIV_SIZE_MAX = 5.4;
-const double CIV_SIZE_FREIGHTER = 2.7;
-const double CIV_SIZE_CARAVAN = 5.0;
+const double CIV_SIZE_MIN = 1.0;
+const double CIV_SIZE_MAX = 2.7;
+const double CIV_SIZE_FREIGHTER = 1.35;
+const double CIV_SIZE_CARAVAN = 2.5;
 
 const double CIV_RADIUS_WORTH = 1.0;
 
@@ -91,5 +91,5 @@ Sprite getCivilianIcon(Empire@ owner, uint type, double radius) {
 	return CivilianIcons[type];
 }
 
-const double STATION_MIN_RAD = 5.0;
-const double STATION_MAX_RAD = 10.0;
+const double STATION_MIN_RAD = 2.5;
+const double STATION_MAX_RAD = 5.0;
