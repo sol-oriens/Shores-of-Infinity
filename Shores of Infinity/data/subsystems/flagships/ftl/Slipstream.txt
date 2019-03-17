@@ -27,8 +27,8 @@ Subsystem: Slipstream
 	Requires:
 		Command = 1
 
-	Module: Core
-		Sprite: HexagonSubsystems::10
-
 	Module: Default
 		Hex.MaintainCost := 0.5 * Hex.MaintainCost
+	
+	Module: Core
+		Sprite: HexagonSubsystems::10

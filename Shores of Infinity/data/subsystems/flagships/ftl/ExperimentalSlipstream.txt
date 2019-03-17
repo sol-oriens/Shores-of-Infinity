@@ -13,16 +13,20 @@ Subsystem: ExperimentalSlipstream
 	Scale := 1
 	Size := HexSize * Hexes
 	
-	Hex.Mass := HexSize * 2
+	Hex.Mass := HexSize
 
 	Hex.Resistance := 0.2
-	Hex.HP := 12 * HexSize
+	Hex.HP := 18 * HexSize
 
 	Hex.BuildCost := 2.0 * HexSize
 
 	SlipstreamCost := if(Sum.SlipstreamCost <= 0.01, 600, 0) - 150 * (Size/ShipSize)
 	SlipstreamOptimalDistance := 150000 * Scale * sqrt(pow(Sum.SlipstreamOptimalDistance / (150000 * Scale), 2) + Size / 128) - Sum.SlipstreamOptimalDistance
 	SlipstreamDuration := if(Sum.SlipstreamDuration <= 0.01, 50, 0) + 300 * (Size/ShipSize)
+	
+	Requires:
+		Command = 1
+	
 	Assert: Size >= 500
 		Message: #ERROR_MIN_SIZE:$1:500
 	Assert: TagCount.Slipstream == 1
@@ -30,15 +34,12 @@ Subsystem: ExperimentalSlipstream
 		Message: #ERROR_PROTOTYPE_SLIPSTREAM
 
 	Hook: AddStatus(HasPrototypeSlipstream)
-	Requires:
-		Command = 4
+
+	Module: Default
+		Hex.MaintainCost := 0.5 * Hex.MaintainCost
 
 	Module: Core
 		Sprite: HexagonSubsystems::10*#aa77aa
-
-		Hex.BuildCost := 800
-		Hex.LaborCost := 300
-		Hex.MaintainCost := 100
+		Hex.BuildCost := 2 * Hex.BuildCost * 2.5
+		Hex.LaborCost := Hex.LaborCost * 1.5
 		Hex.OreCost := 5000
-	Module: Default
-		Hex.MaintainCost := 0.5 * Hex.MaintainCost

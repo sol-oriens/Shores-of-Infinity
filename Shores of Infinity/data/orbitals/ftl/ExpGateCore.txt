@@ -9,18 +9,18 @@ Module: EXP_GateCore
 	Model: Warpgate
 	Material: GenericPBR_Gate
 
-	Size: 32
+	Size: 15
 
 	Standalone: True
 	Solid: False
 	Spin: 0
 
-	Health: 50000
-	Armor: 50000
+	Health: 10000
+	Armor: 4000
 
 	Build Cost: 1000
-	Maintenance: 125
-	Labor Cost: 250
+	Maintenance: 150
+	Labor Cost: 60
 
 	ConsumeCargo(Ore, 5000)
 	FTLMaintenance(0.15)
