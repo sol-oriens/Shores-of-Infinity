@@ -775,6 +775,11 @@ class Development : AIComponent, Buildings, ConsiderFilter, AIResources {
 	}
 	
 	Planet@ getLaborAt(Territory@ territory, double&out expires) {
+		if (territory is null) {
+			if (log)
+				ai.print("invalid territory to get labor at");
+			return null;
+		}
 		expires = 600.0;
     const BuildingType@ type = ai.defs.Factory;
 		BuildingRequest@ request = null;

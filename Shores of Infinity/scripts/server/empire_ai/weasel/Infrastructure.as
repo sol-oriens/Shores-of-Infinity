@@ -1185,6 +1185,12 @@ final class Infrastructure : AIComponent {
         ai.print("pending route detected between " + addrstr(territoryA) + " and " + addrstr(territoryB) + ", establishment canceled");
       return;
     }
+    
+    if (territoryA is null || territoryB is null) {
+      if (log)
+        ai.print("invalid territory for pending route, establishment canceled");
+      return;
+    }
     pendingRoutes.insertLast(TradeRoute(territoryA, territoryB));
     if (log)
       ai.print("establishing trade route between " + addrstr(territoryA) + " and " + addrstr(territoryB));
@@ -1358,11 +1364,19 @@ final class Infrastructure : AIComponent {
   
   Region@ getLaborAt(Territory@ territory, double&out expires) {
     expires = 600.0;
+    
+    if (territory is null) {
+			if (log)
+				ai.print("invalid territory to get labor at");
+			return null;
+		}
     //SoI - TODO: Handle more complex cases
     
     //Fallback solution: build a labor generation building
     Planet@ pl = development.getLaborAt(territory, expires);
-    return pl.region;
+    if (pl !is null)
+      return pl.region;
+    return null;
   }
   
   bool isBuilding(const OrbitalModule@ module) {
