@@ -1201,7 +1201,7 @@ tidy class ShipScript {
 		if(timer >= 1.f) {
 			occasional_tick(ship, timer);
 			if (ship.hasSettlement)
-				ship.settlementTick(time);
+				ship.settlementTick(timer);
 			timer = 0.f;
 		}
 

@@ -391,8 +391,8 @@ tidy class PlanetScript {
 			occasional_tick(planet);
 			planet.surfaceTick(timer);
 			planet.resourceTick(timer);
-			planet.statusTick(time);
-			planet.settlementTick(time);
+			planet.statusTick(timer);
+			planet.settlementTick(timer);
 			timer = 0.f;
 		}
 
