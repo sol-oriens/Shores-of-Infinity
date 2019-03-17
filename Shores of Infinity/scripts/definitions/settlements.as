@@ -1,9 +1,16 @@
 #priority init 2000
+import saving;
 import hooks;
+import util.formatting;
 
-from generic_effects import AddStatus;
 from statuses import getStatusID;
 from traits import getTraitID;
+
+const string VeryPositive = "Very Positive";
+const string Positive = "Positive";
+const string None = "None";
+const string Negative = "Negative";
+const string VeryNegative = "Very Negative";
 
 enum SettlementMorale {
   SM_Low,
@@ -11,13 +18,50 @@ enum SettlementMorale {
   SM_High,
 };
 
-tidy final class SettlementFocus {
+abstract class MoraleModifier {
+  int moraleEffect = 0;
+  
+  string getMoraleEffect() {
+    string value;
+    switch (moraleEffect) {
+      case 2:
+        value = VeryPositive;
+        break;
+      case 1:
+        value = Positive;
+        break;
+      case -1:
+        value = Negative;
+        break;
+      case -2:
+        value = VeryNegative;
+        break;
+      default:
+        value = None;
+        break;
+    }
+    toLowercase(value);
+    return value;
+  }
+  
+  void setMoraleEffect(string value) {
+    if (value == VeryPositive)
+      moraleEffect = 2;
+    else if (value == Positive)
+      moraleEffect = 1;
+    else if (value == Negative)
+      moraleEffect = -1;
+    else if (value == VeryNegative)
+      moraleEffect = -2;
+    else
+      moraleEffect = 0;
+  }
+};
+
+tidy final class SettlementFocusType : MoraleModifier {
   string ident, name = locale::FOCUS_BASIC;
   uint id;
-  uint unlockType;
-  uint unlockId;
-  double minPop = 0;
-  double maxPop = 0;
+  uint priority = 0;
   array<ISettlementHook@> hooks;
   array<Hook@> ai;
   
@@ -27,72 +71,182 @@ tidy final class SettlementFocus {
 				return false;
 		}
 		return true;
+	}
+  
+  int opCmp(const SettlementFocusType@ other) const {
+		if(priority < other.priority)
+			return -1;
+		if(priority > other.priority)
+			return 1;
+		return 0;
 	}
 };
 
-tidy final class CivilAct {
-  string ident, name = "", category;
+tidy final class CivilActType : MoraleModifier {
+  string ident, name = "", description, category;
   uint id;
   
+  int maintainCost = 0;
   array<ISettlementHook@> hooks;
   array<Hook@> ai;
   
-  bool canEnable(Object& obj) const {
-		for(uint i = 0, cnt = hooks.length; i < cnt; ++i) {
-			if(!hooks[i].canEnable(obj))
-				return false;
-		}
-		return true;
+  string formatTooltip() const {
+		string tt;
+		tt += format("[font=Medium][b]$1[/b][/font]\n", name);
+		tt += description;
+    tt += format("[nl/]\n" + locale::TT_MORALE_EFFECT + ": [b]$1[/b]", getMoraleEffect());
+
+		return tt;
 	}
-}
+  
+  bool canEnable(Object& obj) const {
+    for(uint i = 0, cnt = hooks.length; i < cnt; ++i) {
+      if(!hooks[i].canEnable(obj))
+      return false;
+    }
+    return true;
+  }
+};
 
 interface ISettlementHook {
+  bool canEnable(Object& obj) const;
   void enable(Object& obj, any@ data) const;
   void disable(Object& obj, any@ data) const;
-  bool canEnable(Object& obj) const;
+  void tick(Object& obj, any@ data, double time) const;
+  void save(any@ data, SaveFile& file) const;
+	void load(any@ data, SaveFile& file) const;
 };
 
 tidy class SettlementHook : Hook, ISettlementHook {
+  bool canEnable(Object& obj) const { return true; }
   void enable(Object& obj, any@ data) const {}
   void disable(Object& obj, any@ data) const {}
-  bool canEnable(Object& obj) const { return true; }
+  void tick(Object& obj, any@ data, double time) const {}
+  void save(any@ data, SaveFile& file) const {}
+	void load(any@ data, SaveFile& file) const {}
 };
 
-void parseLine(string& line, SettlementFocus@ focus, ReadFile@ file) {
+tidy final class SettlementFocus : Savable {
+  const SettlementFocusType@ type;
+  array<any> data;
+  
+  SettlementFocus() {
+  }
+  
+  SettlementFocus(const SettlementFocusType@ type) {
+    @this.type = type;
+    data.length = type.hooks.length;
+  }
+  
+  void enable(Object& obj) {
+    for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
+			type.hooks[i].enable(obj, data[i]);
+  }
+  
+  void disable(Object& obj) {
+    for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
+			type.hooks[i].disable(obj, data[i]);
+  }
+  
+  void tick(Object& obj, double time) {
+    for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
+			type.hooks[i].tick(obj, data[i], time);
+  }
+  
+  void save(SaveFile& file) {
+    file.writeIdentifier(SI_SettlementFocus, type.id);
+    for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
+      type.hooks[i].save(data[i], file);
+  }
+  
+  void load(SaveFile& file) {
+    @type = getSettlementFocusType(file.readIdentifier(SI_SettlementFocus));
+    data.length = type.hooks.length;
+    for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
+      type.hooks[i].load(data[i], file);
+  }
+};
+
+tidy final class CivilAct : Savable {
+  const CivilActType@ type;
+  array<any> data;
+  
+  CivilAct() {
+  }
+  
+  CivilAct(const CivilActType@ type) {
+    @this.type = type;
+    data.length = type.hooks.length;
+  }
+  
+  void enable(Object& obj) {
+    for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
+			type.hooks[i].enable(obj, data[i]);
+  }
+  
+  void disable(Object& obj) {
+    for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
+			type.hooks[i].disable(obj, data[i]);
+  }
+  
+  void tick(Object& obj, double time) {
+    for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
+			type.hooks[i].tick(obj, data[i], time);
+  }
+  
+  int opCmp(const CivilAct@ other) const {
+		if(type.id < other.type.id)
+			return -1;
+		if(type.id > other.type.id)
+			return 1;
+		return 0;
+	}
+  
+  void save(SaveFile& file) {
+    file.writeIdentifier(SI_CivilAct, type.id);
+    for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
+      type.hooks[i].save(data[i], file);
+  }
+  
+  void load(SaveFile& file) {
+    @type = getCivilActType(file.readIdentifier(SI_CivilAct));
+    data.length = type.hooks.length;
+    for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
+      type.hooks[i].load(data[i], file);
+  }
+};
+
+void parseLine(string& line, SettlementFocusType@ type, ReadFile@ file) {
 	//Try to find the hook
-	if(line.findFirst("(") == -1) {
-		error("Invalid line for " + focus.ident + ": " + escape(line));
+	if (line.findFirst("(") == -1) {
+		error("Invalid line for " + type.ident + ": " + escape(line));
 	}
 	else {
 		//Hook line
 		auto@ hook = cast<ISettlementHook>(parseHook(line, "settlement_effects::", instantiate=false, file=file));
-		if(hook !is null) {
-			if(focus !is null)
-				focus.hooks.insertLast(hook);
-		}
+		if (hook !is null)
+			type.hooks.insertLast(hook);
 	}
 }
 
-void parseLine(string& line, CivilAct@ civilAct, ReadFile@ file) {
+void parseLine(string& line, CivilActType@ type, ReadFile@ file) {
 	//Try to find the hook
-	if(line.findFirst("(") == -1) {
-		error("Invalid line for " + civilAct.ident + ": " + escape(line));
+	if (line.findFirst("(") == -1) {
+		error("Invalid line for " + type.ident + ": " + escape(line));
 	}
 	else {
 		//Hook line
 		auto@ hook = cast<ISettlementHook>(parseHook(line, "settlement_effects::", instantiate=false, file=file));
-		if(hook !is null) {
-			if(civilAct !is null)
-				civilAct.hooks.insertLast(hook);
-		}
+		if (hook !is null)
+			type.hooks.insertLast(hook);
 	}
 }
 
-void loadSettlementFocus(const string& filename) {
+void loadSettlementFoci(const string& filename) {
 	ReadFile file(filename, true);
 
 	string key, value;
-	SettlementFocus@ focus;
+	SettlementFocusType@ type;
 
 	uint index = 0;
 	while(file++) {
@@ -101,40 +255,46 @@ void loadSettlementFocus(const string& filename) {
 
 		if(file.fullLine) {
 			string line = file.line;
-			parseLine(line, focus, file);
+			parseLine(line, type, file);
 		}
 		else if(key == "SettlementFocus") {
-			if(focus !is null)
-				addSettlementFocus(focus);
+			if(type !is null)
+				addSettlementFocusType(type);
 			if (key == "SettlementFocus")
-				@focus = SettlementFocus();
-			focus.ident = value;
-			if(focus.ident.length == 0)
-				focus.ident = filename + "__" + index;
+				@type = SettlementFocusType();
+			type.ident = value;
+			if(type.ident.length == 0)
+				type.ident = filename + "__" + index;
 
 			++index;
 		}
-		else if(focus is null) {
+		else if(type is null) {
 			error("Missing 'SettlementFocus: ID' line in " + filename);
 		}
 		else if(key.equals_nocase("Name")) {
-			focus.name = localize(value);
+			type.name = localize(value);
 		}
+    else if (key.equals_nocase("Priority")) {
+      type.priority = toUInt(value);
+    }
+    else if (key.equals_nocase("Morale Effect")) {
+      type.setMoraleEffect(value);
+    }
 		else {
 			string line = file.line;
-			parseLine(line, focus, file);
+			parseLine(line, type, file);
 		}
 	}
 
-	if(focus !is null)
-		addSettlementFocus(focus);
+	if(type !is null)
+		addSettlementFocusType(type);
 }
 
-void loadCivilAct(const string& filename) {
+void loadCivilActs(const string& filename) {
 	ReadFile file(filename, true);
 
 	string key, value;
-	CivilAct@ civilAct;
+	CivilActType@ type;
   string[] civilActCategories;
 
 	uint index = 0;
@@ -144,47 +304,56 @@ void loadCivilAct(const string& filename) {
 
 		if(file.fullLine) {
 			string line = file.line;
-			parseLine(line, civilAct, file);
+			parseLine(line, type, file);
 		}
 		else if(key == "CivilAct") {
-			if(civilAct !is null)
-				addCivilAct(civilAct);
+			if(type !is null)
+				addCivilActType(type);
 			if (key == "CivilAct")
-				@civilAct = CivilAct();
-			civilAct.ident = value;
-			if(civilAct.ident.length == 0)
-				civilAct.ident = filename + "__" + index;
+				@type = CivilActType();
+			type.ident = value;
+			if(type.ident.length == 0)
+				type.ident = filename + "__" + index;
 
 			++index;
 		}
-		else if(civilAct is null) {
+		else if(type is null) {
 			error("Missing 'CivilAct: ID' line in " + filename);
 		}
 		else if(key.equals_nocase("Name")) {
-			civilAct.name = localize(value);
+			type.name = localize(value);
     }
+    else if(key.equals_nocase("Description")) {
+			type.description = localize(value);
+		}
     else if(key.equals_nocase("Category")) {
-			civilAct.category = value;
+			type.category = value;
       if (civilActCategories.find(value) != -1)
         civilActCategories.insertLast(value);
 		}
+    else if (key.equals_nocase("Morale Effect")) {
+      type.setMoraleEffect(value);
+    }
+    else if(key.equals_nocase("Maintenance")) {
+			type.maintainCost = toInt(value);
+		}
 		else {
 			string line = file.line;
-			parseLine(line, civilAct, file);
+			parseLine(line, type, file);
 		}
 	}
 
-	if(civilAct !is null)
-		addCivilAct(civilAct);
+	if(type !is null)
+		addCivilActType(type);
 }
 
 void preInit() {
 	FileList focusList("data/settlements/foci", "*.txt", true);
 	for(uint i = 0, cnt = focusList.length; i < cnt; ++i)
-		loadSettlementFocus(focusList.path[i]);
+		loadSettlementFoci(focusList.path[i]);
   FileList civilActList("data/settlements/civil_acts", "*.txt", true);
 	for(uint i = 0, cnt = civilActList.length; i < cnt; ++i)
-		loadCivilAct(civilActList.path[i]);
+		loadCivilActs(civilActList.path[i]);
 }
 
 int shipPopulationStatus = -1;
@@ -206,42 +375,69 @@ void init() {
 	}
 }
 
-SettlementFocus@[] foci;
-CivilAct@[] civilActs;
+SettlementFocusType@[] foci;
+CivilActType@[] civilActs;
 dictionary focusIdents, civilActIdents;
 
-SettlementFocus@[] getAvailableFoci(Object& obj, Empire@ emp) {
-  array<SettlementFocus@> availableFoci;
-  SettlementFocus@ focus;
+SettlementFocusType@[] getAvailableFoci(Object& obj) {
+  array<SettlementFocusType@> availableFoci;
+  SettlementFocusType@ focus;
   
   for (uint i = 0, cnt = foci.length; i < cnt; ++i) {
     @focus = foci[i];
     if (focus.canEnable(obj))
       availableFoci.insertLast(focus);
   }
+  //Sort by priority for autoFocus
+  availableFoci.sortDesc();
   return availableFoci;
 }
 
-CivilAct@[] getAvailableCivilActs(Object& obj, Empire@ emp) {
-  array<CivilAct@> availablecivilActs;
-  CivilAct@ civilAct;
+CivilActType@[] getAvailableCivilActs(Object& obj) {
+  array<CivilActType@> availableCivilActs;
+  CivilActType@ civilAct;
   
   for (uint i = 0, cnt = civilActs.length; i < cnt; ++i) {
     @civilAct = civilActs[i];
     if (civilAct.canEnable(obj))
-      availablecivilActs.insertLast(civilAct);
+      availableCivilActs.insertLast(civilAct);
   }
-  return availablecivilActs;
+  return availableCivilActs;
 }
 
-void addSettlementFocus(SettlementFocus@ focus) {
+const SettlementFocusType@ getSettlementFocusType(uint id) {
+	if(id < foci.length)
+		return foci[id];
+	else
+		return null;
+}
+
+const CivilActType@ getCivilActType(uint id) {
+	if(id < civilActs.length)
+		return civilActs[id];
+	else
+		return null;
+}
+
+void addSettlementFocusType(SettlementFocusType@ focus) {
 	focus.id = foci.length;
 	foci.insertLast(focus);
 	focusIdents.set(focus.ident, @focus);
 }
 
-void addCivilAct(CivilAct@ civilAct) {
+void addCivilActType(CivilActType@ civilAct) {
   civilAct.id = civilActs.length;
   civilActs.insertLast(civilAct);
   civilActIdents.set(civilAct.ident, @civilAct);
+}
+
+void saveIdentifiers(SaveFile& file) {
+	for(uint i = 0, cnt = foci.length; i < cnt; ++i) {
+		auto type = foci[i];
+		file.addIdentifier(SI_SettlementFocus, type.id, type.ident);
+	}
+  for(uint i = 0, cnt = civilActs.length; i < cnt; ++i) {
+		auto type = civilActs[i];
+		file.addIdentifier(SI_CivilAct, type.id, type.ident);
+	}
 }

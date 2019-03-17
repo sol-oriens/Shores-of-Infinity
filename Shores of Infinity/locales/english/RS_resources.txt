@@ -1,3 +1,4 @@
+MONEY_TYPE_11: Civil Acts
 ELECTRONICS: Semiconductors
 LOCAL_ICY_WATER_DESC: [color=#ff7070][b]Cannot be exported.[/b][/color]
 COMMON_GASES: Common Gases

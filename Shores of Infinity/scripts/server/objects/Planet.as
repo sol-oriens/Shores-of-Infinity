@@ -231,6 +231,7 @@ tidy class PlanetScript {
 		planet.leaderDestroy();
 		planet.destroyStatus();
 		planet.destroySites();
+		planet.clearSettlement();
 		leaveRegion(planet);
 
 		if(planet.owner !is null) {
@@ -248,6 +249,7 @@ tidy class PlanetScript {
 			if(prevOwner.GloryMode == 2 && (planet.inCombat || planet.engaged)) {
 				prevOwner.Glory -= 100 * planet.Population;
 			}
+			planet.clearSettlement();
 		}
 		if(planet.owner !is null) {
 			planet.owner.recordStatDelta(stat::Planets, 1);
@@ -256,7 +258,7 @@ tidy class PlanetScript {
 			if(planet.owner.GloryMode == 1 && (planet.inCombat || planet.engaged)) {
 				planet.owner.Glory += 100 * planet.Population;
 			}
-			planet.initSettlement(planet.owner);
+			planet.initSettlement();
 		}
 		planet.clearRally();
 		if(planet.hasAbilities)
@@ -382,7 +384,7 @@ tidy class PlanetScript {
 
 		if(planet.hasAbilities)
 			planet.abilityTick(time);
-
+		
 		//Tick occasional stuff
 		timer += float(time);
 		if(timer >= 0.9f) {
@@ -390,6 +392,7 @@ tidy class PlanetScript {
 			planet.surfaceTick(timer);
 			planet.resourceTick(timer);
 			planet.statusTick(time);
+			planet.settlementTick(time);
 			timer = 0.f;
 		}
 

@@ -12,6 +12,7 @@ import elements.GuiPanel;
 import elements.MarkupTooltip;
 import icons;
 import settlements;
+import util.formatting;
 
 from gui import animate_time;
 
@@ -127,6 +128,7 @@ class SettlementDisplay : DisplayBox {
 	GuiAccordion@ civilActList;
   GuiSprite@ moraleIcon;
 	
+	GuiButton@ autoFocusButton;
 	GuiButton@ cancelCivilActsButton;
   
   SettlementDisplay(SettlementParent@ ov, vec2i origin, Alignment@ target) {
@@ -151,6 +153,13 @@ class SettlementDisplay : DisplayBox {
 		@focus = GuiText(upperPanelBox, Alignment(Left+8, Top+2, Left+0.5f-4, Height=32), locale::FOCUS_INPUT);
 		@focusList = GuiDropdown(upperPanelBox, Alignment(Left+0.5f+4, Top+2, Right-4, Height=32));
 		
+		@autoFocusButton = GuiButton(upperPanelBox, Alignment(Right-8-32, Bottom-32, Width=30, Height=30));
+		autoFocusButton.style = SS_IconToggle;
+		autoFocusButton.color = Color(0x00ff00ff);
+		autoFocusButton.toggleButton = true;
+		autoFocusButton.setIcon(Sprite(spritesheet::ActionBarIcons, 0));
+		setMarkupTooltip(autoFocusButton, locale::TT_AUTO_FOCUS, width=300);
+		
 		//Middle panel
 		@middlePanelBox = GuiSkinElement(this, Alignment(Left+8, Top+250+10, Right-8, Top+650+10), SS_DesignOverviewBG);
     middlePanelBox.color = Color(0x6dd6caff);
@@ -166,13 +175,14 @@ class SettlementDisplay : DisplayBox {
 		civilActList.clickableHeaders = true;
 		
 		@cancelCivilActsButton = GuiButton(middlePanelBox, Alignment(Right-8-32, Bottom-32, Width=30, Height=30));
-		cancelCivilActsButton.style = SS_IconToggle;
+		cancelCivilActsButton.style = SS_IconButton;
 		cancelCivilActsButton.color = Color(0x00ff00ff);
 		cancelCivilActsButton.setIcon(icons::Clear);
 		setMarkupTooltip(cancelCivilActsButton, locale::TT_CANCEL_CIVIL_ACTS, width=300);
 		
 		if (obj.owner is playerEmpire) {
-			updateMorale();
+			updateVariables();
+			updateAutoFocus();
 			updateFocusList();
 			updateCivilActList();
 		}
@@ -193,20 +203,31 @@ class SettlementDisplay : DisplayBox {
 			case GUI_Changed:
 				if(evt.caller is focusList) {
 					auto@ focusElement = cast<FocusElement>(focusList.getItemElement(focusList.selected));
-					if (obj.isPlanet) {
-						auto@ pl = cast<Planet>(obj);
-						pl.focusId = focusElement.focus.id;
-					}
-					else if (obj.isShip) {
-						auto@ ship = cast<Ship>(obj);
-						if (ship.hasSettlement)
-							ship.focusId = focusElement.focus.id;
+					if (focusElement !is null && focusElement.focus.id != obj.focusId) {
+						obj.setFocus(focusElement.focus.id);
+						//Deactivate autoFocus
+						obj.autoFocus = false;
+						updateVariables();
+						updateAutoFocus();
 					}
 					return true;
 				}
 				break;
 			case GUI_Clicked:
+				if (evt.caller is autoFocusButton) {
+					obj.autoFocus = !obj.autoFocus;
+					return true;
+				}
 				if (evt.caller is cancelCivilActsButton) {
+					for(uint i = 0, cnt = obj.civilActCount; i < cnt; ++i) {
+						uint id = obj.getCivilActTypeId(i);
+						const CivilActType@ civilAct = getCivilActType(id);
+						obj.disableCivilAct(civilAct.id);
+						obj.removeCivilAct(id);
+						--i; --cnt;
+					}
+					updateCivilActList();
+					updateVariables();
 					return true;
 				}
 				break;
@@ -223,47 +244,31 @@ class SettlementDisplay : DisplayBox {
 			updateTimer = randomd(0.1,0.9);
 			if(longTimer <= 0) {
 				if (obj.owner is playerEmpire) {
-					updateMorale();
+					updateVariables();
+					updateAutoFocus();
 					updateFocusList();
 					updateCivilActList();
 				}
 				longTimer = 5.0;
 			}
       
-			bool isSettlement = false;
-	    if (obj.isPlanet)
-	      isSettlement = cast<Planet>(obj).isSettlement;
-			else if (obj.isShip) {
-				auto@ ship = cast<Ship>(obj);
-				if (ship.hasSettlement)
-					isSettlement = ship.isSettlement;
-			}
-			
-      if (isSettlement) {
+      if (obj.isSettlement) {
         nameBox.visible = true;
 				moraleBox.visible = true;
         upperPanelBox.visible = true;
+				middlePanelBox.visible = true;
       }
       else {
         nameBox.visible = false;
 				moraleBox.visible = false;
         upperPanelBox.visible = false;
+				middlePanelBox.visible = false;
       }
     }
   }
   
-  void updateMorale() {
-		uint currentMorale;
-    if (obj.isPlanet)
-			currentMorale = cast<Planet>(obj).morale;
-		else if (obj.isShip) {
-			auto@ ship = cast<Ship>(obj);
-			if (ship.hasSettlement)
-				currentMorale = ship.morale;
-		}
-		else return;
-		
-    switch (currentMorale) {
+  void updateVariables() {
+    switch (obj.morale) {
       case SM_Low:
 				morale.text = locale::MORALE_LOW;
 				moraleIcon.desc = Sprite(material::MaskAngry);
@@ -281,26 +286,22 @@ class SettlementDisplay : DisplayBox {
   }
 	
 	void updateFocusList() {
-		int currentFocusId;
-		if (obj.isPlanet)
-			currentFocusId = cast<Planet>(obj).focusId;
-		else if (obj.isShip) {
-			auto@ ship = cast<Ship>(obj);
-			if (ship.hasSettlement)
-				currentFocusId = ship.focusId;
-		}
-		else return;
-		
 		focusList.clearItems();
 		
-		array<SettlementFocus@> foci = getAvailableFoci(obj, playerEmpire);
+		array<SettlementFocusType@> foci = getAvailableFoci(obj);
 		for (uint i = 0, cnt = foci.length; i < cnt; ++i) {
 			focusList.addItem(FocusElement(foci[i]));
-			if (int(foci[i].id) == currentFocusId) {
+			if (foci[i].id == obj.focusId) {
 				focusList.selected = i;
-				break;
 			}
 		}
+	}
+	
+	void updateAutoFocus() {
+		if (obj.autoFocus)
+			autoFocusButton.pressed = true;
+		else
+			autoFocusButton.pressed = false;
 	}
 	
 	void updateCivilActList() {
@@ -308,7 +309,7 @@ class SettlementDisplay : DisplayBox {
 		
 		array<GuiListbox@> cats;
 		array<string> catNames;
-		array<CivilAct@> civilActs = getAvailableCivilActs(obj, playerEmpire);
+		array<CivilActType@> civilActs = getAvailableCivilActs(obj);
 		for(uint i = 0, cnt = civilActs.length; i < cnt; ++i) {
 			auto@ civilAct = civilActs[i];
 			
@@ -352,8 +353,8 @@ class SettlementDisplay : DisplayBox {
 			civilActList.openSection(sec);
 			list.updateHover();
 			
-			for(uint j = 0, jcnt = obj.get_civilActCount(); j < jcnt; ++j) {
-				uint id = obj.getCivilActId(j);
+			for(uint j = 0, jcnt = obj.civilActCount; j < jcnt; ++j) {
+				uint id = obj.getCivilActTypeId(j);
 				if (foundIds.find(id) != -1)
 					continue;
 				for(uint k = 0, kcnt = list.itemCount; k < kcnt; ++k) {
@@ -373,36 +374,70 @@ class SettlementDisplay : DisplayBox {
 	}
 };
 
+const string slashStr("/");
+
 class FocusElement : GuiListText {
-	const SettlementFocus@ focus;
+	const SettlementFocusType@ focus;
 	
-	FocusElement(const SettlementFocus& focus) {
+	FocusElement(const SettlementFocusType& focus) {
 			@this.focus = focus;
 			super(focus.name);
 	}
 };
 
 class CivilActElement : GuiListText {
-	const CivilAct@ civilAct;
+	SettlementDisplay@ parent;
+	CivilActType@ civilAct;
 	Object@ obj;
 	Color nameColor = colors::White;
+	string costText;
+	string maintainText;
+	string ttText;
 	
 	bool selected = false;
 
-	CivilActElement(SettlementDisplay@ disp, const CivilAct@ civilAct, Object@ obj) {
+	CivilActElement(SettlementDisplay@ disp, CivilActType@ civilAct, Object@ obj) {
 		super(civilAct.name);
+		@this.parent = disp;
 		@this.civilAct = civilAct;
 		@this.obj = obj;
+		costText = formatMoney(0);
+		maintainText = formatMoney(civilAct.maintainCost);
+		ttText = civilAct.formatTooltip();
 	}
-
+	
+	string get_tooltipText() override {
+		return ttText;
+	}
+	
+	int opCmp(const GuiListElement@ other) const override {
+		return 0;
+	}
+	
 	void draw(GuiListbox@ ele, uint flags, const recti& pos) override {
 		const Font@ font = ele.skin.getFont(ele.TextFont);
 		
 		//Background element
 		ele.skin.draw(SS_GlowButton, flags, pos);
 		
+		int x = pos.width - 2;
+		
 		//Name
+		
 		font.draw(pos=pos.padded(4, 0, 0, 0), vertAlign=0.5, text=text, ellipsis=locale::ELLIPSIS, color=nameColor);
+		if(maintainText.length != 0) {
+			x -= 135;
+			icons::Money.draw(recti_area(vec2i(x, 3)+pos.topLeft, vec2i(24, 24)));
+			font.draw(pos=recti_area(vec2i(x+28, 0)+pos.topLeft, vec2i(92, 30)),
+					horizAlign=0.0, vertAlign=0.5,
+					text=costText, ellipsis=locale::ELLIPSIS, color=colors::White);
+			font.draw(pos=recti_area(vec2i(x+28, 0)+pos.topLeft, vec2i(92, 30)),
+					horizAlign=0.5, vertAlign=0.5,
+					text=slashStr, ellipsis=locale::ELLIPSIS, color=colors::White);
+			font.draw(pos=recti_area(vec2i(x+28, 0)+pos.topLeft, vec2i(92, 30)),
+					horizAlign=1.0, vertAlign=0.5,
+					text=maintainText, ellipsis=locale::ELLIPSIS, color=colors::White);
+		}
 	}
 	
 	bool onMouseEvent(const MouseEvent& event) override {
@@ -411,12 +446,15 @@ class CivilActElement : GuiListText {
 				if(event.button == 0) {
 					if (selected == false) {
 						obj.addCivilAct(civilAct.id);
+						obj.enableCivilAct(civilAct.id);
 						selected = true;
 					}
 					else {
+						obj.disableCivilAct(civilAct.id);
 						obj.removeCivilAct(civilAct.id);
 						selected = false;
 					}
+					parent.updateVariables();
 					return false; //So the active visual effect can occur
 				}
 			break;

@@ -787,6 +787,8 @@ tidy class ShipScript {
 			ship.destroyConstruction();
 		if(ship.hasAbilities)
 			ship.destroyAbilities();
+		if (ship.hasSettlement)
+			ship.clearSettlement();
 
 		leaveRegion(ship);
 	}
@@ -803,6 +805,9 @@ tidy class ShipScript {
 			}
 			else
 				prevOwner.TotalSupportsActive -= 1;
+			
+			if (ship.hasSettlement)
+				ship.clearSettlement();
 		}
 
 		if(ship.owner !is null && ship.owner.valid) {
@@ -818,7 +823,7 @@ tidy class ShipScript {
 				ship.owner.TotalSupportsActive += 1;
 				
 			if (ship.hasSettlement)
-				ship.initSettlement(ship.owner);
+				ship.initSettlement();
 		}
 		if(ship.hasAbilities)
 			ship.abilityOwnerChange(prevOwner, ship.owner);
@@ -1195,6 +1200,8 @@ tidy class ShipScript {
 		timer += float(time);
 		if(timer >= 1.f) {
 			occasional_tick(ship, timer);
+			if (ship.hasSettlement)
+				ship.settlementTick(time);
 			timer = 0.f;
 		}
 
@@ -1241,9 +1248,9 @@ tidy class ShipScript {
 		}
 
 		//Repair out of combat (SoI - and actually, also in combat...)
-		// SoI - bp.removedHP is bugged doesn't ever seem to return to the exact value of bp.design.totalHP (difference of 0.01)
-		// Also when substracting from bp.design.totalHP in this case a range overflow occurs for some reason
-		// There is probably a better solution but this hack will do for now
+		//SoI - bp.removedHP is bugged doesn't ever seem to return to the exact value of bp.design.totalHP (difference of 0.01)
+		//Also when substracting from bp.design.totalHP in this case a range overflow occurs for some reason
+		//There is probably a better solution but this hack will do for now
 		if (int(bp.currentHP) == int(bp.design.totalHP))
 			bp.currentHP = bp.design.totalHP;
 		double damage = bp.design.totalHP - (bp.currentHP + bp.removedHP);

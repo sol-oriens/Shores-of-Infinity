@@ -1,19 +1,20 @@
 Object.Settlement : components.Settlement::Settlement {
 restricted local:
   uint get_morale() const;
-  void set_morale(uint value);
-  int get_focusId() const;
-  void set_focusId(int value);
+  void updateMorale(int value);
+  uint get_focusId() const;
+  void setFocus(uint id);
   bool get_autoFocus() const;
   void set_autoFocus(bool value);
-  uint getCivilActId(uint index) const;
+  uint getCivilActTypeId(uint index) const;
   void addCivilAct(uint id);
   void removeCivilAct(uint id);
-  uint get_civilActCount() const
+  uint get_civilActCount() const;
+  void enableCivilAct(uint id);
+  void disableCivilAct(uint id);
   bool get_isSettlement() const;
 server:
-  void initSettlement(Empire& emp);
-  void writeSettlement(Message& msg) const;
-shadow:
-  void readSettlement(Message& msg);
+  void initSettlement();
+  void clearSettlement();
+  void settlementTick(double time);
 }

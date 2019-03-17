@@ -258,7 +258,7 @@ class AllowSettlement : GenericEffect {
 			if(obj.isShip) {
 				auto@ ship = cast<Ship>(obj);
 				ship.activateSettlement();
-				ship.initSettlement(ship.owner);
+				ship.initSettlement();
 			}
 			else
 				return;

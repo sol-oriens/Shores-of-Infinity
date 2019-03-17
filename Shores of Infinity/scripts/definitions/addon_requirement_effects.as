@@ -48,13 +48,37 @@ class RequirePopulation : Requirement {
 	bool meets(Object& obj, bool ignoreState = false) const override {
 		double minPop = min_population.decimal;
 		double maxPop = max_population.decimal;
+		
 		if (obj.hasSurfaceComponent)
 			return obj.population >= minPop - 0.0001 && (maxPop == -1 || obj.population <= maxPop);
 		else if (obj.hasStatuses) {
-			int shipPop = obj.getStatusStackCountAny(shipPopulationStatus);
-			int mothershipPop = obj.getStatusStackCountAny(mothershipPopulationStatus);
-			return (shipPop >= minPop || mothershipPop >= minPop) && (maxPop == -1 || shipPop <= maxPop || mothershipPop <= maxPop);
+			int pop = obj.getStatusStackCountAny(shipPopulationStatus);
+			if (pop == 0)
+				obj.getStatusStackCountAny(mothershipPopulationStatus);
+			return pop >= minPop && (maxPop == -1 || pop <= maxPop);
 		}
 		return false;
+	}
+};
+
+class RequireHome : Requirement {
+	Document doc("This can only work if the object is the home object.");
+
+	bool meets(Object& obj, bool ignoreState = false) const override {
+		Object@ home = obj.owner.Homeworld;
+		if (home is null)
+			@home = obj.owner.HomeObj;
+		return obj is home;
+	}
+};
+
+class RequireNotHome : Requirement {
+	Document doc("This can only work if the object is not the home object.");
+
+	bool meets(Object& obj, bool ignoreState = false) const override {
+		Object@ home = obj.owner.Homeworld;
+		if (home is null)
+			@home = obj.owner.HomeObj;
+		return !(obj is home);
 	}
 };

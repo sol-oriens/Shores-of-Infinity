@@ -30,6 +30,8 @@ enum SaveIdentifier {
 	SI_SiteOption,
 	SI_RandomEvent,
 	SI_RandomEventOption,
+	SI_SettlementFocus,
+	SI_CivilAct,
 	SI_PlanetLevelChain,
 	SI_AttitudeType,
 	SI_ObjectStat,

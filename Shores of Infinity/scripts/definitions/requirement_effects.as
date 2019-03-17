@@ -116,6 +116,7 @@ class Requirement : Hook, IOrbitalEffect, IBuildingHook, IConstructionHook, ISet
 	void enable(Object& obj, any@ data) const {}
   void disable(Object& obj, any@ data) const {}
 	bool canEnable(Object& obj) const { return meets(obj); }
+	void tick(Object& obj, any@ data, double time) const {}
 };
 
 class RequireTrait : Requirement {

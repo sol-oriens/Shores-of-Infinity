@@ -70,6 +70,7 @@ enum MoneyType {
 	MoT_Handicap,
 	MoT_Trade,
 	MoT_Vassals,
+	MoT_Civil_Acts,
 	//Update save version when adding
 	// See: components.ResourceManager
 

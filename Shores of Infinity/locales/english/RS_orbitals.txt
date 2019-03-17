@@ -30,8 +30,7 @@ ORB_TRADE_STATION_DESC: <<|
 	between any territories with commerce stations or starports with long haul
 	docking bays. Additional trade with foreign empires also provides
 	income for each planet in the system belonging to another empire you are
-	at peace with, to each friendly empire including yours, equal to 100k per
-	planet Level starting from 1 and up to 300k.
+	at peace with, equal to 100k per planet Level starting from 1 and up to 300k.
 
 	In addition, on each commerce station you can purchase a quantity of
 	research, energy, influence or labor in exchange for money every 3 minutes.
