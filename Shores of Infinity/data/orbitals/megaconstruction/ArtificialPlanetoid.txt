@@ -7,7 +7,7 @@ Module: ArtificialPlanetoid
 	Standalone: True
 
 	Build Cost: 1000
-	Labor Cost: 100
+	Labor Cost: 200
 	ConsumeCargo(Ore, 5000)
 
 	RequireUnlockTag(ArtificialPlanetoidUnlock)

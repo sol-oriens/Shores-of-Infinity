@@ -18,7 +18,7 @@ Module: Starbase
 
 	Build Cost: 750
 	Maintenance: 100
-	Labor Cost: 40
+	Labor Cost: 80
 
 	RequireNotTrait(Evangelical)
 	RequireNotTrait(Pacifists)

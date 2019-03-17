@@ -15,7 +15,7 @@ Module: DefenseSatellite
 
 	Build Cost: 250
 	Maintenance: 25
-	Labor Cost: 20
+	Labor Cost: 40
 
 	ConsumeEnergy(500)
 

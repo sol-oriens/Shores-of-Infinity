@@ -22,7 +22,7 @@ Module: FlingCore
 
 	Build Cost: 400
 	Maintenance: 150
-	Labor Cost: 20
+	Labor Cost: 40
 
 	ConsumeFTL(250) #version>=147
 	FTLMaintenance(0.15) #version>=147

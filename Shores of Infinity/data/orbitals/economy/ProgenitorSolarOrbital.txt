@@ -15,7 +15,7 @@ Module: ProgenitorSolarOrbital
 	Armor: 3500
 
 	Build Cost: 400
-	Labor Cost: 15
+	Labor Cost: 30
 
 	FacesOrbitCenter()
 

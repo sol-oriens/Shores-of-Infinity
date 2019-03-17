@@ -18,7 +18,7 @@ Module: Dryport
 
 	Build Cost: 200
 	Maintenance: 20
-	Labor Cost: 10
+	Labor Cost: 20
 
 	RequireNotTrait(Ancient)
 	RequireNotTrait(Extragalactic)

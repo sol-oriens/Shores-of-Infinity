@@ -15,7 +15,7 @@ Module: SenatorialPalace
 
 	Build Cost: 1000
 	Maintenance: 150
-	Labor Cost: 50
+	Labor Cost: 100
 
 	ConsumeInfluence(15)
 

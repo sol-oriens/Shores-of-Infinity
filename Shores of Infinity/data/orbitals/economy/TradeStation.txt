@@ -18,7 +18,7 @@ Module: TradeStation
 
 	Build Cost: 500
 	Maintenance: 200
-	Labor Cost: 15
+	Labor Cost: 30
 
 	ConsumeInfluence(5)
 

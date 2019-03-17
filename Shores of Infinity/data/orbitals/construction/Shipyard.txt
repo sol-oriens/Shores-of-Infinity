@@ -19,7 +19,7 @@ Module: Shipyard
 
 	Build Cost: 500
 	Maintenance: 250
-	Labor Cost: 30
+	Labor Cost: 60
 
 	RequireNotTrait(Mechanoid)
 

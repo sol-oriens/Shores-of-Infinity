@@ -16,6 +16,6 @@ Module: SupplyDepot
 
 	Build Cost: 500
 	Maintenance: 100
-	Labor Cost: 10
+	Labor Cost: 20
 
 	AddRegionStatus(FastResupply)

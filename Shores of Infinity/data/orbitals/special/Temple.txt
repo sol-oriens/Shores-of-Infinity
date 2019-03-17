@@ -18,7 +18,7 @@ Module: Temple
 
 	Build Cost: 300
 	Maintenance: 30
-	Labor Cost: 15
+	Labor Cost: 30
 
 	RequireTrait(Evangelical)
 

@@ -20,6 +20,11 @@ v0.3.0b
 
 - Fixed a bug where the research cost was not updated when a Healthcare Complex is removed.
 
+[*] Orbitals
+
+- Doubled the labor cost of all orbitals.
+- Singularity Lab maintenance cost is now 90k (up from 25k).
+
 [*] Planets
 
 - Added an icon for the Moon Base project.

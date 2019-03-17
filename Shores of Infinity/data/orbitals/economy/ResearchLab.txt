@@ -19,7 +19,7 @@ Module: ResearchLab
 
 	Build Cost: 300
   Maintenance: 80
-	Labor Cost: 20
+	Labor Cost: 40
 
   AddCargoStorage(1500)
 	AddResearchIncome(1)

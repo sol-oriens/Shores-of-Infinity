@@ -15,7 +15,7 @@ Module: FTLStorage
 
 	Build Cost: 300
 	Maintenance: 50
-	Labor Cost: 10
+	Labor Cost: 20
 
 	RequireTrait(StarChildren)
 

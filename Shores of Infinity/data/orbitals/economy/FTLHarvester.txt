@@ -15,7 +15,7 @@ Module: FTLHarvester
 
 	Build Cost: 450
 	Maintenance: 75
-	Labor Cost: 25
+	Labor Cost: 50
 
 	RequireNotTrait(Flux)
 

@@ -10,7 +10,7 @@ Module: Mainframe
 
 	Build Cost: 500
 	Maintenance: 50
-	Labor Cost: 25
+	Labor Cost: 50
 	Size: 15
 
 	Health: 10000

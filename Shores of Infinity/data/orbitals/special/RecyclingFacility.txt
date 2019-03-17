@@ -18,7 +18,7 @@ Module: RecyclingFacility
 
 	Build Cost: 350
 	Maintenance: 150
-	Labor Cost: 20
+	Labor Cost: 40
 
 	RequireUnlockTag(StarMegacityUnlock)
 
