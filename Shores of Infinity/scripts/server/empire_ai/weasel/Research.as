@@ -9,6 +9,8 @@ import empire_ai.weasel.Development;
 
 import research;
 
+const double baseAimResearchRate = 2.0;
+
 class Research : AIComponent {
 	Development@ development;
 	
@@ -202,7 +204,7 @@ class Research : AIComponent {
 		}
 		
 		//Update research generation rate goal
-		development.aimResearchRate = clamp(gameTime / (20.0 * 60.0) - 0.5, 0.0, 2.5);
+		development.aimResearchRate = clamp(gameTime / (20.0 * 60.0) - 0.5, 0.0, baseAimResearchRate);
 	}
 };
 
