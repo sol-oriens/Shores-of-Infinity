@@ -494,7 +494,7 @@ class ConstructionDisplay : DisplayBox {
 					if(def is drydock)
 						continue;
 					//Filter modules
-					if(def.canBuildOn(cast<Orbital>(obj)))
+					if(obj.isOrbital && def.canBuildOn(cast<Orbital>(obj)))
 						continue;
 					if(def.canBuildBy(obj))
 						list.addItem(BuildElement(this, def, obj));
