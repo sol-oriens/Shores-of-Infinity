@@ -27,7 +27,8 @@ v0.3.0b
 [*] Orbitals
 
 - Doubled the labor cost of all orbitals.
-- Singularity Lab maintenance cost is now 90k (up from 25k).
+- Singularity Labs maintenance cost is now 90k (up from 25k).
+- Staging Hubs can now build orbitals and stations.
 
 [*] Planets
 

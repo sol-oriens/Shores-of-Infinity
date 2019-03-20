@@ -493,6 +493,9 @@ class ConstructionDisplay : DisplayBox {
 					auto@ def = getOrbitalModule(i);
 					if(def is drydock)
 						continue;
+					//Filter modules
+					if(def.canBuildOn(cast<Orbital>(obj)))
+						continue;
 					if(def.canBuildBy(obj))
 						list.addItem(BuildElement(this, def, obj));
 				}

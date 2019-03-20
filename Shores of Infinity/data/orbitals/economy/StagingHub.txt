@@ -25,7 +25,7 @@ Module: StagingHub
 	AddFleetCommand(32)
 	AddFleetCommandEmpireAttribute(OutpostBoost, 32)
 
-	AllowConstruction(Asteroids = True)
+	AllowConstruction(Orbitals = True, Asteroids = True)
 
 	AddLaborFactor(-0.5)
 	AllowLaborImport()
