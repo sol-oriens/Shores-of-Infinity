@@ -23,6 +23,7 @@ v0.3.0b
 [*] Gameplay
 
 - Fixed a vanilla bug where elapsed time was not tracked correctly for planet statuses.
+- Fixed a bug which would cause a system in which a protoplanet was used to become corrupted upon loading a saved game.
 
 [*] Orbitals
 
