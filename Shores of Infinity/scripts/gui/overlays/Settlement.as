@@ -122,11 +122,11 @@ class SettlementDisplay : DisplayBox {
   Object@ obj;
   
   GuiPanel@ upperPanel, middlePanel, civilActsPanel;
-  GuiSkinElement@ nameBox, moraleBox, upperPanelBox, middlePanelBox, civilActBox;
-	GuiText@ name, morale, focus, civilActs;
+  GuiSkinElement@ nameBox, moraleBox, typeBox, upperPanelBox, middlePanelBox, civilActBox;
+	GuiText@ name, morale, type, focus, civilActs;
 	GuiDropdown@ focusList;
 	GuiAccordion@ civilActList;
-  GuiSprite@ moraleIcon;
+  GuiSprite@ moraleIcon, typeIcon;
 	
 	GuiButton@ autoFocusButton;
 	GuiButton@ cancelCivilActsButton;
@@ -150,8 +150,13 @@ class SettlementDisplay : DisplayBox {
     GuiSkinElement upperPanelBottomBar(upperPanelBox, Alignment(Left+4, Bottom-34, Right-4, Bottom), SS_PlainBox);
     @upperPanel = GuiPanel(upperPanelBox, Alignment(Left, Top, Right, Bottom-34));
     
-		@focus = GuiText(upperPanelBox, Alignment(Left+8, Top+2, Left+0.5f-4, Height=32), locale::FOCUS_INPUT);
-		@focusList = GuiDropdown(upperPanelBox, Alignment(Left+0.5f+4, Top+2, Right-4, Height=32));
+		@typeBox = GuiSkinElement(upperPanelBox, Alignment(Left, Top, Right, Height=64), SS_Highlight);
+		@typeIcon = GuiSprite(typeBox, Alignment(Left+8, Top+8, Width=48, Height=48));
+		@type = GuiText(typeBox, Alignment(Left+72, Top, Right-8, Bottom));
+		type.font = FT_Medium;
+		
+		@focus = GuiText(upperPanelBox, Alignment(Left+8, Top+72, Left+0.5f-4, Height=32), locale::FOCUS_INPUT);
+		@focusList = GuiDropdown(upperPanelBox, Alignment(Left+0.5f+4, Top+72, Right-4, Height=32));
 		
 		@autoFocusButton = GuiButton(upperPanelBox, Alignment(Right-8-32, Bottom-32, Width=30, Height=30));
 		autoFocusButton.style = SS_IconToggle;
@@ -284,6 +289,12 @@ class SettlementDisplay : DisplayBox {
 				break;
     }
 		morale.text += " " + locale::MORALE;
+		
+		const SettlementType@ settlement = getSettlementType(obj.settlementTypeId);
+		if (settlement !is null) {
+			type.text = settlement.name;
+			typeIcon.desc = settlement.icon;
+		}
   }
 	
 	void updateFocusList() {

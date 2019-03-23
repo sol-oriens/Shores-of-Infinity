@@ -3,8 +3,9 @@ import settlements;
 from statuses import getStatusID;
 from resources import MoneyType;
 
-tidy class Settlement : Component_Settlement, Savable {
+tidy class SettlementManager : Component_Settlement, Savable {
   Object@ obj;
+  Settlement@ settlementType;
   SettlementFocus@ focus;
   array<CivilAct@> civilActs;
   private bool _isActive = false;
@@ -33,6 +34,21 @@ tidy class Settlement : Component_Settlement, Savable {
   
   void updateMorale(int value) {
     _morale += value;
+  }
+  
+  uint get_settlementTypeId() const {
+    return settlementType !is null ? settlementType.type.id : 0;
+  }
+  
+  void setType(uint id) {
+    const SettlementType@ type = getSettlementType(id);
+    if (type !is null) {
+      if (settlementType !is null)
+        settlementType.disable(obj);
+      Settlement settlement(type);
+      @settlementType = settlement;
+      settlement.enable(obj);
+    }
   }
   
   uint get_focusId() const {
@@ -131,6 +147,11 @@ tidy class Settlement : Component_Settlement, Savable {
   }
   
   void initSettlement(Object& obj) {
+    SettlementType@ settlement = getSettlement(obj);
+    if (settlement is null) {
+      error("initSettlement (" + obj.name + ", " + obj.owner.name + "): could not find any suitable settlement type");
+      return;
+    }
     SettlementFocusType@[] foci = getAvailableFoci(obj);
     if (foci.length == 0) {
       error("initSettlement (" + obj.name + ", " + obj.owner.name + "): could not find any available focus");
@@ -138,6 +159,7 @@ tidy class Settlement : Component_Settlement, Savable {
     }
     @this.obj = obj;
     _morale = 0;
+    setType(settlement.id);
     setFocus(foci[0].id);
     _autoFocus = true;
     _isActive = true;
@@ -157,6 +179,18 @@ tidy class Settlement : Component_Settlement, Savable {
   
   void settlementTick(Object& obj, double time) {
     if (_isActive) {
+      if (!settlementType.type.canEnable(obj)) {
+        settlementType.disable(obj);
+        SettlementType@ settlement = getSettlement(obj);
+        if (settlement is null) {
+          error("initSettlement (" + obj.name + ", " + obj.owner.name + "): could not find any suitable settlement type");
+          return;
+        }
+        setType(settlement.id);
+      }
+      
+      settlementType.tick(obj, time);
+      
       if (!focus.type.canEnable(obj))
         focus.disable(obj);
       SettlementFocusType@[] foci = getAvailableFoci(obj);
@@ -187,6 +221,7 @@ tidy class Settlement : Component_Settlement, Savable {
       file << _morale;
       file << _focusId;
       file << _autoFocus;
+      file << settlementType;
       file << focus;
       uint cnt = civilActs.length;
   		file << cnt;
@@ -203,6 +238,8 @@ tidy class Settlement : Component_Settlement, Savable {
       file >> _morale;
       file >> _focusId;
       file >> _autoFocus;
+      @settlementType = Settlement();
+      file >> settlementType;
       @focus = SettlementFocus();
       file >> focus;
       uint cnt = 0;

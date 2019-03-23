@@ -1,7 +1,8 @@
-Object.Settlement : components.Settlement::Settlement {
+Object.Settlement : components.SettlementManager::SettlementManager {
 restricted local:
   uint get_morale() const;
   void updateMorale(int value);
+  uint get_settlementTypeId() const;
   uint get_focusId() const;
   void setFocus(uint id);
   bool get_autoFocus() const;
