@@ -98,8 +98,11 @@ tidy class Settlement : Component_Settlement, Savable {
         civilAct.enable(obj);
         if (civilAct.type.moraleEffect != 0)
           updateMorale(civilAct.type.moraleEffect);
-        if (civilAct.type.maintainCost != 0)
-          obj.owner.modMaintenance(civilAct.type.maintainCost, MoT_Civil_Acts);
+        if (civilAct.type.maintainCost != 0) {
+          int maint = civilAct.type.getMaintainCost(obj);
+          obj.owner.modMaintenance(maint, MoT_Civil_Acts);
+          civilAct.currentMaint = maint;
+        }
       }
     }
   }
@@ -112,7 +115,17 @@ tidy class Settlement : Component_Settlement, Savable {
         if (civilAct.type.moraleEffect != 0)
           updateMorale(-civilAct.type.moraleEffect);
         if (civilAct.type.maintainCost != 0)
-          obj.owner.modMaintenance(-civilAct.type.maintainCost, MoT_Civil_Acts);
+          obj.owner.modMaintenance(-civilAct.currentMaint, MoT_Civil_Acts);
+      }
+    }
+  }
+  
+  void refreshMaintainCost(CivilAct@ civilAct) {
+    if (civilAct.type.maintainCost != 0) {
+      int newMaint = civilAct.type.getMaintainCost(obj);
+      if (newMaint != civilAct.currentMaint) {
+        obj.owner.modMaintenance(newMaint - civilAct.currentMaint, MoT_Civil_Acts);
+        civilAct.currentMaint = newMaint;
       }
     }
   }
@@ -160,8 +173,10 @@ tidy class Settlement : Component_Settlement, Savable {
   			auto@ civilAct = civilActs[i];
   			if(!civilAct.type.canEnable(obj))
   				civilAct.disable(obj);
-        else
+        else {
+          refreshMaintainCost(civilAct);
           civilAct.tick(obj, time);
+        }
   		}
     }
 	}

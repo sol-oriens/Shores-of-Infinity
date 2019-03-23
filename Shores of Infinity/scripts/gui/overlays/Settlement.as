@@ -169,7 +169,7 @@ class SettlementDisplay : DisplayBox {
 		@civilActs = GuiText(middlePanelBox, Alignment(Left+8, Top, Right, Top+30), locale::CIVIL_ACTS);
 		civilActs.font = FT_Medium;
 		
-		@civilActsPanel = GuiPanel(middlePanel, Alignment(Left+8, Top+34, Right, Bottom));
+		@civilActsPanel = GuiPanel(middlePanel, Alignment(Left, Top+34, Right, Bottom));
 		@civilActList = GuiAccordion(civilActsPanel, recti(0, 0, 500, 50));
 		civilActList.multiple = true;
 		civilActList.clickableHeaders = true;
@@ -184,7 +184,7 @@ class SettlementDisplay : DisplayBox {
 			updateVariables();
 			updateAutoFocus();
 			updateFocusList();
-			updateCivilActList();
+			updateCivilActList(expandAll = true);
 		}
   }
 	
@@ -264,6 +264,7 @@ class SettlementDisplay : DisplayBox {
         upperPanelBox.visible = false;
 				middlePanelBox.visible = false;
       }
+			updateAbsolutePosition();
     }
   }
   
@@ -304,7 +305,7 @@ class SettlementDisplay : DisplayBox {
 			autoFocusButton.pressed = false;
 	}
 	
-	void updateCivilActList() {
+	void updateCivilActList(bool expandAll = false) {
 		civilActList.clearSections();
 		
 		array<GuiListbox@> cats;
@@ -343,14 +344,19 @@ class SettlementDisplay : DisplayBox {
 		uint[] foundIds;
 		for(uint i = 0, cnt = cats.length; i < cnt; ++i) {
 			auto@ list = cats[i];
-			list.sortDesc();
-
-			string title = localize("#CIVIL_ACT_CAT_"+catNames[i]);
+			list.sortAsc();
+			
+			string title = localize("#CIVIL_ACT_CAT_" + catNames[i]);
 			if(title[0] == '#')
 				title = catNames[i];
-
+				
 			uint sec = civilActList.addSection(title, list);
-			civilActList.openSection(sec);
+			if (expandAll)
+				civilActList.openSection(sec);
+			else {
+				if (civilActList.opened[sec])
+					civilActList.animSize[sec] = 1.0;
+			}
 			list.updateHover();
 			
 			for(uint j = 0, jcnt = obj.civilActCount; j < jcnt; ++j) {
@@ -369,7 +375,6 @@ class SettlementDisplay : DisplayBox {
 			}
 		}
 		
-		updateAbsolutePosition();
 		gui_root.updateHover();
 	}
 };
@@ -387,7 +392,7 @@ class FocusElement : GuiListText {
 
 class CivilActElement : GuiListText {
 	SettlementDisplay@ parent;
-	CivilActType@ civilAct;
+	const CivilActType@ civilAct;
 	Object@ obj;
 	Color nameColor = colors::White;
 	string costText;
@@ -402,7 +407,7 @@ class CivilActElement : GuiListText {
 		@this.civilAct = civilAct;
 		@this.obj = obj;
 		costText = formatMoney(0);
-		maintainText = formatMoney(civilAct.maintainCost);
+		maintainText = formatMoney(civilAct.getMaintainCost(obj));
 		ttText = civilAct.formatTooltip();
 	}
 	
@@ -411,6 +416,11 @@ class CivilActElement : GuiListText {
 	}
 	
 	int opCmp(const GuiListElement@ other) const override {
+		const auto@ element = cast<CivilActElement>(other);
+		if(text < element.text)
+			return -1;
+		if(text > element.text)
+			return 1;
 		return 0;
 	}
 	
@@ -423,7 +433,6 @@ class CivilActElement : GuiListText {
 		int x = pos.width - 2;
 		
 		//Name
-		
 		font.draw(pos=pos.padded(4, 0, 0, 0), vertAlign=0.5, text=text, ellipsis=locale::ELLIPSIS, color=nameColor);
 		if(maintainText.length != 0) {
 			x -= 135;

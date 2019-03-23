@@ -87,6 +87,7 @@ tidy final class CivilActType : MoraleModifier {
   uint id;
   
   int maintainCost = 0;
+  bool popMult = false;
   array<ISettlementHook@> hooks;
   array<Hook@> ai;
   
@@ -98,6 +99,10 @@ tidy final class CivilActType : MoraleModifier {
 
 		return tt;
 	}
+  
+  int getMaintainCost(Object& obj) const {
+      return popMult ? maintainCost * getSettlementPopulation(obj) : maintainCost;
+  }
   
   bool canEnable(Object& obj) const {
     for(uint i = 0, cnt = hooks.length; i < cnt; ++i) {
@@ -169,6 +174,7 @@ tidy final class SettlementFocus : Savable {
 
 tidy final class CivilAct : Savable {
   const CivilActType@ type;
+  int currentMaint = 0;
   array<any> data;
   
   CivilAct() {
@@ -203,12 +209,14 @@ tidy final class CivilAct : Savable {
 	}
   
   void save(SaveFile& file) {
+    file << currentMaint;
     file.writeIdentifier(SI_CivilAct, type.id);
     for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
       type.hooks[i].save(data[i], file);
   }
   
   void load(SaveFile& file) {
+    file >> currentMaint;
     @type = getCivilActType(file.readIdentifier(SI_CivilAct));
     data.length = type.hooks.length;
     for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
@@ -337,6 +345,9 @@ void loadCivilActs(const string& filename) {
     else if(key.equals_nocase("Maintenance")) {
 			type.maintainCost = toInt(value);
 		}
+    else if(key.equals_nocase("Population Multiplier")) {
+			type.popMult = toBool(value);
+		}
 		else {
 			string line = file.line;
 			parseLine(line, type, file);
@@ -362,9 +373,18 @@ void init() {
   shipPopulationStatus = getStatusID("ShipPopulation");
   mothershipPopulationStatus = getStatusID("MothershipPopulation");
   
-	auto@ list = foci;
-	for(uint i = 0, cnt = list.length; i < cnt; ++i) {
-		auto@ type = list[i];
+	for(uint i = 0, cnt = foci.length; i < cnt; ++i) {
+		auto@ type = foci[i];
+		for(uint n = 0, ncnt = type.hooks.length; n < ncnt; ++n)
+			if(!cast<Hook>(type.hooks[n]).instantiate())
+				error("Could not instantiate hook: " + addrstr(type.hooks[n]) + " in " + type.ident);
+		for(uint n = 0, ncnt = type.ai.length; n < ncnt; ++n) {
+			if(!type.ai[n].instantiate())
+				error("Could not instantiate AI hook: " + addrstr(type.ai[n]) + " in settlement focus " + type.ident);
+		}
+	}
+  for(uint i = 0, cnt = civilActs.length; i < cnt; ++i) {
+		auto@ type = civilActs[i];
 		for(uint n = 0, ncnt = type.hooks.length; n < ncnt; ++n)
 			if(!cast<Hook>(type.hooks[n]).instantiate())
 				error("Could not instantiate hook: " + addrstr(type.hooks[n]) + " in " + type.ident);
@@ -378,6 +398,18 @@ void init() {
 SettlementFocusType@[] foci;
 CivilActType@[] civilActs;
 dictionary focusIdents, civilActIdents;
+
+double getSettlementPopulation(Object@ obj) {
+  double pop = 0.0;
+  if (obj.hasSurfaceComponent)
+    pop = obj.population;
+  else if (obj.hasStatuses) {
+    pop = obj.getStatusStackCountAny(shipPopulationStatus);
+    if (pop == 0)
+      pop = obj.getStatusStackCountAny(mothershipPopulationStatus);
+  }
+  return pop;
+}
 
 SettlementFocusType@[] getAvailableFoci(Object& obj) {
   array<SettlementFocusType@> availableFoci;
