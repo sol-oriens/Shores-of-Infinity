@@ -104,6 +104,8 @@ tidy final class CivilActType : MoraleModifier {
   
   int maintainCost = 0;
   bool popMult = false;
+  double delay = 0;
+  double commitment = 0;
   array<ISettlementHook@> hooks;
   array<Hook@> ai;
   
@@ -232,6 +234,9 @@ tidy final class SettlementFocus : Savable {
 tidy final class CivilAct : Savable {
   const CivilActType@ type;
   int currentMaint = 0;
+  double currentDelay = 0;
+  double currentCommitment = 0;
+  double currentDuration = INFINITY;
   array<any> data;
   
   CivilAct() {
@@ -266,15 +271,19 @@ tidy final class CivilAct : Savable {
 	}
   
   void save(SaveFile& file) {
-    file << currentMaint;
     file.writeIdentifier(SI_CivilAct, type.id);
+    file << currentDelay;
+    file << currentDuration;
+    file << currentMaint;
     for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
       type.hooks[i].save(data[i], file);
   }
   
   void load(SaveFile& file) {
-    file >> currentMaint;
     @type = getCivilActType(file.readIdentifier(SI_CivilAct));
+    file >> currentMaint;
+    file >> currentDelay;
+    file >> currentDuration;
     data.length = type.hooks.length;
     for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
       type.hooks[i].load(data[i], file);
@@ -459,6 +468,12 @@ void loadCivilActs(const string& filename) {
     }
     else if(key.equals_nocase("Maintenance")) {
 			type.maintainCost = toInt(value);
+		}
+    else if(key.equals_nocase("Delay")) {
+			type.delay = toDouble(value);
+		}
+    else if(key.equals_nocase("Commitment")) {
+			type.commitment = toDouble(value);
 		}
     else if(key.equals_nocase("Population Multiplier")) {
 			type.popMult = toBool(value);

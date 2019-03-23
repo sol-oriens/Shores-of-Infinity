@@ -84,42 +84,27 @@ tidy class SettlementManager : Component_Settlement, Savable {
     return civilActs[index].type.id;
   }
   
-  void addCivilAct(uint id) {
-		const CivilActType@ type = getCivilActType(id);
-		if(type !is null) {
-			CivilAct civilAct(type);
-      civilActs.insertLast(civilAct);
-      civilActs.sortAsc(); //Optimize lookups on type id which will always occur incrementally
-		}
-	}
-  
-  void removeCivilAct(uint id) {
-    for(uint i = 0, cnt = civilActs.length; i < cnt; ++i) {
-			auto@ civilAct = civilActs[i];
-      if (civilAct.type.id == id) {
-        civilActs.remove(civilAct);
-        --i; --cnt;
-      }
-    }
-  }
-  
   uint get_civilActCount() const {
     return civilActs.length;
   }
   
   void enableCivilAct(uint id) {
-    for(uint i = 0, cnt = civilActs.length; i < cnt; ++i) {
-			auto@ civilAct = civilActs[i];
-      if (civilAct.type.id == id) {
-        civilAct.enable(obj);
-        if (civilAct.type.moraleEffect != 0)
-          updateMorale(civilAct.type.moraleEffect);
-        if (civilAct.type.maintainCost != 0) {
-          int maint = civilAct.type.getMaintainCost(obj);
-          obj.owner.modMaintenance(maint, MoT_Civil_Acts);
-          civilAct.currentMaint = maint;
-        }
+    const CivilActType@ type = getCivilActType(id);
+		if(type !is null) {
+			CivilAct civilAct(type);
+      civilAct.enable(obj);
+      if (civilAct.type.moraleEffect != 0)
+        updateMorale(civilAct.type.moraleEffect);
+      if (civilAct.type.maintainCost != 0) {
+        int maint = civilAct.type.getMaintainCost(obj);
+        obj.owner.modMaintenance(maint, MoT_Civil_Acts);
+        civilAct.currentMaint = maint;
       }
+      civilAct.currentDelay = civilAct.type.delay;
+      civilAct.currentCommitment = civilAct.type.commitment;
+      
+      civilActs.insertLast(civilAct);
+      civilActs.sortAsc(); //Optimize lookups on type id which will always occur incrementally
     }
   }
   
@@ -132,8 +117,15 @@ tidy class SettlementManager : Component_Settlement, Savable {
           updateMorale(-civilAct.type.moraleEffect);
         if (civilAct.type.maintainCost != 0)
           obj.owner.modMaintenance(-civilAct.currentMaint, MoT_Civil_Acts);
+          
+        civilActs.remove(civilAct);
+        return;
       }
     }
+  }
+  
+  void getCivilActDelay(uint id) {
+    
   }
   
   void refreshMaintainCost(CivilAct@ civilAct) {
@@ -209,6 +201,10 @@ tidy class SettlementManager : Component_Settlement, Savable {
   				civilAct.disable(obj);
         else {
           refreshMaintainCost(civilAct);
+          if (civilAct.currentDelay > 0)
+            civilAct.currentDelay = max(0.0, civilAct.currentDelay - time);
+          if (civilAct.currentCommitment > 0)
+            civilAct.currentCommitment = max(0.0, civilAct.currentDuration - time);
           civilAct.tick(obj, time);
         }
   		}

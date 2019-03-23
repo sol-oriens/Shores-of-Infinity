@@ -228,7 +228,6 @@ class SettlementDisplay : DisplayBox {
 						uint id = obj.getCivilActTypeId(i);
 						const CivilActType@ civilAct = getCivilActType(id);
 						obj.disableCivilAct(civilAct.id);
-						obj.removeCivilAct(id);
 						--i; --cnt;
 					}
 					updateCivilActList();
@@ -465,13 +464,11 @@ class CivilActElement : GuiListText {
 			case MET_Button_Up:
 				if(event.button == 0) {
 					if (selected == false) {
-						obj.addCivilAct(civilAct.id);
 						obj.enableCivilAct(civilAct.id);
 						selected = true;
 					}
 					else {
 						obj.disableCivilAct(civilAct.id);
-						obj.removeCivilAct(civilAct.id);
 						selected = false;
 					}
 					parent.updateVariables();
