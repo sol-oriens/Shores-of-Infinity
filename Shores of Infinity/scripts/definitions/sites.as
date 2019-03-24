@@ -385,8 +385,7 @@ void loadSite(const string& filename) {
 			@state = null;
 			@opt = null;
 			@result = null;
-			if (key == "Site")
-				@site = SiteType();
+			@site = SiteType();
 			site.ident = value;
 			if(site.ident.length == 0)
 				site.ident = filename + "__" + index;

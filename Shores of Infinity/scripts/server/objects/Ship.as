@@ -113,7 +113,7 @@ tidy class ShipScript {
 		else {
 			file << false;
 		}
-		
+
 		if(ship.hasSettlement) {
 			file << true;
 			file << cast<Savable>(ship.Settlement);
@@ -209,7 +209,7 @@ tidy class ShipScript {
 				file >> cast<Savable>(ship.Cargo);
 			}
 		}
-		
+
 		file >> has;
 		if(has) {
 			ship.activateSettlement();
@@ -788,7 +788,7 @@ tidy class ShipScript {
 		if(ship.hasAbilities)
 			ship.destroyAbilities();
 		if (ship.hasSettlement)
-			ship.clearSettlement();
+			ship.clearSettlement(ship.owner);
 
 		leaveRegion(ship);
 	}
@@ -805,9 +805,9 @@ tidy class ShipScript {
 			}
 			else
 				prevOwner.TotalSupportsActive -= 1;
-			
+
 			if (ship.hasSettlement)
-				ship.clearSettlement();
+				ship.clearSettlement(prevOwner);
 		}
 
 		if(ship.owner !is null && ship.owner.valid) {
@@ -821,7 +821,7 @@ tidy class ShipScript {
 			}
 			else
 				ship.owner.TotalSupportsActive += 1;
-				
+
 			if (ship.hasSettlement)
 				ship.initSettlement();
 		}
@@ -1535,8 +1535,8 @@ tidy class ShipScript {
 			}
 		}
 		ship.Supply = min(ship.Supply, ship.MaxSupply);
- 		ship.Shield = min(ship.Shield, ship.MaxShield);
- 		ship.compEngageRange();
+		ship.Shield = min(ship.Shield, ship.MaxShield);
+		ship.compEngageRange();
 		barDelta = true;
 
 	}

@@ -1,11 +1,7 @@
 Settlement: Colony
-  Name: #SETTLEMENT_COLONY
-  Icon: ResourceIcons::38
-  
-  addon_requirement_effects::RequireNotHome()
+	Name: #SETTLEMENT_COLONY
+	Description: #SETTLEMENT_COLONY_DESC
 
-Settlement: Homeworld
-  Name: #SETTLEMENT_HOMEWORLD
-  Icon: PlanetImage
-  
-  addon_requirement_effects::RequireHome()
+	Icon: ResourceIcons::38
+
+	addon_requirement_effects::RequireNotHome()

@@ -1,0 +1,22 @@
+CivilAct: WorkEthic
+	Name: #CIVIL_ACT_WORK_ETHIC
+	Description: #CIVIL_ACT_WORK_ETHIC_DESC
+
+	Category: Campaigns
+
+	Maintenance: 50
+	Population Multiplier: True
+
+	RequireNotTrait(Ancient)
+	RequireNotTrait(Mechanoid)
+
+	ModCivResourceMult(Labor, 0.2)
+	ModCivResourceMult(Influence, 0.2)
+	ModCivResourceMult(Energy, 0.2)
+	ModCivResourceMult(Research, 0.2)
+	ModCivResourceMult(Defense, 0.2)
+	IfHaveTrait(StarChildren, ProduceAllPressure(Labor, 0.2))
+	IfHaveTrait(StarChildren, ProduceAllPressure(Influence, 0.2))
+	IfHaveTrait(StarChildren, ProduceAllPressure(Energy, 0.2))
+	IfHaveTrait(StarChildren, ProduceAllPressure(Research, 0.2))
+	IfHaveTrait(StarChildren, ProduceAllPressure(Defense, 0.2))

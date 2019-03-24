@@ -1,0 +1,12 @@
+CivilAct: CallForBids
+	Name: #CIVIL_ACT_CALL_FOR_BIDS
+	Description: #CIVIL_ACT_CALL_FOR_BIDS_DESC
+
+	Category: Campaigns
+
+	Maintenance: 250
+
+	RequireNotTrait(Ancient)
+	RequireNotTrait(Communism)
+
+	AddStatus(PeriodicStoredLabor2)

@@ -1,0 +1,13 @@
+CivilAct: PopulationGrowth
+	Name: #CIVIL_ACT_POP_GROWTH
+	Description: #CIVIL_ACT_POP_GROWTH_DESC
+
+	Category: Campaigns
+
+	Maintenance: 25
+	Population Multiplier: True
+
+	RequireNotTrait(Ancient)
+	RequireNotTrait(Mechanoid)
+
+	ModPopulationGrowth(0.15)

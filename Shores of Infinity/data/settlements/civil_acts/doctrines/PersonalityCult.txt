@@ -1,0 +1,14 @@
+CivilAct: PersonalityCult
+	Name: #CIVIL_ACT_PERSONALITY_CULT
+	Description: #CIVIL_ACT_PERSONALITY_CULT_DESC
+
+	Category: Doctrines
+
+	Morale Effect: Positive
+
+	Maintenance: 25
+	Population Multiplier: True
+
+	Commitment: 1800
+
+	RequireNotTrait(Ancient)

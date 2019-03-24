@@ -1,0 +1,9 @@
+SettlementFocus: Command
+	Name: #FOCUS_COMMAND
+	Description: #FOCUS_COMMAND_DESC
+
+	Priority: 2
+
+	addon_requirement_effects::RequirePopulation(5)
+
+	AddFleetCommand(512)

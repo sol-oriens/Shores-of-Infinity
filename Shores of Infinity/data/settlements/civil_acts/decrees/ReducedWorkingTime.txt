@@ -1,0 +1,22 @@
+CivilAct: ReducedWorkingTime
+	Name: #CIVIL_ACT_REDUCED_WORKING_TIME
+	Description: #CIVIL_ACT_REDUCED_WORKING_TIME_DESC
+
+	Category: Decrees
+
+	Morale Effect: Positive
+
+	RequireNotTrait(Ancient)
+	RequireNotTrait(Mechanoid)
+
+	AddLaborFactor(-0.1)
+	ModCivResourceMult(Money, -0.1)
+	ModCivResourceMult(Influence, -0.1)
+	ModCivResourceMult(Energy, -0.1)
+	ModCivResourceMult(Research, -0.1)
+	ModCivResourceMult(Defense, -0.1)
+	IfHaveTrait(StarChildren, ProduceAllPressure(Money, -0.1))
+	IfHaveTrait(StarChildren, ProduceAllPressure(Influence, -0.1))
+	IfHaveTrait(StarChildren, ProduceAllPressure(Energy, -0.1))
+	IfHaveTrait(StarChildren, ProduceAllPressure(Research, -0.1))
+	IfHaveTrait(StarChildren, ProduceAllPressure(Defense, -0.1))

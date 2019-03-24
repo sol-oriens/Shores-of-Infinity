@@ -134,7 +134,7 @@ tidy class PlanetScript {
 			plNode.addRing(ringStyle);
 
 		int resId = planet.primaryResourceType;
-    if (resId != -1) {
+		if (resId != -1) {
 			const ResourceType@ type = getResource(resId);
 			type.applyGraphics(planet, plNode);
 		}
@@ -231,7 +231,7 @@ tidy class PlanetScript {
 		planet.leaderDestroy();
 		planet.destroyStatus();
 		planet.destroySites();
-		planet.clearSettlement();
+		planet.clearSettlement(planet.owner);
 		leaveRegion(planet);
 
 		if(planet.owner !is null) {
@@ -249,7 +249,7 @@ tidy class PlanetScript {
 			if(prevOwner.GloryMode == 2 && (planet.inCombat || planet.engaged)) {
 				prevOwner.Glory -= 100 * planet.Population;
 			}
-			planet.clearSettlement();
+			planet.clearSettlement(prevOwner);
 		}
 		if(planet.owner !is null) {
 			planet.owner.recordStatDelta(stat::Planets, 1);
@@ -384,7 +384,7 @@ tidy class PlanetScript {
 
 		if(planet.hasAbilities)
 			planet.abilityTick(time);
-		
+
 		//Tick occasional stuff
 		timer += float(time);
 		if(timer >= 0.9f) {

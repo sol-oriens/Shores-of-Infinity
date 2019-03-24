@@ -1,0 +1,18 @@
+CivilAct: WarEconomy
+	Name: #CIVIL_ACT_WAR_ECONOMY
+	Description: #CIVIL_ACT_WAR_ECONOMY_DESC
+
+	Category: Decrees
+
+	Morale Effect: Negative
+
+	RequireNotTrait(Ancient)
+	addon_requirement_effects::RequireConstruction(Ships)
+
+	ModSupportBuildSpeed(0.5)
+	ModCivResourceMult(Influence, -0.2)
+	ModCivResourceMult(Energy, -0.2)
+	ModCivResourceMult(Research, -0.2)
+	IfHaveTrait(StarChildren, ProduceAllPressure(Influence, -0.2))
+	IfHaveTrait(StarChildren, ProduceAllPressure(Energy, -0.2))
+	IfHaveTrait(StarChildren, ProduceAllPressure(Research, -0.2))

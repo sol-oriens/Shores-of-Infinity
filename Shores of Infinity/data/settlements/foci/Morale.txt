@@ -1,0 +1,9 @@
+SettlementFocus: Morale
+	Name: #FOCUS_MORALE
+	Description: FOCUS_MORALE_DESC
+
+	Priority: 1
+
+	Morale Effect: Positive
+
+	addon_requirement_effects::RequirePopulation(5)

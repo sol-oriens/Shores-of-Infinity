@@ -1,0 +1,16 @@
+CivilAct: RampantCorruption
+	Name: #CIVIL_ACT_RAMPANT_CORRUPTION
+	Description: #CIVIL_ACT_RAMPANT_CORRUPTION_DESC
+
+	Category: Doctrines
+
+	Morale Effect: Negative
+
+	Maintenance: 75
+	Population Multiplier: True
+
+	Commitment: 1800
+
+	RequireNotTrait(Ancient)
+	
+	settlement_effects::AddSettlementResource(0.1, Influence)

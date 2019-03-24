@@ -1,0 +1,14 @@
+CivilAct: CrimeControl
+	Name: #CIVIL_ACT_CRIME_CONTROL
+	Description: #CIVIL_ACT_CRIME_CONTROL_DESC
+
+	Category: Campaigns
+	
+	Morale Effect: Positive
+
+	Maintenance: 25
+	Population Multiplier: True
+
+	RequireNotTrait(Ancient)
+
+	settlement_effects::ContainCivilUnrest(0.1)

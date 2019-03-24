@@ -48,7 +48,7 @@ class RequirePopulation : Requirement {
 	bool meets(Object& obj, bool ignoreState = false) const override {
 		double minPop = min_population.decimal;
 		double maxPop = max_population.decimal;
-		
+
 		if (obj.hasSurfaceComponent)
 			return obj.population >= minPop - 0.0001 && (maxPop == -1 || obj.population <= maxPop);
 		else if (obj.hasStatuses) {
@@ -82,3 +82,19 @@ class RequireNotHome : Requirement {
 		return !(obj is home);
 	}
 };
+
+class RequireConstruction : Requirement {
+	Document doc("This can only work if the object has construction capabilities.");
+	Argument type(AT_Custom, "", doc="Type of construction to require. Can be Buildings, Ships or Orbitals, empty for any.");
+
+	bool meets(Object& obj, bool ignoreState = false) const override {
+		if (type.str.equals_nocase("Ships"))
+			return obj.hasConstruction && obj.canBuildShips;
+		else if (type.str.equals_nocase("Orbitals"))
+			return obj.hasConstruction && obj.canBuildOrbitals;
+		else if (type.str.equals_nocase("Buildings"))
+			return obj.hasConstruction && obj.hasSurfaceComponent && obj.owner.ImperialBldConstructionRate > 0.001;
+		else
+			return obj.hasConstruction;
+	}
+}

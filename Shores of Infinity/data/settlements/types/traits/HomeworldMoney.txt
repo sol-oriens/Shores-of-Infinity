@@ -1,0 +1,12 @@
+Settlement: HomeworldMoney
+	Name: #SETTLEMENT_HOMEWORLD
+	Description: SETTLEMENT_HOMEWORLD_DESC
+
+	Icon: PlanetImage
+
+	Morale Effect: Positive
+
+	RequireTrait(Capitalism)
+	addon_requirement_effects::RequireHome()
+
+	AddStatus(PeriodicMoney)

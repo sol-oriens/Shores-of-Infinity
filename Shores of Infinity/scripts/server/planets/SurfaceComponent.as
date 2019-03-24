@@ -11,6 +11,7 @@ import object_creation;
 import planet_types;
 import notifications;
 import attributes;
+import settlements;
 from influence import DiplomacyEdictType;
 from influence_global import giveRandomReward;
 from components.ObjectManager import getDefenseDesign;
@@ -89,6 +90,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 
 	int BaseLoyalty = 10;
 	int LoyaltyBonus = 0;
+	int LoyaltyPenalty = 0;
 	float WaitingBaseLoyalty = 0;
 	float StoredBaseLoyalty = 0;
 	array<float> LoyaltyEffect(getEmpireCount(), 0);
@@ -97,6 +99,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 	double tileDevelopRate = 1.0;
 	double bldConstructRate = 1.0;
 	double undevelopedMaint = 1.0;
+	double containCivilUnrest = 0;
 	double colonyshipAccel = 1.0;
 
 	uint gfxFlags = 0;
@@ -130,6 +133,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		file << tileDevelopRate;
 		file << bldConstructRate;
 		file << undevelopedMaint;
+		file << containCivilUnrest;
 		file << colonyshipAccel;
 
 		file << Level;
@@ -153,6 +157,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		file << WaitingBaseLoyalty;
 		file << StoredBaseLoyalty;
 		file << LoyaltyBonus;
+		file << LoyaltyPenalty;
 		file << disableProtection;
 		uint cnt = getEmpireCount();
 		for(uint i = 0; i < cnt; ++i) {
@@ -212,6 +217,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		file >> tileDevelopRate;
 		file >> bldConstructRate;
 		file >> undevelopedMaint;
+		file >> containCivilUnrest;
 		file >> colonyshipAccel;
 
 		ResourceCheck = 0;
@@ -244,6 +250,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		file >> WaitingBaseLoyalty;
 		file >> StoredBaseLoyalty;
 		file >> LoyaltyBonus;
+		file >> LoyaltyPenalty;
 		file >> disableProtection;
 		uint cnt = getEmpireCount();
 		for(uint i = 0; i < cnt; ++i) {
@@ -986,7 +993,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 	}
 
 	int get_baseLoyalty(const Object& obj) const {
-		return BaseLoyalty + obj.owner.GlobalLoyalty.value;
+		return BaseLoyalty + obj.owner.GlobalLoyalty.value - LoyaltyPenalty;
 	}
 
 	int get_lowestLoyalty(const Object& obj) const {
@@ -1000,7 +1007,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 			if(loy < lowest)
 				lowest = loy;
 		}
-		return lowest;
+		return lowest - LoyaltyPenalty;
 	}
 
 	Empire@ get_captureEmpire(const Object& obj) const {
@@ -1074,19 +1081,19 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 	int get_currentLoyalty(Player& requestor, const Object& obj) const {
 		Empire@ emp = requestor.emp;
 		if(emp is null || !emp.valid)
-			return BaseLoyalty + obj.owner.GlobalLoyalty.value;
+			return BaseLoyalty + obj.owner.GlobalLoyalty.value - LoyaltyPenalty;
 		if(emp is obj.owner)
 			return get_lowestLoyalty(obj);
-		return BaseLoyalty + obj.owner.GlobalLoyalty.value + ceil(LoyaltyEffect[emp.index]);
+		return BaseLoyalty + obj.owner.GlobalLoyalty.value + ceil(LoyaltyEffect[emp.index]) - LoyaltyPenalty;
 	}
 
 	int getLoyaltyFacing(Player& requestor, const Object& obj, Empire@ emp) const {
 		Empire@ reqEmp = requestor.emp;
 		if(requestor != SERVER_PLAYER && reqEmp !is emp && emp !is obj.owner)
-			return BaseLoyalty + obj.owner.GlobalLoyalty.value;
+			return BaseLoyalty + obj.owner.GlobalLoyalty.value - LoyaltyPenalty;
 		if(!emp.valid)
-			return BaseLoyalty + obj.owner.GlobalLoyalty.value;
-		return max(BaseLoyalty + obj.owner.GlobalLoyalty.value + int(ceil(LoyaltyEffect[emp.index])), 0);
+			return BaseLoyalty + obj.owner.GlobalLoyalty.value - LoyaltyPenalty;
+		return max(BaseLoyalty + obj.owner.GlobalLoyalty.value + int(ceil(LoyaltyEffect[emp.index])) - LoyaltyPenalty, 0);
 	}
 
 	void modLoyaltyFacing(Empire@ emp, double mod) {
@@ -1200,6 +1207,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		bool isSiege = false;
 		bool isRelief = false, externalRelief = false;
 		bool protect = isProtected(obj);
+		bool civilUnrest = obj.morale <= SM_Low;
 
 		double baseLoyalty = max(double(BaseLoyalty + obj.owner.GlobalLoyalty.value), 1.0);
 		double loyTimer = config::SIEGE_LOYALTY_TIME * ceil(baseLoyalty / 10.0);
@@ -1307,7 +1315,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		}
 
 		//Update base loyalty over time when not contested
-		if(!contested) {
+		if(!contested && !civilUnrest) {
 			if(WaitingBaseLoyalty > 0) {
 				double take = min(WaitingBaseLoyalty, loyMod);
 				if(take != 0) {
@@ -1322,7 +1330,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		}
 
 		//Regain loyalty over time when not contested
-		if(!contested || externalRelief) {
+		if((!contested || externalRelief) && !civilUnrest) {
 			for(uint i = 0, cnt = LoyaltyEffect.length; i < cnt; ++i) {
 				double prevEff = LoyaltyEffect[i];
 				LoyaltyEffect[i] = clamp(prevEff + loyMod, -baseLoyalty, 0.0);
@@ -1339,6 +1347,28 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 
 		//Planets under siege cannot gain supports
 		obj.canGainSupports = !isSiege;
+
+		//Change loyalty due to morale
+		if (civilUnrest) {
+			double lossThreshold = 0.8;
+			if (obj.morale == SM_Critical)
+				lossThreshold = 0.6;
+			double roll = randomd(0.1 - containCivilUnrest, 1.0);
+			if (roll >= lossThreshold) {
+				LoyaltyPenalty++;
+				if (!contested && LoyaltyPenalty >= BaseLoyalty + obj.owner.GlobalLoyalty.value) {
+					LoyaltyPenalty = 0;
+					obj.forceAbandon();
+				}
+			}
+		}
+		else if (LoyaltyPenalty > 0) {
+			LoyaltyPenalty--;
+		}
+	}
+
+	void modContainCivilUnrest(Object& obj, double mod) {
+		containCivilUnrest += mod;
 	}
 
 	void enterIntoOrbit(Object@ ship) {

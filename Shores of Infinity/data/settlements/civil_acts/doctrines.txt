@@ -1,7 +1,0 @@
-CivilAct: PopulationGrowth
-  Name: #CIVIL_ACT_POP_GROWTH
-  Category: Doctrines
-  
-CivilAct: WorkEthic
-  Name: #CIVIL_ACT_WORK_ETHIC
-  Category: Doctrines

@@ -1,19 +1,19 @@
 Object.Settlement : components.SettlementManager::SettlementManager {
 restricted local:
-  uint get_morale() const;
-  void updateMorale(int value);
-  uint get_settlementTypeId() const;
-  uint get_focusId() const;
-  void setFocus(uint id);
-  bool get_autoFocus() const;
-  void set_autoFocus(bool value);
-  uint getCivilActTypeId(uint index) const;
-  uint get_civilActCount() const;
-  void enableCivilAct(uint id);
-  void disableCivilAct(uint id);
-  bool get_isSettlement() const;
+	uint get_morale() const;
+	void modMorale(int value);
+	uint get_settlementTypeId() const;
+	uint get_focusId() const;
+	void setFocus(uint id);
+	bool get_autoFocus() const;
+	void set_autoFocus(bool value);
+	uint getCivilActTypeId(uint index) const;
+	uint get_civilActCount() const;
+	void addCivilAct(uint id);
+	void removeCivilAct(uint id);
+	bool get_isSettlement() const;
 server:
-  void initSettlement();
-  void clearSettlement();
-  void settlementTick(double time);
+	void initSettlement();
+	void clearSettlement(Empire@ emp);
+	void settlementTick(double time);
 }

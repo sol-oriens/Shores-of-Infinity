@@ -1,0 +1,17 @@
+CivilAct: KnowledgePursuit
+	Name: #CIVIL_ACT_KNOWLEDGE_PURSUIT
+	Description: #CIVIL_ACT_KNOWLEDGE_PURSUIT_DESC
+
+	Category: Doctrines
+
+	Maintenance: 50
+	Population Multiplier: True
+
+	Commitment: 1800
+
+	RequireNotTrait(Ancient)
+
+	settlement_effects::AddSettlementResource(0.1, Research)
+	
+	ModCivResourceMult(Defense, -0.1)
+	IfHaveTrait(StarChildren, ProduceAllPressure(Defense, -0.1))

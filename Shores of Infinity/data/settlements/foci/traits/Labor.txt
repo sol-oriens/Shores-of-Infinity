@@ -1,0 +1,34 @@
+SettlementFocus: LaborHome
+	Name: #FOCUS_HOME
+	Description: FOCUS_LABOR_HOME_DESC
+
+	Priority: 3
+
+	RequireTrait(Communism)
+	addon_requirement_effects::RequireHome()
+	addon_requirement_effects::RequirePopulation(5)
+
+	settlement_effects::AddSettlementResource(0.3, Labor)
+
+SettlementFocus: Labor
+	Name: #FOCUS_LABOR
+	Description: FOCUS_LABOR_DESC
+
+	Priority: 3
+
+	RequireTrait(Communism)
+	addon_requirement_effects::RequireNotHome()
+	addon_requirement_effects::RequirePopulation(5)
+
+	settlement_effects::AddSettlementResource(0.2, Labor)
+
+SettlementFocus: LaborExreme
+	Name: #FOCUS_LABOR_EXTREME
+	Description: FOCUS_LABOR_EXTREME_DESC
+
+	Morale Effect: Very Negative
+
+	RequireTrait(Communism)
+	addon_requirement_effects::RequirePopulation(5)
+
+	settlement_effects::AddSettlementResource(0.4, Labor)

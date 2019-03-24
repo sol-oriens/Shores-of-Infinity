@@ -1,0 +1,12 @@
+CivilAct: StateEmergency
+	Name: #CIVIL_ACT_STATE_EMERGENCY
+	Description: #CIVIL_ACT_STATE_EMERGENCY_DESC
+
+	Category: Decrees
+
+	Maintenance: 50
+	Population Multiplier: True
+
+	RequireNotTrait(Ancient)
+
+	settlement_effects::ContainCivilUnrest(0.2)
