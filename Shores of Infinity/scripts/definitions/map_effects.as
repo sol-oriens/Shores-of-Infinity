@@ -386,7 +386,10 @@ class MakePlanet : MapHook {
 
 	Document doc("Create a new planet in the system.");
 	Argument resource(AT_Custom, "distributed", doc="The primary resource on the planet. 'distributed' to randomize.");
-	Argument secondary_resource(AT_Custom, "none", doc="The secondary resource on the planet. 'ruled' to correlate the secondary resource with the resources defined by the primary resource. Should be Level 0 and non-exportable. Use with caution.");
+	Argument secondary_resource(AT_Custom, "ruled", doc=
+		"The secondary resource on the planet. " +
+		"'none' to ignore. 'ruled' or 'distributed' to correlate the secondary resource with the resources defined by the primary resource. " +
+		"'distributed' will remove the resource from the distribution pool. Should be Level 0 and non-exportable. Use with caution.");
 
 	//SoI - Scaling
 	Argument radius(AT_Range, "60:140", doc="Size of the planet, can be a random range.");
@@ -661,26 +664,35 @@ class MakePlanet : MapHook {
 			}
 		}
 
-		//Add a secondary resource if any
-		if (!secondary_resource.str.equals_nocase("none")) {
-			string secondaryResourceSpec = "";
+		//Add secondary resources if any
+		if (resource !is null && !secondary_resource.str.equals_nocase("none")) {
 			if (secondary_resource.str.equals_nocase("ruled")) {
-				//Get the resource spec
 				for (uint i = 0, cnt = resource.secondaryResources.length; i < cnt; ++i) {
-					if (secondaryResourceSpec.length > 0)
-						secondaryResourceSpec += ":";
-					secondaryResourceSpec += resource.secondaryResources[i];
+					const ResourceType@ secondaryResource = getResource(resource.secondaryResources[i]);
+					if (secondaryResource !is null)
+						planet.addResource(secondaryResource.id);
 				}
 			}
-			else
-				secondaryResourceSpec = secondary_resource.str;
+			else {
+				string secondaryResourceSpec = "";
+				if (secondary_resource.str.equals_nocase("distributed")) {
+					//Get the resource spec
+					for (uint i = 0, cnt = resource.secondaryResources.length; i < cnt; ++i) {
+						if (secondaryResourceSpec.length > 0)
+							secondaryResourceSpec += ":";
+						secondaryResourceSpec += resource.secondaryResources[i];
+					}
+				}
+				else
+					secondaryResourceSpec = secondary_resource.str;
 
-			if (secondaryResourceSpec.length > 0) {
-				AddPlanetResource secondaryResourceHook;
-				secondaryResourceHook.initClass();
-				secondaryResourceHook.resID.str = secondaryResourceSpec;
-				secondaryResourceHook.instantiate();
-				secondaryResourceHook.trigger(data, system, planet);
+				if (secondaryResourceSpec.length > 0) {
+					AddPlanetResource secondaryResourceHook;
+					secondaryResourceHook.initClass();
+					secondaryResourceHook.resID.str = secondaryResourceSpec;
+					secondaryResourceHook.instantiate();
+					secondaryResourceHook.trigger(data, system, planet);
+				}
 			}
 		}
 
@@ -710,7 +722,7 @@ Planet@ spawnPlanetSpec(const vec3d& point, const string& resourceSpec, bool dis
 	if(radius != 0)
 		plHook.radius.set(radius);
 	plHook.instantiate();
-	
+
 	plHook.changeSystemRadius = false;
 
 	Object@ current;
@@ -1896,11 +1908,11 @@ void mapCopyRegion(SystemDesc@ from, SystemDesc@ to, uint typeMask = ~0) {
 	MakeStar starHook;
 	starHook.initClass();
 	starHook.instantiate();
-	
+
 	MakeBlackhole blackHoleHook;
 	blackHoleHook.initClass();
 	blackHoleHook.instantiate();
-	
+
 	MakeNeutronStar neutronHook;
 	neutronHook.initClass();
 	neutronHook.instantiate();
@@ -1975,23 +1987,23 @@ void mapCopyRegion(SystemDesc@ from, SystemDesc@ to, uint typeMask = ~0) {
 		}
 		else if(obj.isStar) {
 			Star@ base = cast<Star>(obj);
-			
+
 			if (base.temperature > 0.0 && base.temperature < 300000.0) {
 				starHook.arguments[0].set(base.temperature);
 				starHook.arguments[1].set(base.radius);
 				starHook.arguments[2].set(destPos - to.position);
-				
+
 				starHook.trigger(null, to, current);
 			}
 			else if (base.temperature >= 300000.0 && base.temperature <= 600000.0) {
 				neutronHook.arguments[0].set(destPos - to.position);
-				
+
 				neutronHook.trigger(null, to, current);
 			}
 			else {
 				blackHoleHook.arguments[0].set(base.radius);
 				blackHoleHook.arguments[1].set(destPos - to.position);
-				
+
 				blackHoleHook.trigger(null, to, current);
 			}
 		}
