@@ -6,7 +6,7 @@ Status: Growth
 	Color: #5fb41c
 
 	Condition Frequency: 0.5
-	ConditionResourceType(Meat)
+	addon_status_effects::ConditionResourceType(Meat)
 	ConditionDLC(Heralds)
 
 	AddToNativeResource(ModPopulationGrowth(+0.25))
