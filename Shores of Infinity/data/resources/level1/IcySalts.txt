@@ -13,7 +13,7 @@ Resource: IcySalts
 	Rarity: Uncommon
 	Can Be Terraformed: False
 
-	Planet Classification: Icy
+	Planet Classification: Gas III
 
 	Secondary Resource: LocalIcyWater
 

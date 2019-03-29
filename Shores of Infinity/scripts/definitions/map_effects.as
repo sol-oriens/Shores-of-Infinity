@@ -400,7 +400,7 @@ class MakePlanet : MapHook {
 	Argument distribute_resource(AT_Boolean, "False", doc="Whether or not the selected resources should be frequency distributed.");
 	Argument moons(AT_Boolean, "True", doc="Whether this planet should have a randomized amount of moons generated on it to start with.");
 	Argument rings(AT_Boolean, "True", doc="Whether the planet can have rings generated around it.");
-	Argument classification(AT_Custom, "Rocky", doc="'Gas' for a gas planet, 'Icy' for an icy planet. Any other value defaults to a rocky planet.");
+	Argument classification(AT_Custom, "Rocky", doc="'Icy' for an icy planet. 'Gas' for a gas planet, followed by the Sudarsky classification (i.e. Gas III). Any other value defaults to a rocky planet.");
 	Argument giant(AT_Boolean, "False", doc="Whether the planet is giant.");
 	Argument force_native_biome(AT_Boolean, "False", doc="Whether to force the resource native biome on the whole planet surface");
 	Argument add_status(AT_Status, EMPTY_DEFAULT, doc="A status to add to the planet after it is spawned.");
@@ -415,8 +415,16 @@ class MakePlanet : MapHook {
 		else if(!parseResourceSpec(resPossib, resource.str))
 			return false;
 		//Get planet classification
-		if (classification.str.equals_nocase("gas"))
-			planetClass = PC_Gas;
+		if (classification.str.equals_nocase("gas i"))
+			planetClass = PC_Gas_I;
+		else if (classification.str.equals_nocase("gas ii"))
+			planetClass = PC_Gas_II;
+		else if (classification.str.equals_nocase("gas iii"))
+			planetClass = PC_Gas_III;
+		else if (classification.str.equals_nocase("gas iv"))
+			planetClass = PC_Gas_IV;
+		else if (classification.str.equals_nocase("gas v"))
+			planetClass = PC_Gas_V;
 		else if (classification.str.equals_nocase("icy"))
 			planetClass = PC_Icy;
 		else
@@ -462,15 +470,14 @@ class MakePlanet : MapHook {
 		double spacing = orbit_spacing.fromRange() * config::SYSTEM_SIZE;
 
 		//SoI - Gas Giants: make gas giants giant
-		//SoI - Ice Giants: make ice giants giant
 		if (resource !is null && giant.boolean) {
 			switch (planetClass)
 			{
-				case PC_Gas:
+				case PC_Gas_I:
 					planetRadius += 140;
 					spacing = randomd(5250, 5450);
 					break;
-				case PC_Icy:
+				case PC_Gas_III:
 					planetRadius += 100;
 					spacing = randomd(5000, 5200);
 					break;
@@ -540,10 +547,18 @@ class MakePlanet : MapHook {
 		double scaledRadius = 0;
 
 		//SoI - Gas Giants: force the grid to a specific size to avoid a big surface displaying a scroll bar before even displaying moon bases
-		//SoI - Ice Giants: force the grid to a specific size to avoid a big surface displaying a scroll bar before even displaying moon bases
 		//The loss of space is not a problem since the biome is useless anyway
-		if (resource !is null && giant.boolean && (planetClass == PC_Gas || planetClass == PC_Icy))
-			scaledRadius = 160;
+		if (resource !is null && giant.boolean) {
+			switch (planetClass) {
+				case PC_Gas_I:
+				case PC_Gas_II:
+				case PC_Gas_III:
+				case PC_Gas_IV:
+				case PC_Gas_V:
+					scaledRadius = 160;
+					break;
+			}
+		}
 		else
 			//min_planet_radius + 100 * (radius - min_planet_radius) / (max_planet_radius - min_planet_radius)
 			scaledRadius = 60 * config::SCALE_PLANETS + 100 * (planetRadius - 60 * config::SCALE_PLANETS) / (140 * config::SCALE_PLANETS - 60 * config::SCALE_PLANETS);
@@ -561,7 +576,6 @@ class MakePlanet : MapHook {
 
 		//Figure out planet type
 		//SoI - Gas Giants: lock planet type on gas biome
-		//SoI - Ice Giants: lock planet type on ice biome
 		if (resource !is null && force_native_biome.boolean) {
 			const PlanetType@ planetType = getBestPlanetType(biome1, null, null);
 			planet.PlanetType = planetType.id;
@@ -595,7 +609,6 @@ class MakePlanet : MapHook {
 			resId = resource.id;
 
 		//SoI - Gas Giants: force gas giants to their base biome only
-		//SoI - Ice Giants: force ice giants to their base biome only
 		if (resource !is null && force_native_biome.boolean) {
 			planet.initSurface(resId, gridW, gridH, biome1.id);
 		}
@@ -610,7 +623,6 @@ class MakePlanet : MapHook {
 
 		//Setup rings
 		//SoI - Gas Giants: gas giants almost always have rings
-		//SoI - Ice Giants: ice giants almost always have rings
 		if (rings.boolean && (giant.boolean && randomi(0,9) < 9 || !giant.boolean && randomi(0,9) == 0)) {
 			uint style = randomi();
 			plNode.addRing(style);
@@ -635,17 +647,22 @@ class MakePlanet : MapHook {
 		}
 
 		//Setup moons
-		//SoI - Gas Giants: gas giants should have at least 4 moons
-		//SoI - Ice Giants: ice giants should have at least 2 moons
+		//SoI - Gas Giants: gas giants should have at least some moons
 		if (resource !is null && giant.boolean) {
 			int min, max;
 			switch (planetClass) {
-				case PC_Gas:
+				case PC_Gas_I:
+				case PC_Gas_II:
 					min = 4;
 					max = 8;
 					break;
-				case PC_Icy:
+				case PC_Gas_III:
 					min = 2;
+					max = 6;
+					break;
+				case PC_Gas_IV:
+				case PC_Gas_V:
+					min = 4;
 					max = 6;
 					break;
 				default:
