@@ -5,7 +5,8 @@ Status: NegPressure
 	Icon: ConditionIcons::6
 	Color: #ff0000
 
-	Condition Frequency: 0.5
+	//Disabled
+	//Condition Frequency: 0.5
 
 	ConditionBiome(Ice)
 	ConditionDLC(Heralds)

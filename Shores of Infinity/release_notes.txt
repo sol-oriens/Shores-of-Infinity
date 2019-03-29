@@ -38,6 +38,7 @@ v0.3.0b
 - Slightly increased the frequency of Water on planets.
 - Settlers now take 60s being loaded into colonization pods (up from 30s).
 - The Megafauna condition (available with the WotH DLC) can now only spawn on planets with a native Meat resource.
+- Disabled the Frozen Wasteland condition (available with the WotH DLC).
 
 [*] Resources
 
