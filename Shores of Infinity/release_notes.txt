@@ -37,6 +37,7 @@ v0.3.0b
 - Infrastructural Development no longer costs ore and labor and now costs 200k with a build time of 45s instead.
 - Slightly increased the frequency of Water on planets.
 - Settlers now take 60s being loaded into colonization pods (up from 30s).
+- The Megafauna condition (available with the WotH DLC) can now only spawn on planets with a native Meat resource.
 
 [*] Resources
 
