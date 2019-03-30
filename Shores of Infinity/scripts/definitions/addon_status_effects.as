@@ -1,7 +1,7 @@
 import hooks;
 import statuses;
 from statuses import StatusHook;
-from resources import MoneyType;
+from resources import MoneyType, getResource;
 
 class BudgetMaintenanceData {
 	double amount;
@@ -75,4 +75,20 @@ class BudgetMaintenance : StatusHook {
 		data.store(@maintData);
 	}
 #section all
+};
+
+class ConditionResourceType : StatusHook {
+	Document doc("This condition can only be on planets with a specific primary resource.");
+	Argument resource(AT_Custom, doc="Resource to check for.");
+
+	bool shouldApply(Empire@ emp, Region@ region, Object@ obj) const override {
+		if(!obj.hasResources)
+			return false;
+		auto@ type = getResource(obj.primaryResourceType);
+		if(type !is null) {
+			auto@ checkedType = getResource(resource.str);
+			return checkedType !is null && checkedType.id == type.id;
+		}
+		return false;
+	}
 };

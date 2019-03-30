@@ -39,6 +39,8 @@ v0.3.0b
 - Settlers now take 60s being loaded into colonization pods (up from 30s).
 - The Megafauna condition (available with the WotH DLC) can now only spawn on planets with a native Meat resource.
 - Disabled the Frozen Wasteland condition (available with the WotH DLC).
+- Added a new planetary condition: Permafrost. The resource of this planet gives half its pressure. Can generate a water resource for this planet.
+- Added icy planets. These planets can spawn at outer rims of systems, always have an ice biome and have the Permafrost planetary condition. They can have one of the following resources: Pekelm, Deuterium.
 
 [*] Resources
 

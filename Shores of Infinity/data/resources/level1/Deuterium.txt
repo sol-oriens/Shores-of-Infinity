@@ -10,12 +10,14 @@ Resource: Deuterium
 	Rarity: Uncommon
 	Affinity: Research + Defense
 
+	Planet Classification: Icy
+
 	Asteroid Frequency: 0.01
 	Asteroid Labor: 55
 
 	Pressure: 2 Research
 	Pressure: 2 Defense
-	
+
 	Terraform Labor: 750
 	Terraform Cost: 45
 	ABEM_terraforming::TerraformRequireUnlockTag(Terraform2)

@@ -23,16 +23,18 @@ System: OuterSystem
 	Inherit: BaseArtifacts
 
 System: BaseGasGiants
-	RepeatChance(Chance = 0.7, Repeat Modifier = 0.6)
-		MakePlanet(Resource = Weighted, Secondary Resource = Ruled, Classification = Gas I, Giant = True, Force Native biome = True, Add Status = GasGiant)
+	RepeatChance(Chance = 0.6, Repeat Modifier = 0.6)
+		MakePlanet(Resource = Weighted, Secondary Resource = Ruled, Classification = Gas I, Giant = True, Force Native Biome = True, Add Status = GasGiant)
 
 System: BaseIceGiants
-	RepeatChance(Chance = 0.5, Repeat Modifier = 0.3)
+	RepeatChance(Chance = 0.4, Repeat Modifier = 0.3)
 		MakePlanet(Resource = Weighted, Secondary Resource = Ruled, Classification = Gas III, Giant = True, Force Native Biome = True, Add Status = IceGiant)
 
 System: BaseInnerRim
 
 System: BaseOuterRim
+	RepeatChance(Chance = 0.3, Repeat Modifier = 0.3)
+		MakePlanet(Resource = Weighted, Conditions = False, Classification = Icy, Force Native Biome = True, Add Status = Permafrost)
 	ExpandSystem(1000)
 	ExpandSystemMinimum()
 

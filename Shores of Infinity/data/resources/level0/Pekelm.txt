@@ -10,8 +10,11 @@ Resource: Pekelm
 	Rarity: Uncommon
 	Affinity: Defense
 
+	Planet Classification: Icy
+
 	Asteroid Frequency: 0.2
 	Asteroid Labor: 40
 
 	Pressure: 3 Defense
+	
 	ModColonyShipAccel(+1.0)
