@@ -47,27 +47,6 @@ class AddSettlementResource : SettlementHook {
 	Argument factor(AT_Decimal, doc="Multiplier to the settlement's current population to give in pressure-equivalent income.");
 	Argument income(AT_TileResource, doc="Type of income to generate.");
 
-	//From planet_effects::PerPopulationAddResource
-
-	/*bool get_hasEffect() const override {
-		return true;
-	}
-
-	bool mergesEffect(const GenericEffect@ eff) const override {
-		return eff.arguments[1].integer == arguments[1].integer;
-	}
-
-	string formatEffect(Object& obj, array<const IResourceHook@>& hooks) const override {
-		if(arguments[0].integer == TR_Money)
-			return formatPosEffect(format(locale::EFFECT_ADDRESOURCE,
-						getTileResourceName(arguments[0].integer)),
-					"+"+formatMoney(decimalSum(hooks, 1) * obj.population * 100.0));
-		else
-			return formatMagEffect(format(locale::EFFECT_ADDRESOURCE,
-						getTileResourceName(arguments[0].integer)),
-					(decimalSum(hooks, 1) * obj.population));
-	}*/
-
 #section server
 	void enable(Object& obj, any@ data) const override {
 		double amt = 0.0;
