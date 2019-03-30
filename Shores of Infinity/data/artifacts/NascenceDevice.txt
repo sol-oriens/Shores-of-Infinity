@@ -1,0 +1,7 @@
+Artifact: NascenceDevice
+	Name: #ART_NASCENCE_DEVICE
+	Description: #ART_NASCENCE_DEVICE_DESC
+
+	Model: ArtifactAdvanced
+
+	Ability: NascenceDevice
