@@ -181,15 +181,15 @@ tidy class SettlementManager : Component_Settlement, Savable {
 
 	void settlementTick(Object& obj, double time) {
 		if (_isActive) {
-			if (!settlementType.type.canEnable(obj)) {
+			if (!settlementType.type.canEnable(obj))
 				settlementType.disable(obj);
-				SettlementType@ settlement = getSettlement(obj);
-				if (settlement is null) {
+			SettlementType@ settlement = getSettlement(obj);
+			if (settlement is null) {
 					error("initSettlement (" + obj.name + ", " + obj.owner.name + "): could not find any suitable settlement type");
 					return;
-				}
-				setType(settlement.id);
 			}
+			if (settlement.id != settlementType.type.id)
+				setType(settlement.id);
 
 			settlementType.tick(obj, time);
 

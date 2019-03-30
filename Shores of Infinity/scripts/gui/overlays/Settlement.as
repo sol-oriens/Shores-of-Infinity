@@ -297,6 +297,7 @@ class SettlementDisplay : DisplayBox {
 		if (settlement !is null) {
 			type.text = settlement.name;
 			typeIcon.desc = settlement.icon;
+			setMarkupTooltip(typeBox, settlement.formatTooltip(), width=300);
 		}
 	}
 
@@ -397,10 +398,12 @@ const string slashStr("/");
 
 class FocusElement : GuiListText {
 	const SettlementFocusType@ focus;
+	string ttText;
 
 	FocusElement(const SettlementFocusType& focus) {
 			@this.focus = focus;
 			super(focus.name);
+			ttText = focus.formatTooltip();
 	}
 };
 
@@ -476,7 +479,7 @@ class CivilActElement : GuiListText {
 						selected = false;
 					}
 					parent.updateVariables();
-					return false; //So the active visual effect can occur
+					GuiListText::onMouseEvent(event);
 				}
 			break;
 		}

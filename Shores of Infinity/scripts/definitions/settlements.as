@@ -93,9 +93,14 @@ abstract class MoraleModifier {
 tidy final class SettlementType : MoraleModifier {
 	string ident, name = "", description;
 	uint id;
+	uint priority = 0;
 	Sprite icon;
 
 	array<ISettlementHook@> hooks;
+
+	string formatTooltip() const {
+		return description;
+	}
 
 	bool canEnable(Object& obj) const {
 		for(uint i = 0, cnt = hooks.length; i < cnt; ++i) {
@@ -103,6 +108,14 @@ tidy final class SettlementType : MoraleModifier {
 				return false;
 		}
 		return true;
+	}
+
+	int opCmp(const SettlementType@ other) const {
+		if(priority < other.priority)
+			return -1;
+		if(priority > other.priority)
+			return 1;
+		return 0;
 	}
 };
 
@@ -112,6 +125,10 @@ tidy final class SettlementFocusType : MoraleModifier {
 	uint priority = 0;
 	array<ISettlementHook@> hooks;
 	array<Hook@> ai;
+
+	string formatTooltip() const {
+		return description;
+	}
 
 	bool canEnable(Object& obj) const {
 		for(uint i = 0, cnt = hooks.length; i < cnt; ++i) {
@@ -397,6 +414,9 @@ void loadSettlements(const string& filename) {
 		else if(key == "Icon") {
 			type.icon = getSprite(value);
 		}
+		else if (key.equals_nocase("Priority")) {
+			type.priority = toUInt(value);
+		}
 		else if (key.equals_nocase("Morale Effect")) {
 			@type.moraleEffect = LocalMoraleEffect(value);
 		}
@@ -596,6 +616,8 @@ SettlementType@ getSettlement(Object& obj) {
 		if (settlement.canEnable(obj))
 			availableSettlements.insertLast(settlement);
 	}
+	//Sort by priority
+	availableSettlements.sortDesc();
 	return availableSettlements.length > 0 ? availableSettlements[0] : null;
 }
 

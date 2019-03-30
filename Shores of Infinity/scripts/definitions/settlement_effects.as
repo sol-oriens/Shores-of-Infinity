@@ -28,7 +28,7 @@ class ModLocalMorale : SettlementHook {
 };
 
 class ContainCivilUnrest : SettlementHook {
-	Document doc("Decreases the chance of loyalty loss of settlement due to low morale.");
+	Document doc("Decreases the chance of loyalty loss of the settlement due to low morale.");
 	Argument amount(AT_Decimal, "0", doc="Additional chance of avoiding loyalty loss.");
 
 #section server
