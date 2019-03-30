@@ -41,10 +41,12 @@ v0.3.0b
 - Disabled the Frozen Wasteland condition (available with the WotH DLC).
 - Added a new planetary condition: Permafrost. The resource of this planet gives half its pressure. Can generate a water resource for this planet.
 - Added icy planets. These planets can spawn at outer rims of systems, always have an ice biome and have the Permafrost planetary condition. They can have one of the following resources: Pekelm, Deuterium.
+- Slightly decreased the frequency of gas and ice giants.
 
 [*] Resources
 
 - Slightly increased the frequency of comets.
+- Decreased the frequency of Water on planets.
 
 [*] User Interface
 
