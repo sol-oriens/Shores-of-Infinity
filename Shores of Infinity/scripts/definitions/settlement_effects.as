@@ -5,18 +5,23 @@ import requirement_effects;
 
 from settlements import ISettlementHook, SettlementHook, shipPopulationStatus, mothershipPopulationStatus;
 
-class EffectMorale : SettlementHook {
+class ModLocalMorale : SettlementHook {
 	Document doc("Increases or decreases the morale of the settlement.");
-	Argument descriptor(AT_Custom, "None", doc="Descriptor of morale modifier. Can be VeryPositive, Positive, None, Negative or VeryNegative");
+	Argument descriptor(AT_Custom, doc="Descriptor of the morale modifier. Can be VeryPositive, Positive, Negative or VeryNegative");
+
+	int value = 0;
+
+	bool instantiate() override {
+		value = LocalMoraleEffect(descriptor.str).stat;
+		return true;
+	}
 
 #section server
 	void enable(Object& obj, any@ data) const override {
-		int value = MoraleEffect(descriptor.str).stat;
 		obj.modMorale(value);
 	}
 
 	void disable(Object& obj, any@ data) const override {
-		int value = MoraleEffect(descriptor.str).stat;
 		obj.modMorale(-value);
 	}
 #section all
@@ -38,8 +43,8 @@ class ContainCivilUnrest : SettlementHook {
 };
 
 class AddSettlementResource : SettlementHook {
-	Document doc("Add free resource income based on the planet's current population.");
-	Argument factor(AT_Decimal, doc="Multiplier to the planet's current population to give in pressure-equivalent income.");
+	Document doc("Add free resource income based on the settlement's current population.");
+	Argument factor(AT_Decimal, doc="Multiplier to the settlement's current population to give in pressure-equivalent income.");
 	Argument income(AT_TileResource, doc="Type of income to generate.");
 
 #section server

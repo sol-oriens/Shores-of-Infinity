@@ -1,7 +1,7 @@
 Object.Settlement : components.SettlementManager::SettlementManager {
 restricted local:
 	uint get_morale() const;
-	void modMorale(int value);
+	void modMorale(double value);
 	uint get_settlementTypeId() const;
 	uint get_focusId() const;
 	void setFocus(uint id);

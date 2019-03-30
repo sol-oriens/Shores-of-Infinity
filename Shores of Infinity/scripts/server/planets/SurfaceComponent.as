@@ -1207,7 +1207,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		bool isSiege = false;
 		bool isRelief = false, externalRelief = false;
 		bool protect = isProtected(obj);
-		bool civilUnrest = obj.morale <= SM_Low;
+		bool civilUnrest = obj.morale + obj.owner.GlobalMorale.value <= SM_Low;
 
 		double baseLoyalty = max(double(BaseLoyalty + obj.owner.GlobalLoyalty.value), 1.0);
 		double loyTimer = config::SIEGE_LOYALTY_TIME * ceil(baseLoyalty / 10.0);
@@ -1351,7 +1351,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		//Change loyalty due to morale
 		if (civilUnrest) {
 			double lossThreshold = 0.8;
-			if (obj.morale == SM_Critical)
+			if (obj.morale + obj.owner.GlobalMorale.value == SM_Critical)
 				lossThreshold = 0.6;
 			double roll = randomd(0.1 - containCivilUnrest, 1.0);
 			if (roll >= lossThreshold) {

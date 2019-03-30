@@ -19,48 +19,69 @@ enum SettlementMorale {
 	SM_High,
 };
 
-class MoraleEffect {
-	private int _stat;
-	private string _desc;
+abstract class MoraleEffect {
+	protected double _stat;
+	protected string _desc;
 
-	MoraleEffect() {
-		this = MoraleEffect(None);
+	double get_stat() const { return _stat; }
+	string get_desc() const { return _desc; }
+};
+
+class GlobalMoraleEffect : MoraleEffect {
+	GlobalMoraleEffect() {
+		this = GlobalMoraleEffect(None);
 	}
 
-	MoraleEffect(string desc) {
+	GlobalMoraleEffect(string desc) {
 		_desc = desc;
 		if (desc == VeryPositive)
-			_stat = 2;
+			_stat = 0.2;
 		else if (desc == Positive)
-			_stat = 1;
+			_stat = 0.1;
 		else if (desc == Negative)
-			_stat = -1;
+			_stat = -0.1;
 		else if (desc == VeryNegative)
-			_stat = -2;
+			_stat = -0.2;
+		else
+			_stat = 0;
+	}
+};
+
+class LocalMoraleEffect : MoraleEffect {
+	LocalMoraleEffect() {
+		this = LocalMoraleEffect(None);
+	}
+
+	LocalMoraleEffect(string desc) {
+		_desc = desc;
+		if (desc == VeryPositive)
+			_stat = 2.0;
+		else if (desc == Positive)
+			_stat = 1.0;
+		else if (desc == Negative)
+			_stat = -1.0;
+		else if (desc == VeryNegative)
+			_stat = -2.0;
 		else
 			_stat = 0;
 	}
 
-	int get_stat() const { return _stat; }
-
-	string get_desc() const { return _desc; }
-
 	Sprite get_icon() const {
-		if (_stat >= 1)
+		if (_stat >= 1.0)
 			return Sprite(material::MaskHappy);
-		else if (_stat <= -1)
+		else if (_stat <= -1.0)
 			return Sprite(material::MaskAngry);
 		return Sprite(material::MaskNeutral);
 	}
 };
 
 abstract class MoraleModifier {
-	private MoraleEffect@ _moraleEffect;
+	private LocalMoraleEffect@ _moraleEffect;
 
-	MoraleEffect@ moraleEffect {
+	LocalMoraleEffect@ moraleEffect {
 		get const {
 			if (_moraleEffect is null)
-				return MoraleEffect();
+				return LocalMoraleEffect();
 			return _moraleEffect;
 		}
 		set {
@@ -377,7 +398,7 @@ void loadSettlements(const string& filename) {
 			type.icon = getSprite(value);
 		}
 		else if (key.equals_nocase("Morale Effect")) {
-			@type.moraleEffect = MoraleEffect(value);
+			@type.moraleEffect = LocalMoraleEffect(value);
 		}
 		else {
 			string line = file.line;
@@ -427,7 +448,7 @@ void loadSettlementFoci(const string& filename) {
 			type.priority = toUInt(value);
 		}
 		else if (key.equals_nocase("Morale Effect")) {
-			@type.moraleEffect = MoraleEffect(value);
+			@type.moraleEffect = LocalMoraleEffect(value);
 		}
 		else {
 			string line = file.line;
@@ -480,7 +501,7 @@ void loadCivilActs(const string& filename) {
 				civilActCategories.insertLast(value);
 		}
 		else if (key.equals_nocase("Morale Effect")) {
-			@type.moraleEffect = MoraleEffect(value);
+			@type.moraleEffect = LocalMoraleEffect(value);
 		}
 		else if(key.equals_nocase("Maintenance")) {
 			type.maintainCost = toInt(value);

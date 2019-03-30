@@ -9,7 +9,7 @@ tidy class SettlementManager : Component_Settlement, Savable {
 	SettlementFocus@ focus;
 	array<CivilAct@> civilActs;
 	private bool _isActive = false;
-	private int _morale;
+	private double _morale;
 	private uint _focusId;
 	private bool _autoFocus;
 
@@ -24,17 +24,18 @@ tidy class SettlementManager : Component_Settlement, Savable {
 	}
 
 	uint get_morale() const {
-		if (_morale <= -3)
+		double totalMorale = _morale + obj.owner.GlobalMorale.value;
+		if (totalMorale <= -3.0)
 			return SM_Critical;
-		else if (_morale <= -2)
+		else if (totalMorale <= -2.0)
 			return SM_Low;
-		else if (_morale >= 2)
+		else if (totalMorale >= 2.0)
 			return SM_High;
 		else
 			return SM_Medium;
 	}
 
-	void modMorale(int value) {
+	void modMorale(double value) {
 		_morale += value;
 	}
 
