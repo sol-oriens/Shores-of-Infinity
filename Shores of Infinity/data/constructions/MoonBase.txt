@@ -3,11 +3,11 @@ Construction: MoonBase
 	Description: #CONS_MOON_BASE_DESC
 
 	Icon: DwarfPlanet
-	
+
 	Category: Infrastructure
 
 	Time Cost: 120
-	Build Cost: 500
+	Build Cost: 750
 
 	RequireMoreMoonsThanStatus(MoonBase)
 	RequireNotTrait(StarChildren)
