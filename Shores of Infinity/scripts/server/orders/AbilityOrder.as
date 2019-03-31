@@ -1,5 +1,8 @@
 import orders.Order;
+import ftl;
 import saving;
+
+import util.einsteinArrivalTime;
 
 tidy class AbilityOrder : Order {
 	int abilityId = -1;
@@ -69,8 +72,11 @@ tidy class AbilityOrder : Order {
 			realRange += objTarget.radius;
 			bool finishedMove = false;
 			double distance = obj.position.distanceToSQ(objTarget.position);
-			if(range != INFINITY && distance >= realRange * realRange)
-				finishedMove = obj.moveTo(objTarget, moveId, realRange * 0.95, enterOrbit=false);
+			if(range != INFINITY && distance >= realRange * realRange) {
+				finishedMove = useFtl(obj, objTarget, realRange * 0.95, time);
+				if (!finishedMove)
+					finishedMove = obj.moveTo(objTarget, moveId, realRange * 0.95, enterOrbit=false);
+			}
 			if(casted) {
 				if(obj.isChanneling(abilityId))
 					return OS_BLOCKING;
@@ -95,7 +101,9 @@ tidy class AbilityOrder : Order {
 			if(realRange != INFINITY && distance >= realRange * realRange) {
 				vec3d pt = target;
 				pt += (obj.position - target).normalized(realRange * 0.95);
-				finishedMove = obj.moveTo(pt, moveId, enterOrbit=false);
+				finishedMove = useFtl(obj, pt, time);
+				if (!finishedMove)
+					finishedMove = obj.moveTo(pt, moveId, enterOrbit=false);
 			}
 			if(casted) {
 				if(obj.isChanneling(abilityId))
@@ -115,5 +123,70 @@ tidy class AbilityOrder : Order {
 			}
 			return OS_BLOCKING;
 		}
+	}
+
+	bool useFtl(Object& obj, Object& targ, double distance, double time) {
+		double targDist = 0;
+
+		if(targ.isRegion)
+			targDist = targ.radius * 0.85;
+		else
+			targDist = max(distance, obj.radius + targ.radius);
+
+		vec3d dir = (targ.position - obj.position);
+		vec3d pt = obj.position + dir.normalized(dir.length - targDist);
+
+		return useFtl(obj, pt, time);
+	}
+
+	double delay = 0;
+	bool useFtl(Object& obj, vec3d pt, double time) {
+		double ftlPercent = 0.5;
+		bool moved = false;
+		delay -= time;
+
+		if(obj.isShip && delay <= 0) {
+			delay = 0;
+			delay += 10.0;
+			double eta = einsteinArrivalTime(obj.maxAcceleration, obj.position - pt, vec3d());
+			print(eta);
+			if (eta < 120)
+				return moved;
+
+			Empire@ owner = obj.owner;
+			if(canHyperdrive(obj)) {
+				double cost = hyperdriveCost(obj, pt);
+				//Hyperdrive if at least the specified capacity of the empire's ftl capacity will be left
+				if((owner.FTLStored - cost) / owner.FTLCapacity >= ftlPercent) {
+					obj.insertHyperdriveOrder(pt, getIndex());
+					moved = true;
+				}
+			}
+
+			if(!moved && canJumpdrive(obj)) {
+				double cost = jumpdriveCost(obj, pt);
+				double range = jumpdriveRange(obj);
+				double dist = obj.position.distanceTo(pt);
+
+				//Jumpdrive if at least the specified capacity of the empire's ftl capacity will be left
+				if((owner.FTLStored - cost) / owner.FTLCapacity >= ftlPercent && range >= dist) {
+					obj.insertJumpdriveOrder(pt, getIndex());
+					moved = true;
+				}
+			}
+
+			if(!moved && owner.hasFlingBeacons) {
+				double cost = flingCost(obj, pt);
+				//Fling if at least the specified capacity of the empire's ftl capacity will be left
+				if((owner.FTLStored - cost) / owner.FTLCapacity >= ftlPercent) {
+					Object@ fling = owner.getFlingBeacon(obj.position);
+					if(fling !is null) {
+						obj.insertFlingOrder(fling, pt, getIndex());
+						moved = true;
+					}
+				}
+			}
+		}
+		return moved;
 	}
 };
