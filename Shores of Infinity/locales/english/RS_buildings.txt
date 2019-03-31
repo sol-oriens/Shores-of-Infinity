@@ -1,4 +1,48 @@
-BLD_SPACE_ELEVATOR_DESC: <<
+BLD_FORGE_DESC: <<|
+	[color=#aaa][i]A vast industrial complex dedicated to metalworks and production of parts to be assembled in
+	factories and machine shops.[/i][/color]
+
+	Building a Forge unlocks the next tier, which is a bigger, more expensive and more effective version.
+
+	Ore is consumed when the planet is using labor to build.
+>>
+BLD_FORGE1_DESC: <<
+	[bbloc=#BLD_FORGE_DESC/]
+
+	Increases labor generation by 20%.
+
+	[bbloc=#TIP_CONSUME_ORE:12/]
+>>
+BLD_FORGE2_DESC: <<
+	[bbloc=#BLD_FORGE_DESC/]
+
+	Increases labor generation by 40%.
+
+	[bbloc=#TIP_CONSUME_ORE:24/]
+>>
+BLD_FORGE3_DESC: <<
+	[bbloc=#BLD_FORGE_DESC/]
+
+	Increases labor generation by 60%.
+
+	[bbloc=#TIP_CONSUME_ORE:36/]
+>>
+BLD_FORGE4_DESC: <<
+	[bbloc=#BLD_FORGE_DESC/]
+
+	Increases labor generation by 80%.
+
+	[bbloc=#TIP_CONSUME_ORE:48/]
+>>
+BLD_FORGE5_DESC: <<
+	[bbloc=#BLD_FORGE_DESC/]
+
+	Increases labor generation by 100%.
+
+	[bbloc=#TIP_CONSUME_ORE:60/]
+>>
+
+BLD_SPACE_ELEVATOR_DESC: <<|
 	[color=#aaa][i]A ribbon-like tether reaching vertically into space can be used to significantly increase the efficiency of transporting materials into space.[/i][/color]
 
 	Increases the construction speed of support ships on this planet by 40%.

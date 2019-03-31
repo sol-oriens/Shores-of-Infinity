@@ -23,6 +23,14 @@ v0.3.0b
 [*] Buildings
 
 - Fixed a bug where the research cost was not updated when a Healthcare Complex is removed.
+- Mining complexes now additionally cost 15 Research to build.
+- Forges have been completely overhauled and costs adjusted. They also now consume Ore when using Labor. The next forge tier is unlocked only once the previous tier is built. Each tier now has a higher Labor bonus.
+  Forge tiers now have the following stats:
+  - Tier 1: Increases labor generation by 20%. Base and maintenance costs of 250k and 50k, respectively. Also costs 100 Labor to build. Consumes 12 Ore / minute when the planet is using labor to build.
+  - Tier 2: Increases labor generation by 40%. Base and maintenance costs of 500k and 100k, respectively. Also costs 200 Labor to build. Consumes 24 Ore / minute when the planet is using labor to build.
+  - Tier 3: Increases labor generation by 60%. Base and maintenance costs of 1M and 150k, respectively. Also costs 400 Labor to build. Consumes 36 Ore / minute when the planet is using labor to build.
+  - Tier 4: Increases labor generation by 80%. Base and maintenance costs of 2M and 200k, respectively. Also costs 800 Labor to build. Consumes 48 Ore / minute when the planet is using labor to build.
+  - Tier 5: Increases labor generation by 100%. Base and maintenance costs of 4M and 250k, respectively. Also costs 1600 Labor to build. Consumes 60 Ore / minute when the planet is using labor to build.
 
 [*] Gameplay
 
