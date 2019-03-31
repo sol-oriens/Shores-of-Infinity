@@ -1,6 +1,6 @@
 Settlement: HomeworldDefense
 	Name: #SETTLEMENT_HOMEWORLD
-	Description: SETTLEMENT_HOMEWORLD_DESC
+	Description: #SETTLEMENT_HOMEWORLD_DEFENSE_DESC
 
 	Icon: PlanetImage
 
@@ -8,5 +8,8 @@ Settlement: HomeworldDefense
 
 	RequireTrait(Empire)
 	addon_requirement_effects::RequireHome()
+	RequirePlanet()
 
 	AddStatus(PeriodicDefenseReserve)
+	AddFleetEffectiveness(+3.5)
+	addon_planet_effects::PerPopulationAddLoyalty(2)

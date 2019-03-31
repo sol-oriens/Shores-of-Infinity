@@ -1,6 +1,6 @@
 Settlement: HomeworldInfluence
 	Name: #SETTLEMENT_HOMEWORLD
-	Description: SETTLEMENT_HOMEWORLD_DESC
+	Description: #SETTLEMENT_HOMEWORLD_INFLUENCE_DESC
 
 	Icon: PlanetImage
 
@@ -8,5 +8,8 @@ Settlement: HomeworldInfluence
 
 	RequireTrait(Theocracy)
 	addon_requirement_effects::RequireHome()
+	RequirePlanet()
 
 	AddStatus(PeriodicInfluence)
+	AddFleetEffectiveness(+3.5)
+	addon_planet_effects::PerPopulationAddLoyalty(2)

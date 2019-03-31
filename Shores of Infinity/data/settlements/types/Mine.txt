@@ -1,0 +1,12 @@
+Settlement: Mine
+	Name: #SETTLEMENT_MINE
+	Description: #SETTLEMENT_MINE_DESC
+
+	Icon: Mine
+
+	Priority: 2
+
+	addon_requirement_effects::RequireNotHome()
+	RequireStatus(Mine, Count = 3)
+
+	AddDummyResource(Titanium, 1)
