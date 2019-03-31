@@ -6,7 +6,7 @@ Subsystem: MiningLaser
 	Elevation: 3
 
 	Tags: DefaultUnlock, ScaledCost, Category:Equipment, HasInternals, ExteriorCore, Rotatable, StaticMaintenance
-	Tags: Ability:MineAsteroid, Ability:DropoffPoint, Ability:AutoMine
+	Tags: Ability:MineAsteroid, Ability:AutoMine
 	Hull: Flagship
 
 	Size := HexSize * Hexes

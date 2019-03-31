@@ -1,0 +1,17 @@
+Ability: PickupPoint
+	Name: #ABL_PICKUP_POINT
+	Description: #ABL_PICKUP_POINT_DESC
+	Icon: SupplyIcon * #91ff2c
+
+	Target: targ = Object
+
+	TargetFilterCargoStorage(targ)
+	TargetFilterOwned(targ)
+
+	IsToggleTarget(targ, Check Range = False, Channels = False)
+
+	CastWhenIdle(PickupCargo, targ, Require Free Cargo = True)
+
+	ClearOnMoveOrder(targ)
+
+	PickupAllCargoFrom(targ)

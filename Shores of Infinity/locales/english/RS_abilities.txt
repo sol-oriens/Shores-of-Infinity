@@ -132,3 +132,11 @@ ABL_MECHANOID_COLONIZE_DESC: Transfer $1B Population from this planet to another
 ABL_GENERATE_WATERICE_DESC: <<
 	Adds a water resource to this planet.
 >>
+
+ABL_PICKUP_POINT: Set Pickup Point
+ABL_PICKUP_POINT_DESC: <<
+	Toggle where this ship's pickup point for cargo is set. When the cargo storage has free space, automatically pick up as much cargo from the indicated object as possible.
+>>
+ABL_DROPOFF_POINT_DESC: <<
+	Toggle where this ship's drop-off point for cargo is set. When the cargo storage is full, automatically drop off all cargo at the indicated object.
+>>
