@@ -6,11 +6,11 @@ CivilAct: RampantCorruption
 
 	Morale Effect: Negative
 
-	Maintenance: 75
+	Maintenance: 20
 	Population Multiplier: True
 
 	Commitment: 1800
 
 	RequireNotTrait(Ancient)
-	
-	settlement_effects::AddSettlementResource(0.1, Influence)
+
+	settlement_effects::AddSettlementResource(0.2, Influence)

@@ -6,7 +6,7 @@ CivilAct: PersonalityCult
 
 	Morale Effect: Positive
 
-	Maintenance: 25
+	Maintenance: 5
 	Population Multiplier: True
 
 	Commitment: 1800

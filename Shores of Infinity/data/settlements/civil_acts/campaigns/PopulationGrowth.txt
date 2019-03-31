@@ -4,7 +4,7 @@ CivilAct: PopulationGrowth
 
 	Category: Campaigns
 
-	Maintenance: 25
+	Maintenance: 10
 	Population Multiplier: True
 
 	RequireNotTrait(Ancient)

@@ -4,7 +4,7 @@ CivilAct: StateEmergency
 
 	Category: Decrees
 
-	Maintenance: 50
+	Maintenance: 45
 	Population Multiplier: True
 
 	RequireNotTrait(Ancient)

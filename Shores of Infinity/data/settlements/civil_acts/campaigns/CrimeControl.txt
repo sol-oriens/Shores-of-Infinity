@@ -3,10 +3,10 @@ CivilAct: CrimeControl
 	Description: #CIVIL_ACT_CRIME_CONTROL_DESC
 
 	Category: Campaigns
-	
+
 	Morale Effect: Positive
 
-	Maintenance: 25
+	Maintenance: 35
 	Population Multiplier: True
 
 	RequireNotTrait(Ancient)
