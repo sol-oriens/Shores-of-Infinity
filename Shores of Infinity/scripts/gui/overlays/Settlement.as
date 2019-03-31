@@ -213,6 +213,7 @@ class SettlementDisplay : DisplayBox {
 						//Deactivate autoFocus
 						obj.autoFocus = false;
 						updateVariables();
+						updateFocusList();
 						updateAutoFocus();
 					}
 					return true;
@@ -297,18 +298,32 @@ class SettlementDisplay : DisplayBox {
 		if (settlement !is null) {
 			type.text = settlement.name;
 			typeIcon.desc = settlement.icon;
-			setMarkupTooltip(typeBox, settlement.formatTooltip(), width=300);
+
+			MarkupTooltip tt(settlement.formatTooltip(),400, 0.f, true, true);
+			tt.Padding = 4;
+			@typeBox.tooltipObject = tt;
 		}
 	}
 
 	void updateFocusList() {
 		focusList.clearItems();
 
+		MarkupTooltip tt(400, 0.f, true, true);
+		tt.Lazy = true;
+		tt.LazyUpdate = false;
+		tt.Padding = 4;
+		@focusList.list.tooltipObject = tt;
+
 		array<SettlementFocusType@> foci = getAvailableFoci(obj);
 		for (uint i = 0, cnt = foci.length; i < cnt; ++i) {
-			focusList.addItem(FocusElement(foci[i]));
+			FocusElement ele(foci[i]);
+			focusList.addItem(ele);
 			if (foci[i].id == obj.focusId) {
 				focusList.selected = i;
+
+				MarkupTooltip tt(ele.tooltipText, 400, 0.f, true, true);
+				tt.Padding = 4;
+				@focusList.tooltipObject = tt;
 			}
 		}
 	}
@@ -404,6 +419,10 @@ class FocusElement : GuiListText {
 			@this.focus = focus;
 			super(focus.name);
 			ttText = focus.formatTooltip();
+	}
+
+	string get_tooltipText() override {
+		return ttText;
 	}
 };
 

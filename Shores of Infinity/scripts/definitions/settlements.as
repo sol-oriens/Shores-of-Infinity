@@ -127,7 +127,11 @@ tidy final class SettlementFocusType : MoraleModifier {
 	array<Hook@> ai;
 
 	string formatTooltip() const {
-		return description;
+		string desc = moraleEffect.desc;
+		toLowercase(desc);
+		string tt = format("$1[nl/]\n$2: [b]$3[/b] [img=$4;16/]",
+			description, locale::TT_MORALE_EFFECT, desc, getSpriteDesc(moraleEffect.icon));
+		return tt;
 	}
 
 	bool canEnable(Object& obj) const {
