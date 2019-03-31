@@ -1,6 +1,6 @@
 SettlementFocus: InfluenceHome
 	Name: #FOCUS_HOME
-	Description: FOCUS_INFLUENCE_HOME_DESC
+	Description: #FOCUS_HOME_INFLUENCE_DESC
 
 	Priority: 3
 
@@ -12,7 +12,7 @@ SettlementFocus: InfluenceHome
 
 SettlementFocus: Influence
 	Name: #FOCUS_INFLUENCE
-	Description: FOCUS_INFLUENCE_DESC
+	Description: #FOCUS_INFLUENCE_DESC
 
 	Priority: 3
 
@@ -24,7 +24,7 @@ SettlementFocus: Influence
 
 SettlementFocus: InfluenceExtreme
 	Name: #FOCUS_INFLUENCE_EXTREME
-	Description: FOCUS_INFLUENCE_EXTREME_DESC
+	Description: #FOCUS_INFLUENCE_EXTREME_DESC
 
 	Morale Effect: Very Negative
 

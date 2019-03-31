@@ -1,6 +1,6 @@
 SettlementFocus: Morale
 	Name: #FOCUS_MORALE
-	Description: FOCUS_MORALE_DESC
+	Description: #FOCUS_MORALE_DESC
 
 	Priority: 1
 

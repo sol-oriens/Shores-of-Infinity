@@ -1,6 +1,6 @@
 SettlementFocus: LaborHome
 	Name: #FOCUS_HOME
-	Description: FOCUS_LABOR_HOME_DESC
+	Description: #FOCUS_HOME_LABOR_DESC
 
 	Priority: 3
 
@@ -12,7 +12,7 @@ SettlementFocus: LaborHome
 
 SettlementFocus: Labor
 	Name: #FOCUS_LABOR
-	Description: FOCUS_LABOR_DESC
+	Description: #FOCUS_LABOR_DESC
 
 	Priority: 3
 
@@ -24,7 +24,7 @@ SettlementFocus: Labor
 
 SettlementFocus: LaborExreme
 	Name: #FOCUS_LABOR_EXTREME
-	Description: FOCUS_LABOR_EXTREME_DESC
+	Description: #FOCUS_LABOR_EXTREME_DESC
 
 	Morale Effect: Very Negative
 

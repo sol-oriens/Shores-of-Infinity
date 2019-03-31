@@ -1,6 +1,6 @@
 SettlementFocus: DefenseHome
 	Name: #FOCUS_HOME
-	Description: FOCUS_DEFENSE_HOME_DESC
+	Description: #FOCUS_HOME_DEFENSE_DESC
 
 	Priority: 3
 
@@ -12,7 +12,7 @@ SettlementFocus: DefenseHome
 
 SettlementFocus: Defense
 	Name: #FOCUS_DEFENSE
-	Description: FOCUS_DEFENSE_DESC
+	Description: #FOCUS_DEFENSE_DESC
 
 	Priority: 3
 
@@ -24,7 +24,7 @@ SettlementFocus: Defense
 
 SettlementFocus: DefenseExtreme
 	Name: #FOCUS_DEFENSE_EXTREME
-	Description: FOCUS_DEFENSE_EXTREME_DESC
+	Description: #FOCUS_DEFENSE_EXTREME_DESC
 
 	Morale Effect: Very Negative
 
