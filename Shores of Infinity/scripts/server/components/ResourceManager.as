@@ -36,6 +36,7 @@ tidy class ResourceManager : Component_ResourceManager, Savable {
 	double FTL_Stored = 0;
 	double FTL_Income = 0;
 	double FTL_Use = 0;
+	double FTL_Limit = 0.5;
 
 	double Energy_Stored = 0;
 	double Energy_Income = 0;
@@ -72,6 +73,7 @@ tidy class ResourceManager : Component_ResourceManager, Savable {
 		msg >> FTL_Income;
 		if(msg >= SV_0009)
 			msg >> FTL_Use;
+		msg >> FTL_Limit;
 
 		msg >> Energy_Stored;
 		msg >> Energy_Income;
@@ -130,6 +132,7 @@ tidy class ResourceManager : Component_ResourceManager, Savable {
 		msg << FTL_Stored;
 		msg << FTL_Income;
 		msg << FTL_Use;
+		msg << FTL_Limit;
 
 		msg << Energy_Stored;
 		msg << Energy_Income;
@@ -199,6 +202,14 @@ tidy class ResourceManager : Component_ResourceManager, Savable {
 
 	double get_FTLUse(const Empire& emp) {
 		return FTL_Use * emp.FTLCostFactor;
+	}
+
+	double get_FTLReserve() const {
+			return FTL_Limit;
+	}
+
+	void set_FTLReserve(double value) {
+			FTL_Limit = value;
 	}
 
 	double consumeFTL(Empire& emp, double amount, bool consumePartial = true, bool record = true) {
@@ -708,6 +719,7 @@ tidy class ResourceManager : Component_ResourceManager, Savable {
 		msg << float(FTL_Stored);
 		msg << float(FTL_Income);
 		msg << float(FTL_Use);
+		msg << float(FTL_Limit);
 
 		msg << float(Energy_Stored);
 		msg << float(Energy_Income);

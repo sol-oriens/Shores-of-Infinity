@@ -11,6 +11,7 @@ tidy class ResourceManager : Component_ResourceManager {
 	double FTL_Stored = 0;
 	double FTL_Income = 0;
 	double FTL_Use = 0;
+	double FTL_Limit = 0;
 
 	double Energy_Stored = 0;
 	double Energy_Income = 0;
@@ -52,6 +53,14 @@ tidy class ResourceManager : Component_ResourceManager {
 
 	double get_FTLUse(const Empire& emp) {
 		return FTL_Use * emp.FTLCostFactor;
+	}
+
+	double get_FTLReserve() const {
+			return FTL_Limit;
+	}
+
+	void set_FTLReserve(double value) {
+			FTL_Limit = value;
 	}
 
 	double get_FTLCapacity() {
@@ -182,7 +191,7 @@ tidy class ResourceManager : Component_ResourceManager {
 	int get_BudgetCycleId() {
 		return Budget_CycleId;
 	}
-	
+
 	uint get_WelfareMode() const {
 		return welfareMode;
 	}
@@ -206,6 +215,7 @@ tidy class ResourceManager : Component_ResourceManager {
 		FTL_Stored = msg.read_float();
 		FTL_Income = msg.read_float();
 		FTL_Use = msg.read_float();
+		FTL_Limit = msg.read_float();
 
 		Energy_Stored = msg.read_float();
 		Energy_Income = msg.read_float();
@@ -226,7 +236,7 @@ tidy class ResourceManager : Component_ResourceManager {
 
 		for(uint i = 0; i < MoT_COUNT; ++i)
 			moneyTypes[i] = msg.readSignedSmall();
-		
+
 		welfareMode = msg.readLimited(WM_COUNT-1);
 	}
 };

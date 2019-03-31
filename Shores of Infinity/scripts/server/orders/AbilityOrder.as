@@ -73,7 +73,7 @@ tidy class AbilityOrder : Order {
 			bool finishedMove = false;
 			double distance = obj.position.distanceToSQ(objTarget.position);
 			if(range != INFINITY && distance >= realRange * realRange) {
-				finishedMove = useFtl(obj, objTarget, realRange * 0.95, time);
+				finishedMove = useFTL(obj, objTarget, realRange * 0.95, time);
 				if (!finishedMove)
 					finishedMove = obj.moveTo(objTarget, moveId, realRange * 0.95, enterOrbit=false);
 			}
@@ -101,7 +101,7 @@ tidy class AbilityOrder : Order {
 			if(realRange != INFINITY && distance >= realRange * realRange) {
 				vec3d pt = target;
 				pt += (obj.position - target).normalized(realRange * 0.95);
-				finishedMove = useFtl(obj, pt, time);
+				finishedMove = useFTL(obj, pt, time);
 				if (!finishedMove)
 					finishedMove = obj.moveTo(pt, moveId, enterOrbit=false);
 			}
@@ -125,7 +125,7 @@ tidy class AbilityOrder : Order {
 		}
 	}
 
-	bool useFtl(Object& obj, Object& targ, double distance, double time) {
+	bool useFTL(Object& obj, Object& targ, double distance, double time) {
 		double targDist = 0;
 
 		if(targ.isRegion)
@@ -136,16 +136,16 @@ tidy class AbilityOrder : Order {
 		vec3d dir = (targ.position - obj.position);
 		vec3d pt = obj.position + dir.normalized(dir.length - targDist);
 
-		return useFtl(obj, pt, time);
+		return useFTL(obj, pt, time);
 	}
 
 	double delay = 0;
-	bool useFtl(Object& obj, vec3d pt, double time) {
-		double ftlPercent = 0.5;
+	bool useFTL(Object& obj, vec3d pt, double time) {
+		double freeFTL = 1.0 - obj.owner.FTLReserve;
 		bool moved = false;
 		delay -= time;
 
-		if(obj.isShip && delay <= 0) {
+		if(obj.isShip && delay <= 0 && freeFTL > 0) {
 			delay = 0;
 			delay += 10.0;
 			double eta = einsteinArrivalTime(obj.maxAcceleration, obj.position - pt, vec3d());
@@ -157,7 +157,7 @@ tidy class AbilityOrder : Order {
 			if(canHyperdrive(obj)) {
 				double cost = hyperdriveCost(obj, pt);
 				//Hyperdrive if at least the specified capacity of the empire's ftl capacity will be left
-				if((owner.FTLStored - cost) / owner.FTLCapacity >= ftlPercent) {
+				if((owner.FTLStored - cost) / owner.FTLCapacity >= freeFTL) {
 					obj.insertHyperdriveOrder(pt, getIndex());
 					moved = true;
 				}
@@ -169,7 +169,7 @@ tidy class AbilityOrder : Order {
 				double dist = obj.position.distanceTo(pt);
 
 				//Jumpdrive if at least the specified capacity of the empire's ftl capacity will be left
-				if((owner.FTLStored - cost) / owner.FTLCapacity >= ftlPercent && range >= dist) {
+				if((owner.FTLStored - cost) / owner.FTLCapacity >= freeFTL && range >= dist) {
 					obj.insertJumpdriveOrder(pt, getIndex());
 					moved = true;
 				}
@@ -178,7 +178,7 @@ tidy class AbilityOrder : Order {
 			if(!moved && owner.hasFlingBeacons) {
 				double cost = flingCost(obj, pt);
 				//Fling if at least the specified capacity of the empire's ftl capacity will be left
-				if((owner.FTLStored - cost) / owner.FTLCapacity >= ftlPercent) {
+				if((owner.FTLStored - cost) / owner.FTLCapacity >= freeFTL) {
 					Object@ fling = owner.getFlingBeacon(obj.position);
 					if(fling !is null) {
 						obj.insertFlingOrder(fling, pt, getIndex());

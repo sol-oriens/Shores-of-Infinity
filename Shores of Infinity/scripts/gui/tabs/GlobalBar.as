@@ -6,6 +6,7 @@ import elements.GuiSprite;
 import elements.GuiMarkupText;
 import elements.GuiContextMenu;
 import elements.GuiProgressbar;
+import elements.GuiScrollbar;
 import elements.MarkupTooltip;
 import targeting.ObjectTarget;
 import resources;
@@ -193,25 +194,62 @@ class EnergyResource : ResourceDisplay {
 };
 
 class FTLResource : ResourceDisplay {
+	GuiScrollbar@ bar;
+	GuiText@ percent;
+
 	FTLResource(IGuiElement@ parent, Alignment@ align) {
 		super(parent, align);
 
 		color = colors::FTLResource;
 		addIcon(icons::FTL);
 		addTexts();
+
+		@bar = GuiScrollbar(value, recti());
+		@bar.alignment = Alignment(Right-100, Bottom-20, Right, Bottom-10);
+		bar.up.visible = true;
+		bar.down.visible = true;
+		bar.orientation = SO_Horizontal;
+		bar.scroll = 0.01;
+		bar.page = 0.1;
+
+		@percent = GuiText(value, recti());
+		@percent.alignment = Alignment(Right-100, Bottom-40, Right, Bottom-30);
+		percent.horizAlign = 1.0;
+		percent.font = FT_Small;
+		percent.text = getReservePercent();
+	}
+
+	int get_baseValueWidth() {
+		return 150;
 	}
 
 	string get_tooltip() {
 		return format(locale::GTT_FTL,
 				toString(playerEmpire.FTLStored, 0),
 				toString(playerEmpire.FTLCapacity, 0),
-				formatIncomeRate(playerEmpire.FTLIncome - playerEmpire.FTLUse));
+				formatIncomeRate(playerEmpire.FTLIncome - playerEmpire.FTLUse),
+				getReservePercent());
+	}
+
+	string getReservePercent() {
+		return toString(bar.pos * 100.0, 0) + "%";
+	}
+
+	bool onGuiEvent(const GuiEvent& event) {
+		if(event.caller is bar && event.type == GUI_Changed) {
+			percent.text = getReservePercent();
+			playerEmpire.FTLReserve = bar.pos;
+			return true;
+		}
+		return BaseGuiElement::onGuiEvent(event);
 	}
 
 	void update() {
 		double stored = playerEmpire.FTLStored;
 		double income = playerEmpire.FTLIncome - playerEmpire.FTLUse;
 		double capacity = playerEmpire.FTLCapacity;
+		bar.pos = playerEmpire.FTLReserve;
+		percent.text = getReservePercent();
 
 		upperText.text = format(
 				"$1[color=#aaa][vspace=6][font=Normal]/$2[/font][/vspace][/color]",

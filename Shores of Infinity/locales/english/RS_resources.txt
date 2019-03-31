@@ -1,3 +1,15 @@
+GTT_FTL: <<
+	[font=Medium]FTL Energy[/font]
+	[i]FTL Energy is paid to engage the faster-than-light drives on your ships.[/i]
+
+	Available FTL: [right]$1[/right]
+	Maximum Storage: [right]$2[/right]
+	Generation Rate: [right]$3[/right]
+	Percentage of Reserve: [right]$4[/right]
+
+	[i]The Percentage of Reserve defines how much of your total FTL Energy cannot be used by automated ship orders. Setting it to 100% effectively disables the use of FTL bar manual orders.[/i]
+>>
+
 MONEY_TYPE_11: Civil Acts
 ELECTRONICS: Semiconductors
 LOCAL_ICY_WATER_DESC: [color=#ff7070][b]Cannot be exported.[/b][/color]

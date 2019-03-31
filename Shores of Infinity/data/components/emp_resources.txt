@@ -26,6 +26,9 @@ restricted local:
 	bool isFTLShortage(double amt) const;
 		@return Whether we would be in ftl shortage using this much energy.
 
+	double get_FTLReserve() const;
+
+	void set_FTLReserve(double value);
 
 	double get_EnergyIncome();
 		@return Energy income per second.
@@ -66,10 +69,10 @@ restricted local:
 
 	int getMoneyFromType(uint type) const;
 		@return The contribution to the budget from a particular type of income/expense.
-	
+
 	uint get_WelfareMode() const;
 		@return The type of welfare exchange mode the empire is using.
-	
+
 	int getEstBudgetConsuming(int amount) const;
 		@return The estimated budget after consuming the given amount.
 
