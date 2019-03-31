@@ -40,6 +40,7 @@ v0.3.0b
 - Fixed a bug which would cause a system in which a protoplanet was used to become corrupted upon loading a saved game.
 - Changed Set Drop-off Point ability to trigger only when cargo storage is full. Any ship with cargo storage now has this ability.
 - Added Set Pickup Point ability. Toggle where this ship's pickup point for cargo is set. When the cargo storage has free space, automatically pick up as much cargo from the indicated object as possible. Any ship with cargo storage has this ability.
+- Ability orders that require movement will now automatically make use of hyperdrives, jumpdrives or fling beacons if available and if the cost wouldn't set the current FTL Energy below the defined Percentage of Reserve. If the ship can use several FTL methods, the cheapest will be chosen.
 
 [*] Orbitals
 
@@ -68,6 +69,7 @@ v0.3.0b
 [*] User Interface
 
 - Reverted the tile icon to pre-v0.2.0 in planet surface view.
+- Added Percentage of Reserve to the global resource bar. The Percentage of Reserve defines how much of your total FTL Energy cannot be used by automated ship orders. Setting it to 100% effectively disables the use of FTL bar manual orders.
 
 v0.2.3b
 

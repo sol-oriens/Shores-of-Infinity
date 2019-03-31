@@ -141,50 +141,58 @@ tidy class AbilityOrder : Order {
 
 	double delay = 0;
 	bool useFTL(Object& obj, vec3d pt, double time) {
-		double freeFTL = 1.0 - obj.owner.FTLReserve;
 		bool moved = false;
 		delay -= time;
 
-		if(obj.isShip && delay <= 0 && freeFTL > 0) {
+		if(obj.isShip && delay <= 0 && obj.owner.FTLReserve < 1.0) {
 			delay = 0;
 			delay += 10.0;
 			double eta = einsteinArrivalTime(obj.maxAcceleration, obj.position - pt, vec3d());
-			print(eta);
 			if (eta < 120)
 				return moved;
 
 			Empire@ owner = obj.owner;
+			bool hd = false, jd = false, fl = false;
+			double hdCost = 0, jdCost = 0, flCost = 0;
 			if(canHyperdrive(obj)) {
-				double cost = hyperdriveCost(obj, pt);
+				hdCost = hyperdriveCost(obj, pt);
 				//Hyperdrive if at least the specified capacity of the empire's ftl capacity will be left
-				if((owner.FTLStored - cost) / owner.FTLCapacity >= freeFTL) {
-					obj.insertHyperdriveOrder(pt, getIndex());
-					moved = true;
-				}
+				if((owner.FTLStored - hdCost) / owner.FTLCapacity >= owner.FTLReserve)
+					hd = true;
 			}
 
 			if(!moved && canJumpdrive(obj)) {
-				double cost = jumpdriveCost(obj, pt);
+				jdCost = jumpdriveCost(obj, pt);
 				double range = jumpdriveRange(obj);
 				double dist = obj.position.distanceTo(pt);
 
 				//Jumpdrive if at least the specified capacity of the empire's ftl capacity will be left
-				if((owner.FTLStored - cost) / owner.FTLCapacity >= freeFTL && range >= dist) {
-					obj.insertJumpdriveOrder(pt, getIndex());
-					moved = true;
+				if((owner.FTLStored - jdCost) / owner.FTLCapacity >= owner.FTLReserve && range >= dist)
+					jd = true;
+			}
+
+			Object@ fling = null;
+			if(!moved && owner.hasFlingBeacons) {
+				flCost = flingCost(obj, pt);
+				//Fling if at least the specified capacity of the empire's ftl capacity will be left
+				if((owner.FTLStored - flCost) / owner.FTLCapacity >= owner.FTLReserve) {
+					@fling = owner.getFlingBeacon(obj.position);
+					if(fling !is null)
+						fl = true;
 				}
 			}
 
-			if(!moved && owner.hasFlingBeacons) {
-				double cost = flingCost(obj, pt);
-				//Fling if at least the specified capacity of the empire's ftl capacity will be left
-				if((owner.FTLStored - cost) / owner.FTLCapacity >= freeFTL) {
-					Object@ fling = owner.getFlingBeacon(obj.position);
-					if(fling !is null) {
-						obj.insertFlingOrder(fling, pt, getIndex());
-						moved = true;
-					}
-				}
+			if (fl && flCost < jdCost && flCost < hdCost) {
+				obj.insertFlingOrder(fling, pt, getIndex());
+				moved = true;
+			}
+			else if (jd && jdCost <= hdCost) {
+				obj.insertJumpdriveOrder(pt, getIndex());
+				moved = true;
+			}
+			else if (hd) {
+				obj.insertHyperdriveOrder(pt, getIndex());
+				moved = true;
 			}
 		}
 		return moved;
