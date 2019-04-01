@@ -67,6 +67,10 @@ v0.3.0b
 - Slightly increased the frequency of comets.
 - Decreased the frequency of Water on planets.
 
+[*] Subsystems
+
+- Decreased the base labor generation of Machine Shop. 
+
 [*] User Interface
 
 - Reverted the tile icon to pre-v0.2.0 in planet surface view.
