@@ -759,86 +759,6 @@ class ApplyTargetOwnedVariableStatusEffect : AbilityHook {
 #section all
 };
 
-class RepairPerSecondFromSubsystem : AbilityHook {
-	Document doc("Repairs the flagship or orbital this is applied to for an amount depending of a subsystem variable.");
-	Argument objTarg(TT_Object);
-	Argument sysData(AT_SysVar, doc="Subsystem variable to get the repair amount from.");
-	Argument status(AT_Status, doc="Status to apply to the target.");
-
-#section server
-	void changeTarget(Ability@ abl, any@ data, uint index, Target@ oldTarget, Target@ newTarget) const {
-		if(index != uint(objTarg.integer))
-			return;
-
-		Object@ prev = oldTarget.obj;
-		Object@ next = newTarget.obj;
-
-		if(prev is next)
-			return;
-
-		double sysVar = sysData.fromSys(abl.subsystem, abl.obj);
-		int statusId = -1;
-
-		if(prev !is null && prev.hasStatuses) {
-			data.retrieve(statusId);
-			if (statusId != -1)
-				prev.removeStatus(statusId);
-		}
-		if(next !is null && next.hasStatuses) {
-			statusId = next.addStatus(-1.0, status.integer, originEmpire = abl.obj.owner, originObject = abl.obj, variable = sysVar);
-			data.store(statusId);
-		}
-	}
-
-	void tick(Ability@ abl, any@ data, double time) const override {
-		if(abl.obj is null)
-			return;
-		Target@ storeTarg = objTarg.fromTarget(abl.targets);
-		if(storeTarg is null)
-			return;
-
-		Object@ target = storeTarg.obj;
-		if(target is null)
-			return;
-
-		double sysVar = sysData.fromSys(abl.subsystem, abl.obj);
-		sysVar *= time;
-		if(target.isShip) {
-			auto@ ship = cast<Ship>(target);
-			if (ship.isDamaged)
-				ship.repairShip(sysVar);
-			else {
-				Target newTarg = storeTarg;
-				@newTarg.obj = null;
-				abl.changeTarget(objTarg, newTarg);
-			}
-		}
-		else if(target.isOrbital) {
-			auto@ orbital = cast<Orbital>(target);
-			if (orbital.isDamaged)
-				orbital.repairOrbital(sysVar);
-			else {
-				Target newTarg = storeTarg;
-				@newTarg.obj = null;
-				abl.changeTarget(objTarg, newTarg);
-			}
-		}
-	}
-
-	void save(Ability@ abl, any@ data, SaveFile& file) const{
-		int statusId = -1;
-		data.retrieve(statusId);
-		file << statusId;
-	}
-
-	void load(Ability@ abl, any@ data, SaveFile& file) const{
-		int statusId = -1;
-		file >> statusId;
-		data.store(statusId);
-	}
-#section all
-};
-
 class UserMustNotHaveStatus : AbilityHook {
 	Document doc("The object using this ability must not be under the effects of the specified status.");
 	Argument status(AT_Custom, doc="Type of status effect to avoid.");
@@ -1125,10 +1045,10 @@ class TeleportTargetToSelf : AbilityHook {
 
 		vec3d point = abl.obj.position + vec3d(randomd(-100.0, 100.0), randomd(-100.0, 100.0), 0);
 		if(targ.hasOrbit && targ.inOrbit) {
- 			targ.stopOrbit();
- 			targ.position = point;
- 			targ.remakeStandardOrbit();
- 		}
+			targ.stopOrbit();
+			targ.position = point;
+			targ.remakeStandardOrbit();
+		}
 		else if(targ.hasLeaderAI) {
 			targ.teleportTo(point);
 		}

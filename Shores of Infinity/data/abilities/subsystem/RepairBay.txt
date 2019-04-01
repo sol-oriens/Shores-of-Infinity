@@ -11,4 +11,5 @@ Ability: RepairBay
 	TargetFilterNotInCombat(ship)
 	IsToggleTarget(ship, Check Range = True, Range Margin = 1.0, Channels = False)
 
-	ABEM_hooks::RepairPerSecondFromSubsystem(ship, Sys.TargetRepair:0, Status = Repaired)
+	addon_ability_effects::RepairPerSecondFromLaborIncome(ship, Factor = 8.0)
+	ApplyTargetStatusEffect(ship, Repaired)
