@@ -2,7 +2,7 @@ Module: Shipyard
 	Name: #ORB_SHIPYARD
 	Blurb: #ORB_SHIPYARD_BLURB
 	Description: #ORB_SHIPYARD_DESC
-	
+
 	Icon: OrbitalIcons::5
 	Strategic Icon: OrbitalIcons::5
 	Model: Shipyard
@@ -32,6 +32,7 @@ Module: Shipyard
 	AddLaborIncome(10)
 	AddLaborEmpireAttribute(FactoryLaborMod)
 	AddLaborFactor(-0.25)
+	GrantAbility(RepairBay)
 
 	AllowLaborImport()
 	ForbidLaborExport()
