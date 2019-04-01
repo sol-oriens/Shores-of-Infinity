@@ -42,10 +42,6 @@ Template: var/Repair
 	Modifier: RepairFactor(factor)
 		Repair := Repair * factor
 
-Template: var/TargetRepair
-	Modifier: RepairFactor(factor)
-		TargetRepair := TargetRepair * factor
-
 Template: var/DamageResist
 	Modifier: DamageResistFactor(factor)
 		DamageResist := DamageResist * factor

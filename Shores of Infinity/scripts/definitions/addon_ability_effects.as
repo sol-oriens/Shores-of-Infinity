@@ -84,7 +84,7 @@ class RepairPerSecondFromLaborIncome : AbilityHook {
 		if(target is null)
 			return;
 
-		double amt = abl.obj.laborIncome * 60 * factor.decimal * time;
+		double amt = abl.obj.laborIncome * 60 * factor.decimal * abl.obj.owner.LaborRepairFactor * time;
 		if(target.isShip) {
 			auto@ ship = cast<Ship>(target);
 			if (ship.isDamaged)
