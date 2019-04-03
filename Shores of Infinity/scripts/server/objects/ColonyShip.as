@@ -3,10 +3,26 @@ import regions.regions;
 import saving;
 
 tidy class ColonyShipScript {
+	const Model@ model;
+	const Material@ material;
+	const SpriteSheet@ sheet;
+	StrategicIconNode@ icon;
+	uint iconIndex = 0;
 	int moveId;
 
 	ColonyShipScript() {
 		moveId = -1;
+	}
+
+	void setIcon(ColonyShip& obj) {
+		double iconSize = 0.01;
+
+		@icon = StrategicIconNode();
+		icon.setObjectRotation(true);
+		icon.establish(obj, iconSize, sheet, iconIndex);
+
+		if(obj.region !is null)
+			obj.region.addStrategicIcon(-2, obj, icon);
 	}
 
 	void load(ColonyShip& obj, SaveFile& msg) {
@@ -15,7 +31,7 @@ tidy class ColonyShipScript {
 		@obj.Origin = msg.readObject();
 		@obj.Target = msg.readObject();
 		msg >> obj.CarriedPopulation;
-		
+
 		if(msg < SV_0033 && obj.Target !is null)
 			obj.Target.modIncomingPop(obj.CarriedPopulation);
 
@@ -24,27 +40,31 @@ tidy class ColonyShipScript {
 	}
 
 	void makeMesh(ColonyShip& obj) {
-		MeshDesc shipMesh;
 		const Shipset@ ss = obj.owner.shipset;
 		const ShipSkin@ skin;
 		if(ss !is null)
 			@skin = ss.getSkin("Colonizer");
 
 		if(obj.owner.ColonizerModel.length != 0) {
-			@shipMesh.model = getModel(obj.owner.ColonizerModel);
-			@shipMesh.material = getMaterial(obj.owner.ColonizerMaterial);
+			@model = getModel(obj.owner.ColonizerModel);
+			@material = getMaterial(obj.owner.ColonizerMaterial);
 		}
 		else if(skin !is null) {
-			@shipMesh.model = skin.model;
-			@shipMesh.material = skin.material;
+			@model = skin.model;
+			@material = skin.material;
 		}
 		else {
-			@shipMesh.model = model::ColonyShip;
-			@shipMesh.material = material::VolkurGenericPBR;
+			@model = model::ColonyShip;
+			@material = material::VolkurGenericPBR;
 		}
 
-		@shipMesh.iconSheet = spritesheet::HullIcons;
-		shipMesh.iconIndex = 0;
+		@sheet = spritesheet::HullIcons;
+
+		MeshDesc shipMesh;
+		@shipMesh.model = model;
+		@shipMesh.material = material;
+		@shipMesh.iconSheet = sheet;
+		shipMesh.iconIndex = iconIndex;
 
 		bindMesh(obj, shipMesh);
 	}
@@ -52,6 +72,10 @@ tidy class ColonyShipScript {
 	void postLoad(ColonyShip& obj) {
 		//Create the graphics
 		makeMesh(obj);
+		obj.setIcon();
+		Node@ node = obj.getNode();
+		if(node !is null)
+			node.animInvis = true;
 	}
 
 	void save(ColonyShip& obj, SaveFile& msg) {
@@ -65,8 +89,9 @@ tidy class ColonyShipScript {
 	}
 
 	void init(ColonyShip& ship) {
-		//Create the graphics
 		ship.sightRange = 0;
+
+		//Create the graphics
 		makeMesh(ship);
 	}
 
@@ -75,6 +100,10 @@ tidy class ColonyShipScript {
 			ship.Target.modIncomingPop(ship.CarriedPopulation);
 		if(ship.owner !is null && ship.owner.valid)
 			ship.owner.modMaintenance(round(80.0 * ship.CarriedPopulation * ship.owner.ColonizerMaintFactor), MoT_Colonizers);
+		ship.setIcon();
+		Node@ node = ship.getNode();
+		if(node !is null)
+			node.animInvis = true;
 	}
 
 	bool onOwnerChange(ColonyShip& ship, Empire@ prevOwner) {
@@ -94,12 +123,16 @@ tidy class ColonyShipScript {
 				ship.Origin.reducePopInTransit(ship.Target, ship.CarriedPopulation);
 			ship.Target.modIncomingPop(-ship.CarriedPopulation);
 		}
+		if(icon !is null) {
+			icon.markForDeletion();
+			@icon = null;
+		}
 		leaveRegion(ship);
 	}
-	
+
 	double tick(ColonyShip& ship, double time) {
 		Object@ target = ship.Target;
-	
+
 		if(moveId == -1 && target is null)
 			return 0.2;
 		ship.moverTick(time);

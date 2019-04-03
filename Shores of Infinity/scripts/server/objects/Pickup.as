@@ -20,7 +20,7 @@ tidy class PickupScript {
 		else if(type.strategicIcon.mat !is null)
 			icon.establish(obj, type.iconSize, type.strategicIcon.mat);
 		if(obj.region !is null)
-			obj.region.addStrategicIcon(-1, obj, icon);
+			obj.region.addStrategicIcon(-2, obj, icon);
 
 		icon.memorable = true;
 	}

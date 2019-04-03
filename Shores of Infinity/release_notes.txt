@@ -69,10 +69,11 @@ v0.3.0b
 
 [*] Subsystems
 
-- Decreased the base labor generation of Machine Shop. 
+- Decreased the base labor generation of Machine Shop.
 
 [*] User Interface
 
+- Added a strategic icon for colony ships in order for them to remain easily visible when zoomed out at much greater distances than vanilla.
 - Reverted the tile icon to pre-v0.2.0 in planet surface view.
 - Added Percentage of Reserve to the global resource bar. The Percentage of Reserve defines how much of your total FTL Energy cannot be used by automated ship orders. Setting it to 100% effectively disables the use of FTL bar manual orders.
 

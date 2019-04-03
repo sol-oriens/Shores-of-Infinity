@@ -125,6 +125,7 @@ class StrategicIconNodeScript : StrategicIcon {
 	Color color;
 	double size;
 	Region@ region;
+	bool rotate = false;
 
 	StrategicIconNodeScript(Node& node) {
 		node.transparent = true;
@@ -166,6 +167,10 @@ class StrategicIconNodeScript : StrategicIcon {
 
 	void clearColor() {
 		ownerColor = true;
+	}
+
+	void setObjectRotation(bool value) {
+		rotate = value;
 	}
 
 	bool preRender(Node& node) {
@@ -224,9 +229,32 @@ class StrategicIconNodeScript : StrategicIcon {
 	}
 
 	void render(Node& node) {
+
+		double rot = 0.0;
+
+		if (rotate) {
+			vec3d camFacing = cameraFacing, camUp = cameraUp;
+			vec3d objFacing = object.node_rotation * vec3d_front();
+			double alongDot = camFacing.dot(objFacing);
+
+			if(alongDot > -0.9999 && alongDot < 0.9999) {
+				objFacing -= camFacing * alongDot;
+				objFacing.normalize();
+
+				vec3d camRight = camFacing.cross(camUp).normalized();
+				rot = acos(camRight.dot(objFacing));
+				if(camRight.cross(camFacing).dot(objFacing) < 0)
+					rot = -rot;
+			}
+			else {
+				rot = alongDot > 0 ? pi * 0.5 : pi * -0.5;
+			}
+		}
+
+
 		if(sheet !is null)
-			renderBillboard(sheet, icon, node.abs_position, node.scale, 0, color);
+			renderBillboard(sheet, icon, node.abs_position, node.scale, rot, color);
 		else if(mat !is null)
-			renderBillboard(mat, node.abs_position, node.scale, 0, color);
+			renderBillboard(mat, node.abs_position, node.scale, rot, color);
 	}
 };

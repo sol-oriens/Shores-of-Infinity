@@ -88,6 +88,7 @@ Node StrategicIconNode from nodes.StrategicIcon::StrategicIconNodeScript {
 	void clearStrategic();
 	void setColor(uint color);
 	void clearColor();
+	void setObjectRotation(bool value);
 }
 
 Node PersistentGfx from nodes.PersistentGfx::PersistentGfxScript {

@@ -141,6 +141,8 @@ invisible:
 visible:
 	synced double CarriedPopulation = 0
 	synced double Health = 50
+server:
+	void setIcon();
 }
 
 Orbital : objects.Orbital::OrbitalScript {
