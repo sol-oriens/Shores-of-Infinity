@@ -2424,7 +2424,7 @@ tidy class IconRing {
 
 		double angleStep = (twopi / double(cnt));
 		vec3d sysPos = region.position;
-		double radius = region.OuterRadius + (800 * level);
+		double radius = region.OuterRadius + (8000 * level * config::SCALE_PLANETS);
 		vec3d basePos = objects[0].position;
 		double baseAngle = vec2d(basePos.x - sysPos.x, basePos.z - sysPos.z).radians();
 
