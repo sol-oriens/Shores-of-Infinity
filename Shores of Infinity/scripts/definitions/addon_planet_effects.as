@@ -2,7 +2,7 @@ import hooks;
 import generic_effects;
 
 class PerPopulationAddLoyalty : GenericEffect, TriggerableGeneric {
-	Document doc("Increase the loyalty of the planet based on its current population.");
+	Document doc("Increases the loyalty of the planet based on its current population.");
 	Argument amount(AT_Integer, doc="Multiplier to the planet's current population to give as extra loyalty.");
 
 	bool get_hasEffect() const override {

@@ -6,23 +6,25 @@ import resources;
 class RequireNativeResource : Requirement {
 	Document doc("This can only work if the planet has a particular resource.");
 	Argument resource(AT_PlanetResource, doc="Resource to require.");
+	Argument count(AT_Integer, "1", doc="Number of resources of this type to require.");
 	Argument primary(AT_Boolean, "True", doc="Whether the resource must be the primary resource.");
 	Argument hide(AT_Boolean, "True", doc="Hide when unavailable.");
 
 	bool meets(Object& obj, bool ignoreState = false) const override {
+		uint resCnt = 0;
 		if(ignoreState && !hide.boolean)
 			return true;
 		if(!obj.hasResources)
 			return false;
-		if (primary.boolean)
-			return obj.primaryResourceType == uint(resource.integer);
-		else {
-			for(uint i = 0, cnt = obj.nativeResourceCount; i < cnt; ++i) {
-				if(obj.nativeResourceType[i] == uint(resource.integer))
+		if (primary.boolean && obj.primaryResourceType != uint(resource.integer))
+			return false;
+		for(uint i = 0, cnt = obj.nativeResourceCount; i < cnt; ++i) {
+			if(obj.nativeResourceType[i] == uint(resource.integer)) {
+				if (++resCnt == uint(count.integer))
 					return true;
 			}
-			return false;
 		}
+		return false;
 	}
 };
 
