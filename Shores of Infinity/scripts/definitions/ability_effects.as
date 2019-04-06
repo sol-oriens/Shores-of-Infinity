@@ -1149,6 +1149,7 @@ class SpawnPlanetAt : AbilityHook {
 		plHook.initClass();
 		plHook.resource.str = resource.str;
 		plHook.distribute_resource.boolean = true;
+		plHook.changeSystemRadius = false;
 		plHook.instantiate();
 
 		Object@ current;

@@ -385,7 +385,9 @@ class MakePlanet : MapHook {
 	PlanetClass planetClass;
 
 	Document doc("Create a new planet in the system.");
-	Argument resource(AT_Custom, "distributed", doc="The primary resource on the planet. 'distributed' to randomize.");
+	Argument resource(AT_Custom, "distributed", doc=
+		"The primary resource on the planet. 'distributed' to randomize. +
+		'weighted' to randomize according to the planet classification.");
 	Argument secondary_resource(AT_Custom, "ruled", doc=
 		"The secondary resource on the planet. " +
 		"'none' to ignore. 'ruled' or 'distributed' to correlate the secondary resource with the resources defined by the primary resource. " +
@@ -491,7 +493,7 @@ class MakePlanet : MapHook {
 		spacing *= config::SCALE_PLANETS;
 
 		//SoI - Changing the system radius after map generation somehow resets it to vanilla size
-		//when loading a game (using protoplanets) and causes a lot of issues
+		//when loading a game (using protoplanets, etc.) and causes a lot of issues
 		if (changeSystemRadius)
 			system.radius += spacing;
 
@@ -736,11 +738,11 @@ Planet@ spawnPlanetSpec(const vec3d& point, const string& resourceSpec, bool dis
 	plHook.rings.boolean = false;
 	plHook.conditions.boolean = false;
 	plHook.physics.boolean = physics;
+	plHook.changeSystemRadius = false;
 	if(radius != 0)
 		plHook.radius.set(radius);
 	plHook.instantiate();
 
-	plHook.changeSystemRadius = false;
 
 	Object@ current;
 
