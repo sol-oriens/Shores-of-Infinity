@@ -27,6 +27,7 @@ final class SystemData {
 	bool autoGenerateLinks = true;
 	bool ignoreAdjacencies = false;
 	uint assignGroup = uint(-1);
+	dictionary ranges;
 
 	void addHomeworld(Empire@ empire) {
 		if(homeworlds is null)
@@ -56,7 +57,7 @@ final class SystemCode {
 //Abstract description of a system
 final class SystemDesc : Serializable, Savable {
 	private double _radius;
-	
+
 	uint index;
 	string name;
 	vec3d position;
@@ -70,7 +71,7 @@ final class SystemDesc : Serializable, Savable {
 
 	array<uint> territories(getEmpireCount());
 	array<uint> visibleTerritory(getEmpireCount());
-	
+
 	double radius {
 		get const {
 			return _radius;

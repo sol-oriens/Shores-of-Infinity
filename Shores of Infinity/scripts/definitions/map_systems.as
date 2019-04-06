@@ -23,8 +23,22 @@ tidy final class SystemType {
 	array<string> baseNames;
 	array<const SystemType@> bases;
 
+	dictionary ranges;
+
 	void generate(SystemData@ data, SystemDesc@ system) const {
 		Object@ current;
+
+		//Perform a deep copy of range variables to get different values for each system
+		array<string> keys = ranges.getKeys();
+		for (uint i = 0, cnt = keys.length; i < cnt; ++i) {
+			string key = keys[i];
+			RangeValue@ range;
+			if (ranges.get(key, @range) && range !is null) {
+				auto@ newRange = RangeValue(range.decimal1, range.decimal2);
+				data.ranges.set(key, @newRange);
+			}
+		}
+
 		for(uint i = 0, cnt = hooks.length; i < cnt; ++i) {
 			auto@ hook = cast<IMapHook@>(hooks[i]);
 			if(hook !is null)
@@ -64,15 +78,15 @@ void parseLine(int indent, const string& line, SystemType@ type) {
 
 void loadSystems(const string& filename) {
 	ReadFile file(filename, true);
-	
+
 	string key, value;
 	SystemType@ type;
-	
+
 	uint index = 0;
 	while(file++) {
 		key = file.key;
 		value = file.value;
-		
+
 		if(file.fullLine) {
 			if(type is null) {
 				error("Missing 'System: ID' line in " + filename);
@@ -108,12 +122,15 @@ void loadSystems(const string& filename) {
 				error("Error: Unknown system uniqueness: "+value);
 			type.frequency *= config::UNIQUE_SYSTEM_OCCURANCE / 0.3;
 		}
+		else if(key == "Range") {
+			parseRangeSpec(type.ranges, value);
+		}
 		else {
 			string line = file.line;
 			parseLine(file.indent, line, type);
 		}
 	}
-	
+
 	if(type !is null)
 		addSystemType(type);
 }

@@ -48,7 +48,8 @@ export ArgumentType, Argument, REF_ARG;
 export Document, EMPTY_DEFAULT;
 export Hook, BlockHook, parseHook;
 export TargetType, Targets, Target;
-export parseTarget;
+export RangeValue;
+export parseTarget, parseRangeSpec;
 export makeHookInstance;
 export EmpireResource, empResources;
 
@@ -205,6 +206,15 @@ final class Argument {
 		if(!isRange)
 			return decimal;
 		return randomd(decimal, decimal2);
+	}
+
+	double fromRange(dictionary& ranges) {
+		if (!isRange && !ranges.isEmpty()) {
+			RangeValue@ range;
+			if (ranges.get(str, @range) && range !is null)
+				return range.value;
+		}
+		return fromRange();
 	}
 
 	double fromSys(const Subsystem@ sys = null, Object@ efficiencyObj = null) const {
@@ -1130,7 +1140,7 @@ enum TargetType {
 	TT_ID,
 	TT_Any,
 	TT_Custom,
-	
+
 	TT_COUNT
 };
 
@@ -1506,6 +1516,27 @@ final class Targets : Serializable, Savable {
 	}
 };
 //}}}
+//{{{ Range variables
+final class RangeValue {
+	private double _decimal1, _decimal2, _value = 0;
+
+	RangeValue(double value1, double value2) {
+		_decimal1 = value1;
+		_decimal2 = value2;
+	}
+
+	double get_decimal1() const { return _decimal1; }
+	double get_decimal2() const { return _decimal2; }
+
+	double get_value() {
+		if (_value == 0) {
+			_value = randomd(_decimal1, _decimal2);
+			return _value;
+		}
+		else return _value;
+	}
+};
+//}}}
 //{{{ Parser
 Hook@ parseHook(array<Hook@>& list, int indent, const string& line, const string& defaultNamespace) {
 	BlockHook@ inBlock;
@@ -1657,7 +1688,7 @@ Target@ parseTarget(Targets@ targets, const string& line, bool allowCustom = fal
 
 	string name = line.substr(0, pos).trimmed();
 	string type = line.substr(pos+1).trimmed();
-	
+
 	TargetType tt = getTargetType(type);
 	if(!allowCustom && tt == TT_Custom) {
 		error("Invalid target type: "+escape(type));
@@ -1665,5 +1696,24 @@ Target@ parseTarget(Targets@ targets, const string& line, bool allowCustom = fal
 	}
 
 	return targets.add(name, tt);
+}
+
+void parseRangeSpec(dictionary& dic, const string& line) {
+	string key, spec;
+	int pos = line.findFirst("=");
+	if(pos == -1)
+		error("Invalid range spec: "+escape(line));
+
+	key = line.substr(0, pos).trimmed();
+	spec = line.substr(pos+1).trimmed();
+
+	int sep = spec.findFirst(":");
+	if(sep == -1)
+		error("Invalid range spec: "+escape(line));
+
+	double value1 = toDouble(spec.substr(0, sep));
+	double value2 = toDouble(spec.substr(sep+1));
+	auto@ range = RangeValue(value1, value2);
+	dic.set(key, @range);
 }
 //}}}
