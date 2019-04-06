@@ -855,7 +855,7 @@ class SetupOrbit : MapHook {
 		if(cur is null || !cur.hasOrbit)
 			return;
 
-		double radius = arguments[0].fromRange() * config::SCALE_STARS;
+		double radius = arguments[0].fromRange(data.ranges) * config::SCALE_STARS;
 		vec3d pos = arguments[1].fromPosition() + system.position;
 		double pct = arguments[2].fromRange();
 		vec2d off = random2d();

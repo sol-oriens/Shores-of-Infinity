@@ -70,6 +70,11 @@ v0.3.0b
 
 - Decreased the base labor generation of Machine Shop.
 
+[*] Systems
+
+- Fixed orbit collisions in multi-star systems.
+- Fixed desynchronization of binary star orbits.  
+
 [*] User Interface
 
 - Added a strategic icon for colony ships in order for them to remain easily visible when zoomed out at much greater distances than vanilla.
