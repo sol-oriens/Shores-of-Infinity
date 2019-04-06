@@ -3,7 +3,7 @@ Ability: MineAsteroid
 	Description: #ABL_MINE_ASTEROID_DESC
 	Icon: AsteroidIcon * #91692c
 
-	Range: 1500
+	Range: 100
 	Target: targ = Object
 
 	TargetFilterType(targ, Asteroid)

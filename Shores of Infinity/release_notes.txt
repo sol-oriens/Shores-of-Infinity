@@ -35,10 +35,9 @@ v0.3.0b
 
 [*] Gameplay
 
-- The range of the Mine Asteroid ability has been extended so that ships with mining lasers and lightsails should now keep mining even when they overshoot their target by a reasonable margin.
 - Fixed a vanilla bug where elapsed time was not tracked correctly for planet statuses.
 - Fixed a bug which would cause a system in which a protoplanet was used to become corrupted upon loading a saved game.
-- Changed Set Drop-off Point ability to trigger only when cargo storage is full. Any ship with cargo storage now has this ability.
+- Changed Set Drop-off Point ability to trigger only when cargo storage is full. Any ship with cargo storage now has this ability. As a direct effect of this change, ships with mining lasers and lightsails will now keep mining even when they overshoot their target.
 - Added Set Pickup Point ability. Toggle where this ship's pickup point for cargo is set. When the cargo storage has free space, automatically pick up as much cargo from the indicated object as possible. Any ship with cargo storage has this ability.
 - Ability orders that require movement will now automatically make use of hyperdrives, jumpdrives or fling beacons if available and if the cost wouldn't set the current FTL Energy below the defined Percentage of Reserve. If the ship can use several FTL methods, the cheapest will be chosen.
 
