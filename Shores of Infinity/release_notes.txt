@@ -53,7 +53,6 @@ v0.3.0b
 - Added an icon for the Moon Base project.
 - Moon bases now cost 750k to build (up from 500k).
 - Infrastructural Development no longer costs ore and labor and now costs 200k with a build time of 45s instead.
-- Slightly increased the frequency of Water on planets.
 - Settlers now take 60s being loaded into colonization pods (up from 30s).
 - The Megafauna condition (available with the WotH DLC) can now only spawn on planets with a native Meat resource.
 - Disabled the Frozen Wasteland condition (available with the WotH DLC).
@@ -63,6 +62,7 @@ v0.3.0b
 
 [*] Resources
 
+- Slightly decreased the frequency of FTL Crystals asteroids.
 - Slightly increased the frequency of comets.
 - Decreased the frequency of Water on planets.
 
@@ -73,7 +73,7 @@ v0.3.0b
 [*] Systems
 
 - Fixed orbit collisions in multi-star systems.
-- Fixed desynchronization of binary star orbits.  
+- Fixed desynchronization of binary star orbits.
 
 [*] User Interface
 
