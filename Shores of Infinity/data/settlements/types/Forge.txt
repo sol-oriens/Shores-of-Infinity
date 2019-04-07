@@ -10,4 +10,4 @@ Settlement: Forge
 	RequireStatus(Forge4, Count = 3)
 
 	AddDummyResource(Supercarbons, 1)
-	MultConstructionCost(0.5)
+	MultConstructionCost(0.8)
