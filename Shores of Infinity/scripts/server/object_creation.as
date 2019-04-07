@@ -8,9 +8,9 @@ from civilians import getCivilianName;
 const double COLONYSHIP_BASE_ACCEL = 5.5 * config::SCALE_SPACING;
 
 //SoI - Scaling: ship size
-const double shipVolumePower = 5.0;
+const double shipVolumePower = 3.5;
 const double shipRadiusFactor = 0.25;
-const double stationRadiusFactor = 0.325;
+const double stationRadiusFactor = 0.5;
 const double orbitalRadiusFactor = 1.0;
 const double baseColonyShipSize = 32.0;
 
