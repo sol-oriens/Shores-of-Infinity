@@ -10,6 +10,7 @@ import dialogs.MessageDialog;
 import version;
 import ABEM_version;
 import SoI_version;
+import CP_version;
 from gui import animate_speed, animate_time, animate_remove;
 
 enum MenuAnimation {
@@ -83,6 +84,26 @@ void init() {
 		version.color = Color(0xff0000ff);
 		//version.text += "(UNSUPPORTED VERSION)";
 		version.text = version.text + " (UNSUPPORTED VERSION)";
+	}
+
+	string CPVersionCheck = "Applied: " + CommunityPatch::MOD_NAME;
+	if (CommunityPatch::showVersionCheckLabel) {
+		//Show the Community Patch version
+		@version = GuiText(null, Alignment(Right-300, Bottom-20, Right-4, Bottom));
+		version.horizAlign = 1.0;
+		version.text = CPVersionCheck;
+		version.color = Color(0xaaaaaaaa);
+		// Check if mod is compatible with current game version, spew out alarming colors and errors if not
+		if(!CommunityPatch::checkSupported()) {
+			version.color = Color(0xff0000ff);
+			version.text += " (UNSUPPORTED VERSION)";
+		}
+	}
+	if (CommunityPatch::showVersionCheckConsole) {
+		// Check if mod is compatible with current game version
+		if(!CommunityPatch::checkSupported())
+			CPVersionCheck += " (UNSUPPORTED VERSION)";
+		print(CPVersionCheck);
 	}
 
 	//Create container

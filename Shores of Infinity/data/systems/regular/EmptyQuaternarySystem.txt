@@ -23,7 +23,7 @@ System: EmptyQuaternarySystem
 	ExpandSystem(19500:20500)
 
 	RepeatChance(Chance = $ASTEROID_BELT_OCCURANCE, Repeat Modifier = 0.999999)
-		MakeAsteroidBelt()
+		MakeAsteroidBelt(Radius = Outer)
 
 	RepeatChance(Chance = $RESOURCE_ASTEROID_OCCURANCE, Repeat Modifier = 0.1)
 		MakeAsteroid(Resource = Distributed)
