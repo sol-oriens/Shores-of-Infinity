@@ -47,7 +47,7 @@ v0.3.0b
 - Singularity labs maintenance cost is now 90k (up from 25k).
 - Staging hubs can now build orbitals and stations.
 - Shipyards now have the Repair ability.
-- Tactical satellites now have a different model and are much smaller. 
+- Tactical satellites now have a different model and are much smaller.
 
 [*] Planets
 
@@ -190,8 +190,9 @@ v0.2.0b
 
 [*] Buildings
 
-- Mining Complex now also increases the pressure given by native Iron by 2 and Coal by 1.
 - Healthcare Complex base maintenance cost is now 15k (down from 20k).
+- Mining Complex now also increases the pressure given by native Iron by 2 and Coal by 1.
+- Increased Space Elevator Labor cost to 100 (up from 50).
 - Ancient Collectors can now be built on all gas and ice giants but can no longer produce asteroid pressure.
 - Ancient Cores can no longer be built on ice giants.
 - The Flux trait no longer gives access to the FTL Breeder Reactor (see Orbitals).

@@ -1,7 +1,7 @@
 Building: SpaceElevator
 	Name: #BLD_SPACE_ELEVATOR
 	Description: #BLD_SPACE_ELEVATOR_DESC
-	
+
 	Sprite: SpaceElevator
 
 	Category: Infrastructure
@@ -9,7 +9,7 @@ Building: SpaceElevator
 	Size: 2x5
 
 	Base Cost: 750
-	Labor Cost: 50
+	Labor Cost: 100
 
 	ConsumeCargo(Ore, 1000)
 
