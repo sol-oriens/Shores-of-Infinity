@@ -771,9 +771,10 @@ S_LIGHTSAIL_DESC: <<
 
 	[img=Plus]Does not need fuel, very low maintenance cost.[/img]
 	[img=Plus]Lightsails on the outside of the ship do not use up interior space.[/img]
+	[img=Minus]Provides no turn thrust.[/img]
 	[img=Minus]Thrust is not improved by research.[/img]
 	[img=Minus]Requires to be within range of an active laser propulsion beam to function at full efficiency, or near a star to function at low efficiency.[/img]
-	[img=MenuIcons::3;20]Laser Propulsion Beam is an ability of Phased Laser Array Drive orbitals.[/img]
+	[img=MenuIcons::3;20]Laser Propulsion Beam is an ability of Phased Array Laser Drive orbitals.[/img]
 	[img=MenuIcons::3;20]Thrust increases with diminishing returns as the subsystem's size increases.[/img]
 	[img=MenuIcons::3;20]Diminishing returns combined with linear mass increase also means diminishing returns on acceleration as the ship size increases.[/img]
 	[img=MenuIcons::3;20]Only one external source can be used at a time (including solar).[/img]

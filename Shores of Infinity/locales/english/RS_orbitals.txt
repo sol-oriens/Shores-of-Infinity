@@ -8,7 +8,7 @@ ORB_TRADE_OUTPOST_DESC: <<|
 	Outposts generate up to [b]3 Defense[/b] worth of local defense ships,
 	depending on how many adjacent systems have outposts or starbases in them.
 
-	Support ships assigned to this orbital fight at increased effectiveness.
+	Support ships assigned to this orbital fight at 200% increased effectiveness.
 
 	If all of the outpost's support command is used and it has a full
 	complement of defense ships, it will start adding its defense generation to
