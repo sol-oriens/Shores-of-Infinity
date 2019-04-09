@@ -11,5 +11,5 @@ Settlement: HomeworldInfluence
 	RequirePlanet()
 
 	AddStatus(PeriodicInfluence)
-	AddFleetEffectiveness(+3.5)
+	AddFleetEffectiveness(+3.0)
 	addon_planet_effects::PerPopulationAddLoyalty(1)
