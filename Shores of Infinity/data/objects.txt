@@ -38,6 +38,8 @@ visible:
 
 	local safe bool get_isStation();
 
+	local visible bool get_isDamaged();
+
 remote restricted:
 	void scuttle();
 
@@ -49,7 +51,6 @@ server:
 	void consumeSupplyPct(double pct);
 	bool consumeMinSupply(double amount);
 	void refundSupply(double amount);
-	bool get_isDamaged();
 	void repairShip(double amount);
 	void makeNotFree();
 	void setHealthPct(float pct);
@@ -160,6 +161,7 @@ local visible:
 	safe bool get_isStandalone();
 	safe bool get_isContested();
 	safe bool get_isDisabled();
+	bool get_isDamaged();
 	OrbitalSection@[] getSections();
 	bool hasModule(uint typeId);
 	safe double get_health();
@@ -195,7 +197,6 @@ server:
 	void setDerelict(bool value);
 	void setContested(bool value);
 	void addSection(uint modId);
-	bool get_isDamaged();
 	void modMaxArmor(double value);
 	void modMaxHealth(double value);
 	void modMaxShield(double value);

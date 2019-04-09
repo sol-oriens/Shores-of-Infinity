@@ -10,6 +10,10 @@ v0.3.0b
 *** Detailed Changes ***
 ************************
 
+[*] Abilities
+
+- Repair is now available on all Shipyards in addition to stations or ships with a Construction Bay. It can now target support ships in addition to flagships, stations and orbitals, and will auto cast on valid targets within its range.
+
 [*] Artifacts
 
 - Added Nascence Device. Instantly adds a random Food resource to target owned planet. Activation cost of 750 Energy.
@@ -17,7 +21,7 @@ v0.3.0b
 [*] Artificial Intelligence
 
 - AIs now build commerce stations to establish trade routes between their territories.
-- AIS now build a factory in territories where no labor is available to establish a trade route.
+- AIs now build a factory in territories where no labor is available to establish a trade route.
 - AIs now build research complexes if their research generation rate is too low.
 
 [*] Buildings
@@ -114,7 +118,7 @@ v0.2.2b
 
 - Added a fail-safe in case system spacing has a value below the minimum allowed (150k units) during map generation.
 - Fixed an issue with dumbbell galaxy generation partially failing.
-- Fixed a vanilla bug where ore asteroids in the mirrored part of a dumbbell galaxy generated with the 'Perfect Mirror' option had a resource asteroid strategic icon.
+- Fixed a vanilla bug where Ore asteroids in the mirrored part of a dumbbell galaxy generated with the 'Perfect Mirror' option had a resource asteroid strategic icon.
 
 v0.2.1b
 

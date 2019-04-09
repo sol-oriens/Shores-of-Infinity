@@ -3,13 +3,19 @@ Ability: RepairBay
 	Description: #ABL_REPAIR_BAY_DESC
 	Icon: ResourceIcon::6
 
+	Range: 1000
+
 	Target: ship = Object
 
 	TargetFilterSameRegion(ship)
 	TargetFilterOwned(ship)
-	Either(TargetFilterFlagship(ship, Allow Stations = True), TargetFilterType(ship, Orbital))
+	Either(TargetFilterType(ship, Ship), TargetFilterType(ship, Orbital))
 	TargetFilterNotInCombat(ship)
+	addon_target_filters::TargetFilterRepairable(ship)
 	IsToggleTarget(ship, Check Range = True, Range Margin = 1.0, Channels = False)
 
-	addon_ability_effects::RepairPerSecondFromLaborIncome(ship, Factor = 8.0)
+	AutoCastNearby(ship, Prioritize Strongest = True)
+
+	addon_ability_effects::RepairPerSecondFromLaborIncome(ship, Factor = 2.0)
 	ApplyTargetStatusEffect(ship, Repaired)
+	AfterChannel(ship, 0.1, PlayParticles(ImpactFlare, Scale = 0.75), Clear = False)

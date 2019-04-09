@@ -1248,14 +1248,12 @@ tidy class ShipScript {
 		}
 
 		//Repair out of combat (SoI - and actually, also in combat...)
-		//SoI - bp.removedHP is bugged doesn't ever seem to return to the exact value of bp.design.totalHP (difference of 0.01)
-		//Also when substracting from bp.design.totalHP in this case a range overflow occurs for some reason
-		//There is probably a better solution but this hack will do for now
-		if (int(bp.currentHP) == int(bp.design.totalHP))
-			bp.currentHP = bp.design.totalHP;
 		double damage = bp.design.totalHP - (bp.currentHP + bp.removedHP);
-		//print("damage = " + damage);
-		if(currentRepair > 0.f && (damage > 0.f || wreckage > 0.f)) {
+		//You shall give up all expectations of floating point arithmetic being exactly equal to zero,
+		//for that can only bring the wrath of the bug gods upon your code, padawan
+		//print("bp.design.totalHP = " + bp.design.totalHP + " bp.currentHP = " + bp.currentHP + " bp.removedHP = " + bp.removedHP + " damage = " + damage);
+		//if(currentRepair > 0.f &&(damage > 0.f || wreckage > 0.f)) {
+		if (currentRepair > 0.f && (damage > 0.1f || wreckage > 0.f)) {
 			double repairFact = 1.0;
 			repairFact *= min(bp.shipEffectiveness, 1.0);
 			bool inCombat = ship.inCombat;
