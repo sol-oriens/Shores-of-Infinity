@@ -21,7 +21,7 @@ Subsystem: SatelliteHull
 	Ship.ExternalHexes := 0
 	Ship.HexSize := ShipSize / (HexLimit - FreeHexLimit)
 
-	Repair := (ShipSize / HexLimit) * 4
+	Repair := (ShipSize / HexLimit) * 1
 	TechMult := 1.5
 
 	HullStrengthMult := 1
