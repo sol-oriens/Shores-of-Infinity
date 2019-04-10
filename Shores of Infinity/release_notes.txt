@@ -34,6 +34,8 @@ v0.3.0b
   - Tier 3: Increases labor generation by 60%. Base and maintenance costs of 1M and 150k, respectively. Also costs 400 Labor to build. Consumes 36 Ore / minute when the planet is using labor to build.
   - Tier 4: Increases labor generation by 80%. Base and maintenance costs of 2M and 200k, respectively. Also costs 800 Labor to build. Consumes 48 Ore / minute when the planet is using labor to build.
   - Tier 5: Increases labor generation by 100%. Base and maintenance costs of 4M and 250k, respectively. Also costs 1600 Labor to build. Consumes 60 Ore / minute when the planet is using labor to build.
+- Space Elevator now costs 1M (up from 750k), no longer costs labor and instead has a build time of 8m. It now has a size of 3x8 tiles (up from 2x5).
+- Arcology was overhauled and no longer costs labor. It now adds 3 population (down from 5), replaces 3 cities (down from 5) and increases pressure cap by 3. It now has a build time of 7m and a build cost of 2M (down from 2.5M) as well as an Ore cost of 1.5k (down from 2k).
 - Fixed a bug where the research cost was not updated when a healthcare complex is removed.
 - Fixed a bug where electronics factories would consume twice as less Ore than intended.
 
@@ -200,9 +202,8 @@ v0.2.0b
 
 [*] Buildings
 
-- Healthcare Complex base maintenance cost is now 15k (down from 20k).
 - Mining Complex now also increases the pressure given by native Iron by 2 and Coal by 1.
-- Increased Space Elevator Labor cost to 100 (up from 50).
+- Healthcare Complex base maintenance cost is now 15k (down from 20k).
 - Ancient Collectors can now be built on all gas and ice giants but can no longer produce asteroid pressure.
 - Ancient Cores can no longer be built on ice giants.
 - The Flux trait no longer gives access to the FTL Breeder Reactor (see Orbitals).

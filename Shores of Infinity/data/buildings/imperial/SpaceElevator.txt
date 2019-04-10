@@ -6,10 +6,10 @@ Building: SpaceElevator
 
 	Category: Infrastructure
 
-	Size: 2x5
+	Size: 3x8
 
-	Base Cost: 750
-	Labor Cost: 100
+	Base Cost: 1000
+	Build Time: 480
 
 	ConsumeCargo(Ore, 1000)
 
