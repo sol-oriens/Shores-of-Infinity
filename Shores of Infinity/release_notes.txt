@@ -12,7 +12,7 @@ v0.3.0b
 
 [*] Abilities
 
-- Repair is now available on all Shipyards in addition to stations or ships with a Construction Bay. It can now target support ships in addition to flagships, stations and orbitals, and will auto cast on valid targets within its range.
+- Repair is now available on all shipyards in addition to stations or ships with a construction bay. It can now target support ships in addition to flagships, stations and orbitals, and will auto cast on valid targets within its range.
 
 [*] Artifacts
 
@@ -65,6 +65,11 @@ v0.3.0b
 - Added a new planetary condition: Total Permafrost. The resource of this planet gives half its pressure. Can generate a water resource for this planet.
 - Added icy planets. These planets can spawn at outer rims of systems, always have an ice biome and have the Permafrost planetary condition. They can have one of the following resources: Pekelm, Deuterium.
 - Slightly decreased the frequency of gas and ice giants.
+
+[*] Research
+
+- Fixed an overlook where Verdant lifestyle could research Metropolitan Optimization and Arcologies nodes. These nodes are now replaced with Modular Habitats nodes.
+- Verdant lifestyle now has an additional Modular Habitats node where the Megacities node normally is.
 
 [*] Resources
 
