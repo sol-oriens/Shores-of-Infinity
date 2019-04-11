@@ -8,7 +8,7 @@ Building: Spire
 	Size: 3x10
 
 	Base Cost: 1000
-	Build Time: 180
+	Build Time: 540
 
 	RequireUnlockTag(SpireUnlock)
 	ConstructibleIfAttribute(ForbidCityConstruction, 0)

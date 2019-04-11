@@ -36,6 +36,7 @@ v0.3.0b
   - Tier 5: Increases labor generation by 100%. Base and maintenance costs of 4M and 250k, respectively. Also costs 1600 Labor to build. Consumes 60 Ore / minute when the planet is using labor to build.
 - Space Elevator now costs 1M (up from 750k), no longer costs labor and instead has a build time of 8m. It now has a size of 2x6 tiles (up from 2x5).
 - Arcology was overhauled and no longer costs labor. It now adds 3 population (down from 5), replaces 3 cities (down from 5) and increases pressure cap by 3. It now has a build time of 7m and a build cost of 2M (down from 2.5M) as well as an Ore cost of 1.5k (down from 2k).
+- Spire now has a build time of 9m (up from 3m).
 - Fixed a bug where the research cost was not updated when a healthcare complex is removed.
 - Fixed a bug where electronics factories would consume twice as less Ore than intended.
 
