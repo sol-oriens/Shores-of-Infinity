@@ -42,6 +42,7 @@ v0.3.0b
 
 [*] Gameplay
 
+- Defense Reserve can now only be deployed on planets where an Outpost is present in the same or an adjacent system.
 - Repair rates of all ships, stations, supports and satellites are now 4 times slower.
 - Changed Set Drop-off Point ability to trigger only when cargo storage is full. Any ship with cargo storage now has this ability. As a direct effect of this change, ships with mining lasers and lightsails will now keep mining even when they overshoot their target.
 - Added Set Pickup Point ability. Toggle where this ship's pickup point for cargo is set. When the cargo storage has free space, automatically pick up as much cargo from the indicated object as possible. Any ship with cargo storage has this ability.

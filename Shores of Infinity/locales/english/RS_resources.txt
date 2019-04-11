@@ -9,6 +9,16 @@ GTT_FTL: <<
 
 	[i]The Percentage of Reserve defines how much of your total FTL Energy cannot be used by automated ship orders. Setting it to 100% effectively disables the use of FTL bar manual orders.[/i]
 >>
+GTT_DEFENSE: <<
+	[font=Medium]Global Defense[/font]
+	[i]Global defense automatically creates support ships on planets or systems you have indicated to use it. Right click a system's star to mark it for global defense use. Every point of defense counts as 2 labor for support ship spawning.[/i]
+
+	Global Defense Rate: [right]$1[/right]
+	Defense Reserve: [right]$3 / $2[/right]
+
+	[i]Defense reserve is filled up before ships are spawned automatically. If the defense reserve is full, it can be deployed at any planet, where an Outpost is present in the same or an adjacent system, to spawn defense ships. While full, global defense generation automatically spawns ships as usual.[/i]
+>>
+TT_CANNOT_DEPLOY: Planet with adjacent Outpost required
 
 MONEY_TYPE_11: Civil Acts
 ELECTRONICS: Semiconductors
