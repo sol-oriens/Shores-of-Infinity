@@ -26,7 +26,7 @@ v0.3.0b
 
 [*] Buildings
 
-- Barracks now add 1 planet Loyalty. Maintenance cost has been reverted to vanilla value (20k, up from 0).
+- Barracks now add 1 planet Loyalty. Defense Reserve Bonus and maintenance cost have been reverted to vanilla value (+15 (down from +20) and 20k (up from 0), respectively).
 - Mining complexes now additionally cost 15 Research to build.
 - Forges have been completely overhauled and costs adjusted. They also now consume Ore when using Labor. The next forge tier is unlocked only once the previous tier is built. Each tier now has a higher Labor bonus.
   Forge tiers now have the following stats:
@@ -54,6 +54,7 @@ v0.3.0b
 [*] Orbitals
 
 - Doubled the labor cost of all orbitals.
+- Outposts and starbases now add +5 and +10 Defense Reserve, respectively. 
 - Singularity labs maintenance cost is now 90k (up from 25k).
 - Staging hubs can now build orbitals and stations.
 - Shipyards now have the Repair ability.
@@ -89,7 +90,7 @@ v0.3.0b
 [*] Systems
 
 - Homeworlds have moved to the second planet in the system, while the level 1 resource is now on the first one.
-- The Pekelm ice giant in the home system has been replaced by a Pekelm ice planet. 
+- The Pekelm ice giant in the home system has been replaced by a Pekelm ice planet.
 - Fixed orbit collisions in multi-star systems.
 - Fixed desynchronization of binary star orbits.
 

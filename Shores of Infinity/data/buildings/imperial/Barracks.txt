@@ -19,5 +19,5 @@ Building: Barracks
 
 	RequireNotTrait(Ancient)
 
-	AddDefenseReserve(+20)
+	AddDefenseReserve(+15)
 	ModLoyalty(1)

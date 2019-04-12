@@ -28,6 +28,7 @@ Module: TradeOutpost
 	AddFleetCommandEmpireAttribute(OutpostBoost, 128)
 	AddFleetEffectiveness(+2.0)
 	AddSupportBonusHP(+1.0)
+	AddDefenseReserve(+5)
 
 	AddHealthEmpireAttribute(OutpostBoost, 10000)
 	AddLocalDefenseAdjacentFlags(OutpostFlag, 1.5, 3, Overflow Global = True, Local Boost = OutpostBoost) #version>=94

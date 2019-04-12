@@ -2,11 +2,13 @@ OERR_PLANET_LIMIT: Maximum $1 per planet orbit allowed.
 OERR_CLOSE_PLANET_ORBIT: Must be built in close planetary orbit.
 ORB_TRADE_OUTPOST_BLURB: Allows trade through its system. Generates defense ships and protects planets in the system from being captured. Can store 1k units of cargo.
 ORB_TRADE_OUTPOST_DESC: <<|
-	A small outpost that allows your civilian ships to travel through the
-	system it is in.
+	[color=#aaa][i]A small outpost that allows our civilian ships to travel through the
+	system it is in.[/i][/color]
 
-	Outposts generate up to [b]3 Defense[/b] worth of local defense ships,
+	Generates up to [b]3 Defense[/b] worth of local defense ships,
 	depending on how many adjacent systems have outposts or starbases in them.
+
+	Adds 5 Defense Reserve to your global pool.
 
 	Support ships assigned to this orbital fight at 200% increased effectiveness.
 
@@ -60,6 +62,8 @@ ORB_STARBASE_DESC: <<
 	[color=#aaa][i]A imposing military base designed to secure supply lines and protect a system against a sustained siege.[/i][/color]
 
 	Generates up to [b]6 Defense[/b] worth of local defense ships, depending on how many adjacent systems have outposts or starbases in them.
+
+	Adds 10 Defense Reserve to your global pool.
 
 	Support ships assigned to this orbital fight at increased effectiveness.
 
