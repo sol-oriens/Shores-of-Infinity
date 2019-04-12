@@ -1,7 +1,7 @@
 Building: Barracks
 	Name: #BLD_BARRACKS
 	Description: #BLD_BARRACKS_DESC
-	
+
 	Sprite: Barracks
 
 	Category: Storage
@@ -12,6 +12,7 @@ Building: Barracks
 
 	Base Cost: 100
 	Tile Cost: 30
+	Base Maintenance: 20
 	Tile Maintenance: 5
 
 	Build Time: 70
@@ -19,3 +20,4 @@ Building: Barracks
 	RequireNotTrait(Ancient)
 
 	AddDefenseReserve(+20)
+	ModLoyalty(1)

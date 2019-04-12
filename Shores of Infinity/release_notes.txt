@@ -26,6 +26,7 @@ v0.3.0b
 
 [*] Buildings
 
+- Barracks now add 1 planet Loyalty. Maintenance cost has been reverted to vanilla value (20k, up from 0).
 - Mining complexes now additionally cost 15 Research to build.
 - Forges have been completely overhauled and costs adjusted. They also now consume Ore when using Labor. The next forge tier is unlocked only once the previous tier is built. Each tier now has a higher Labor bonus.
   Forge tiers now have the following stats:
