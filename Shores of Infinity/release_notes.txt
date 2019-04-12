@@ -35,7 +35,7 @@ v0.3.0b
   - Tier 3: Increases labor generation by 60%. Base and maintenance costs of 1M and 150k, respectively. Also costs 400 Labor to build. Consumes 36 Ore / minute when the planet is using labor to build.
   - Tier 4: Increases labor generation by 80%. Base and maintenance costs of 2M and 200k, respectively. Also costs 800 Labor to build. Consumes 48 Ore / minute when the planet is using labor to build.
   - Tier 5: Increases labor generation by 100%. Base and maintenance costs of 4M and 250k, respectively. Also costs 1600 Labor to build. Consumes 60 Ore / minute when the planet is using labor to build.
-- Space Elevator now costs 1M (up from 750k), no longer costs labor and instead has a build time of 8m. It now has a size of 2x6 tiles (up from 2x5).
+- Space Elevator now costs 1M (up from 750k), no longer costs labor and instead has a build time of 8m.
 - Arcology was overhauled and no longer costs labor. It now adds 3 population (down from 5), replaces 3 cities (down from 5) and increases pressure cap by 3. It now has a build time of 7m and a build cost of 2M (down from 2.5M) as well as an Ore cost of 1.5k (down from 2k).
 - Spire now has a build time of 9m (up from 3m).
 - Fixed a bug where the research cost was not updated when a healthcare complex is removed.
@@ -54,7 +54,7 @@ v0.3.0b
 [*] Orbitals
 
 - Doubled the labor cost of all orbitals.
-- Outposts and starbases now add +5 and +10 Defense Reserve, respectively. 
+- Outposts and starbases now add +5 and +10 Defense Reserve, respectively.
 - Singularity labs maintenance cost is now 90k (up from 25k).
 - Staging hubs can now build orbitals and stations.
 - Shipyards now have the Repair ability.
