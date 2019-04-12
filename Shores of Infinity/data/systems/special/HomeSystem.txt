@@ -4,13 +4,15 @@ System: HomeSystem
 	MakeStar(Temperature = 400:13000, Radius = 650:850)
 		BonusHealth(20000000000)
 
-		//SoI - Scaling
-		ExpandSystem(1850:2850)
+	//SoI - Scaling
+	ExpandSystem(1850:2850)
+
+	MakePlanet(Resource = RandomLevel:1:Common, Conditions = False, Moons = False)
 
 	RepeatHomeworlds()
 
 		//SoI - Scaling
-		MakePlanet(Resource = RandomType:Food:Common, Radius = 100, Grid Size = (18, 11), Conditions = False, Moons = False)
+		MakePlanet(Resource = Fruit:Grain, Radius = 100, Grid Size = (18, 11), Conditions = False, Moons = False)
 			BonusHealth(5000000000)
 			AddPlanetResource(Water)
 			AddPopulation(3.0)
@@ -21,11 +23,10 @@ System: HomeSystem
 
 	MakePlanet(Resource = RandomType:Food:Common, Conditions = False, Moons = False)
 	MakePlanet(Resource = Water, Conditions = False, Moons = False)
-	MakePlanet(Resource = RandomLevel:1:Common, Conditions = False, Moons = False)
-	MakePlanet(Resource = Ammonia, Secondary Resource = Ruled, Classification = Gas I, Giant = True, Force Native Biome = True, Add Status = GasGiant)
-	MakePlanet(Resource = RareGases, Secondary Resource = Ruled, Classification = Gas I, Giant = True, Force Native Biome = True, Add Status = GasGiant)
-	MakePlanet(Resource = IcyWater, Secondary Resource = Ruled, Classification = Gas III, Giant = True, Force Native Biome = True, Add Status = IceGiant)
-	MakePlanet(Resource = IcyPekelm, Secondary Resource = Ruled, Classification = Gas III, Giant = True, Force Native Biome = True, Add Status = IceGiant)
+	MakePlanet(Resource = Ammonia, Conditions = False, Classification = Gas I, Giant = True, Force Native Biome = True, Add Status = GasGiant)
+	MakePlanet(Resource = RareGases, Conditions = False, Classification = Gas I, Giant = True, Force Native Biome = True, Add Status = GasGiant)
+	MakePlanet(Resource = IcyWater, Conditions = False, Classification = Gas III, Giant = True, Force Native Biome = True, Add Status = IceGiant)
+	MakePlanet(Resource = Pekelm, Conditions = False, Classification = Icy, Force Native Biome = True, Add Status = Permafrost)
 
 	MakeAsteroid(Cargo = Ore, Cargo Amount = 1200)
 	MakeAsteroid(Cargo = Ore, Cargo Amount = 1200)

@@ -34,7 +34,7 @@ Trait: StarChildren
 	UnlockSubsystem(StarHabitatModule)
 
 	TriggerHomeworld(SpawnShip(Mothership, Set Home = True))
-	TriggerHomeworld(DestroySystemPlanet(0, Quiet = True))
+	TriggerHomeworld(DestroySystemPlanet(1, Quiet = True))
 
 	ReplaceTechnologyNodes(RingHabitat, HabitatUpgrade)
 

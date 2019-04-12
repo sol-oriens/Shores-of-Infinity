@@ -13,7 +13,7 @@ Trait: VanguardRingworlders
 
 	//SoI - Scaling
 	TriggerHomeworld(SpawnPlanet(Ringworld, Owned = True, Add Status = RRInitialRingworld, Radius = 5500, Physics = False))
-	TriggerHomeworld(DestroySystemPlanet(1, Quiet = True))
+	TriggerHomeworld(DestroySystemPlanet(0, Quiet = True))
 	TriggerHomeworld(DestroySystemPlanet(2, Quiet = True))
 	TriggerHomeworld(DestroySystemPlanet(3, Quiet = True))
 

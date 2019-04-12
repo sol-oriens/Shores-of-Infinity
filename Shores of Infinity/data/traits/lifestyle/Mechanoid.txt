@@ -15,9 +15,9 @@ Trait: Mechanoid
 	TriggerHomeworld(GivePopulation(3))
 	TriggerHomeworld(DestroyBuildingAt((4, 3), Undevelop = True))
 	TriggerHomeworld(TerraformTo(Unobtanium))
-	TriggerHomeworld(DestroySystemPlanet(1, Quiet = True))
 	TriggerHomeworld(DestroySystemPlanet(2, Quiet = True))
-	TriggerHomeworld(MorphSystemPlanetResource(3, Iron))
+	TriggerHomeworld(DestroySystemPlanet(3, Quiet = True))
+	TriggerHomeworld(MorphSystemPlanetResource(0, Iron))
 	TriggerHomeworld(AddStatus(MonoHomeworld))
 
 
