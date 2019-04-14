@@ -15,8 +15,6 @@ Trait: Theocracy
 	GainInfluenceCard(ProtectSystem, Uses=2)
 	GainInfluenceCard(SenateBuilding)
 
-	AddStoredFTL(250)
-
 	SpawnShip(Scout, Quick Start = True)
 	SpawnShip(Scout, Quick Start = True)
 	SpawnShip(Dreadnaught, Empire, 10x Heavy Gunship, 15x Beamship, 15x Missile Boat, 20x Gunship, Quick Start = True)

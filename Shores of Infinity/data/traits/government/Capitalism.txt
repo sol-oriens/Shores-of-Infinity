@@ -9,12 +9,10 @@ Trait: Capitalism
 	Icon: ResourceIcon::0
 	Color: #d1cb6aff
 
-	AddMoney(400)
-
-	GainInfluenceCard(Rider, Uses=2)
+	GainInfluenceCard(Rider, Uses = 2)
 	GainDistinctLeverage(4, 1.0)
 
-	GainInfluenceCard(Gift, Uses=2)
+	GainInfluenceCard(Gift, Uses = 2)
 
 	SpawnShip(Heavy Carrier, Empire, 15x Heavy Gunship, 10x Beamship, 20x Gunship, Quick Start = True)
 

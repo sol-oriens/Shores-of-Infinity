@@ -15,8 +15,6 @@ Trait: Communism
 	GainInfluenceCard(UnitedResearch)
 	GainInfluenceCard(Sabotage)
 
-	AddEnergy(500)
-
 	SpawnShip(Dreadnaught, Empire, 6x Beamship, 12x Missile Boat, 20x Gunship, Quick Start = True)
 	SpawnShip(Dreadnaught, Empire, 6x Beamship, 12x Missile Boat, 20x Gunship, Quick Start = True)
 
