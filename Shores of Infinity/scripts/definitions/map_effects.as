@@ -624,8 +624,12 @@ class MakePlanet : MapHook {
 		plNode.planetType = planet.PlanetType;
 
 		//Setup rings
-		//SoI - Gas Giants: gas giants almost always have rings
-		if (rings.boolean && (giant.boolean && randomi(0,9) < 9 || !giant.boolean && randomi(0,9) == 0)) {
+		//SoI - Gas Giants: gas giants almost always have rings (except class IV and V)
+		if (rings.boolean &&
+			(giant.boolean &&
+				planetClass != PC_Gas_IV &&
+				planetClass != PC_Gas_V &&
+				randomi(0,9) < 8 || !giant.boolean && randomi(0,9) == 0)) {
 			uint style = randomi();
 			plNode.addRing(style);
 			planet.setRing(style);
@@ -649,22 +653,17 @@ class MakePlanet : MapHook {
 		}
 
 		//Setup moons
-		//SoI - Gas Giants: gas giants should have at least some moons
+		//SoI - Gas Giants: gas giants usually have more moons
 		if (resource !is null && giant.boolean) {
 			int min, max;
 			switch (planetClass) {
 				case PC_Gas_I:
 				case PC_Gas_II:
-					min = 4;
+					min = 0;
 					max = 8;
 					break;
 				case PC_Gas_III:
-					min = 2;
-					max = 6;
-					break;
-				case PC_Gas_IV:
-				case PC_Gas_V:
-					min = 4;
+					min = 0;
 					max = 6;
 					break;
 				default:

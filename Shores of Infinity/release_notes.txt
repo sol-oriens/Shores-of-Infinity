@@ -73,7 +73,9 @@ v0.3.0b
 - Disabled the Frozen Wasteland condition (available with the WotH DLC).
 - Added a new planetary condition: Total Permafrost. The resource of this planet gives half its pressure. Can generate a water resource for this planet.
 - Added icy planets. These planets can spawn at outer rims of systems, always have an ice biome and have the Permafrost planetary condition. They can have one of the following resources: Pekelm, Deuterium.
+- Added 'hot jupiters', gas giants orbiting very close to their star. They can have one of the following resources: Alkali Metals.
 - Slightly decreased the frequency of gas and ice giants.
+- Gas and ice giants may now have less moons than before, or even none at all. Artificial moons will solve your space issues.
 
 [*] Research
 
