@@ -1,0 +1,24 @@
+Resource: HotSilicon
+	Name: #R_SILICON
+	Description: #R_SILICON_DESC
+	Native Biome: SuperheatedFluids
+	DLC: Heralds
+
+	Small Icon: ResourceIconsSmall::76
+
+	Distribution: 0
+	Frequency: 0
+
+	Rarity: Rare
+	Level: 2
+	Affinity: Research + Money
+	Can Be Terraformed: False
+
+	Planet Classification: Gas V
+
+	Secondary Resource: CommonGases
+
+	Pressure: 2 Money
+	Pressure: 3 Research
+
+	ModPopulationGrowth(+0.3)

@@ -73,13 +73,13 @@ v0.3.0b
 - Disabled the Frozen Wasteland condition (available with the WotH DLC).
 - Added a new planetary condition: Total Permafrost. The resource of this planet gives half its pressure. Can generate a water resource for this planet.
 - Added icy planets. These planets can spawn at outer rims of systems, always have an ice biome and have the Permafrost planetary condition. They can have one of the following resources: Pekelm, Deuterium.
-- Added 'hot jupiters', gas giants orbiting very close to their star. They can have one of the following resources: Alkali Metals.
+- Added 'hot jupiters', class IV and V gas giants orbiting very close to their star. They can have one of the following resources: Alkali Metals, Iron (level 1), Glass (level 2), Silicon (level 2, only with the WotH DLC).
 - Slightly decreased the frequency of gas and ice giants.
 - Gas and ice giants may now have less moons than before, or even none at all. Artificial moons will solve your space issues.
 
 [*] Research
 
-- Artificial Moons secret project was renamed Supermoons. Now requires building 5 artificial moons. Unlocks the supermoon construction. Still requires the WotH DLC.
+- Artificial Moons secret project was renamed to Supermoons. Now requires building 5 artificial moons. Unlocks the supermoon construction. Still requires the WotH DLC.
 - Artificial Moons is now a regular research node. Does not require the WotH DLC.
 - Fixed an overlook where Verdant lifestyle could research Metropolitan Optimization and Arcologies nodes. These nodes are now replaced with Modular Habitats nodes.
 - Verdant lifestyle now has an additional Modular Habitats node where the Megacities node normally is.
