@@ -775,6 +775,7 @@ final class Infrastructure : AIComponent {
 	//Unlock tracking
 	bool canBuildGate = false;
 	bool canBuildMoonBase = true;
+	bool canBuildArtificialMoon = false;
 
 	void create() {
 		@events = cast<Events>(ai.events);

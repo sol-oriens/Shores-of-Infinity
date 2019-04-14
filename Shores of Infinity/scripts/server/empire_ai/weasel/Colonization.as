@@ -16,6 +16,8 @@ import util.lookup;
 
 import systems;
 
+from statuses import getStatusID;
+
 enum ColonizationPhase {
 	CP_Expansion,
 	CP_Stabilization,
@@ -25,6 +27,8 @@ interface RaceColonization {
 	bool orderColonization(ColonizeData& data, Planet@ sourcePlanet);
 	double getGenericUsefulness(const ResourceType@ type);
 };
+
+int moonStatusId = -1;
 
 final class ColonizeData {
 	int id = -1;
@@ -174,6 +178,8 @@ final class Colonization : AIComponent {
 	private uint _territoryRequests = 0;
 	private Region@ _newTerritoryTarget;
 
+	bool canBuildArtificialMoon = false;
+
 	Object@ colonizeWeightObj;
 
 	bool get_needsMoreTerritory() const { return _needsMoreTerritory; }
@@ -192,6 +198,7 @@ final class Colonization : AIComponent {
 		@waterClass = getResourceClass("WaterType");
 		@scalableClass = getResourceClass("Scalable");
 
+		moonStatusId = getStatusID("Moon");
 	}
 
 	void save(SaveFile& file) {
@@ -643,7 +650,7 @@ final class Colonization : AIComponent {
 		if(race !is null)
 			weight *= race.getGenericUsefulness(type);
 
-		//Ensure we have enough money to colonize a gas giant.
+		//Ensure we have enough money to colonize a gas giant
 		switch (type.planetClass) {
 			case PC_Gas_I:
 			case PC_Gas_II:
@@ -749,14 +756,16 @@ final class Colonization : AIComponent {
 			@p.pl = pl;
 			@p.resource = getResource(resId);
 
-			//Skip gas or ice giants in the beginning of the game or if we have budget issues
+			//Skip gas giants in the beginning of the game, if we have budget issues or if we can't build a moon base
 			switch (p.resource.planetClass) {
 				case PC_Gas_I:
 				case PC_Gas_II:
 				case PC_Gas_III:
 				case PC_Gas_IV:
 				case PC_Gas_V:
-					if (ai.empire.EstNextBudget < budget.mediumThreshold || gameTime < 180)
+					if (ai.empire.EstNextBudget < budget.mediumThreshold ||
+						gameTime < 180 ||
+						(p.pl.getStatusStackCountAny(moonStatusId) == 0 && !canBuildArtificialMoon))
 						continue;
 					break;
 			}
