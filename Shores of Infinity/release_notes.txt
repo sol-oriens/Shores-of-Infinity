@@ -77,7 +77,7 @@ v0.3.0b
 
 [*] Research
 
-- Artificial Moons secret project was renamed Supermoons. Unlocks the supermoon construction. Still requires the WotH DLC.
+- Artificial Moons secret project was renamed Supermoons. Now requires building 5 artificial moons. Unlocks the supermoon construction. Still requires the WotH DLC.
 - Artificial Moons is now a regular research node. Does not require the WotH DLC.
 - Fixed an overlook where Verdant lifestyle could research Metropolitan Optimization and Arcologies nodes. These nodes are now replaced with Modular Habitats nodes.
 - Verdant lifestyle now has an additional Modular Habitats node where the Megacities node normally is.

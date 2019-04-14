@@ -12,6 +12,7 @@ Construction: AdvancedMoon
 	ConsumeCargo(Ore, 3000)
 
 	RequireUnlockTag(AdvancedMoonUnlock)
+	RequireEither(RequirePlanet(), RequireOnOrbital(StagingHub))
 
 	Target: targ = Object
 

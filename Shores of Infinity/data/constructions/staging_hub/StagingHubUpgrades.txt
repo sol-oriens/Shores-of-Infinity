@@ -8,8 +8,8 @@ Construction: StagingHubAsteroidMorph
 	Build Cost: 2000
 	Labor Cost: 35
 
-  ConsumeResearch(500)
-  ConsumeEnergy(750)
+	ConsumeResearch(500)
+	ConsumeEnergy(750)
 
 	Target: roid = Object
 	TargetFilterType(roid, Asteroid)
@@ -17,7 +17,7 @@ Construction: StagingHubAsteroidMorph
 	TargetFilterHasCargoStored(roid)
 
 	RequireOnOrbital(StagingHub)
-  RequireNotTrait(Extragalactic)
+	RequireNotTrait(Extragalactic)
 
 	Trigger(roid, SpawnAsteroids(1, Distance = 0, Resource Only = True))
 	Trigger(roid, Destroy())

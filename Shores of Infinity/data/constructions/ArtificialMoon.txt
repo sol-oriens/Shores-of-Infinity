@@ -12,6 +12,7 @@ Construction: ArtificialMoon
 	ConsumeCargo(Ore, 2000)
 
 	RequireUnlockTag(ArtificialMoonUnlock)
+	RequireEither(RequirePlanet(), RequireOnOrbital(StagingHub))
 
 	Target: targ = Object
 
@@ -25,4 +26,4 @@ Construction: ArtificialMoon
 	Trigger(targ, AddDummyResource(Water, 1))
 	Trigger(targ, AddDummyResource(Meat, 1))
 
-	ModEmpireAttribute(ArtificialMoonsBuilt, Add, 1)
+	Trigger(targ, ModEmpireAttribute(ArtificialMoonsBuilt, Add, 1))
