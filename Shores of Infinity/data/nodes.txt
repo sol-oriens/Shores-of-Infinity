@@ -53,6 +53,9 @@ Node StarNode from nodes.StarNode::StarNodeScript {
 Node NovaNode from nodes.NovaNode::NovaNodeScript {
 }
 
+Node BrownDwarfNode from nodes.BrownDwarfNode::BrownDwarfNodeScript {
+}
+
 Node NeutronStarNode from nodes.NeutronStarNode::NeutronStarNodeScript {
 	void establish(Star& obj);
 }

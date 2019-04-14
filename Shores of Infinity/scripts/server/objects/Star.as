@@ -39,7 +39,11 @@ final class StarScript {
 		double temp = star.temperature;
 		Node@ node;
 		double soundRadius = star.radius;
-		if (temp > 0.0 && temp < 300000.0) {
+		if (temp > 0.0 && temp <= 1300.0) {
+			@node = bindNode(star, "BrownDwarfNode");
+			node.color = blackBody(temp, max((temp + 15000.0) / 40000.0, 1.0));
+		}
+		else if (temp > 1300.0 && temp < 300000.0) {
 			@node = bindNode(star, "StarNode");
 			node.color = blackBody(temp, max((temp + 15000.0) / 40000.0, 1.0));
 		}

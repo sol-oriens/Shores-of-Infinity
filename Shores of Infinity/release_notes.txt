@@ -96,6 +96,7 @@ v0.3.0b
 
 [*] Systems
 
+- Stars with temperatures at 1300K or below will now be rendered as brown dwarves.
 - Homeworlds have moved to the second planet in the system, while the level 1 resource is now on the first one.
 - The Pekelm ice giant in the home system has been replaced by a Pekelm ice planet.
 - Fixed orbit collisions in multi-star systems.

@@ -80,7 +80,12 @@ class MakeStar : MapHook {
 			system.object.enterRegion(star);
 
 		//Create star node
-		Node@ node = bindNode(star, "StarNode");
+		Node@ node = null;
+		if (temp <= 1300.0)
+			//This star is a brown dwarf
+			@node = bindNode(star, "BrownDwarfNode");
+		else
+			@node = bindNode(star, "StarNode");
 		node.color = blackBody(temp, max((temp + 15000.0) / 40000.0, 1.0));
 		if(system !is null)
 			node.hintParentObject(system.object, false);
