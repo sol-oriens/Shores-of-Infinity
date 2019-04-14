@@ -51,6 +51,11 @@ Material: IcyAtmosphere
 	Shader: Lighting
 	Texture: data/images/planets/gas_normal.png
 
+Material: HotGasAtmosphere
+	Shader: Lighting
+	Texture: data/images/planets/hotjupiter.png
+	Texture2: data/images/planets/gas_normal.png
+
 Material: GuiPlanetSurface
 	LoadPriority: Game
 	Texture: data/images/planets/biomes.png

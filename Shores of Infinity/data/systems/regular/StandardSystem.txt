@@ -4,6 +4,10 @@ System: StandardSystem
 
 	//SoI - Scaling
 	MakeStar(Temperature = 4000:12000, Radius = 650:850)
+
+	RepeatChance(Chance = 0.2, Repeat Modifier = 0.4)
+		MakePlanet(Resource = Weighted, Conditions = False, Classification = Gas IV, Giant = True, Force Native Biome = True, Add Status = GasGiant)
+
 	ExpandSystem(1850:2850)
 
 	RepeatModified(1:10, $PLANET_FREQUENCY)

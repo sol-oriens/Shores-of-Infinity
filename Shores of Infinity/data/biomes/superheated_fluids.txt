@@ -1,0 +1,18 @@
+Biome: SuperheatedFluids
+	Name: #BIOME_SUPERHEATED_FLUIDS
+
+	Buildable: False
+	Settleable: False
+
+	Temperature: 0
+	Humidity: 0
+
+	UseWeight: 0
+	BuildTime: 0
+	Frequency: 0
+
+	Color: #ff0000
+
+	Lookup Range: 0.032
+
+	IsWater: True

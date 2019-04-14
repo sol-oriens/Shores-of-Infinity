@@ -31,6 +31,9 @@ AMMONIA: Ammonia
 AMMONIA_DESC: <<
 	Counts as a Food resource if the consuming planet has a Grain or Fruit native resource, once per planet.
 >>
+ALKALI_METALS: Alkali Metals
+ALKALI_METALS_DESC: <<
+>>
 PARADISE_NAME: Tropical Paradise
 RESOURCE_INTEL: Intelligence Hub
 TECHNOFARM_NAME: Technofarm
