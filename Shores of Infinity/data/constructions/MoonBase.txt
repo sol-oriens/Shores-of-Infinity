@@ -7,7 +7,7 @@ Construction: MoonBase
 	Category: Infrastructure
 
 	Time Cost: 120
-	Build Cost: 750
+	Build Cost: 500
 
 	RequireMoreMoonsThanStatus(MoonBase)
 	RequireNotTrait(StarChildren)
@@ -16,6 +16,5 @@ Construction: MoonBase
 	OnCancel(RemoveStatusInstance(MoonBase))
 
 	AddSurfaceArea(Moon, (6, 6))
-	TriggerGeneric(AddMaxPopulation(2))
 
 	AI: RegisterForUse(MoonBase)

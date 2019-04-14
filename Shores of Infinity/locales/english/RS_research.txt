@@ -23,10 +23,25 @@ R_AREA_EFFICIENCY_DESC: <<
 	[color=#aaa][i]From raw to polished.[/i][/color]
 >>
 
+RESEARCH_REQ_ARTIFICIAL_MOONS: Build $2 Artificial Moons. [b]( $1 / $2 )[/b]
+
 R_LABORATORIES_DESC: <<
 	Research Complex buildings give $1 additional Research Pressure.
 
 	Zero-G Lab orbitals add $1 additional Research generation.
+>>
+
+R_ARTIFICIAL_MOON_DESC: <<
+	Unlocks the artificial moon construction.
+
+	[bbloc=#CONS_ARTIFICIAL_MOON_DESC/]
+>>
+
+R_ADVANCED_MOON: Supermoons
+R_ADVANCED_MOON_DESC: <<
+	Unlocks the supermoon construction.
+
+	[bbloc=#CONS_ADVANCED_MOON_DESC/]
 >>
 
 R_BLD_ARCOLOGY: Arcologies

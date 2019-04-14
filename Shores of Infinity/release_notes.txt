@@ -63,7 +63,10 @@ v0.3.0b
 [*] Planets
 
 - Added an icon for the Moon Base project.
-- Moon bases now cost 750k to build (up from 500k).
+- Moon bases no longer provide a maximum population bonus. Mechanoid lifestyles no longer get a 100k bonus from them either.
+- Added Supermoon, replacing the vanilla Artificial Moon. Produces enough water and food to satisfy all planet level requirements. Generates 5 labor/minute. Still requires the WotH DLC. Build cost of 7.5M and 1000 labor. Also costs 3k Ore to build.
+- Artificial Moon now adds a 6x6 surface area. Produces enough water and food to satisfy planet level 1 requirements. Generates 3 labor/minute. Now costs 4M, 500 labor and 2k Ore.
+- Artificial Planetoid now costs 10M and 1500 labor.
 - Infrastructural Development no longer costs ore and labor and now costs 200k with a build time of 45s instead.
 - Settlers now take 60s being loaded into colonization pods (up from 30s).
 - The Megafauna condition (available with the WotH DLC) can now only spawn on planets with a native Meat resource.
@@ -74,6 +77,8 @@ v0.3.0b
 
 [*] Research
 
+- Artificial Moons secret project was renamed Supermoons. Unlocks the supermoon construction. Still requires the WotH DLC.
+- Artificial Moons is now a regular research node. Does not require the WotH DLC.
 - Fixed an overlook where Verdant lifestyle could research Metropolitan Optimization and Arcologies nodes. These nodes are now replaced with Modular Habitats nodes.
 - Verdant lifestyle now has an additional Modular Habitats node where the Megacities node normally is.
 

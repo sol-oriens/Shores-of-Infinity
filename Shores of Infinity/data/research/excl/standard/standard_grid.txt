@@ -134,9 +134,6 @@ Grid: StandardResearch
 	EnergyHurdle2: -1,-13
 	FactoryLabor2: 0,-14
 	PlanetaryEngine: -4,-13
-	EnergyHurdle3: -3,-14
-	ArtificialPlanetoid: -3,-15
-	ArtificialMoon: -4,-15
 	InfluenceHurdle: 3,-11
 	Construction2: -1,-10
 	FerrofluidArmor: 5,-10
@@ -322,8 +319,6 @@ Grid: StandardResearch
 	SubspaceShredder: 8,17
 	DroneLauncher: -5,-12
 	Repair2: -6,-13
-	Range2: -5,-14
-	DroneCount: -6,-15
 	PulseBolt: 8,1
 	Thrust2: 17,0
 	Warhead: 18,0
@@ -395,3 +390,9 @@ Grid: StandardResearch
 	InfiniteHealth: 8,-12
 	HabitatModule: -7,-8
 	FireArcEnhancement: -2,-9
+	Range2: -6,-14
+	EnergyHurdle3: -4,-14
+	DroneCount: -7,-15
+	ArtificialMoon: -5,-15
+	ArtificialPlanetoid: -4,-16
+	AdvancedMoon: -5,-16
