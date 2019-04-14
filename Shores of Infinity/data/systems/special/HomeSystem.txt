@@ -24,8 +24,11 @@ System: HomeSystem
 	MakePlanet(Resource = RandomType:Food:Common, Conditions = False, Moons = False)
 	MakePlanet(Resource = Water, Conditions = False, Moons = False)
 	MakePlanet(Resource = Ammonia, Conditions = False, Classification = Gas I, Giant = True, Force Native Biome = True, Add Status = GasGiant)
+		MakeMoon()
 	MakePlanet(Resource = RareGases, Conditions = False, Classification = Gas I, Giant = True, Force Native Biome = True, Add Status = GasGiant)
+		MakeMoon()
 	MakePlanet(Resource = IcyWater, Conditions = False, Classification = Gas III, Giant = True, Force Native Biome = True, Add Status = IceGiant)
+		MakeMoon()
 	MakePlanet(Resource = Pekelm, Conditions = False, Classification = Icy, Force Native Biome = True, Add Status = Permafrost)
 
 	MakeAsteroid(Cargo = Ore, Cargo Amount = 1200)
