@@ -1,5 +1,5 @@
 System: EmptyTernarySystem
-	Inherit: OuterSystem
+	Inherit: EmptyOuterSystem
 	Frequency: 0.02
 
 	Range: rng = 4000:6500

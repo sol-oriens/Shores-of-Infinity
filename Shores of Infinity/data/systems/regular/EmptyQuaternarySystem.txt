@@ -1,5 +1,5 @@
 System: EmptyQuaternarySystem
-	Inherit: OuterSystem
+	Inherit: EmptyOuterSystem
 	Frequency: 0.01
 
 	Range: rng = 4000:6500

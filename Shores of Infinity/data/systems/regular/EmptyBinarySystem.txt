@@ -1,5 +1,5 @@
-System: BinarySystem
-	Inherit: OuterSystem
+System: EmptyBinarySystem
+	Inherit: EmptyOuterSystem
 	Frequency: 0.025
 
 	Range: rng = 4000:6500
