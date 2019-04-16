@@ -13,6 +13,7 @@ Construction: AdvancedMoon
 
 	RequireUnlockTag(AdvancedMoonUnlock)
 	RequireEither(RequirePlanet(), RequireOnOrbital(StagingHub))
+	RequireInSystem()
 
 	Target: targ = Object
 
