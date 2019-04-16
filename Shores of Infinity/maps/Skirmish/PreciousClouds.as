@@ -39,7 +39,6 @@ Designed for up to four players. Recommended configurations: 2v2, 1v1, 1v1v1v1";
 		autoGenerateLinks = false;
 
 		double spacing = modSpacing(40 * config::SCALE_SPACING * getSetting(M_SystemSpacing, 1.0));
-		checkSpacing(spacing);
 
 		auto@ bh0 = getSystemType("EconomicNebula");
 		auto@ sys0 = addSystem(vec3d(131600*spacing,0,45600*spacing),150+M_Bonus,false,bh0.id);

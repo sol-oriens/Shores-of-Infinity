@@ -101,6 +101,7 @@ v0.3.0b
 - The Pekelm ice giant in the home system has been replaced by a Pekelm ice planet.
 - Fixed orbit collisions in multi-star systems.
 - Fixed desynchronization of binary star orbits.
+- Fixed a bug where system spacing in the Precious Clouds map were larger than intended. 
 
 [*] User Interface
 

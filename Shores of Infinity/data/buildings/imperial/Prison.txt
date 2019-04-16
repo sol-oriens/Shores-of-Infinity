@@ -1,0 +1,5 @@
+	RequireNotStatus(Ringworld)
+	RequireNotStatus(ArtificialPlanetoid)
+	RequireNotTrait(Ancient)
+
+	AddStatus(Prison)
