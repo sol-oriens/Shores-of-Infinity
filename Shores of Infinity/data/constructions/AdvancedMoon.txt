@@ -13,12 +13,12 @@ Construction: AdvancedMoon
 
 	RequireUnlockTag(AdvancedMoonUnlock)
 	RequireEither(RequirePlanet(), RequireOnOrbital(StagingHub))
-	RequireInSystem()
 
 	Target: targ = Object
 
 	TargetFilterType(targ, Planet)
 	TargetFilterOwned(targ)
+	TargetFilterSameRegion(targ)
 	TargetFilterNotStatus(targ, AdvancedMoon)
 
 	addon_construction_effects::TriggerStartConstruction(targ, AddStatus(AdvancedMoon))
