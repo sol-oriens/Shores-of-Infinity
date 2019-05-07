@@ -1,0 +1,25 @@
+Building: Resort
+	Name: #BLD_RESORT
+	Description: #BLD_RESORT_DESC
+
+	Sprite: BldResort
+
+	Category: Infrastructure
+	Build Affinity: Forest
+	Maintenance Affinity: Forest
+
+	Size: 4x4
+
+	Base Cost: 120
+	Tile Cost: 50
+	Base Maintenance: 50
+	Tile Maintenance: 40
+
+	Build Time: 120
+
+	RequireNotStatus(Ringworld)
+	RequireNotStatus(ArtificialPlanetoid)
+	RequireNotTrait(Ancient)
+
+	ReplacesCities(3)
+	AddStatus(Resort)

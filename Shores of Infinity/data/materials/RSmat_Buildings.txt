@@ -25,6 +25,14 @@ Material: BldHealthComplex
 Inherit: Image2D
 Texture: data/images/buildings/health_complex.png
 
+Material: BldPrison
+Inherit: Image2D
+Texture: data/images/buildings/prison.png
+
+Material: BldResort
+Inherit: Image2D
+Texture: data/images/buildings/resort.png
+
 //Artificial Resources
 
 Material: EcxFactory

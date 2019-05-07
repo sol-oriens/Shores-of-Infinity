@@ -1,5 +1,26 @@
+Building: Prison
+	Name: #BLD_PRISON
+	Description: #BLD_PRISON_DESC
+
+	Sprite: BldPrison
+
+	Category: Infrastructure
+	Maintenance Affinity: Desert
+
+	Size: 4x2
+
+	Base Cost: 100
+	Tile Cost: 30
+	Base Maintenance: 20
+	Tile Maintenance: 5
+
+	Build Time: 90
+
 	RequireNotStatus(Ringworld)
 	RequireNotStatus(ArtificialPlanetoid)
 	RequireNotTrait(Ancient)
 
+	addon_generic_effects::ModLocalMorale(Positive)
+	AddResource(Labor, 1)
+	ReplacesCities(1)
 	AddStatus(Prison)

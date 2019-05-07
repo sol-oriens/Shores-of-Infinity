@@ -5,28 +5,6 @@ import requirement_effects;
 
 from settlements import ISettlementHook, SettlementHook, shipPopulationStatus, mothershipPopulationStatus;
 
-class ModLocalMorale : SettlementHook {
-	Document doc("Increases or decreases the morale of the settlement.");
-	Argument descriptor(AT_Custom, doc="Descriptor of the morale modifier. Can be VeryPositive, Positive, Negative or VeryNegative");
-
-	int value = 0;
-
-	bool instantiate() override {
-		value = LocalMoraleEffect(descriptor.str).stat;
-		return true;
-	}
-
-#section server
-	void enable(Object& obj, any@ data) const override {
-		obj.modMorale(value);
-	}
-
-	void disable(Object& obj, any@ data) const override {
-		obj.modMorale(-value);
-	}
-#section all
-};
-
 class ContainCivilUnrest : SettlementHook {
 	Document doc("Decreases the chance of loyalty loss of the settlement due to low morale.");
 	Argument amount(AT_Decimal, "0", doc="Additional chance of avoiding loyalty loss.");

@@ -1,0 +1,19 @@
+Settlement: Resort
+	Name: #SETTLEMENT_RESORT
+	Description: #SETTLEMENT_RESORT_DESC
+
+	Icon: ConditionIcons::0
+
+	Priority: 4
+
+	addon_requirement_effects::RequireNotHome()
+	RequireEither( addon_requirement_effects::RequireNativeResource(Aphrodisiac), RequireStatus(ExtraInfluence) )
+	RequireStatus(Resort, Count = 3)
+
+	AddLaborFactor(-1.f)
+	ModCivResourceMult(Labor, -1.f)
+	ModCivResourceMult(Money, -1.f)
+	ModCivResourceMult(Energy, -1.f)
+	ModCivResourceMult(Research, -1.f)
+	ModCivResourceMult(Defense, -1.f)
+	ModCivResourceMult(Influence, 1.0)
