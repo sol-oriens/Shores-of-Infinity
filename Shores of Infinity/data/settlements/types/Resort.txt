@@ -7,6 +7,7 @@ Settlement: Resort
 	Priority: 4
 
 	addon_requirement_effects::RequireNotHome()
+	RequirePlanet()
 	RequireEither( addon_requirement_effects::RequireNativeResource(Aphrodisiac), RequireStatus(ExtraInfluence) )
 	RequireStatus(Resort, Count = 3)
 

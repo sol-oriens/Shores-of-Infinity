@@ -7,6 +7,7 @@ Settlement: Prison
 	Priority: 4
 
 	addon_requirement_effects::RequireNotHome()
+	RequirePlanet()
 	RequireNativeLevel(0, Hide = False, Exact = True)
 	RequireStatus(Prison, Count = 3)
 

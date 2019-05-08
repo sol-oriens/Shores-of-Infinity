@@ -7,6 +7,7 @@ Settlement: Mine
 	Priority: 2
 
 	addon_requirement_effects::RequireNotHome()
+	RequirePlanet()
 	RequireStatus(Mine, Count = 3)
 
 	AddDummyResource(Titanium, 1)

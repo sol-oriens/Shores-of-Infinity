@@ -7,6 +7,7 @@ Settlement: Forge
 	Priority: 3
 
 	addon_requirement_effects::RequireNotHome()
+	RequirePlanet()
 	RequireStatus(Forge4, Count = 3)
 
 	AddDummyResource(Supercarbons, 1)

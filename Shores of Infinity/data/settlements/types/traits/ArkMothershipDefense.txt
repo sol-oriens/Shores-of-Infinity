@@ -1,0 +1,14 @@
+Settlement: ArkMothershipDefense
+	Name: #SETTLEMENT_ARKMOTHERSHIP
+	Description: #SETTLEMENT_ARKMOTHERSHIP_DEFENSE_DESC
+
+	Icon: HullIcons::4
+
+	Morale Effect: Positive
+
+	RequireTrait(Empire)
+	addon_requirement_effects::RequireHome()
+	addon_requirement_effects::RequireFlagship()
+
+	AddStatus(PeriodicDefenseReserve)
+	AddFleetEffectiveness(+3.0)
