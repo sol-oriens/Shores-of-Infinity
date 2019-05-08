@@ -56,7 +56,7 @@ class RequirePopulation : Requirement {
 		else if (obj.hasStatuses) {
 			int pop = obj.getStatusStackCountAny(shipPopulationStatus);
 			if (pop == 0)
-				obj.getStatusStackCountAny(mothershipPopulationStatus);
+				pop = obj.getStatusStackCountAny(mothershipPopulationStatus);
 			return pop >= minPop && (maxPop == -1 || pop <= maxPop);
 		}
 		return false;
@@ -100,3 +100,19 @@ class RequireConstruction : Requirement {
 			return obj.hasConstruction;
 	}
 }
+
+class RequireFlagship : Requirement {
+	Document doc("Can only be used on flagships.");
+	Argument allow_stations(AT_Boolean, "False", doc="Whether to count stations as flagships.");
+
+	bool meets(Object& obj, bool ignoreState = false) const override {
+		Ship@ ship = cast<Ship>(obj);
+		if(ship is null)
+			return false;
+		if (!obj.hasLeaderAI)
+			return false;
+		if(!allow_stations.boolean && ship.isStation)
+			return false;
+		return true;
+	}
+};
