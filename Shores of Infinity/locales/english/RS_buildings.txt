@@ -1,3 +1,14 @@
+BLD_BARRACKS: Barracks
+BLD_BARRACKS_DESC: <<|
+	[color=#aaa][i]A permanent planetary garrison that will help in the defense of this planet. Or another.[/i][/color]
+
+	Adds 15 Defense Reserve to your global pool.
+
+	Adds 1 bonus planet loyalty.
+
+	When your defense reserve is full, it can be deployed at any time to one of your planets to spawn defense ships.
+>>
+
 BLD_FORGE_DESC: <<|
 	[color=#aaa][i]A vast industrial complex dedicated to metalworks and production of parts to be assembled in
 	factories and machine shops.[/i][/color]
@@ -101,6 +112,24 @@ BLD_NRG_FACTORY_DESC: <<
 	Adds 1 Energy pressure and 1 Money pressure.
 
 	Increases the pressure given by native Natural Gas or Oil by 1.
+>>
+
+BLD_PRISON: Penitentiary
+BLD_PRISON_DESC: <<
+	[color=#aaa][i]A large, high-security facility hosting convicts.[/i][/color]
+
+	Replaces up to 1 regular city.
+
+	Generates 1 Labor/minute.
+
+	Moderately increases morale.
+>>
+
+BLD_RESORT: Resort
+BLD_RESORT_DESC: <<
+	[color=#aaa][i]A tourist paradise. Also an entrepreneur's.[/i][/color]
+
+	Replaces up to 3 regular cities.
 >>
 
 BLD_LABORCAMP: Xenomanufacturing Center
