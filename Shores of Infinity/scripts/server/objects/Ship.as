@@ -1252,7 +1252,7 @@ tidy class ShipScript {
 		//You shall give up all expectations of floating point arithmetic being exactly equal to zero,
 		//for that can only bring the wrath of the bug gods upon your code, padawan
 		//print("bp.design.totalHP = " + bp.design.totalHP + " bp.currentHP = " + bp.currentHP + " bp.removedHP = " + bp.removedHP + " damage = " + damage);
-		//if(currentRepair > 0.f &&(damage > 0.f || wreckage > 0.f)) {
+		//if(currentRepair > 0.f && (damage > 0.f || wreckage > 0.f)) {
 		if (currentRepair > 0.f && (damage > 0.1f || wreckage > 0.f)) {
 			double repairFact = 1.0;
 			repairFact *= min(bp.shipEffectiveness, 1.0);

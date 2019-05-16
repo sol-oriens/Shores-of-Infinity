@@ -2,7 +2,7 @@ import hooks;
 from target_filters import TargetFilter;
 
 class TargetFilterNotStatusCount : TargetFilter {
-	Document doc("Restricts target to objects with a less than a particular status count.");
+	Document doc("Restricts target to objects with less than a particular status count.");
 	Argument targ(TT_Object);
 	Argument status("Status", AT_Status, doc="Status to require.");
 	Argument count("Count", AT_Integer, doc="Status count required to filter target.");

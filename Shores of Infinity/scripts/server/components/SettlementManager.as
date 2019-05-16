@@ -185,7 +185,7 @@ tidy class SettlementManager : Component_Settlement, Savable {
 				settlementType.disable(obj);
 			SettlementType@ settlement = getSettlement(obj);
 			if (settlement is null) {
-					error("initSettlement (" + obj.name + ", " + obj.owner.name + "): could not find any suitable settlement type");
+					error("settlementTick (" + obj.name + ", " + obj.owner.name + "): could not find any suitable settlement type");
 					return;
 			}
 			if (settlement.id != settlementType.type.id)
