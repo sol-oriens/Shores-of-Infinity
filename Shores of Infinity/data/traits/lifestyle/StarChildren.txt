@@ -33,8 +33,9 @@ Trait: StarChildren
 	UnlockSubsystem(MothershipHull)
 	UnlockSubsystem(StarHabitatModule)
 
-	TriggerHomeworld(SpawnShip(Mothership, Set Home = True))
-	TriggerHomeworld(DestroySystemPlanet(1, Quiet = True))
+	TriggerHomeworld(PricedAsteroid(20, Supercarbons))
+	TriggerHomeworld(SpawnShip(Mothership, Set Home = True, Offset = 750))
+	TriggerHomeworld(DestroySystemPlanet(1))
 
 	ReplaceTechnologyNodes(RingHabitat, HabitatUpgrade)
 

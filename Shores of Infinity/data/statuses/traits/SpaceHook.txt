@@ -1,5 +1,5 @@
 Status: SpaceHook
-  Visible To: Nobody
+	Visible To: Nobody
 
-  ModSupportBuildSpeed(+0.4)
+	ModSupportBuildSpeed(+0.4)
 	IfSystemFlag(Starport, AddResourceFromLevel(Money, Factor = 1.0))

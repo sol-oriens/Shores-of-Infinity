@@ -9,7 +9,7 @@ Subsystem: HabitatModule
 	Tags: HasInternals
 	Hull: Flagship, Station
 
-	Hex.LaborCost := 0.30 * HexSize + 0.8
+	Hex.LaborCost := 0.3 * HexSize + 0.8
 	Hex.BuildCost := 1.5 * HexSize + 2
 	Hex.MaintainCost := 0.03 * HexSize + 2 - (4 * HexSize / ShipSize^0.5)
 	InfluenceBuildCost := ceil(Size / 10)
@@ -57,7 +57,7 @@ Subsystem: StarHabitatModule
 
 	HasStarHabitat := 1
 
-	Hex.LaborCost := 0.30 * HexSize + 0.8
+	Hex.LaborCost := 0.2 * HexSize + 0.8
 	Hex.BuildCost := 1.0 * HexSize + 2
 	Hex.MaintainCost := 0.02 * HexSize + 2 - (4 * HexSize / ShipSize^0.5)
 
