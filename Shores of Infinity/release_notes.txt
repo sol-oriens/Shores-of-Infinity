@@ -26,6 +26,8 @@ v0.3.0b
 
 [*] Buildings
 
+- Added Penitentiary.
+- Added Resort.
 - Barracks now add 1 planet Loyalty. Defense Reserve Bonus and maintenance cost have been reverted to vanilla value (+15 (down from +20) and 20k (up from 0), respectively).
 - Mining complexes now additionally cost 15 Research to build.
 - Forges have been completely overhauled and costs adjusted. They also now consume Ore when using Labor. The next forge tier is unlocked only once the previous tier is built. Each tier now has a higher Labor bonus.
@@ -36,7 +38,7 @@ v0.3.0b
   - Tier 4: Increases labor generation by 80%. Base and maintenance costs of 2M and 200k, respectively. Also costs 800 Labor to build. Consumes 48 Ore / minute when the planet is using labor to build.
   - Tier 5: Increases labor generation by 100%. Base and maintenance costs of 4M and 250k, respectively. Also costs 1600 Labor to build. Consumes 60 Ore / minute when the planet is using labor to build.
 - Space Elevator now costs 1M (up from 750k), no longer costs labor and instead has a build time of 8m.
-- Arcology was overhauled and no longer costs labor. It now adds 3 population (down from 5), replaces 3 cities (down from 5) and increases pressure cap by 3. It now has a build time of 7m and a build cost of 2M (down from 2.5M) as well as an Ore cost of 1.5k (down from 2k).
+- Arcology has been rebalanced. It now adds 3 population (down from 5), replaces 3 cities (down from 5) and increases pressure cap by 3. It now has a build time of 7m and a build cost of 2M (down from 2.5M) as well as an Ore cost of 1.5k (down from 2k). It no longer costs labor.
 - Spire now has a build time of 9m (up from 3m).
 - Fixed a bug where the research cost was not updated when a healthcare complex is removed.
 - Fixed a bug where electronics factories would consume twice as less Ore than intended.
@@ -64,15 +66,15 @@ v0.3.0b
 
 - Added an icon for the Moon Base project.
 - Moon bases no longer provide a maximum population bonus. Mechanoid lifestyles no longer get a 100k bonus from them either.
-- Added Supermoon, replacing the vanilla Artificial Moon. Produces enough water and food to satisfy all planet level requirements. Generates 5 labor/minute. Still requires the WotH DLC. Build cost of 7.5M and 1000 labor. Also costs 3k Ore to build.
-- Artificial Moon now adds a 6x6 surface area. Produces enough water and food to satisfy planet level 1 requirements. Generates 3 labor/minute. Now costs 4M, 500 labor and 2k Ore.
+- Added Supermoon, replacing the vanilla Artificial Moon from the WotH DLC. Produces enough water and food to satisfy all planet level requirements. Generates 5 labor/minute. Build cost of 7.5M and 1000 labor. Also costs 3k Ore to build.
+- Artificial Moon no longer requires the WotH DLC and now adds a 6x6 surface area. Produces enough water and food to satisfy planet level 1 requirements. Generates 3 labor/minute. Now costs 4M, 500 labor and 2k Ore.
 - Artificial Planetoid now costs 10M and 1500 labor.
 - Infrastructural Development no longer costs ore and labor and now costs 200k with a build time of 45s instead.
 - Settlers now take 60s being loaded into colonization pods (up from 30s).
 - The Megafauna condition (available with the WotH DLC) can now only spawn on planets with a native Meat resource.
 - Disabled the Frozen Wasteland condition (available with the WotH DLC).
 - Added a new planetary condition: Total Permafrost. The resource of this planet gives half its pressure. Can generate a water resource for this planet.
-- Added icy planets. These planets can spawn at outer rims of systems, always have an ice biome and have the Permafrost planetary condition. They can have one of the following resources: Pekelm, Deuterium.
+- Added icy planets. These planets can spawn at outer rims of systems, always have an ice biome and the Permafrost planetary condition. They can have one of the following resources: Pekelm, Deuterium.
 - Added 'hot jupiters', class IV and V gas giants orbiting very close to their star. They can have one of the following resources: Alkali Metals, Iron (level 1), Glass (level 2), Silicon (level 2, only with the WotH DLC).
 - Slightly decreased the frequency of gas and ice giants.
 - Gas and ice giants may now have less moons than before, or even none at all. Artificial moons will solve your space issues.
@@ -101,7 +103,7 @@ v0.3.0b
 - The Pekelm ice giant in the home system has been replaced by a Pekelm ice planet.
 - Fixed orbit collisions in multi-star systems.
 - Fixed desynchronization of binary star orbits.
-- Fixed a bug where system spacing in the Precious Clouds map were larger than intended. 
+- Fixed a bug where system spacing in the Precious Clouds map were larger than intended.
 
 [*] User Interface
 

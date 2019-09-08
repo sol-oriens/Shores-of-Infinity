@@ -3,7 +3,7 @@ import generic_effects;
 import planet_effects;
 import requirement_effects;
 
-from settlements import ISettlementHook, SettlementHook, shipPopulationStatus, mothershipPopulationStatus;
+from settlements import ISettlementHook, SettlementHook, getSettlementPopulation;
 
 class ContainCivilUnrest : SettlementHook {
 	Document doc("Decreases the chance of loyalty loss of the settlement due to low morale.");
@@ -23,7 +23,7 @@ class ContainCivilUnrest : SettlementHook {
 class AddSettlementResource : SettlementHook {
 	Document doc("Add free resource income based on the settlement's current population.");
 	Argument factor(AT_Decimal, doc="Multiplier to the settlement's current population to give in pressure-equivalent income.");
-	Argument income(AT_TileResource, doc="Type of income to generate.");
+	Argument type(AT_TileResource, doc="Type of income to generate.");
 
 #section server
 	void enable(Object& obj, any@ data) const override {
@@ -32,25 +32,59 @@ class AddSettlementResource : SettlementHook {
 	}
 
 	void disable(Object& obj, any@ data) const override {
-		if(obj.isPlanet) {
-			double amt = 0.0;
-			data.retrieve(amt);
-			if(amt != 0.0)
-				obj.modResource(income.integer, -amt);
+		double amt = 0.0;
+		data.retrieve(amt);
+		if(amt != 0.0) {
+			if (obj.isPlanet) {
+				obj.modResource(type.integer, -amt);
+			}
+			else {
+				modResource(obj, type.integer, -amt);
+			}
 		}
 	}
 
 	void tick(Object& obj, any@ data, double tick) const override {
-		if(obj.isPlanet) {
-			double amt = 0.0;
-			data.retrieve(amt);
+		double pop = max(getSettlementPopulation(obj), 0.0);
+		double amt = 0.0;
+		data.retrieve(amt);
 
-			double pop = max(obj.population, 0.0);
-			double newAmt = pop * factor.decimal;
-			if(amt != newAmt) {
-				obj.modResource(income.integer, newAmt - amt);
+		double newAmt = pop * factor.decimal;
+		if (amt != newAmt) {
+			if (obj.isPlanet) {
+				obj.modResource(type.integer, newAmt - amt);
 				data.store(newAmt);
 			}
+			else {
+				modResource(obj, type.integer, newAmt - amt);
+				data.store(newAmt);
+			}
+		}
+	}
+
+	void modResource(Object& obj, int type, double amt) {
+		Empire@ emp = obj.owner;
+		if(emp is null)
+			return;
+		switch(type) {
+			case TR_Money:
+				emp.modTotalBudget(amt * TILE_MONEY_RATE, MoT_Misc);
+				break;
+			case TR_Influence:
+				emp.modInfluenceIncome(amt);
+				break;
+			case TR_Energy:
+				emp.modEnergyIncome(amt * TILE_ENERGY_RATE);
+				break;
+			case TR_Research:
+				emp.modResearchRate(amt * TILE_RESEARCH_RATE);
+				break;
+			case TR_Defense:
+				emp.modDefenseRate(amt * DEFENSE_LABOR_PM / 60.0);
+				break;
+			case TR_Labor:
+				obj.modLaborIncome(amt / 60.0);
+				break;
 		}
 	}
 

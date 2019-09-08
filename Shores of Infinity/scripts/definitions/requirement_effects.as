@@ -361,8 +361,6 @@ class RequireStatus : Requirement {
 	bool meets(Object& obj, bool ignoreState = false) const override {
 		if(!obj.hasStatuses)
 			return false;
-		print(status.integer);
-		print(obj.getStatusStackCountAny(status.integer));
 		return obj.getStatusStackCountAny(status.integer) >= uint(count.integer);
 	}
 };

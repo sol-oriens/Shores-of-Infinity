@@ -1,0 +1,15 @@
+Settlement: Mothership
+	Name: #SETTLEMENT_MOTHERSHIP
+	Description: #SETTLEMENT_MOTHERSHIP_DESC
+
+	Icon: HullIcons::3
+
+	Priority: 4
+
+	Morale Effect: Positive
+
+	addon_requirement_effects::RequireNotHome()
+	addon_requirement_effects::RequireFlagship()
+	RequireStatus(Mothership)
+
+	AddFleetEffectiveness(+1.0)

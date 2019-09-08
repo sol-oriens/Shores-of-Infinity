@@ -51,7 +51,7 @@ SETTLEMENT_ARKMOTHERSHIP_DESC: <<|
 	[color=#aaa][i]The last refuge of our civilization, our most cherished treasure.
 	Should we have to, we will stop at nothing to protect it.[/i][/color]
 
-	Support ships assigned to this ship fight at 300% increased effectiveness.
+	This ship and its support ships fight at 300% increased effectiveness.
 >>
 SETTLEMENT_ARKMOTHERSHIP_DEFENSE_DESC: <<
 	[bbloc=#SETTLEMENT_ARKMOTHERSHIP_DESC/]
@@ -123,6 +123,13 @@ SETTLEMENT_PRISON_DESC: <<|
 	Reduces income penalty of Level 0 planets by 80k.
 
 	Reduces civilian Money, Influence, Energy, Research and Defense production by 100%.
+>>
+
+SETTLEMENT_MOTHERSHIP: Mothership
+SETTLEMENT_MOTHERSHIP_DESC: <<|
+	[color=#aaa][i]Engineered to autonomously host a planet-sized population and support neighboring colonies, motherships are essentially metal worlds with drives.[/i][/color]
+
+	This ship and its support ships fight at 100% increased effectiveness.
 >>
 
 FOCUS_INPUT: Focus:
