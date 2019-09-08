@@ -88,7 +88,7 @@ v0.3.0b
 
 [*] Resources
 
-- Star Children will now witness the destruction of their home planet, which will leave asteroids behind, with a guaranteed Supercarbons asteroid among them.
+- Star Children will now witness the destruction of their homeworld, which will leave asteroids behind, with a guaranteed Supercarbons asteroid among them.
 - Slightly decreased the frequency of FTL Crystals asteroids.
 - Slightly increased the frequency of comets.
 - Decreased the frequency of Water on planets.
