@@ -30,7 +30,7 @@ const vec2i T_SIZE(201, 134);
 const uint T_SPAC = 27;
 const uint T_OFF = 10;
 const uint T_IMG = 134 - T_OFF*2 - 30;
-const uint TT_WIDTH = 400;
+const uint TT_WIDTH = 600;
 bool HeraldsUI = false;
 
 const array<double> ICON_PCT_TECH = {0.28, 0.3, 0.4, 0.4, 0.33, 0.33, 1.0};
