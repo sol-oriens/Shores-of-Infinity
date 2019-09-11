@@ -56,12 +56,12 @@ enum DebrisType {
 	DT_Metal33,
 	DT_Metal34,
 	DT_Metal35,
-	
+
 	DT_COUNT,
-	
+
 	DT_ROCK_START = DT_Rock00,
 	DT_ROCK_END = DT_Rock11,
-	
+
 	DT_METAL_START = DT_Metal00,
 	DT_METAL_END = DT_Metal35
 };
@@ -100,7 +100,7 @@ final class SystemDebris {
 	float spawnTime;
 	bool draw = false;
 	double dist = 0;
-	
+
 	int opCmp(const SystemDebris& other) {
 		return int(type) - int(other.type);
 	}
@@ -115,7 +115,7 @@ class SystemPlaneNodeScript {
 	bool decaying = false;
 	Color primaryColor;
 	float alpha = 1.f;
-	
+
 	bool drawPlane = false, drawDebris = false;
 	array<SystemDebris@> debris;
 
@@ -125,7 +125,7 @@ class SystemPlaneNodeScript {
 	void setContested(uint mode) {
 		contested = mode;
 	}
-	
+
 	void establish(Node& node, Region& region) {
 		@obj = region;
 		origin = region.position;
@@ -143,19 +143,19 @@ class SystemPlaneNodeScript {
 		else
 			primaryColor = Color(0xaaaaaaff);
 	}
-	
+
 	void addMetalDebris(vec3d position, uint count = 1) {
 		double spread = double(count) - 1.0;
-	
+
 		for(uint i = 0; i < count; ++i) {
 			SystemDebris d;
 			d.type = DebrisType(randomi(DT_METAL_START,DT_METAL_END));
 			vec2d off = random2d(200.0, innerRadius);
-			d.pos = position + random3d(spread);
-			
+			d.pos = position + random3d(spread) / 4;
+
 			//SoI - Scaling: metal debris scale
-			d.scale = randomd(4.0, 6.0);
-			
+			d.scale = randomd(0.125, 0.25);
+
 			d.axis = random3d(1.0);
 			d.rotSpeed = randomd(pi * -0.125, pi * 0.125);
 			double dist = cameraPos.distanceTo(d.pos);
@@ -166,7 +166,7 @@ class SystemPlaneNodeScript {
 			debris.insertLast(d);
 		}
 	}
-	
+
 	void generateDebris() {
 		uint count = uint(innerRadius * settings::dSystemDebris / 10.0);
 		if(debris.length < count) {
@@ -175,27 +175,27 @@ class SystemPlaneNodeScript {
 				d.type = DebrisType(randomi(DT_ROCK_START,DT_ROCK_END));
 				vec2d off = random2d(200.0, innerRadius);
 				d.pos = origin + vec3d(off.x, randomd(-15.0,15.0), off.y);
-				
+
 				//SoI - Scaling: rock debris scale
 				d.scale = randomd(5.0, 7.0);
-				
+
 				d.axis = random3d(1.0);
 				d.rotSpeed = randomd(pi * -0.125, pi * 0.125);
 				double dist = cameraPos.distanceTo(d.pos);
 				if(dist < pixelSizeRatio * 2000.0 * d.scale && isSphereVisible(d.pos, d.scale))
 					continue;
-				
+
 				d.vel = random3d(-8.0,8.0);
 				d.life = randomd(30.0,60.0);
 				d.spawnTime = frameGameTime;
 				d.rot = quaterniond_fromAxisAngle(random3d(1.0), randomd(0.0,twopi));
 				debris.insertLast(d);
 			}
-			
+
 			debris.sortAsc();
 		}
 	}
-	
+
 	void tickDebris(double time) {
 		vec3d cam = cameraPos;
 		for(int i = int(debris.length-1); i >= 0; --i) {
@@ -203,27 +203,27 @@ class SystemPlaneNodeScript {
 			d.life -= time;
 			d.pos += d.vel * time;
 			d.dist = cam.distanceTo(d.pos) / (pixelSizeRatio * d.scale);
-			
+
 			//SoI - Scaling
 			d.draw = d.dist < 2000.0 && isSphereVisible(d.pos, d.scale);
-			
+
 			if(d.life <= 0 && !d.draw) {
 				debris.removeAt(i);
 				continue;
 			}
-			
+
 			if(d.draw)
 				d.rot = quaterniond_fromAxisAngle(d.axis, d.rotSpeed * time) * d.rot;
 		}
 	}
-	
+
 	void renderDebris() {
 		float curTime = frameGameTime;
 		for(uint i = 0, cnt = debris.length; i < cnt; ++i) {
 			auto@ d = debris[i];
 			if(!d.draw)
 				continue;
-			
+
 			applyTransform(d.pos, d.scale, d.rot);
 			shader::LIFE = curTime - d.spawnTime;
 			switch(d.type) {
@@ -371,7 +371,7 @@ class SystemPlaneNodeScript {
 				case DT_Metal35:
 					material::Debris.switchTo();
 					model::Wreckage35.draw(d.dist); break;
-					
+
 			}
 			undoTransform();
 		}
@@ -384,21 +384,21 @@ class SystemPlaneNodeScript {
 		double d = node.abs_scale * pixelSizeRatio;
 		drawPlane = SHOW_SYSTEM_PLANES && (node.sortDistance < 200.0 * d);
 		drawDebris = node.sortDistance < 5.0 * node.abs_scale * pixelSizeRatio;
-		
+
 		alpha = 1.0 - clamp((node.sortDistance - 150.0 * d) / (50.0 * d), 0.0, 1.0);
-		
+
 		if(drawDebris) {
 			tickDebris(frameLength * gameSpeed);
 			generateDebris();
 		}
-		
+
 		return drawPlane || drawDebris;
 	}
-	
+
 	void render(Node& node) {
 		if(drawDebris)
 			renderDebris();
-		
+
 		if(drawPlane) {
 			shader::RADIUS = outerRadius;
 			shader::INNER_RADIUS = innerRadius;
@@ -441,7 +441,7 @@ class SystemPlaneNodeScript {
 
 			Color c = primaryColor;
 			c.a = uint8(alpha * 255.f);
-			
+
 			drawPolygonStart(PT_Quads, 1, material::SystemPlane);
 			drawPolygonPoint(origin + vec3d(-outerRadius, 0, -outerRadius), vec2f(0.f, 0.f), c);
 			drawPolygonPoint(origin + vec3d(+outerRadius, 0, -outerRadius), vec2f(1.f, 0.f));

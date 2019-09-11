@@ -755,7 +755,7 @@ tidy class ShipScript {
 
 			auto@ region = ship.region;
 			if(region !is null) {
-				uint debris = uint(log(size) / log(2.0));
+				uint debris = uint(log(size) / log(2.0)) * 4;
 				if(debris > 0)
 					region.addShipDebris(ship.position, debris);
 			}
