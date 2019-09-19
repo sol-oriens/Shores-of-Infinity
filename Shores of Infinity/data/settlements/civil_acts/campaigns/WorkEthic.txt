@@ -4,7 +4,7 @@ CivilAct: WorkEthic
 
 	Category: Campaigns
 
-	Maintenance: 50
+	Maintenance: 30
 	Population Multiplier: True
 
 	RequireNotTrait(Ancient)

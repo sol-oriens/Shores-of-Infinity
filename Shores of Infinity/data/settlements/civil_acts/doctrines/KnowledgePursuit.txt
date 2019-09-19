@@ -4,14 +4,14 @@ CivilAct: KnowledgePursuit
 
 	Category: Doctrines
 
-	Maintenance: 10
+	Maintenance: 20
 	Population Multiplier: True
 
 	Commitment: 1800
 
-	RequireNotTrait(Ancient)
+	settlement_effects::AddSettlementResource(0.5, Research)
 
-	settlement_effects::AddSettlementResource(0.2, Research)
-
-	ModCivResourceMult(Defense, -0.1)
-	IfHaveTrait(StarChildren, ProduceAllPressure(Defense, -0.1))
+	AddLaborFactor(-0.25)
+	ModCivResourceMult(Defense, -0.25)
+	IfHaveTrait(StarChildren, ProduceAllPressure(Defense, -0.25))
+	IfHaveTrait(Ancient, ProduceAllPressure(Defense, -0.25))
