@@ -103,17 +103,17 @@ tidy final class SettlementType : MoraleModifier {
 	}
 
 	bool canEnable(Object& obj) const {
-		for(uint i = 0, cnt = hooks.length; i < cnt; ++i) {
-			if(!hooks[i].canEnable(obj))
+		for (uint i = 0, cnt = hooks.length; i < cnt; ++i) {
+			if (!hooks[i].canEnable(obj))
 				return false;
 		}
 		return true;
 	}
 
 	int opCmp(const SettlementType@ other) const {
-		if(priority < other.priority)
+		if (priority < other.priority)
 			return -1;
-		if(priority > other.priority)
+		if (priority > other.priority)
 			return 1;
 		return 0;
 	}
@@ -135,17 +135,17 @@ tidy final class SettlementFocusType : MoraleModifier {
 	}
 
 	bool canEnable(Object& obj) const {
-		for(uint i = 0, cnt = hooks.length; i < cnt; ++i) {
-			if(!hooks[i].canEnable(obj))
+		for (uint i = 0, cnt = hooks.length; i < cnt; ++i) {
+			if (!hooks[i].canEnable(obj))
 				return false;
 		}
 		return true;
 	}
 
 	int opCmp(const SettlementFocusType@ other) const {
-		if(priority < other.priority)
+		if (priority < other.priority)
 			return -1;
-		if(priority > other.priority)
+		if (priority > other.priority)
 			return 1;
 		return 0;
 	}
@@ -175,8 +175,8 @@ tidy final class CivilActType : MoraleModifier {
 	}
 
 	bool canEnable(Object& obj) const {
-		for(uint i = 0, cnt = hooks.length; i < cnt; ++i) {
-			if(!hooks[i].canEnable(obj))
+		for (uint i = 0, cnt = hooks.length; i < cnt; ++i) {
+			if (!hooks[i].canEnable(obj))
 			return false;
 		}
 		return true;
@@ -214,30 +214,30 @@ tidy final class Settlement : Savable {
 	}
 
 	void enable(Object& obj) {
-		for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
+		for (uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
 			type.hooks[i].enable(obj, data[i]);
 	}
 
 	void disable(Object& obj) {
-		for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
+		for (uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
 			type.hooks[i].disable(obj, data[i]);
 	}
 
 	void tick(Object& obj, double time) {
-		for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
+		for (uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
 			type.hooks[i].tick(obj, data[i], time);
 	}
 
 	void save(SaveFile& file) {
 		file.writeIdentifier(SI_Settlement, type.id);
-		for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
+		for (uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
 			type.hooks[i].save(data[i], file);
 	}
 
 	void load(SaveFile& file) {
 		@type = getSettlementType(file.readIdentifier(SI_Settlement));
 		data.length = type.hooks.length;
-		for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
+		for (uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
 			type.hooks[i].load(data[i], file);
 	}
 };
@@ -255,30 +255,30 @@ tidy final class SettlementFocus : Savable {
 	}
 
 	void enable(Object& obj) {
-		for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
+		for (uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
 			type.hooks[i].enable(obj, data[i]);
 	}
 
 	void disable(Object& obj) {
-		for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
+		for (uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
 			type.hooks[i].disable(obj, data[i]);
 	}
 
 	void tick(Object& obj, double time) {
-		for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
+		for (uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
 			type.hooks[i].tick(obj, data[i], time);
 	}
 
 	void save(SaveFile& file) {
 		file.writeIdentifier(SI_SettlementFocus, type.id);
-		for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
+		for (uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
 			type.hooks[i].save(data[i], file);
 	}
 
 	void load(SaveFile& file) {
 		@type = getSettlementFocusType(file.readIdentifier(SI_SettlementFocus));
 		data.length = type.hooks.length;
-		for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
+		for (uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
 			type.hooks[i].load(data[i], file);
 	}
 };
@@ -300,24 +300,24 @@ tidy final class CivilAct : Savable {
 	}
 
 	void enable(Object& obj) {
-		for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
+		for (uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
 			type.hooks[i].enable(obj, data[i]);
 	}
 
 	void disable(Object& obj) {
-		for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
+		for (uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
 			type.hooks[i].disable(obj, data[i]);
 	}
 
 	void tick(Object& obj, double time) {
-		for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
+		for (uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
 			type.hooks[i].tick(obj, data[i], time);
 	}
 
 	int opCmp(const CivilAct@ other) const {
-		if(type.id < other.type.id)
+		if (type.id < other.type.id)
 			return -1;
-		if(type.id > other.type.id)
+		if (type.id > other.type.id)
 			return 1;
 		return 0;
 	}
@@ -327,7 +327,7 @@ tidy final class CivilAct : Savable {
 		file << currentDelay;
 		file << currentDuration;
 		file << currentMaint;
-		for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
+		for (uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
 			type.hooks[i].save(data[i], file);
 	}
 
@@ -337,7 +337,7 @@ tidy final class CivilAct : Savable {
 		file >> currentDelay;
 		file >> currentDuration;
 		data.length = type.hooks.length;
-		for(uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
+		for (uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
 			type.hooks[i].load(data[i], file);
 	}
 };
@@ -388,34 +388,34 @@ void loadSettlements(const string& filename) {
 	SettlementType@ type;
 
 	uint index = 0;
-	while(file++) {
+	while (file++) {
 		key = file.key;
 		value = file.value;
 
-		if(file.fullLine) {
+		if (file.fullLine) {
 			string line = file.line;
 			parseLine(line, type, file);
 		}
-		else if(key.equals_nocase("Settlement")) {
-			if(type !is null)
+		else if (key.equals_nocase("Settlement")) {
+			if (type !is null)
 				addSettlementType(type);
 			@type = SettlementType();
 			type.ident = value;
-			if(type.ident.length == 0)
+			if (type.ident.length == 0)
 				type.ident = filename + "__" + index;
 
 			++index;
 		}
-		else if(type is null) {
+		else if (type is null) {
 			error("Missing 'SettlementFocus: ID' line in " + filename);
 		}
-		else if(key.equals_nocase("Name")) {
+		else if (key.equals_nocase("Name")) {
 			type.name = localize(value);
 		}
-		else if(key.equals_nocase("Description")) {
+		else if (key.equals_nocase("Description")) {
 			type.description = localize(value);
 		}
-		else if(key == "Icon") {
+		else if (key == "Icon") {
 			type.icon = getSprite(value);
 		}
 		else if (key.equals_nocase("Priority")) {
@@ -430,7 +430,7 @@ void loadSettlements(const string& filename) {
 		}
 	}
 
-	if(type !is null)
+	if (type !is null)
 		addSettlementType(type);
 }
 
@@ -441,31 +441,31 @@ void loadSettlementFoci(const string& filename) {
 	SettlementFocusType@ type;
 
 	uint index = 0;
-	while(file++) {
+	while (file++) {
 		key = file.key;
 		value = file.value;
 
-		if(file.fullLine) {
+		if (file.fullLine) {
 			string line = file.line;
 			parseLine(line, type, file);
 		}
 		else if(key.equals_nocase("SettlementFocus")) {
-			if(type !is null)
+			if (type !is null)
 				addSettlementFocusType(type);
 			@type = SettlementFocusType();
 			type.ident = value;
-			if(type.ident.length == 0)
+			if (type.ident.length == 0)
 				type.ident = filename + "__" + index;
 
 			++index;
 		}
-		else if(type is null) {
+		else if (type is null) {
 			error("Missing 'SettlementFocus: ID' line in " + filename);
 		}
-		else if(key.equals_nocase("Name")) {
+		else if (key.equals_nocase("Name")) {
 			type.name = localize(value);
 		}
-		else if(key.equals_nocase("Description")) {
+		else if (key.equals_nocase("Description")) {
 			type.description = localize(value);
 		}
 		else if (key.equals_nocase("Priority")) {
@@ -480,7 +480,7 @@ void loadSettlementFoci(const string& filename) {
 		}
 	}
 
-	if(type !is null)
+	if (type !is null)
 		addSettlementFocusType(type);
 }
 
@@ -492,34 +492,34 @@ void loadCivilActs(const string& filename) {
 	string[] civilActCategories;
 
 	uint index = 0;
-	while(file++) {
+	while (file++) {
 		key = file.key;
 		value = file.value;
 
-		if(file.fullLine) {
+		if (file.fullLine) {
 			string line = file.line;
 			parseLine(line, type, file);
 		}
-		else if(key.equals_nocase("CivilAct")) {
-			if(type !is null)
+		else if (key.equals_nocase("CivilAct")) {
+			if (type !is null)
 				addCivilActType(type);
 			@type = CivilActType();
 			type.ident = value;
-			if(type.ident.length == 0)
+			if (type.ident.length == 0)
 				type.ident = filename + "__" + index;
 
 			++index;
 		}
-		else if(type is null) {
+		else if (type is null) {
 			error("Missing 'CivilAct: ID' line in " + filename);
 		}
-		else if(key.equals_nocase("Name")) {
+		else if (key.equals_nocase("Name")) {
 			type.name = localize(value);
 		}
-		else if(key.equals_nocase("Description")) {
+		else if (key.equals_nocase("Description")) {
 			type.description = localize(value);
 		}
-		else if(key.equals_nocase("Category")) {
+		else if (key.equals_nocase("Category")) {
 			type.category = value;
 			if (civilActCategories.find(value) != -1)
 				civilActCategories.insertLast(value);
@@ -527,16 +527,16 @@ void loadCivilActs(const string& filename) {
 		else if (key.equals_nocase("Morale Effect")) {
 			@type.moraleEffect = LocalMoraleEffect(value);
 		}
-		else if(key.equals_nocase("Maintenance")) {
+		else if (key.equals_nocase("Maintenance")) {
 			type.maintainCost = toInt(value);
 		}
-		else if(key.equals_nocase("Delay")) {
+		else if (key.equals_nocase("Delay")) {
 			type.delay = toDouble(value);
 		}
-		else if(key.equals_nocase("Commitment")) {
+		else if (key.equals_nocase("Commitment")) {
 			type.commitment = toDouble(value);
 		}
-		else if(key.equals_nocase("Population Multiplier")) {
+		else if (key.equals_nocase("Population Multiplier")) {
 			type.popMult = toBool(value);
 		}
 		else {
@@ -545,19 +545,19 @@ void loadCivilActs(const string& filename) {
 		}
 	}
 
-	if(type !is null)
+	if (type !is null)
 		addCivilActType(type);
 }
 
 void preInit() {
 	FileList settlementList("data/settlements/types", "*.txt", true);
-	for(uint i = 0, cnt = settlementList.length; i < cnt; ++i)
+	for (uint i = 0, cnt = settlementList.length; i < cnt; ++i)
 		loadSettlements(settlementList.path[i]);
 	FileList focusList("data/settlements/foci", "*.txt", true);
-	for(uint i = 0, cnt = focusList.length; i < cnt; ++i)
+	for (uint i = 0, cnt = focusList.length; i < cnt; ++i)
 		loadSettlementFoci(focusList.path[i]);
 	FileList civilActList("data/settlements/civil_acts", "*.txt", true);
-	for(uint i = 0, cnt = civilActList.length; i < cnt; ++i)
+	for (uint i = 0, cnt = civilActList.length; i < cnt; ++i)
 		loadCivilActs(civilActList.path[i]);
 }
 
@@ -652,24 +652,21 @@ CivilActType@[] getAvailableCivilActs(Object& obj) {
 }
 
 const SettlementType@ getSettlementType(uint id) {
-	if(id < settlements.length)
+	if (id < settlements.length)
 		return settlements[id];
-	else
-		return null;
+	return null;
 }
 
 const SettlementFocusType@ getSettlementFocusType(uint id) {
-	if(id < foci.length)
+	if (id < foci.length)
 		return foci[id];
-	else
-		return null;
+	return null;
 }
 
 const CivilActType@ getCivilActType(uint id) {
-	if(id < civilActs.length)
+	if (id < civilActs.length)
 		return civilActs[id];
-	else
-		return null;
+	return null;
 }
 
 void addSettlementType(SettlementType@ settlement) {
@@ -691,15 +688,15 @@ void addCivilActType(CivilActType@ civilAct) {
 }
 
 void saveIdentifiers(SaveFile& file) {
-	for(uint i = 0, cnt = settlements.length; i < cnt; ++i) {
+	for (uint i = 0, cnt = settlements.length; i < cnt; ++i) {
 		auto type = settlements[i];
 		file.addIdentifier(SI_Settlement, type.id, type.ident);
 	}
-	for(uint i = 0, cnt = foci.length; i < cnt; ++i) {
+	for (uint i = 0, cnt = foci.length; i < cnt; ++i) {
 		auto type = foci[i];
 		file.addIdentifier(SI_SettlementFocus, type.id, type.ident);
 	}
-	for(uint i = 0, cnt = civilActs.length; i < cnt; ++i) {
+	for (uint i = 0, cnt = civilActs.length; i < cnt; ++i) {
 		auto type = civilActs[i];
 		file.addIdentifier(SI_CivilAct, type.id, type.ident);
 	}

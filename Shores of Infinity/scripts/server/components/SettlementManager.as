@@ -27,12 +27,11 @@ tidy class SettlementManager : Component_Settlement, Savable {
 		double totalMorale = _morale + obj.owner.GlobalMorale.value;
 		if (totalMorale <= -3.0)
 			return SM_Critical;
-		else if (totalMorale <= -2.0)
+		if (totalMorale <= -2.0)
 			return SM_Low;
-		else if (totalMorale >= 2.0)
+		if (totalMorale >= 2.0)
 			return SM_High;
-		else
-			return SM_Medium;
+		return SM_Medium;
 	}
 
 	void modMorale(double value) {
