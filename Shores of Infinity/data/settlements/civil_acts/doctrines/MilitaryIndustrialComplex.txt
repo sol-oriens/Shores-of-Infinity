@@ -1,0 +1,19 @@
+CivilAct: MilitaryIndustrialComplex
+	Name: #CIVIL_ACT_MILITIARY_INDUSTRIAL_COMPLEX
+	Description: #CIVIL_ACT_MILITIARY_INDUSTRIAL_COMPLEX_DESC
+
+	Category: Doctrines
+
+	Maintenance: 30
+	Population Multiplier: True
+
+	Commitment: 1800
+
+	settlement_effects::AddSettlementResource(0.25, Defense)
+
+	ModCivResourceMult(Defense, 0.25)
+	IfHaveTrait(StarChildren, ProduceAllPressure(Defense, 0.25))
+	IfHaveTrait(Ancient, ProduceAllPressure(Defense, 0.25))
+	ModCivResourceMult(Influence, -0.25)
+	IfHaveTrait(StarChildren, ProduceAllPressure(Influence, -0.25))
+	IfHaveTrait(Ancient, ProduceAllPressure(Influence, -0.25))
