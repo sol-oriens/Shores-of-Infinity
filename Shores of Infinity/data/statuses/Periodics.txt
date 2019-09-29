@@ -2,7 +2,7 @@ Status: PeriodicMoney
 	Visible To: Nobody
 
 	TriggerPeriodic(AddMoney(125), Interval = 180)
-	
+
 Status: PeriodicInfluence
 	Visible To: Nobody
 
@@ -22,3 +22,4 @@ Status: PeriodicDefenseReserve
 	Visible To: Nobody
 
 	TriggerPeriodic(ModDefenseReserve(5), Interval = 180)
+	TriggerPeriodic(GenerateGlobalDefense(5), Interval = 180)
