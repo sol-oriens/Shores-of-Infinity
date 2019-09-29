@@ -2,11 +2,9 @@ BLD_BARRACKS: Barracks
 BLD_BARRACKS_DESC: <<|
 	[color=#aaa][i]A permanent planetary garrison that will help in the defense of this planet. Or another.[/i][/color]
 
-	Adds 15 Defense Reserve to your global pool.
+	Adds 15 Defense Reserve.
 
 	Adds 1 bonus planet loyalty.
-
-	When your defense reserve is full, it can be deployed at any time to one of your planets to spawn defense ships.
 >>
 
 BLD_FORGE_DESC: <<|
@@ -15,40 +13,40 @@ BLD_FORGE_DESC: <<|
 
 	Building a Forge unlocks the next tier, which is a bigger, more expensive and more effective version.
 
-	Ore is consumed when the planet is using labor to build.
+	Ore is consumed when the planet is using Labor to build.
 >>
 BLD_FORGE1_DESC: <<
 	[bbloc=#BLD_FORGE_DESC/]
 
-	Increases labor generation by 20%.
+	Increases Labor generation by 20%.
 
 	[bbloc=#TIP_CONSUME_ORE:12/]
 >>
 BLD_FORGE2_DESC: <<
 	[bbloc=#BLD_FORGE_DESC/]
 
-	Increases labor generation by 40%.
+	Increases Labor generation by 40%.
 
 	[bbloc=#TIP_CONSUME_ORE:24/]
 >>
 BLD_FORGE3_DESC: <<
 	[bbloc=#BLD_FORGE_DESC/]
 
-	Increases labor generation by 60%.
+	Increases Labor generation by 60%.
 
 	[bbloc=#TIP_CONSUME_ORE:36/]
 >>
 BLD_FORGE4_DESC: <<
 	[bbloc=#BLD_FORGE_DESC/]
 
-	Increases labor generation by 80%.
+	Increases Labor generation by 80%.
 
 	[bbloc=#TIP_CONSUME_ORE:48/]
 >>
 BLD_FORGE5_DESC: <<
 	[bbloc=#BLD_FORGE_DESC/]
 
-	Increases labor generation by 100%.
+	Increases Labor generation by 100%.
 
 	[bbloc=#TIP_CONSUME_ORE:60/]
 >>
@@ -58,7 +56,7 @@ BLD_SPACE_ELEVATOR_DESC: <<|
 
 	Increases the construction speed of support ships on this planet by 40%.
 
-	Adds 1 money generation per Planet Level starting from Level 1 if a Starport is present in the system.
+	Adds 1 Money generation per Planet Level starting from Level 1 if a Starport is present in the system.
 
 	[i]Only one Space Elevator may be constructed per planet.[/i]
 >>
@@ -98,7 +96,7 @@ BLD_MINE_DESC: <<
 
 	Adds an Ore resource that can be exported and generates [b]10 ore per minute[/b] at its destination.
 
-	Adds 2 labor pressure.
+	Adds 2 Labor pressure.
 
 	Increases the pressure given by native Iron and Titanium by 2.
 
@@ -128,6 +126,8 @@ BLD_PRISON_DESC: <<
 BLD_RESORT: Resort
 BLD_RESORT_DESC: <<
 	[color=#aaa][i]A tourist paradise. Also an entrepreneur's.[/i][/color]
+
+	Gives 1 Money generation.
 
 	Replaces up to 3 regular cities.
 >>
@@ -201,7 +201,11 @@ B_DEFENSEFACTORY: Command Center
 B_DEFENSEFACTORY_DESC: <<
 	A facility dedicated to the coordination of defensive forces across the planet.
 
-	Adds 2 Defense generation. Adds 128 support capacity.
+	Gives 1 Defense generation.
+
+	Adds 1 Defense pressure.
+
+	Adds 128 support capacity.
 >>
 B_FAKELVL1_RESEARCH: Research Complex
 B_FAKELVL1_RESEARCH_DESC: <<

@@ -27,9 +27,10 @@ v0.3.0b
 [*] Buildings
 
 - Added Penitentiary.
-- Added Resort.
-- Barracks now add 1 planet Loyalty. Defense Reserve Bonus and maintenance cost have been reverted to vanilla value (+15 (down from +20) and 20k (up from 0), respectively).
+- Added Resort. Gives 1 Money generation. Replaces up to 3 regular cities.
+- Barracks now adds 1 planet Loyalty. Defense Reserve Bonus and maintenance cost have been reverted to vanilla value (+15 (down from +20) and 20k (up from 0), respectively).
 - Mining complexes now additionally cost 15 Research to build.
+- Command Center now adds 1 Defense generation and 1 Defense pressure instead of 2 Defense generation.
 - Forges have been completely overhauled and costs adjusted. They also now consume Ore when using Labor. The next forge tier is unlocked only once the previous tier is built. Each tier now has a higher Labor bonus.
   Forge tiers now have the following stats:
   - Tier 1: Increases labor generation by 20%. Base and maintenance costs of 250k and 50k, respectively. Also costs 100 Labor to build. Consumes 12 Ore / minute when the planet is using labor to build.

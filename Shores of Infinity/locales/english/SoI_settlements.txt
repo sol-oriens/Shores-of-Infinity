@@ -158,7 +158,7 @@ FOCUS_HOME_DESC: <<
 FOCUS_HOME_DEFENSE_DESC: <<
 	[bbloc=#FOCUS_HOME_DESC/]
 
-	Generates 0.5 Defense per billion population.
+	Gives 0.5 Defense generation per billion population.
 >>
 FOCUS_HOME_INFLUENCE_DESC: <<
 	[bbloc=#FOCUS_HOME_DESC/]
@@ -173,21 +173,21 @@ FOCUS_HOME_LABOR_DESC: <<
 FOCUS_HOME_MONEY_DESC: <<
 	[bbloc=#FOCUS_HOME_DESC/]
 
-	Generates 0.5 Money per billion population.
+	Gives 0.5 Money generation per billion population.
 >>
 
 FOCUS_MONEY: Financial
 FOCUS_MONEY_DESC: <<
 	[color=#aaa][i]Free market equals free minds.[/i][/color]
 
-	Generates 0.25 Money per billion population.
+	Gives 0.25 Money generation per billion population.
 >>
 
 FOCUS_MONEY_EXTREME: Acquisitive
 FOCUS_MONEY_EXTREME_DESC: <<
 	[color=#aaa][i]Money can buy everything.[/i][/color]
 
-	Generates 0.75 Money per billion population.
+	Gives 0.75 Money generation per billion population.
 >>
 
 FOCUS_INFLUENCE: Spiritual
@@ -208,21 +208,21 @@ FOCUS_DEFENSE: Territorial
 FOCUS_DEFENSE_DESC: <<
 	[color=#aaa][i]What is ours shall stay ours.[/i][/color]
 
-	Generates 0.25 Defense per billion population.
+	Gives 0.25 Defense generation per billion population.
 >>
 
 FOCUS_DEFENSE_EXTREME: Belligerent
 FOCUS_DEFENSE_EXTREME_DESC: <<
 	[color=#aaa][i]What is not ours shall be ours.[/i][/color]
 
-	Generates 0.75 Defense per billion population.
+	Gives 0.75 Defense generation per billion population.
 >>
 
 FOCUS_LABOR: Industrial
 FOCUS_LABOR_DESC: <<
 	[color=#aaa][i]Machines paving the way to the future.[/i][/color]
 
-	Adds 0.25 Labor/minute per billion population.
+	Generates 0.25 Labor/minute per billion population.
 >>
 
 FOCUS_LABOR_EXTREME: Laborious
@@ -314,7 +314,7 @@ CIVIL_ACT_KNOWLEDGE_PURSUIT_DESC: <<
 	[color=#aaa][i]Promote scientific activities in all layers of society, resulting in a higher interest in research
 	occupations.[/i][/color]
 
-	Generates 0.5 Research per billion population.
+	Gives 0.5 Research generation per billion population.
 
 	Reduces Labor generation and civilian Defense production by 25%.
 >>
@@ -323,7 +323,7 @@ CIVIL_ACT_MILITIARY_INDUSTRIAL_COMPLEX: Military Industrial Complex
 CIVIL_ACT_MILITIARY_INDUSTRIAL_COMPLEX_DESC: <<|
 	[color=#aaa][i]Push defense spending to the next level with additional subcontracting to the local industry.[/i][/color]
 
-	Generates 0.25 Defense per billion population.
+	Gives 0.25 Defense generation per billion population.
 
 	Increases civilian Defense production by 25%.
 >>
