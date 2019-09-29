@@ -8,7 +8,7 @@ SettlementFocus: InfluenceHome
 	addon_requirement_effects::RequireHome()
 	addon_requirement_effects::RequirePopulation(5)
 
-	settlement_effects::AddSettlementResource(0.3, Influence)
+	settlement_effects::AddSettlementResource(0.5, Influence)
 
 SettlementFocus: Influence
 	Name: #FOCUS_INFLUENCE
@@ -20,7 +20,7 @@ SettlementFocus: Influence
 	addon_requirement_effects::RequireNotHome()
 	addon_requirement_effects::RequirePopulation(5)
 
-	settlement_effects::AddSettlementResource(0.2, Influence)
+	settlement_effects::AddSettlementResource(0.25, Influence)
 
 SettlementFocus: InfluenceExtreme
 	Name: #FOCUS_INFLUENCE_EXTREME
@@ -31,4 +31,4 @@ SettlementFocus: InfluenceExtreme
 	RequireTrait(Theocracy)
 	addon_requirement_effects::RequirePopulation(5)
 
-	settlement_effects::AddSettlementResource(0.4, Influence)
+	settlement_effects::AddSettlementResource(0.75, Influence)

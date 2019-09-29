@@ -8,7 +8,7 @@ SettlementFocus: LaborHome
 	addon_requirement_effects::RequireHome()
 	addon_requirement_effects::RequirePopulation(5)
 
-	settlement_effects::AddSettlementResource(0.3, Labor)
+	settlement_effects::AddSettlementResource(0.5, Labor)
 
 SettlementFocus: Labor
 	Name: #FOCUS_LABOR
@@ -20,7 +20,7 @@ SettlementFocus: Labor
 	addon_requirement_effects::RequireNotHome()
 	addon_requirement_effects::RequirePopulation(5)
 
-	settlement_effects::AddSettlementResource(0.2, Labor)
+	settlement_effects::AddSettlementResource(0.25, Labor)
 
 SettlementFocus: LaborExreme
 	Name: #FOCUS_LABOR_EXTREME
@@ -31,4 +31,4 @@ SettlementFocus: LaborExreme
 	RequireTrait(Communism)
 	addon_requirement_effects::RequirePopulation(5)
 
-	settlement_effects::AddSettlementResource(0.4, Labor)
+	settlement_effects::AddSettlementResource(0.75, Labor)

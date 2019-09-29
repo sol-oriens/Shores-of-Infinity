@@ -8,7 +8,7 @@ SettlementFocus: DefenseHome
 	addon_requirement_effects::RequireHome()
 	addon_requirement_effects::RequirePopulation(5)
 
-	settlement_effects::AddSettlementResource(0.3, Defense)
+	settlement_effects::AddSettlementResource(0.5, Defense)
 
 SettlementFocus: Defense
 	Name: #FOCUS_DEFENSE
@@ -20,7 +20,7 @@ SettlementFocus: Defense
 	addon_requirement_effects::RequireNotHome()
 	addon_requirement_effects::RequirePopulation(5)
 
-	settlement_effects::AddSettlementResource(0.2, Defense)
+	settlement_effects::AddSettlementResource(0.25, Defense)
 
 SettlementFocus: DefenseExtreme
 	Name: #FOCUS_DEFENSE_EXTREME
@@ -31,4 +31,4 @@ SettlementFocus: DefenseExtreme
 	RequireTrait(Empire)
 	addon_requirement_effects::RequirePopulation(5)
 
-	settlement_effects::AddSettlementResource(0.4, Defense)
+	settlement_effects::AddSettlementResource(0.75, Defense)
