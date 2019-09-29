@@ -116,7 +116,8 @@ SETTLEMENT_RESORT_DESC: <<|
 
 SETTLEMENT_PRISON: Penal Colony
 SETTLEMENT_PRISON_DESC: <<|
-	[color=#aaa][i]This planet mostly hosts sentenced criminals, isolated far away from civilization and with little chance to evade.[/i][/color]
+	[color=#aaa][i]This planet mostly hosts sentenced criminals, isolated far away from civilization and with little
+	chance to evade.[/i][/color]
 
 	Slightly increases global morale across the empire.
 
@@ -127,7 +128,8 @@ SETTLEMENT_PRISON_DESC: <<|
 
 SETTLEMENT_MOTHERSHIP: Mothership
 SETTLEMENT_MOTHERSHIP_DESC: <<|
-	[color=#aaa][i]Engineered to autonomously host a planet-sized population and support neighboring colonies, motherships are essentially metal worlds with drives.[/i][/color]
+	[color=#aaa][i]Engineered to autonomously host a planet-sized population and support neighboring colonies,
+	motherships are essentially metal worlds with drives.[/i][/color]
 
 	This ship and its support ships fight at 100% increased effectiveness.
 >>
@@ -146,7 +148,7 @@ FOCUS_MORALE_DESC: <<
 
 FOCUS_COMMAND: Military
 FOCUS_COMMAND_DESC: <<
-	[color=#aaa][i]Fleets and big guns.[/i][/color]
+	[color=#aaa][i]Big fleets and big guns.[/i][/color]
 >>
 
 FOCUS_HOME: Capital
@@ -156,78 +158,78 @@ FOCUS_HOME_DESC: <<
 FOCUS_HOME_DEFENSE_DESC: <<
 	[bbloc=#FOCUS_HOME_DESC/]
 
-	Generates 0.3 Defense per billion population.
+	Generates 0.5 Defense per billion population.
 >>
 FOCUS_HOME_INFLUENCE_DESC: <<
 	[bbloc=#FOCUS_HOME_DESC/]
 
-	Adds 0.3 Influence Stake per billion population.
+	Adds 0.5 Influence Stake per billion population.
 >>
 FOCUS_HOME_LABOR_DESC: <<
 	[bbloc=#FOCUS_HOME_DESC/]
 
-	Generates 0.3 Labor per minute per billion population.
+	Generates 0.5 Labor per minute per billion population.
 >>
 FOCUS_HOME_MONEY_DESC: <<
 	[bbloc=#FOCUS_HOME_DESC/]
 
-	Generates 0.3 Money per billion population.
+	Generates 0.5 Money per billion population.
 >>
 
 FOCUS_MONEY: Financial
 FOCUS_MONEY_DESC: <<
 	[color=#aaa][i]Free market equals free minds.[/i][/color]
 
-	Generates 0.2 Money per billion population.
+	Generates 0.25 Money per billion population.
 >>
 
 FOCUS_MONEY_EXTREME: Acquisitive
 FOCUS_MONEY_EXTREME_DESC: <<
 	[color=#aaa][i]Money can buy everything.[/i][/color]
 
-	Generates 0.4 Money per billion population.
+	Generates 0.75 Money per billion population.
 >>
 
 FOCUS_INFLUENCE: Spiritual
 FOCUS_INFLUENCE_DESC: <<
 	[color=#aaa][i]Pursuing peace of mind and body.[/i][/color]
 
-	Adds 0.2 Influence Stake per billion population.
+	Adds 0.25 Influence Stake per billion population.
 >>
 
 FOCUS_INFLUENCE_EXTREME: Fanatical
 FOCUS_INFLUENCE_EXTREME_DESC: <<
 	[color=#aaa][i]There is only one truth: ours.[/i][/color]
 
-	Generates 0.4 Influence Stake per billion population.
+	Adds 0.75 Influence Stake per billion population.
 >>
 
 FOCUS_DEFENSE: Territorial
 FOCUS_DEFENSE_DESC: <<
 	[color=#aaa][i]What is ours shall stay ours.[/i][/color]
 
-	Generates 0.2 Defense per billion population.
+	Generates 0.25 Defense per billion population.
 >>
 
 FOCUS_DEFENSE_EXTREME: Belligerent
 FOCUS_DEFENSE_EXTREME_DESC: <<
 	[color=#aaa][i]What is not ours shall be ours.[/i][/color]
 
-	Generates 0.4 Defense per billion population.
+	Generates 0.75 Defense per billion population.
 >>
 
 FOCUS_LABOR: Industrial
 FOCUS_LABOR_DESC: <<
 	[color=#aaa][i]Machines paving the way to the future.[/i][/color]
 
-	Adds 0.2 Labor/minute per billion population.
+	Adds 0.25 Labor/minute per billion population.
 >>
 
 FOCUS_LABOR_EXTREME: Laborious
 FOCUS_LABOR_EXTREME_DESC: <<
 	[color=#aaa][i]Greatness has a cost we are willing to pay.[/i][/color]
 
-	Generates 0.4 Labor/minute per billion population.
+	Generates 0.75 Labor/minute per billion population.
 >>
 
 TT_AUTO_FOCUS: Automatically manage focus
@@ -236,61 +238,72 @@ CIVIL_ACTS: Civil Acts
 
 CIVIL_ACT_CALL_FOR_BIDS: Call for Bids
 CIVIL_ACT_CALL_FOR_BIDS_DESC: <<|
-	[color=#aaa][i]Subcontracting some of our construction works to the civilian sector can be very useful when further investment into
+	[color=#aaa][i]Subcontract some construction works to the civilian sector when further investment in
 	extra infrastructure is not desirable.[/i][/color]
 
 	Generates 25 Stored Labor every 3 minutes.
 >>
 
+CIVIL_ACT_CIVIL_WORKS: Civil Works Program
+CIVIL_ACT_CIVIL_WORKS_DESC: <<|
+	[color=#aaa][i]Focus civilian industry on large scale construction projects.[/i][/color]
+
+	Increases civilian and imperial building construction speed by 50%.
+
+	Reduces pressure capacity by 5.
+>>
+
 CIVIL_ACT_CRIME_CONTROL: Crime Control
 CIVIL_ACT_CRIME_CONTROL_DESC: <<
-	[color=#aaa][i]Focus law enforcement forces into chasing and stopping criminal elements, resulting in a safer and happier population.[/i][/color]
+	[color=#aaa][i]Focus law enforcement forces on chasing and stopping criminal elements, resulting in a safer
+	and happier population.[/i][/color]
 
 	Reduces the probability of loyalty loss from Civil Unrest by 10%.
 >>
 
 CIVIL_ACT_POP_GROWTH: Population Growth
 CIVIL_ACT_POP_GROWTH_DESC: <<|
-	[color=#aaa][i]Provide funding for increased parental allowance and improved childcare infrastructure to encourage birthrate, as well as
-	measures to attract immigration.[/i][/color]
+	[color=#aaa][i]Provide funding for increased parental allowance and improved childcare infrastructure to encourage
+	birthrate, as well as measures to attract immigration.[/i][/color]
 
 	Increases population growth by 15%.
 >>
 
 CIVIL_ACT_WORK_ETHIC: Work Ethic
 CIVIL_ACT_WORK_ETHIC_DESC: <<
-	[color=#aaa][i]Provide result-based monetary incentives for workers and ultra-restrictive quality controls to strive for high quality production.[/i][/color]
+	[color=#aaa][i]Provide result-based monetary incentives for workers and ultra-restrictive quality controls to
+	strive for high quality production.[/i][/color]
 
 	Increases the civilian production of Labor, Influence, Energy, Research and Defense by 10%.
 >>
 
 CIVIL_ACT_MARTIAL_LAW: Martial Law
 CIVIL_ACT_MARTIAL_LAW_DESC: <<|
-	[color=#aaa][i]The ultimate tool to suppress civil unrest. Restrict civil rights and apply military law in place of civil law, removing
-	any legal barrier impeding control over the populace.[/i][/color]
+	[color=#aaa][i]The ultimate tool to suppress civil unrest. Restrict civil rights and apply military law in place
+	of civil law, removing any legal barrier impeding control over the populace.[/i][/color]
 
 	Reduces the probability of loyalty loss from Civil Unrest by 30%.
 >>
 
 CIVIL_ACT_REDUCED_WORKING_TIME: Reduced Working Time
 CIVIL_ACT_REDUCED_WORKING_TIME_DESC: <<|
-	[color=#aaa][i]It is well known that a longer working time does not equal proportionally more results. It is also well known that a shorter working time
-	does equal happier and more focused workers.[/i][/color]
+	[color=#aaa][i]It is well known that a longer working time does not equal proportionally more results. It is also
+	well known that a shorter working time does equal happier and more focused workers.[/i][/color]
 
 	Reduces Labor generation and all civilian pressure production by 10%.
 >>
 
 CIVIL_ACT_STATE_EMERGENCY: State of Emergency
 CIVIL_ACT_STATE_EMERGENCY_DESC: <<|
-	[color=#aaa][i]Activate contingency plans, suspend a number of civil rights and empowers law enforcement with additional freedom to
-	maintain civil order.[/i][/color]
+	[color=#aaa][i]Activate contingency plans, suspend a number of civil rights and empowers law enforcement with
+	additional freedom to maintain civil order.[/i][/color]
 
 	Reduces the probability of loyalty loss from Civil Unrest by 20%.
 >>
 
 CIVIL_ACT_WAR_ECONOMY: War Economy
 CIVIL_ACT_WAR_ECONOMY_DESC: <<|
-	[color=#aaa][i]Mobilize the economy and shifts its outputs to increase all war-related production.[/i][/color]
+	[color=#aaa][i]Mobilize the economy and shift its outputs to increase all war-related production.[/i][/color]
 
 	Increases the construction speed of support ships by 50%.
 	Reduces civilian Influence, Energy and Research production by 20%.
@@ -298,23 +311,46 @@ CIVIL_ACT_WAR_ECONOMY_DESC: <<|
 
 CIVIL_ACT_KNOWLEDGE_PURSUIT: Pursuit of Knowledge
 CIVIL_ACT_KNOWLEDGE_PURSUIT_DESC: <<
-	[color=#aaa][i]Promote scientific activities in all layers of society, resulting in a higher interest in research occupations.[/i][/color]
+	[color=#aaa][i]Promote scientific activities in all layers of society, resulting in a higher interest in research
+	occupations.[/i][/color]
 
-	Generates 0.1 Research per billion population.
+	Generates 0.5 Research per billion population.
+
+	Reduces Labor generation and civilian Defense production by 25%.
+>>
+
+CIVIL_ACT_MILITIARY_INDUSTRIAL_COMPLEX: Military Industrial Complex
+CIVIL_ACT_MILITIARY_INDUSTRIAL_COMPLEX_DESC: <<|
+	[color=#aaa][i]Push defense spending to the next level with additional subcontracting to the local industry.[/i][/color]
+
+	Generates 0.25 Defense per billion population.
+
+	Increases civilian Defense production by 25%.
 >>
 
 CIVIL_ACT_PERSONALITY_CULT: Cult of Personality
 CIVIL_ACT_PERSONALITY_CULT_DESC: <<|
-	[color=#aaa][i]Sustaining generalized propaganda and brainwashing the people into veneration of the settlement leader has a noticeable
-	effect on their loyalty and devotion as a whole, spare the inevitable pockets of resistance and defections.[/i][/color]
+	[color=#aaa][i]Sustain generalized propaganda and brainwash the people into veneration of the settlement leader
+	to guarantee their loyalty and devotion, spare the inevitable pockets of resistance and defections.[/i][/color]
+>>
+
+CIVIL_ACT_POPULAR_SOVEREIGNTY: Popular Sovereignty
+CIVIL_ACT_POPULAR_SOVEREIGNTY_DESC: <<|
+	[color=#aaa][i]Establish a number of civil liberties, elections and the right to vote, giving the power to the
+	people (or the illusion of). Also introduces the right to protest and strike (not an illusion).[/i][/color]
+
+	Adds 1 Influence Stake per billion population.
+
+	Reduces Labor generation and all civilian pressure production by 10%.
 >>
 
 CIVIL_ACT_RAMPANT_CORRUPTION: Rampant Corruption
 CIVIL_ACT_RAMPANT_CORRUPTION_DESC: <<|
-	[color=#aaa][i]Money can buy almost everything. Once we find and appoint unscrupulous followers at key positions and buy the loyalty and
-	support of greedy political figures, it is only a matter of time before most of the local governing instances become mere puppets.[/i][/color]
+	[color=#aaa][i]Find and appoint unscrupulous followers at key positions and buy the loyalty and support of
+	greedy political figures. Once the network is in place, it is only a matter of time before the local governing
+	instances become mere puppets.[/i][/color]
 
-	Generates 0.2 Influence per billion population.
+	Adds 2 Influence Stake per billion population.
 >>
 
 TT_MORALE_EFFECT: Morale effect
