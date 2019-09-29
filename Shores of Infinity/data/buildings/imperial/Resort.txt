@@ -21,5 +21,6 @@ Building: Resort
 	RequireNotStatus(ArtificialPlanetoid)
 	RequireNotTrait(Ancient)
 
+	AddResource(Money, 1)
 	ReplacesCities(3)
 	AddStatus(Resort)
