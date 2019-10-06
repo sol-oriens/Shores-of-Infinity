@@ -123,7 +123,7 @@ class SettlementDisplay : DisplayBox {
 
 	GuiPanel@ upperPanel, middlePanel, civilActsPanel;
 	GuiSkinElement@ nameBox, moraleBox, typeBox, upperPanelBox, middlePanelBox, civilActBox;
-	GuiText@ name, morale, type, focus, civilActs;
+	GuiText@ name, morale, type, state, stateInfo, focus, civilActs;
 	GuiDropdown@ focusList;
 	GuiAccordion@ civilActList;
 	GuiSprite@ moraleIcon, typeIcon;
@@ -159,8 +159,11 @@ class SettlementDisplay : DisplayBox {
 		@type = GuiText(typeBox, Alignment(Left+72, Top, Right-8, Bottom));
 		type.font = FT_Medium;
 
-		@focus = GuiText(upperPanelBox, Alignment(Left+8, Top+72, Left+0.5f-4, Height=32), locale::FOCUS_INPUT);
-		@focusList = GuiDropdown(upperPanelBox, Alignment(Left+0.5f+4, Top+72, Right-4, Height=32));
+		@state = GuiText(upperPanelBox, Alignment(Left+8, Top+72, Left+0.5f-4, Height=32), locale::STATE_LABEL);
+		@stateInfo = GuiText(upperPanelBox, Alignment(Left+0.5f+4, Top+72, Right-4, Height=32));
+
+		@focus = GuiText(upperPanelBox, Alignment(Left+8, Top+104, Left+0.5f-4, Height=32), locale::FOCUS_LABEL);
+		@focusList = GuiDropdown(upperPanelBox, Alignment(Left+0.5f+4, Top+104, Right-4, Height=32));
 
 		@autoFocusButton = GuiButton(upperPanelBox, Alignment(Right-8-32, Bottom-32, Width=30, Height=30));
 		autoFocusButton.style = SS_IconToggle;
@@ -281,10 +284,15 @@ class SettlementDisplay : DisplayBox {
 	}
 
 	void updateVariables() {
+		stateInfo.text = locale::STATE_NORMAL;
+		stateInfo.color = 0xffffffff;
+
 		switch (obj.morale) {
 			case SM_Critical:
 				morale.text = locale::MORALE_CRITICAL;
 				moraleIcon.desc = getSprite("MaskAngry * #f00");
+				stateInfo.text = locale::STATE_CIVIL_UNREST;
+				stateInfo.color = 0xff0000ff;
 				break;
 			case SM_Low:
 				morale.text = locale::MORALE_LOW;

@@ -10,8 +10,8 @@ TT_MORALE: <<|
 	The current morale of this settlement. Morale is a combination of the population happiness and state of mind,
 	its support for the local government and criminality level.
 
-	When too low, civil unrest will ensue, which will cause revolts and civil wars, leading to the colony being
-	abandoned if not addressed quickly.
+	When too low, civil unrest will ensue, which will cause revolts and civil wars, leading to the colony losing
+	loyalty being and being abandoned if not addressed quickly.
 >>
 
 SETTLEMENT_COLONY: Colony
@@ -142,7 +142,11 @@ SETTLEMENT_MOTHERSHIP_DESC: <<|
 	This ship and its support ships fight at 100% increased effectiveness.
 >>
 
-FOCUS_INPUT: Focus:
+STATE_LABEL: State:
+STATE_NORMAL: Peaceful
+STATE_CIVIL_UNREST: Civil Unrest
+
+FOCUS_LABEL: Focus:
 
 FOCUS_BASIC: Colonial
 FOCUS_BASIC_DESC: <<
