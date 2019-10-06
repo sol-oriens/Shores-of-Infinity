@@ -331,9 +331,10 @@ tidy final class CivilAct : Savable {
 
 	void save(SaveFile& file) {
 		file.writeIdentifier(SI_CivilAct, type.id);
-		file << currentDelay;
-		file << currentDuration;
 		file << currentMaint;
+		file << currentDelay;
+		file << currentCommitment;
+		file << currentDuration;
 		for (uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
 			type.hooks[i].save(data[i], file);
 	}
@@ -342,6 +343,7 @@ tidy final class CivilAct : Savable {
 		@type = getCivilActType(file.readIdentifier(SI_CivilAct));
 		file >> currentMaint;
 		file >> currentDelay;
+		file >> currentCommitment;
 		file >> currentDuration;
 		data.length = type.hooks.length;
 		for (uint i = 0, cnt = type.hooks.length; i < cnt; ++i)

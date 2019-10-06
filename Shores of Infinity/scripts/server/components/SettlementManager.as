@@ -95,24 +95,28 @@ tidy class SettlementManager : Component_Settlement, Savable {
 	}
 
 	uint getCivilActTimerType(uint index) const {
-		auto@ civilAct = civilActs[index];
-		if (civilAct.currentDelay > 0)
-			return CAT_Delay;
-		if (civilAct.currentCommitment > 0)
-			return CAT_Commitment;
-		if (civilAct.currentDuration < INFINITY)
-			return CAT_Duration;
+		if (index < civilActs.length) {
+			auto@ civilAct = civilActs[index];
+			if (civilAct.currentDelay > 0)
+				return CAT_Delay;
+			if (civilAct.currentCommitment > 0)
+				return CAT_Commitment;
+			if (civilAct.currentDuration < INFINITY)
+				return CAT_Duration;
+		}
 		return CAT_None;
 	}
 
 	double getCivilActTimer(uint index) const {
-		auto@ civilAct = civilActs[index];
-		if (civilAct.currentDelay > 0)
-			return civilAct.currentDelay;
-		if (civilAct.currentCommitment > 0)
-			return civilAct.currentCommitment;
-		if (civilAct.currentDuration < INFINITY)
-			return civilAct.currentDuration;
+		if (index < civilActs.length) {
+			auto@ civilAct = civilActs[index];
+			if (civilAct.currentDelay > 0)
+				return civilAct.currentDelay;
+			if (civilAct.currentCommitment > 0)
+				return civilAct.currentCommitment;
+			if (civilAct.currentDuration < INFINITY)
+				return civilAct.currentDuration;
+		}
 		return 0.0;
 	}
 
