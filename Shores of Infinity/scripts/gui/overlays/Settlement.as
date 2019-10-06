@@ -297,6 +297,8 @@ class SettlementDisplay : DisplayBox {
 			case SM_Low:
 				morale.text = locale::MORALE_LOW;
 				moraleIcon.desc = Sprite(material::MaskAngry);
+				stateInfo.text = locale::STATE_CIVIL_UNREST;
+				stateInfo.color = 0xff0000ff;
 				break;
 			case SM_High:
 				morale.text = locale::MORALE_HIGH;

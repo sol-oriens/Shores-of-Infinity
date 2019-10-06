@@ -9,6 +9,7 @@ export CardNotification;
 export RenameNotification;
 export AnomalyNotification;
 export SiteNotification;
+export SettlementNotification;
 export FlagshipBuiltNotification;
 export StructureBuiltNotification;
 export EmpireMetNotification;
@@ -22,6 +23,7 @@ import saving;
 import util.formatting;
 import buildings;
 import sites;
+from settlements import SettlementEventType;
 import icons;
 
 enum NotifyType {
@@ -33,6 +35,7 @@ enum NotifyType {
 	NT_Renamed,
 	NT_Anomaly,
 	NT_Site,
+	NT_Settlement,
 	NT_FlagshipBuilt,
 	NT_StructureBuilt,
 	NT_Generic,
@@ -776,6 +779,70 @@ class SiteNotification : Notification {
 	}
 };
 // }}}
+// {{{ Site Notification
+class SettlementNotification : Notification {
+	uint eventType;
+	Object@ obj;
+
+	NotifyType get_type() const override {
+		return NT_Settlement;
+	}
+
+	Sprite get_icon() const override {
+		if(eventType == SET_Civil_Unrest)
+			return Sprite(material::Revolutionaries);
+		return Sprite(material::LoyaltyIcon);
+	}
+
+	string formatEvent() const override {
+		string name = "???";
+		Planet@ planet = cast<Planet>(obj);
+		if (planet !is null)
+			name = planet.name;
+		else {
+			Ship@ ship = cast<Ship>(obj);
+			if (ship !is null)
+				name = ship.name;
+		}
+
+		switch(eventType) {
+			case SET_Civil_Unrest:
+				return format(locale::SETTLEMENT_CIVIL_UNREST_NOTIFICATION, obj.name);
+		}
+		return "--";
+	}
+
+	Object@ get_relatedObject() const override {
+		return obj;
+	}
+
+	//Networking
+	void write(Message& msg) override {
+		Notification::write(msg);
+		msg << obj;
+		msg.writeSmall(eventType);
+	}
+
+	void read(Message& msg) override {
+		Notification::read(msg);
+		msg >> obj;
+		eventType = msg.readSmall();
+	}
+
+	//Saving and loading
+	void save(SaveFile& file) override {
+		Notification::save(file);
+		file << obj;
+		file << eventType;
+	}
+
+	void load(SaveFile& file) override {
+		Notification::load(file);
+		file >> obj;
+		file >> eventType;
+	}
+};
+// }}}
 // {{{ Generic Notification
 class GenericNotification : Notification {
 	Empire@ fromEmp;
@@ -1127,6 +1194,7 @@ Notification@ createNotification(uint type) {
 		case NT_Renamed: return RenameNotification();
 		case NT_Anomaly: return AnomalyNotification();
 		case NT_Site: return SiteNotification();
+		case NT_Settlement: return SettlementNotification();
 		case NT_FlagshipBuilt: return FlagshipBuiltNotification();
 		case NT_StructureBuilt: return StructureBuiltNotification();
 		case NT_MetEmpire: return EmpireMetNotification();

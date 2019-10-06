@@ -26,6 +26,10 @@ enum CivilActTimerType {
 	CAT_Duration,
 }
 
+enum SettlementEventType {
+	SET_Civil_Unrest,
+}
+
 abstract class MoraleEffect {
 	protected double _stat;
 	protected string _desc;

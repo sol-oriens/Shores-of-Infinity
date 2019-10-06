@@ -1194,6 +1194,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 	}
 
 	uint siegeMask = 0;
+	double moraleUpdateTimer = 6.0;
 	void updateLoyalty(Object& obj, double time) {
 		Region@ reg = obj.region;
 		if(obj.owner is null || !obj.owner.valid || reg is null) {
@@ -1350,20 +1351,28 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 
 		//Change loyalty due to morale
 		if (civilUnrest) {
-			double lossThreshold = 0.8;
-			if (obj.morale + obj.owner.GlobalMorale.value == SM_Critical)
-				lossThreshold = 0.6;
-			double roll = randomd(0.1 - containCivilUnrest, 1.0);
-			if (roll >= lossThreshold) {
-				LoyaltyPenalty++;
-				if (!contested && LoyaltyPenalty >= BaseLoyalty + obj.owner.GlobalLoyalty.value) {
-					LoyaltyPenalty = 0;
-					obj.forceAbandon();
+			moraleUpdateTimer -= time;
+			if (moraleUpdateTimer <= 0) {
+				moraleUpdateTimer = 6.0;
+				double lossThreshold = 0.8;
+				if (obj.morale + obj.owner.GlobalMorale.value == SM_Critical)
+					lossThreshold = 0.6;
+				double roll = randomd(0.1 - containCivilUnrest, 1.0);
+				if (roll >= lossThreshold) {
+					LoyaltyPenalty++;
+					if (!contested && LoyaltyPenalty >= BaseLoyalty + obj.owner.GlobalLoyalty.value) {
+						LoyaltyPenalty = 0;
+						owner.notifyWarEvent(obj, WET_LostPlanet);
+						obj.forceAbandon();
+					}
 				}
 			}
 		}
-		else if (LoyaltyPenalty > 0) {
-			LoyaltyPenalty--;
+		else {
+			if (LoyaltyPenalty > 0)
+				LoyaltyPenalty--;
+			if (moraleUpdateTimer <= 6.0)
+				moraleUpdateTimer = 6.0;
 		}
 	}
 

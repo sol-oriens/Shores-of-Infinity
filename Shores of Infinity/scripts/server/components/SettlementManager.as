@@ -14,6 +14,8 @@ tidy class SettlementManager : Component_Settlement, Savable {
 	private uint _focusId;
 	private bool _autoFocus;
 
+	private bool _notifiedCivilUnrest = false;
+
 	bool get_isSettlement() const {
 		if (obj is null)
 			return false;
@@ -193,6 +195,7 @@ tidy class SettlementManager : Component_Settlement, Savable {
 		setFocus(foci[0].id);
 		_autoFocus = true;
 		_isActive = true;
+		_notifiedCivilUnrest = false;
 	}
 
 	void clearSettlement(Object& obj, Empire@ emp) {
@@ -212,6 +215,13 @@ tidy class SettlementManager : Component_Settlement, Savable {
 
 	void settlementTick(Object& obj, double time) {
 		if (_isActive) {
+			if (morale <= SM_Low && !_notifiedCivilUnrest) {
+				notifySettlement(obj, obj.owner, SET_Civil_Unrest);
+				_notifiedCivilUnrest = true;
+			}
+			else if (morale > SM_Low && _notifiedCivilUnrest)
+				_notifiedCivilUnrest = false;
+
 			if (!settlementType.type.canEnable(obj))
 				settlementType.disable(obj);
 			SettlementType@ settlement = getSettlement(obj);
@@ -268,6 +278,10 @@ tidy class SettlementManager : Component_Settlement, Savable {
 		}
 	}
 
+	void notifySettlement(Object@ owner, Empire@ emp, uint eventType) {
+		emp.notifySettlement(owner, eventType);
+	}
+
 	void save(SaveFile& file) {
 		file << _isActive;
 		if (_isActive) {
@@ -280,6 +294,7 @@ tidy class SettlementManager : Component_Settlement, Savable {
 			file << cnt;
 			for(uint i = 0; i < cnt; ++i)
 				file << civilActs[i];
+			file << _notifiedCivilUnrest;
 
 			file << obj;
 		}
@@ -302,6 +317,7 @@ tidy class SettlementManager : Component_Settlement, Savable {
 				@civilActs[i] = CivilAct();
 				file >> civilActs[i];
 			}
+			file >> _notifiedCivilUnrest;
 
 			@obj = file.readObject();
 		}

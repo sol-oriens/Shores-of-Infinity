@@ -1,5 +1,7 @@
 SETTLEMENT: Settlement
 
+SETTLEMENT_CIVIL_UNREST_NOTIFICATION: Civil unrest reported at $1.
+
 MORALE: Morale
 MORALE_CRITICAL: Critical
 MORALE_LOW: Low

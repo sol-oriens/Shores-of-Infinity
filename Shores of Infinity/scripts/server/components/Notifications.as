@@ -119,6 +119,13 @@ tidy class Notifications : Component_Notifications, Savable, NotificationStore {
 		addNotification(emp, n);
 	}
 
+	void notifySettlement(Empire& emp, Object@ obj, uint eventType) {
+		SettlementNotification n;
+		n.eventType = eventType;
+		@n.obj = obj;
+		addNotification(emp, n);
+	}
+
 	void notifyFlagship(Empire& emp, Object@ obj) {
 		FlagshipBuiltNotification n;
 		@n.obj = obj;
