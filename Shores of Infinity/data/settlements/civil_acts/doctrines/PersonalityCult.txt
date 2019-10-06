@@ -9,6 +9,7 @@ CivilAct: PersonalityCult
 	Maintenance: 5
 	Population Multiplier: True
 
+	Delay: 30
 	Commitment: 1800
 
 	RequireNotTrait(Ancient)

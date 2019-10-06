@@ -7,7 +7,7 @@ tidy class SettlementManager : Component_Settlement, Savable {
 	Object@ obj;
 	Settlement@ settlementType;
 	SettlementFocus@ focus;
-	array<CivilAct@> civilActs;
+	CivilAct@[] civilActs;
 	private bool _isActive = false;
 	private double _morale;
 	private uint _focusId;
@@ -91,6 +91,28 @@ tidy class SettlementManager : Component_Settlement, Savable {
 		return civilActs[index].type.id;
 	}
 
+	uint getCivilActTimerType(uint index) const {
+		auto@ civilAct = civilActs[index];
+		if (civilAct.currentDelay > 0)
+			return CAT_Delay;
+		if (civilAct.currentCommitment > 0)
+			return CAT_Commitment;
+		if (civilAct.currentDuration < INFINITY)
+			return CAT_Duration;
+		return CAT_None;
+	}
+
+	double getCivilActTimer(uint index) const {
+		auto@ civilAct = civilActs[index];
+		if (civilAct.currentDelay > 0)
+			return civilAct.currentDelay;
+		if (civilAct.currentCommitment > 0)
+			return civilAct.currentCommitment;
+		if (civilAct.currentDuration < INFINITY)
+			return civilAct.currentDuration;
+		return 0.0;
+	}
+
 	uint get_civilActCount() const {
 		return civilActs.length;
 	}
@@ -99,7 +121,6 @@ tidy class SettlementManager : Component_Settlement, Savable {
 		const CivilActType@ type = getCivilActType(id);
 		if(type !is null) {
 			CivilAct civilAct(type);
-			civilAct.enable(obj);
 			if (civilAct.type.moraleEffect.stat != 0)
 				modMorale(civilAct.type.moraleEffect.stat);
 			if (civilAct.type.maintainCost != 0) {
@@ -108,10 +129,13 @@ tidy class SettlementManager : Component_Settlement, Savable {
 				civilAct.currentMaint = maint;
 			}
 			civilAct.currentDelay = civilAct.type.delay;
-			civilAct.currentCommitment = civilAct.type.commitment;
+			civilAct.currentCommitment = max(0.0, civilAct.type.commitment - civilAct.type.delay);
+
+			if (civilAct.currentDelay == 0.0)
+				//Delayed civil acts are not enabled yet
+				civilAct.enable(obj);
 
 			civilActs.insertLast(civilAct);
-			civilActs.sortAsc(); //Optimize lookups on type id which will always occur incrementally
 		}
 	}
 
@@ -125,8 +149,13 @@ tidy class SettlementManager : Component_Settlement, Savable {
 		}
 	}
 
-	void removeCivilAct(CivilAct& civilAct, Empire@ emp) {
-		civilAct.disable(obj);
+	void removeCivilAct(CivilAct& civilAct, Empire@ emp, bool force = false) {
+		if (civilAct.currentDelay == 0.0) {
+			if (civilAct.currentCommitment > 0 && !force)
+				return;
+			//Delayed civil acts are not enabled yet
+			civilAct.disable(obj);
+		}
 		if (civilAct.type.moraleEffect.stat != 0)
 			modMorale(-civilAct.type.moraleEffect.stat);
 		if (civilAct.type.maintainCost != 0)
@@ -135,7 +164,7 @@ tidy class SettlementManager : Component_Settlement, Savable {
 		civilActs.remove(civilAct);
 	}
 
-	void refreshMaintainCost(CivilAct@ civilAct) {
+	void refreshMaintainCost(CivilAct& civilAct) {
 		if (civilAct.type.maintainCost != 0) {
 			int newMaint = civilAct.type.getMaintainCost(obj);
 			if (newMaint != civilAct.currentMaint) {
@@ -171,7 +200,7 @@ tidy class SettlementManager : Component_Settlement, Savable {
 			focus.disable(obj);
 			@focus = null;
 			for (uint i = 0, cnt = civilActs.length; i < cnt; ++i) {
-				removeCivilAct(civilActs[i], emp);
+				removeCivilAct(civilActs[i], emp, force = true);
 				--i; --cnt;
 			}
 			_isActive = false;
@@ -207,15 +236,29 @@ tidy class SettlementManager : Component_Settlement, Savable {
 			for(uint i = 0, cnt = civilActs.length; i < cnt; ++i) {
 				auto@ civilAct = civilActs[i];
 				if(!civilAct.type.canEnable(obj)) {
-					removeCivilAct(civilAct, obj.owner);
+					removeCivilAct(civilAct, obj.owner, force = true);
 					--i; --cnt;
+					continue;
 				}
 				else {
 					refreshMaintainCost(civilAct);
-					if (civilAct.currentDelay > 0)
+					if (civilAct.currentDelay > 0) {
 						civilAct.currentDelay = max(0.0, civilAct.currentDelay - time);
+						if (civilAct.currentDelay == 0.0)
+							//Enable civil acts with expired delay
+							civilAct.enable(obj);
+						else continue;
+					}
 					if (civilAct.currentCommitment > 0)
-						civilAct.currentCommitment = max(0.0, civilAct.currentDuration - time);
+						civilAct.currentCommitment = max(0.0, civilAct.currentCommitment - time);
+					if (civilAct.currentDuration < INFINITY) {
+						civilAct.currentDuration = max(0.0, civilAct.currentDuration - time);
+						if (civilAct.currentDuration <= 0) {
+							removeCivilAct(civilAct, obj.owner);
+							--i; --cnt;
+							continue;
+						}
+					}
 					civilAct.tick(obj, time);
 				}
 			}

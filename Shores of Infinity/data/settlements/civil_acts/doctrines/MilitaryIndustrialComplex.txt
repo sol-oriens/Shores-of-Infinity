@@ -7,6 +7,7 @@ CivilAct: MilitaryIndustrialComplex
 	Maintenance: 30
 	Population Multiplier: True
 
+	Delay: 30
 	Commitment: 1800
 
 	settlement_effects::AddSettlementResource(0.25, Defense)

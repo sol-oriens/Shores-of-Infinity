@@ -39,7 +39,7 @@ class SettlementOverlay : GuiOverlay, SettlementParent {
 	}
 
 	bool onGuiEvent(const GuiEvent& evt) override {
-		switch(evt.type) {
+		switch (evt.type) {
 			case GUI_Confirmed:
 				triggerUpdate();
 			break;
@@ -77,7 +77,7 @@ class DisplayBox : BaseGuiElement {
 	}
 
 	bool onGuiEvent(const GuiEvent& evt) override {
-		switch(evt.type) {
+		switch (evt.type) {
 			case GUI_Animation_Complete:
 				@alignment = targetAlign;
 				return true;
@@ -87,15 +87,15 @@ class DisplayBox : BaseGuiElement {
 
 	bool pressed = false;
 	bool onMouseEvent(const MouseEvent& evt, IGuiElement@ source) override {
-		switch(evt.type) {
+		switch (evt.type) {
 			case MET_Button_Down:
-				if(evt.button == 0) {
+				if (evt.button == 0) {
 					pressed = true;
 					return true;
 				}
 				break;
 			case MET_Button_Up:
-				if(evt.button == 0 && pressed) {
+				if (evt.button == 0 && pressed) {
 					pressed = false;
 					return true;
 				}
@@ -130,6 +130,9 @@ class SettlementDisplay : DisplayBox {
 
 	GuiButton@ autoFocusButton;
 	GuiButton@ cancelCivilActsButton;
+
+	array<CivilActElement@> activeCivilActs;
+	array<CivilActElement@> civilActTimers;
 
 	SettlementDisplay(SettlementParent@ ov, vec2i origin, Alignment@ target) {
 		super(ov, origin, target);
@@ -195,8 +198,8 @@ class SettlementDisplay : DisplayBox {
 
 	void updateAbsolutePosition() {
 		DisplayBox::updateAbsolutePosition();
-		if(civilActList !is null) {
-			if(civilActsPanel.vert.visible)
+		if (civilActList !is null) {
+			if (civilActsPanel.vert.visible)
 				civilActList.size = vec2i(civilActsPanel.size.width - 20, civilActList.size.height);
 			else
 				civilActList.size = vec2i(civilActsPanel.size.width, civilActList.size.height);
@@ -204,9 +207,9 @@ class SettlementDisplay : DisplayBox {
 	}
 
 	bool onGuiEvent(const GuiEvent& evt) override {
-		switch(evt.type) {
+		switch (evt.type) {
 			case GUI_Changed:
-				if(evt.caller is focusList) {
+				if (evt.caller is focusList) {
 					auto@ focusElement = cast<FocusElement>(focusList.getItemElement(focusList.selected));
 					if (focusElement !is null && focusElement.focus.id != obj.focusId) {
 						obj.setFocus(focusElement.focus.id);
@@ -225,11 +228,11 @@ class SettlementDisplay : DisplayBox {
 					return true;
 				}
 				if (evt.caller is cancelCivilActsButton) {
-					for(uint i = 0, cnt = obj.civilActCount; i < cnt; ++i) {
-						uint id = obj.getCivilActTypeId(i);
+					for (int i = obj.civilActCount - 1; i >= 0; --i) {
+						//Iterating in reverse as some items may not be removed and index may or may not change
+						uint id = obj.getCivilActTypeId(uint(i));
 						const CivilActType@ civilAct = getCivilActType(id);
 						obj.removeCivilAct(civilAct.id);
-						--i; --cnt;
 					}
 					updateCivilActList();
 					updateVariables();
@@ -245,9 +248,12 @@ class SettlementDisplay : DisplayBox {
 	void update(double time) override {
 		updateTimer -= time;
 		longTimer -= time;
-		if(updateTimer <= 0) {
-			updateTimer = randomd(0.1,0.9);
-			if(longTimer <= 0) {
+		if (updateTimer <= 0) {
+			updateTimer = randomd(0.1, 0.9);
+
+			updateCivilActTimers();
+
+			if (longTimer <= 0) {
 				if (obj.owner is playerEmpire) {
 					updateVariables();
 					updateAutoFocus();
@@ -336,23 +342,21 @@ class SettlementDisplay : DisplayBox {
 	}
 
 	void updateCivilActList(bool expandAll = false) {
-		civilActList.clearSections();
-
 		array<GuiListbox@> cats;
 		array<string> catNames;
 		array<CivilActType@> civilActs = getAvailableCivilActs(obj);
-		for(uint i = 0, cnt = civilActs.length; i < cnt; ++i) {
+		for (uint i = 0, cnt = civilActs.length; i < cnt; ++i) {
 			auto@ civilAct = civilActs[i];
 
 			GuiListbox@ list;
-			for(uint n = 0, ncnt = cats.length; n < ncnt; ++n) {
-				if(catNames[n] == civilAct.category) {
+			for (uint n = 0, ncnt = cats.length; n < ncnt; ++n) {
+				if (catNames[n] == civilAct.category) {
 					@list = cats[n];
 					break;
 				}
 			}
 
-			if(list is null) {
+			if (list is null) {
 				@list = GuiListbox(this, recti(0, 0, 100, 20));
 				list.style = SS_NULL;
 				list.itemHeight = 30;
@@ -368,11 +372,14 @@ class SettlementDisplay : DisplayBox {
 				cats.insertLast(list);
 			}
 
-			list.addItem(CivilActElement(this, civilAct, obj));
+			list.addItem(CivilActElement(this, list, civilAct, obj));
 		}
 
-		uint[] foundIds;
-		for(uint i = 0, cnt = cats.length; i < cnt; ++i) {
+		civilActList.clearSections();
+		activeCivilActs.length = 0;
+		civilActTimers.length = 0;
+
+		for (uint i = 0, cnt = cats.length; i < cnt; ++i) {
 			auto@ list = cats[i];
 			list.sortAsc();
 
@@ -389,23 +396,62 @@ class SettlementDisplay : DisplayBox {
 			}
 			list.updateHover();
 
-			for(uint j = 0, jcnt = obj.civilActCount; j < jcnt; ++j) {
-				uint id = obj.getCivilActTypeId(j);
-				if (foundIds.find(id) != -1)
-					continue;
-				for(uint k = 0, kcnt = list.itemCount; k < kcnt; ++k) {
-					auto@ ele = cast<CivilActElement>(list.getItemElement(k));
-					if (ele.civilAct.id == id) {
-						list.SelectedItems[k] = true;
-						ele.selected = true;
-						foundIds.insertLast(id);
-						break;
-					}
-				}
+			for (uint j = 0, jcnt = list.itemCount; j < jcnt; ++j) {
+				auto@ ele = cast<CivilActElement>(list.getItemElement(j));
+				ele.listIndex = j;
+				updateCivilActElement(ele, selectActive = true);
 			}
 		}
 
 		gui_root.updateHover();
+	}
+
+	void activateCivilAct(CivilActElement& ele) {
+		obj.addCivilAct(ele.civilAct.id);
+		updateCivilActElement(ele);
+	}
+
+	void deactivateCivilAct(CivilActElement& ele) {
+		obj.removeCivilAct(ele.civilAct.id);
+		activeCivilActs.remove(ele);
+		civilActTimers.remove(ele);
+		ele.active = false;
+		ele.update();
+		updateActiveCivilActs();
+	}
+
+	void updateActiveCivilActs() {
+		for (uint i = 0, cnt = activeCivilActs.length; i < cnt; ++i) {
+			auto@ ele = activeCivilActs[i];
+			updateCivilActElement(ele, partial = true);
+		}
+	}
+
+	void updateCivilActTimers() {
+		for (uint i = 0, cnt = civilActTimers.length; i < cnt; ++i) {
+			auto@ ele = civilActTimers[i];
+			ele.update();
+		}
+	}
+
+	void updateCivilActElement(CivilActElement& ele, bool partial = false, bool selectActive = false) {
+		for (uint i = 0, cnt = obj.civilActCount; i < cnt; ++i) {
+			uint id = obj.getCivilActTypeId(i);
+			if (ele.civilAct.id == id) {
+				ele.civilActIndex = i;
+				ele.active = true;
+				if (selectActive)
+					ele.list.SelectedItems[ele.listIndex] = true;
+				if (!partial) {
+					activeCivilActs.insertLast(ele);
+					ele.timerType = obj.getCivilActTimerType(ele.civilActIndex);
+					if (ele.timerType != CAT_None)
+						civilActTimers.insertLast(ele);
+				}
+				break;
+			}
+		}
+		ele.update();
 	}
 };
 
@@ -428,22 +474,31 @@ class FocusElement : GuiListText {
 
 class CivilActElement : GuiListText {
 	SettlementDisplay@ parent;
+	GuiListbox@ list;
 	const CivilActType@ civilAct;
 	Object@ obj;
 	Color nameColor = colors::White;
 	string costText;
 	string maintainText;
 	string ttText;
+	string timeText;
 
-	bool selected = false;
+	bool active = false;
+	uint timerType = CAT_None;
+	double timer = 0.0;
 
-	CivilActElement(SettlementDisplay@ disp, CivilActType@ civilAct, Object@ obj) {
+	uint civilActIndex;
+	uint listIndex;
+
+	CivilActElement(SettlementDisplay@ disp, GuiListbox@ list, const CivilActType& civilAct, Object@ obj) {
 		super(civilAct.name);
 		@this.parent = disp;
+		@this.list = list;
 		@this.civilAct = civilAct;
 		@this.obj = obj;
 		costText = formatMoney(0);
 		maintainText = formatMoney(civilAct.getMaintainCost(obj));
+		timeText;
 		ttText = civilAct.formatTooltip();
 	}
 
@@ -453,9 +508,9 @@ class CivilActElement : GuiListText {
 
 	int opCmp(const GuiListElement@ other) const override {
 		const auto@ element = cast<CivilActElement>(other);
-		if(text < element.text)
+		if (text < element.text)
 			return -1;
-		if(text > element.text)
+		if (text > element.text)
 			return 1;
 		return 0;
 	}
@@ -468,9 +523,8 @@ class CivilActElement : GuiListText {
 
 		int x = pos.width - 2;
 
-		//Name
-		font.draw(pos=pos.padded(4, 0, 0, 0), vertAlign=0.5, text=text, ellipsis=locale::ELLIPSIS, color=nameColor);
-		if(maintainText.length != 0) {
+		//Cost
+		if (maintainText.length != 0) {
 			x -= 135;
 			icons::Money.draw(recti_area(vec2i(x, 3)+pos.topLeft, vec2i(24, 24)));
 			font.draw(pos=recti_area(vec2i(x+28, 0)+pos.topLeft, vec2i(92, 30)),
@@ -483,25 +537,63 @@ class CivilActElement : GuiListText {
 					horizAlign=1.0, vertAlign=0.5,
 					text=maintainText, ellipsis=locale::ELLIPSIS, color=colors::White);
 		}
+
+		//Time
+		if (timeText.length != 0) {
+			//Figure out color
+			Color color = colors::White;
+			switch (timerType) {
+				case CAT_Delay:
+					color=colors::Orange;
+					break;
+				case CAT_Commitment:
+					color=colors::Red;
+					break;
+			}
+
+			x -= 135;
+			font.draw(pos=recti_area(vec2i(x+28, 0)+pos.topLeft, vec2i(92, 30)),
+					horizAlign=1.0, vertAlign=0.5,
+					text=timeText, ellipsis=locale::ELLIPSIS, color=color);
+		}
+
+		//Name
+		font.draw(pos=pos.padded(4, 0, 0, 0), vertAlign=0.5, text=text, ellipsis=locale::ELLIPSIS, color=nameColor);
 	}
 
 	bool onMouseEvent(const MouseEvent& event) override {
-		switch(event.type) {
+		switch (event.type) {
 			case MET_Button_Up:
-				if(event.button == 0) {
-					if (selected == false) {
-						obj.addCivilAct(civilAct.id);
-						selected = true;
+				if (event.button == 0) {
+					if (!active) {
+						parent.activateCivilAct(this);
 					}
 					else {
-						obj.removeCivilAct(civilAct.id);
-						selected = false;
+						if (timerType == CAT_Commitment)
+							//Ignore click and do not allow unselection for civil acts under commitment
+							return true;
+						else {
+							parent.deactivateCivilAct(this);
+						}
 					}
 					parent.updateVariables();
 					GuiListText::onMouseEvent(event);
 				}
-			break;
+				break;
 		}
 		return false;
+	}
+
+	void update() {
+		if (!active) {
+			timerType = CAT_None;
+			timer = 0.0;
+			timeText = formatTime(civilAct.commitment);
+		}
+		else {
+			timerType = obj.getCivilActTimerType(civilActIndex);
+			timer = obj.getCivilActTimer(civilActIndex);
+			timeText = formatTime(timer);
+		}
 	}
 };

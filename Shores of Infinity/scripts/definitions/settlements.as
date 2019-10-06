@@ -19,6 +19,13 @@ enum SettlementMorale {
 	SM_High,
 };
 
+enum CivilActTimerType {
+	CAT_None,
+	CAT_Delay,
+	CAT_Commitment,
+	CAT_Duration,
+}
+
 abstract class MoraleEffect {
 	protected double _stat;
 	protected string _desc;
@@ -110,7 +117,7 @@ tidy final class SettlementType : MoraleModifier {
 		return true;
 	}
 
-	int opCmp(const SettlementType@ other) const {
+	int opCmp(const SettlementType& other) const {
 		if (priority < other.priority)
 			return -1;
 		if (priority > other.priority)
@@ -142,7 +149,7 @@ tidy final class SettlementFocusType : MoraleModifier {
 		return true;
 	}
 
-	int opCmp(const SettlementFocusType@ other) const {
+	int opCmp(const SettlementFocusType& other) const {
 		if (priority < other.priority)
 			return -1;
 		if (priority > other.priority)
@@ -163,10 +170,14 @@ tidy final class CivilActType : MoraleModifier {
 	array<Hook@> ai;
 
 	string formatTooltip() const {
-		string desc = moraleEffect.desc;
-		toLowercase(desc);
+		string moraleDesc = moraleEffect.desc;
+		toLowercase(moraleDesc);
 		string tt = format("[font=Medium]$1[/font]\n$2[nl/]\n$3: [b]$4[/b] [img=$5;16/]",
-			name, description, locale::TT_MORALE_EFFECT, desc, getSpriteDesc(moraleEffect.icon));
+			name, description, locale::TT_MORALE_EFFECT, moraleDesc, getSpriteDesc(moraleEffect.icon));
+		if (delay > 0)
+			tt += format("[nl/]$1 [color=$3]$2[/color].", locale::TT_DELAY, formatTime(delay), toString(colors::Orange));
+		if (commitment > 0)
+			tt += format("[nl/]$1 [color=$3]$2[/color].", locale::TT_COMMITMENT, formatTime(commitment), toString(colors::Red));
 		return tt;
 	}
 
@@ -208,7 +219,7 @@ tidy final class Settlement : Savable {
 	Settlement() {
 	}
 
-	Settlement(const SettlementType@ type) {
+	Settlement(const SettlementType& type) {
 		@this.type = type;
 		data.length = type.hooks.length;
 	}
@@ -249,7 +260,7 @@ tidy final class SettlementFocus : Savable {
 	SettlementFocus() {
 	}
 
-	SettlementFocus(const SettlementFocusType@ type) {
+	SettlementFocus(const SettlementFocusType& type) {
 		@this.type = type;
 		data.length = type.hooks.length;
 	}
@@ -294,7 +305,7 @@ tidy final class CivilAct : Savable {
 	CivilAct() {
 	}
 
-	CivilAct(const CivilActType@ type) {
+	CivilAct(const CivilActType& type) {
 		@this.type = type;
 		data.length = type.hooks.length;
 	}
@@ -312,14 +323,6 @@ tidy final class CivilAct : Savable {
 	void tick(Object& obj, double time) {
 		for (uint i = 0, cnt = type.hooks.length; i < cnt; ++i)
 			type.hooks[i].tick(obj, data[i], time);
-	}
-
-	int opCmp(const CivilAct@ other) const {
-		if (type.id < other.type.id)
-			return -1;
-		if (type.id > other.type.id)
-			return 1;
-		return 0;
 	}
 
 	void save(SaveFile& file) {
@@ -530,14 +533,14 @@ void loadCivilActs(const string& filename) {
 		else if (key.equals_nocase("Maintenance")) {
 			type.maintainCost = toInt(value);
 		}
+		else if (key.equals_nocase("Population Multiplier")) {
+			type.popMult = toBool(value);
+		}
 		else if (key.equals_nocase("Delay")) {
 			type.delay = toDouble(value);
 		}
 		else if (key.equals_nocase("Commitment")) {
 			type.commitment = toDouble(value);
-		}
-		else if (key.equals_nocase("Population Multiplier")) {
-			type.popMult = toBool(value);
 		}
 		else {
 			string line = file.line;
@@ -600,7 +603,7 @@ SettlementFocusType@[] foci;
 CivilActType@[] civilActs;
 dictionary settlementIdents, focusIdents, civilActIdents;
 
-double getSettlementPopulation(Object@ obj) {
+double getSettlementPopulation(Object& obj) {
 	double pop = 0.0;
 	if (obj.hasSurfaceComponent)
 		pop = obj.population;
@@ -669,19 +672,19 @@ const CivilActType@ getCivilActType(uint id) {
 	return null;
 }
 
-void addSettlementType(SettlementType@ settlement) {
+void addSettlementType(SettlementType& settlement) {
 	settlement.id = settlements.length;
 	settlements.insertLast(settlement);
 	settlementIdents.set(settlement.ident, @settlement);
 }
 
-void addSettlementFocusType(SettlementFocusType@ focus) {
+void addSettlementFocusType(SettlementFocusType& focus) {
 	focus.id = foci.length;
 	foci.insertLast(focus);
 	focusIdents.set(focus.ident, @focus);
 }
 
-void addCivilActType(CivilActType@ civilAct) {
+void addCivilActType(CivilActType& civilAct) {
 	civilAct.id = civilActs.length;
 	civilActs.insertLast(civilAct);
 	civilActIdents.set(civilAct.ident, @civilAct);

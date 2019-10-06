@@ -9,6 +9,7 @@ CivilAct: RampantCorruption
 	Maintenance: 100
 	Population Multiplier: True
 
+	Delay: 30
 	Commitment: 1800
 
 	RequireNotTrait(Ancient)

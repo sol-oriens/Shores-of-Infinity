@@ -8,6 +8,8 @@ restricted local:
 	bool get_autoFocus() const;
 	void set_autoFocus(bool value);
 	uint getCivilActTypeId(uint index) const;
+	uint getCivilActTimerType(uint index) const;
+	double getCivilActTimer(uint index) const;
 	uint get_civilActCount() const;
 	void addCivilAct(uint id);
 	void removeCivilAct(uint id);
