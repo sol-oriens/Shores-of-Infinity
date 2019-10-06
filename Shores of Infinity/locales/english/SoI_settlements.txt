@@ -6,6 +6,14 @@ MORALE_LOW: Low
 MORALE_MEDIUM: Medium
 MORALE_HIGH: High
 
+TT_MORALE: <<|
+	The current morale of this settlement. Morale is a combination of the population happiness and state of mind,
+	its support for the local government and criminality level.
+
+	When too low, civil unrest will ensue, which will cause revolts and civil wars, leading to the colony being
+	abandoned if not addressed quickly.
+>>
+
 SETTLEMENT_COLONY: Colony
 SETTLEMENT_COLONY_DESC: <<|
 	[color=#aaa][i]A basic settlement, just enough to sustain a small community.[/i][/color]
@@ -232,7 +240,11 @@ FOCUS_LABOR_EXTREME_DESC: <<
 	Generates 0.75 Labor/minute per billion population.
 >>
 
-TT_AUTO_FOCUS: Automatically manage focus
+TT_AUTO_FOCUS: <<
+	[b]Automatically manage focus[/b]
+
+	When active, the most relevant of possible foci for this settlement will automatically be selected.
+>>
 
 CIVIL_ACTS: Civil Acts
 
@@ -254,7 +266,7 @@ CIVIL_ACT_CIVIL_WORKS_DESC: <<|
 >>
 
 CIVIL_ACT_CRIME_CONTROL: Crime Control
-CIVIL_ACT_CRIME_CONTROL_DESC: <<
+CIVIL_ACT_CRIME_CONTROL_DESC: <<|
 	[color=#aaa][i]Focus law enforcement forces on chasing and stopping criminal elements, resulting in a safer
 	and happier population.[/i][/color]
 
@@ -270,7 +282,7 @@ CIVIL_ACT_POP_GROWTH_DESC: <<|
 >>
 
 CIVIL_ACT_WORK_ETHIC: Work Ethic
-CIVIL_ACT_WORK_ETHIC_DESC: <<
+CIVIL_ACT_WORK_ETHIC_DESC: <<|
 	[color=#aaa][i]Provide result-based monetary incentives for workers and ultra-restrictive quality controls to
 	strive for high quality production.[/i][/color]
 
@@ -310,7 +322,7 @@ CIVIL_ACT_WAR_ECONOMY_DESC: <<|
 >>
 
 CIVIL_ACT_KNOWLEDGE_PURSUIT: Pursuit of Knowledge
-CIVIL_ACT_KNOWLEDGE_PURSUIT_DESC: <<
+CIVIL_ACT_KNOWLEDGE_PURSUIT_DESC: <<|
 	[color=#aaa][i]Promote scientific activities in all layers of society, resulting in a higher interest in research
 	occupations.[/i][/color]
 
@@ -348,10 +360,16 @@ CIVIL_ACT_RAMPANT_CORRUPTION: Rampant Corruption
 CIVIL_ACT_RAMPANT_CORRUPTION_DESC: <<|
 	[color=#aaa][i]Find and appoint unscrupulous followers at key positions and buy the loyalty and support of
 	greedy political figures. Once the network is in place, it is only a matter of time before the local governing
-	instances become mere puppets.[/i][/color]
+	instances become mere puppets to us.[/i][/color]
 
 	Adds 2 Influence Stake per billion population.
 >>
 
 TT_MORALE_EFFECT: Morale effect
-TT_CANCEL_CIVIL_ACTS: Revoke all Civil Acts
+TT_DELAY: Takes effect after
+TT_COMMITMENT: Cannot be revoked for
+TT_CANCEL_CIVIL_ACTS: <<
+	[b]Revoke all Civil Acts[/b]
+
+	Revoke all active civil acts on this settlement. Civil acts that cannot currently be revoked will remain active.
+>>

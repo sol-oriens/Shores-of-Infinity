@@ -147,6 +147,7 @@ class SettlementDisplay : DisplayBox {
 		@moraleIcon = GuiSprite(moraleBox, Alignment(Left+8, Top+5, Width=24, Height=24));
 		@morale = GuiText(moraleBox, Alignment(Left+40, Top, Right-8, Bottom));
 		morale.font = FT_Medium;
+		setMarkupTooltip(moraleBox, locale::TT_MORALE, width=400);
 
 		//Upper panel
 		@upperPanelBox = GuiSkinElement(this, Alignment(Left+8, Top+50, Right-8, Top+250), SS_DesignOverviewBG);
@@ -305,7 +306,7 @@ class SettlementDisplay : DisplayBox {
 			type.text = settlement.name;
 			typeIcon.desc = settlement.icon;
 
-			MarkupTooltip tt(settlement.formatTooltip(),400, 0.f, true, true);
+			MarkupTooltip tt(settlement.formatTooltip(), 400, 0.f, true, true);
 			tt.Padding = 4;
 			@typeBox.tooltipObject = tt;
 		}
