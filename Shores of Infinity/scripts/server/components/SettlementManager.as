@@ -4,10 +4,11 @@ from statuses import getStatusID;
 from resources import MoneyType;
 
 tidy class SettlementManager : Component_Settlement, Savable {
+	Mutex mtx;
 	Object@ obj;
 	Settlement@ settlementType;
 	SettlementFocus@ focus;
-	CivilAct@[] civilActs;
+	array<CivilAct@> civilActs;
 	private bool _isActive = false;
 	private double _morale;
 	private uint _focusId;
@@ -140,6 +141,7 @@ tidy class SettlementManager : Component_Settlement, Savable {
 	}
 
 	void removeCivilAct(uint id) {
+		Lock lck(mtx);
 		for(uint i = 0, cnt = civilActs.length; i < cnt; ++i) {
 			auto@ civilAct = civilActs[i];
 			if (civilAct.type.id == id) {
@@ -194,6 +196,7 @@ tidy class SettlementManager : Component_Settlement, Savable {
 	}
 
 	void clearSettlement(Object& obj, Empire@ emp) {
+		Lock lck(mtx);
 		if (obj is this.obj) {
 			settlementType.disable(obj);
 			@settlementType = null;
