@@ -1,6 +1,9 @@
 import settlements;
 
+from attributes import getEmpAttribute;
 from resources import MoneyType;
+
+int ignoreMoraleModifiersAttribute = -1;
 
 tidy class SettlementManager : Component_Settlement {
 	Mutex mtx;
@@ -12,6 +15,10 @@ tidy class SettlementManager : Component_Settlement {
 	private double _morale;
 	private uint _focusId;
 	private bool _autoFocus;
+
+	SettlementManager() {
+		ignoreMoraleModifiersAttribute = getEmpAttribute("IgnoreMoraleModifiers", create = false);
+	}
 
 	bool get_isSettlement() const {
 		if (obj is null)
@@ -35,6 +42,9 @@ tidy class SettlementManager : Component_Settlement {
 	}
 
 	void modMorale(double value) {
+		//PREDICTIVE
+		if (obj.owner.getAttribute(ignoreMoraleModifiersAttribute) == 1)
+			return;
 		_morale += value;
 	}
 

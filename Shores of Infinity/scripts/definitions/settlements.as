@@ -4,7 +4,6 @@ import hooks;
 import util.formatting;
 
 from statuses import getStatusID;
-from traits import getTraitID;
 
 const string VeryPositive = "Very Positive";
 const string Positive = "Positive";

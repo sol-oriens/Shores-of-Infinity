@@ -166,4 +166,5 @@ visible:
 	attribute double TerraformLaborFactor = 1
 	attribute double BuildingMaintFactor = 1
 	attribute double LaborRepairFactor = 1
+	attribute double IgnoreMoraleModifiers = 0
 }

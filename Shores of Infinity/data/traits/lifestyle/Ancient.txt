@@ -57,6 +57,7 @@ Trait: Ancient
 	ModAttribute(ForbidColonization, Add, 1)
 	ModAttribute(ForbidTerraform, Add, 1)
 	ModAttribute(NoAutoColonize, Add, 1)
+	ModAttribute(IgnoreMoraleModifiers, Add, 1)
 
 	ReplaceTechnologyNodes(FactoryLabor, FoundryLabor)
 	ReplaceTechnologyNodes(FactoryLabor2, FoundryLabor2)

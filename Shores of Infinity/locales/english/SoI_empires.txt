@@ -29,3 +29,10 @@ TRAIT_CAPITALISM_DESC: <<
 	[dlc=Heralds][vspace=6/][b][color=#63ebdb]Starting Attitude:[/color][/b] [offset=235]Level 1 [color=#d1cb6a]Materialism[/color][/offset][/dlc]
 	[vspace=6/][b][color=#f00]Starting Fleet (Quickstart only):[/color][/b] [offset=235]Heavy Carrier.[/offset]
 >>
+
+TRAIT_ANCIENT_DESC: <<
+	[vspace=3/][img=ActionBarIcons::1;22]Has no regular civilian economy, buildings must be constructed to gain resources.[/img]
+	[vspace=6/][img=PlanetType::3;22]Planets are claimed by moving Orbital Replicators to them and constructing buildings.[/img]
+	[vspace=6/][img=TraitIcons::0;22]Ships are powered by a single Core that provides both Control and Power.[/img]
+	[vspace=6/][img=Revolutionaries;18]Ignore all morale efffects, settlement morale is always medium.[/img]
+>>
