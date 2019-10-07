@@ -18,7 +18,6 @@ tidy class SettlementManager : Component_Settlement, Savable {
 
 	private bool _notifiedCivilUnrest = false;
 
-
 	SettlementManager() {
 		ignoreMoraleModifiersAttribute = getEmpAttribute("IgnoreMoraleModifiers", create = false);
 	}

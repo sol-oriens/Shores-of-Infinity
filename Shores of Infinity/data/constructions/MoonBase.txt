@@ -7,7 +7,7 @@ Construction: MoonBase
 	Category: Infrastructure
 
 	Time Cost: 120
-	Build Cost: 500
+	Build Cost: 400
 
 	RequireMoreMoonsThanStatus(MoonBase)
 	RequireNotTrait(StarChildren)

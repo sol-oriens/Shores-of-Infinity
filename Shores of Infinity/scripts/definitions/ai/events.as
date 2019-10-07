@@ -27,7 +27,7 @@ interface IPlanetEvents {
 };
 
 interface ITradeRouteEvents {
-  void onTradeRouteNeeded(ref& sender, EventArgs& args);
+	void onTradeRouteNeeded(ref& sender, EventArgs& args);
 };
 
 interface IOrbitalRequestEvents {
@@ -39,9 +39,9 @@ interface IOrbitalRequestEvents {
 class EventArgs {
 	//This is used to hold instances that cannot be explicitly typed, because of circular imports for example
 	ref@ bag;
-  
+
 	EventArgs() { }
-	
+
 	EventArgs(ref@ bag) {
 		@this.bag = bag;
 	}
@@ -52,10 +52,10 @@ class EventArgs {
 class TradeRouteNeededEventArgs : EventArgs {
 	Territory@ territoryA;
 	Territory@ territoryB;
-	
+
 	TradeRouteNeededEventArgs(Territory@ territoryA, Territory@ territoryB) {
-			@this.territoryA = territoryA;
-			@this.territoryB = territoryB;
+		@this.territoryA = territoryA;
+		@this.territoryB = territoryB;
 	}
 };
 
@@ -65,7 +65,7 @@ class OrbitalRequestedEventArgs : EventArgs {
 	double priority;
 	double expires;
 	uint moneyType;
-	
+
 	OrbitalRequestedEventArgs(Region@ region, const OrbitalModule@ module, double priority, double expires, uint moneyType) {
 		@this.region = region;
 		@this.module = module;

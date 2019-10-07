@@ -48,8 +48,8 @@ v0.3.0b
 
 - Defense Reserve can now only be deployed on planets where an Outpost is present in the same or an adjacent system.
 - Repair rates of all ships, stations, supports and satellites are now 4 times slower.
-- Changed Set Drop-off Point ability to trigger only when cargo storage is full. Any ship with cargo storage now has this ability. As a direct effect of this change, ships with mining lasers and lightsails will now keep mining even when they overshoot their target.
-- Added Set Pickup Point ability. Toggle where this ship's pickup point for cargo is set. When the cargo storage has free space, automatically pick up as much cargo from the indicated object as possible. Any ship with cargo storage has this ability.
+- Changed Set Drop-off Point ability to trigger only when cargo storage is full. Any ship with cargo storage now has this ability. As a direct effect of this change, ships with mining lasers and lightsails will now track their target and keep mining even when they overshoot it (you're welcome).
+- Added Set Pickup Point ability. Toggle where this ship's pickup point for cargo is set. When the cargo storage has free space, automatically pick up as much cargo from the indicated object as possible. Any ship with cargo storage has this ability. Combined with Set Drop-off Point, this allows to set up automated supply routes.
 - Ability orders that require movement will now automatically make use of hyperdrives, jumpdrives or fling beacons if available and if the cost wouldn't set the current FTL Energy below the defined Percentage of Reserve. If the ship can use several FTL methods, the cheapest will be chosen.
 - Fixed a vanilla bug where elapsed time was not tracked correctly for planet statuses.
 - Fixed a bug which would cause a system in which a protoplanet or planet generator was used to become corrupted upon loading a saved game.
@@ -66,7 +66,7 @@ v0.3.0b
 [*] Planets
 
 - Added an icon for the Moon Base project.
-- Moon bases no longer provide a maximum population bonus. Mechanoid lifestyles no longer get a 100k bonus from them either.
+- Moon bases now cost 400k (down from 500k) and no longer provide a maximum population bonus. Mechanoid lifestyles no longer get a 100k bonus from them either.
 - Added Supermoon, replacing the vanilla Artificial Moon from the WotH DLC. Produces enough water and food to satisfy all planet level requirements. Generates 5 labor/minute. Build cost of 7.5M and 1000 labor. Also costs 3k Ore to build.
 - Artificial Moon no longer requires the WotH DLC and now adds a 6x6 surface area. Produces enough water and food to satisfy planet level 1 requirements. Generates 3 labor/minute. Now costs 4M, 500 labor and 2k Ore.
 - Artificial Planetoid now costs 10M and 1500 labor.
@@ -78,11 +78,11 @@ v0.3.0b
 - Added icy planets. These planets can spawn at outer rims of systems, always have an ice biome and the Permafrost planetary condition. They can have one of the following resources: Pekelm, Deuterium.
 - Added 'hot jupiters', class IV and V gas giants orbiting very close to their star. They can have one of the following resources: Alkali Metals, Iron (level 1), Glass (level 2), Silicon (level 2, only with the WotH DLC).
 - Slightly decreased the frequency of gas and ice giants.
-- Gas and ice giants may now have less moons than before, or even none at all. Artificial moons will solve your space issues.
+- Gas and ice giants may now have less moons than before, or even none at all. Artificial moons and floating continents will solve your space issues.
 
 [*] Research
 
-- Artificial Moons secret project was renamed to Supermoons. Now requires building 5 artificial moons. Unlocks the supermoon construction. Still requires the WotH DLC.
+- Artificial Moons secret project was renamed to Supermoons. Now requires building 5 artificial moons. Unlocks the Supermoon construction. Still requires the WotH DLC.
 - Artificial Moons is now a regular research node. Does not require the WotH DLC.
 - Fixed an overlook where Verdant lifestyle could research Metropolitan Optimization and Arcologies nodes. These nodes are now replaced with Modular Habitats nodes.
 - Verdant lifestyle now has an additional Modular Habitats node where the Megacities node normally is.
