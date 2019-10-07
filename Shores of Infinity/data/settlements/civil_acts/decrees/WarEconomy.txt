@@ -6,7 +6,7 @@ CivilAct: WarEconomy
 
 	Morale Effect: Negative
 
-	RequireNotTrait(Ancient)
+	RequireAttributeLT(IgnoreMoraleModifiers, 1)
 	addon_requirement_effects::RequireConstruction(Ships)
 
 	ModSupportBuildSpeed(0.5)

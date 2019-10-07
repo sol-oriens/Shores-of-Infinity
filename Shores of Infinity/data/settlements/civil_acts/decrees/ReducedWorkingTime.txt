@@ -6,7 +6,7 @@ CivilAct: ReducedWorkingTime
 
 	Morale Effect: Positive
 
-	RequireNotTrait(Ancient)
+	RequireAttributeLT(IgnoreMoraleModifiers, 1)
 	RequireNotTrait(Mechanoid)
 
 	AddLaborFactor(-0.1)

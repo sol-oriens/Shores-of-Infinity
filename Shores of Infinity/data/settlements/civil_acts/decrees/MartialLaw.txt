@@ -9,6 +9,6 @@ CivilAct: MartialLaw
 	Maintenance: 25
 	Population Multiplier: True
 
-	RequireNotTrait(Ancient)
+	RequireAttributeLT(IgnoreMoraleModifiers, 1)
 
 	settlement_effects::ContainCivilUnrest(0.3)

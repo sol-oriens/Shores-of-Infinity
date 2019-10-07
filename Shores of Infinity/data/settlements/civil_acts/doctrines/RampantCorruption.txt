@@ -12,6 +12,6 @@ CivilAct: RampantCorruption
 	Delay: 30
 	Commitment: 1800
 
-	RequireNotTrait(Ancient)
+	RequireAttributeLT(IgnoreMoraleModifiers, 1)
 
 	settlement_effects::AddSettlementResource(2, Influence)

@@ -12,4 +12,4 @@ CivilAct: PersonalityCult
 	Delay: 30
 	Commitment: 1800
 
-	RequireNotTrait(Ancient)
+	RequireAttributeLT(IgnoreMoraleModifiers, 1)
