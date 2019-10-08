@@ -129,7 +129,7 @@ SETTLEMENT_PRISON_DESC: <<|
 	[color=#aaa][i]This planet mostly hosts sentenced criminals, isolated far away from civilization and with little
 	chance to evade.[/i][/color]
 
-	Slightly increases global morale across the empire.
+	Slightly increases morale across the empire.
 
 	Reduces income penalty of Level 0 planets by 80k.
 

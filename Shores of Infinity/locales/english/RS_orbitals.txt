@@ -84,9 +84,9 @@ ORB_STARPORT_DESC: <<
 
 	Provides 30k income for each owned and friendly planet in the system belonging to another empire you are at peace with or yours, up to 120k.
 
-	Increases the civilian production of Labor, Influence, Energy and Research on all owned planets in the system by 10%.
+	Increases all civilian pressure production on all owned planets in the system by 10%.
 
-	Increases the import rate of Ore and Base Material in the system by 25%.
+	Increases the import rate of Ore and Base Material in the system by 10%.
 
 	Can be upgraded to allow global resource trade.
 
@@ -215,7 +215,7 @@ ORB_DRYPORT_DESC: <<
 	[color=#aaa][i]A low orbit facility designed to centralize and improve the transit of goods and materials to and from the planet it is orbiting.[/i][/color]
 
 	Reduces income penalty of Level 0 planets by 30k.
-	
+
 	Increases income of Level 1 planets by 20k + 10k per additional Level.
 
 	Can store 2.5k units of cargo.

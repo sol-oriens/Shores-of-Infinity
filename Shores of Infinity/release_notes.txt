@@ -57,6 +57,8 @@ v0.3.0b
 
 - Doubled the labor cost of all orbitals.
 - Outposts and starbases now add +5 and +10 Defense Reserve, respectively.
+- Starports now also increase civilian Money production by 10%, meaning they now increase all civilian pressure production by 10%.
+- Decreased the import rate bonus of Ore and Base Material from starports to 10% (down from 25%).
 - Singularity labs maintenance cost is now 90k (up from 25k).
 - Staging hubs can now build orbitals and stations.
 - Shipyards now have the Repair ability.
