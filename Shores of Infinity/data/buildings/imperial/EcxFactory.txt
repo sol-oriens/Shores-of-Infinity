@@ -16,5 +16,5 @@ Building: EcxFactory
 
 	RequireNotTrait(Ancient)
 
-	ActiveWhenCargoConsumed(Ore, 1.0, 7.5, AddDummyResource(Titanium, 1))
-	ActiveWhenCargoConsumed(Ore, 1.0, 7.5, AddPressure(Money, 3))
+	ActiveWhenCargoConsumed(Ore, 0.5, 7.5, AddDummyResource(Titanium, 1))
+	ActiveWhenCargoConsumed(Ore, 0.5, 7.5, AddPressure(Money, 3))

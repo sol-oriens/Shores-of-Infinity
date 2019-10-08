@@ -42,7 +42,6 @@ v0.3.0b
 - Arcology has been rebalanced. It now adds 3 population (down from 5), replaces 3 cities (down from 5) and increases pressure cap by 3. It now has a build time of 7m and a build cost of 2M (down from 2.5M) as well as an Ore cost of 1.5k (down from 2k). It no longer costs labor.
 - Spire now has a build time of 9m (up from 3m).
 - Fixed a bug where the research cost was not updated when a healthcare complex is removed.
-- Fixed a bug where electronics factories would consume twice as less Ore than intended.
 
 [*] Gameplay
 
