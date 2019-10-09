@@ -101,3 +101,54 @@ class AddSettlementResource : SettlementHook {
 	}
 #section all
 };
+
+class AddSettlementPressureCap : SettlementHook {
+	Document doc("Increase the planet's total pressure capacity based on the settlement's current population.");
+	Argument factor(AT_Decimal, doc="Multiplier to the settlement's current population to add as pressure capacity, rounded down to the closest integer.");
+
+#section server
+	void enable(Object& obj, any@ data) const override {
+		if(obj.isPlanet) {
+			int amt = 0;
+			data.store(amt);
+		}
+	}
+
+	void disable(Object& obj, any@ data) const override {
+		if(obj.isPlanet) {
+			int amt = 0;
+			data.retrieve(amt);
+			if(amt != 0) {
+				obj.modPressureCapMod(floor(-amt));
+			}
+		}
+	}
+
+	void tick(Object& obj, any@ data, double tick) const override {
+		if (!obj.isPlanet)
+			return;
+
+		double pop = max(getSettlementPopulation(obj), 0.0);
+		int amt = 0;
+		data.retrieve(amt);
+
+		int newAmt = floor(pop * factor.decimal);
+		if (amt != newAmt) {
+			obj.modPressureCapMod(newAmt - amt);
+			data.store(newAmt);
+		}
+	}
+
+	void save(any@ data, SaveFile& file) const override {
+		int amt = 0;
+		data.retrieve(amt);
+		file << amt;
+	}
+
+	void load(any@ data, SaveFile& file) const override {
+		int amt = 0;
+		file >> amt;
+		data.store(amt);
+	}
+#section all
+};
