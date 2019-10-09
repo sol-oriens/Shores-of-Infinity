@@ -1351,7 +1351,7 @@ class ConvertResource : GenericEffect {
 		double curProd = obj.getResourceProduction(resource.integer);
 		double total = info.taken + curProd;
 
-		double target = total - (total * (1.0 - convert_percent.decimal));
+		double target = total * (1.0 - convert_percent.decimal);
 		target = clamp(target, 0.0, total);
 
 		double newTaken = total - target;
@@ -1484,7 +1484,7 @@ tidy final class AddToNativeResource : GenericEffect {
 		AddToNativeData@ info;
 		data.retrieve(@info);
 
-		if(info is null){ 
+		if(info is null){
 			Object@ tmp;
 			file << tmp;
 		}
