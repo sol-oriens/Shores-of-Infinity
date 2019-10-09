@@ -6,17 +6,8 @@ CivilAct: ReducedWorkingTime
 
 	Morale Effect: Positive
 
+	RequirePlanet()
 	RequireAttributeLT(IgnoreMoraleModifiers, 1)
 	RequireNotTrait(Mechanoid)
 
-	AddLaborFactor(-0.1)
-	ModCivResourceMult(Money, -0.1)
-	ModCivResourceMult(Influence, -0.1)
-	ModCivResourceMult(Energy, -0.1)
-	ModCivResourceMult(Research, -0.1)
-	ModCivResourceMult(Defense, -0.1)
-	IfHaveTrait(StarChildren, ProduceAllPressure(Money, -0.1))
-	IfHaveTrait(StarChildren, ProduceAllPressure(Influence, -0.1))
-	IfHaveTrait(StarChildren, ProduceAllPressure(Energy, -0.1))
-	IfHaveTrait(StarChildren, ProduceAllPressure(Research, -0.1))
-	IfHaveTrait(StarChildren, ProduceAllPressure(Defense, -0.1))
+	AddSettlementPressureCap(-0.25)

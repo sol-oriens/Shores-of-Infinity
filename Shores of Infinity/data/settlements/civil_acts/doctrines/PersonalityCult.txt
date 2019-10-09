@@ -6,10 +6,11 @@ CivilAct: PersonalityCult
 
 	Morale Effect: Positive
 
-	Maintenance: 5
+	Maintenance: 15
 	Population Multiplier: True
 
-	Delay: 30
+	Delay: 180
 	Commitment: 1800
 
 	RequireAttributeLT(IgnoreMoraleModifiers, 1)
+	addon_requirement_effects::RequirePopulation(2)

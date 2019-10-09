@@ -4,6 +4,11 @@ CivilAct: CivilWorks
 
 	Category: Campaigns
 
+	Maintenance: 20
+
+	Delay: 60
+	Commitment: 180
+
 	RequirePlanet()
 	RequireNotTrait(Ancient)
 	RequireNotTrait(StarChildren)

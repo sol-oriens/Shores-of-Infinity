@@ -7,6 +7,8 @@ CivilAct: StateEmergency
 	Maintenance: 45
 	Population Multiplier: True
 
+	Delay: 15
+
 	RequireNotTrait(Ancient)
 
 	settlement_effects::ContainCivilUnrest(0.2)

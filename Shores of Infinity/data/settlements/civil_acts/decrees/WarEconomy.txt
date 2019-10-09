@@ -6,13 +6,12 @@ CivilAct: WarEconomy
 
 	Morale Effect: Negative
 
+	RequirePlanet()
 	RequireAttributeLT(IgnoreMoraleModifiers, 1)
+	RequireNotTrait(Pacifists)
+
 	addon_requirement_effects::RequireConstruction(Ships)
 
 	ModSupportBuildSpeed(0.5)
-	ModCivResourceMult(Influence, -0.2)
-	ModCivResourceMult(Energy, -0.2)
-	ModCivResourceMult(Research, -0.2)
-	IfHaveTrait(StarChildren, ProduceAllPressure(Influence, -0.2))
-	IfHaveTrait(StarChildren, ProduceAllPressure(Energy, -0.2))
-	IfHaveTrait(StarChildren, ProduceAllPressure(Research, -0.2))
+	ConvertResource(Influence, 1.0, Defense, Convert Percent = 0.5)
+	ConvertResource(Energy, 1.0, Defense, Convert Percent = 0.5)

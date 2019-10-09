@@ -4,17 +4,14 @@ CivilAct: MilitaryIndustrialComplex
 
 	Category: Doctrines
 
-	Maintenance: 30
+	Maintenance: 15
 	Population Multiplier: True
 
-	Delay: 30
+	Delay: 180
 	Commitment: 1800
 
-	settlement_effects::AddSettlementResource(0.25, Defense)
+	addon_requirement_effects::RequirePopulation(2)
 
-	ModCivResourceMult(Defense, 0.25)
-	IfHaveTrait(StarChildren, ProduceAllPressure(Defense, 0.25))
-	IfHaveTrait(Ancient, ProduceAllPressure(Defense, 0.25))
-	ModCivResourceMult(Influence, -0.25)
-	IfHaveTrait(StarChildren, ProduceAllPressure(Influence, -0.25))
-	IfHaveTrait(Ancient, ProduceAllPressure(Influence, -0.25))
+	settlement_effects::AddSettlementResource(0.2, Defense)
+
+	ConvertResource(Influence, 1.0, Defense, Convert Percent = 0.2)

@@ -4,27 +4,14 @@ CivilAct: PopularSovereignty
 
 	Category: Doctrines
 
-	Maintenance: 40
+	Maintenance: 20
 	Population Multiplier: True
 
-	Delay: 30
+	Delay: 180
 	Commitment: 1800
 
-	settlement_effects::AddSettlementResource(1, Influence)
+	addon_requirement_effects::RequirePopulation(2)
 
-	AddLaborFactor(-0.1)
-	ModCivResourceMult(Money, -0.1)
-	ModCivResourceMult(Influence, -0.1)
-	ModCivResourceMult(Energy, -0.1)
-	ModCivResourceMult(Research, -0.1)
-	ModCivResourceMult(Defense, -0.1)
-	IfHaveTrait(StarChildren, ProduceAllPressure(Money, -0.1))
-	IfHaveTrait(StarChildren, ProduceAllPressure(Influence, -0.1))
-	IfHaveTrait(StarChildren, ProduceAllPressure(Energy, -0.1))
-	IfHaveTrait(StarChildren, ProduceAllPressure(Research, -0.1))
-	IfHaveTrait(StarChildren, ProduceAllPressure(Defense, -0.1))
-	IfHaveTrait(Ancient, ProduceAllPressure(Money, -0.1))
-	IfHaveTrait(Ancient, ProduceAllPressure(Influence, -0.1))
-	IfHaveTrait(Ancient, ProduceAllPressure(Energy, -0.1))
-	IfHaveTrait(Ancient, ProduceAllPressure(Research, -0.1))
-	IfHaveTrait(Ancient, ProduceAllPressure(Defense, -0.1))
+	settlement_effects::AddSettlementResource(0.5, Influence)
+
+	AddLaborFactor(-0.2)

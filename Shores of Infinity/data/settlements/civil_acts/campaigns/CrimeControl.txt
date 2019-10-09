@@ -6,8 +6,10 @@ CivilAct: CrimeControl
 
 	Morale Effect: Positive
 
-	Maintenance: 35
+	Maintenance: 25
 	Population Multiplier: True
+
+	Delay: 30
 
 	RequireAttributeLT(IgnoreMoraleModifiers, 1)
 

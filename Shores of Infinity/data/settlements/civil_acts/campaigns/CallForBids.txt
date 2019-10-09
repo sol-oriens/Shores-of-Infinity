@@ -6,6 +6,8 @@ CivilAct: CallForBids
 
 	Maintenance: 250
 
+	Delay: 20
+
 	RequireNotTrait(Ancient)
 	RequireNotTrait(Communism)
 
