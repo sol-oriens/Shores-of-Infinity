@@ -15,8 +15,6 @@ Building: Forge0
 	RequireNotTrait(Ancient)
 	ConstructibleIfAttribute(ForgeCount, 0)
 
-	TriggerConstructed( ModAttribute(ForgeCount, Add, 1) )
-
 	ModEmpireAttribute(ForgeCount, Add, 1)
 	ActiveWhenCargoConsumed(Ore, 1.0, 5.0, AddLaborFactor(0.2), Labor Use Linked = True)
 
@@ -34,8 +32,6 @@ Building: Forge1
 	Labor Cost: 200
 
 	ConstructibleIfAttribute(ForgeCount, 1)
-
-	TriggerConstructed( ModAttribute(ForgeCount, Add, 1) )
 
 	ModEmpireAttribute(ForgeCount, Add, 1)
 	ActiveWhenCargoConsumed(Ore, 1.0, 2.5, AddLaborFactor(0.4), Labor Use Linked = True)
@@ -55,8 +51,6 @@ Building: Forge2
 
 	ConstructibleIfAttribute(ForgeCount, 2)
 
-	TriggerConstructed( ModAttribute(ForgeCount, Add, 1) )
-
 	ModEmpireAttribute(ForgeCount, Add, 1)
 	ActiveWhenCargoConsumed(Ore, 0.9, 1.5, AddLaborFactor(0.6), Labor Use Linked = True)
 
@@ -74,8 +68,6 @@ Building: Forge3
 	Labor Cost: 800
 
 	ConstructibleIfAttribute(ForgeCount, 3)
-
-	TriggerConstructed( ModAttribute(ForgeCount, Add, 1) )
 
 	ModEmpireAttribute(ForgeCount, Add, 1)
 	ActiveWhenCargoConsumed(Ore, 1.0, 1.25, AddLaborFactor(0.8), Labor Use Linked = True)
