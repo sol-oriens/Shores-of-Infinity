@@ -125,12 +125,13 @@ class MakeNeutronStar : MapHook {
 	double NEUTRON_STAR_HEALTH = 20000000000;
 
 	Document doc("Creates a neutron star in the system.");
+	Argument rad("Radius", AT_Range, "15.0:20.0", doc="Radius of the star.");
 	Argument position("Position", AT_Position, "(0, 0, 0)", doc="Position relative to the center of the system to create the star.");
 
 #section server
 	void trigger(SystemData@ data, SystemDesc@ system, Object@& current) const override {
-		double radius = 200.0 * config::SCALE_STARS;
-		vec3d pos = arguments[0].fromPosition();
+		double radius = rad.fromRange() * config::SCALE_STARS;
+		vec3d pos = position.fromPosition();
 
 		//Create star
 		ObjectDesc starDesc;
@@ -145,7 +146,7 @@ class MakeNeutronStar : MapHook {
 		star.alwaysVisible = true;
 
 		@star.region = system.object;
-		star.temperature = 600000.0;
+		star.temperature = randomd(6000000.0, 1000000000000.0);
 		star.finalizeCreation();
 		system.object.enterRegion(star);
 
@@ -2011,23 +2012,27 @@ void mapCopyRegion(SystemDesc@ from, SystemDesc@ to, uint typeMask = ~0) {
 		else if(obj.isStar) {
 			Star@ base = cast<Star>(obj);
 
-			if (base.temperature > 0.0 && base.temperature < 300000.0) {
+			if (base.temperature == 0.0) {
+				blackHoleHook.arguments[0].set(base.radius);
+				blackHoleHook.arguments[1].set(destPos - to.position);
+
+				blackHoleHook.trigger(null, to, current);
+			}
+			else if (base.temperature > 0.0 && base.temperature < 600000.0) {
 				starHook.arguments[0].set(base.temperature);
 				starHook.arguments[1].set(base.radius);
 				starHook.arguments[2].set(destPos - to.position);
 
 				starHook.trigger(null, to, current);
 			}
-			else if (base.temperature >= 300000.0 && base.temperature <= 600000.0) {
-				neutronHook.arguments[0].set(destPos - to.position);
+			else {
+				neutronHook.arguments[0].set(base.radius);
+				neutronHook.arguments[1].set(destPos - to.position);
 
 				neutronHook.trigger(null, to, current);
-			}
-			else {
-				blackHoleHook.arguments[0].set(base.radius);
-				blackHoleHook.arguments[1].set(destPos - to.position);
 
-				blackHoleHook.trigger(null, to, current);
+				Star@ star = cast<Star>(current);
+				star.temperature = base.temperature;
 			}
 		}
 		else if(obj.isArtifact) {
