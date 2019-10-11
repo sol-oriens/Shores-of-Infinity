@@ -10,7 +10,7 @@ import statuses;
 from overlays.ContextMenu import openContextMenu;
 
 class StarPopup : Popup {
-	GuiText@ name;
+	GuiText@ name, radius, temperature;
 	Gui3DObject@ objView;
 	Star@ obj;
 	double lastUpdate = -INFINITY;
@@ -23,14 +23,21 @@ class StarPopup : Popup {
 
 	StarPopup(BaseGuiElement@ parent) {
 		super(parent);
-		size = vec2i(190, 155);
+		size = vec2i(190, 160);
 
 		@name = GuiText(this, Alignment(Left+4, Top+2, Right-4, Top+24));
 		name.horizAlign = 0.5;
 
-		@objView = Gui3DObject(this, recti(34, 26, 156, 98));
+		@radius = GuiText(this, Alignment(Left+4, Top+26, Left+0.5f-4, Top+34));
+		radius.font = FT_Detail;
 
-		@defIcon = GuiSprite(this, Alignment(Left+4, Top+25, Width=40, Height=40));
+		@temperature = GuiText(this, Alignment(Left+0.5f+4, Top+26, Right-4, Top+34));
+		temperature.font = FT_Detail;
+		temperature.horizAlign = 1.0;
+
+		@objView = Gui3DObject(this, Alignment(Left+4, Top+35, Right-4, Bottom-57));
+
+		@defIcon = GuiSprite(this, Alignment(Left+4, Top+35, Width=40, Height=40));
 		defIcon.desc = icons::Defense;
 		setMarkupTooltip(defIcon, locale::TT_IS_DEFENDING);
 		defIcon.visible = false;
@@ -39,12 +46,12 @@ class StarPopup : Popup {
 		health.tooltip = locale::HEALTH;
 
 		auto@ healthIcon = GuiSprite(health, Alignment(Left+2, Top+1, Width=24, Height=24), icons::Health);
-		
+
 		@shield = GuiProgressbar(this, Alignment(Left+3, Bottom-30, Right-4, Bottom-4));
 		shield.frontColor = Color(0x429cffff);
 		shield.backColor = Color(0x59a8ff20);
 		shield.tooltip = locale::SHIELD_STRENGTH;
-		
+
 		auto@ shieldIcon = GuiSprite(shield, Alignment(Left+2, Top+1, Width=24, Height=24), icons::Shield);
 		shieldIcon.noClip = true;
 
@@ -136,6 +143,9 @@ class StarPopup : Popup {
 		else
 			name.font = FT_Normal;
 
+		radius.text = obj.radius + "u";
+		temperature.text = obj.temperature + "K";
+
 		//Update health
 		health.progress = obj.Health / obj.MaxHealth;
 		health.frontColor = colors::Red.interpolate(colors::Green, health.progress);
@@ -145,7 +155,7 @@ class StarPopup : Popup {
 		else
 			shield.progress = 0;
 		shield.text = standardize(obj.Shield)+" / "+standardize(obj.MaxShield);
-		
+
 		statusUpdate -= frameLength;
 		if(statusUpdate <= 0.f) {
 			array<Status> statuses;
@@ -158,7 +168,7 @@ class StarPopup : Popup {
 			for(uint i = 0; i < cnt; ++i) {
 				auto@ icon = statusIcons[i];
 				if(icon is null) {
-					@icon = GuiSprite(this, recti_area(6, 25+25*i, 25, 25));
+					@icon = GuiSprite(this, recti_area(6, 35+25*i, 25, 25));
 					@statusIcons[i] = icon;
 				}
 

@@ -59,7 +59,7 @@ class DrawPlanet : Draw3D {
 	const Material@ mat, atmos;
 	Planet@ pl;
 	Node@ node;
-	
+
 	DrawPlanet(Planet@ pl) {
 		const PlanetType@ type = getPlanetType(cast<Planet>(pl).PlanetType);
 		@mat = type.emptyMat;
@@ -119,7 +119,7 @@ class DrawRingworld : Draw3D {
 		drawLitModel(model::RingworldInner, material::GenericPBR_RingworldInner, pos, innerRot);
 
 		drawLitModel(model::RingworldLiving, material::RingworldSurface, pos, outerRot);
-		
+
 //		drawLitModel(model::RingworldAtmosphere, material::RingworldAtmo, pos, outerRot);
 	}
 };
@@ -148,7 +148,7 @@ class DrawBlackhole : Draw3D {
 class DrawStar : Draw3D {
 	Node@ node;
 	double temp;
-	
+
 	DrawStar(Star@ star) {
 		temp = star.temperature;
 		@node = star.getNode();
@@ -162,10 +162,16 @@ class DrawStar : Draw3D {
 		@renderingNode = node;
 
 		recti square = pos.aspectAligned(1.0);
-		square = square.padded(-square.width*0.2, -square.height*0.2);
+		//SoI - Scaling: remove upscaling to keep the larger corona from being cut
+		square = square.padded(-square.width*0.1, -square.height*0.1);
 
-		model::Sphere_max.draw(material::PopupStarSurface, square, rotation, 1/1.5);
-		material::Corona.draw(square);
+		if (temp <= 1300.0)
+			//This star is a brown dwarf
+			model::Sphere_max.draw(material::BrownDwarf, square, rotation, 1/1.5);
+		else {
+			model::Sphere_max.draw(material::PopupStarSurface, square, rotation, 1/1.5);
+			material::Corona.draw(square);
+		}
 		@renderingNode = null;
 	}
 };
@@ -257,7 +263,7 @@ Draw3D@ makeDrawMode(Object@ obj) {
 			const Model@ model;
 			const Material@ material;
 			switch(obj.id % 4) {
-				case 0:	
+				case 0:
 					@model = model::Asteroid1; break;
 				case 1:
 					@model = model::Asteroid2; break;
