@@ -292,7 +292,7 @@ CIVIL_ACT_WORK_ETHIC_DESC: <<|
 	[color=#aaa][i]Provide result-based monetary incentives for workers and ultra-restrictive quality controls to
 	strive for high quality production.[/i][/color]
 
-	Increases the civilian production of Labor, Influence, Energy, Research and Defense by 10%.
+	Increases the civilian production of Labor, Research and Defense by 10%.
 >>
 
 CIVIL_ACT_MARTIAL_LAW: Martial Law
@@ -308,7 +308,7 @@ CIVIL_ACT_REDUCED_WORKING_TIME_DESC: <<|
 	[color=#aaa][i]It is well known that a longer working time does not equal proportionally more results. It is also
 	well known that a shorter working time does equal happier and more focused workers.[/i][/color]
 
-	Reduces Labor generation and all civilian pressure production by 10%.
+	Reduces pressure capacity by 1 per up to 4 billion population.
 >>
 
 CIVIL_ACT_STATE_EMERGENCY: State of Emergency
@@ -321,10 +321,11 @@ CIVIL_ACT_STATE_EMERGENCY_DESC: <<|
 
 CIVIL_ACT_WAR_ECONOMY: War Economy
 CIVIL_ACT_WAR_ECONOMY_DESC: <<|
-	[color=#aaa][i]Mobilize the economy and shift its outputs to increase all war-related production.[/i][/color]
+	[color=#aaa][i]Shift the economy and its outputs towards war-related production.[/i][/color]
 
 	Increases the construction speed of support ships by 50%.
-	Reduces civilian Influence, Energy and Research production by 20%.
+
+	Converts 25% Influence and Energy generation and production to Defense generation.
 >>
 
 CIVIL_ACT_KNOWLEDGE_PURSUIT: Pursuit of Knowledge
@@ -332,18 +333,22 @@ CIVIL_ACT_KNOWLEDGE_PURSUIT_DESC: <<|
 	[color=#aaa][i]Promote scientific activities in all layers of society, resulting in a higher interest in research
 	occupations.[/i][/color]
 
-	Gives 0.5 Research generation per billion population.
+	Gives 0.1 Research generation per billion population.
 
-	Reduces Labor generation and civilian Defense production by 25%.
+	Converts 20% Influence generation and production to Research generation.
+
+	Converts 10% Energy generation and production to Research generation.
+
+	Reduces Labor generation by 10%.
 >>
 
 CIVIL_ACT_MILITIARY_INDUSTRIAL_COMPLEX: Military Industrial Complex
 CIVIL_ACT_MILITIARY_INDUSTRIAL_COMPLEX_DESC: <<|
 	[color=#aaa][i]Push defense spending to the next level with additional subcontracting to the local industry.[/i][/color]
 
-	Gives 0.25 Defense generation per billion population.
+	Gives 0.2 Defense generation per billion population.
 
-	Increases civilian Defense production by 25%.
+	Converts 20% Influence generation and production to Defense generation.
 >>
 
 CIVIL_ACT_PERSONALITY_CULT: Cult of Personality
@@ -357,9 +362,9 @@ CIVIL_ACT_POPULAR_SOVEREIGNTY_DESC: <<|
 	[color=#aaa][i]Establish a number of civil liberties, elections and the right to vote, giving the power to the
 	people (or the illusion of). Also introduces the right to protest and strike (not an illusion).[/i][/color]
 
-	Adds 1 Influence Stake per billion population.
+	Adds 0.5 Influence Stake per billion population.
 
-	Reduces Labor generation and all civilian pressure production by 10%.
+	Reduces Labor generation by 20%.
 >>
 
 CIVIL_ACT_RAMPANT_CORRUPTION: Rampant Corruption
@@ -375,7 +380,12 @@ TT_MORALE_EFFECT: Morale effect
 TT_DELAY: Takes effect after
 TT_COMMITMENT: Cannot be revoked for
 TT_CANCEL_CIVIL_ACTS: <<
-	[b]Revoke all Civil Acts[/b]
+	[b]Revoke all Civil Acts on this settlement[/b]
 
 	Revoke all active civil acts on this settlement. Civil acts that cannot currently be revoked will remain active.
+>>
+TT_CANCEL_ALL_CIVIL_ACTS: <<
+	[b]Revoke all Civil Acts[/b]
+
+	Revoke all active civil acts on all settlements. Civil acts that cannot currently be revoked will remain active.
 >>

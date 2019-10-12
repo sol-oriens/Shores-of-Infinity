@@ -49,10 +49,10 @@ ORB_SHIPYARD_DESC: <<|
 
 	Construction of ships on a shipyard has a 20% cheaper build cost.
 
-	Has 6 innate Labor generation per minute. Planets can export their own
-	labor to shipyards within trade range at a 75% reduced rate.
+	Has 7.5 innate Labor generation per minute. Planets can export their own
+	labor to shipyards within trade range at a 25% reduced rate.
 
-	Gains Labor from Metallurgy factory research at a 75% reduced rate.
+	Gains Labor from Metallurgy factory research at a 25% reduced rate.
 
 	Can store 25k units of cargo.
 >>
@@ -407,16 +407,7 @@ ORB_RECYCLING_FACILITY_DESC: <<
 
 	Adds 1 Energy generation.
 >>
-ORB_SHIPYARD_DESC: <<|
-	A massive orbital shipyard capable of constructing fleets in space.
 
-	Construction of ships on a shipyard has a 20% cheaper build cost.
-
-	Has 7.5 innate Labor generation per minute. Planets can export their own
-	labor to shipyards within trade range at a 25% reduced rate.
-
-	Gains Labor from Metallurgy factory research at a 25% reduced rate.
->>
 ORB_SHIPYARD_ADAPTED: Advanced Shipyard
 ORB_SHIPYARD_ADAPTED_DESC: <<|
 	[bbloc=#ORB_SHIPYARD_DESC/]

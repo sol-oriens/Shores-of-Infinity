@@ -56,8 +56,8 @@ Subsystem: RailgunBattery
 
 	Module: KnockbackEnhancement
 		Sprite: Ammo
-		Name: S_KNOCKBACK_ENHANCEMENT
-		Description: S_KNOCKBACK_ENHANCEMENT_DESC
+		Name: #S_KNOCKBACK_ENHANCEMENT
+		Description: #S_KNOCKBACK_ENHANCEMENT_DESC
 		Pierce := 0
 		ImpulseFlag := 1
 		ImpulseBonus := ImpulseBonus + 5
@@ -65,20 +65,20 @@ Subsystem: RailgunBattery
 		Hex.BuildCost := 5 * Hex.BuildCost
 		Hex.LaborCost := 5 * Hex.LaborCost
 		Assert: ExclusiveMod < 2
-			Message: ERROR_EXCLUSIVE_MOD
+			Message: #ERROR_EXCLUSIVE_MOD
 			Unique: True
 
 	Module: PiercingEnhancement
 		Sprite: Ammo * #449944
-		Name: S_PIERCING_ENHANCEMENT
-		Description: S_PIERCING_ENHANCEMENT_DESC
+		Name: #S_PIERCING_ENHANCEMENT
+		Description: #S_PIERCING_ENHANCEMENT_DESC
 		Damage := Damage * 1.1
 		Pierce := Pierce + 0.5
 		ExclusiveMod := ExclusiveMod + 1
 		Hex.BuildCost := 25 * Hex.BuildCost
 		Hex.LaborCost := 8 * Hex.LaborCost
 		Assert: ExclusiveMod < 2
-			Message: ERROR_EXCLUSIVE_MOD
+			Message: #ERROR_EXCLUSIVE_MOD
 			Unique: True
 
 	Effector: AntiShipRailgunBattery

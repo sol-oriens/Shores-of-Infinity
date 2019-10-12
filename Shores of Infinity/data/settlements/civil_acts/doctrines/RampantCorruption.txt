@@ -15,4 +15,4 @@ CivilAct: RampantCorruption
 	RequireAttributeLT(IgnoreMoraleModifiers, 1)
 	addon_requirement_effects::RequirePopulation(2)
 
-	settlement_effects::AddSettlementResource(2, Influence)
+	settlement_effects::AddSettlementResource(1, Influence)
