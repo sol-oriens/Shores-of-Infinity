@@ -53,6 +53,11 @@ v0.3.0b
 - Fixed a vanilla bug where elapsed time was not tracked correctly for planet statuses.
 - Fixed a bug which would cause a system in which a protoplanet or planet generator was used to become corrupted upon loading a saved game.
 
+[*] Lifestyles
+
+- Star Children now have Superstructure Hull unlocked at game start.
+- Star Children are now smart enough to use crop regulation before their homeworld gets destroyed and start with one Harvest influence card.
+
 [*] Orbitals
 
 - Doubled the labor cost of all orbitals.
@@ -97,6 +102,7 @@ v0.3.0b
 
 [*] Subsystems
 
+- Mothership Hull now also has the properties of Superstructure Hull.
 - Decreased the base labor generation of Machine Shop.
 - Decreased the labor cost of Living Quarters.
 
