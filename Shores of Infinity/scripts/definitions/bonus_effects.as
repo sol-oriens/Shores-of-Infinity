@@ -1472,6 +1472,7 @@ class SpawnShip : EmpireTrigger {
 	Argument set_home(AT_Boolean, "False", doc="If called in a trait, set this as the home object.");
 	Argument offset(AT_Decimal, "0", doc="Offset from the object position to spawn.");
 	Argument quick_start(AT_Boolean, "False", doc="Whether to activate the hook only if the Quick Start option is enabled. Should not be used with objects spawned after the beginning of the game.");
+	Argument free(AT_Boolean, "True", doc="Whether the spawned ship has a maintenance cost.");
 
 #section server
 	void activate(Object@ obj, Empire@ emp) const override {
@@ -1520,7 +1521,7 @@ class SpawnShip : EmpireTrigger {
 
 		auto@ dsg = designEmp.getDesign(design.str);
 		if(dsg !is null) {
-			Ship@ leader = createShip(pos, dsg, emp, free=true);
+			Ship@ leader = createShip(pos, dsg, emp, free=free.boolean);
 
 			for(uint i = 2, cnt = arguments.length; i < cnt; ++i) {
 				string arg = arguments[i].str;
@@ -1531,7 +1532,7 @@ class SpawnShip : EmpireTrigger {
 					@dsg = designEmp.getDesign(dsgName);
 					if(dsg !is null) {
 						for(uint n = 0; n < count; ++n)
-							createShip(leader.position, dsg, emp, leader, free=true);
+							createShip(leader.position, dsg, emp, leader, free=free.boolean);
 					}
 				}
 			}
