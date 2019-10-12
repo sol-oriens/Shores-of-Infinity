@@ -65,7 +65,8 @@ v0.3.0b
 - Starports now also increase civilian Money production by 10%, meaning they now increase all civilian pressure production by 10%.
 - Decreased the import rate bonus of Ore and Base Material from starports to 10% (down from 25%).
 - Singularity labs maintenance cost is now 90k (up from 25k).
-- Staging hubs can now build orbitals and stations.
+- Staging hubs can now build orbitals and stations and store 10k cargo (up from 5k).
+- Added Construction Yard Staging Hub module. Generates 1 Labor per minute. Can build ships and drydocks and provide repairs. Build and maintenance costs of 250k and 130k, respectively.
 - Shipyards now have the Repair ability.
 - Tactical satellites now have a different model and are much smaller.
 

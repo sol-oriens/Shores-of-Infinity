@@ -35,7 +35,7 @@ Module: StagingHub
 
 	AddStatusToOrbitingPlanet(StagingHub, Set Origin Empire = True, Only Owned = True)
 
-	AddCargoStorage(5000)
+	AddCargoStorage(10000)
 
 Module: StagingHubMarket
 	Name: #ORB_STAGING_HUB_MARKET
@@ -57,3 +57,22 @@ Module: StagingHubMarket
 	RepeatPressure(Research, TriggerPeriodic(AddMoney(5), Interval = 60.0))
 	RepeatPressure(Defense, TriggerPeriodic(AddMoney(5), Interval = 60.0))
 	AddStatus(StagingHubMarket)
+
+Module: StagingHubShipyard
+	Name: #ORB_STAGING_HUB_SHIPYARD
+	Description: #ORB_STAGING_HUB_SHIPYARD_DESC
+
+	Icon: OrbitalIcons::5
+
+	Standalone: False
+	Core: False
+
+	Build Cost: 250
+	Maintenance: 130
+
+	RequireOnOrbital(StagingHub)
+
+	AddLaborIncome(2)
+	AllowConstruction(Ships = True, Orbitals = True, Asteroids = True, Enable Fill From = True)
+	GrantAbility(RepairBay)
+	AddStatus(StagingHubShipyard)

@@ -103,19 +103,19 @@ ORB_STARPORT_DOCKING_BAYS_DESC: <<
 	Allows global resource trade between any territories with Commerce Stations or Starports with Long Haul Docking Bays.
 >>
 ORB_STAGING_HUB: Staging Hub
-ORB_STAGING_HUB_BLURB: Allows trade through its system. Can build mining bases. Planets can be ordered to export their labor to this orbital. Can store 5k units of cargo.
+ORB_STAGING_HUB_BLURB: Allows trade through its system. Can build. Planets and ships can be ordered to export their labor to this orbital. Can store 10k units of cargo.
 ORB_STAGING_HUB_DESC: <<|
 	[color=#aaa][i]This multipurpose station can act as a trading outpost as well as a remote base for mining operations or construction projects. It can also support a small fleet and stockpile resources to sell to private corporations.[/i][/color]
 
-	Can construct mining bases on asteroids.
+	Can build orbitals and mining bases on asteroids.
 
 	Has no innate labor, but planets can export their own labor to staging hubs within trade range at a 50% reduced rate.
 
-	Can be upgraded to sell imported resources.
+	Can be upgraded to build ships and sell imported resources.
 
 	Adds 15 Defense Reserve when in orbit around an owned planet.
 
-	Can store 5k units of cargo.
+	Can store 10k units of cargo.
 
 	[i]Can be built in systems you do not own planets in, expanding your empire border.[/i]
 >>
@@ -124,6 +124,14 @@ ORB_STAGING_HUB_MARKET_DESC: <<
 	[color=#aaa][i]Additional warehouse space along with a management area to store and sell imported resources to private buyers. As these trades are made outside the civilian sector, all profits are state-owned.[/i][/color]
 
 	Can import influence, energy, research and defense resources and generate 5k per imported pressure as special funds every minute.
+>>
+ORB_STAGING_HUB_SHIPYARD: Construction Yard
+ORB_STAGING_HUB_SHIPYARD_DESC: <<
+	[color=#aaa][i]Additional storage and facilities that allow assembly of supplied ship parts on the spot.[/i][/color]
+
+	Generates 1 Labor per minute.
+
+	Can build ships and drydocks and provide repairs.
 >>
 ORB_RESEARCH_LAB: Zero-G Lab
 ORB_RESEARCH_LAB_BLURB: Generates research points for the empire and gives access to special projects. Can store 1.5k units of cargo.
