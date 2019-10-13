@@ -1,4 +1,4 @@
-#priority init 2000
+#priority init 6000
 import saving;
 import hooks;
 import util.formatting;
@@ -622,7 +622,7 @@ double getSettlementPopulation(Object& obj) {
 	return pop;
 }
 
-SettlementType@ getSettlement(Object& obj) {
+const SettlementType@ getSettlement(Object& obj) {
 	array<SettlementType@> availableSettlements;
 	SettlementType@ settlement;
 	for (uint i = 0, cnt = settlements.length; i < cnt; ++i) {
@@ -635,7 +635,7 @@ SettlementType@ getSettlement(Object& obj) {
 	return availableSettlements.length > 0 ? availableSettlements[0] : null;
 }
 
-SettlementFocusType@[] getAvailableFoci(Object& obj) {
+const SettlementFocusType@[] getAvailableFoci(Object& obj) {
 	array<SettlementFocusType@> availableFoci;
 	SettlementFocusType@ focus;
 
@@ -649,7 +649,7 @@ SettlementFocusType@[] getAvailableFoci(Object& obj) {
 	return availableFoci;
 }
 
-CivilActType@[] getAvailableCivilActs(Object& obj) {
+const CivilActType@[] getAvailableCivilActs(Object& obj) {
 	array<CivilActType@> availableCivilActs;
 	CivilActType@ civilAct;
 

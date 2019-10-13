@@ -13,7 +13,7 @@ tidy class SettlementManager : Component_Settlement, Savable {
 	array<CivilAct@> civilActs;
 	private bool _isActive = false;
 	private double _morale;
-	private uint _focusId;
+	private int _focusId;
 	private bool _autoFocus;
 
 	private bool _notifiedCivilUnrest = false;
@@ -59,6 +59,10 @@ tidy class SettlementManager : Component_Settlement, Savable {
 
 	void setType(uint id) {
 		const SettlementType@ type = getSettlementType(id);
+		setType(type);
+	}
+
+	void setType(const SettlementType& type) {
 		if (type !is null) {
 			if (settlementType !is null) {
 				settlementType.disable(obj);
@@ -79,6 +83,10 @@ tidy class SettlementManager : Component_Settlement, Savable {
 
 	void setFocus(uint id) {
 		const SettlementFocusType@ type = getSettlementFocusType(id);
+		setFocus(type);
+	}
+
+	void setFocus(const SettlementFocusType& type) {
 		if(type !is null) {
 			if (this.focus !is null) {
 				this.focus.disable(obj);
@@ -90,7 +98,7 @@ tidy class SettlementManager : Component_Settlement, Savable {
 			focus.enable(obj);
 			if (type.moraleEffect.stat != 0)
 				modMorale(type.moraleEffect.stat);
-			_focusId = id;
+			_focusId = type.id;
 		}
 	}
 
@@ -195,20 +203,9 @@ tidy class SettlementManager : Component_Settlement, Savable {
 	}
 
 	void initSettlement(Object& obj) {
-		SettlementType@ settlement = getSettlement(obj);
-		if (settlement is null) {
-			error("initSettlement (" + obj.name + ", " + obj.owner.name + "): could not find any suitable settlement type");
-			return;
-		}
-		SettlementFocusType@[] foci = getAvailableFoci(obj);
-		if (foci.length == 0) {
-			error("initSettlement (" + obj.name + ", " + obj.owner.name + "): could not find any available focus");
-			return;
-		}
 		@this.obj = obj;
 		_morale = 0;
-		setType(settlement.id);
-		setFocus(foci[0].id);
+		_focusId = -1;
 		_autoFocus = true;
 		_isActive = true;
 		_notifiedCivilUnrest = false;
@@ -217,10 +214,15 @@ tidy class SettlementManager : Component_Settlement, Savable {
 	void clearSettlement(Object& obj, Empire@ emp) {
 		Lock lck(mtx);
 		if (obj is this.obj) {
-			settlementType.disable(obj);
-			@settlementType = null;
-			focus.disable(obj);
-			@focus = null;
+			if (settlementType !is null) {
+				settlementType.disable(obj);
+				@settlementType = null;
+			}
+			if (focus !is null) {
+				focus.disable(obj);
+				@focus = null;
+				_focusId = -1;
+			}
 			for (uint i = 0, cnt = civilActs.length; i < cnt; ++i) {
 				removeCivilAct(civilActs[i], emp, force = true);
 				--i; --cnt;
@@ -230,66 +232,65 @@ tidy class SettlementManager : Component_Settlement, Savable {
 	}
 
 	void settlementTick(Object& obj, double time) {
-		if (_isActive) {
-			if (morale <= SM_VeryLow && !_notifiedCivilUnrest) {
-				notifySettlement(obj, obj.owner, SET_Civil_Unrest);
-				_notifiedCivilUnrest = true;
-			}
-			else if (morale > SM_VeryLow && _notifiedCivilUnrest)
-				_notifiedCivilUnrest = false;
+		if (!_isActive)
+			return;
 
-			if (!settlementType.type.canEnable(obj))
-				settlementType.disable(obj);
-			SettlementType@ settlement = getSettlement(obj);
-			if (settlement is null) {
-					error("settlementTick (" + obj.name + ", " + obj.owner.name + "): could not find any suitable settlement type");
-					return;
-			}
-			if (settlement.id != settlementType.type.id)
-				setType(settlement.id);
+		if (morale <= SM_VeryLow && !_notifiedCivilUnrest) {
+			notifySettlement(obj, obj.owner, SET_Civil_Unrest);
+			_notifiedCivilUnrest = true;
+		}
+		else if (morale > SM_VeryLow && _notifiedCivilUnrest)
+			_notifiedCivilUnrest = false;
 
+		const SettlementType@ settlement = getSettlement(obj);
+		if (settlement !is null) {
+			if (settlementType is null || settlement.id != settlementType.type.id)
+				setType(settlement);
+		}
+		else
+			error("settlementTick (" + obj.name + ", " + obj.owner.name + "): could not find any suitable settlement type");
+
+		if (settlementType !is null)
 			settlementType.tick(obj, time);
 
-			if (!focus.type.canEnable(obj))
-				focus.disable(obj);
-			SettlementFocusType@[] foci = getAvailableFoci(obj);
-			if (foci.length == 0) {
-				error("settlementTick (" + obj.name + ", " + obj.owner.name + "): could not find any available focus");
-				return;
-			}
-			if (_autoFocus && _focusId != foci[0].id)
-				setFocus(foci[0].id);
+		const SettlementFocusType@[] foci = getAvailableFoci(obj);
+		if (foci.length > 0) {
+			if (_focusId == -1 || _autoFocus && _focusId != int(foci[0].id))
+				setFocus(foci[0]);
+		}
+		else
+			error("settlementTick (" + obj.name + ", " + obj.owner.name + "): could not find any available focus");
 
+		if (focus !is null)
 			focus.tick(obj, time);
 
-			for(uint i = 0, cnt = civilActs.length; i < cnt; ++i) {
-				auto@ civilAct = civilActs[i];
-				if(!civilAct.type.canEnable(obj)) {
-					removeCivilAct(civilAct, obj.owner, force = true);
-					--i; --cnt;
-					continue;
+		for(uint i = 0, cnt = civilActs.length; i < cnt; ++i) {
+			auto@ civilAct = civilActs[i];
+			if(!civilAct.type.canEnable(obj)) {
+				removeCivilAct(civilAct, obj.owner, force = true);
+				--i; --cnt;
+				continue;
+			}
+			else {
+				refreshMaintainCost(civilAct);
+				if (civilAct.currentDelay > 0) {
+					civilAct.currentDelay = max(0.0, civilAct.currentDelay - time);
+					if (civilAct.currentDelay == 0.0)
+						//Enable civil acts with expired delay
+						civilAct.enable(obj);
+					else continue;
 				}
-				else {
-					refreshMaintainCost(civilAct);
-					if (civilAct.currentDelay > 0) {
-						civilAct.currentDelay = max(0.0, civilAct.currentDelay - time);
-						if (civilAct.currentDelay == 0.0)
-							//Enable civil acts with expired delay
-							civilAct.enable(obj);
-						else continue;
+				if (civilAct.currentCommitment > 0)
+					civilAct.currentCommitment = max(0.0, civilAct.currentCommitment - time);
+				if (civilAct.currentDuration < INFINITY) {
+					civilAct.currentDuration = max(0.0, civilAct.currentDuration - time);
+					if (civilAct.currentDuration <= 0) {
+						removeCivilAct(civilAct, obj.owner);
+						--i; --cnt;
+						continue;
 					}
-					if (civilAct.currentCommitment > 0)
-						civilAct.currentCommitment = max(0.0, civilAct.currentCommitment - time);
-					if (civilAct.currentDuration < INFINITY) {
-						civilAct.currentDuration = max(0.0, civilAct.currentDuration - time);
-						if (civilAct.currentDuration <= 0) {
-							removeCivilAct(civilAct, obj.owner);
-							--i; --cnt;
-							continue;
-						}
-					}
-					civilAct.tick(obj, time);
 				}
+				civilAct.tick(obj, time);
 			}
 		}
 	}

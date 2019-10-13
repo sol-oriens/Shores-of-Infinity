@@ -373,7 +373,7 @@ CIVIL_ACT_RAMPANT_CORRUPTION_DESC: <<|
 	greedy political figures. Once the network is in place, it is only a matter of time before the local governing
 	instances become mere puppets to us.[/i][/color]
 
-	Adds 2 Influence Stake per billion population.
+	Adds 1 Influence Stake per billion population.
 >>
 
 TT_MORALE_EFFECT: Morale effect
