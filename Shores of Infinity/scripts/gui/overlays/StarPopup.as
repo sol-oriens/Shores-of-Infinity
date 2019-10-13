@@ -143,7 +143,7 @@ class StarPopup : Popup {
 		else
 			name.font = FT_Normal;
 
-		radius.text = obj.radius + "u";
+		radius.text = obj.displayRadius + "u";
 		temperature.text = obj.temperature + "K";
 
 		//Update health

@@ -125,12 +125,11 @@ class MakeNeutronStar : MapHook {
 	double NEUTRON_STAR_HEALTH = 20000000000;
 
 	Document doc("Creates a neutron star in the system.");
-	Argument rad("Radius", AT_Range, "180.0:200.0", doc="Radius of the star.");
 	Argument position("Position", AT_Position, "(0, 0, 0)", doc="Position relative to the center of the system to create the star.");
 
 #section server
 	void trigger(SystemData@ data, SystemDesc@ system, Object@& current) const override {
-		double radius = rad.fromRange() * config::SCALE_STARS;
+		double radius = 200.0 * config::SCALE_STARS;
 		vec3d pos = position.fromPosition();
 
 		//Create star
@@ -146,6 +145,7 @@ class MakeNeutronStar : MapHook {
 		star.alwaysVisible = true;
 
 		@star.region = system.object;
+		star.displayRadius = randomd(0.1, 0.2);
 		star.temperature = randomd(6000000.0, 1000000000000.0);
 		star.finalizeCreation();
 		system.object.enterRegion(star);
@@ -2026,12 +2026,12 @@ void mapCopyRegion(SystemDesc@ from, SystemDesc@ to, uint typeMask = ~0) {
 				starHook.trigger(null, to, current);
 			}
 			else {
-				neutronHook.arguments[0].set(base.radius);
-				neutronHook.arguments[1].set(destPos - to.position);
+				neutronHook.arguments[0].set(destPos - to.position);
 
 				neutronHook.trigger(null, to, current);
 
 				Star@ star = cast<Star>(current);
+				star.radius = base.radius;
 				star.temperature = base.temperature;
 			}
 		}

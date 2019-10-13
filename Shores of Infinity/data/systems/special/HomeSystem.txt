@@ -1,7 +1,8 @@
 System: HomeSystem
 
 	//SoI - Scaling
-	MakeStar(Temperature = 400:13000, Radius = 650:850)
+	MakeNeutronStar()
+	//MakeStar(Temperature = 400:13000, Radius = 650:850)
 		BonusHealth(20000000000)
 
 	//SoI - Scaling

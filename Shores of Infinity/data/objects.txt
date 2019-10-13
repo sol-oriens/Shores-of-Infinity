@@ -91,7 +91,10 @@ server:
 Star : objects.Star::StarScript {
 	Orbit orbit
 	Statuses statuses
+	double _displayRadius
+
 visible:
+	local safe double get_displayRadius();
 	double temperature
 	double Health = 20000000000 // 20G
 	double MaxHealth = 20000000000 // 20G
@@ -99,6 +102,7 @@ visible:
 	double MaxShield = 0
 
 server:
+	void set_displayRadius(double value);
 	void dealStarDamage(double amount);
 	void dealStarDamage(double amount, const vec3d attackerPosition);
 }

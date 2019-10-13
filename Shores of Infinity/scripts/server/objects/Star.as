@@ -8,8 +8,17 @@ final class StarScript {
 	bool hpDelta = false, shieldDelta = false, maxDelta = false;
 	double maxHealth, maxShield;
 
+	double get_displayRadius(Star& star) {
+		return star._displayRadius > 0 ? star._displayRadius : star.radius;
+	}
+
+	void set_displayRadius(Star& star, double value) {
+		star._displayRadius = value;
+	}
+
 	void syncInitial(const Star& star, Message& msg) {
 		msg << float(star.temperature);
+		msg << star._displayRadius;
 		star.writeOrbit(msg);
 		star.writeStatuses(msg);
 	}
@@ -17,6 +26,7 @@ final class StarScript {
 	void save(Star& star, SaveFile& file) {
 		saveObjectStates(star, file);
 		file << star.temperature;
+		file << star._displayRadius;
 		file << cast<Savable>(star.Orbit);
 		file << star.Health;
 		file << star.MaxHealth;
@@ -28,6 +38,7 @@ final class StarScript {
 	void load(Star& star, SaveFile& file) {
 		loadObjectStates(star, file);
 		file >> star.temperature;
+		file >> star._displayRadius;
 
 		if(star.owner is null)
 			@star.owner = defaultEmpire;
@@ -43,11 +54,11 @@ final class StarScript {
 			@node = bindNode(star, "BrownDwarfNode");
 			node.color = blackBody(temp, max((temp + 15000.0) / 40000.0, 1.0));
 		}
-		else if (temp > 1300.0 && temp < 300000.0) {
+		else if (temp > 1300.0 && temp < 6000000.0) {
 			@node = bindNode(star, "StarNode");
 			node.color = blackBody(temp, max((temp + 15000.0) / 40000.0, 1.0));
 		}
-		else if (temp >= 300000.0 && temp <= 600000.0) {
+		else if (temp >= 6000000.0 && temp <= 1000000000000.0) {
 			@node = bindNode(star, "NeutronStarNode");
 			node.color = blackBody(16000.0, max((16000.0 + 15000.0) / 40000.0, 1.0));
 			cast<NeutronStarNode>(node).establish(star);
