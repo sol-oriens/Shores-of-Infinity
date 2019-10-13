@@ -128,8 +128,7 @@ class SettlementDisplay : DisplayBox {
 	GuiAccordion@ civilActList;
 	GuiSprite@ moraleIcon, typeIcon;
 
-	GuiButton@ autoFocusButton;
-	GuiButton@ cancelCivilActsButton;
+	GuiButton@ autoFocusButton, cancelCivilActsButton, cancelAllCivilActsButton;
 
 	array<CivilActElement@> activeCivilActs;
 	array<CivilActElement@> civilActTimers;
@@ -186,11 +185,17 @@ class SettlementDisplay : DisplayBox {
 		civilActList.multiple = true;
 		civilActList.clickableHeaders = true;
 
-		@cancelCivilActsButton = GuiButton(middlePanelBox, Alignment(Right-8-32, Bottom-32, Width=30, Height=30));
+		@cancelCivilActsButton = GuiButton(middlePanelBox, Alignment(Right-8-64, Bottom-32, Width=30, Height=30));
 		cancelCivilActsButton.style = SS_IconButton;
 		cancelCivilActsButton.color = Color(0x00ff00ff);
-		cancelCivilActsButton.setIcon(icons::Clear);
+		cancelCivilActsButton.setIcon(Sprite(spritesheet::VoteIcons, 6));
 		setMarkupTooltip(cancelCivilActsButton, locale::TT_CANCEL_CIVIL_ACTS, width=300);
+
+		@cancelAllCivilActsButton = GuiButton(middlePanelBox, Alignment(Right-8-32, Bottom-32, Width=30, Height=30));
+		cancelAllCivilActsButton.style = SS_IconButton;
+		cancelAllCivilActsButton.color = Color(0x00ff00ff);
+		cancelAllCivilActsButton.setIcon(icons::Clear);
+		setMarkupTooltip(cancelAllCivilActsButton, locale::TT_CANCEL_ALL_CIVIL_ACTS, width=300);
 
 		if (obj.owner is playerEmpire) {
 			updateVariables();
@@ -231,7 +236,7 @@ class SettlementDisplay : DisplayBox {
 					obj.autoFocus = !obj.autoFocus;
 					return true;
 				}
-				if (evt.caller is cancelCivilActsButton) {
+				else if (evt.caller is cancelCivilActsButton) {
 					for (int i = obj.civilActCount - 1; i >= 0; --i) {
 						//Iterating in reverse as some items may not be removed and index may or may not change
 						uint id = obj.getCivilActTypeId(uint(i));
@@ -241,6 +246,31 @@ class SettlementDisplay : DisplayBox {
 					updateCivilActList();
 					updateVariables();
 					return true;
+				}
+				else if (evt.caller is cancelAllCivilActsButton) {
+					auto@ emp = obj.owner;
+					for (uint i = 0, cnt = emp.planetCount; i < cnt; ++i) {
+						auto@ pl = emp.planetList[i];
+						if (pl !is null) {
+							for (int i = pl.civilActCount - 1; i >= 0; --i) {
+								//Iterating in reverse as some items may not be removed and index may or may not change
+								uint id = pl.getCivilActTypeId(uint(i));
+								const CivilActType@ civilAct = getCivilActType(id);
+								pl.removeCivilAct(civilAct.id);
+							}
+						}
+					}
+					for (uint i = 0, cnt = emp.fleetCount; i < cnt; ++i) {
+						auto@ fl = emp.fleets[i];
+						if (fl !is null && fl.isShip) {
+							for (int i = fl.civilActCount - 1; i >= 0; --i) {
+								//Iterating in reverse as some items may not be removed and index may or may not change
+								uint id = fl.getCivilActTypeId(uint(i));
+								const CivilActType@ civilAct = getCivilActType(id);
+								fl.removeCivilAct(civilAct.id);
+							}
+						}
+					}
 				}
 				break;
 		}
@@ -294,13 +324,18 @@ class SettlementDisplay : DisplayBox {
 				stateInfo.text = locale::STATE_CIVIL_UNREST;
 				stateInfo.color = 0xff0000ff;
 				break;
-			case SM_Low:
+			case SM_VeryLow:
 				morale.text = locale::MORALE_LOW;
 				moraleIcon.desc = Sprite(material::MaskAngry);
 				stateInfo.text = locale::STATE_CIVIL_UNREST;
 				stateInfo.color = 0xff0000ff;
 				break;
+			case SM_Low:
+				morale.text = locale::MORALE_LOW;
+				moraleIcon.desc = Sprite(material::MaskAngry);
+				break;
 			case SM_High:
+			case SM_VeryHigh:
 				morale.text = locale::MORALE_HIGH;
 				moraleIcon.desc = Sprite(material::MaskHappy);
 				break;
