@@ -7,6 +7,10 @@ BLD_BARRACKS_DESC: <<|
 	Adds 1 bonus planet loyalty.
 >>
 
+BLD_FORGE2: Forge II
+BLD_FORGE3: Forge III
+BLD_FORGE4: Forge IV
+BLD_FORGE5: Forge V
 BLD_FORGE_DESC: <<|
 	[color=#aaa][i]A vast industrial complex dedicated to metalworks and production of parts to be assembled in
 	factories and machine shops.[/i][/color]

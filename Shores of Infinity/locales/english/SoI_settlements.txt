@@ -103,11 +103,19 @@ SETTLEMENT_MINE_DESC: <<|
 SETTLEMENT_FORGE: Forge World
 SETTLEMENT_FORGE_DESC: <<|
 	[color=#aaa][i]Factories, assembly lines, machinery everywhere. All of this ridiculously overshadowed by the
-	gigantic, continent-sized forges whose existence is justified by one objective: churning out the most massive
-	things our civilization ever built. These monsters alone generate more output than any of our planets probably
-	ever will.[/i][/color]
+	gigantic, nearly continent-sized forges whose existence is justified by one objective: churning out the most massive
+	things our civilization ever built. These monsters alone generate more output than any of all our other
+	planets together probably ever will.[/i][/color]
 
 	Replaces a Level 2 resource.
+
+	Constructions have a 20% cheaper build cost.
+>>
+SETTLEMENT_ANCIENT_FORGE_DESC: <<|
+	[color=#aaa][i]Almost entirely covered by foundries, the building power of this planet is a love letter to what our
+	civilization once was: unmatched.[/i][/color]
+
+	Increases Labor generation by 150%.
 
 	Constructions have a 20% cheaper build cost.
 >>

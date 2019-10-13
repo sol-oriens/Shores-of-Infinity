@@ -10,16 +10,15 @@ Building: Forge0
 
 	Base Cost: 250
 	Base Maintenance: 50
-	Labor Cost: 100
+	Labor Cost: 50
 
 	RequireNotTrait(Ancient)
-	ConstructibleIfAttribute(ForgeCount, 0)
 
 	ModEmpireAttribute(ForgeCount, Add, 1)
 	ActiveWhenCargoConsumed(Ore, 1.0, 5.0, AddLaborFactor(0.2), Labor Use Linked = True)
 
 Building: Forge1
-	Name: #BLD_FORGE
+	Name: #BLD_FORGE2
 	Description: #BLD_FORGE2_DESC
 	Sprite: Forge2
 
@@ -29,15 +28,15 @@ Building: Forge1
 
 	Base Cost: 500
 	Base Maintenance: 100
-	Labor Cost: 200
+	Labor Cost: 100
 
-	ConstructibleIfAttribute(ForgeCount, 1)
+	//ConstructibleIfAttributeGTE(ForgeCount, 1)
 
 	ModEmpireAttribute(ForgeCount, Add, 1)
 	ActiveWhenCargoConsumed(Ore, 1.0, 2.5, AddLaborFactor(0.4), Labor Use Linked = True)
 
 Building: Forge2
-	Name: #BLD_FORGE
+	Name: #BLD_FORGE3
 	Description: #BLD_FORGE3_DESC
 	Sprite: Forge3
 
@@ -47,15 +46,15 @@ Building: Forge2
 
 	Base Cost: 1000
 	Base Maintenance: 150
-	Labor Cost: 400
+	Labor Cost: 200
 
-	ConstructibleIfAttribute(ForgeCount, 2)
+	//ConstructibleIfAttributeGTE(ForgeCount, 2)
 
 	ModEmpireAttribute(ForgeCount, Add, 1)
 	ActiveWhenCargoConsumed(Ore, 0.9, 1.5, AddLaborFactor(0.6), Labor Use Linked = True)
 
 Building: Forge3
-	Name: #BLD_FORGE
+	Name: #BLD_FORGE4
 	Description: #BLD_FORGE4_DESC
 	Sprite: Forge4
 
@@ -65,15 +64,15 @@ Building: Forge3
 
 	Base Cost: 2000
 	Base Maintenance: 200
-	Labor Cost: 800
+	Labor Cost: 400
 
-	ConstructibleIfAttribute(ForgeCount, 3)
+	//ConstructibleIfAttributeGTE(ForgeCount, 3)
 
 	ModEmpireAttribute(ForgeCount, Add, 1)
 	ActiveWhenCargoConsumed(Ore, 1.0, 1.25, AddLaborFactor(0.8), Labor Use Linked = True)
 
 Building: Forge4
-	Name: #BLD_FORGE
+	Name: #BLD_FORGE5
 	Description: #BLD_FORGE5_DESC
 	Sprite: Forge5
 
@@ -83,9 +82,9 @@ Building: Forge4
 
 	Base Cost: 4000
 	Base Maintenance: 250
-	Labor Cost: 1600
+	Labor Cost: 800
 
-	ConstructibleIfAttributeGTE(ForgeCount, 4)
+	//ConstructibleIfAttributeGTE(ForgeCount, 4)
 
 	AddStatus(Forge4)
 
