@@ -125,7 +125,7 @@ class MakeNeutronStar : MapHook {
 	double NEUTRON_STAR_HEALTH = 20000000000;
 
 	Document doc("Creates a neutron star in the system.");
-	Argument rad("Radius", AT_Range, "15.0:20.0", doc="Radius of the star.");
+	Argument rad("Radius", AT_Range, "180.0:200.0", doc="Radius of the star.");
 	Argument position("Position", AT_Position, "(0, 0, 0)", doc="Position relative to the center of the system to create the star.");
 
 #section server

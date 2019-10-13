@@ -30,7 +30,7 @@ final class NeutronStarNodeScript {
 			upLeft *= node.abs_scale * 1.5;
 			upRight *= node.abs_scale * 1.5;
 
-			renderPlane(material::AccretionDisk, node.abs_position, node.abs_scale * 100.0, Color(0xffffffff));
+			renderPlane(material::AccretionDisk, node.abs_position, node.abs_scale * 10.0, Color(0xffffffff));
 
 			Color col(node.color);
 			col.r = 64;
@@ -42,7 +42,7 @@ final class NeutronStarNodeScript {
 			rotation += elapsedTime;
 			if (rotation > pi * 2)
 				rotation = 0;
-			renderBillboard(material::DistantStar, node.abs_position, node.abs_scale * 150, rotation, col);
+			renderBillboard(material::DistantStar, node.abs_position, node.abs_scale * 15, rotation, col);
 		}
 
 		if(dist > 0.5) {
