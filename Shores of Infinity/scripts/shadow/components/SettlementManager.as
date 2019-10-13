@@ -13,7 +13,7 @@ tidy class SettlementManager : Component_Settlement {
 	array<CivilAct@> civilActs;
 	private bool _isActive = false;
 	private double _morale;
-	private uint _focusId;
+	private int _focusId;
 	private bool _autoFocus;
 
 	SettlementManager() {
@@ -61,8 +61,12 @@ tidy class SettlementManager : Component_Settlement {
 	}
 
 	void setFocus(uint id) {
-		//PREDICTIVE
 		const SettlementFocusType@ type = getSettlementFocusType(id);
+		setFocus(type);
+	}
+
+	void setFocus(const SettlementFocusType& type) {
+		//PREDICTIVE
 		if(type !is null) {
 			if (this.focus !is null) {
 				this.focus.disable(obj);
@@ -74,7 +78,7 @@ tidy class SettlementManager : Component_Settlement {
 			focus.enable(obj);
 			if (type.moraleEffect.stat != 0)
 				modMorale(type.moraleEffect.stat);
-			_focusId = id;
+			_focusId = type.id;
 		}
 	}
 
