@@ -13,9 +13,11 @@ const string VeryNegative = "Very Negative";
 
 enum SettlementMorale {
 	SM_Critical,
+	SM_VeryLow,
 	SM_Low,
 	SM_Medium,
 	SM_High,
+	SM_VeryHigh
 };
 
 enum CivilActTimerType {

@@ -35,9 +35,13 @@ tidy class SettlementManager : Component_Settlement {
 		if (totalMorale <= -3.0)
 			return SM_Critical;
 		if (totalMorale <= -2.0)
+			return SM_VeryLow;
+		if (totalMorale <= -1.0)
 			return SM_Low;
-		if (totalMorale >= 2.0)
+		if (totalMorale >= 1.0)
 			return SM_High;
+		if (totalMorale >= 2.0)
+			return SM_VeryHigh;
 		return SM_Medium;
 	}
 

@@ -1194,7 +1194,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 	}
 
 	uint siegeMask = 0;
-	double moraleUpdateTimer = 6.0;
+	double moraleUpdateTimer = 30.0;
 	void updateLoyalty(Object& obj, double time) {
 		Region@ reg = obj.region;
 		if(obj.owner is null || !obj.owner.valid || reg is null) {
@@ -1208,7 +1208,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		bool isSiege = false;
 		bool isRelief = false, externalRelief = false;
 		bool protect = isProtected(obj);
-		bool civilUnrest = obj.morale + obj.owner.GlobalMorale.value <= SM_Low;
+		bool civilUnrest = obj.morale + obj.owner.GlobalMorale.value <= SM_VeryLow;
 
 		double baseLoyalty = max(double(BaseLoyalty + obj.owner.GlobalLoyalty.value), 1.0);
 		double loyTimer = config::SIEGE_LOYALTY_TIME * ceil(baseLoyalty / 10.0);
@@ -1353,7 +1353,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		if (civilUnrest) {
 			moraleUpdateTimer -= time;
 			if (moraleUpdateTimer <= 0) {
-				moraleUpdateTimer = 6.0;
+				moraleUpdateTimer = 30.0;
 				double lossThreshold = 0.8;
 				if (obj.morale + obj.owner.GlobalMorale.value == SM_Critical)
 					lossThreshold = 0.6;
@@ -1371,8 +1371,8 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		else {
 			if (LoyaltyPenalty > 0)
 				LoyaltyPenalty--;
-			if (moraleUpdateTimer <= 6.0)
-				moraleUpdateTimer = 6.0;
+			if (moraleUpdateTimer <= 30.0)
+				moraleUpdateTimer = 30.0;
 		}
 	}
 
