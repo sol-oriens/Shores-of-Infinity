@@ -104,7 +104,7 @@ SETTLEMENT_FORGE: Forge World
 SETTLEMENT_FORGE_DESC: <<|
 	[color=#aaa][i]Factories, assembly lines, machinery everywhere. All of this ridiculously overshadowed by the
 	gigantic, nearly continent-sized forges whose existence is justified by one objective: churning out the most massive
-	things our civilization ever built. These monsters alone generate more output than any of all our other
+	things our civilization ever built. These monsters alone generate more output than all our other
 	planets together probably ever will.[/i][/color]
 
 	Replaces a Level 2 resource.

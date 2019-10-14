@@ -69,9 +69,11 @@ BLD_ARCOLOGY: Arcology
 BLD_ARCOLOGY_DESC: <<
 	[color=#aaa][i]The ultimate settlement, designed for self-sufficiency. An arcology is a city-in-a-giant-building: residential areas, business and shopping centers, factories, parks, farms, water and waste processing units, all operating in a closed circuit. Nothing needs to enter an arcology to sustain it, and nothing needs to exit. Except tax...[/i][/color]
 
-	Replaces up to 5 regular cities.
+	Replaces up to 3 regular cities.
 
-	Adds 5 population.
+	Adds 3 population.
+
+	Increases the planet's total pressure capacity by 3.
 >>
 
 BLD_HEALTH_COMPLEX: Healthcare Complex
