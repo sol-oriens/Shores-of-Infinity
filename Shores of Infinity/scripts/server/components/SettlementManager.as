@@ -156,7 +156,7 @@ tidy class SettlementManager : Component_Settlement, Savable {
 				civilAct.currentMaint = maint;
 			}
 			civilAct.currentDelay = civilAct.type.delay;
-			civilAct.currentCommitment = max(0.0, civilAct.type.commitment - civilAct.type.delay);
+			civilAct.currentCommitment = civilAct.type.commitment;
 
 			if (civilAct.currentDelay == 0.0)
 				//Delayed civil acts are not enabled yet
@@ -280,14 +280,16 @@ tidy class SettlementManager : Component_Settlement, Savable {
 						civilAct.enable(obj);
 					else continue;
 				}
-				if (civilAct.currentCommitment > 0)
-					civilAct.currentCommitment = max(0.0, civilAct.currentCommitment - time);
-				if (civilAct.currentDuration < INFINITY) {
-					civilAct.currentDuration = max(0.0, civilAct.currentDuration - time);
-					if (civilAct.currentDuration <= 0) {
-						removeCivilAct(civilAct, obj.owner);
-						--i; --cnt;
-						continue;
+				else {
+					if (civilAct.currentCommitment > 0)
+						civilAct.currentCommitment = max(0.0, civilAct.currentCommitment - time);
+					if (civilAct.currentDuration < INFINITY) {
+						civilAct.currentDuration = max(0.0, civilAct.currentDuration - time);
+						if (civilAct.currentDuration <= 0) {
+							removeCivilAct(civilAct, obj.owner);
+							--i; --cnt;
+							continue;
+						}
 					}
 				}
 				civilAct.tick(obj, time);
