@@ -112,12 +112,11 @@ class LaserThrust : SubsystemEffect {
 
 			for(uint i = 0, cnt = obj.statusEffectCount; i < cnt; ++i) {
 				if (obj.statusEffectType[i] == uint(status.integer)) {
-					double variable = obj.variable[i];
-					if (variable != -1.0)
-						laserFactor += variable;
+					laserFactor += obj.variable[i];
 					Object@ origin = obj.statusEffectOriginObject[i];
 					if (origin !is null)
 						laserFactor *= (1.0 - (obj.position.distanceTo(origin.position) / 250000.0));
+					break;
 				}
 			}
 

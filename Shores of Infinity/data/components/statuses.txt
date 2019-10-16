@@ -14,8 +14,8 @@ local:
 	uint getStatusStackCountAny(uint typeId);
 
 server:
-	int addStatus(double timer, uint typeId, Empire@ boundEmpire = null, Region@ boundRegion = null, Empire@ originEmpire = null, Object@ originObject = null, double variable = -1.0);
-	void addStatus(uint typeId, double timer = -1.0, Empire@ boundEmpire = null, Region@ boundRegion = null, Empire@ originEmpire = null, Object@ originObject = null, double variable = -1.0);
+	int addStatus(double timer, uint typeId, Empire@ boundEmpire = null, Region@ boundRegion = null, Empire@ originEmpire = null, Object@ originObject = null, double variable = 0.0);
+	void addStatus(uint typeId, double timer = -1.0, Empire@ boundEmpire = null, Region@ boundRegion = null, Empire@ originEmpire = null, Object@ originObject = null, double variable = 0.0);
 	void removeStatus(int id);
 	bool isStatusInstanceActive(int id);
 	void removeStatusType(uint typeId);

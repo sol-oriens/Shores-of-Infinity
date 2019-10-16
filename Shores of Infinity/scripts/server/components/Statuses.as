@@ -133,7 +133,7 @@ tidy class Statuses : Component_Statuses, Savable {
 		return false;
 	}
 
-	int addStatus(Object& obj, double timer, uint typeId, Empire@ boundEmpire = null, Region@ boundRegion = null, Empire@ originEmpire = null, Object@ originObject = null, double variable = -1.0) {
+	int addStatus(Object& obj, double timer, uint typeId, Empire@ boundEmpire = null, Region@ boundRegion = null, Empire@ originEmpire = null, Object@ originObject = null, double variable = 0.0) {
 		const StatusType@ type = getStatusType(typeId);
 		if(type is null)
 			return -1;
@@ -167,7 +167,7 @@ tidy class Statuses : Component_Statuses, Savable {
 		return instance.id;
 	}
 
-	void addStatus(Object& obj, uint typeId, double timer = -1.0, Empire@ boundEmpire = null, Region@ boundRegion = null, Empire@ originEmpire = null, Object@ originObject = null, double variable = -1.0) {
+	void addStatus(Object& obj, uint typeId, double timer = -1.0, Empire@ boundEmpire = null, Region@ boundRegion = null, Empire@ originEmpire = null, Object@ originObject = null, double variable = 0.0) {
 		addStatus(obj, timer, typeId, boundEmpire, boundRegion, originEmpire, originObject, variable);
 	}
 

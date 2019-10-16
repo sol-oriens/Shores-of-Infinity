@@ -12,4 +12,4 @@ CivilAct: PopulationGrowth
 	RequireNotTrait(Ancient)
 	RequireNotTrait(Mechanoid)
 
-	ModPopulationGrowth(0.15)
+	settlement_effects::ModSettlementPopulationGrowth(0.15, PopGrowth)

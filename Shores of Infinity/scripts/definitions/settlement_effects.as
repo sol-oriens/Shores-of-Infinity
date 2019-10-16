@@ -152,3 +152,43 @@ class AddSettlementPressureCap : SettlementHook {
 	}
 #section all
 };
+
+class ModSettlementPopulationGrowth : SettlementHook {
+	Document doc("Increase the population growth multiplier on this settlement.");
+	Argument amount(AT_Decimal, doc="Percentage increase to the population growth multiplier, eg. 0.1 for +10% population growth.");
+	Argument status(AT_Status, doc="Type of variable status to add to ship settlements that will store the multiplier.");
+
+#section server
+	void enable(Object& obj, any@ data) const override {
+		if(obj.isPlanet)
+			obj.modGrowthRate(amount.decimal);
+		else if (obj.hasStatuses) {
+			int64 id = obj.addStatus(-1.0, status.integer, variable = amount.decimal);
+			if(data !is null)
+				data.store(id);
+		}
+	}
+
+	void disable(Object& obj, any@ data) const override {
+		if(obj.isPlanet)
+			obj.modGrowthRate(-amount.decimal);
+		else if (obj.hasStatuses && data !is null) {
+			int64 id = -1;
+			data.retrieve(id);
+			obj.removeStatus(id);
+		}
+	}
+
+	void save(any@ data, SaveFile& file) const override {
+		int64 id = -1;
+		data.retrieve(id);
+		file << id;
+	}
+
+	void load(any@ data, SaveFile& file) const override {
+		int64 id = -1;
+		file >> id;
+		data.store(id);
+	}
+#section all
+};
