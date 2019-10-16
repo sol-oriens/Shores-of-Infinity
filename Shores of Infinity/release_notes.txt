@@ -56,7 +56,7 @@ v0.3.0b
 
 [*] Lifestyles
 
-- Star Children now have Superstructure Hull unlocked at game start.
+- Star Children now have Superstructure Hull unlocked at game start (WotH DLC only).
 - Star Children are now smart enough to use crop regulation before their homeworld gets destroyed and start with one Harvest influence card.
 
 [*] Orbitals
@@ -104,7 +104,7 @@ v0.3.0b
 
 [*] Subsystems
 
-- Mothership Hull now also has the properties of Superstructure Hull.
+- Mothership Hull now have reduced build, maintenance and labor cost in exchange for an additional cost in Ore, similar to Superstructure Hull.
 - Decreased the base labor generation of Machine Shop.
 - Decreased the labor cost of Living Quarters.
 

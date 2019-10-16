@@ -31,7 +31,7 @@ Trait: StarChildren
 
 	ForbidSubsystem(ColonizationPods)
 	UnlockSubsystem(MothershipHull)
-	UnlockSubsystem(SuperstructureHull)
+	OnDLC(Heralds, UnlockSubsystem(SuperstructureHull))
 	UnlockSubsystem(StarHabitatModule)
 
 	GainInfluenceCard(Harvest)
