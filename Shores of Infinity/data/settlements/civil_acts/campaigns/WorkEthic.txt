@@ -12,6 +12,7 @@ CivilAct: WorkEthic
 	RequirePlanet()
 	RequireNotTrait(Ancient)
 	RequireNotTrait(Mechanoid)
+	RequireNotStatus(SettlementPrison)
 
 	ModCivResourceMult(Labor, 0.1)
 	ModCivResourceMult(Research, 0.1)

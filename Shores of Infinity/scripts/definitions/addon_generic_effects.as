@@ -281,7 +281,7 @@ class ModLocalMorale : GenericEffect {
 	Document doc("Increases or decreases the morale of the settlement.");
 	Argument descriptor(AT_Custom, doc="Descriptor of the morale modifier. Can be Very Positive, Positive, Negative or Very Negative");
 
-	int value = 0;
+	double value = 0;
 
 	bool instantiate() override {
 		value = LocalMoraleEffect(descriptor.str).stat;

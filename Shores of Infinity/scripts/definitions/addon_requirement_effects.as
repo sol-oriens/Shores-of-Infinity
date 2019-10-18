@@ -116,3 +116,19 @@ class RequireFlagship : Requirement {
 		return true;
 	}
 };
+
+class RequireLevel : Requirement {
+	Document doc("This can only work if the planet is of a particular level.");
+	Argument level(AT_Integer, doc="Resource level to require.");
+	Argument hide(AT_Boolean, "True", doc="Hide when unavailable.");
+	Argument exact(AT_Boolean, "False", doc="Filter for exactly this level, instead of at least this level.");
+
+	bool meets(Object& obj, bool ignoreState = false) const override {
+		if(ignoreState && !hide.boolean)
+			return true;
+		if(exact.boolean)
+			return obj.level == uint(level.integer);
+		else
+			return obj.level >= uint(level.integer);
+	}
+};

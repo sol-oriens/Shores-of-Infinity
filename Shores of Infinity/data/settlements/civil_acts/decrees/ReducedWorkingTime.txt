@@ -8,6 +8,7 @@ CivilAct: ReducedWorkingTime
 
 	RequirePlanet()
 	RequireAttributeLT(IgnoreMoraleModifiers, 1)
+	RequireNotStatus(SettlementPrison)
 	RequireNotTrait(Mechanoid)
 
 	AddSettlementPressureCap(-0.25)

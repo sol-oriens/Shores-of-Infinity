@@ -7,6 +7,7 @@ CivilAct: WarEconomy
 	Morale Effect: Negative
 
 	RequirePlanet()
+	RequireNotStatus(SettlementPrison)
 	RequireAttributeLT(IgnoreMoraleModifiers, 1)
 	RequireNotTrait(Pacifists)
 

@@ -13,4 +13,5 @@ CivilAct: PersonalityCult
 	Commitment: 1800
 
 	RequireAttributeLT(IgnoreMoraleModifiers, 1)
+	RequireNotStatus(SettlementPrison)
 	addon_requirement_effects::RequirePopulation(2)

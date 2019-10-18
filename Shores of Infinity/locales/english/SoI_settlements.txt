@@ -125,11 +125,11 @@ SETTLEMENT_RESORT_DESC: <<|
 	[color=#aaa][i]Due to the favorable climate of this world and the numerous touristic facilities that popped up
 	as a result, vacationers and touristic workers compose the major part of its population.[/i][/color]
 
-	Increases civilian Influence production by 100%.
+	Increases civilian Money and Influence production by 100%.
 
 	Reduces Labor generation by 100%.
 
-	Reduces civilian Money, Energy, Research and Defense production by 100%.
+	Reduces civilian Energy, Research and Defense production by 100%.
 >>
 
 SETTLEMENT_PRISON: Penal Colony
@@ -137,9 +137,11 @@ SETTLEMENT_PRISON_DESC: <<|
 	[color=#aaa][i]This planet mostly hosts sentenced criminals, isolated far away from civilization and with little
 	chance to evade.[/i][/color]
 
+	Adds 50 Labor Storage.
+
 	Slightly increases morale across the empire.
 
-	Reduces income penalty of Level 0 planets by 80k.
+	Reduces income penalty of Level 0 planets by 30k.
 
 	Reduces civilian Money, Influence, Energy, Research and Defense production by 100%.
 >>

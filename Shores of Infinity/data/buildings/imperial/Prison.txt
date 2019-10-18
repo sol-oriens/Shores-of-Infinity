@@ -11,16 +11,16 @@ Building: Prison
 
 	Base Cost: 100
 	Tile Cost: 30
-	Base Maintenance: 20
+	Base Maintenance: 10
 	Tile Maintenance: 5
 
 	Build Time: 90
 
-	RequireNotStatus(Ringworld)
-	RequireNotStatus(ArtificialPlanetoid)
 	RequireNotTrait(Ancient)
+	RequireNotTrait(Mechanoid)
 
-	addon_generic_effects::ModLocalMorale(Positive)
 	AddResource(Labor, 1)
+	addon_generic_effects::ModLocalMorale(Positive)
 	ReplacesCities(1)
+	
 	AddStatus(Prison)

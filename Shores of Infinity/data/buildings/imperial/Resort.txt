@@ -12,15 +12,18 @@ Building: Resort
 
 	Base Cost: 120
 	Tile Cost: 50
-	Base Maintenance: 50
+	Base Maintenance: 30
 	Tile Maintenance: 40
 
-	Build Time: 120
+	Build Time: 310
 
-	RequireNotStatus(Ringworld)
-	RequireNotStatus(ArtificialPlanetoid)
 	RequireNotTrait(Ancient)
+	RequireNotTrait(Mechanoid)
 
 	AddResource(Money, 1)
+	AddPressure(Influence, 1)
 	ReplacesCities(3)
+
+	AddPressureCap(-3)
+
 	AddStatus(Resort)

@@ -13,6 +13,7 @@ CivilAct: RampantCorruption
 	Commitment: 1800
 
 	RequireAttributeLT(IgnoreMoraleModifiers, 1)
+	RequireNotStatus(SettlementPrison)
 	addon_requirement_effects::RequirePopulation(2)
 
 	settlement_effects::AddSettlementResource(1, Influence)

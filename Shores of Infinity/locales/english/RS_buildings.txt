@@ -52,6 +52,13 @@ BLD_FORGE5_DESC: <<
 
 	Increases Labor generation by 100%.
 
+	Can upgrade the settlement to [bbloc=#SETTLEMENT_FORGE/].
+
+	[i][bbloc=#SETTLEMENT_FORGE_DESC/][/i]
+
+	Requirements:
+	[color=#ff0][bbloc=#BLD_FORGE5/] x 3[/color]
+
 	[bbloc=#TIP_CONSUME_ORE:60/]
 >>
 
@@ -107,6 +114,13 @@ BLD_MINE_DESC: <<
 	Increases the pressure given by native Iron and Titanium by 2.
 
 	Increases the pressure given by Coal and Native Gold by 1.
+
+	Can upgrade the settlement to [bbloc=#SETTLEMENT_MINE/].
+
+	[i][bbloc=#SETTLEMENT_MINE_DESC/][/i]
+
+	Requirements:
+	[color=#ff0][bbloc=#BLD_MINE/] x 3[/color]
 >>
 
 BLD_NRG_FACTORY: Fossil Fuel Facility
@@ -127,15 +141,51 @@ BLD_PRISON_DESC: <<
 	Generates 1 Labor/minute.
 
 	Moderately increases morale.
+
+	Can upgrade the settlement to [bbloc=#SETTLEMENT_PRISON/].
+
+	[i][bbloc=#SETTLEMENT_PRISON_DESC/][/i]
+
+	Requirements:
+	[color=#ff0][bbloc=#BLD_PRISON/] x 2
+	Native Resource Level 0
+	Planet Level 0[/color]
 >>
 
 BLD_RESORT: Resort
 BLD_RESORT_DESC: <<
-	[color=#aaa][i]A tourist paradise. Also an entrepreneur's.[/i][/color]
+	[color=#aaa][i]A tourist's paradise. Also an entrepreneur's.[/i][/color]
 
 	Gives 1 Money generation.
 
+	Adds 1 Influence pressure.
+
 	Replaces up to 3 regular cities.
+
+	Reduces total pressure capacity by 3.
+
+	Can upgrade the settlement to [bbloc=#SETTLEMENT_RESORT/].
+
+	[i][bbloc=#SETTLEMENT_RESORT_DESC/][/i]
+
+	Requirements:
+	[color=#ff0][bbloc=#BLD_RESORT/] x 3
+	Tropical Paradise[/color]
+>>
+
+BLD_ANCIENT_FOUNDRY_DESC: <<
+	Increases this planet's labor generation. Benefits from Factory research in the research grid.
+
+	2 Ore per second is consumed when the planet is using the labor to build.
+
+	Can upgrade the settlement to [bbloc=#SETTLEMENT_FORGE/].
+
+	[i][bbloc=#SETTLEMENT_ANCIENT_FORGE_DESC/][/i]
+
+	Requirements:
+	[color=#ff0][bbloc=#BLD_ANCIENT_FOUNDRY/] x 12[/color]
+
+	[b][img=ResourceIconsSmall::65;20/] [color=#91692c]Ore Used:[/color][/b][offset=150]2 / second[/offset]
 >>
 
 BLD_LABORCAMP: Xenomanufacturing Center

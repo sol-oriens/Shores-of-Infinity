@@ -22,6 +22,14 @@ TT_CANNOT_DEPLOY: Planet with adjacent Outpost required
 
 MONEY_TYPE_11: Civil Acts
 ELECTRONICS: Semiconductors
+GRAIN_DESC: <<
+	Can upgrade the settlement to [bbloc=#SETTLEMENT_FARM/].
+
+	[i][bbloc=#SETTLEMENT_FARM_DESC/][/i]
+
+	Requirements:
+	[color=#ff0]Native [bbloc=#GRAIN/] x 3[/color]
+>>
 LOCAL_ICY_WATER_DESC: [color=#ff7070][b]Cannot be exported.[/b][/color]
 COMMON_GASES: Common Gases
 COMMON_GASES_DESC: <<

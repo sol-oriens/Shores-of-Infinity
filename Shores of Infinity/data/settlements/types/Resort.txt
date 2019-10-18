@@ -11,10 +11,11 @@ Settlement: Resort
 	RequireEither( addon_requirement_effects::RequireNativeResource(Aphrodisiac), RequireStatus(ExtraInfluence) )
 	RequireStatus(Resort, Count = 3)
 
+	ModCivResourceMult(Influence, 1.0)
+	ModCivResourceMult(Money, 1.0)
+
 	AddLaborFactor(-1.f)
 	ModCivResourceMult(Labor, -1.f)
-	ModCivResourceMult(Money, -1.f)
 	ModCivResourceMult(Energy, -1.f)
 	ModCivResourceMult(Research, -1.f)
 	ModCivResourceMult(Defense, -1.f)
-	ModCivResourceMult(Influence, 1.0)
