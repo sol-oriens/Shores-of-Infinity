@@ -52,6 +52,7 @@ v0.3.0b
 - Added Set Pickup Point ability. Toggle where this ship's pickup point for cargo is set. When the cargo storage has free space, automatically pick up as much cargo from the indicated object as possible. Any ship with cargo storage has this ability. Combined with Set Drop-off Point, this allows to set up automated supply routes.
 - Ability orders that require movement will now automatically make use of hyperdrives, jumpdrives or fling beacons if available and if the cost wouldn't set the current FTL Energy below the defined Percentage of Reserve. If the ship can use several FTL methods, the cheapest will be chosen.
 - Fixed a vanilla bug where elapsed time was not tracked correctly for planet statuses.
+- Fixed a vanilla bug where a rare script exception would interrupt map generation.
 - Fixed a bug which would cause a system in which a protoplanet or planet generator was used to become corrupted upon loading a saved game.
 
 [*] Lifestyles
