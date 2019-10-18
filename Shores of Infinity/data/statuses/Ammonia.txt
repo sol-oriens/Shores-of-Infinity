@@ -1,6 +1,5 @@
 Status: Ammonia
-  Visible To: Nobody
+	Visible To: Nobody
+	Unique: True
 
-  Unique: True
-
-AddDummyResource(Grain)
+	AddDummyResource(Grain)

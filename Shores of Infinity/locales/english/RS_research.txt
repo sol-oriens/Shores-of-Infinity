@@ -34,14 +34,14 @@ R_LABORATORIES_DESC: <<
 R_ARTIFICIAL_MOON_DESC: <<
 	Unlocks the artificial moon construction.
 
-	[bbloc=#CONS_ARTIFICIAL_MOON_DESC/]
+	[i][bbloc=#CONS_ARTIFICIAL_MOON_DESC/][/i]
 >>
 
 R_ADVANCED_MOON: Supermoons
 R_ADVANCED_MOON_DESC: <<
 	Unlocks the supermoon construction.
 
-	[bbloc=#CONS_ADVANCED_MOON_DESC/]
+	[i][bbloc=#CONS_ADVANCED_MOON_DESC/][/i]
 >>
 
 R_BLD_ARCOLOGY: Arcologies
