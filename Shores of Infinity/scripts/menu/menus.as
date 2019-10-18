@@ -10,7 +10,7 @@ import dialogs.MessageDialog;
 import version;
 import ABEM_version;
 import SoI_version;
-import CP_version;
+//import CP_version;
 from gui import animate_speed, animate_time, animate_remove;
 
 enum MenuAnimation {
@@ -86,7 +86,7 @@ void init() {
 		version.text = version.text + " (UNSUPPORTED VERSION)";
 	}
 
-	string CPVersionCheck = "Applied: " + CommunityPatch::MOD_NAME;
+	/*string CPVersionCheck = "Applied: " + CommunityPatch::MOD_NAME;
 	if (CommunityPatch::showVersionCheckLabel) {
 		//Show the Community Patch version
 		@version = GuiText(null, Alignment(Right-300, Bottom-20, Right-4, Bottom));
@@ -104,7 +104,7 @@ void init() {
 		if(!CommunityPatch::checkSupported())
 			CPVersionCheck += " (UNSUPPORTED VERSION)";
 		print(CPVersionCheck);
-	}
+	}*/
 
 	//Create container
 	@menu_container = MenuContainer();
