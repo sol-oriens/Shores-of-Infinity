@@ -2,17 +2,22 @@
 //if (foo == bar) || (foo == baz) || ..." list
 //Allow a syntax close to a switch / case structure with variables
 final class Lookup {
-	private int _value;
+	private int _nValue;
+	private string _sValue;
 
 	Lookup(int value) {
-		_value = value;
+		_nValue = value;
+	}
+	
+	Lookup(string value) {
+		_sValue = value;
 	}
 
 	bool isIn(const int[]& values) {
-		for(uint i = 0, cnt = values.length; i < cnt; ++i) {
-			if (_value == values[i])
-				return true;
-		}
-		return false;
+		return values.find(_nValue) != -1;
+	}
+	
+	bool isIn(const string[]& values) {
+	return values.find(_sValue) != -1;
 	}
 };

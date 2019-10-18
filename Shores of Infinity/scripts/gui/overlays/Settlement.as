@@ -237,12 +237,7 @@ class SettlementDisplay : DisplayBox {
 					return true;
 				}
 				else if (evt.caller is cancelCivilActsButton) {
-					for (int i = obj.civilActCount - 1; i >= 0; --i) {
-						//Iterating in reverse as some items may not be removed and index may or may not change
-						uint id = obj.getCivilActTypeId(uint(i));
-						const CivilActType@ civilAct = getCivilActType(id);
-						obj.removeCivilAct(civilAct.id);
-					}
+					removeCivilActs(obj);
 					updateCivilActList();
 					updateVariables();
 					return true;
@@ -251,26 +246,17 @@ class SettlementDisplay : DisplayBox {
 					auto@ emp = obj.owner;
 					for (uint i = 0, cnt = emp.planetCount; i < cnt; ++i) {
 						auto@ pl = emp.planetList[i];
-						if (pl !is null) {
-							for (int i = pl.civilActCount - 1; i >= 0; --i) {
-								//Iterating in reverse as some items may not be removed and index may or may not change
-								uint id = pl.getCivilActTypeId(uint(i));
-								const CivilActType@ civilAct = getCivilActType(id);
-								pl.removeCivilAct(civilAct.id);
-							}
-						}
+						if (pl !is null)
+							removeCivilActs(pl);
 					}
 					for (uint i = 0, cnt = emp.fleetCount; i < cnt; ++i) {
 						auto@ fl = emp.fleets[i];
-						if (fl !is null && fl.isShip) {
-							for (int i = fl.civilActCount - 1; i >= 0; --i) {
-								//Iterating in reverse as some items may not be removed and index may or may not change
-								uint id = fl.getCivilActTypeId(uint(i));
-								const CivilActType@ civilAct = getCivilActType(id);
-								fl.removeCivilAct(civilAct.id);
-							}
-						}
+						if (fl !is null && fl.isShip)
+							removeCivilActs(fl);
 					}
+					updateCivilActList();
+					updateVariables();
+					return true;
 				}
 				break;
 		}
@@ -434,12 +420,9 @@ class SettlementDisplay : DisplayBox {
 				title = catNames[i];
 
 			uint sec = civilActList.addSection(title, list);
-			if (expandAll)
+			if (expandAll || civilActList.opened[sec])
 				civilActList.openSection(sec);
-			else {
-				if (civilActList.opened[sec])
-					civilActList.animSize[sec] = 1.0;
-			}
+
 			list.updateHover();
 
 			for (uint j = 0, jcnt = list.itemCount; j < jcnt; ++j) {
@@ -464,6 +447,15 @@ class SettlementDisplay : DisplayBox {
 		ele.active = false;
 		ele.update();
 		updateActiveCivilActs();
+	}
+
+	void removeCivilActs(Object& obj) {
+		for (int i = obj.civilActCount - 1; i >= 0; --i) {
+			//Iterating in reverse as some items may not be removed and index may or may not change
+			uint id = obj.getCivilActTypeId(uint(i));
+			const CivilActType@ civilAct = getCivilActType(id);
+			obj.removeCivilAct(civilAct.id);
+		}
 	}
 
 	void updateActiveCivilActs() {
