@@ -9,6 +9,6 @@ CivilAct: StateEmergency
 
 	Delay: 15
 
-	RequireNotTrait(Ancient)
+	RequireAttributeLT(IgnoreMoraleModifiers, 1)
 
 	settlement_effects::ContainCivilUnrest(0.2)

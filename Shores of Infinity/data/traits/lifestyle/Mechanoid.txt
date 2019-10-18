@@ -20,12 +20,13 @@ Trait: Mechanoid
 	TriggerHomeworld(MorphSystemPlanetResource(0, Iron))
 	TriggerHomeworld(AddStatus(MonoHomeworld))
 
-
 	ModAttribute(PopulationGrowthFactor, Multiply, 0)
 	ModAttribute(PopulationDecayFactor, Multiply, 0)
 	ModAttribute(OverpopulationBenefitFactor, Multiply, 0)
 	ModAttribute(ForbidColonization, Add, 1)
 	ModAttribute(ImmuneToRadiation, Add, 1)
+	ModAttribute(IgnoreMoraleModifiers, Add, 1)
+
 	ReplaceTechnologyNodes(ConstructionBay, FactoryLabor)
 	ReplaceTechnologyNodes(OreProcessor, FactoryLabor)
 	ReplaceTechnologyNodes(HydroponicsSatellite, MechanoidHydroponics)
