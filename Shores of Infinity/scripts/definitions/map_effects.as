@@ -1465,10 +1465,6 @@ void makeCreepCamp(const vec3d& pos, const CampType@ type, Region@ region = null
 		if(lastLeader !is null)
 			leaderPos += random3d(10.0, 40.0);
 		@lastLeader = spawnRemnantFleet(leaderPos, composeRemnantFleet(type.targetStrength));
-		if (lastLeader is null) {
-			error(" Error: makeCreepCamp: Could not get leader for composed remnant fleet");
-			return;
-		}
 		lastLeader.setAutoMode(config::REMNANT_AGGRESSION == 0 ? AM_HoldPosition : AM_RegionBound);
 
 		for(uint i = 0, cnt = type.statuses.length; i < cnt; ++i)
