@@ -67,4 +67,8 @@ tidy class Sites : Component_Sites {
 		for(uint i = 0, cnt = sites.length; i < cnt; ++i)
 			msg >> sites[i];
 	}
+
+	void readSiteDelta(Message& msg) {
+		readSites(msg);
+	}
 };

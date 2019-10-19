@@ -435,7 +435,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 	}
 
 	uint get_biomeId(uint index) const {
-			return biomes[index].id;
+		return biomes[index].id;
 	}
 
 	uint get_biomeCount() const {
@@ -2830,6 +2830,12 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		msg.writeSmall(biome0);
 		msg.writeSmall(biome1);
 		msg.writeSmall(biome2);
+
+		uint cnt = biomes.length;
+		msg << cnt;
+		for(uint i = 0; i < cnt; ++i) {
+			msg.writeSmall(biomes[i].id);
+		}
 
 		grid.write(msg);
 	}

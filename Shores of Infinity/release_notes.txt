@@ -88,6 +88,7 @@ v0.3.0b
 - Added 'hot jupiters', class IV and V gas giants orbiting very close to their star. They can have one of the following resources: Alkali Metals, Iron (level 1), Glass (level 2), Silicon (level 2, only with the WotH DLC).
 - Slightly decreased the frequency of gas and ice giants.
 - Gas and ice giants may now have less moons than before, or even none at all. Artificial moons and floating continents will solve your space issues.
+- Fixed a bug where clients in multiplayer would never have Infrastructural Development nor Subsurface Habitation Complex available to build.
 
 [*] Research
 

@@ -93,8 +93,10 @@ Star : objects.Star::StarScript {
 	Statuses statuses
 	double _displayRadius
 
+local visible:
+	safe double get_displayRadius();
+
 visible:
-	local safe double get_displayRadius();
 	double temperature
 	double Health = 20000000000 // 20G
 	double MaxHealth = 20000000000 // 20G

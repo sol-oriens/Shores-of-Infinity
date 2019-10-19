@@ -5,17 +5,26 @@ restricted local:
 	void modMorale(double value);
 	uint get_settlementTypeId() const;
 	uint get_focusId() const;
-	void setFocus(uint id);
 	bool get_autoFocus() const;
-	void set_autoFocus(bool value);
 	uint getCivilActTypeId(uint index) const;
 	uint getCivilActTimerType(uint index) const;
 	double getCivilActTimer(uint index) const;
 	uint get_civilActCount() const;
+
+restricted remote:
+	void setFocus(uint id);
+	void set_autoFocus(bool value);
 	void addCivilAct(uint id);
 	void removeCivilAct(uint id);
+
 server:
 	void initSettlement();
 	void clearSettlement(Empire@ emp);
 	void settlementTick(double time);
+	void writeSettlement(Message& msg) const;
+	bool writeSettlementDelta(Message& msg) const;
+
+shadow:
+	void readSettlement(Message& msg);
+	void readSettlementDelta(Message& msg);
 }

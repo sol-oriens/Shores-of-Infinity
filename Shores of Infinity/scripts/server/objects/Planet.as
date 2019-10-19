@@ -425,6 +425,7 @@ tidy class PlanetScript {
 		planet.writeStatuses(msg);
 		planet.writeCargo(msg);
 		planet.writeSites(msg);
+		planet.writeSettlement(msg);
 
 		msg.writeBit(planet.hasAbilities);
 		if(planet.hasAbilities)
@@ -492,6 +493,16 @@ tidy class PlanetScript {
 		else
 			msg.write0();
 
+		if(planet.writeSiteDelta(msg))
+			used = true;
+		else
+			msg.write0();
+
+		if(planet.writeSettlementDelta(msg))
+			used = true;
+		else
+			msg.write0();
+
 		if(hpDelta) {
 			used = true;
 			hpDelta = false;
@@ -524,6 +535,7 @@ tidy class PlanetScript {
 		planet.writeStatuses(msg);
 		planet.writeCargo(msg);
 		planet.writeSites(msg);
+		planet.writeSettlement(msg);
 
 		msg.writeBit(planet.hasAbilities);
 		if(planet.hasAbilities)

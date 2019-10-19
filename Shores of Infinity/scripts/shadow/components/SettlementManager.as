@@ -92,28 +92,34 @@ tidy class SettlementManager : Component_Settlement {
 	}
 
 	uint getCivilActTypeId(uint index) const {
+		if (index >= civilActs.length)
+			return uint(-1);
 		return civilActs[index].type.id;
 	}
 
 	uint getCivilActTimerType(uint index) const {
-		auto@ civilAct = civilActs[index];
-		if (civilAct.currentDelay > 0)
-			return CAT_Delay;
-		if (civilAct.currentCommitment > 0)
-			return CAT_Commitment;
-		if (civilAct.currentDuration < INFINITY)
-			return CAT_Duration;
+		if (index < civilActs.length) {
+			auto@ civilAct = civilActs[index];
+			if (civilAct.currentDelay > 0)
+				return CAT_Delay;
+			if (civilAct.currentCommitment > 0)
+				return CAT_Commitment;
+			if (civilAct.currentDuration < INFINITY)
+				return CAT_Duration;
+		}
 		return CAT_None;
 	}
 
 	double getCivilActTimer(uint index) const {
-		auto@ civilAct = civilActs[index];
-		if (civilAct.currentDelay > 0)
-			return civilAct.currentDelay;
-		if (civilAct.currentCommitment > 0)
-			return civilAct.currentCommitment;
-		if (civilAct.currentDuration < INFINITY)
-			return civilAct.currentDuration;
+		if (index < civilActs.length) {
+			auto@ civilAct = civilActs[index];
+			if (civilAct.currentDelay > 0)
+				return civilAct.currentDelay;
+			if (civilAct.currentCommitment > 0)
+				return civilAct.currentCommitment;
+			if (civilAct.currentDuration < INFINITY)
+				return civilAct.currentDuration;
+		}
 		return 0.0;
 	}
 
@@ -169,4 +175,93 @@ tidy class SettlementManager : Component_Settlement {
 
 		civilActs.remove(civilAct);
 	}
-}
+
+	void settlementTick(Object& obj, double time) {
+		if (!_isActive)
+			return;
+
+		Lock lck(mtx);
+		for(uint i = 0, cnt = civilActs.length; i < cnt; ++i) {
+			auto@ civilAct = civilActs[i];
+			if (civilAct.currentDelay > 0) {
+				civilAct.currentDelay = max(0.0, civilAct.currentDelay - time);
+				if (civilAct.currentDelay == 0.0)
+					//Enable civil acts with expired delay
+					civilAct.enable(obj);
+				else continue;
+			}
+			else {
+				if (civilAct.currentCommitment > 0)
+					civilAct.currentCommitment = max(0.0, civilAct.currentCommitment - time);
+				if (civilAct.currentDuration < INFINITY) {
+					civilAct.currentDuration = max(0.0, civilAct.currentDuration - time);
+					if (civilAct.currentDuration <= 0) {
+						removeCivilAct(civilAct, obj.owner);
+						--i; --cnt;
+						continue;
+					}
+				}
+			}
+		}
+	}
+
+	void readSettlement(Message& msg) {
+		uint id = 0;
+		uint timerType = 0;
+		double timer = 0;
+
+		msg >> obj;
+		msg >> _isActive;
+
+		if (!_isActive)
+			return;
+
+		msg >> _morale;
+		msg >> _focusId;
+		msg >> _autoFocus;
+		msg >> id;
+		@settlementType = Settlement(getSettlementType(id));
+		if (_focusId > -1)
+			@focus = SettlementFocus(getSettlementFocusType(_focusId));
+		if(!msg.readBit()) {
+			if(civilActs.length != 0) {
+				Lock lck(mtx);
+				civilActs.length = 0;
+			}
+			return;
+		}
+		Lock lck(mtx);
+		uint cnt = 0;
+		msg >> cnt;
+		civilActs.length = cnt;
+		for(uint i = 0; i < cnt; ++i) {
+			msg >> id;
+			@civilActs[i] = CivilAct(getCivilActType(id));
+			msg >> timerType;
+			msg >> timer;
+			switch (timerType) {
+				case CAT_Delay:
+					civilActs[i].currentDelay = timer;
+					break;
+				case CAT_Commitment:
+					civilActs[i].currentDelay = 0;
+					civilActs[i].currentCommitment = timer;
+					break;
+				case CAT_Duration:
+					civilActs[i].currentDelay = 0;
+					civilActs[i].currentCommitment = 0;
+					civilActs[i].currentDuration = timer;
+					break;
+				default:
+					civilActs[i].currentDelay = 0;
+					civilActs[i].currentCommitment = 0;
+					civilActs[i].currentDuration = INFINITY;
+					break;
+			}
+		}
+	}
+
+	void readSettlementDelta(Message& msg) {
+		readSettlement(msg);
+	}
+};

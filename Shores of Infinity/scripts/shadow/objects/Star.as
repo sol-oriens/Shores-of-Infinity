@@ -3,7 +3,7 @@ import regions.regions;
 LightDesc lightDesc;
 
 class StarScript {
-	double get_displayRadius(Star& star) const {
+	double get_displayRadius(Star& star) {
 		return star._displayRadius > 0 ? star._displayRadius : star.radius;
 	}
 

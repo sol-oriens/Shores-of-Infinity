@@ -7,6 +7,8 @@ int ignoreMoraleModifiersAttribute = -1;
 
 tidy class SettlementManager : Component_Settlement, Savable {
 	Mutex mtx;
+	bool delta = false;
+
 	Object@ obj;
 	Settlement@ settlementType;
 	SettlementFocus@ focus;
@@ -75,6 +77,7 @@ tidy class SettlementManager : Component_Settlement, Savable {
 			if (type.moraleEffect.stat != 0)
 				modMorale(type.moraleEffect.stat);
 		}
+		delta = true;
 	}
 
 	uint get_focusId() const {
@@ -100,6 +103,7 @@ tidy class SettlementManager : Component_Settlement, Savable {
 				modMorale(type.moraleEffect.stat);
 			_focusId = type.id;
 		}
+		delta = true;
 	}
 
 	bool get_autoFocus() const {
@@ -108,9 +112,12 @@ tidy class SettlementManager : Component_Settlement, Savable {
 
 	void set_autoFocus(bool value) {
 		_autoFocus = value;
+		delta = true;
 	}
 
 	uint getCivilActTypeId(uint index) const {
+		if (index >= civilActs.length)
+			return uint(-1);
 		return civilActs[index].type.id;
 	}
 
@@ -163,6 +170,7 @@ tidy class SettlementManager : Component_Settlement, Savable {
 				civilAct.enable(obj);
 
 			civilActs.insertLast(civilAct);
+			delta = true;
 		}
 	}
 
@@ -190,6 +198,7 @@ tidy class SettlementManager : Component_Settlement, Savable {
 			emp.modMaintenance(-civilAct.currentMaint, MoT_Civil_Acts);
 
 		civilActs.remove(civilAct);
+		delta = true;
 	}
 
 	void refreshMaintainCost(CivilAct& civilAct) {
@@ -302,6 +311,7 @@ tidy class SettlementManager : Component_Settlement, Savable {
 	}
 
 	void save(SaveFile& file) {
+		file << obj;
 		file << _isActive;
 		if (_isActive) {
 			file << _morale;
@@ -314,12 +324,11 @@ tidy class SettlementManager : Component_Settlement, Savable {
 			for(uint i = 0; i < cnt; ++i)
 				file << civilActs[i];
 			file << _notifiedCivilUnrest;
-
-			file << obj;
 		}
 	}
 
 	void load(SaveFile& file) {
+		@obj = file.readObject();
 		file >> _isActive;
 		if (_isActive) {
 			file >> _morale;
@@ -337,8 +346,41 @@ tidy class SettlementManager : Component_Settlement, Savable {
 				file >> civilActs[i];
 			}
 			file >> _notifiedCivilUnrest;
-
-			@obj = file.readObject();
 		}
+	}
+
+	void writeSettlement(Message& msg) const {
+		msg << obj;
+		msg << _isActive;
+
+		if (!_isActive)
+			return;
+
+		msg << _morale;
+		msg << _focusId;
+		msg << _autoFocus;
+		msg << settlementTypeId;
+		if(civilActs.length == 0) {
+			msg.write0();
+			return;
+		}
+		Lock lck(mtx);
+		uint cnt = civilActs.length;
+		msg.write1();
+		msg << cnt;
+		for(uint i = 0; i < cnt; ++i) {
+			msg << civilActs[i].type.id;
+			msg << getCivilActTimerType(i);
+			msg << getCivilActTimer(i);
+		}
+	}
+
+	bool writeSettlementDelta(Message& msg) {
+		if(!delta)
+			return false;
+		msg.write1();
+		writeSettlement(msg);
+		delta = false;
+		return true;
 	}
 };

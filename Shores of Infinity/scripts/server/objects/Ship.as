@@ -44,7 +44,7 @@ tidy class ShipScript {
 	Object@ lastHitBy;
 	Empire@ killCredit;
 	uint bpStatusID = 0;
-	bool barDelta = false, onFire = false, needRepair = true, shieldDelta = false;
+	bool barDelta = false, onFire = false, needRepair = true, shieldDelta = false, repairDelta = false;
 	int prevSupply = 0;
 	int currentMaintenance = 0;
 	float mass = 0.f;
@@ -450,7 +450,10 @@ tidy class ShipScript {
 				}
 			}
 		}
-		needRepair = true;
+		if (!needRepair) {
+			needRepair = true;
+			repairDelta = true;
+		}
 		bp.delta = true;
 	}
 
@@ -1304,7 +1307,10 @@ tidy class ShipScript {
 		else {
 			bp.repairingHex.x = -1;
 			bp.repairingHex.y = -1;
-			needRepair = false;
+			if (needRepair) {
+				needRepair = false;
+				repairDelta = true;
+			}
 		}
 		return delay;
 	}
@@ -1326,7 +1332,10 @@ tidy class ShipScript {
 				evt.damage = amount;
 
 				bp.damage(ship, evt, pos);
-				needRepair = true;
+				if (!needRepair) {
+					needRepair = true;
+					repairDelta = true;
+				}
 				return;
 			}
 		}
@@ -1384,7 +1393,10 @@ tidy class ShipScript {
 		}
 		ship.engaged = true;
 		ship.blueprint.damage(ship, evt, direction);
-		needRepair = true;
+		if (!needRepair) {
+			needRepair = true;
+			repairDelta = true;
+		}
 		if(prevShield != ship.Shield)
 			shieldDelta = true;
 		if(ship.blueprint.currentHP <= 0.01) {
@@ -1513,6 +1525,8 @@ tidy class ShipScript {
 		else {
 			msg.write0();
 		}
+
+		msg << needRepair;
 	}
 
 	void retrofit(Ship& ship, const Design@ newDesign) {
@@ -1579,6 +1593,8 @@ tidy class ShipScript {
 		else {
 			msg.write0();
 		}
+
+		msg << needRepair;
 	}
 
 	bool prevFTL = false, prevCombat = false;
@@ -1677,6 +1693,14 @@ tidy class ShipScript {
 				used = true;
 			else
 				msg.write0();
+		}
+		else {
+			msg.write0();
+		}
+
+		if (repairDelta) {
+			msg << needRepair;
+			used = true;
 		}
 		else {
 			msg.write0();

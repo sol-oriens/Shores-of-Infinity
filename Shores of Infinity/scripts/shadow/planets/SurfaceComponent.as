@@ -8,6 +8,7 @@ import bool getCheatsEverOn() from "cheats";
 const double COLONYSHIP_BASE_ACCEL = 5.5;
 
 tidy class SurfaceComponent : Component_SurfaceComponent {
+	array<const Biome@> biomes;
 	uint biome0, biome1, biome2;
 	vec2u originalSurfaceSize;
 	double Population = 0.0;
@@ -58,6 +59,14 @@ tidy class SurfaceComponent : Component_SurfaceComponent {
 
 	uint get_planetGraphicsFlags() const {
 		return gfxFlags;
+	}
+
+	uint get_biomeId(uint index) const {
+		return biomes[index].id;
+	}
+
+	uint get_biomeCount() const {
+		return biomes.length;
 	}
 
 	uint get_Biome0() {
@@ -691,6 +700,15 @@ tidy class SurfaceComponent : Component_SurfaceComponent {
 		biome0 = msg.readSmall();
 		biome1 = msg.readSmall();
 		biome2 = msg.readSmall();
+
+		uint cnt = 0;
+		uint8 id = 0;
+		msg >> cnt;
+		biomes.length = cnt;
+		for(uint i = 0; i < cnt; ++i) {
+			id = msg.readSmall();
+			@biomes[i] = getBiome(id);
+		}
 
 		grid.read(msg);
 

@@ -5,11 +5,16 @@ tidy class ShipScript {
 	float commandUsed = 0.f;
 
 	float timer = 1.f;
-	
+
 	bool hasGraphics = false;
+	bool needRepair = false;
 
 	bool get_isStation(Ship& ship) {
 		return ship.blueprint.design.hasTag(ST_Station);
+	}
+
+	bool get_isDamaged(Ship& ship) {
+		return needRepair;
 	}
 
 	void occasional_tick(Ship& ship, float time) {
@@ -23,10 +28,12 @@ tidy class ShipScript {
 			if(node !is null)
 				node.hintParentObject(ship.region);
 		}
-		
+
 		ship.moverTick(time);
 		if(ship.hasLeaderAI)
 			ship.leaderTick(time);
+		if (ship.hasSettlement)
+			ship.settlementTick(timer);
 
 		timer += float(time);
 		if(timer >= 1.f) {
@@ -45,7 +52,7 @@ tidy class ShipScript {
 					region.addShipDebris(ship.position, debris);
 			}
 		}
-		
+
 		leaveRegion(ship);
 		if(ship.hasLeaderAI)
 			ship.leaderDestroy();
@@ -57,7 +64,7 @@ tidy class ShipScript {
 			ship.leaderChangeOwner(prevOwner, ship.owner);
 		return false;
 	}
-	
+
 	void createGraphics(Ship& ship, const Design@ dsg) {
 		if(dsg is null)
 			return;
@@ -133,7 +140,9 @@ tidy class ShipScript {
 			ship.activateOrbit();
 			ship.readOrbit(msg);
 		}
-		
+
+		msg >> needRepair;
+
 		createGraphics(ship, ship.blueprint.design);
 	}
 
@@ -172,13 +181,15 @@ tidy class ShipScript {
 				ship.activateConstruction();
 			ship.readConstruction(msg);
 		}
+
+		msg >> needRepair;
 	}
 
 	void updateStats(Ship& ship) {
 		const Design@ dsg = ship.blueprint.design;
 		if(dsg is null)
 			return;
-		
+
 		ship.DPS = ship.blueprint.getEfficiencySum(SV_DPS);
 		ship.MaxDPS = dsg.total(SV_DPS);
 		ship.MaxSupply = dsg.total(SV_SupplyCapacity);
@@ -195,10 +206,10 @@ tidy class ShipScript {
 				createGraphics(ship, ship.blueprint.design);
 			updateStats(ship);
 		}
-		
+
 		if(msg.readBit())
 			ship.Shield = msg.readFixed(0.f, ship.MaxShield, 16);
-		
+
 		if(msg.readBit()) {
 			if(ship.hasLeaderAI)
 				ship.readLeaderAIDelta(msg);
@@ -229,7 +240,7 @@ tidy class ShipScript {
 				msg >> ship.Supply;
 			else
 				ship.Supply = 0;
-			
+
 			ship.isFTLing = msg.readBit();
 			ship.inCombat = msg.readBit();
 		}
@@ -244,6 +255,9 @@ tidy class ShipScript {
 					ship.activateConstruction();
 				ship.readConstructionDelta(msg);
 			}
+		}
+		if (msg.readBit()) {
+			msg >> needRepair;
 		}
 	}
 };
