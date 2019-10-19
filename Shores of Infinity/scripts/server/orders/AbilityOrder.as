@@ -182,11 +182,11 @@ tidy class AbilityOrder : Order {
 				}
 			}
 
-			if (fl && flCost < jdCost && flCost < hdCost) {
+			if (fl && (!jd || flCost < jdCost) && (!hd || flCost < hdCost)) {
 				obj.insertFlingOrder(fling, pt, getIndex());
 				moved = true;
 			}
-			else if (jd && jdCost <= hdCost) {
+			else if (jd && (!hd || jdCost <= hdCost)) {
 				obj.insertJumpdriveOrder(pt, getIndex());
 				moved = true;
 			}

@@ -123,7 +123,7 @@ v0.3.0b
 - Added a strategic icon for colony ships in order for them to remain easily visible when zoomed out at much greater distances than vanilla.
 - Added radius and temperature info to star popups.
 - Reverted the tile icon to pre-v0.2.0 in planet surface view.
-- Added Percentage of Reserve to the global resource bar. The Percentage of Reserve defines how much of your total FTL Energy cannot be used by automated ship orders. Setting it to 100% effectively disables the use of FTL bar manual orders.
+- Added Percentage of Reserve to the global resource bar. The Percentage of Reserve defines how much of your total FTL Energy is reserved to manual FTL orders. Ships with ongoing ability orders will tap into the remainder to initiate FTL on their own if possible and needed. Setting it to 100% effectively disables the use of FTL by anything other than manually initiating FTL.
 - Increased the width of tooltips in the research tab to accommodate long descriptions to smaller screens.
 - Tweaked the size, number and position of debris when a ship is destroyed to be more fitting to scale.
 

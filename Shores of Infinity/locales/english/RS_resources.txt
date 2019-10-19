@@ -7,7 +7,7 @@ GTT_FTL: <<
 	Generation Rate: [right]$3[/right]
 	Percentage of Reserve: [right]$4[/right]
 
-	[i]The Percentage of Reserve defines how much of your total FTL Energy cannot be used by automated ship orders. Setting it to 100% effectively disables the use of FTL bar manual orders.[/i]
+	[i]The Percentage of Reserve defines how much of your total FTL Energy is reserved to manual FTL orders. Ships with ongoing ability orders will tap into the remainder to initiate FTL on their own if possible and needed. Setting it to 100% effectively disables the use of FTL by anything other than manually initiating FTL.[/i]
 >>
 GTT_DEFENSE: <<
 	[font=Medium]Global Defense[/font]
