@@ -173,6 +173,8 @@ FOCUS_MORALE_DESC: <<
 FOCUS_COMMAND: Military
 FOCUS_COMMAND_DESC: <<
 	[color=#aaa][i]Big fleets and big guns.[/i][/color]
+
+	Adds 512 support capacity.
 >>
 
 FOCUS_HOME: Capital
@@ -365,6 +367,8 @@ CIVIL_ACT_PERSONALITY_CULT: Cult of Personality
 CIVIL_ACT_PERSONALITY_CULT_DESC: <<|
 	[color=#aaa][i]Sustain generalized propaganda and brainwash the people into veneration of the settlement leader
 	to guarantee their loyalty and devotion, spare the inevitable pockets of resistance and defections.[/i][/color]
+
+	Reduces the probability of loyalty loss from Civil Unrest by 10%.
 >>
 
 CIVIL_ACT_POPULAR_SOVEREIGNTY: Popular Sovereignty

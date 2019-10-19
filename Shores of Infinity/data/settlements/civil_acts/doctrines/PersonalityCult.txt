@@ -15,3 +15,5 @@ CivilAct: PersonalityCult
 	RequireAttributeLT(IgnoreMoraleModifiers, 1)
 	RequireNotStatus(SettlementPrison)
 	addon_requirement_effects::RequirePopulation(2)
+
+	settlement_effects::ContainCivilUnrest(0.1)

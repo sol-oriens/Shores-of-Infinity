@@ -136,11 +136,11 @@ BLD_PRISON: Penitentiary
 BLD_PRISON_DESC: <<
 	[color=#aaa][i]A large, high-security facility hosting convicts.[/i][/color]
 
-	Replaces up to 1 regular city.
-
 	Generates 1 Labor/minute.
 
 	Moderately increases morale.
+
+	Replaces up to 1 regular city.
 
 	Can upgrade the settlement to [bbloc=#SETTLEMENT_PRISON/].
 

@@ -1356,9 +1356,9 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 				moraleUpdateTimer = 30.0;
 				double lossThreshold = 0.8;
 				if (obj.morale + obj.owner.GlobalMorale.value == SM_Critical)
-					lossThreshold = 0.6;
+					lossThreshold = 0.4;
 				double roll = randomd(0.1 - containCivilUnrest, 1.0);
-				if (roll >= lossThreshold) {
+				if (roll >= lossThreshold || roll >= 0.95 /* Fumble! */) {
 					LoyaltyPenalty++;
 					if (!contested && LoyaltyPenalty >= BaseLoyalty + obj.owner.GlobalLoyalty.value) {
 						LoyaltyPenalty = 0;
