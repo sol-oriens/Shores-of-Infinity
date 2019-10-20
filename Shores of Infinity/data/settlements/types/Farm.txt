@@ -9,5 +9,7 @@ Settlement: Farm
 	addon_requirement_effects::RequireNotHome()
 	RequirePlanet()
 	addon_requirement_effects::RequireNativeResource(Grain, Count = 3, Primary = False)
+	RequireNativeClass(WaterType, Primary = False, Hide = False)
 
+	AddDummyResource(Titanium, 1)
 	TriggerPeriodic(GainInfluenceCard(Harvest), Interval = 1800)

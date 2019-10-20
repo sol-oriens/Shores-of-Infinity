@@ -309,17 +309,30 @@ class RequireNativeLevel : Requirement {
 class RequireNativeClass : Requirement {
 	Document doc("This can only work if the planet's resource has a particular class.");
 	Argument cls(AT_Custom, doc="Resource class to require.");
+	Argument count(AT_Integer, "1", doc="Number of resources of this class to require.");
+	Argument primary(AT_Boolean, "True", doc="Whether the resource must be the primary resource.");
 	Argument hide(AT_Boolean, "True", doc="Hide when unavailable.");
 
 	bool meets(Object& obj, bool ignoreState = false) const override {
 		if(ignoreState && !hide.boolean)
 			return true;
-		auto@ res = getResource(obj.primaryResourceType);
-		if(res is null)
-			return false;
-		if(res.cls is null)
-			return false;
-		return res.cls.ident.equals_nocase(cls.str);
+		if (primary.boolean) {
+			auto@ res = getResource(obj.primaryResourceType);
+			if(res is null)
+				return false;
+			if(res.cls is null)
+				return false;
+			return res.cls.ident.equals_nocase(cls.str);
+		}
+		uint resCnt = 0;
+		for(uint i = 0, cnt = obj.nativeResourceCount; i < cnt; ++i) {
+			auto@ res = getResource(obj.nativeResourceType[i]);
+			if(res.cls.ident.equals_nocase(cls.str)) {
+				if (++resCnt == uint(count.integer))
+					return true;
+			}
+		}
+		return false;
 	}
 };
 

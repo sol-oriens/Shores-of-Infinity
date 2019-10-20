@@ -28,7 +28,8 @@ GRAIN_DESC: <<
 	[i][bbloc=#SETTLEMENT_FARM_DESC/][/i]
 
 	Requirements:
-	[color=#ff0]Native [bbloc=#GRAIN/] x 3[/color]
+	[color=#ff0]Native [bbloc=#GRAIN/] x 3
+	Native [bbloc=#WATER/][/color]
 >>
 LOCAL_ICY_WATER_DESC: [color=#ff7070][b]Cannot be exported.[/b][/color]
 COMMON_GASES: Common Gases
