@@ -78,4 +78,5 @@ TRAIT_MECHANOID_DESC: <<|
 	[vspace=3/][img=ResourceIcons::5;22]Does [b]not[/b] require any food or water to level up planets.[/img]
 	[vspace=3/][img=ResourceIcons::13;22]Can remain in Radioactive Nebulae indefinitely without control loss. Shields and sensors are still affected by the nebula.[/img]
 	[vspace=3/][img=GuiOrbitalIcons::5;22]Cannot use shipyards or dry docks.[/img]
+	[vspace=6/][img=Revolutionaries;18]Ignore all morale efffects, settlement morale is always medium.[/img]
 >>

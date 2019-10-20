@@ -60,7 +60,7 @@ Building: Forge3
 
 	Category: Production
 
-	Size: 4x5
+	Size: 5x4
 
 	Base Cost: 2000
 	Base Maintenance: 200

@@ -1,3 +1,23 @@
+v0.3.1b
+
+**************************
+*** Release Highlights ***
+**************************
+
+*** Minor additions, adjustments and fixes related to gameplay.
+
+************************
+*** Detailed Changes ***
+************************
+
+[*] Buildings
+
+- Switched the sprite of Forge IV around so that it looks just right.
+
+[*] Lifestyles
+
+- Mechanoids now correctly indicate in their description that they ignore all morale modifiers.
+
 v0.3.0b
 
 **************************
@@ -69,6 +89,7 @@ v0.3.0b
 
 - Star Children now have Superstructure Hull unlocked at game start (WotH DLC only).
 - Star Children are now smart enough to use crop regulation before their homeworld gets destroyed and start with one Harvest influence card.
+- Ancients now indicate in their description that they ignore all morale modifiers.
 
 [*] Orbitals
 
@@ -140,12 +161,12 @@ v0.3.0b
 - Added a specific version of Forge World for Ancient lifestyle. Increases Labor generation by 150%. Constructions have a 20% cheaper build cost. Requirements: Foundry x 12.
 - Added Mining World settlement type. Replaces a Level 1 resource. Requirements: Mining Complex x 3.
 - Added Resort World settlement type. Increases civilian Money and Influence production by 100%. Reduces Labor generation by 100%. Reduces civilian Energy, Research and Defense production by 100%. Requirements: Resort x 3, Tropical Paradise.
-- Added Penal Colony settlement type. Adds 50 Labor Storage. Slightly increases morale across the empire. Reduces income penalty of Level 0 planets by 30k. Reduces civilian Money, Influence, Energy, Research and Defense production by 100%. Requirements: Penitentiary x 2.
+- Added Penal Colony settlement type. Adds 50 Labor Storage. Slightly increases morale across the empire. Reduces income penalty of Level 0 planets by 30k. Reduces civilian Money, Influence, Energy, Research and Defense production by 100%. Requirements: Penitentiary x 2, Native Resource Level 0, Planet Level 0.
 - Added Colonial focus. Default focus with no particular effect.
 - Added Hedonistic focus. Morale effect: positive. Requirements: 5+ population.
 - Added Military focus. Adds 512 support capacity. Requirements: 5+ population.
 - Added Capital focus. Requirements: Homeworld or Arkmothership, 5+ population.
-	Gives a bonus depending of the chose government:
+	Gives a bonus depending of the chosen government:
 	- Capitalism: Gives 0.5 Money generation per billion population.
 	- Communism: Generates 0.5 Labor per minute per billion population.
 	- Empire: Gives 0.5 Defense generation per billion population.
