@@ -30,6 +30,23 @@ TRAIT_CAPITALISM_DESC: <<
 	[vspace=6/][b][color=#f00]Starting Fleet (Quickstart only):[/color][/b] [offset=235]Heavy Carrier.[/offset]
 >>
 
+TRAIT_MECHANOID_DESC: <<|
+	[vspace=3/][img=ResourceIcon::6;22]Additional [b]population[/b] must be constructed with labor instead of growing. Each unit of population provides extra labor.[/img]
+	[vspace=3/][img=ActionBarIcons::1;22]Can instantaneouly transfer population between planets to colonize, costing [img=ResourceIcon::3;20/] FTL Energy.[/img]
+	[vspace=3/][img=ResourceIcons::5;22]Does [b]not[/b] require any food or water to level up planets.[/img]
+	[vspace=3/][img=ResourceIcons::13;22]Can remain in Radioactive Nebulae indefinitely without control loss. Shields and sensors are still affected by the nebula.[/img]
+	[vspace=3/][img=GuiOrbitalIcons::5;22]Cannot use shipyards or dry docks.[/img]
+	[vspace=6/][img=Revolutionaries;18]Ignore all morale efffects, settlement morale is always medium.[/img]
+>>
+
+TRAIT_STAR_CHILDREN_DESC: <<|
+	[vspace=3/] [img=ResourceIcon::8;22]Population grows only on giant [b]Motherships[/b] that have construction capabilities.[/img]
+	[vspace=3/][img=ActionBarIcons::1;22]Motherships can move population to orbital [b]Habitats[/b] around planets, letting them use the planetary resources.[/img]
+	[vspace=3/][img=BuildingSprites::0;22]Does [b]not[/b] use planet surfaces in any way. Planets cannot construct anything.[/img]
+	[vspace=3/][img=ResourceIcon::6;22]Resources are produced in orbit, no pressure capacity is needed. Motherships in orbit of a planet automatically gain that planet's labor income.[/img]
+	[vspace=3/][img=CardIcons::19;22]Start with 1 Harvest influence card.[/img]
+>>
+
 TRAIT_ANCIENT_DESC: <<
 	[vspace=3/][img=ActionBarIcons::1;22]Has no regular civilian economy, buildings must be constructed to gain resources.[/img]
 	[vspace=6/][img=PlanetType::3;22]Planets are claimed by moving Orbital Replicators to them and constructing buildings.[/img]

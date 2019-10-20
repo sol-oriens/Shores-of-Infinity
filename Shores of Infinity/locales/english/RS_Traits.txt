@@ -72,11 +72,3 @@ TRAIT_VANGUARD_DESC: <<
 	[vspace=3/][img=PortalStabilizer;22]Can achieve a Vanguard Victory by constructing 3 Portal Stabilizers on 3 separate Ringworlds or Artificial Planetoids.[/img]
 	[vspace=3/][img=AttributeIcons::3*#f88;22][b][color=#f00]Not recommended for beginners.[/color][/b][/img][/img]
 >>
-TRAIT_MECHANOID_DESC: <<|
-	[vspace=3/][img=ResourceIcon::6;22]Additional [b]population[/b] must be constructed with labor instead of growing. Each unit of population provides extra labor.[/img]
-	[vspace=3/][img=ActionBarIcons::1;22]Can instantaneouly transfer population between planets to colonize, costing [img=ResourceIcon::3;20/] FTL Energy.[/img]
-	[vspace=3/][img=ResourceIcons::5;22]Does [b]not[/b] require any food or water to level up planets.[/img]
-	[vspace=3/][img=ResourceIcons::13;22]Can remain in Radioactive Nebulae indefinitely without control loss. Shields and sensors are still affected by the nebula.[/img]
-	[vspace=3/][img=GuiOrbitalIcons::5;22]Cannot use shipyards or dry docks.[/img]
-	[vspace=6/][img=Revolutionaries;18]Ignore all morale efffects, settlement morale is always medium.[/img]
->>
