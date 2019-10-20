@@ -17,6 +17,7 @@ v0.3.1b
 [*] Lifestyles
 
 - Mechanoids now correctly indicate in their description that they ignore all morale modifiers.
+- Star children now correctly indicate in their description that they start with 1 Harvest influence card.
 
 v0.3.0b
 
