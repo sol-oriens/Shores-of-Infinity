@@ -658,8 +658,12 @@ tidy class OrbitalScript {
 				node.establish(obj, type.id);
 			@core = sec;
 			obj.orbitSpin(type.spin);
-			if(type.isStandalone)
+			//SoI - This was tied to the old orbital module affinity system
+			//Must be removed to disable export on all orbitals by default and not break the AllowResourceImport() hook
+			//(see setImportEnabled in Resource component)
+			//if(type.isStandalone) {
 				obj.setImportEnabled(false);
+			//}
 
 			if(type.strategicIcon.valid) {
 				@icon = StrategicIconNode();

@@ -10,8 +10,8 @@ Module: LaserDrive
 
 	Size: 10
 
-  Standalone: True
-  Core: True
+	Standalone: True
+	Core: True
 
 	Health: 3000
 	Armor: 500
@@ -20,7 +20,7 @@ Module: LaserDrive
 	Maintenance: 10
 	Labor Cost: 20
 
-  FacesOrbitCenter()
+	FacesOrbitCenter()
 
-  ShowRange(700000, #00ff00, Scaled = True)
-  GrantAbility(LaserBeam)
+	ShowRange(700000, #00ff00, Scaled = True)
+	GrantAbility(LaserBeam)

@@ -3,18 +3,18 @@ Subsystem: CargoStorage
 	Description: #S_CARGO_STORAGE_DESC
 	BaseColor: #91692c
 	Elevation: 1
-	
+
 	Tags: DefaultUnlock, ScaledCost, NonContiguous, NoCore, HasInternals, Category:Equipment, StaticMaintenance
 	Tags: Compressible
 	Hull: Flagship, Station
-	
+
 	Size := HexSize * Hexes
 	CargoStorage := Size * 4
 
 	Hook: AddCargoStorage(CargoStorage)
 	Hook: AddPermanentStatus(CanGiveCargo)
 	Hook: AddPermanentStatus(CanTakeCargo)
-	
+
 	Hex.Resistance := 0.2
 	Hex.HP := 18 * HexSize
 	Hex.Mass := HexSize * 3
