@@ -70,6 +70,7 @@ enum MoneyType {
 	MoT_Handicap,
 	MoT_Trade,
 	MoT_Vassals,
+	MoT_Civil_Acts,
 	//Update save version when adding
 	// See: components.ResourceManager
 
@@ -78,8 +79,12 @@ enum MoneyType {
 
 enum PlanetClass {
 	PC_Rocky,
-	PC_Gas,
 	PC_Icy,
+	PC_Gas_I,
+	PC_Gas_II,
+	PC_Gas_III,
+	PC_Gas_IV,
+	PC_Gas_V,
 
 	PC_COUNT,
 
@@ -1511,10 +1516,18 @@ void loadResources(const string& filename) {
 		else if(key == "Planet Classification") {
 			if (value == "Rocky")
 				r.planetClass = PC_Rocky;
-			else if (value == "Gas")
-				r.planetClass = PC_Gas;
 			else if (value == "Icy")
 				r.planetClass = PC_Icy;
+			else if (value == "Gas I")
+				r.planetClass = PC_Gas_I;
+			else if (value == "Gas II")
+				r.planetClass = PC_Gas_II;
+			else if (value == "Gas III")
+				r.planetClass = PC_Gas_III;
+			else if (value == "Gas IV")
+				r.planetClass = PC_Gas_IV;
+			else if (value == "Gas V")
+				r.planetClass = PC_Gas_V;
 		}
 		else if(key.equals_nocase("Require Contestation")) {
 			r.requireContestation = toDouble(value);

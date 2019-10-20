@@ -12,7 +12,7 @@ Subsystem: MachineShop
 
 	Size := HexSize * Hexes
 
-	LaborIncome := Size / 10
+	LaborIncome := Size / 16
 
 	LaborStorage := floor(Size)
 

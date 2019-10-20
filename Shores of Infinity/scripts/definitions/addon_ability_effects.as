@@ -55,3 +55,56 @@ class ConsumeEitherStatuses : AbilityHook {
 	}
 #section all
 };
+
+class RepairPerSecondFromLaborIncome : AbilityHook {
+	Document doc("Repairs the flagship or orbital this is applied to for an amount depending of labor income.");
+	Argument objTarg(TT_Object);
+	Argument factor(AT_Decimal, "1.0", "Factor applied to labor income to evaluate repairs.");
+
+#section server
+	void changeTarget(Ability@ abl, any@ data, uint index, Target@ oldTarget, Target@ newTarget) const {
+		if(index != uint(objTarg.integer))
+			return;
+
+		Object@ prev = oldTarget.obj;
+		Object@ next = newTarget.obj;
+
+		if(prev is next)
+			return;
+	}
+
+	void tick(Ability@ abl, any@ data, double time) const override {
+		if(abl.obj is null)
+			return;
+		Target@ storeTarg = objTarg.fromTarget(abl.targets);
+		if(storeTarg is null)
+			return;
+
+		Object@ target = storeTarg.obj;
+		if(target is null)
+			return;
+
+		double amt = abl.obj.laborIncome * 60 * factor.decimal * abl.obj.owner.LaborRepairFactor * time;
+		if(target.isShip) {
+			auto@ ship = cast<Ship>(target);
+			if (ship.isDamaged)
+				ship.repairShip(amt);
+			else {
+				Target newTarg = storeTarg;
+				@newTarg.obj = null;
+				abl.changeTarget(objTarg, newTarg);
+			}
+		}
+		else if(target.isOrbital) {
+			auto@ orbital = cast<Orbital>(target);
+			if (orbital.isDamaged)
+				orbital.repairOrbital(amt);
+			else {
+				Target newTarg = storeTarg;
+				@newTarg.obj = null;
+				abl.changeTarget(objTarg, newTarg);
+			}
+		}
+	}
+#section all
+};

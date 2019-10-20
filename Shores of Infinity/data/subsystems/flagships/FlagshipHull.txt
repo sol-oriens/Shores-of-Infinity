@@ -19,7 +19,7 @@ Subsystem: FlagshipHull
 
 	HullStrengthMult := 1
 
-	Repair := (ShipSize / HexLimit) * 8
+	Repair := (ShipSize / HexLimit) * 2
 
 	Hex.LaborCost := 0.1 * ShipSize
 	Hex.BuildCost := 1.1 * ShipSize

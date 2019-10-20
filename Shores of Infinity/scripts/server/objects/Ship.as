@@ -44,7 +44,7 @@ tidy class ShipScript {
 	Object@ lastHitBy;
 	Empire@ killCredit;
 	uint bpStatusID = 0;
-	bool barDelta = false, onFire = false, needRepair = true, shieldDelta = false;
+	bool barDelta = false, onFire = false, needRepair = true, shieldDelta = false, repairDelta = false;
 	int prevSupply = 0;
 	int currentMaintenance = 0;
 	float mass = 0.f;
@@ -109,6 +109,14 @@ tidy class ShipScript {
 		if(ship.hasCargo) {
 			file << true;
 			file << cast<Savable>(ship.Cargo);
+		}
+		else {
+			file << false;
+		}
+
+		if(ship.hasSettlement) {
+			file << true;
+			file << cast<Savable>(ship.Settlement);
 		}
 		else {
 			file << false;
@@ -200,6 +208,12 @@ tidy class ShipScript {
 				ship.activateCargo();
 				file >> cast<Savable>(ship.Cargo);
 			}
+		}
+
+		file >> has;
+		if(has) {
+			ship.activateSettlement();
+			file >> cast<Savable>(ship.Settlement);
 		}
 
 		if(file >= SV_0108) {
@@ -436,7 +450,10 @@ tidy class ShipScript {
 				}
 			}
 		}
-		needRepair = true;
+		if (!needRepair) {
+			needRepair = true;
+			repairDelta = true;
+		}
 		bp.delta = true;
 	}
 
@@ -741,7 +758,7 @@ tidy class ShipScript {
 
 			auto@ region = ship.region;
 			if(region !is null) {
-				uint debris = uint(log(size) / log(2.0));
+				uint debris = uint(log(size) / log(2.0)) * 4;
 				if(debris > 0)
 					region.addShipDebris(ship.position, debris);
 			}
@@ -773,6 +790,8 @@ tidy class ShipScript {
 			ship.destroyConstruction();
 		if(ship.hasAbilities)
 			ship.destroyAbilities();
+		if (ship.hasSettlement)
+			ship.clearSettlement(ship.owner);
 
 		leaveRegion(ship);
 	}
@@ -789,6 +808,9 @@ tidy class ShipScript {
 			}
 			else
 				prevOwner.TotalSupportsActive -= 1;
+
+			if (ship.hasSettlement)
+				ship.clearSettlement(prevOwner);
 		}
 
 		if(ship.owner !is null && ship.owner.valid) {
@@ -802,6 +824,9 @@ tidy class ShipScript {
 			}
 			else
 				ship.owner.TotalSupportsActive += 1;
+
+			if (ship.hasSettlement)
+				ship.initSettlement();
 		}
 		if(ship.hasAbilities)
 			ship.abilityOwnerChange(prevOwner, ship.owner);
@@ -1178,6 +1203,8 @@ tidy class ShipScript {
 		timer += float(time);
 		if(timer >= 1.f) {
 			occasional_tick(ship, timer);
+			if (ship.hasSettlement)
+				ship.settlementTick(timer);
 			timer = 0.f;
 		}
 
@@ -1224,14 +1251,12 @@ tidy class ShipScript {
 		}
 
 		//Repair out of combat (SoI - and actually, also in combat...)
-		// SoI - bp.removedHP is bugged doesn't ever seem to return to the exact value of bp.design.totalHP (difference of 0.01)
-		// Also when substracting from bp.design.totalHP in this case a range overflow occurs for some reason
-		// There is probably a better solution but this hack will do for now
-		if (int(bp.currentHP) == int(bp.design.totalHP))
-			bp.currentHP = bp.design.totalHP;
 		double damage = bp.design.totalHP - (bp.currentHP + bp.removedHP);
-		//print("damage = " + damage);
-		if(currentRepair > 0.f && (damage > 0.f || wreckage > 0.f)) {
+		//You shall give up all expectations of floating point arithmetic being exactly equal to zero,
+		//for that can only bring the wrath of the bug gods upon your code, padawan
+		//print("bp.design.totalHP = " + bp.design.totalHP + " bp.currentHP = " + bp.currentHP + " bp.removedHP = " + bp.removedHP + " damage = " + damage);
+		//if(currentRepair > 0.f && (damage > 0.f || wreckage > 0.f)) {
+		if (currentRepair > 0.f && (damage > 0.1f || wreckage > 0.f)) {
 			double repairFact = 1.0;
 			repairFact *= min(bp.shipEffectiveness, 1.0);
 			bool inCombat = ship.inCombat;
@@ -1282,7 +1307,10 @@ tidy class ShipScript {
 		else {
 			bp.repairingHex.x = -1;
 			bp.repairingHex.y = -1;
-			needRepair = false;
+			if (needRepair) {
+				needRepair = false;
+				repairDelta = true;
+			}
 		}
 		return delay;
 	}
@@ -1304,7 +1332,10 @@ tidy class ShipScript {
 				evt.damage = amount;
 
 				bp.damage(ship, evt, pos);
-				needRepair = true;
+				if (!needRepair) {
+					needRepair = true;
+					repairDelta = true;
+				}
 				return;
 			}
 		}
@@ -1362,7 +1393,10 @@ tidy class ShipScript {
 		}
 		ship.engaged = true;
 		ship.blueprint.damage(ship, evt, direction);
-		needRepair = true;
+		if (!needRepair) {
+			needRepair = true;
+			repairDelta = true;
+		}
 		if(prevShield != ship.Shield)
 			shieldDelta = true;
 		if(ship.blueprint.currentHP <= 0.01) {
@@ -1491,6 +1525,8 @@ tidy class ShipScript {
 		else {
 			msg.write0();
 		}
+
+		msg << needRepair;
 	}
 
 	void retrofit(Ship& ship, const Design@ newDesign) {
@@ -1511,8 +1547,8 @@ tidy class ShipScript {
 			}
 		}
 		ship.Supply = min(ship.Supply, ship.MaxSupply);
- 		ship.Shield = min(ship.Shield, ship.MaxShield);
- 		ship.compEngageRange();
+		ship.Shield = min(ship.Shield, ship.MaxShield);
+		ship.compEngageRange();
 		barDelta = true;
 
 	}
@@ -1557,6 +1593,8 @@ tidy class ShipScript {
 		else {
 			msg.write0();
 		}
+
+		msg << needRepair;
 	}
 
 	bool prevFTL = false, prevCombat = false;
@@ -1655,6 +1693,14 @@ tidy class ShipScript {
 				used = true;
 			else
 				msg.write0();
+		}
+		else {
+			msg.write0();
+		}
+
+		if (repairDelta) {
+			msg << needRepair;
+			used = true;
 		}
 		else {
 			msg.write0();

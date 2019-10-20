@@ -16,7 +16,7 @@ Resource: RareGases
 	Can Be Terraformed: False
 	Exportable: False
 
-	Planet Classification: Gas
+	Planet Classification: Gas I
 
 	Secondary Resource: CommonGases
 

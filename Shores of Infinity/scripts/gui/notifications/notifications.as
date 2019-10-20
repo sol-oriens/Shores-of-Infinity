@@ -13,6 +13,8 @@ from util.draw_model import drawLitModel;
 from obj_selection import selectObject;
 from overlays.AnomalyOverlay import AnomalyOverlay;
 from overlays.SiteOverlay import SiteOverlay;
+from overlays.PlanetOverlay import PlanetOverlay;
+from overlays.Construction import ConstructionOverlay;
 from gui import animate_speed, animate_time;
 import hooks;
 
@@ -850,6 +852,42 @@ class SiteDisplay : ClassDisplay {
 	}
 };
 
+class SettlementDisplay : ClassDisplay {
+
+	SettlementDisplay(Notification@ n) {
+		super(n);
+	}
+
+	bool update(NotifyClass@ cls, double time) override {
+		SettlementNotification@ n = cast<SettlementNotification>(cls.base);
+		if (!n.obj.hasSettlement)
+			return false;
+		return true;
+	}
+
+	bool goto(Notification@ evt, bool bg = false) override {
+		//TODO: Implement overlays
+		SettlementNotification@ n = cast<SettlementNotification>(evt);
+		Planet@ pl = cast<Planet>(n.obj);
+		if (pl !is null) {
+			//if (bg)
+				zoomTabTo(pl);
+			/*else
+				PlanetOverlay(ActiveTab, pl);*/
+		}
+		else {
+			Ship@ ship = cast<Ship>(n.obj);
+			if (ship !is null) {
+				//if (bg)
+					zoomTabTo(pl);
+				/*else
+					ConstructionOverlay(ActiveTab, ship);*/
+			}
+		}
+		return true;
+	}
+};
+
 ClassDisplay@ createClassDisplay(Notification@ n) {
 	ClassDisplay@ cls;
 	switch(n.type) {
@@ -857,6 +895,7 @@ ClassDisplay@ createClassDisplay(Notification@ n) {
 		case NT_WarEvent: @cls = ContestDisplay(n); break;
 		case NT_Anomaly: @cls = AnomalyDisplay(n); break;
 		case NT_Site: @cls = SiteDisplay(n); break;
+		case NT_Settlement: @cls = SettlementDisplay(n); break;
 	}
 	if(cls is null)
 		@cls = ClassDisplay(n);

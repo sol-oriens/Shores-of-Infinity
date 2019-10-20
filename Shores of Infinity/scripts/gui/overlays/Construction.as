@@ -104,8 +104,8 @@ class DisplayBox : BaseGuiElement {
 		updateAbsolutePosition();
 	}
 
-	void animate(double animTime = ANIM2_TIME) {
-		visible = true;
+	void animate(double animTime = ANIM2_TIME, bool visible = true) {
+		this.visible = visible;
 		animate_time(this, targetAlign.resolve(overlay.size), animTime);
 	}
 
@@ -118,16 +118,21 @@ class DisplayBox : BaseGuiElement {
 		return BaseGuiElement::onGuiEvent(evt);
 	}
 
+	bool pressed = false;
 	bool onMouseEvent(const MouseEvent& evt, IGuiElement@ source) override {
 		switch(evt.type) {
 			case MET_Button_Down:
-				if(evt.button == 0)
+				if(evt.button == 0) {
+					pressed = true;
 					return true;
-			break;
+				}
+				break;
 			case MET_Button_Up:
-				if(evt.button == 0)
+				if(evt.button == 0 && pressed) {
+					pressed = false;
 					return true;
-			break;
+				}
+				break;
 		}
 
 		return BaseGuiElement::onMouseEvent(evt, source);
@@ -487,6 +492,9 @@ class ConstructionDisplay : DisplayBox {
 				for(uint i = 0, cnt = getOrbitalModuleCount(); i < cnt; ++i) {
 					auto@ def = getOrbitalModule(i);
 					if(def is drydock)
+						continue;
+					//Filter modules
+					if(obj.isOrbital && def.canBuildOn(cast<Orbital>(obj)))
 						continue;
 					if(def.canBuildBy(obj))
 						list.addItem(BuildElement(this, def, obj));

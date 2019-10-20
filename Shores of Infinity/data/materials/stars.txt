@@ -1,0 +1,4 @@
+Material: BrownDwarf
+	Shader: Lighting
+	Texture: data/images/browndwarf.png
+	Texture2: data/images/planets/gas_normal.png

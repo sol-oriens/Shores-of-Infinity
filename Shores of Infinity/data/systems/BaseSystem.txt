@@ -1,6 +1,5 @@
 System: BaseSystem
 	//Caution: this is a load order
-	Inherit: BaseInnerRim
 	Inherit: BaseGasGiants
 	Inherit: BaseIceGiants
 	Inherit: BaseOuterRim
@@ -10,9 +9,19 @@ System: BaseSystem
 	Inherit: BaseAnomalies
 	Inherit: BaseArtifacts
 
+System: EmptyBaseSystem
+	//Caution: this is a load order
+	Inherit: EmptyGasGiants
+	Inherit: EmptyIceGiants
+	Inherit: BaseOuterRim
+	Inherit: BaseRemnants
+	Inherit: BaseAsteroidBelt
+	Inherit: BaseAsteroids
+	Inherit: BaseAnomalies
+	Inherit: BaseArtifacts
+
 System: OuterSystem
 	//Caution: this is a load order
-	Inherit: BaseInnerRim
 	Inherit: BaseGasGiants
 	Inherit: BaseIceGiants
 	Inherit: BaseOuterRim
@@ -22,17 +31,36 @@ System: OuterSystem
 	Inherit: BaseAnomalies
 	Inherit: BaseArtifacts
 
+System: EmptyOuterSystem
+	//Caution: this is a load order
+	Inherit: EmptyGasGiants
+	Inherit: EmptyGasGiants
+	Inherit: BaseOuterRim
+	Inherit: BaseRemnants
+	Inherit: OuterAsteroidBelt
+	Inherit: BaseAsteroids
+	Inherit: BaseAnomalies
+	Inherit: BaseArtifacts
+
 System: BaseGasGiants
-	RepeatChance(Chance = 0.7, Repeat Modifier = 0.6)
-		MakePlanet(Resource = Weighted, Secondary Resource = Ruled, Classification = Gas, Giant = True, Force Native biome = True, Add Status = GasGiant)
+	RepeatChance(Chance = 0.5, Repeat Modifier = 0.6)
+		MakePlanet(Resource = Weighted, Classification = Gas I, Giant = True, Force Native Biome = True, Add Status = GasGiant)
+
+System: EmptyGasGiants
+	RepeatChance(Chance = 0.2, Repeat Modifier = 0.3)
+		MakePlanet(Resource = Weighted, Classification = Gas I, Giant = True, Force Native Biome = True, Add Status = GasGiant)
 
 System: BaseIceGiants
-	RepeatChance(Chance = 0.5, Repeat Modifier = 0.3)
-		MakePlanet(Resource = Weighted, Secondary Resource = Ruled, Classification = Icy, Giant = True, Force Native Biome = True, Add Status = IceGiant)
+	RepeatChance(Chance = 0.4, Repeat Modifier = 0.3)
+		MakePlanet(Resource = Weighted, Classification = Gas III, Giant = True, Force Native Biome = True, Add Status = IceGiant)
 
-System: BaseInnerRim
+System: EmptyIceGiants
+	RepeatChance(Chance = 0.1, Repeat Modifier = 0.1)
+		MakePlanet(Resource = Weighted, Classification = Gas III, Giant = True, Force Native Biome = True, Add Status = IceGiant)
 
 System: BaseOuterRim
+	RepeatChance(Chance = 0.3, Repeat Modifier = 0.3)
+		MakePlanet(Resource = Weighted, Conditions = False, Classification = Icy, Force Native Biome = True, Add Status = Permafrost)
 	ExpandSystem(1000)
 	ExpandSystemMinimum()
 
@@ -61,5 +89,7 @@ System: BaseRemnants
 System: BaseArtifacts
 	RepeatQuality(Chance = $ARTIFACT_FREQUENCY, Repeat Modifier = 0.25, Quality Step = 200)
 		MakeArtifact()
-	RepeatChance(Chance = 0.4, Repeat Modifier = 0.8)
+	RepeatChance(Chance = 0.5, Repeat Modifier = 0.8)
 		MakeArtifact(Type = Comet)
+	RepeatChance(Chance = 0.3, Repeat Modifier = 0.1)
+		MakeArtifact(Type = NascenceDevice)

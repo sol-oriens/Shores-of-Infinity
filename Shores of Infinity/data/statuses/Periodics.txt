@@ -1,0 +1,25 @@
+Status: PeriodicMoney
+	Visible To: Nobody
+
+	TriggerPeriodic(AddMoney(125), Interval = 180)
+
+Status: PeriodicInfluence
+	Visible To: Nobody
+
+	TriggerPeriodic(AddInfluencePoints(2), Interval = 180)
+
+Status: PeriodicStoredLabor
+	Visible To: Nobody
+
+	TriggerPeriodic(AddStoredLabor(12), Interval = 180)
+
+Status: PeriodicStoredLabor2
+	Visible To: Nobody
+
+	TriggerPeriodic(AddStoredLabor(25), Interval = 180)
+
+Status: PeriodicDefenseReserve
+	Visible To: Nobody
+
+	TriggerPeriodic(ModDefenseReserve(5), Interval = 180)
+	TriggerPeriodic(GenerateGlobalDefense(5), Interval = 180)

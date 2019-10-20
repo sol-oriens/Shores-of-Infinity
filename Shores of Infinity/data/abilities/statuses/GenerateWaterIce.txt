@@ -1,0 +1,10 @@
+Ability: GenerateWaterIce
+	Name: #ABL_GENERATE_WATER
+	Description: #ABL_GENERATE_WATERICE_DESC
+	Icon: ResourceIcons::0
+	Activate Sound: comet_activate
+
+	Energy Cost: 500
+
+	GainPlanetResource(WaterIce)
+	ConsumeStatus(GenerateWaterIceUse, Hide = True)

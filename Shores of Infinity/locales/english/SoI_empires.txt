@@ -1,0 +1,38 @@
+TRAIT_EMPIRE_DESC: <<
+	[vspace=6/][b][color=#0f0]Capital Bonus:[/color][/b] [offset=235][color=#a06911]Generates 5 Defense Reserve every 3 minutes[/color].[/offset]
+	[vspace=6/][b][color=#aaa]Focus:[/color][/b] [offset=235]Territorial: [color=#a06911]Generates 0.2 Defense per billion population[/color].[/offset]
+	[vspace=6/][b][color=#0087c7]Starting Cards:[/color][/b] [offset=235]5x Negotiate, 1x Name Flagship, 1x Name Planet.[/offset]
+	[dlc=Heralds][vspace=6/][b][color=#63ebdb]Starting Attitude:[/color][/b] [offset=235]Level 1 [color=#c73434]Delinquent[/color][/offset][/dlc]
+	[vspace=6/][b][color=#f00]Starting Fleet (Quickstart only):[/color][/b] [offset=235]Heavy Carrier with support.[/offset]
+>>
+
+TRAIT_COMMUNISM_DESC: <<
+	[vspace=6/][b][color=#0f0]Capital Bonus:[/color][/b] [offset=235][color=#42b4bd]Generates 12 Stored Labor every 3 minutes[/color].[/offset]
+	[vspace=6/][b][color=#aaa]Focus:[/color][/b] [offset=235]Industrial: [color=#42b4bd]Adds 0.2 Labor/minute per billion population[/color].[/offset]
+	[vspace=6/][b][color=#0087c7]Starting Cards:[/color][/b] [offset=235]1x Negotiate, 1x Investigate, 1x Cultivation, 1x United Research Center, 1x Sabotage.[/offset]
+	[dlc=Heralds][vspace=6/][b][color=#63ebdb]Starting Attitude:[/color][/b] [offset=235]Level 1 [color=#ac332d]Collectivism[/color][/offset][/dlc]
+	[vspace=6/][b][color=#f00]Starting Fleet (Quickstart only):[/color][/b] [offset=235]2x Dreadnaught.[/offset]
+>>
+
+TRAIT_THEOCRACY_DESC: <<
+	[vspace=6/][b][color=#0f0]Capital Bonus:[/color][/b] [offset=235][color=#00c0ff]Generates 2 Influence every 3 minutes[/color].[/offset]
+	[vspace=6/][b][color=#aaa]Focus:[/color][/b] [offset=235]Spiritual: [color=#00c0ff]Adds 0.2 Influence Stake per billion population[/color].[/offset]
+	[vspace=6/][b][color=#0087c7]Starting Cards:[/color][/b] [offset=235]2x Call Out, 1x Ancient Knowledge, 2x Protect System, 1x Host Galactic Senate.[/offset]
+	[dlc=Heralds][vspace=6/][b][color=#63ebdb]Starting Attitude:[/color][/b] [offset=235]Level 1 [color=#3447c7]Reverent[/color][/offset][/dlc]
+	[vspace=6/][b][color=#f00]Starting Fleet (Quickstart only):[/color][/b] [offset=235]2x Scout, 1x Dreadnaught, Homeworld Defense.[/offset]
+>>
+
+TRAIT_CAPITALISM_DESC: <<
+	[vspace=6/][b][color=#0f0]Capital Bonus:[/color][/b] [offset=235][color=#d1cb6a]Generates 125k as Special Funds every 3 minutes[/color].[/offset]
+	[vspace=6/][b][color=#aaa]Focus:[/color][/b] [offset=235]Financial: [color=#d1cb6a]Generates 0.2 Money per billion population[/color].[/offset]
+	[vspace=6/][b][color=#0087c7]Starting Cards:[/color][/b] [offset=235]1-4x Leverage, 2x Attach Rider, 2x Gift.[/offset]
+	[dlc=Heralds][vspace=6/][b][color=#63ebdb]Starting Attitude:[/color][/b] [offset=235]Level 1 [color=#d1cb6a]Materialism[/color][/offset][/dlc]
+	[vspace=6/][b][color=#f00]Starting Fleet (Quickstart only):[/color][/b] [offset=235]Heavy Carrier.[/offset]
+>>
+
+TRAIT_ANCIENT_DESC: <<
+	[vspace=3/][img=ActionBarIcons::1;22]Has no regular civilian economy, buildings must be constructed to gain resources.[/img]
+	[vspace=6/][img=PlanetType::3;22]Planets are claimed by moving Orbital Replicators to them and constructing buildings.[/img]
+	[vspace=6/][img=TraitIcons::0;22]Ships are powered by a single Core that provides both Control and Power.[/img]
+	[vspace=6/][img=Revolutionaries;18]Ignore all morale efffects, settlement morale is always medium.[/img]
+>>

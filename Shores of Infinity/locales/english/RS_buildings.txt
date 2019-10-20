@@ -1,9 +1,73 @@
-BLD_SPACE_ELEVATOR_DESC: <<
+BLD_BARRACKS: Barracks
+BLD_BARRACKS_DESC: <<|
+	[color=#aaa][i]A permanent planetary garrison that will help in the defense of this planet. Or another.[/i][/color]
+
+	Adds 15 Defense Reserve.
+
+	Adds 1 bonus planet loyalty.
+>>
+
+BLD_FORGE2: Forge II
+BLD_FORGE3: Forge III
+BLD_FORGE4: Forge IV
+BLD_FORGE5: Forge V
+BLD_FORGE_DESC: <<|
+	[color=#aaa][i]A vast industrial complex dedicated to metalworks and production of parts to be assembled in
+	factories and machine shops.[/i][/color]
+
+	Building a Forge unlocks the next tier, which is a bigger, more expensive and more effective version.
+
+	Ore is consumed when the planet is using Labor to build.
+>>
+BLD_FORGE1_DESC: <<
+	[bbloc=#BLD_FORGE_DESC/]
+
+	Increases Labor generation by 20%.
+
+	[bbloc=#TIP_CONSUME_ORE:12/]
+>>
+BLD_FORGE2_DESC: <<
+	[bbloc=#BLD_FORGE_DESC/]
+
+	Increases Labor generation by 40%.
+
+	[bbloc=#TIP_CONSUME_ORE:24/]
+>>
+BLD_FORGE3_DESC: <<
+	[bbloc=#BLD_FORGE_DESC/]
+
+	Increases Labor generation by 60%.
+
+	[bbloc=#TIP_CONSUME_ORE:36/]
+>>
+BLD_FORGE4_DESC: <<
+	[bbloc=#BLD_FORGE_DESC/]
+
+	Increases Labor generation by 80%.
+
+	[bbloc=#TIP_CONSUME_ORE:48/]
+>>
+BLD_FORGE5_DESC: <<
+	[bbloc=#BLD_FORGE_DESC/]
+
+	Increases Labor generation by 100%.
+
+	Can upgrade the settlement to [bbloc=#SETTLEMENT_FORGE/].
+
+	[i][bbloc=#SETTLEMENT_FORGE_DESC/][/i]
+
+	Requirements:
+	[color=#ff0][bbloc=#BLD_FORGE5/] x 3[/color]
+
+	[bbloc=#TIP_CONSUME_ORE:60/]
+>>
+
+BLD_SPACE_ELEVATOR_DESC: <<|
 	[color=#aaa][i]A ribbon-like tether reaching vertically into space can be used to significantly increase the efficiency of transporting materials into space.[/i][/color]
 
 	Increases the construction speed of support ships on this planet by 40%.
 
-	Adds 1 money generation per Planet Level starting from Level 1 if a Starport is present in the system.
+	Adds 1 Money generation per Planet Level starting from Level 1 if a Starport is present in the system.
 
 	[i]Only one Space Elevator may be constructed per planet.[/i]
 >>
@@ -12,9 +76,11 @@ BLD_ARCOLOGY: Arcology
 BLD_ARCOLOGY_DESC: <<
 	[color=#aaa][i]The ultimate settlement, designed for self-sufficiency. An arcology is a city-in-a-giant-building: residential areas, business and shopping centers, factories, parks, farms, water and waste processing units, all operating in a closed circuit. Nothing needs to enter an arcology to sustain it, and nothing needs to exit. Except tax...[/i][/color]
 
-	Replaces up to 5 regular cities.
+	Replaces up to 3 regular cities.
 
-	Adds 5 population.
+	Adds 3 population.
+
+	Increases the planet's total pressure capacity by 3.
 >>
 
 BLD_HEALTH_COMPLEX: Healthcare Complex
@@ -43,11 +109,18 @@ BLD_MINE_DESC: <<
 
 	Adds an Ore resource that can be exported and generates [b]10 ore per minute[/b] at its destination.
 
-	Adds 2 labor pressure.
+	Adds 2 Labor pressure.
 
 	Increases the pressure given by native Iron and Titanium by 2.
 
 	Increases the pressure given by Coal and Native Gold by 1.
+
+	Can upgrade the settlement to [bbloc=#SETTLEMENT_MINE/].
+
+	[i][bbloc=#SETTLEMENT_MINE_DESC/][/i]
+
+	Requirements:
+	[color=#ff0][bbloc=#BLD_MINE/] x 3[/color]
 >>
 
 BLD_NRG_FACTORY: Fossil Fuel Facility
@@ -57,6 +130,62 @@ BLD_NRG_FACTORY_DESC: <<
 	Adds 1 Energy pressure and 1 Money pressure.
 
 	Increases the pressure given by native Natural Gas or Oil by 1.
+>>
+
+BLD_PRISON: Penitentiary
+BLD_PRISON_DESC: <<
+	[color=#aaa][i]A large, high-security facility hosting convicts.[/i][/color]
+
+	Generates 1 Labor/minute.
+
+	Moderately increases morale.
+
+	Replaces up to 1 regular city.
+
+	Can upgrade the settlement to [bbloc=#SETTLEMENT_PRISON/].
+
+	[i][bbloc=#SETTLEMENT_PRISON_DESC/][/i]
+
+	Requirements:
+	[color=#ff0][bbloc=#BLD_PRISON/] x 2
+	Native Resource Level 0
+	Planet Level 0[/color]
+>>
+
+BLD_RESORT: Resort
+BLD_RESORT_DESC: <<
+	[color=#aaa][i]A tourist's paradise. Also an entrepreneur's.[/i][/color]
+
+	Gives 1 Money generation.
+
+	Adds 1 Influence pressure.
+
+	Replaces up to 3 regular cities.
+
+	Reduces total pressure capacity by 3.
+
+	Can upgrade the settlement to [bbloc=#SETTLEMENT_RESORT/].
+
+	[i][bbloc=#SETTLEMENT_RESORT_DESC/][/i]
+
+	Requirements:
+	[color=#ff0][bbloc=#BLD_RESORT/] x 3
+	Tropical Paradise[/color]
+>>
+
+BLD_ANCIENT_FOUNDRY_DESC: <<
+	Increases this planet's labor generation. Benefits from Factory research in the research grid.
+
+	2 Ore per second is consumed when the planet is using the labor to build.
+
+	Can upgrade the settlement to [bbloc=#SETTLEMENT_FORGE/].
+
+	[i][bbloc=#SETTLEMENT_ANCIENT_FORGE_DESC/][/i]
+
+	Requirements:
+	[color=#ff0][bbloc=#BLD_ANCIENT_FOUNDRY/] x 12[/color]
+
+	[b][img=ResourceIconsSmall::65;20/] [color=#91692c]Ore Used:[/color][/b][offset=150]2 / second[/offset]
 >>
 
 BLD_LABORCAMP: Xenomanufacturing Center
@@ -128,7 +257,11 @@ B_DEFENSEFACTORY: Command Center
 B_DEFENSEFACTORY_DESC: <<
 	A facility dedicated to the coordination of defensive forces across the planet.
 
-	Adds 2 Defense generation. Adds 128 support capacity.
+	Gives 1 Defense generation.
+
+	Adds 1 Defense pressure.
+
+	Adds 128 support capacity.
 >>
 B_FAKELVL1_RESEARCH: Research Complex
 B_FAKELVL1_RESEARCH_DESC: <<

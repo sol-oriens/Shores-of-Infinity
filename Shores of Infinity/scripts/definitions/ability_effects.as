@@ -1149,6 +1149,7 @@ class SpawnPlanetAt : AbilityHook {
 		plHook.initClass();
 		plHook.resource.str = resource.str;
 		plHook.distribute_resource.boolean = true;
+		plHook.changeSystemRadius = false;
 		plHook.instantiate();
 
 		Object@ current;
@@ -2225,6 +2226,7 @@ class CastWhenIdle : AbilityHook {
 	Argument require_cargo(AT_Boolean, "False", doc="Only cast when we have cargo.");
 	Argument require_no_cargo(AT_Boolean, "False", doc="Only cast when we have no cargo.");
 	Argument require_free_cargo(AT_Boolean, "False", doc="Only cast when we have cargo space free.");
+	Argument require_full_cargo(AT_Boolean, "False", doc="Only cast when we have full cargo.");
 
 #section server
 	void tick(Ability@ abl, any@ data, double time) const override {
@@ -2242,6 +2244,10 @@ class CastWhenIdle : AbilityHook {
 		}
 		if(require_free_cargo.boolean) {
 			if(!abl.obj.hasCargo || abl.obj.cargoStored >= abl.obj.cargoCapacity - 0.001)
+				return;
+		}
+		if(require_full_cargo.boolean) {
+			if(!abl.obj.hasCargo || abl.obj.cargoStored < abl.obj.cargoCapacity - 0.001)
 				return;
 		}
 

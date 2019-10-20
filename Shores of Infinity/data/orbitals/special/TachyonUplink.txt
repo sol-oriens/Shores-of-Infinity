@@ -18,7 +18,7 @@ Module: TachyonUplink
 
 	Build Cost: 1000
   Maintenance: 500
-	Labor Cost: 50
+	Labor Cost: 100
 
 	FTLMaintenance(0.5)
 

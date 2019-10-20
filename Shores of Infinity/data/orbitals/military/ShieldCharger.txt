@@ -13,7 +13,7 @@ Module: ShieldCharger
 
 	Build Cost: 500
 	Maintenance: 100
-	Labor Cost: 10
+	Labor Cost: 20
 
 	Health: 6000
 	Armor: 6000

@@ -3,8 +3,13 @@ import regions.regions;
 LightDesc lightDesc;
 
 class StarScript {
+	double get_displayRadius(Star& star) {
+		return star._displayRadius > 0 ? star._displayRadius : star.radius;
+	}
+
 	void syncInitial(Star& star, Message& msg) {
 		star.temperature = msg.read_float();
+		msg >> star._displayRadius;
 
 		//SoI - Scaling: increased light reach
 		float scale = 8000.f;
@@ -13,9 +18,18 @@ class StarScript {
 		double temp = star.temperature;
 		Node@ node;
 		double soundRadius = star.radius;
-		if(temp > 0.0) {
+		if (temp > 0.0 && temp <= 1300.0) {
+			@node = bindNode(star, "BrownDwarfNode");
+			node.color = blackBody(temp, max((temp + 15000.0) / 40000.0, 1.0));
+		}
+		else if (temp > 1300.0 && temp < 6000000.0) {
 			@node = bindNode(star, "StarNode");
 			node.color = blackBody(temp, max((temp + 15000.0) / 40000.0, 1.0));
+		}
+		else if (temp >= 6000000.0 && temp <= 1000000000000.0) {
+			@node = bindNode(star, "NeutronStarNode");
+			node.color = blackBody(16000.0, max((16000.0 + 15000.0) / 40000.0, 1.0));
+			cast<NeutronStarNode>(node).establish(star);
 		}
 		else {
 			@node = bindNode(star, "BlackholeNode");

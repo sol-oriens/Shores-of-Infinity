@@ -1,0 +1,34 @@
+SettlementFocus: DefenseHome
+	Name: #FOCUS_HOME
+	Description: #FOCUS_HOME_DEFENSE_DESC
+
+	Priority: 3
+
+	RequireTrait(Empire)
+	addon_requirement_effects::RequireHome()
+	addon_requirement_effects::RequirePopulation(5)
+
+	settlement_effects::AddSettlementResource(0.5, Defense)
+
+SettlementFocus: Defense
+	Name: #FOCUS_DEFENSE
+	Description: #FOCUS_DEFENSE_DESC
+
+	Priority: 3
+
+	RequireTrait(Empire)
+	addon_requirement_effects::RequireNotHome()
+	addon_requirement_effects::RequirePopulation(5)
+
+	settlement_effects::AddSettlementResource(0.25, Defense)
+
+SettlementFocus: DefenseExtreme
+	Name: #FOCUS_DEFENSE_EXTREME
+	Description: #FOCUS_DEFENSE_EXTREME_DESC
+
+	Morale Effect: Very Negative
+
+	RequireTrait(Empire)
+	addon_requirement_effects::RequirePopulation(5)
+
+	settlement_effects::AddSettlementResource(0.75, Defense)

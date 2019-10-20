@@ -466,6 +466,16 @@ S_ANCIENT_REPLICATOR_DESC : <<
 	[img=MenuIcons::3;20]Costs decrease with size.[/img]
 >>
 
+TARGETINGSENSOR_DESC: <<
+	Sophisticated targeting and tracking sensors allow a weapon to more accurately find its destination, increasing its effective range.
+
+	[img=Plus;22;#cf00ff]Can be placed on weapon subsystems.[/img]
+	[img=Plus]Increases the [b][color=#80ffea]range[/color][/b] of the weapon.[/img]
+	[img=Minus]Increases the build cost of the weapon by 50%.[/img]
+	[img=Minus]Slightly increases the [b][color=#fefc61]supply cost[/color][/b] of firing the weapon.[/img]
+	[i][color=#aaa]Placing more than one targeting sensor on a weapon will continue to increase its range, but will also skyrocket its costs.[/color][/i]
+>>
+
 S_CARGO_HULL_DESC: <<
 	A specialized hull designed for the transportation of large quantities of cargo.
 
@@ -495,26 +505,6 @@ S_JUGGERNAUT_HULL_DESC: <<
 	[img=Minus]Significantly reduced hex count.[/img]
 	[img=MenuIcons::3;20][i][color=#aaa]Bombship Hulls can only be used on ships of size 300 or greater.[/color][/i][/img]
 >>
-S_FORCEFIELD: Forcefield
-S_FORCEFIELD_DESC: <<
-	An advanced shielding system capable of projecting a highly cohesive, geometrically complex plasma field to defend key sections of the ship.
-
-	[img=Plus]Can be used to isolate select portions of the ship behind a shield-like barrier.[/img]
-	[img=Plus]Only the emitter counts towards the ship's hex limit, mass and maintenance cost. Bigger forcefields can absorb more damage before failing.[/img]
-	[img=MenuIcons::3;22]Has a number of applications in designing more exotic vessels, and only benefits from shield upgrades.[/img]
-	[img=Minus]Extremely inefficient and fairly weak compared to standard shield systems, with high build costs and power consumption, and low shield capacity and regeneration. Additionally, bigger forcefields require exponentially more Power to operate.[/img]
-	[img=Minus]Is not affected by Shield Harmonizers or Power Transmitters.[/img]
->>
-
-TARGETINGSENSOR_DESC: <<
-	Sophisticated targeting and tracking sensors allow a weapon to more accurately find its destination, increasing its effective range.
-
-	[img=Plus;22;#cf00ff]Can be placed on weapon subsystems.[/img]
-	[img=Plus]Increases the [b][color=#80ffea]range[/color][/b] of the weapon.[/img]
-	[img=Minus]Increases the build cost of the weapon by 50%.[/img]
-	[img=Minus]Slightly increases the [b][color=#fefc61]supply cost[/color][/b] of firing the weapon.[/img]
-	[i][color=#aaa]Placing more than one targeting sensor on a weapon will continue to increase its range, but will also skyrocket its costs.[/color][/i]
->>
 
 S_TITAN_HULL_DESC: <<
 	An extremely heavy hull frame that allows larger ships to be constructed more efficiently.
@@ -534,6 +524,21 @@ S_CARRIER_HULL_DESC: <<
 	[img=Minus]Cannot have any weapons on the flagship.[/img]
 	[img=Minus]Less internal space available.[/img]
 	[img=MenuIcons::3;20][i][color=#aaa]Carrier Hulls can only be used on ships of size 300 or greater.[/color][/i][/img]
+>>
+
+S_MOTHERSHIP_HULL_DESC: <<
+	A hull designed to support the population of an entire planet at the cost of combat capabilities.
+
+	[img=Plus]Can build habitats around planets to offload population into and exploit them.[/img]
+	[img=Plus]Gains the labor of any planet the ship is in orbit of.[/img]
+	[img=Plus]Increases the population supported by Living Quarters by 33%.[/img]
+	[img=Plus]Increases cargo storage by 25%.[/img]
+	[img=Minus]Reduces supply capacity by 99%.[/img]
+	[img=Minus]Reduces support capacity by 80%.[/img]
+	[img=Minus]Reduces damage by 50%.[/img]
+	[img=Minus]Cannot fire outside friendly territory.[/img]
+	[img=MenuIcons::3;20][i][color=#aaa]Mothership Hulls can only be used on ships of size 3000 or greater.[/color][/i][/img]
+	[img=Plantation;22][b][color=#1c9bb4]Only available with the 'Star Children' lifestyle.[/color][/b][/img]
 >>
 
 S_SHIELDED_AMGEN_DESC: <<
@@ -628,6 +633,17 @@ SUPPORTSUPPLY_DESC: <<
 	[img=MenuIcons::3;20;#f00][i][color=#faa]Support ships with maintenance costs will not be created by Defense.[/color][/i][/img]
 >>
 
+S_FORCEFIELD: Forcefield
+S_FORCEFIELD_DESC: <<
+	An advanced shielding system capable of projecting a highly cohesive, geometrically complex plasma field to defend key sections of the ship.
+
+	[img=Plus]Can be used to isolate select portions of the ship behind a shield-like barrier.[/img]
+	[img=Plus]Only the emitter counts towards the ship's hex limit, mass and maintenance cost. Bigger forcefields can absorb more damage before failing.[/img]
+	[img=MenuIcons::3;22]Has a number of applications in designing more exotic vessels, and only benefits from shield upgrades.[/img]
+	[img=Minus]Extremely inefficient and fairly weak compared to standard shield systems, with high build costs and power consumption, and low shield capacity and regeneration. Additionally, bigger forcefields require exponentially more Power to operate.[/img]
+	[img=Minus]Is not affected by Shield Harmonizers or Power Transmitters.[/img]
+>>
+
 S_REMNANTSHIELD_DESC: <<
 	Incredibly advanced Progenitor technology. Creates a powerful shield around the vessel, blocking some incoming damage.
 
@@ -637,6 +653,7 @@ S_REMNANTSHIELD_DESC: <<
 	[img=Minus]Weakened shields allow some damage through.[/img]
 	[img=Minus]Very expensive, and requires a lot of Power.[/img]
 >>
+
 S_COVARIANT_SHIELD_DESC: <<
 	Creates a shield around the vessel, blocking some incoming damage. Covariant shields are more powerful, but they regenerate at a slower rate than their standard counterparts.
 
@@ -771,9 +788,10 @@ S_LIGHTSAIL_DESC: <<
 
 	[img=Plus]Does not need fuel, very low maintenance cost.[/img]
 	[img=Plus]Lightsails on the outside of the ship do not use up interior space.[/img]
+	[img=Minus]Provides no turn thrust.[/img]
 	[img=Minus]Thrust is not improved by research.[/img]
 	[img=Minus]Requires to be within range of an active laser propulsion beam to function at full efficiency, or near a star to function at low efficiency.[/img]
-	[img=MenuIcons::3;20]Laser Propulsion Beam is an ability of Phased Laser Array Drive orbitals.[/img]
+	[img=MenuIcons::3;20]Laser Propulsion Beam is an ability of Phased Array Laser Drive orbitals.[/img]
 	[img=MenuIcons::3;20]Thrust increases with diminishing returns as the subsystem's size increases.[/img]
 	[img=MenuIcons::3;20]Diminishing returns combined with linear mass increase also means diminishing returns on acceleration as the ship size increases.[/img]
 	[img=MenuIcons::3;20]Only one external source can be used at a time (including solar).[/img]

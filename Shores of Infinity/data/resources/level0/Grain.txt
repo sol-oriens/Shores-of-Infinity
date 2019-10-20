@@ -1,6 +1,7 @@
 Resource: Grain
 	Name: #GRAIN
 	Blurb: #FOOD_BLURB
+	Description: #GRAIN_DESC
 	Native Biome: Forest
 	Class: Food
 

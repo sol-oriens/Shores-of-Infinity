@@ -42,7 +42,7 @@ tidy class Statuses : Component_Statuses {
 
 	double get_variable(uint index) {
 		if(index >= statuses.length)
-			return -1;
+			return 0;
 		return statuses[index].variable;
 	}
 

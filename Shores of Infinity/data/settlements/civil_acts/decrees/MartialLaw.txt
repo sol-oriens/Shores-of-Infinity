@@ -1,0 +1,14 @@
+CivilAct: MartialLaw
+	Name: #CIVIL_ACT_MARTIAL_LAW
+	Description: #CIVIL_ACT_MARTIAL_LAW_DESC
+
+	Category: Decrees
+
+	Morale Effect: Negative
+
+	Maintenance: 25
+	Population Multiplier: True
+
+	RequireAttributeLT(IgnoreMoraleModifiers, 1)
+
+	settlement_effects::ContainCivilUnrest(0.3)

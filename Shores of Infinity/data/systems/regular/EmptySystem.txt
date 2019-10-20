@@ -1,9 +1,12 @@
 System: EmptySystem
-	Inherit: BaseSystem
+	Inherit: EmptyBaseSystem
 	Frequency: 0.05
 
 	//SoI - Scaling
 	MakeStar(Temperature = 4000:12000, Radius = 650:1650)
+
+	RepeatChance(Chance = 0.1, Repeat Modifier = 0.2)
+		MakePlanet(Resource = Weighted, Conditions = False, Classification = Gas IV, Giant = True, Force Native Biome = True, Add Status = GasGiant)
 
 	ExpandSystem(17500:20000)
 

@@ -38,6 +38,7 @@ tidy class PlanetScript {
 	void save(Planet& planet, SaveFile& file) {
 		saveObjectStates(planet, file);
 		file << cast<Savable>(planet.Orbit);
+		file << cast<Savable>(planet.Settlement);
 		file << cast<Savable>(planet.Construction);
 		file << cast<Savable>(planet.SurfaceComponent);
 		file << cast<Savable>(planet.Resources);
@@ -83,6 +84,7 @@ tidy class PlanetScript {
 		timer = -float(uint8(planet.id)) / 255.0;
 		loadObjectStates(planet, file);
 		file >> cast<Savable>(planet.Orbit);
+		file >> cast<Savable>(planet.Settlement);
 		file >> cast<Savable>(planet.Construction);
 		file >> cast<Savable>(planet.SurfaceComponent);
 		file >> cast<Savable>(planet.Resources);
@@ -132,7 +134,7 @@ tidy class PlanetScript {
 			plNode.addRing(ringStyle);
 
 		int resId = planet.primaryResourceType;
-    if (resId != -1) {
+		if (resId != -1) {
 			const ResourceType@ type = getResource(resId);
 			type.applyGraphics(planet, plNode);
 		}
@@ -228,6 +230,8 @@ tidy class PlanetScript {
 		planet.destroySurface();
 		planet.leaderDestroy();
 		planet.destroyStatus();
+		planet.destroySites();
+		planet.clearSettlement(planet.owner);
 		leaveRegion(planet);
 
 		if(planet.owner !is null) {
@@ -245,6 +249,7 @@ tidy class PlanetScript {
 			if(prevOwner.GloryMode == 2 && (planet.inCombat || planet.engaged)) {
 				prevOwner.Glory -= 100 * planet.Population;
 			}
+			planet.clearSettlement(prevOwner);
 		}
 		if(planet.owner !is null) {
 			planet.owner.recordStatDelta(stat::Planets, 1);
@@ -253,6 +258,7 @@ tidy class PlanetScript {
 			if(planet.owner.GloryMode == 1 && (planet.inCombat || planet.engaged)) {
 				planet.owner.Glory += 100 * planet.Population;
 			}
+			planet.initSettlement();
 		}
 		planet.clearRally();
 		if(planet.hasAbilities)
@@ -385,7 +391,8 @@ tidy class PlanetScript {
 			occasional_tick(planet);
 			planet.surfaceTick(timer);
 			planet.resourceTick(timer);
-			planet.statusTick(time);
+			planet.statusTick(timer);
+			planet.settlementTick(timer);
 			timer = 0.f;
 		}
 
@@ -418,6 +425,7 @@ tidy class PlanetScript {
 		planet.writeStatuses(msg);
 		planet.writeCargo(msg);
 		planet.writeSites(msg);
+		planet.writeSettlement(msg);
 
 		msg.writeBit(planet.hasAbilities);
 		if(planet.hasAbilities)
@@ -485,6 +493,16 @@ tidy class PlanetScript {
 		else
 			msg.write0();
 
+		if(planet.writeSiteDelta(msg))
+			used = true;
+		else
+			msg.write0();
+
+		if(planet.writeSettlementDelta(msg))
+			used = true;
+		else
+			msg.write0();
+
 		if(hpDelta) {
 			used = true;
 			hpDelta = false;
@@ -517,6 +535,7 @@ tidy class PlanetScript {
 		planet.writeStatuses(msg);
 		planet.writeCargo(msg);
 		planet.writeSites(msg);
+		planet.writeSettlement(msg);
 
 		msg.writeBit(planet.hasAbilities);
 		if(planet.hasAbilities)

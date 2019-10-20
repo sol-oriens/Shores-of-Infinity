@@ -1,0 +1,405 @@
+SETTLEMENT: Settlement
+
+SETTLEMENT_CIVIL_UNREST_NOTIFICATION: Civil unrest reported at $1.
+
+MORALE: Morale
+MORALE_CRITICAL: Critical
+MORALE_LOW: Low
+MORALE_MEDIUM: Medium
+MORALE_HIGH: High
+
+TT_MORALE: <<|
+	The current morale of this settlement. Morale is a combination of the population happiness and state of mind,
+	its support for the local government and criminality level.
+
+	When too low, civil unrest will ensue, which will cause revolts and civil wars, leading to the colony losing
+	loyalty being and being abandoned if not addressed quickly.
+>>
+
+SETTLEMENT_COLONY: Colony
+SETTLEMENT_COLONY_DESC: <<|
+	[color=#aaa][i]A basic settlement, just enough to sustain a small community.[/i][/color]
+>>
+
+SETTLEMENT_CORE: Core World
+SETTLEMENT_CORE_DESC: <<|
+	[color=#aaa][i]A vibrant world bustling with activity.[/i][/color]
+>>
+
+SETTLEMENT_HOMEWORLD: Homeworld
+SETTLEMENT_HOMEWORLD_DESC: <<|
+	[color=#aaa][i]The cradle of our civilization, our most cherished treasure.
+	Should we have to, we will stop at nothing to protect it.[/i][/color]
+
+	Adds 1 bonus Loyalty per billion population.
+
+	Support ships assigned to this planet fight at 300% increased effectiveness.
+>>
+SETTLEMENT_HOMEWORLD_DEFENSE_DESC: <<
+	[bbloc=#SETTLEMENT_HOMEWORLD_DESC/]
+
+	Generates 5 Defense Reserve every 3 minutes.
+>>
+SETTLEMENT_HOMEWORLD_INFLUENCE_DESC: <<
+	[bbloc=#SETTLEMENT_HOMEWORLD_DESC/]
+
+	Generates 2 Influence every 3 minutes.
+>>
+SETTLEMENT_HOMEWORLD_LABOR_DESC: <<
+	[bbloc=#SETTLEMENT_HOMEWORLD_DESC/]
+
+	Generates 12 Stored Labor every 3 minutes.
+>>
+SETTLEMENT_HOMEWORLD_MONEY_DESC: <<
+	[bbloc=#SETTLEMENT_HOMEWORLD_DESC/]
+
+	Generates 125k as Special Funds every 3 minutes.
+>>
+
+SETTLEMENT_ARKMOTHERSHIP: Ark Mothership
+SETTLEMENT_ARKMOTHERSHIP_DESC: <<|
+	[color=#aaa][i]The last refuge of our civilization, our most cherished treasure.
+	Should we have to, we will stop at nothing to protect it.[/i][/color]
+
+	This ship and its support ships fight at 300% increased effectiveness.
+>>
+SETTLEMENT_ARKMOTHERSHIP_DEFENSE_DESC: <<
+	[bbloc=#SETTLEMENT_ARKMOTHERSHIP_DESC/]
+
+	Generates 5 Defense Reserve every 3 minutes.
+>>
+SETTLEMENT_ARKMOTHERSHIP_INFLUENCE_DESC: <<
+	[bbloc=#SETTLEMENT_ARKMOTHERSHIP_DESC/]
+
+	Generates 2 Influence every 3 minutes.
+>>
+SETTLEMENT_ARKMOTHERSHIP_LABOR_DESC: <<
+	[bbloc=#SETTLEMENT_ARKMOTHERSHIP_DESC/]
+
+	Generates 12 Stored Labor every 3 minutes.
+>>
+SETTLEMENT_ARKMOTHERSHIP_MONEY_DESC: <<
+	[bbloc=#SETTLEMENT_ARKMOTHERSHIP_DESC/]
+
+	Generates 125k as Special Funds every 3 minutes.
+>>
+
+SETTLEMENT_FARM: Farm World
+SETTLEMENT_FARM_DESC: <<|
+	[color=#aaa][i]The numerous farmlands of this planet focus on producing grain. So much grain that over time
+	enough reserves are accumulated from leftovers that they can be used to seed new ones.[/i][/color]
+
+	Yields one Harvest influence card every 30 minutes.
+>>
+
+SETTLEMENT_MINE: Mining World
+SETTLEMENT_MINE_DESC: <<|
+	[color=#aaa][i]Even from space, the footprint of the mining complexes covering the surface of this planet is
+	massive. They seem able to eventually hollow it out of all its substance.[/i][/color]
+
+	Replaces a Level 1 resource.
+>>
+
+SETTLEMENT_FORGE: Forge World
+SETTLEMENT_FORGE_DESC: <<|
+	[color=#aaa][i]Factories, assembly lines, machinery everywhere. All of this ridiculously overshadowed by the
+	gigantic, nearly continent-sized forges whose existence is justified by one objective: churning out the most massive
+	things our civilization ever built. These monsters alone generate more output than all our other
+	planets together probably ever will.[/i][/color]
+
+	Replaces a Level 2 resource.
+
+	Constructions have a 20% cheaper build cost.
+>>
+SETTLEMENT_ANCIENT_FORGE_DESC: <<|
+	[color=#aaa][i]Almost entirely covered by foundries, the building power of this planet is a love letter to what our
+	civilization once was: unmatched.[/i][/color]
+
+	Increases Labor generation by 150%.
+
+	Constructions have a 20% cheaper build cost.
+>>
+
+SETTLEMENT_RESORT: Resort World
+SETTLEMENT_RESORT_DESC: <<|
+	[color=#aaa][i]Due to the favorable climate of this world and the numerous touristic facilities that popped up
+	as a result, vacationers and touristic workers compose the major part of its population.[/i][/color]
+
+	Increases civilian Money and Influence production by 100%.
+
+	Reduces Labor generation by 100%.
+
+	Reduces civilian Energy, Research and Defense production by 100%.
+>>
+
+SETTLEMENT_PRISON: Penal Colony
+SETTLEMENT_PRISON_DESC: <<|
+	[color=#aaa][i]This planet mostly hosts sentenced criminals, isolated far away from civilization and with little
+	chance to evade.[/i][/color]
+
+	Adds 50 Labor Storage.
+
+	Slightly increases morale across the empire.
+
+	Reduces income penalty of Level 0 planets by 30k.
+
+	Reduces civilian Money, Influence, Energy, Research and Defense production by 100%.
+>>
+
+SETTLEMENT_MOTHERSHIP: Mothership
+SETTLEMENT_MOTHERSHIP_DESC: <<|
+	[color=#aaa][i]Engineered to autonomously host a planet-sized population and support neighboring colonies,
+	motherships are essentially metal worlds with drives.[/i][/color]
+
+	This ship and its support ships fight at 100% increased effectiveness.
+>>
+
+STATE_LABEL: State:
+STATE_NORMAL: Compliance
+STATE_CIVIL_UNREST: Civil Unrest
+
+FOCUS_LABEL: Focus:
+
+FOCUS_BASIC: Colonial
+FOCUS_BASIC_DESC: <<
+	[color=#aaa][i]The daily challenges of a small colony.[/i][/color]
+>>
+
+FOCUS_MORALE: Hedonistic
+FOCUS_MORALE_DESC: <<
+	[color=#aaa][i]Pleasures of life first, mind and body.[/i][/color]
+>>
+
+FOCUS_COMMAND: Military
+FOCUS_COMMAND_DESC: <<
+	[color=#aaa][i]Big fleets and big guns.[/i][/color]
+
+	Adds 512 support capacity.
+>>
+
+FOCUS_HOME: Capital
+FOCUS_HOME_DESC: <<
+	[color=#aaa][i]The heavy load of governing.[/i][/color]
+>>
+FOCUS_HOME_DEFENSE_DESC: <<
+	[bbloc=#FOCUS_HOME_DESC/]
+
+	Gives 0.5 Defense generation per billion population.
+>>
+FOCUS_HOME_INFLUENCE_DESC: <<
+	[bbloc=#FOCUS_HOME_DESC/]
+
+	Adds 0.5 Influence Stake per billion population.
+>>
+FOCUS_HOME_LABOR_DESC: <<
+	[bbloc=#FOCUS_HOME_DESC/]
+
+	Generates 0.5 Labor per minute per billion population.
+>>
+FOCUS_HOME_MONEY_DESC: <<
+	[bbloc=#FOCUS_HOME_DESC/]
+
+	Gives 0.5 Money generation per billion population.
+>>
+
+FOCUS_MONEY: Financial
+FOCUS_MONEY_DESC: <<
+	[color=#aaa][i]Free market equals free minds.[/i][/color]
+
+	Gives 0.25 Money generation per billion population.
+>>
+
+FOCUS_MONEY_EXTREME: Acquisitive
+FOCUS_MONEY_EXTREME_DESC: <<
+	[color=#aaa][i]Money can buy everything.[/i][/color]
+
+	Gives 0.75 Money generation per billion population.
+>>
+
+FOCUS_INFLUENCE: Spiritual
+FOCUS_INFLUENCE_DESC: <<
+	[color=#aaa][i]Pursuing peace of mind and body.[/i][/color]
+
+	Adds 0.25 Influence Stake per billion population.
+>>
+
+FOCUS_INFLUENCE_EXTREME: Fanatical
+FOCUS_INFLUENCE_EXTREME_DESC: <<
+	[color=#aaa][i]There is only one truth: ours.[/i][/color]
+
+	Adds 0.75 Influence Stake per billion population.
+>>
+
+FOCUS_DEFENSE: Territorial
+FOCUS_DEFENSE_DESC: <<
+	[color=#aaa][i]What is ours shall stay ours.[/i][/color]
+
+	Gives 0.25 Defense generation per billion population.
+>>
+
+FOCUS_DEFENSE_EXTREME: Belligerent
+FOCUS_DEFENSE_EXTREME_DESC: <<
+	[color=#aaa][i]What is not ours shall be ours.[/i][/color]
+
+	Gives 0.75 Defense generation per billion population.
+>>
+
+FOCUS_LABOR: Industrial
+FOCUS_LABOR_DESC: <<
+	[color=#aaa][i]Machines paving the way to the future.[/i][/color]
+
+	Generates 0.25 Labor/minute per billion population.
+>>
+
+FOCUS_LABOR_EXTREME: Laborious
+FOCUS_LABOR_EXTREME_DESC: <<
+	[color=#aaa][i]Greatness has a cost we are willing to pay.[/i][/color]
+
+	Generates 0.75 Labor/minute per billion population.
+>>
+
+TT_AUTO_FOCUS: <<
+	[b]Automatically manage focus[/b]
+
+	When active, the most relevant of possible foci for this settlement will automatically be selected.
+>>
+
+CIVIL_ACTS: Civil Acts
+
+CIVIL_ACT_CALL_FOR_BIDS: Call for Bids
+CIVIL_ACT_CALL_FOR_BIDS_DESC: <<|
+	[color=#aaa][i]Subcontract some construction works to the civilian sector when further investment in
+	extra infrastructure is not desirable.[/i][/color]
+
+	Generates 25 Stored Labor every 3 minutes.
+>>
+
+CIVIL_ACT_CIVIL_WORKS: Civil Works Program
+CIVIL_ACT_CIVIL_WORKS_DESC: <<|
+	[color=#aaa][i]Focus civilian industry on large scale construction projects.[/i][/color]
+
+	Increases civilian and imperial building construction speed by 50%.
+
+	Reduces pressure capacity by 5.
+>>
+
+CIVIL_ACT_CRIME_CONTROL: Crime Control
+CIVIL_ACT_CRIME_CONTROL_DESC: <<|
+	[color=#aaa][i]Focus law enforcement forces on chasing and stopping criminal elements, resulting in a safer
+	and happier population.[/i][/color]
+
+	Reduces the probability of loyalty loss from Civil Unrest by 10%.
+>>
+
+CIVIL_ACT_POP_GROWTH: Population Growth
+CIVIL_ACT_POP_GROWTH_DESC: <<|
+	[color=#aaa][i]Provide funding for increased parental allowance and improved childcare infrastructure to encourage
+	birthrate, as well as measures to attract immigration.[/i][/color]
+
+	Increases population growth by 15%.
+>>
+
+CIVIL_ACT_WORK_ETHIC: Work Ethic
+CIVIL_ACT_WORK_ETHIC_DESC: <<|
+	[color=#aaa][i]Provide result-based monetary incentives for workers and ultra-restrictive quality controls to
+	strive for high quality production.[/i][/color]
+
+	Increases the civilian production of Labor, Research and Defense by 10%.
+>>
+
+CIVIL_ACT_MARTIAL_LAW: Martial Law
+CIVIL_ACT_MARTIAL_LAW_DESC: <<|
+	[color=#aaa][i]The ultimate tool to suppress civil unrest. Restrict civil rights and apply military law in place
+	of civil law, removing any legal barrier impeding control over the populace.[/i][/color]
+
+	Reduces the probability of loyalty loss from Civil Unrest by 30%.
+>>
+
+CIVIL_ACT_REDUCED_WORKING_TIME: Reduced Working Time
+CIVIL_ACT_REDUCED_WORKING_TIME_DESC: <<|
+	[color=#aaa][i]It is well known that a longer working time does not equal proportionally more results. It is also
+	well known that a shorter working time does equal happier and more focused workers.[/i][/color]
+
+	Reduces pressure capacity by 1 per up to 4 billion population.
+>>
+
+CIVIL_ACT_STATE_EMERGENCY: State of Emergency
+CIVIL_ACT_STATE_EMERGENCY_DESC: <<|
+	[color=#aaa][i]Activate contingency plans, suspend a number of civil rights and empowers law enforcement with
+	additional freedom to maintain civil order.[/i][/color]
+
+	Reduces the probability of loyalty loss from Civil Unrest by 20%.
+>>
+
+CIVIL_ACT_WAR_ECONOMY: War Economy
+CIVIL_ACT_WAR_ECONOMY_DESC: <<|
+	[color=#aaa][i]Shift the economy and its outputs towards war-related production.[/i][/color]
+
+	Increases the construction speed of support ships by 50%.
+
+	Converts 25% Influence and Energy generation and production to Defense generation.
+>>
+
+CIVIL_ACT_KNOWLEDGE_PURSUIT: Pursuit of Knowledge
+CIVIL_ACT_KNOWLEDGE_PURSUIT_DESC: <<|
+	[color=#aaa][i]Promote scientific activities in all layers of society, resulting in a higher interest in research
+	occupations.[/i][/color]
+
+	Gives 0.1 Research generation per billion population.
+
+	Converts 20% Influence generation and production to Research generation.
+
+	Converts 10% Energy generation and production to Research generation.
+
+	Reduces Labor generation by 10%.
+>>
+
+CIVIL_ACT_MILITIARY_INDUSTRIAL_COMPLEX: Military Industrial Complex
+CIVIL_ACT_MILITIARY_INDUSTRIAL_COMPLEX_DESC: <<|
+	[color=#aaa][i]Push defense spending to the next level with additional subcontracting to the local industry.[/i][/color]
+
+	Gives 0.2 Defense generation per billion population.
+
+	Converts 20% Influence generation and production to Defense generation.
+>>
+
+CIVIL_ACT_PERSONALITY_CULT: Cult of Personality
+CIVIL_ACT_PERSONALITY_CULT_DESC: <<|
+	[color=#aaa][i]Sustain generalized propaganda and brainwash the people into veneration of the settlement leader
+	to guarantee their loyalty and devotion, spare the inevitable pockets of resistance and defections.[/i][/color]
+
+	Reduces the probability of loyalty loss from Civil Unrest by 10%.
+>>
+
+CIVIL_ACT_POPULAR_SOVEREIGNTY: Popular Sovereignty
+CIVIL_ACT_POPULAR_SOVEREIGNTY_DESC: <<|
+	[color=#aaa][i]Establish a number of civil liberties, elections and the right to vote, giving the power to the
+	people (or the illusion of). Also introduces the right to protest and strike (not an illusion).[/i][/color]
+
+	Adds 0.5 Influence Stake per billion population.
+
+	Reduces Labor generation by 20%.
+>>
+
+CIVIL_ACT_RAMPANT_CORRUPTION: Rampant Corruption
+CIVIL_ACT_RAMPANT_CORRUPTION_DESC: <<|
+	[color=#aaa][i]Find and appoint unscrupulous followers at key positions and buy the loyalty and support of
+	greedy political figures. Once the network is in place, it is only a matter of time before the local governing
+	instances become mere puppets to us.[/i][/color]
+
+	Adds 1 Influence Stake per billion population.
+>>
+
+TT_MORALE_EFFECT: Morale effect
+TT_DELAY: Takes effect after
+TT_COMMITMENT: Cannot be revoked for
+TT_CANCEL_CIVIL_ACTS: <<
+	[b]Revoke all Civil Acts on this settlement[/b]
+
+	Revoke all active civil acts on this settlement. Civil acts that cannot currently be revoked will remain active.
+>>
+TT_CANCEL_ALL_CIVIL_ACTS: <<
+	[b]Revoke all Civil Acts[/b]
+
+	Revoke all active civil acts on all settlements. Civil acts that cannot currently be revoked will remain active.
+>>

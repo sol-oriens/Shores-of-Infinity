@@ -260,8 +260,7 @@ class Site : Serializable, Savable {
 			msg.writeSmall(options[i].id);
 
 		if(state is null) {
-			uint id = uint(-1);
-			msg.writeSmall(id);
+			msg.writeSmall(0);
 		}
 		else
 			msg.writeSmall(state.id);
@@ -332,7 +331,7 @@ class Site : Serializable, Savable {
 };
 
 void parseLine(string& line, SiteType@ site, SiteResult@ result, ReadFile@ file) {
-	//Try to find the design
+	//Try to find the hook
 	if(line.findFirst("(") == -1) {
 		error("Invalid line for " + site.ident +": "+ escape(line));
 	}
@@ -386,8 +385,7 @@ void loadSite(const string& filename) {
 			@state = null;
 			@opt = null;
 			@result = null;
-			if (key == "Site")
-				@site = SiteType();
+			@site = SiteType();
 			site.ident = value;
 			if(site.ident.length == 0)
 				site.ident = filename + "__" + index;

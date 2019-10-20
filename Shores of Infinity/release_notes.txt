@@ -1,4 +1,250 @@
+v0.3.0b
+
+**************************
+*** Release Highlights ***
+**************************
+
+*** Improvements and rebalances have been made across the board to make the mod more balanced and overall more polished.
+
+*** Quality of life features have been added, such as the possibility to automate cargo haulage from one point to another, including the automatic use of FTL.
+
+*** Added new planet and star types.
+
+*** This version introduces an entirely new feature focused on the management of populated settlements. Settlements can be of different types depending of a number of criteria and can choose a particular focus to contribute to the empire. Civil acts can also independently be enacted on each settlement for various effects, but beware of the population morale!
+
+************************
+*** Detailed Changes ***
+************************
+
+[*] Abilities
+
+- Repair is now available on all shipyards in addition to stations or ships with a construction bay. It can now target support ships in addition to flagships, stations and orbitals, and will auto cast on valid targets within its range.
+
+[*] Artifacts
+
+- Added Nascence Device. Instantly adds a random Food resource to target owned planet. Activation cost of 750 Energy.
+
+[*] Artificial Intelligence
+
+- AIs now build commerce stations to establish trade routes between their territories.
+- AIs now build a factory in territories where no labor is available to establish a trade route.
+- AIs now build research complexes if their research generation rate is too low.
+
+[*] Buildings
+
+- Added Resort. Gives 1 Money generation. Adds 1 Influence pressure. Replaces up to 3 regular cities. Reduces total pressure capacity by 3. Base and maintenance costs of 120k and 30k, respectively.
+- Added Penitentiary. Generates 1 Labor/minute. Moderately increases morale. Replaces up to 1 regular city. Base and maintenance costs of 100k and 10k, respectively.
+- Added Resort. Gives 1 Money generation. Replaces up to 3 regular cities.
+- Barracks now adds 1 planet Loyalty. Defense Reserve Bonus and maintenance cost have been reverted to vanilla values (+15 (down from +20) and 20k (up from 0), respectively).
+- Mining complexes now additionally cost 15 Research to build.
+- Command centers now add 1 Defense generation and 1 Defense pressure instead of 2 Defense generation.
+- Forges have been completely overhauled and costs adjusted. They also now consume Ore when using Labor. The next forge tier is unlocked only once the previous tier is built, and all tiers are always available to build. Each tier now has a higher Labor bonus.
+	Forge tiers now have the following stats:
+	- Tier I: Increases Labor generation by 20%. Base and maintenance costs of 250k and 50k, respectively. Also costs 50 Labor to build. Consumes 12 Ore / minute when the planet is using labor to build.
+	- Tier II: Increases Labor generation by 40%. Base and maintenance costs of 500k and 100k, respectively. Also costs 100 Labor to build. Consumes 24 Ore / minute when the planet is using labor to build.
+	- Tier III: Increases Labor generation by 60%. Base and maintenance costs of 1M and 150k, respectively. Also costs 200 Labor to build. Consumes 36 Ore / minute when the planet is using labor to build.
+	- Tier IV: Increases Labor generation by 80%. Base and maintenance costs of 2M and 200k, respectively. Also costs 400 Labor to build. Consumes 48 Ore / minute when the planet is using labor to build.
+	- Tier V: Increases Labor generation by 100%. Base and maintenance costs of 4M and 250k, respectively. Also costs 800 Labor to build. Consumes 60 Ore / minute when the planet is using labor to build.
+- Space elevators now cost 1M (up from 750k), no longer costs labor and instead has a build time of 8m.
+- Arcologies have been rebalanced. Each one now adds 3 population (down from 5), replaces 3 cities (down from 5) and increases pressure cap by 3. They now have a build time of 7m and a build cost of 2M (down from 2.5M) as well as an Ore cost of 1.5k (down from 2k), and no longer cost labor.
+- Spires now have a build time of 9m (up from 3m).
+- Fixed a bug where the research cost was not updated when a healthcare complex is removed.
+- Fixed a vanilla bug where foundries were not showing the correct labor value in their tooltip.
+
+[*] Gameplay
+
+- Defense Reserve can now only be deployed on planets where an Outpost is present in the same or an adjacent system.
+- Repair rates of all ships, stations, supports and satellites are now 4 times slower.
+- Changed Set Drop-off Point ability to trigger only when cargo storage is full. Any ship with cargo storage now has this ability. As a direct effect of this change, ships with mining lasers and lightsails will now track their target and keep mining even when they overshoot it (you're welcome).
+- Added Set Pickup Point ability. Toggle where this ship's pickup point for cargo is set. When the cargo storage has free space, automatically pick up as much cargo from the indicated object as possible. Any ship with cargo storage has this ability. Combined with Set Drop-off Point, this allows to set up automated supply routes.
+- Ability orders that require movement will now automatically make use of hyperdrives, jumpdrives or fling beacons if available and if the cost wouldn't set the current FTL Energy below the defined Percentage of Reserve. If the ship can use several FTL methods, the cheapest will be chosen.
+- Fixed a vanilla bug where elapsed time was not tracked correctly for planet statuses.
+- Fixed a bug which would cause a system in which a protoplanet or planet generator was used to become corrupted upon loading a saved game.
+
+[*] Government Traits
+
+- Vanilla governments boni have been removed in favor of the government-related boni provided by settlements.
+
+[*] Lifestyles
+
+- Star Children now have Superstructure Hull unlocked at game start (WotH DLC only).
+- Star Children are now smart enough to use crop regulation before their homeworld gets destroyed and start with one Harvest influence card.
+
+[*] Orbitals
+
+- Doubled the labor cost of all orbitals.
+- Outposts and starbases now add +5 and +10 Defense Reserve, respectively.
+- Starports now also increase civilian Money production by 10%, meaning they now increase all civilian pressure production by 10%.
+- Decreased the import rate bonus of Ore and Base Material from starports to 10% (down from 25%).
+- Singularity labs maintenance cost is now 90k (up from 25k).
+- Staging hubs can now build orbitals and stations and store 10k cargo (up from 5k).
+- Added Construction Yard Staging Hub module. Generates 1 Labor per minute. Can build ships and drydocks and provide repairs. Build and maintenance costs of 250k and 130k, respectively.
+- Shipyards now have the Repair ability.
+- Tactical satellites now have a different model and are much smaller.
+
+[*] Planets
+
+- Added an icon for the Moon Base project.
+- Moon bases now cost 400k (down from 500k) and no longer provide a maximum population bonus. Mechanoid lifestyles no longer get a 100k bonus from them either.
+- Added Supermoon, replacing the vanilla Artificial Moon from the WotH DLC. Produces enough water and food to satisfy all planet level requirements. Generates 5 labor/minute. Build cost of 7.5M and 1000 labor. Also costs 3k Ore to build.
+- Artificial Moon no longer requires the WotH DLC and now adds a 6x6 surface area. Produces enough water and food to satisfy planet level 1 requirements. Generates 3 labor/minute. Now costs 4M, 500 labor and 2k Ore.
+- Artificial Planetoid now costs 10M and 1500 labor.
+- Infrastructural Development no longer costs ore and labor and now costs 200k with a build time of 45s instead.
+- Settlers now take 60s being loaded into colonization pods (up from 30s).
+- The Megafauna condition (available with the WotH DLC) can now only spawn on planets with a native Meat resource.
+- Disabled the Frozen Wasteland condition (available with the WotH DLC).
+- Added a new planetary condition: Total Permafrost. The resource of this planet gives half its pressure. Can generate a water resource for this planet.
+- Added icy planets. These planets can spawn at outer rims of systems, always have an ice biome and the Total Permafrost planetary condition. They can have one of the following resources: Pekelm, Deuterium.
+- Added 'hot jupiters', class IV and V gas giants orbiting very close to their star. They can have one of the following resources: Alkali Metals, Iron (level 1), Glass (level 2), Silicon (level 2, only with the WotH DLC).
+- Slightly decreased the frequency of gas and ice giants.
+- Gas and ice giants may now have less moons than before, or even none at all. Artificial moons and floating continents will solve your space issues.
+- Fixed a bug where clients in multiplayer would never have Infrastructural Development nor Subsurface Habitation Complex available to build.
+
+[*] Research
+
+- Artificial Moons secret project was renamed to Supermoons. Now requires building 5 artificial moons. Unlocks the Supermoon construction. Still requires the WotH DLC.
+- Artificial Moons is now a regular research node. Does not require the WotH DLC.
+- Fixed an overlook where Verdant lifestyle could research Metropolitan Optimization and Arcologies nodes. These nodes are now replaced with Modular Habitats nodes.
+- Verdant lifestyle now has an additional Modular Habitats node where the Megacities node normally is.
+
+[*] Resources
+
+- Star Children will now witness the destruction of their homeworld, which will leave asteroids behind, with a guaranteed Supercarbons asteroid among them.
+- Slightly decreased the frequency of FTL Crystals asteroids.
+- Slightly increased the frequency of comets.
+- Decreased the frequency of Water on planets.
+
+[*] Settlements
+
+*** Added the first iteration of the new user interface for settlements. It is available on any planet, ship or station with at least 1 population (settlers do not count), by clicking on the 'Settlement' tab at the top of the construction overlay, which is now also accessible by clicking on the 'Construction' tab.
+*** Each settlement has four main characteristics: a morale level, a type, a state and a focus.
+*** Morale has four visible levels, from best to worst: High, Medium, Low and Critical. At Low level, if morale continues to decrease, the settlement will enter a state of Civil Unrest and have a chance of losing loyalty over time. If morale decreases to Critical level, the chance of loyalty loss will be much higher. If loyalty reaches 0, the settlement will be abandoned.
+*** Morale currently has no effect on ship and station settlements.
+*** Ancient and Mechanoid lifestyles ignore all morale modifiers and their morale is always medium. They lose access to most civil acts however.
+*** State currently has only two possible values: Compliance (default) and Civil Unrest.
+*** Focus grants a free bonus to the settlement and can be freely chosen between a variety of available ones. Beyond default ones, foci currently are unlocked depending of the chosen government trait. Some foci can have an effect on morale.
+*** A number of civil acts can be enacted on each settlement for certain effects. Multiple civil acts can be active at once, but they often have a maintenance cost scaling with the population inhabiting the settlement and sometimes also have a negative effect on morale. Some civil acts take effect immediately and can be revoked at will. Others require a delay before taking effect, although maintenance costs and morale effects always are immediate. Finally, some civil acts cannot be revoked before a certain period has passed after they started taking effect, so choose wisely.
+*** Civil acts belong to one of three categories: Campaigns, Decrees and Doctrines. Campaigns typically require a moderate delay before taking effect, while Decrees require little to no delay. Doctrines on the other hand have long delay and cannot be revoked for a long time, but usually have a stronger impact on the settlement.
+- Added Colony settlement type. Default type with no particular effect.
+- Added Core World settlement type. Default type with no particular effect for planets with a population of at least 5.
+- Added Homeworld settlement type. Adds 1 bonus Loyalty per billion population. Support ships assigned to this planet fight at 300% increased effectiveness. Requirements: Homeworld, 5+ population.
+	Also gives an additional bonus depending of the chosen government:
+	- Capitalism: Generates 125k as Special Funds every 3 minutes.
+	- Communism: Generates 12 Stored Labor every 3 minutes.
+	- Empire: Generates 5 Defense Reserve every 3 minutes.
+	- Theocracy: Generates 2 Influence every 3 minutes.
+- Added Arkmothership settlement type. This ship and its support ships fight at 300% increased effectiveness. Requirements: Starting Mothership. Also gives the same additional boni as the Homeworld type.
+- Added Mothership settlement type. This ship and its support ships fight at 100% increased effectiveness. Requirements: Mothership.
+- Added Farm World settlement type. Yields one Harvest influence card every 30 minutes. Requirements: Native Grain x 3.
+- Added Forge World settlement type. Replaces a Level 2 resource. Constructions have a 20% cheaper build cost. Requirements: Forge V x 3.
+- Added a specific version of Forge World for Ancient lifestyle. Increases Labor generation by 150%. Constructions have a 20% cheaper build cost. Requirements: Foundry x 12.
+- Added Mining World settlement type. Replaces a Level 1 resource. Requirements: Mining Complex x 3.
+- Added Resort World settlement type. Increases civilian Money and Influence production by 100%. Reduces Labor generation by 100%. Reduces civilian Energy, Research and Defense production by 100%. Requirements: Resort x 3, Tropical Paradise.
+- Added Penal Colony settlement type. Adds 50 Labor Storage. Slightly increases morale across the empire. Reduces income penalty of Level 0 planets by 30k. Reduces civilian Money, Influence, Energy, Research and Defense production by 100%. Requirements: Penitentiary x 2.
+- Added Colonial focus. Default focus with no particular effect.
+- Added Hedonistic focus. Morale effect: positive. Requirements: 5+ population.
+- Added Military focus. Adds 512 support capacity. Requirements: 5+ population.
+- Added Capital focus. Requirements: Homeworld or Arkmothership, 5+ population.
+	Gives a bonus depending of the chose government:
+	- Capitalism: Gives 0.5 Money generation per billion population.
+	- Communism: Generates 0.5 Labor per minute per billion population.
+	- Empire: Gives 0.5 Defense generation per billion population.
+	- Theocracy: Adds 0.5 Influence Stake per billion population.
+- Added Financial focus. Gives 0.25 Money generation per billion population. Requirements: Capitalism, 5+ population.
+- Added Acquisitive focus. Gives 0.75 Money generation per billion population. Morale effect: very negative. Requirements: Capitalism, 5+ population.
+- Added Spiritual focus. Adds 0.25 Influence Stake per billion population. Requirements: Theocracy, 5+ population.
+- Added Fanatical focus. Adds 0.75 Influence Stake per billion population. Morale effect: very negative. Requirements: Theocracy, 5+ population.
+- Added Territorial focus. Gives 0.25 Defense generation per billion population. Requirements: Empire, 5+ population.
+- Added Belligerent focus. Gives 0.75 Defense generation per billion population. Morale effect: very negative. Requirements: Empire, 5+ population.
+- Added Industrial focus. Generates 0.25 Labor/minute per billion population. Requirements: Communism, 5+ population.
+- Added Laborious focus. Generates 0.75 Labor/minute per billion population. Morale effect: very negative. Requirements: Communism, 5+ population.
+- Added Call for Bids campaign. Generates 25 Stored Labor every 3 minutes. Takes effect after 20s. Maintenance cost of 250k.
+- Added Civil Works Program campaign. Increases civilian and imperial building construction speed by 50%. Reduces pressure capacity by 5. Takes effect after 20s. Cannot be revoked for 3m. Maintenance cost of 20k.
+- Added Crime Control campaign. Reduces the probability of loyalty loss from Civil Unrest by 10%. Morale effect: positive. Takes effect after 30s. Maintenance cost of 25k per population.
+- Added Population Growth campaign. Increases population growth by 15%. Takes effect after 3m. Maintenance cost of 10k per population.
+- Added Work Ethic campaign. Increases the civilian production of Labor, Research and Defense by 10%. Takes effect after 3m. Maintenance cost of 20k per population.
+- Added Martial Law decree. Reduces the probability of loyalty loss from Civil Unrest by 30%. Morale effect: negative. Maintenance cost of 25k per population.
+- Added Reduced Working Time decree. Reduces pressure capacity by 1 per up to 4 billion population. Morale effect: positive.
+- Added State of Emergency decree. Reduces the probability of loyalty loss from Civil Unrest by 20%. Takes effect after 15s. Maintenance cost of 45k per population.
+- Added War Economy decree. Increases the construction speed of support ships by 50%. Converts 25% Influence and Energy generation and production to Defense generation. Morale effect: negative.
+- Added Pursuit of Knowledge doctrine. Gives 0.1 Research generation per billion population. Converts 20% Influence generation and production to Research generation. Converts 10% Energy generation and production to Research generation. Reduces Labor generation by 10%. Takes effect after 3m. Cannot be revoked for 30m. Maintenance cost of 10k per population. Requirements: 2+ population.
+- Added Military Industrial Complex doctrine. Gives 0.2 Defense generation per billion population. Converts 20% Influence generation and production to Defense generation. Takes effect after 3m. Cannot be revoked for 30m. Maintenance cost of 15k per population. Requirements: 2+ population.
+- Added Cult of Personality doctrine. Reduces the probability of loyalty loss from Civil Unrest by 10%. Morale effect: positive. Takes effect after 3m. Cannot be revoked for 30m. Maintenance cost of 15k per population. Requirements: 2+ population.
+- Added Popular Sovereignty doctrine. Adds 0.5 Influence Stake per billion population. Reduces Labor generation by 20%. Takes effect after 3m. Cannot be revoked for 30m. Maintenance cost of 20k per population. Requirements: 2+ population.
+- Added Rampant Corruption doctrine. Adds 1 Influence Stake per billion population. Morale effect: negative. Takes effect after 3m. Cannot be revoked for 30m. Maintenance cost of 50k per population. Requirements: 2+ population.
+
+[*] Subsystems
+
+- Mothership Hull now have reduced build, maintenance and labor cost in exchange for an additional cost in Ore, similar to Superstructure Hull.
+- Decreased the base labor generation of Machine Shop.
+- Decreased the labor cost of Living Quarters.
+
+[*] Systems
+
+- Stars with temperatures at 1300K or below will now be rendered as brown dwarves.
+- Homeworlds have moved to the second planet in the system, while the level 1 resource is now on the first one.
+- The Pekelm ice giant in the home system has been replaced by a Pekelm ice planet.
+- Fixed orbit collisions in multi-star systems.
+- Fixed desynchronization of binary star orbits.
+- Fixed a bug where system spacing in the Precious Clouds map were larger than intended.
+
+[*] User Interface
+
+- Changed the government trait labels to reflect the changes made by this version. Each government now indicates its corresponding Capital Bonus and Focus.
+- Added a strategic icon for colony ships in order for them to remain easily visible when zoomed out at much greater distances than vanilla.
+- Added radius and temperature info to star popups.
+- Reverted the tile icon to pre-v0.2.0 in planet surface view.
+- Added Percentage of Reserve to the global resource bar. The Percentage of Reserve defines how much of your total FTL Energy is reserved to manual FTL orders. Ships with ongoing ability orders will tap into the remainder to initiate FTL on their own if possible and needed. Setting it to 100% effectively disables the use of FTL by anything other than manually initiating FTL.
+- Increased the width of tooltips in the research tab to accommodate long descriptions to smaller screens.
+- Tweaked the size, number and position of debris when a ship is destroyed to be more fitting to scale.
+
+v0.2.3b
+
+**************************
+*** Release Highlights ***
+**************************
+
+*** Fixes related to gameplay.
+
+************************
+*** Detailed Changes ***
+************************
+
+[*] Gameplay
+
+- Fixed an issue with map generation on Linux operating systems.
+
+v0.2.2b
+
+**************************
+*** Release Highlights ***
+**************************
+
+*** Fixes related to gameplay.
+
+************************
+*** Detailed Changes ***
+************************
+
+[*] Gameplay
+
+- Added a fail-safe in case system spacing has a value below the minimum allowed (150k units) during map generation.
+- Fixed an issue with dumbbell galaxy generation partially failing.
+- Fixed a vanilla bug where Ore asteroids in the mirrored part of a dumbbell galaxy generated with the 'Perfect Mirror' option had a resource asteroid strategic icon.
+
 v0.2.1b
+
+**************************
+*** Release Highlights ***
+**************************
+
+*** Minor additions, adjustments and fixes related to gameplay.
+
+*** Two new system types have been added.
+
+************************
+*** Detailed Changes ***
+************************
 
 [*] Foundation Traits
 
@@ -6,7 +252,12 @@ v0.2.1b
 
 [*] Gameplay
 
-- Overhauled Atroan preset.
+- Overhauled Atroans preset and fixed an issue where the trait points total was negative, leading to the preset being invalidated at game start.
+- Fixed a vanilla bug where elapsed time was not tracked correctly for empire-related attributes.
+
+[*] Lifestyles
+
+- Ancient lifestyle now costs 2 points (down from 3), as the mass reduction buildings are much less of an advantage with the hard limit of the speed of light.
 
 [*] Resources
 
@@ -16,6 +267,11 @@ v0.2.1b
 
 - Added quaternary systems.
 - Added neutron stars.
+
+[*] User Interface
+
+- Adapted trade line visibility to the scale of the game.
+- Increased territory border width.
 
 v0.2.0b
 
@@ -96,7 +352,7 @@ v0.2.0b
 
 - Added Dryport. Reduces income penalty of Level 0 planets by 30k. Increases income of Level 1 planets by 20k + 10k per additional Level. Build and maintenance costs of 200k and 20k, respectively. Cannot be built by Ancient and Extragalactic lifesyles.
 - Added Processing Center Dryport module. Adds 1 pressure capacity to the planet the Dryport is in orbit of. Build and maintenance costs of 100k and 5k, respectively.
-- Added Space Hook Dryport module, exclusive to Star Children. Increases the construction speed of support ships on this planet by 40%. Adds 1 money generation per Planet Level starting from Level 1 if a Starport is present in the system. Build cost of 750k. Also cost 1k Ore to build.
+- Added Space Hook Dryport module, exclusive to Star Children. Increases the construction speed of support ships on this planet by 40%. Adds 1 money generation per Planet Level starting from Level 1 if a Starport is present in the system. Build cost of 750k. Also costs 1k Ore to build.
 - Starports now also increase the production of Labor, Influence, Energy and Research on all owned planets in the system by 10% for Star Children lifestyles.
 - Fling beacon maintenance cost is now 150k (down from 200k).
 - Increased the range of the 'Telescope' abilities on telescope arrays and quantum telescope arrays to 800k units (up from 400k units) and 2M units (up from 1M units), respectively. The range of this ability increases with the system spacing scale setting. Decreased the energy cost by half.

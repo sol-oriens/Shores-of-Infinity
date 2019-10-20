@@ -1,7 +1,7 @@
 Building: DefenseFactory
 	Name: #B_DEFENSEFACTORY
 	Description: #B_DEFENSEFACTORY_DESC
-	
+
 	Sprite: lvl1d
 
 	Category: Military
@@ -16,5 +16,6 @@ Building: DefenseFactory
 
 	RequireNotTrait(Ancient)
 
-	AddResource(Defense, 2)
+	AddResource(Defense, 1)
+	AddPressure(Defense, 1)
 	AddFleetCommand(128)

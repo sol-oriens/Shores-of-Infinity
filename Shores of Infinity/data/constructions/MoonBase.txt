@@ -2,10 +2,12 @@ Construction: MoonBase
 	Name: #CONS_MOON_BASE
 	Description: #CONS_MOON_BASE_DESC
 
+	Icon: DwarfPlanet
+
 	Category: Infrastructure
 
 	Time Cost: 120
-	Build Cost: 500
+	Build Cost: 400
 
 	RequireMoreMoonsThanStatus(MoonBase)
 	RequireNotTrait(StarChildren)
@@ -14,6 +16,5 @@ Construction: MoonBase
 	OnCancel(RemoveStatusInstance(MoonBase))
 
 	AddSurfaceArea(Moon, (6, 6))
-	TriggerGeneric(AddMaxPopulation(2))
 
 	AI: RegisterForUse(MoonBase)

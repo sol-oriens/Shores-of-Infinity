@@ -1,9 +1,10 @@
 import hooks;
 import sites;
 import research;
-from sites import ISiteHook, SiteHook;
 import planet_effects;
 import bonus_effects;
+
+from sites import ISiteHook, SiteHook;
 
 class ProgressToState : SiteHook {
 	Document doc("Progresses the site to a specified state.");

@@ -1,0 +1,13 @@
+Settlement: Farm
+	Name: #SETTLEMENT_FARM
+	Description: #SETTLEMENT_FARM_DESC
+
+	Icon: ResourceClassIcons::3
+
+	Priority: 2
+
+	addon_requirement_effects::RequireNotHome()
+	RequirePlanet()
+	addon_requirement_effects::RequireNativeResource(Grain, Count = 3, Primary = False)
+
+	TriggerPeriodic(GainInfluenceCard(Harvest), Interval = 1800)

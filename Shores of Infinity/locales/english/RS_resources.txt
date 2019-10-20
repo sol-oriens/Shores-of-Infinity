@@ -1,4 +1,35 @@
+GTT_FTL: <<
+	[font=Medium]FTL Energy[/font]
+	[i]FTL Energy is paid to engage the faster-than-light drives on your ships.[/i]
+
+	Available FTL: [right]$1[/right]
+	Maximum Storage: [right]$2[/right]
+	Generation Rate: [right]$3[/right]
+	Percentage of Reserve: [right]$4[/right]
+
+	[i]The Percentage of Reserve defines how much of your total FTL Energy is reserved to manual FTL orders. Ships with ongoing ability orders will tap into the remainder to initiate FTL on their own if possible and needed. Setting it to 100% effectively disables the use of FTL by anything other than manually initiating FTL.[/i]
+>>
+GTT_DEFENSE: <<
+	[font=Medium]Global Defense[/font]
+	[i]Global defense automatically creates support ships on planets or systems you have indicated to use it. Right click a system's star to mark it for global defense use. Every point of defense counts as 2 labor for support ship spawning.[/i]
+
+	Global Defense Rate: [right]$1[/right]
+	Defense Reserve: [right]$3 / $2[/right]
+
+	[i]Defense reserve is filled up before ships are spawned automatically. If the defense reserve is full, it can be deployed at any planet, where an Outpost is present in the same or an adjacent system, to spawn defense ships. While full, global defense generation automatically spawns ships as usual.[/i]
+>>
+TT_CANNOT_DEPLOY: Planet with adjacent Outpost required
+
+MONEY_TYPE_11: Civil Acts
 ELECTRONICS: Semiconductors
+GRAIN_DESC: <<
+	Can upgrade the settlement to [bbloc=#SETTLEMENT_FARM/].
+
+	[i][bbloc=#SETTLEMENT_FARM_DESC/][/i]
+
+	Requirements:
+	[color=#ff0]Native [bbloc=#GRAIN/] x 3[/color]
+>>
 LOCAL_ICY_WATER_DESC: [color=#ff7070][b]Cannot be exported.[/b][/color]
 COMMON_GASES: Common Gases
 COMMON_GASES_DESC: <<
@@ -7,6 +38,9 @@ COMMON_GASES_DESC: <<
 AMMONIA: Ammonia
 AMMONIA_DESC: <<
 	Counts as a Food resource if the consuming planet has a Grain or Fruit native resource, once per planet.
+>>
+ALKALI_METALS: Alkali Metals
+ALKALI_METALS_DESC: <<
 >>
 PARADISE_NAME: Tropical Paradise
 RESOURCE_INTEL: Intelligence Hub

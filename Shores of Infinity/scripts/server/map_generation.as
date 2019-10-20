@@ -956,7 +956,12 @@ class MapGeneration {
 				if(resources[i].tilePressure[TR_Energy] > 0)
 					hasEnergy = true;
 				data.distributedResources[i].addResource(resources[i].id);
-
+				//Add secondary resources if any
+				for (uint j = 0, cnt = resources[i].secondaryResources.length; j < cnt; ++j) {
+					const ResourceType@ secondaryResource = getResource(resources[i].secondaryResources[j]);
+					if (secondaryResource !is null)
+						data.distributedResources[i].addResource(secondaryResource.id);
+				}
 				auto@ biome = getBiome(resources[i].nativeBiome);
 				if(biome !is null)
 					data.distributedResources[i].replaceFirstBiomeWith(biome.id);

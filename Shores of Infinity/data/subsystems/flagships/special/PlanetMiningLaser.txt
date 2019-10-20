@@ -6,7 +6,7 @@ Subsystem: PlanetMiningLaser
 	Elevation: 3
 
 	Tags: ScaledCost, Category:Manufacturing, HasInternals, ExteriorCore, Rotatable, StaticMaintenance
-	Tags: Ability:MinePlanet, Ability:DropoffPoint
+	Tags: Ability:MinePlanet
 
 	Size := HexSize * Hexes
 	Hex.Mass := HexSize

@@ -1,31 +1,29 @@
 System: EmptyQuaternarySystem
-	Inherit: OuterSystem
+	Inherit: EmptyOuterSystem
 	Frequency: 0.01
+
+	Range: rng = 4000:6500
 
 	//SoI - Scaling
 	MakeStar(Temperature = 2000:9000, Radius = 1250:2000, Suffix = A, Moves = True)
-	ExpandSystem(4000)
-		SetupOrbit(Radius = 2000:8500, Orbit Pct = 0.4)
+		SetupOrbit(Radius = rng, Orbit Pct = 0.4)
 
 	//SoI - Scaling
 	MakeStar(Temperature = 7000:29800, Radius = 1050:1650, Suffix = B, Moves = True)
-	ExpandSystem(4000)
-		SetupOrbit(Radius = 2000:8500, Orbit Pct = 0.9)
+		SetupOrbit(Radius = rng, Orbit Pct = 0.9)
 
 	//SoI - Scaling
 	MakeStar(Temperature = 7000:29800, Radius = 1050:1650, Suffix = C, Moves = True)
-	ExpandSystem(4000)
-		SetupOrbit(Radius = 10500:12000, Orbit Pct = 0.2)
+		SetupOrbit(Radius = 11000:12500, Orbit Pct = 0.2)
 
 	//SoI - Scaling
 	MakeStar(Temperature = 7000:29800, Radius = 1050:1650, Suffix = D, Moves = True)
-	ExpandSystem(4000)
-		SetupOrbit(Radius = 10500:12000, Orbit Pct = 0.5)
+		SetupOrbit(Radius = 16500:17500, Orbit Pct = 0.7)
 
-	ExpandSystem(3000:4000)
+	ExpandSystem(19500:20500)
 
 	RepeatChance(Chance = $ASTEROID_BELT_OCCURANCE, Repeat Modifier = 0.999999)
-		MakeAsteroidBelt()
+		MakeAsteroidBelt(Radius = Outer)
 
 	RepeatChance(Chance = $RESOURCE_ASTEROID_OCCURANCE, Repeat Modifier = 0.1)
 		MakeAsteroid(Resource = Distributed)

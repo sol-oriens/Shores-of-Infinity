@@ -24,6 +24,7 @@ Empire {
 	synced locked_int TotalSupportsBuilt = 0
 	synced locked_int TotalSupportsActive = 0
 	synced locked_int GlobalLoyalty = 0
+	synced locked_double GlobalMorale = 0
 	int Victory = 0
 	locked_int DiplomacyPoints = 0
 	int prevPoints = 0
@@ -164,4 +165,6 @@ visible:
 	attribute double TerraformCostFactor = 1
 	attribute double TerraformLaborFactor = 1
 	attribute double BuildingMaintFactor = 1
+	attribute double LaborRepairFactor = 1
+	attribute double IgnoreMoraleModifiers = 0
 }

@@ -8,14 +8,16 @@ Building: Arcology
 
 	Size: 3x4
 
-	Base Cost: 2500
-  Labor Cost: 75
+	Base Cost: 2000
+	Build Time: 420
 
 	RequireNotTrait(Ancient)
 	RequireUnlockTag(ArcologyUnlock)
+	ConstructibleIfAttribute(ForbidCityConstruction, 0)
 
-	ConsumeCargo(Ore, 2000)
+	ConsumeCargo(Ore, 1500)
 	ConsumeInfluence(20)
 
-  AddMaxPopulation(5)
-  ReplacesCities(5)
+	AddMaxPopulation(3)
+	AddPressureCap(3)
+	ReplacesCities(3)

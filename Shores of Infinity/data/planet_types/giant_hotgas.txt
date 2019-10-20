@@ -1,0 +1,7 @@
+PlanetType: GiantHotGas
+	Icon: PlanetType::7
+	DistantIcon: DistantPlanetType::7
+	Atmosphere: HotGasAtmosphere
+
+	BiomeWeights:
+		SuperheatedFluids: 100000

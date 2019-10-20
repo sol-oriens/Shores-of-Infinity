@@ -3,19 +3,19 @@ Module: DefenseSatellite
 	Blurb: #ORB_DEFENSE_SATELLITE_BLURB
 	Description: #ORB_DEFENSE_SATELLITE_DESC
 
-	Icon: GuiOrbitalIcons::14
-	Distant Icon: OrbitalIcons::14
-	Model: Outpost
-	Material: GenericPBR_Outpost
+	Icon: OrbitalIcons::0
+	Distant Icon: OrbitalIcons::0
+	Model: DefenseStation
+	Material: GenericPBR_Defense_Station
 
-	Size: 8
+	Size: 3
 
 	Health: 10000
 	Armor: 5000
 
 	Build Cost: 250
 	Maintenance: 25
-	Labor Cost: 20
+	Labor Cost: 40
 
 	ConsumeEnergy(500)
 

@@ -8,16 +8,17 @@ from civilians import getCivilianName;
 const double COLONYSHIP_BASE_ACCEL = 5.5 * config::SCALE_SPACING;
 
 //SoI - Scaling: ship size
-const double shipVolumePower = 5.0;
+const double shipVolumePower = 3.5;
 const double shipRadiusFactor = 0.25;
-const double stationRadiusFactor = 0.325;
+const double stationRadiusFactor = 0.5;
 const double orbitalRadiusFactor = 1.0;
+const double baseColonyShipSize = 32.0;
 
 ColonyShip@ createColonizer(Object& from, Object& to, double population, double accMod) {
 	ObjectDesc colDesc;
 	colDesc.type = OT_ColonyShip;
 	colDesc.name = locale::COLONY_SHIP;
-	colDesc.radius = shipRadiusFactor * pow(32.0, 1.0 / shipVolumePower);
+	colDesc.radius = shipRadiusFactor * pow(baseColonyShipSize, 1.0 / shipVolumePower);
 	colDesc.delayedCreation = true;
 	if(from.owner.ColonizerName.length != 0)
 		colDesc.name = from.owner.ColonizerName;
@@ -44,7 +45,7 @@ ColonyShip@ createColonizer(Empire@ owner, vec3d from, Object& to, double popula
 	ObjectDesc colDesc;
 	colDesc.type = OT_ColonyShip;
 	colDesc.name = locale::COLONY_SHIP;
-	colDesc.radius = shipRadiusFactor * pow(64.0, 1.0 / shipVolumePower);
+	colDesc.radius = shipRadiusFactor * pow(baseColonyShipSize, 1.0 / shipVolumePower);
 	colDesc.delayedCreation = true;
 	if(owner.ColonizerName.length != 0)
 		colDesc.name = owner.ColonizerName;

@@ -71,7 +71,7 @@ tidy class OrbitalScript {
 			v *= owner.OrbitalArmorMod;
 		return v;
 	}
-	
+
 	double get_shield(Orbital& orb) {
 		double v = Shield;
 		Empire@ owner = orb.owner;
@@ -79,7 +79,7 @@ tidy class OrbitalScript {
 			v *= owner.OrbitalShieldMod;
 		return v;
 	}
-	
+
 	double get_maxShield(Orbital& orb) {
 		double v = MaxShield;
 		Empire@ owner = orb.owner;
@@ -87,7 +87,7 @@ tidy class OrbitalScript {
 			v *= owner.OrbitalShieldMod;
 		return v;
 	}
-	
+
 	double get_shieldRegen(Orbital& orb) {
 		double v = ShieldRegen;
 		Empire@ owner = orb.owner;
@@ -101,6 +101,10 @@ tidy class OrbitalScript {
 		if(owner !is null)
 			return owner.OrbitalShieldMod;
 		else return 1;
+	}
+
+	bool get_isDamaged(Orbital& obj) {
+		return Health < MaxHealth || Armor < MaxArmor;
 	}
 
 	double get_dps() {
@@ -236,7 +240,7 @@ tidy class OrbitalScript {
 				prevFleet = rad;
 			}
 		}
-		
+
 		if(obj.hasLeaderAI)
 			obj.updateFleetStrength();
 	}
@@ -282,7 +286,7 @@ tidy class OrbitalScript {
 				@sections[i] = OrbitalSection();
 			msg >> sections[i];
 		}
-		
+
 		if(core is null && sections.length != 0) {
 			@core = sections[0];
 

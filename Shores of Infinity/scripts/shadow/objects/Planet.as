@@ -44,6 +44,7 @@ tidy class PlanetScript {
 			planet.orbitTick(time);
 		planet.resourceTick(time);
 		planet.surfaceTick(time);
+		planet.settlementTick(time);
 		planet.constructionTick(time);
 
 		if(planet.hasAbilities)
@@ -72,6 +73,7 @@ tidy class PlanetScript {
 		planet.readStatuses(msg);
 		planet.readCargo(msg);
 		planet.readSites(msg);
+		planet.readSettlement(msg);
 
 		if(msg.readBit()) {
 			if(!planet.hasAbilities)
@@ -134,6 +136,10 @@ tidy class PlanetScript {
 			planet.readStatusDelta(msg);
 		if(msg.readBit())
 			planet.readCargoDelta(msg);
+		if(msg.readBit())
+			planet.readSiteDelta(msg);
+		if(msg.readBit())
+			planet.readSettlementDelta(msg);
 		if(msg.readBit()) {
 			planet.Health = msg.read_float();
 			planet.MaxHealth = msg.read_float();
@@ -156,6 +162,7 @@ tidy class PlanetScript {
 		planet.readStatuses(msg);
 		planet.readCargo(msg);
 		planet.readSites(msg);
+		planet.readSettlement(msg);
 		if(msg.readBit()) {
 			if(!planet.hasAbilities)
 				planet.activateAbilities();

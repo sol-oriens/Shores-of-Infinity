@@ -14,7 +14,7 @@ Building: AncientCollector
 
 	In Queue: True
 
-	RequireEither( RequireStatus(GasGiant, Hide = True), RequireStatus(IceGiant, Hide = True) )
+	RequireEither( RequireStatus(GasGiant), RequireStatus(IceGiant) )
 	RequireStatus(AncientReplicator)
 	RequireStatusToProgress(AncientReplicator)
 	RequireNotStatus(Ringworld)

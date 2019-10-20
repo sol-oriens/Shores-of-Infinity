@@ -8,7 +8,7 @@ import planet_levels;
 import buildings;
 
 import ai.consider;
-from ai.buildings import Buildings, BuildingAI, BuildingUse;
+from ai.buildings import Buildings, BuildingAI, RegisterForLaborUse, AsCreatedResource, BuildingUse;
 from ai.resources import AIResources, ResourceAI;
 
 interface RaceDevelopment {
@@ -111,6 +111,7 @@ class Development : AIComponent, Buildings, ConsiderFilter, AIResources {
 	array<ExportData@> aiResources;
 
 	double aimFTLStorage = 0.0;
+	double aimResearchRate = 0.0;
 
 	bool managePlanetPressure = true;
 	bool manageAsteroidPressure = true;
@@ -248,6 +249,13 @@ class Development : AIComponent, Buildings, ConsiderFilter, AIResources {
 		return true;
 	}
 
+	bool requestsResearchGeneration() {
+		double rate = ai.empire.ResearchRate;
+		if (aimResearchRate <= rate)
+			return false;
+		return true;
+	}
+
 	bool isBuilding(const BuildingType& type) {
 		for(uint i = 0, cnt = genericBuilds.length; i < cnt; ++i) {
 			if(genericBuilds[i].type is type)
@@ -355,7 +363,7 @@ class Development : AIComponent, Buildings, ConsiderFilter, AIResources {
 			return;
 
 		double totalChance =
-			  ai.behavior.focusDevelopWeight
+				ai.behavior.focusDevelopWeight
 			+ ai.behavior.focusColonizeNewWeight * sqr(1.0 / double(focuses.length))
 			+ ai.behavior.focusColonizeHighTierWeight;
 		double roll = randomd(0.0, totalChance);
@@ -698,8 +706,8 @@ class Development : AIComponent, Buildings, ConsiderFilter, AIResources {
 									ai.print("AI hook generically requested building of type "+type.name, buildOn);
 
 								double priority = 1.0;
-								// Megafarms and hydrogenerators should be built as soon as possible
-								if (type.ident == "Farm" || type.ident == "Hydrogenator")
+								//Resource buildings should be built as soon as possible
+								if (cast<AsCreatedResource>(hook) !is null)
 									priority = 2.0;
 
 								auto@ req = planets.requestBuilding(plAI, type, priority, expire=ai.behavior.genericBuildExpire);
@@ -764,6 +772,34 @@ class Development : AIComponent, Buildings, ConsiderFilter, AIResources {
 				return false;
 		}
 		return true;
+	}
+
+	Planet@ getLaborAt(Territory@ territory, double&out expires) {
+		if (territory is null) {
+			if (log)
+				ai.print("invalid territory to get labor at");
+			return null;
+		}
+		expires = 600.0;
+		const BuildingType@ type = ai.defs.Factory;
+		BuildingRequest@ request = null;
+		Planet@ pl = null;
+		for (uint i = 0, cnt = type.ai.length; i < cnt; ++i) {
+			auto@ hook = cast<RegisterForLaborUse>(type.ai[i]);
+			if (hook !is null) {
+				Object@ obj = hook.considerBuild(this, type, territory);
+				if (obj !is null) {
+					@pl = cast<Planet>(obj);
+					if (pl !is null) {
+						planets.requestBuilding(planets.getAI(pl), type, 2.0, expires);
+						if (log)
+							ai.print("requesting building " + type.name + " at " + pl.name + " to get labor at " + addrstr(territory));
+						break;
+					}
+				}
+			}
+		}
+		return pl;
 	}
 };
 

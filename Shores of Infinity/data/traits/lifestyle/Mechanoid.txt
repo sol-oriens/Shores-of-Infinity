@@ -15,17 +15,18 @@ Trait: Mechanoid
 	TriggerHomeworld(GivePopulation(3))
 	TriggerHomeworld(DestroyBuildingAt((4, 3), Undevelop = True))
 	TriggerHomeworld(TerraformTo(Unobtanium))
-	TriggerHomeworld(DestroySystemPlanet(1, Quiet = True))
 	TriggerHomeworld(DestroySystemPlanet(2, Quiet = True))
-	TriggerHomeworld(MorphSystemPlanetResource(3, Iron))
+	TriggerHomeworld(DestroySystemPlanet(3, Quiet = True))
+	TriggerHomeworld(MorphSystemPlanetResource(0, Iron))
 	TriggerHomeworld(AddStatus(MonoHomeworld))
-
 
 	ModAttribute(PopulationGrowthFactor, Multiply, 0)
 	ModAttribute(PopulationDecayFactor, Multiply, 0)
 	ModAttribute(OverpopulationBenefitFactor, Multiply, 0)
 	ModAttribute(ForbidColonization, Add, 1)
 	ModAttribute(ImmuneToRadiation, Add, 1)
+	ModAttribute(IgnoreMoraleModifiers, Add, 1)
+
 	ReplaceTechnologyNodes(ConstructionBay, FactoryLabor)
 	ReplaceTechnologyNodes(OreProcessor, FactoryLabor)
 	ReplaceTechnologyNodes(HydroponicsSatellite, MechanoidHydroponics)

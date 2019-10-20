@@ -1,0 +1,29 @@
+Building: Resort
+	Name: #BLD_RESORT
+	Description: #BLD_RESORT_DESC
+
+	Sprite: BldResort
+
+	Category: Infrastructure
+	Build Affinity: Forest
+	Maintenance Affinity: Forest
+
+	Size: 4x4
+
+	Base Cost: 120
+	Tile Cost: 50
+	Base Maintenance: 30
+	Tile Maintenance: 40
+
+	Build Time: 310
+
+	RequireNotTrait(Ancient)
+	RequireNotTrait(Mechanoid)
+
+	AddResource(Money, 1)
+	AddPressure(Influence, 1)
+	ReplacesCities(3)
+
+	AddPressureCap(-3)
+
+	AddStatus(Resort)

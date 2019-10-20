@@ -23,6 +23,7 @@ from anomalies import IAnomalyHook;
 from sites import ISiteHook;
 from abilities import Ability, IAbilityHook;
 from research import ITechnologyHook;
+from settlements import ISettlementHook;
 import constructions;
 from constructions import IConstructionHook;
 import orbitals;
@@ -35,7 +36,7 @@ import research;
 from construction.Constructible import Constructible;
 #section all
 
-tidy class GenericEffect : Hook, IResourceHook, IBuildingHook, ISiteHook, IStatusHook, IOrbitalEffect, SubsystemHook, RegionChangeable, LeaderChangeable {
+tidy class GenericEffect : Hook, IResourceHook, IBuildingHook, ISiteHook, ISettlementHook, IStatusHook, IOrbitalEffect, SubsystemHook, RegionChangeable, LeaderChangeable {
 	uint hookIndex = 0;
 
 	//Generic reusable hooks
@@ -114,6 +115,9 @@ tidy class GenericEffect : Hook, IResourceHook, IBuildingHook, ISiteHook, IStatu
 	void init(SiteType@ type) {}
 	void choose(Site@ site, Empire@ emp) const override { enable(site.obj, null); } //SoI - TODO: this is ugly and leads to errors with hooks that require data
 	bool giveOption(Site@ site, Empire@ emp) const override { return true; }
+	
+	//For use as a settlement hook
+	bool canEnable(Object& obj) const { return true; }
 
 	//Lets this be used as a status hook
 	// Planet effects do not deal with status stacks, so they will only

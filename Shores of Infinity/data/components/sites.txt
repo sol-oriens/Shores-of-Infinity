@@ -6,13 +6,19 @@ restricted local:
 	Site@[] selectSite(uint index);
 	Site@[] refreshCurrentSite();
 	uint get_siteCount() const;
+
 remote:
 	void chooseSiteOption(uint siteId, uint optionId);
 	void destroySite(uint siteId);
 	void addProgressToSite(Empire@ emp, uint siteId, float amount);
+
 server:
 	uint spawnSite(uint typeId);
+	void destroySites();
 	void writeSites(Message& msg) const;
+	bool writeSiteDelta(Message& msg) const;
+
 shadow:
 	void readSites(Message& msg);
+	void readSiteDelta(Message& msg);
 }

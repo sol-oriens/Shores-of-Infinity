@@ -16,7 +16,7 @@ Module: SolarOrbital
 
 	Build Cost: 400
 	Maintenance: 25
-	Labor Cost: 15
+	Labor Cost: 30
 
 	FacesOrbitCenter()
 

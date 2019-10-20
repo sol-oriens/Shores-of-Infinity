@@ -1,0 +1,14 @@
+Status: NegPressure
+	Name: #COND_NEG_PRESSURE
+	Description: #COND_NEG_PRESSURE_DESC
+
+	Icon: ConditionIcons::6
+	Color: #ff0000
+
+	//Disabled
+	//Condition Frequency: 0.5
+
+	ConditionBiome(Ice)
+	ConditionDLC(Heralds)
+
+	AddToNativeResource( AddPressureCap(-2) )

@@ -13,3 +13,7 @@ Material: MetallicGases
 Material: RareGases
 	Inherit: Image2D
 	Texture: data/images/raregases.png
+
+Material: AlkaliMetals
+	Inherit: Image2D
+	Texture: data/images/alkalimetals.png

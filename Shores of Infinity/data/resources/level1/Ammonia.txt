@@ -13,7 +13,7 @@ Resource: Ammonia
 	Affinity: Energy + Defense
 	Can Be Terraformed: False
 
-	Planet Classification: Gas
+	Planet Classification: Gas I
 
 	Secondary Resource: CommonGases
 

@@ -1,4 +1,6 @@
-﻿ABL_ANCIENT_BUILD_ORE_TRANSMUTER: Attempt to Build Ore Transmuter
+NTRG_CANNOT_REPAIR: Cannot repair.
+
+ABL_ANCIENT_BUILD_ORE_TRANSMUTER: Attempt to Build Ore Transmuter
 ABL_ANCIENT_BUILD_ORE_TRANSMUTER_DESC: Move to the target planet and attempt to build an Ore Transmuter on it. Building will fail if insufficient funds are available.
 ABL_SCUTTLEDERELICT: Scuttle Derelict Ship
 ABL_SCUTTLEDERELICT_DESC: <<
@@ -128,3 +130,15 @@ ABL_MINE_PLANET_DESC: <<
 >>
 ABL_MECHANOID_COLONIZE: Transfer $1B Population
 ABL_MECHANOID_COLONIZE_DESC: Transfer $1B Population from this planet to another. Transfering population costs FTL energy, but can be done freely to colonize new planets or supply existing colonies with more population.
+
+ABL_GENERATE_WATERICE_DESC: <<
+	Adds a water resource to this planet.
+>>
+
+ABL_PICKUP_POINT: Set Pickup Point
+ABL_PICKUP_POINT_DESC: <<
+	Toggle where this ship's pickup point for cargo is set. When the cargo storage has free space, automatically pick up as much cargo from the indicated object as possible.
+>>
+ABL_DROPOFF_POINT_DESC: <<
+	Toggle where this ship's drop-off point for cargo is set. When the cargo storage is full, automatically drop off all cargo at the indicated object.
+>>

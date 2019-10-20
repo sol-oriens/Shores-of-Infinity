@@ -1,5 +1,5 @@
 System: EmptyAncientSystem
-	Inherit: BaseSystem
+	Inherit: EmptyBaseSystem
 	Frequency: 0.065
 
 	//SoI - Scaling

@@ -12,7 +12,6 @@ Subsystem: ConstructionBay
 	Size := HexSize * Hexes
 
 	LaborIncome := Size / 4
-	TargetRepair := LaborIncome * 8
 
 	HasConstructionBay := 1
 

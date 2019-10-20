@@ -2,6 +2,8 @@ import sites;
 
 tidy class Sites : Component_Sites, SiteContainer, Savable {
 	Mutex mtx;
+	bool delta = false;
+	
 	array<Site@> sites;
 	Site@ currentSite;
 	uint nextSiteId = 0;
@@ -61,7 +63,7 @@ tidy class Sites : Component_Sites, SiteContainer, Savable {
 			yield(currentSite);
 	}
 
-	uint get_siteCount() const{
+	uint get_siteCount() const {
 		return sites.length;
 	}
 
@@ -92,6 +94,13 @@ tidy class Sites : Component_Sites, SiteContainer, Savable {
 			sites.remove(site);
 	}
 
+	void destroySites(Object& owner) {
+		Lock lck(mtx);
+		for (uint i = 0, cnt = sites.length; i < cnt; ++i) {
+			sites.remove(sites[i]);
+		}
+	}
+
 	void addProgressToSite(Object& owner, Empire@ emp, uint siteId, float amount) {
 		auto@ site = getSiteById(siteId);
 		float p = 1.f;
@@ -114,5 +123,14 @@ tidy class Sites : Component_Sites, SiteContainer, Savable {
 		msg.writeSmall(sites.length);
 		for(uint i = 0, cnt = sites.length; i < cnt; ++i)
 			msg << sites[i];
+	}
+
+	bool writeSiteDelta(Message& msg) {
+		if(!delta)
+			return false;
+		msg.write1();
+		writeSites(msg);
+		delta = false;
+		return true;
 	}
 };

@@ -18,16 +18,19 @@ import saving;
 import systems;
 import regions.regions;
 
+import ai.construction;
+
 from constructible import ConstructibleType;
 from constructions import ConstructionType, getConstructionType;
 
-class AllocateConstruction {
-	int id = -1;
+class AllocateConstruction : IConstruction {
+	protected bool _completed = false;
+	protected bool _started = false;
+	
+	protected int _id = -1;
 	uint moneyType = BT_Development;
 	Factory@ tryFactory;
 	double maxTime = INFINITY;
-	bool completed = false;
-	bool started = false;
 	double completedAt = 0;
 	AllocateBudget@ alloc;
 	int cost = 0;
@@ -36,13 +39,25 @@ class AllocateConstruction {
 
 	AllocateConstruction() {
 	}
+	
+	int id {
+		get const { return _id; }
+		set { _id = value; }
+	}
+	
+	bool get_started() const { return _started; }
+	
+	bool completed {
+		get const { return _completed; }
+		set { _completed = value; }
+	}
 
 	void _save(Construction& construction, SaveFile& file) {
 		file << moneyType;
 		construction.saveFactory(file, tryFactory);
 		file << maxTime;
-		file << completed;
-		file << started;
+		file << _completed;
+		file << _started;
 		file << completedAt;
 		construction.budget.saveAlloc(file, alloc);
 		file << cost;
@@ -58,8 +73,8 @@ class AllocateConstruction {
 		file >> moneyType;
 		@tryFactory = construction.loadFactory(file);
 		file >> maxTime;
-		file >> completed;
-		file >> started;
+		file >> _completed;
+		file >> _started;
 		file >> completedAt;
 		@alloc = construction.budget.loadAlloc(file);
 		file >> cost;
@@ -92,7 +107,7 @@ class AllocateConstruction {
 	}
 
 	void construct(AI& ai, Factory@ f) {
-		started = true;
+		_started = true;
 	}
 
 	string toString() {
@@ -100,9 +115,9 @@ class AllocateConstruction {
 	}
 };
 
-class BuildFlagship : AllocateConstruction {
+class BuildFlagship : AllocateConstruction, IFlagshipConstruction {
+	protected const Design@ _design;
 	double baseLabor = 0.0;
-	const Design@ design;
 	DesignTarget@ target;
 
 	BuildFlagship() {
@@ -115,12 +130,14 @@ class BuildFlagship : AllocateConstruction {
 	BuildFlagship(DesignTarget@ target) {
 		@this.target = target;
 	}
+	
+	const Design@ get_design() const { return _design; }
 
 	void save(Construction& construction, SaveFile& file) {
 		file << baseLabor;
-		if(design !is null) {
+		if(_design !is null) {
 			file.write1();
-			file << design;
+			file << _design;
 		}
 		else {
 			file.write0();
@@ -131,13 +148,13 @@ class BuildFlagship : AllocateConstruction {
 	void load(Construction& construction, SaveFile& file) {
 		file >> baseLabor;
 		if(file.readBit())
-			file >> design;
+			file >> _design;
 		@target = construction.designs.loadDesign(file);
 	}
 
 	void set(const Design& dsg) {
-		@design = dsg.mostUpdated();
-		baseLabor = design.total(HV_LaborCost);
+		@_design = dsg.mostUpdated();
+		baseLabor = _design.total(HV_LaborCost);
 	}
 
 	double laborCost(AI& ai, Object@ obj) {
@@ -157,29 +174,29 @@ class BuildFlagship : AllocateConstruction {
 	bool canBuild(AI& ai, Factory@ f) override {
 		if(!f.obj.canBuildShips)
 			return false;
-		return design !is null;
+		return _design !is null;
 	}
 
 	void update(AI& ai, Factory@ f) {
-		double c = design.total(HV_BuildCost);
+		double c = _design.total(HV_BuildCost);
 		c *= double(f.obj.shipBuildCost) / 100.0;
 		c *= f.obj.constructionCostMod;
 
 		cost = ceil(c);
-		maintenance = ceil(design.total(HV_MaintainCost));
+		maintenance = ceil(_design.total(HV_MaintainCost));
 
 		AllocateConstruction::update(ai, f);
 	}
 
 	void construct(AI& ai, Factory@ f) {
-		f.obj.buildFlagship(design);
+		f.obj.buildFlagship(_design);
 		AllocateConstruction::construct(ai, f);
 	}
 
 	string toString() {
-		if(design is null)
+		if(_design is null)
 			return "flagship (design in progress)";
-		return "flagship "+design.name;
+		return "flagship " + _design.name;
 	}
 };
 
@@ -217,14 +234,14 @@ class BuildFlagshipSourced : BuildFlagship {
 	}
 
 	void construct(AI& ai, Factory@ f) override {
-		f.obj.buildFlagship(design, constructFrom=buildFrom);
+		f.obj.buildFlagship(_design, constructFrom=buildFrom);
 		AllocateConstruction::construct(ai, f);
 	}
 };
 
-class BuildStation : AllocateConstruction {
+class BuildStation : AllocateConstruction, IStationConstruction {
+	protected const Design@ _design;
 	double baseLabor = 0.0;
-	const Design@ design;
 	DesignTarget@ target;
 	vec3d position;
 	bool local = false;
@@ -251,14 +268,16 @@ class BuildStation : AllocateConstruction {
 		@this.target = target;
 		this.local = true;
 	}
+	
+	const Design@ get_design() const { return _design; }
 
 	void save(Construction& construction, SaveFile& file) {
 		file << baseLabor;
 		file << position;
 		file << local;
-		if(design !is null) {
+		if(_design !is null) {
 			file.write1();
-			file << design;
+			file << _design;
 		}
 		else {
 			file.write0();
@@ -271,13 +290,13 @@ class BuildStation : AllocateConstruction {
 		file >> position;
 		file >> local;
 		if(file.readBit())
-			file >> design;
+			file >> _design;
 		@target = construction.designs.loadDesign(file);
 	}
 
 	void set(const Design& dsg) {
-		@design = dsg.mostUpdated();
-		baseLabor = design.total(HV_LaborCost);
+		@_design = dsg.mostUpdated();
+		baseLabor = _design.total(HV_LaborCost);
 	}
 
 	double laborCost(AI& ai, Object@ obj) {
@@ -310,7 +329,7 @@ class BuildStation : AllocateConstruction {
 	}
 
 	bool canBuild(AI& ai, Factory@ f) override {
-		if(design is null)
+		if(_design is null)
 			return false;
 		if(!f.obj.canBuildOrbitals)
 			return false;
@@ -328,12 +347,12 @@ class BuildStation : AllocateConstruction {
 	}
 
 	void update(AI& ai, Factory@ f) {
-		double c = design.total(HV_BuildCost);
+		double c = _design.total(HV_BuildCost);
 		c *= f.obj.owner.OrbitalBuildCostFactor;
 		c *= f.obj.constructionCostMod;
 
 		cost = ceil(c);
-		maintenance = ceil(design.total(HV_MaintainCost));
+		maintenance = ceil(_design.total(HV_MaintainCost));
 
 		AllocateConstruction::update(ai, f);
 	}
@@ -345,20 +364,20 @@ class BuildStation : AllocateConstruction {
 			position.x += offset.x;
 			position.z += offset.y;
 		}
-		f.obj.buildStation(design, position);
+		f.obj.buildStation(_design, position);
 		AllocateConstruction::construct(ai, f);
 	}
 
 	string toString() {
-		if(design is null)
+		if(_design is null)
 			return "station (design in progress)";
-		return "station "+design.name;
+		return "station " + _design.name;
 	}
 };
 
-class BuildOrbital : AllocateConstruction {
+class BuildOrbital : AllocateConstruction, IOrbitalConstruction {
+	protected const OrbitalModule@ _module;
 	double baseLabor = 0.0;
-	const OrbitalModule@ module;
 	const Planet@ planet;
 	bool local = false;
 	vec3d position;
@@ -368,35 +387,37 @@ class BuildOrbital : AllocateConstruction {
 
 	BuildOrbital(const OrbitalModule@ module, const vec3d& position) {
 		this.position = position;
-		@this.module = module;
+		@this._module = module;
 		baseLabor = module.laborCost;
 	}
 
 	BuildOrbital(const OrbitalModule@ module, bool local) {
 		this.local = true;
-		@this.module = module;
+		@this._module = module;
 		baseLabor = module.laborCost;
 	}
 
 	BuildOrbital(const OrbitalModule@ module, const Planet@ planet) {
 		this.local = true;
 		@this.planet = planet;
-		@this.module = module;
+		@this._module = module;
 		baseLabor = module.laborCost;
 	}
+	
+	const OrbitalModule@ get_module() const { return _module; }
 
 	void save(Construction& construction, SaveFile& file) {
 		file << baseLabor;
 		file << position;
 		file << local;
-		file.writeIdentifier(SI_Orbital, module.id);
+		file.writeIdentifier(SI_Orbital, _module.id);
 	}
 
 	void load(Construction& construction, SaveFile& file) {
 		file >> baseLabor;
 		file >> position;
 		file >> local;
-		@module = getOrbitalModule(file.readIdentifier(SI_Orbital));
+		@_module = getOrbitalModule(file.readIdentifier(SI_Orbital));
 	}
 
 	double laborCost(AI& ai, Object@ obj) {
@@ -423,7 +444,7 @@ class BuildOrbital : AllocateConstruction {
 	}
 
 	bool canBuild(AI& ai, Factory@ f) override {
-		if(module is null)
+		if(_module is null)
 			return false;
 		if(!f.obj.canBuildOrbitals)
 			return false;
@@ -441,12 +462,12 @@ class BuildOrbital : AllocateConstruction {
 	}
 
 	void update(AI& ai, Factory@ f) {
-		double c = module.buildCost;
+		double c = _module.buildCost;
 		c *= f.obj.owner.OrbitalBuildCostFactor;
 		c *= f.obj.constructionCostMod;
 
 		cost = ceil(c);
-		maintenance = module.maintenance;
+		maintenance = _module.maintenance;
 
 		AllocateConstruction::update(ai, f);
 	}
@@ -469,12 +490,12 @@ class BuildOrbital : AllocateConstruction {
 				}
 			}
 		}
-		f.obj.buildOrbital(module.id, position);
+		f.obj.buildOrbital(_module.id, position);
 		AllocateConstruction::construct(ai, f);
 	}
 
 	string toString() {
-		return "orbital "+module.name;
+		return "orbital " + _module.name;
 	}
 };
 

@@ -1,0 +1,10 @@
+Status: Permafrost
+	Name: #COND_PERMAFROST
+	Description: #COND_PERMAFROST_DESC
+
+	Icon: ConditionIcons::6
+	Color: #ff0000
+
+	ModResourceEfficiencyBonus(-0.52)
+	GrantAbility(GenerateWaterIce)
+	AddStatus(GenerateWaterIceUse)

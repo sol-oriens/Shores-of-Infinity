@@ -1,0 +1,15 @@
+CivilAct: PopulationGrowth
+	Name: #CIVIL_ACT_POP_GROWTH
+	Description: #CIVIL_ACT_POP_GROWTH_DESC
+
+	Category: Campaigns
+
+	Maintenance: 10
+	Population Multiplier: True
+
+	Delay: 180
+
+	RequireNotTrait(Ancient)
+	RequireNotTrait(Mechanoid)
+
+	settlement_effects::ModSettlementPopulationGrowth(0.15, PopGrowth)

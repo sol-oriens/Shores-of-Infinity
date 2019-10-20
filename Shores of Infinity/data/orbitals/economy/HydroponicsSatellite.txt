@@ -15,7 +15,7 @@ Module: HydroponicsSatellite
 
 	Build Cost: 600
 	Maintenance: 50
-	Labor Cost: 25
+	Labor Cost: 50
 
 	ConsumeEnergy(350)
 

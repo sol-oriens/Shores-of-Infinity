@@ -1,7 +1,12 @@
 import empire_ai.weasel.WeaselAI;
+
+import empire_ai.weasel.Events;
 import empire_ai.weasel.Resources;
 import empire_ai.weasel.Budget;
 import empire_ai.weasel.Systems;
+
+import ai.construction;
+import ai.events;
 
 import planets.PlanetSurface;
 
@@ -15,16 +20,8 @@ import ai.consider;
 import buildings;
 import saving;
 
-funcdef void PlanetAdded(PlanetAI& ai);
-funcdef void PlanetRemoved(PlanetAI& ai);
-
-interface IPlanetEvents {
-	void onPlanetAdded(PlanetAI& ai);
-	void onPlanetRemoved(PlanetAI& ai);
-};
-
-final class BuildingRequest {
-	int id = -1;
+final class BuildingRequest : IBuildingConstruction {
+	protected int _id = -1;
 	PlanetAI@ plAI;
 	AllocateBudget@ alloc;
 	const BuildingType@ type;
@@ -41,6 +38,20 @@ final class BuildingRequest {
 
 	BuildingRequest() {
 	}
+	
+	int id {
+		get const { return _id; }
+		set { _id = value; }
+	}
+	
+	bool get_started() const { return built; }
+	
+	bool completed {
+		get const { return getProgress() >= 1.0; }
+		set { }
+	}
+	
+	const BuildingType@ get_building() const { return type; }
 
 	void save(Planets& planets, SaveFile& file) {
 		planets.saveAI(file, plAI);
@@ -106,8 +117,8 @@ final class BuildingRequest {
 	}
 };
 
-final class ConstructionRequest {
-	int id = -1;
+final class ConstructionRequest : IGenericConstruction {
+	protected int _id = -1;
 	PlanetAI@ plAI;
 	AllocateBudget@ alloc;
 	const ConstructionType@ type;
@@ -123,10 +134,23 @@ final class ConstructionRequest {
 
 	ConstructionRequest() {
 	}
-
-	bool get_completed() const {
-		return getProgress() == -1.0;
+	
+	int id {
+		get const { return _id; }
+		set { _id = value; }
 	}
+	
+	bool get_started() const { return built; }
+	
+	bool completed {
+		get const {
+			double progress = getProgress();
+			return progress == -1.0 || progress >= 1.0;
+		}
+		set { }
+	}
+	
+	const ConstructionType@ get_construction() const { return type; }
 
 	void save(Planets& planets, SaveFile& file) {
 		planets.saveAI(file, plAI);
@@ -201,6 +225,7 @@ final class PlanetAI {
 
 	void init(AI& ai, Planets& planets) {
 		@resources = planets.resources.availableResource(obj);
+		planets.events.notifyPlanetAdded(this, EventArgs());
 	}
 
 	void save(Planets& planets, SaveFile& file) {
@@ -240,6 +265,7 @@ final class PlanetAI {
 			@claimedChain = null;
 		}
 		@resources = null;
+		planets.events.notifyPlanetRemoved(this, EventArgs());
 	}
 
 	void tick(AI& ai, Planets& planets, double time) {
@@ -478,6 +504,7 @@ final class AsteroidData {
 };
 
 class Planets : AIComponent, AIConstructions {
+	Events@ events;
 	Resources@ resources;
 	Budget@ budget;
 	Systems@ systems;
@@ -495,28 +522,8 @@ class Planets : AIComponent, AIConstructions {
 	array<ConstructionRequest@> constructionRequests;
 	int nextConstructionRequestId = 0;
 
-	//Event callbacks
-	array<PlanetAdded@> onPlanetAdded;
-	array<PlanetRemoved@> onPlanetRemoved;
-
-	//Event delegate registration
-	void registerPlanetEvents(IPlanetEvents& events) {
-			onPlanetAdded.insertLast(PlanetAdded(events.onPlanetAdded));
-			onPlanetRemoved.insertLast(PlanetRemoved(events.onPlanetRemoved));
-	}
-
-	//Event notifications
-	void notifyPlanetAdded(PlanetAI& ai) {
-		for (uint i = 0, cnt = onPlanetAdded.length; i < cnt; ++i)
-			onPlanetAdded[i](ai);
-	}
-
-	void notifyPlanetRemoved(PlanetAI& ai) {
-		for (uint i = 0, cnt = onPlanetRemoved.length; i < cnt; ++i)
-			onPlanetRemoved[i](ai);
-	}
-
 	void create() {
+		@events = cast<Events>(ai.events);
 		@resources = cast<Resources>(ai.resources);
 		@budget = cast<Budget>(ai.budget);
 		@systems = cast<Systems>(ai.systems);
@@ -819,7 +826,6 @@ class Planets : AIComponent, AIConstructions {
 			plAI.prevTick = gameTime;
 			planets.insertLast(plAI);
 			plAI.init(ai, this);
-			notifyPlanetAdded(plAI);
 		}
 		return plAI;
 	}
@@ -848,7 +854,6 @@ class Planets : AIComponent, AIConstructions {
 		plAI.remove(ai, this);
 		planets.remove(plAI);
 		bumped.remove(plAI);
-		notifyPlanetRemoved(plAI);
 	}
 
 	void requestLevel(PlanetAI@ plAI, int toLevel, ImportData@ before = null) {

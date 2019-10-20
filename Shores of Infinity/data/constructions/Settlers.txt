@@ -5,7 +5,7 @@ Construction: Settlers
 	Category: Infrastructure
 	In Context: True
 
-	Time Cost: 30
+	Time Cost: 60
 
 	Target: targ = Object
 	Icon: TroopPods

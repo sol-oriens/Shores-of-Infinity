@@ -1,7 +1,7 @@
 Building: EcxFactory
 	Name: #BLD_ECX_FACTORY
 	Description: #BLD_ECX_FACTORY_DESC
-	
+
 	Sprite: EcxFactory
 
 	Category: Production

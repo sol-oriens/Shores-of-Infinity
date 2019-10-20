@@ -1,0 +1,14 @@
+Settlement: ArkMothershipMoney
+	Name: #SETTLEMENT_ARKMOTHERSHIP
+	Description: #SETTLEMENT_ARKMOTHERSHIP_MONEY_DESC
+
+	Icon: HullIcons::4
+
+	Morale Effect: Positive
+
+	RequireTrait(Capitalism)
+	addon_requirement_effects::RequireHome()
+	addon_requirement_effects::RequireFlagship()
+
+	AddStatus(PeriodicMoney)
+	AddFleetEffectiveness(+3.0)

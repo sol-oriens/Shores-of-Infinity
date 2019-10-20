@@ -9,7 +9,7 @@ Resource: AsteroidFTLPermanent
 	Exportable: False
 
 	Distribution: 0
-	Asteroid Frequency: 0.2
+	Asteroid Frequency: 0.15
 	Asteroid Labor: 30
 
 	AddFTLIncome(+1.0)

@@ -4,6 +4,7 @@ import empire_ai.weasel.Systems;
 
 from ai.orbitals import AIOrbitals, OrbitalAIHook, OrbitalUse;
 import ai.consider;
+import ai.construction;
 
 import orbitals;
 import saving;
@@ -55,6 +56,10 @@ class Orbitals : AIComponent, AIOrbitals {
 
 	array<OrbitalAI@> orbitals;
 	uint orbIdx = 0;
+	
+	array<IOrbitalConstruction@> genericBuilds;
+	
+	bool buildOrbitals = true;
 
 	void create() {
 		@budget = cast<Budget>(ai.budget);
@@ -117,14 +122,17 @@ class Orbitals : AIComponent, AIOrbitals {
 
 	void registerUse(OrbitalUse use, const OrbitalModule& type) {
 		switch(use) {
-			case OU_TradeOutpost:
-				@ai.defs.TradeOutpost = type;
-				break;
 			case OU_Shipyard:
 				@ai.defs.Shipyard = type;
 				break;
 			case OU_Starport:
 				@ai.defs.Starport = type;
+				break;
+			case OU_TradeOutpost:
+				@ai.defs.TradeOutpost = type;
+				break;
+			case OU_TradeStation:
+				@ai.defs.TradeStation = type;
 				break;
 		}
 	}
@@ -189,6 +197,14 @@ class Orbitals : AIComponent, AIOrbitals {
 		}
 	}
 
+	bool isBuilding(const OrbitalModule& type) {
+		for(uint i = 0, cnt = genericBuilds.length; i < cnt; ++i) {
+			if(genericBuilds[i].module is type)
+				return true;
+		}
+		return false;
+	}
+
 	void tick(double time) {
 		double curTime = gameTime;
 
@@ -212,6 +228,9 @@ class Orbitals : AIComponent, AIOrbitals {
 			prevCount = curCount;
 			checkTimer = 0;
 		}
+		
+		//Deal with building AI hints
+		
 	}
 
 	OrbitalAI@ getAI(Object& obj) {

@@ -10,7 +10,7 @@ Asteroid@ createAsteroid(const vec3d& position, Region@ region = null, bool dela
 	desc.type = OT_Asteroid;
 
 	//SoI - Scaling
-	desc.radius = 10.0;
+	desc.radius = randomd(7.5, 10.0);
 
 	desc.position = position;
 	desc.name = locale::ASTEROID;

@@ -46,7 +46,11 @@ STATUS_STARPORT_DOCKING_BAYS_DESC: <<
 >>
 STATUS_STAGING_HUB_MARKET: Public Market Module
 STATUS_STAGING_HUB_MARKET_DESC: <<
-	This Staging Hub as a Public Market module installed.
+	This Staging Hub has a Public Market module installed.
+>>
+STATUS_STAGING_HUB_SHIPYARD: Construction Yard Module
+STATUS_STAGING_HUB_SHIPYARD_DESC: <<
+	This Staging Hub has a Construction Yard module installed.
 >>
 STATUS_RESEARCH_LAB_CRISTALLIZER: Hyperfield Crystallizer Module
 STATUS_RESEARCH_LAB_CRISTALLIZER_DESC: <<

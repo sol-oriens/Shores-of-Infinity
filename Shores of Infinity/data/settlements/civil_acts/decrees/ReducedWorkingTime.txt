@@ -1,0 +1,13 @@
+CivilAct: ReducedWorkingTime
+	Name: #CIVIL_ACT_REDUCED_WORKING_TIME
+	Description: #CIVIL_ACT_REDUCED_WORKING_TIME_DESC
+
+	Category: Decrees
+
+	Morale Effect: Positive
+
+	RequirePlanet()
+	RequireAttributeLT(IgnoreMoraleModifiers, 1)
+	RequireNotStatus(SettlementPrison)
+
+	AddSettlementPressureCap(-0.25)

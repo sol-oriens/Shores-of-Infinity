@@ -1,0 +1,14 @@
+Settlement: ArkMothershipLabor
+	Name: #SETTLEMENT_ARKMOTHERSHIP
+	Description: #SETTLEMENT_ARKMOTHERSHIP_LABOR_DESC
+
+	Icon: HullIcons::4
+
+	Morale Effect: Positive
+
+	RequireTrait(Communism)
+	addon_requirement_effects::RequireHome()
+	addon_requirement_effects::RequireFlagship()
+
+	AddStatus(PeriodicStoredLabor)
+	AddFleetEffectiveness(+3.0)

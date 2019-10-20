@@ -1,0 +1,19 @@
+Settlement: Colony
+	Name: #SETTLEMENT_COLONY
+	Description: #SETTLEMENT_COLONY_DESC
+
+	Icon: BuildingSprites::0
+
+	addon_requirement_effects::RequireNotHome()
+
+Settlement: Core
+	Name: #SETTLEMENT_CORE
+	Description: #SETTLEMENT_CORE_DESC
+
+	Icon: Metropolis
+
+	Priority: 1
+
+	addon_requirement_effects::RequireNotHome()
+	RequirePlanet()
+	addon_requirement_effects::RequirePopulation(5)

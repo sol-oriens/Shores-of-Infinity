@@ -4,27 +4,58 @@ MECH_BUILD_POPULATION_DESC: <<
 
 	As you construct more population, the labor cost of constructing will increase.
 >>
+
+CONS_ARTIFICIAL_MOON: Artificial Moon
+CONS_ARTIFICIAL_MOON_DESC: <<|
+	[color=#aaa][i]A hollow moon filled with support machinery and factories below the natural-looking exterior layer
+	of crust, providing its residents with all their needs. Surplus can even be exported to the host planet.[/i][/color]
+
+	Construct an artificial moon to orbit this planet.
+
+	Produces enough water and food to satisfy planet level 1 requirements.
+
+	Generates 3 labor/minute.
+
+	[img=ResourceIconsSmall::11;22;#91692c][b][color=#91692c]Building an artificial moon requires Ore.[/color][/b][/img]
+>>
+
+CONS_ADVANCED_MOON: Supermoon
+CONS_ADVANCED_MOON_DESC: <<|
+	[color=#aaa][i]This artificial moon is larger than any naturally occuring one. Its interior containes enough factories
+	to satisfy the needs of the entire population of its host planet.[/i][/color]
+
+	Construct an supermoon to orbit this planet. Only one advanced artificial moon can be constructed around a planet.
+
+	Produces enough water and food to satisfy all planet level requirements.
+
+	Generates 5 labor/minute.
+
+	[img=ResourceIconsSmall::11;22;#91692c][b][color=#91692c]Building an artificial moon requires Ore.[/color][/b][/img]
+>>
+
 CONS_MOON_BASE_DESC: <<
-	Construct a large amount of infrastructure on one of the planet's moons, making more area available for placing buildings and increasing the maximum population of the planet by 2.
+	Construct a large amount of infrastructure on one of the planet's moons, making more area available for placing buildings.
 
 	Only one moon base may be constructed for every moon present in orbit of the planet.
-
-	Mechanoid races receive §100k additional income from each moon base they own.
 >>
+
 C_TERRAFORMING_DESC: <<
-	[color=#aaa][i]Modifying the climate or constructing the required support infrastructure to easily sustain large amounts of people or equipment within a certain area is usually a slow venture.
+	[color=#aaa][i]Constructing the required support infrastructure to sustain large amounts of people or equipment within a certain area is usually a slow venture.
 
 	An industrial-scale project sponsored by the empire can accelerate the process considerably, for a price.[/i][/color]
 
-	Develops up to 15 randomly selected tiles.
+	Develops up to 20 randomly selected tiles.
 >>
+
+C_HABITATRING: Orbital Habitation Ring
 C_HABITATRING_DESC: <<
 	[color=#aaa][i]Constructing a large ring-shaped station encircling the planet provides more space for the construction of important infrastructure.[/i][/color]
 
 	Adds a 4x8 chunk of fully-developed Artificial tiles to the planet. Can only be built once per planet.
 >>
-C_HABITATRING: Orbital Habitation Ring
+
 C_TERRAFORMING: Infrastructural Development
+
 C_SUBSURFACE_HABITATS: Subsurface Habitation Complex
 C_SUBSURFACE_NO_FLOATING_CONTINENT: [i]Subsurface habitats cannot be built while a Floating Continent is present on the planet surface. Move the Floating Continent to a different planet before attempting to construct them.[/i]
 C_SUBSURFACE_HABITATS_DESC: <<
@@ -34,6 +65,7 @@ C_SUBSURFACE_HABITATS_DESC: <<
 
 	[bbloc=#C_SUBSURFACE_NO_FLOATING_CONTINENT/]
 >>
+
 C_EXPAND_SUBSURFACE: Expand Subsurface Complex
 C_EXPAND_SUBSURFACE_DESC: <<
 	[color=#aaa][i]Expanding our subsurface habitats grants us even more space for the construction of important infrastructure.[/i][/color]
@@ -42,36 +74,42 @@ C_EXPAND_SUBSURFACE_DESC: <<
 
 	[bbloc=#C_SUBSURFACE_NO_FLOATING_CONTINENT/]
 >>
+
 C_EXPLORE_PLANET: Planet Exploration
 C_EXPLORE_PLANET_DESC: <<
 	[color=#aaa][i]Every new planet discovered is in itself a potential little universe of wonders.[/i][/color]
 
 	Sends an exploration team around the planet. May yield a random discovery.
 >>
+
 C_DEFENSE_POLICY: Call To Arms
 C_DEFENSE_POLICY_DESC: <<
 	[color=#aaa][i]Compulsory military service and patriotic propaganda provide new soldiers as well as increased population readiness and willingness for resistance during invasion.[/i][/color]
 
 	Yields one Patriotic Surge influence card.
 >>
+
 C_FOOD_POLICY: Crop Regulation
 C_FOOD_POLICY_DESC: <<
 	[color=#aaa][i]Harsh austerity and anti-waste measures coupled with increased financing of distribution logistics allow to decrease both food consumption and cultivation in order to constitute over time a reserve of unplanted seeds sizeable enough to create an entirely new renewable source of grain.[/i][/color]
 
 	Yields one Harvest influence card.
 >>
+
 C_MONEY_POLICY: Economic Endeavor
 C_MONEY_POLICY_DESC: <<
 	[color=#aaa][i]State-owned loans and public works contracts to support economical development eventually yield returns on investments.[/i][/color]
 
 	Yields one Profiteering influence card.
 >>
+
 C_EXCELLENCE_POLICY: Scholarship Support
 C_EXCELLENCE_POLICY_DESC: <<
 	[color=#aaa][i]Concerted efforts from academic instances to provide better education and better access to it, with the help of additional budget to said instances and grants to students, lead to an influx of highly qualified graduates.[/i][/color]
 
 	Yields one Enhance influence card.
 >>
+
 C_FLING_UNLOCK: Refined Beacon Architecture
 C_FLING_UNLOCK_DESC: <<
 	Use the data collected during the construction and use of this fling beacon to improve your beacon designs, allowing for smaller, cheaper fling beacons to be constructed.
@@ -80,6 +118,7 @@ C_FLING_UNLOCK_DESC: <<
 
 	[i][bbloc=#ORB_FLING_CORE_DESC/][/i]
 >>
+
 C_GATE_UNLOCK: Streamlined Wormhole Equations
 C_GATE_UNLOCK_DESC: <<
 	Use the data collected during the construction and use of this stargate to improve your gate designs, allowing for the easy construction of more customizable gates.
@@ -88,6 +127,7 @@ C_GATE_UNLOCK_DESC: <<
 
 	[i][bbloc=#S_GATE_MODULE_DESC/][/i]
 >>
+
 C_HYPERDRIVE_UNLOCK: Hyperdrive Optimization
 C_HYPERDRIVE_UNLOCK_DESC: <<
 	Use the data collected during the construction and use of this ship's hyperdrive to improve your hyperdrive designs, allowing for easier construction of better hyperdrives.
@@ -96,6 +136,7 @@ C_HYPERDRIVE_UNLOCK_DESC: <<
 
 	[i][bbloc=#S_HYPERDRIVE_DESC/][/i]
 >>
+
 C_JUMPDRIVE_UNLOCK: Simplified Jump Calculations
 C_JUMPDRIVE_UNLOCK_DESC: <<
 	Use the data collected during the construction and use of this ship's jumpdrive to improve your jumpdrive designs, allowing for easier construction of better jumpdrives.
@@ -104,6 +145,7 @@ C_JUMPDRIVE_UNLOCK_DESC: <<
 
 	[i][bbloc=#S_JUMPDRIVE_DESC/][/i]
 >>
+
 C_SLIPSTREAM_UNLOCK: Efficient Subspace Penetration
 C_SLIPSTREAM_UNLOCK_DESC: <<
 	Use the data collected during the construction and use of this ship's slipstream generator to improve your generator designs, allowing for easier construction of better slipstream generators.
@@ -156,6 +198,7 @@ STAGING_HUB_ASTEROID_MORPH_DESC: <<
 
 	The targeted Ore asteroid is transformed into an asteroid containing one or more resources available to build a mining base on.
 >>
+
 CONS_SETTLERS: Embark Settlers
 CONS_SETTLERS_DESC: Get 1 billion population aboard the target flagship.
 CONS_BOARDING_PARTY: Train Boarding Party

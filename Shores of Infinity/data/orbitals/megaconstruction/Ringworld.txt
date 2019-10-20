@@ -16,7 +16,7 @@ Module: Ringworld
 	Armor: 500000
 
 	Build Cost: 3000
-	Labor Cost: 2000
+	Labor Cost: 4000
 
 	ConsumeCargo(Ore, 25000)
 

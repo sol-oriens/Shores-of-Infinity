@@ -1,0 +1,18 @@
+CivilAct: WarEconomy
+	Name: #CIVIL_ACT_WAR_ECONOMY
+	Description: #CIVIL_ACT_WAR_ECONOMY_DESC
+
+	Category: Decrees
+
+	Morale Effect: Negative
+
+	RequirePlanet()
+	RequireNotStatus(SettlementPrison)
+	RequireAttributeLT(IgnoreMoraleModifiers, 1)
+	RequireNotTrait(Pacifists)
+
+	addon_requirement_effects::RequireConstruction(Ships)
+
+	ModSupportBuildSpeed(0.5)
+	ConvertResource(Influence, 1.0, Defense, Convert Percent = 0.5)
+	ConvertResource(Energy, 1.0, Defense, Convert Percent = 0.5)

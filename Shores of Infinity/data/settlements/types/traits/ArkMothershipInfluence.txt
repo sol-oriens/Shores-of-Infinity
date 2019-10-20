@@ -1,0 +1,14 @@
+Settlement: ArkMothershipInfluence
+	Name: #SETTLEMENT_ARKMOTHERSHIP
+	Description: #SETTLEMENT_ARKMOTHERSHIP_INFLUENCE_DESC
+
+	Icon: HullIcons::4
+
+	Morale Effect: Positive
+
+	RequireTrait(Theocracy)
+	addon_requirement_effects::RequireHome()
+	addon_requirement_effects::RequireFlagship()
+
+	AddStatus(PeriodicInfluence)
+	AddFleetEffectiveness(+3.0)

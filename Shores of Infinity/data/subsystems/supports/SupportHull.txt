@@ -18,8 +18,8 @@ Subsystem: SupportHull
 	DummyForRepair:=4
 
 	HullStrengthMult := 1
-	
-	Repair := (ShipSize / HexLimit) * 4
+
+	Repair := (ShipSize / HexLimit) * 1
 	TechMult := 0.75
 
 	Hex.LaborCost := 0.07 * ShipSize

@@ -1,0 +1,34 @@
+SettlementFocus: InfluenceHome
+	Name: #FOCUS_HOME
+	Description: #FOCUS_HOME_INFLUENCE_DESC
+
+	Priority: 3
+
+	RequireTrait(Theocracy)
+	addon_requirement_effects::RequireHome()
+	addon_requirement_effects::RequirePopulation(5)
+
+	settlement_effects::AddSettlementResource(0.5, Influence)
+
+SettlementFocus: Influence
+	Name: #FOCUS_INFLUENCE
+	Description: #FOCUS_INFLUENCE_DESC
+
+	Priority: 3
+
+	RequireTrait(Theocracy)
+	addon_requirement_effects::RequireNotHome()
+	addon_requirement_effects::RequirePopulation(5)
+
+	settlement_effects::AddSettlementResource(0.25, Influence)
+
+SettlementFocus: InfluenceExtreme
+	Name: #FOCUS_INFLUENCE_EXTREME
+	Description: #FOCUS_INFLUENCE_EXTREME_DESC
+
+	Morale Effect: Very Negative
+
+	RequireTrait(Theocracy)
+	addon_requirement_effects::RequirePopulation(5)
+
+	settlement_effects::AddSettlementResource(0.75, Influence)

@@ -1,0 +1,14 @@
+CivilAct: StateEmergency
+	Name: #CIVIL_ACT_STATE_EMERGENCY
+	Description: #CIVIL_ACT_STATE_EMERGENCY_DESC
+
+	Category: Decrees
+
+	Maintenance: 45
+	Population Multiplier: True
+
+	Delay: 15
+
+	RequireAttributeLT(IgnoreMoraleModifiers, 1)
+
+	settlement_effects::ContainCivilUnrest(0.2)

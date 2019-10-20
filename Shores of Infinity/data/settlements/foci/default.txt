@@ -1,0 +1,5 @@
+SettlementFocus: Basic
+	Name: #FOCUS_BASIC
+	Description: #FOCUS_BASIC_DESC
+
+	addon_requirement_effects::RequirePopulation(0, Max Population = 4.99999)

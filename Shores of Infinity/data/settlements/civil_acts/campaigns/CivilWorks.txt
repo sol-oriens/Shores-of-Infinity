@@ -1,0 +1,17 @@
+CivilAct: CivilWorks
+	Name: #CIVIL_ACT_CIVIL_WORKS
+	Description: #CIVIL_ACT_CIVIL_WORKS_DESC
+
+	Category: Campaigns
+
+	Maintenance: 20
+
+	Delay: 60
+	Commitment: 180
+
+	RequirePlanet()
+	RequireNotTrait(Ancient)
+	RequireNotTrait(StarChildren)
+
+	ModBuildingConstructRate(+0.5)
+	AddPressureCap(-5)

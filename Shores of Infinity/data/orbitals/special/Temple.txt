@@ -2,7 +2,7 @@ Module: Temple
 	Name: #ORB_TEMPLE
 	Blurb: #ORB_TEMPLE_BLURB
 	Description: #ORB_TEMPLE_DESC
-	
+
 	Icon: GuiOrbitalIcons::21
 	Distant Icon: OrbitalIcons::21
 	Model: Temple
@@ -18,9 +18,11 @@ Module: Temple
 
 	Build Cost: 300
 	Maintenance: 30
-	Labor Cost: 15
+	Labor Cost: 30
 
 	RequireTrait(Evangelical)
+
+	SetSystemFlag(OutpostFlag)
 
 	AddHealthEmpireAttribute(OutpostBoost, 10000)
 

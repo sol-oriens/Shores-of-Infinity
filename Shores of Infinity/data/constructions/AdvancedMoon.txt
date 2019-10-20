@@ -1,0 +1,31 @@
+Construction: AdvancedMoon
+	Name: #CONS_ADVANCED_MOON
+	Description: #CONS_ADVANCED_MOON_DESC
+
+	Icon: DwarfPlanet
+
+	Category: Infrastructure
+
+	Build Cost: 7500
+	Labor Cost: 1000
+
+	ConsumeCargo(Ore, 3000)
+
+	RequireUnlockTag(AdvancedMoonUnlock)
+	RequireEither(RequirePlanet(), RequireOnOrbital(StagingHub))
+
+	Target: targ = Object
+
+	TargetFilterType(targ, Planet)
+	TargetFilterOwned(targ)
+	TargetFilterSameRegion(targ)
+	TargetFilterNotStatus(targ, AdvancedMoon)
+
+	addon_construction_effects::TriggerStartConstruction(targ, AddStatus(AdvancedMoon))
+	addon_construction_effects::TriggerCancelConstruction(targ, RemoveStatusInstance(AdvancedMoon))
+
+	Trigger(targ, AddSurfaceArea(Moon, (6, 10)))
+	Trigger(targ, AddMoonGraphic(50))
+	Trigger(targ, AddResource(Labor, 5))
+	Trigger(targ, AddDummyResource(Water, 1))
+	Trigger(targ, AddDummyResource(Meat, 6))

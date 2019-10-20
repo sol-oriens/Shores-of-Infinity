@@ -9,6 +9,7 @@ visible:
 Ship : objects.Ship::ShipScript {
 	Mover mover
 	Orbit@ orbit = null
+	Settlement@ settlement = null
 	LeaderAI@ leaderAI = null
 	SupportAI@ supportAI = null
 	Abilities@ abilities = null
@@ -37,6 +38,8 @@ visible:
 
 	local safe bool get_isStation();
 
+	local visible bool get_isDamaged();
+
 remote restricted:
 	void scuttle();
 
@@ -48,7 +51,6 @@ server:
 	void consumeSupplyPct(double pct);
 	bool consumeMinSupply(double amount);
 	void refundSupply(double amount);
-	bool get_isDamaged();
 	void repairShip(double amount);
 	void makeNotFree();
 	void setHealthPct(float pct);
@@ -89,6 +91,11 @@ server:
 Star : objects.Star::StarScript {
 	Orbit orbit
 	Statuses statuses
+	double _displayRadius
+
+local visible:
+	safe double get_displayRadius();
+
 visible:
 	double temperature
 	double Health = 20000000000 // 20G
@@ -97,12 +104,14 @@ visible:
 	double MaxShield = 0
 
 server:
+	void set_displayRadius(double value);
 	void dealStarDamage(double amount);
 	void dealStarDamage(double amount, const vec3d attackerPosition);
 }
 
 Planet : objects.Planet::PlanetScript {
 	Orbit orbit
+	Settlement settlement
 	Construction buildQueue
 	Resources resources
 	SurfaceComponent surface
@@ -139,6 +148,8 @@ invisible:
 visible:
 	synced double CarriedPopulation = 0
 	synced double Health = 50
+server:
+	void setIcon();
 }
 
 Orbital : objects.Orbital::OrbitalScript {
@@ -156,6 +167,7 @@ local visible:
 	safe bool get_isStandalone();
 	safe bool get_isContested();
 	safe bool get_isDisabled();
+	bool get_isDamaged();
 	OrbitalSection@[] getSections();
 	bool hasModule(uint typeId);
 	safe double get_health();
@@ -191,7 +203,6 @@ server:
 	void setDerelict(bool value);
 	void setContested(bool value);
 	void addSection(uint modId);
-	bool get_isDamaged();
 	void modMaxArmor(double value);
 	void modMaxHealth(double value);
 	void modMaxShield(double value);

@@ -62,6 +62,14 @@ Status: StagingHubMarket
 
 	Unique: True
 
+Status: StagingHubShipyard
+	Name: #STATUS_STAGING_HUB_SHIPYARD
+	Description: #STATUS_STAGING_HUB_SHIPYARD_DESC
+	Visible To: Owner
+	Icon: OrbitalIcons::5
+
+	Unique: True
+
 Status: DryportProcessingCenter
 	Name: #STATUS_DRYPORT_PROCESSING_CENTER
 	Description: #STATUS_DRYPORT_PROCESSING_CENTER_DESC

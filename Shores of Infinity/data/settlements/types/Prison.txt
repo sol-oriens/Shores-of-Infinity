@@ -1,0 +1,25 @@
+Settlement: Prison
+	Name: SETTLEMENT_PRISON
+	Description: #SETTLEMENT_PRISON_DESC
+
+	Icon: ResourceIcons::37
+
+	Priority: 4
+
+	addon_requirement_effects::RequireNotHome()
+	RequirePlanet()
+	RequireNativeLevel(0, Hide = False, Exact = True)
+	addon_requirement_effects::RequireLevel(0, Hide = False, Exact = True)
+	RequireStatus(Prison, Count = 2)
+
+	AddStatus(SettlementPrison)
+
+	AddLaborStorage(50)
+	addon_empire_effects::ModGlobalMorale(Positive)
+	PlanetLevelIncomeMod(+30, +0, Step = +0)
+
+	ModCivResourceMult(Money, -1.f)
+	ModCivResourceMult(Influence, -1.f)
+	ModCivResourceMult(Energy, -1.f)
+	ModCivResourceMult(Research, -1.f)
+	ModCivResourceMult(Defense, -1.f)

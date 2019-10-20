@@ -17,9 +17,13 @@ Building: Mine
 
 	Build Time: 360
 
+	ConsumeResearch(15)
+
 	RequireNotStatus(Ringworld)
 	RequireNotStatus(ArtificialPlanetoid)
 	RequireNotTrait(Ancient)
+
+	AddStatus(Mine)
 
 	AddPlanetResource(OreRateMine)
 

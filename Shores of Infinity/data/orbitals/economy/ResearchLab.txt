@@ -18,10 +18,10 @@ Module: ResearchLab
 	Armor: 4000
 
 	Build Cost: 300
-  Maintenance: 80
-	Labor Cost: 20
+	Maintenance: 80
+	Labor Cost: 40
 
-  AddCargoStorage(1500)
+	AddCargoStorage(1500)
 	AddResearchIncome(1)
 	RepeatEmpireAttribute(ResearchComplexExtraPressure, AddResearchIncome(1))
 

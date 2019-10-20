@@ -1,0 +1,15 @@
+Settlement: HomeworldMoney
+	Name: #SETTLEMENT_HOMEWORLD
+	Description: #SETTLEMENT_HOMEWORLD_MONEY_DESC
+
+	Icon: PlanetImage
+
+	Morale Effect: Positive
+
+	RequireTrait(Capitalism)
+	addon_requirement_effects::RequireHome()
+	RequirePlanet()
+
+	AddStatus(PeriodicMoney)
+	AddFleetEffectiveness(+3.0)
+	addon_planet_effects::PerPopulationAddLoyalty(1)

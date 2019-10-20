@@ -1,0 +1,18 @@
+CivilAct: PopularSovereignty
+	Name: #CIVIL_ACT_POPULAR_SOVEREIGNTY
+	Description: #CIVIL_ACT_POPULAR_SOVEREIGNTY_DESC
+
+	Category: Doctrines
+
+	Maintenance: 20
+	Population Multiplier: True
+
+	Delay: 180
+	Commitment: 1800
+
+	RequireNotStatus(SettlementPrison)
+	addon_requirement_effects::RequirePopulation(2)
+
+	settlement_effects::AddSettlementResource(0.5, Influence)
+
+	AddLaborFactor(-0.2)

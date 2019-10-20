@@ -12,8 +12,11 @@ import empire_ai.weasel.Budget;
 import empire_ai.weasel.Creeping;
 
 import util.formatting;
+import util.lookup;
 
 import systems;
+
+from statuses import getStatusID;
 
 enum ColonizationPhase {
 	CP_Expansion,
@@ -24,6 +27,8 @@ interface RaceColonization {
 	bool orderColonization(ColonizeData& data, Planet@ sourcePlanet);
 	double getGenericUsefulness(const ResourceType@ type);
 };
+
+int moonStatusId = -1;
 
 final class ColonizeData {
 	int id = -1;
@@ -173,6 +178,8 @@ final class Colonization : AIComponent {
 	private uint _territoryRequests = 0;
 	private Region@ _newTerritoryTarget;
 
+	bool canBuildArtificialMoon = false;
+
 	Object@ colonizeWeightObj;
 
 	bool get_needsMoreTerritory() const { return _needsMoreTerritory; }
@@ -191,6 +198,7 @@ final class Colonization : AIComponent {
 		@waterClass = getResourceClass("WaterType");
 		@scalableClass = getResourceClass("Scalable");
 
+		moonStatusId = getStatusID("Moon");
 	}
 
 	void save(SaveFile& file) {
@@ -353,7 +361,7 @@ final class Colonization : AIComponent {
 	}
 
 	bool shouldForceExpansion() {
-    uint otherColonizedSystems = 0;
+		uint otherColonizedSystems = 0;
 		for (uint i = 0, cnt = systems.outsideBorder.length; i < cnt; ++i) {
 			auto@ sys = systems.outsideBorder[i];
 			//Check if any system in our tradable area is unexplored
@@ -363,8 +371,8 @@ final class Colonization : AIComponent {
 				uint otherColonizedPlanets = 0;
 				for (uint j = 0, cnt = sys.planets.length; j < cnt; ++j) {
 					auto@ pl = sys.planets[j];
-          int resId = pl.primaryResourceType;
-          if (resId != -1) {
+					int resId = pl.primaryResourceType;
+					if (resId != -1) {
 						//Check if any planet can still be colonized in our tradable area
 						if (!pl.owner.valid && !pl.quarantined)
 							return false;
@@ -374,15 +382,15 @@ final class Colonization : AIComponent {
 				}
 				//Check if all planets in the system are colonized
 				if (otherColonizedPlanets == sys.planets.length)
-          ++otherColonizedSystems;
+					++otherColonizedSystems;
 			}
 		}
 		//Check if all systems in our tradable area belong to other empires
-    if (otherColonizedSystems == systems.outsideBorder.length)
+		if (otherColonizedSystems == systems.outsideBorder.length)
 			//If 0, we colonized everything!
-      return false;
+			return false;
 
-    return true;
+		return true;
 	}
 
 	double getSourceWeight(PotentialSource& source, ColonizeData& data) {
@@ -622,32 +630,38 @@ final class Colonization : AIComponent {
 		//Return a relative value for colonizing the resource this planet has in a vacuum,
 		//rather than as an explicit requirement for a planet.
 		double weight = 1.0;
+
 		if(type.level == 0)
 			weight *= 2.0;
 		else
 			weight *= sqr(double(1 + type.level));
 		if(type.cls is foodClass || type.cls is waterClass) {
-			if (type.ident == "IcyWater" && ai.empire.EstNextBudget < budget.mediumThreshold)
-					weight *= 0;
-			else
 				weight *= 2.5;
 		}
 		if(type.cls is scalableClass) {
 			if (type.ident == "RareGases") {
-				if (ai.empire.EstNextBudget < budget.mediumThreshold)
-					weight *= 0;
-				else
 					weight *= 3.5;
 			}
 			else
 				weight *= 0.1;
 		}
-		if ((type.ident == "IcyPekelm" || type.ident == "IcySalts") && ai.empire.EstNextBudget < budget.mediumThreshold)
-			weight *= 0;
 		if(type.totalPressure > 0)
 			weight *= double(type.totalPressure);
 		if(race !is null)
 			weight *= race.getGenericUsefulness(type);
+
+		//Ensure we have enough money to colonize a gas giant
+		switch (type.planetClass) {
+			case PC_Gas_I:
+			case PC_Gas_II:
+			case PC_Gas_III:
+			case PC_Gas_IV:
+			case PC_Gas_V:
+			if (ai.empire.EstNextBudget < budget.mediumThreshold) {
+				weight *= 0;
+				break;
+			}
+		}
 		return weight;
 	}
 
@@ -742,14 +756,19 @@ final class Colonization : AIComponent {
 			@p.pl = pl;
 			@p.resource = getResource(resId);
 
-			//Skip gas or ice giants in the beginning of the game or if we have budget issues
-			if ((p.resource.ident == "RareGases"
-					|| p.resource.ident == "IcyWater"
-					|| p.resource.ident == "IcyPekelm"
-					|| p.resource.ident == "IcySalts")
-					&& (ai.empire.EstNextBudget < budget.mediumThreshold
-					|| gameTime < 180))
-				continue;
+			//Skip gas giants in the beginning of the game, if we have budget issues or if we can't build a moon base
+			switch (p.resource.planetClass) {
+				case PC_Gas_I:
+				case PC_Gas_II:
+				case PC_Gas_III:
+				case PC_Gas_IV:
+				case PC_Gas_V:
+					if (ai.empire.EstNextBudget < budget.mediumThreshold ||
+						gameTime < 180 ||
+						(p.pl.getStatusStackCountAny(moonStatusId) == 0 && !canBuildArtificialMoon))
+						continue;
+					break;
+			}
 
 			p.weight = 1.0 * sysWeight;
 			//TODO: this should be weighted according to the position of the planet,
@@ -961,7 +980,7 @@ final class Colonization : AIComponent {
 				_needsNewTerritory = true;
 			else {
 				_needsMoreTerritory = true;
-				_territoryRequests ++;
+				_territoryRequests++;
 			}
 		}
 		else {

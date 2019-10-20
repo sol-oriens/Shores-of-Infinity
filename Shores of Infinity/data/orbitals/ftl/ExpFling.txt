@@ -9,20 +9,20 @@ Module: EXP_FlingCore
 	Model: Fling
 	Material: GenericPBR_Fling
 
-	Size: 32
+	Size: 14
 
 	Standalone: True
 	Solid: False
 	Spin: 0
 
-	Health: 50000
-	Armor: 50000
+	Health: 10000
+	Armor: 4000
 
 	Can Fling: False
 
 	Build Cost: 1000
-	Maintenance: 125
-	Labor Cost: 500
+	Maintenance: 150
+	Labor Cost: 60
 
 	ConsumeFTL(500)
 	ConsumeCargo(Ore, 5000)

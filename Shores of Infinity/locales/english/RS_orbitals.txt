@@ -2,13 +2,15 @@ OERR_PLANET_LIMIT: Maximum $1 per planet orbit allowed.
 OERR_CLOSE_PLANET_ORBIT: Must be built in close planetary orbit.
 ORB_TRADE_OUTPOST_BLURB: Allows trade through its system. Generates defense ships and protects planets in the system from being captured. Can store 1k units of cargo.
 ORB_TRADE_OUTPOST_DESC: <<|
-	A small outpost that allows your civilian ships to travel through the
-	system it is in.
+	[color=#aaa][i]A small outpost that allows our civilian ships to travel through the
+	system it is in.[/i][/color]
 
-	Outposts generate up to [b]3 Defense[/b] worth of local defense ships,
+	Generates up to [b]3 Defense[/b] worth of local defense ships,
 	depending on how many adjacent systems have outposts or starbases in them.
 
-	Support ships assigned to this orbital fight at increased effectiveness.
+	Adds 5 Defense Reserve to your global pool.
+
+	Support ships assigned to this orbital fight at 200% increased effectiveness.
 
 	If all of the outpost's support command is used and it has a full
 	complement of defense ships, it will start adding its defense generation to
@@ -30,8 +32,7 @@ ORB_TRADE_STATION_DESC: <<|
 	between any territories with commerce stations or starports with long haul
 	docking bays. Additional trade with foreign empires also provides
 	income for each planet in the system belonging to another empire you are
-	at peace with, to each friendly empire including yours, equal to 100k per
-	planet Level starting from 1 and up to 300k.
+	at peace with, equal to 100k per planet Level starting from 1 and up to 300k.
 
 	In addition, on each commerce station you can purchase a quantity of
 	research, energy, influence or labor in exchange for money every 3 minutes.
@@ -48,10 +49,10 @@ ORB_SHIPYARD_DESC: <<|
 
 	Construction of ships on a shipyard has a 20% cheaper build cost.
 
-	Has 6 innate Labor generation per minute. Planets can export their own
-	labor to shipyards within trade range at a 75% reduced rate.
+	Has 7.5 innate Labor generation per minute. Planets can export their own
+	labor to shipyards within trade range at a 25% reduced rate.
 
-	Gains Labor from Metallurgy factory research at a 75% reduced rate.
+	Gains Labor from Metallurgy factory research at a 25% reduced rate.
 
 	Can store 25k units of cargo.
 >>
@@ -61,6 +62,8 @@ ORB_STARBASE_DESC: <<
 	[color=#aaa][i]A imposing military base designed to secure supply lines and protect a system against a sustained siege.[/i][/color]
 
 	Generates up to [b]6 Defense[/b] worth of local defense ships, depending on how many adjacent systems have outposts or starbases in them.
+
+	Adds 10 Defense Reserve to your global pool.
 
 	Support ships assigned to this orbital fight at increased effectiveness.
 
@@ -81,9 +84,9 @@ ORB_STARPORT_DESC: <<
 
 	Provides 30k income for each owned and friendly planet in the system belonging to another empire you are at peace with or yours, up to 120k.
 
-	Increases the civilian production of Labor, Influence, Energy and Research on all owned planets in the system by 10%.
+	Increases all civilian pressure production on all owned planets in the system by 10%.
 
-	Increases the import rate of Ore and Base Material in the system by 25%.
+	Increases the import rate of Ore and Base Material in the system by 10%.
 
 	Can be upgraded to allow global resource trade.
 
@@ -100,19 +103,19 @@ ORB_STARPORT_DOCKING_BAYS_DESC: <<
 	Allows global resource trade between any territories with Commerce Stations or Starports with Long Haul Docking Bays.
 >>
 ORB_STAGING_HUB: Staging Hub
-ORB_STAGING_HUB_BLURB: Allows trade through its system. Can build mining bases. Planets can be ordered to export their labor to this orbital. Can store 5k units of cargo.
+ORB_STAGING_HUB_BLURB: Allows trade through its system. Can build. Planets and ships can be ordered to export their labor to this orbital. Can store 10k units of cargo.
 ORB_STAGING_HUB_DESC: <<|
 	[color=#aaa][i]This multipurpose station can act as a trading outpost as well as a remote base for mining operations or construction projects. It can also support a small fleet and stockpile resources to sell to private corporations.[/i][/color]
 
-	Can construct mining bases on asteroids.
+	Can build orbitals and mining bases on asteroids.
 
 	Has no innate labor, but planets can export their own labor to staging hubs within trade range at a 50% reduced rate.
 
-	Can be upgraded to sell imported resources.
+	Can be upgraded to build ships and sell imported resources.
 
 	Adds 15 Defense Reserve when in orbit around an owned planet.
 
-	Can store 5k units of cargo.
+	Can store 10k units of cargo.
 
 	[i]Can be built in systems you do not own planets in, expanding your empire border.[/i]
 >>
@@ -121,6 +124,14 @@ ORB_STAGING_HUB_MARKET_DESC: <<
 	[color=#aaa][i]Additional warehouse space along with a management area to store and sell imported resources to private buyers. As these trades are made outside the civilian sector, all profits are state-owned.[/i][/color]
 
 	Can import influence, energy, research and defense resources and generate 5k per imported pressure as special funds every minute.
+>>
+ORB_STAGING_HUB_SHIPYARD: Construction Yard
+ORB_STAGING_HUB_SHIPYARD_DESC: <<
+	[color=#aaa][i]Additional storage and facilities that allow assembly of supplied ship parts on the spot.[/i][/color]
+
+	Generates 1 Labor per minute.
+
+	Can build ships and drydocks and provide repairs.
 >>
 ORB_RESEARCH_LAB: Zero-G Lab
 ORB_RESEARCH_LAB_BLURB: Generates research points for the empire and gives access to special projects. Can store 1.5k units of cargo.
@@ -201,6 +212,7 @@ ORB_TACHYON_UPLINK_DESC: <<
 	Unlocks the Tachyon Sensor subsystem.
 
 	[i]Can only be built in a Tachyon Nebula.[/i]
+
 	[i]Only one Tachyon Uplink may be constructed per system.[/i]
 
 	[img=$FTL;22][b][color=#00c0ffff]FTL[/color][/b] [offset=120]0.5 /s[/offset][/img]
@@ -211,6 +223,7 @@ ORB_DRYPORT_DESC: <<
 	[color=#aaa][i]A low orbit facility designed to centralize and improve the transit of goods and materials to and from the planet it is orbiting.[/i][/color]
 
 	Reduces income penalty of Level 0 planets by 30k.
+
 	Increases income of Level 1 planets by 20k + 10k per additional Level.
 
 	Can store 2.5k units of cargo.
@@ -402,16 +415,7 @@ ORB_RECYCLING_FACILITY_DESC: <<
 
 	Adds 1 Energy generation.
 >>
-ORB_SHIPYARD_DESC: <<|
-	A massive orbital shipyard capable of constructing fleets in space.
 
-	Construction of ships on a shipyard has a 20% cheaper build cost.
-
-	Has 7.5 innate Labor generation per minute. Planets can export their own
-	labor to shipyards within trade range at a 25% reduced rate.
-
-	Gains Labor from Metallurgy factory research at a 25% reduced rate.
->>
 ORB_SHIPYARD_ADAPTED: Advanced Shipyard
 ORB_SHIPYARD_ADAPTED_DESC: <<|
 	[bbloc=#ORB_SHIPYARD_DESC/]

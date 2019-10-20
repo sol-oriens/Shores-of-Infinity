@@ -18,7 +18,7 @@ Module: Telescope
 	Armor: 2000
 
 	Build Cost: 200
-	Labor Cost: 15
+	Labor Cost: 30
 	Maintenance: 40
 
 	ShowRange(800000, #00ff00, Scaled = True)

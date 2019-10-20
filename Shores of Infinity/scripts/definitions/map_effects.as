@@ -80,7 +80,12 @@ class MakeStar : MapHook {
 			system.object.enterRegion(star);
 
 		//Create star node
-		Node@ node = bindNode(star, "StarNode");
+		Node@ node = null;
+		if (temp <= 1300.0)
+			//This star is a brown dwarf
+			@node = bindNode(star, "BrownDwarfNode");
+		else
+			@node = bindNode(star, "StarNode");
 		node.color = blackBody(temp, max((temp + 15000.0) / 40000.0, 1.0));
 		if(system !is null)
 			node.hintParentObject(system.object, false);
@@ -120,13 +125,12 @@ class MakeNeutronStar : MapHook {
 	double NEUTRON_STAR_HEALTH = 20000000000;
 
 	Document doc("Creates a neutron star in the system.");
-
 	Argument position("Position", AT_Position, "(0, 0, 0)", doc="Position relative to the center of the system to create the star.");
 
 #section server
 	void trigger(SystemData@ data, SystemDesc@ system, Object@& current) const override {
 		double radius = 200.0 * config::SCALE_STARS;
-		vec3d pos = arguments[0].fromPosition();
+		vec3d pos = position.fromPosition();
 
 		//Create star
 		ObjectDesc starDesc;
@@ -141,7 +145,8 @@ class MakeNeutronStar : MapHook {
 		star.alwaysVisible = true;
 
 		@star.region = system.object;
-		star.temperature = 600000.0;
+		star.displayRadius = randomd(0.1, 0.2);
+		star.temperature = randomd(6000000.0, 1000000000000.0);
 		star.finalizeCreation();
 		system.object.enterRegion(star);
 
@@ -194,7 +199,7 @@ class MakeBlackhole : MapHook {
 
 		//SoI - Scaling: make supermassive black holes supermassive
 		double healthFactor = 1.0;
-		if(config::SUPERMASSIVE_BLACK_HOLES > 0 && getSystemType(data.systemType) is getSystemType("CoreBlackhole")) {
+		if(data !is null && config::SUPERMASSIVE_BLACK_HOLES > 0 && getSystemType(data.systemType) is getSystemType("CoreBlackhole")) {
 			radius *= 25;
 			system.radius += 75000;
 			healthFactor = 25.0;
@@ -382,11 +387,17 @@ class MakePlanet : MapHook {
 	array<const ResourceType@> resPossib;
 	bool distribute = false;
 	bool weight = false;
+	bool changeSystemRadius = true;
 	PlanetClass planetClass;
 
 	Document doc("Create a new planet in the system.");
-	Argument resource(AT_Custom, "distributed", doc="The primary resource on the planet. 'distributed' to randomize.");
-	Argument secondary_resource(AT_Custom, "none", doc="The secondary resource on the planet. 'ruled' to correlate the secondary resource with the resources defined by the primary resource. Should be Level 0 and non-exportable. Use with caution.");
+	Argument resource(AT_Custom, "distributed", doc=
+		"The primary resource on the planet. 'distributed' to randomize. +
+		'weighted' to randomize according to the planet classification.");
+	Argument secondary_resource(AT_Custom, "ruled", doc=
+		"The secondary resource on the planet. " +
+		"'none' to ignore. 'ruled' or 'distributed' to correlate the secondary resource with the resources defined by the primary resource. " +
+		"'distributed' will remove the resource from the distribution pool. Should be Level 0 and non-exportable. Use with caution.");
 
 	//SoI - Scaling
 	Argument radius(AT_Range, "60:140", doc="Size of the planet, can be a random range.");
@@ -397,7 +408,7 @@ class MakePlanet : MapHook {
 	Argument distribute_resource(AT_Boolean, "False", doc="Whether or not the selected resources should be frequency distributed.");
 	Argument moons(AT_Boolean, "True", doc="Whether this planet should have a randomized amount of moons generated on it to start with.");
 	Argument rings(AT_Boolean, "True", doc="Whether the planet can have rings generated around it.");
-	Argument classification(AT_Custom, "Rocky", doc="'Gas' for a gas planet, 'Icy' for an icy planet. Any other value defaults to a rocky planet.");
+	Argument classification(AT_Custom, "Rocky", doc="'Icy' for an icy planet. 'Gas' for a gas planet, followed by the Sudarsky classification (i.e. Gas III). Any other value defaults to a rocky planet.");
 	Argument giant(AT_Boolean, "False", doc="Whether the planet is giant.");
 	Argument force_native_biome(AT_Boolean, "False", doc="Whether to force the resource native biome on the whole planet surface");
 	Argument add_status(AT_Status, EMPTY_DEFAULT, doc="A status to add to the planet after it is spawned.");
@@ -412,8 +423,16 @@ class MakePlanet : MapHook {
 		else if(!parseResourceSpec(resPossib, resource.str))
 			return false;
 		//Get planet classification
-		if (classification.str.equals_nocase("gas"))
-			planetClass = PC_Gas;
+		if (classification.str.equals_nocase("gas i"))
+			planetClass = PC_Gas_I;
+		else if (classification.str.equals_nocase("gas ii"))
+			planetClass = PC_Gas_II;
+		else if (classification.str.equals_nocase("gas iii"))
+			planetClass = PC_Gas_III;
+		else if (classification.str.equals_nocase("gas iv"))
+			planetClass = PC_Gas_IV;
+		else if (classification.str.equals_nocase("gas v"))
+			planetClass = PC_Gas_V;
 		else if (classification.str.equals_nocase("icy"))
 			planetClass = PC_Icy;
 		else
@@ -459,15 +478,14 @@ class MakePlanet : MapHook {
 		double spacing = orbit_spacing.fromRange() * config::SYSTEM_SIZE;
 
 		//SoI - Gas Giants: make gas giants giant
-		//SoI - Ice Giants: make ice giants giant
 		if (resource !is null && giant.boolean) {
 			switch (planetClass)
 			{
-				case PC_Gas:
+				case PC_Gas_I:
 					planetRadius += 140;
 					spacing = randomd(5250, 5450);
 					break;
-				case PC_Icy:
+				case PC_Gas_III:
 					planetRadius += 100;
 					spacing = randomd(5000, 5200);
 					break;
@@ -480,7 +498,10 @@ class MakePlanet : MapHook {
 		planetRadius *= config::SCALE_PLANETS;
 		spacing *= config::SCALE_PLANETS;
 
-		system.radius += spacing;
+		//SoI - Changing the system radius after map generation somehow resets it to vanilla size
+		//when loading a game (using protoplanets, etc.) and causes a lot of issues
+		if (changeSystemRadius)
+			system.radius += spacing;
 
 		double pos = system.radius;
 		if(spacing == 0)
@@ -534,10 +555,18 @@ class MakePlanet : MapHook {
 		double scaledRadius = 0;
 
 		//SoI - Gas Giants: force the grid to a specific size to avoid a big surface displaying a scroll bar before even displaying moon bases
-		//SoI - Ice Giants: force the grid to a specific size to avoid a big surface displaying a scroll bar before even displaying moon bases
 		//The loss of space is not a problem since the biome is useless anyway
-		if (resource !is null && giant.boolean && (planetClass == PC_Gas || planetClass == PC_Icy))
-			scaledRadius = 160;
+		if (resource !is null && giant.boolean) {
+			switch (planetClass) {
+				case PC_Gas_I:
+				case PC_Gas_II:
+				case PC_Gas_III:
+				case PC_Gas_IV:
+				case PC_Gas_V:
+					scaledRadius = 160;
+					break;
+			}
+		}
 		else
 			//min_planet_radius + 100 * (radius - min_planet_radius) / (max_planet_radius - min_planet_radius)
 			scaledRadius = 60 * config::SCALE_PLANETS + 100 * (planetRadius - 60 * config::SCALE_PLANETS) / (140 * config::SCALE_PLANETS - 60 * config::SCALE_PLANETS);
@@ -555,7 +584,6 @@ class MakePlanet : MapHook {
 
 		//Figure out planet type
 		//SoI - Gas Giants: lock planet type on gas biome
-		//SoI - Ice Giants: lock planet type on ice biome
 		if (resource !is null && force_native_biome.boolean) {
 			const PlanetType@ planetType = getBestPlanetType(biome1, null, null);
 			planet.PlanetType = planetType.id;
@@ -589,7 +617,6 @@ class MakePlanet : MapHook {
 			resId = resource.id;
 
 		//SoI - Gas Giants: force gas giants to their base biome only
-		//SoI - Ice Giants: force ice giants to their base biome only
 		if (resource !is null && force_native_biome.boolean) {
 			planet.initSurface(resId, gridW, gridH, biome1.id);
 		}
@@ -603,9 +630,12 @@ class MakePlanet : MapHook {
 		plNode.planetType = planet.PlanetType;
 
 		//Setup rings
-		//SoI - Gas Giants: gas giants almost always have rings
-		//SoI - Ice Giants: ice giants almost always have rings
-		if (rings.boolean && (giant.boolean && randomi(0,9) < 9 || !giant.boolean && randomi(0,9) == 0)) {
+		//SoI - Gas Giants: gas giants almost always have rings (except class IV and V)
+		if (rings.boolean &&
+			(giant.boolean &&
+				planetClass != PC_Gas_IV &&
+				planetClass != PC_Gas_V &&
+				randomi(0,9) < 8 || !giant.boolean && randomi(0,9) == 0)) {
 			uint style = randomi();
 			plNode.addRing(style);
 			planet.setRing(style);
@@ -629,17 +659,17 @@ class MakePlanet : MapHook {
 		}
 
 		//Setup moons
-		//SoI - Gas Giants: gas giants should have at least 4 moons
-		//SoI - Ice Giants: ice giants should have at least 2 moons
+		//SoI - Gas Giants: gas giants usually have more moons
 		if (resource !is null && giant.boolean) {
 			int min, max;
 			switch (planetClass) {
-				case PC_Gas:
-					min = 4;
+				case PC_Gas_I:
+				case PC_Gas_II:
+					min = 0;
 					max = 8;
 					break;
-				case PC_Icy:
-					min = 2;
+				case PC_Gas_III:
+					min = 0;
 					max = 6;
 					break;
 				default:
@@ -658,26 +688,35 @@ class MakePlanet : MapHook {
 			}
 		}
 
-		//Add a secondary resource if any
-		if (!secondary_resource.str.equals_nocase("none")) {
-			string secondaryResourceSpec = "";
+		//Add secondary resources if any
+		if (resource !is null && !secondary_resource.str.equals_nocase("none")) {
 			if (secondary_resource.str.equals_nocase("ruled")) {
-				//Get the resource spec
 				for (uint i = 0, cnt = resource.secondaryResources.length; i < cnt; ++i) {
-					if (secondaryResourceSpec.length > 0)
-						secondaryResourceSpec += ":";
-					secondaryResourceSpec += resource.secondaryResources[i];
+					const ResourceType@ secondaryResource = getResource(resource.secondaryResources[i]);
+					if (secondaryResource !is null)
+						planet.addResource(secondaryResource.id);
 				}
 			}
-			else
-				secondaryResourceSpec = secondary_resource.str;
+			else {
+				string secondaryResourceSpec = "";
+				if (secondary_resource.str.equals_nocase("distributed")) {
+					//Get the resource spec
+					for (uint i = 0, cnt = resource.secondaryResources.length; i < cnt; ++i) {
+						if (secondaryResourceSpec.length > 0)
+							secondaryResourceSpec += ":";
+						secondaryResourceSpec += resource.secondaryResources[i];
+					}
+				}
+				else
+					secondaryResourceSpec = secondary_resource.str;
 
-			if (secondaryResourceSpec.length > 0) {
-				AddPlanetResource secondaryResourceHook;
-				secondaryResourceHook.initClass();
-				secondaryResourceHook.resID.str = secondaryResourceSpec;
-				secondaryResourceHook.instantiate();
-				secondaryResourceHook.trigger(data, system, planet);
+				if (secondaryResourceSpec.length > 0) {
+					AddPlanetResource secondaryResourceHook;
+					secondaryResourceHook.initClass();
+					secondaryResourceHook.resID.str = secondaryResourceSpec;
+					secondaryResourceHook.instantiate();
+					secondaryResourceHook.trigger(data, system, planet);
+				}
 			}
 		}
 
@@ -704,9 +743,11 @@ Planet@ spawnPlanetSpec(const vec3d& point, const string& resourceSpec, bool dis
 	plHook.rings.boolean = false;
 	plHook.conditions.boolean = false;
 	plHook.physics.boolean = physics;
+	plHook.changeSystemRadius = false;
 	if(radius != 0)
 		plHook.radius.set(radius);
 	plHook.instantiate();
+
 
 	Object@ current;
 
@@ -819,7 +860,7 @@ class SetupOrbit : MapHook {
 		if(cur is null || !cur.hasOrbit)
 			return;
 
-		double radius = arguments[0].fromRange() * config::SCALE_STARS;
+		double radius = arguments[0].fromRange(data.ranges) * config::SCALE_STARS;
 		vec3d pos = arguments[1].fromPosition() + system.position;
 		double pct = arguments[2].fromRange();
 		vec2d off = random2d();
@@ -1892,6 +1933,14 @@ void mapCopyRegion(SystemDesc@ from, SystemDesc@ to, uint typeMask = ~0) {
 	starHook.initClass();
 	starHook.instantiate();
 
+	MakeBlackhole blackHoleHook;
+	blackHoleHook.initClass();
+	blackHoleHook.instantiate();
+
+	MakeNeutronStar neutronHook;
+	neutronHook.initClass();
+	neutronHook.instantiate();
+
 	MakeAnomaly anomalyHook;
 	anomalyHook.initClass();
 	anomalyHook.instantiate();
@@ -1941,6 +1990,17 @@ void mapCopyRegion(SystemDesc@ from, SystemDesc@ to, uint typeMask = ~0) {
 			Asteroid@ base = cast<Asteroid>(obj);
 			base.wait();
 
+			//This avoids asteroids always having resource asteroid icons
+			if (base.cargoTypes != 0) {
+				roidHook.arguments[0].integer = base.cargoType[0];
+				roidHook.arguments[1].set(base.getCargoStored(base.cargoType[0]));
+				roidHook.noResource = false;
+			}
+			else {
+				roidHook.arguments[0].integer = -1;
+				roidHook.noResource = true;
+			}
+
 			roidHook.trigger(null, to, current);
 
 			Asteroid@ roid = cast<Asteroid>(current);
@@ -1948,18 +2008,32 @@ void mapCopyRegion(SystemDesc@ from, SystemDesc@ to, uint typeMask = ~0) {
 
 			for(uint i = 0, cnt = base.getAvailableCount(); i < cnt; ++i)
 				roid.addAvailable(base.getAvailable(i), base.getAvailableCost(i));
-
-			for(uint i = 0, cnt = base.cargoTypes; i < cnt; ++i)
-				roid.addCargo(base.cargoType[i], base.getCargoStored(base.cargoType[i]));
 		}
 		else if(obj.isStar) {
 			Star@ base = cast<Star>(obj);
 
-			starHook.arguments[0].set(base.temperature);
-			starHook.arguments[1].set(base.radius);
-			starHook.arguments[2].set(destPos - to.position);
+			if (base.temperature == 0.0) {
+				blackHoleHook.arguments[0].set(base.radius);
+				blackHoleHook.arguments[1].set(destPos - to.position);
 
-			starHook.trigger(null, to, current);
+				blackHoleHook.trigger(null, to, current);
+			}
+			else if (base.temperature > 0.0 && base.temperature < 600000.0) {
+				starHook.arguments[0].set(base.temperature);
+				starHook.arguments[1].set(base.radius);
+				starHook.arguments[2].set(destPos - to.position);
+
+				starHook.trigger(null, to, current);
+			}
+			else {
+				neutronHook.arguments[0].set(destPos - to.position);
+
+				neutronHook.trigger(null, to, current);
+
+				Star@ star = cast<Star>(current);
+				star.radius = base.radius;
+				star.temperature = base.temperature;
+			}
 		}
 		else if(obj.isArtifact) {
 			Artifact@ base = cast<Artifact>(obj);

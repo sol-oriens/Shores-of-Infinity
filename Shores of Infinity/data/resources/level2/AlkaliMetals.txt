@@ -1,0 +1,22 @@
+Resource: AlkaliMetals
+	Name: #ALKALI_METALS
+	Description: #ALKALI_METALS_DESC
+	Native Biome: SuperheatedFluids
+
+	Small Icon: AlkaliMetals
+	Icon: AlkaliMetals
+
+	Distribution: 0
+	Frequency: 0
+
+	Rarity: Rare
+	Level: 2
+	Affinity: Energy + Defense
+	Can Be Terraformed: False
+
+	Planet Classification: Gas IV
+
+	Secondary Resource: CommonGases
+
+	Pressure: 3 Energy
+	Pressure: 3 Defense

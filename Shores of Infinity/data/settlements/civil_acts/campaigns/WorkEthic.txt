@@ -1,0 +1,22 @@
+CivilAct: WorkEthic
+	Name: #CIVIL_ACT_WORK_ETHIC
+	Description: #CIVIL_ACT_WORK_ETHIC_DESC
+
+	Category: Campaigns
+
+	Maintenance: 20
+	Population Multiplier: True
+
+	Delay: 180
+
+	RequirePlanet()
+	RequireNotTrait(Ancient)
+	RequireNotTrait(Mechanoid)
+	RequireNotStatus(SettlementPrison)
+
+	ModCivResourceMult(Labor, 0.1)
+	ModCivResourceMult(Research, 0.1)
+	ModCivResourceMult(Defense, 0.1)
+	IfHaveTrait(StarChildren, ProduceAllPressure(Labor, 0.1))
+	IfHaveTrait(StarChildren, ProduceAllPressure(Research, 0.1))
+	IfHaveTrait(StarChildren, ProduceAllPressure(Defense, 0.1))

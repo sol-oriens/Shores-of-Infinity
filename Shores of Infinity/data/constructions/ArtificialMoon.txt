@@ -1,0 +1,30 @@
+Construction: ArtificialMoon
+	Name: #CONS_ARTIFICIAL_MOON
+	Description: #CONS_ARTIFICIAL_MOON_DESC
+
+	Icon: DwarfPlanet
+
+	Category: Infrastructure
+
+	Build Cost: 4000
+	Labor Cost: 500
+
+	ConsumeCargo(Ore, 2000)
+
+	RequireUnlockTag(ArtificialMoonUnlock)
+	RequireEither(RequirePlanet(), RequireOnOrbital(StagingHub))
+
+	Target: targ = Object
+
+	TargetFilterType(targ, Planet)
+	TargetFilterOwned(targ)
+	TargetFilterSameRegion(targ)
+
+	Trigger(targ, AddSurfaceArea(Moon, (6, 6)))
+	Trigger(targ, AddMoonGraphic(25))
+	Trigger(targ, AddStatus(ArtificialMoon))
+	Trigger(targ, AddResource(Labor, 3))
+	Trigger(targ, AddDummyResource(Water, 1))
+	Trigger(targ, AddDummyResource(Meat, 1))
+
+	Trigger(targ, ModEmpireAttribute(ArtificialMoonsBuilt, Add, 1))

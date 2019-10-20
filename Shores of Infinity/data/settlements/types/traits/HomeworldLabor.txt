@@ -1,0 +1,15 @@
+Settlement: HomeworldLabor
+	Name: #SETTLEMENT_HOMEWORLD
+	Description: #SETTLEMENT_HOMEWORLD_LABOR_DESC
+
+	Icon: PlanetImage
+
+	Morale Effect: Positive
+
+	RequireTrait(Communism)
+	addon_requirement_effects::RequireHome()
+	RequirePlanet()
+
+	AddStatus(PeriodicStoredLabor)
+	AddFleetEffectiveness(+3.0)
+	addon_planet_effects::PerPopulationAddLoyalty(1)

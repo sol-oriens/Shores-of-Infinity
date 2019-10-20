@@ -16,7 +16,7 @@ Module: FTLJammer
 
 	Build Cost: 500
 	Maintenance: 50
-	Labor Cost: 20
+	Labor Cost: 40
 
 	FTLMaintenance(0.15)
 

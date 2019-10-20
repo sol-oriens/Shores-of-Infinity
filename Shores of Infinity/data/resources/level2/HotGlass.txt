@@ -1,0 +1,23 @@
+Resource: HotGlass
+	Name: #GLASS
+	Description: #GLASS_DESC
+	Native Biome: SuperheatedFluids
+
+	Icon: ResourceIcons::27
+	Small Icon: ResourceIconsSmall::27
+
+	Distribution: 0
+	Frequency: 0
+
+	Level: 2
+	Rarity: Uncommon
+	Affinity: Money
+	Can Be Terraformed: False
+
+	Planet Classification: Gas V
+
+	Secondary Resource: CommonGases
+
+	Pressure: 5 Money
+
+	AddResource(Energy, 1)

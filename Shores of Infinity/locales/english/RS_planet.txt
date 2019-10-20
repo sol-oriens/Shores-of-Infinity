@@ -3,5 +3,14 @@ TT_EXPLORE_PLANET: <<
 
 	Study one of the sites of interest that have been discovered on this planet.
 >>
+
 BIOME_LIGHT_FLUIDS: Fluids
 BIOME_HEAVY_FLUIDS: Fluids
+BIOME_SUPERHEATED_FLUIDS: Fluids
+
+COND_PERMAFROST: Total Permafrost
+COND_PERMAFROST_DESC: <<
+	The resource gives half its pressure.
+
+	Can generate a water resource for this planet.
+>>

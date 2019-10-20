@@ -1,7 +1,7 @@
 import hooks;
 import statuses;
 from statuses import StatusHook;
-from resources import MoneyType;
+from resources import MoneyType, getResource;
 
 class BudgetMaintenanceData {
 	double amount;
@@ -22,11 +22,11 @@ class BudgetMaintenance : StatusHook {
 		if(per_shipsize.decimal != 0 && obj.isShip)
 			maintData.amount += cast<Ship>(obj).blueprint.design.size * per_shipsize.decimal;
 
-		if (type.str == "Buildings")
+		if (type.str.equals_nocase("Buildings"))
 			maintData.type = int(MoT_Buildings);
-		else if (type.str == "Colonizers")
+		else if (type.str.equals_nocase("Colonizers"))
 			maintData.type = int(MoT_Colonizers);
-		else if (type.str == "Planet Upkeep")
+		else if (type.str.equals_nocase("Planet Upkeep"))
 			maintData.type = int(MoT_Planet_Upkeep);
 		else
 			error("BudgetMaintenance: Invalid maintenance type specified.");
@@ -75,4 +75,20 @@ class BudgetMaintenance : StatusHook {
 		data.store(@maintData);
 	}
 #section all
+};
+
+class ConditionResourceType : StatusHook {
+	Document doc("This condition can only be on planets with a specific primary resource.");
+	Argument resource(AT_Custom, doc="Resource to check for.");
+
+	bool shouldApply(Empire@ emp, Region@ region, Object@ obj) const override {
+		if(!obj.hasResources)
+			return false;
+		auto@ type = getResource(obj.primaryResourceType);
+		if(type !is null) {
+			auto@ checkedType = getResource(resource.str);
+			return checkedType !is null && checkedType.id == type.id;
+		}
+		return false;
+	}
 };

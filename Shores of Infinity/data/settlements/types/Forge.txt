@@ -1,0 +1,29 @@
+Settlement: Forge
+	Name: #SETTLEMENT_FORGE
+	Description: #SETTLEMENT_FORGE_DESC
+
+	Icon: Forge5
+
+	Priority: 3
+
+	addon_requirement_effects::RequireNotHome()
+	RequirePlanet()
+	RequireStatus(Forge4, Count = 3)
+
+	AddDummyResource(Supercarbons, 1)
+	MultConstructionCost(0.8)
+
+Settlement: AncientForge
+	Name: #SETTLEMENT_FORGE
+	Description: #SETTLEMENT_ANCIENT_FORGE_DESC
+
+	Icon: AncientFoundry
+
+	Priority: 3
+
+	addon_requirement_effects::RequireNotHome()
+	RequirePlanet()
+	RequireStatus(AncientFoundry, Count = 12)
+
+	AddLaborFactor(1.5)
+	MultConstructionCost(0.8)

@@ -31,10 +31,14 @@ Trait: StarChildren
 
 	ForbidSubsystem(ColonizationPods)
 	UnlockSubsystem(MothershipHull)
+	OnDLC(Heralds, UnlockSubsystem(SuperstructureHull))
 	UnlockSubsystem(StarHabitatModule)
 
-	TriggerHomeworld(SpawnShip(Mothership, Set Home = True))
-	TriggerHomeworld(DestroySystemPlanet(0, Quiet = True))
+	GainInfluenceCard(Harvest)
+
+	TriggerHomeworld(PricedAsteroid(20, Supercarbons))
+	TriggerHomeworld(SpawnShip(Mothership, Set Home = True, Offset = 750, Free = True))
+	TriggerHomeworld(DestroySystemPlanet(1))
 
 	ReplaceTechnologyNodes(RingHabitat, HabitatUpgrade)
 

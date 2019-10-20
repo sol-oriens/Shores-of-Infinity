@@ -1,0 +1,34 @@
+SettlementFocus: MoneyHome
+	Name: #FOCUS_HOME
+	Description: #FOCUS_HOME_MONEY_DESC
+
+	Priority: 3
+
+	RequireTrait(Capitalism)
+	addon_requirement_effects::RequireHome()
+	addon_requirement_effects::RequirePopulation(5)
+
+	settlement_effects::AddSettlementResource(0.5, Money)
+
+SettlementFocus: Money
+	Name: #FOCUS_MONEY
+	Description: #FOCUS_MONEY_DESC
+
+	Priority: 3
+
+	RequireTrait(Capitalism)
+	addon_requirement_effects::RequireNotHome()
+	addon_requirement_effects::RequirePopulation(5)
+
+	settlement_effects::AddSettlementResource(0.25, Money)
+
+SettlementFocus: MoneyExtreme
+	Name: #FOCUS_MONEY_EXTREME
+	Description: #FOCUS_MONEY_EXTREME_DESC
+
+	Morale Effect: Very Negative
+
+	RequireTrait(Capitalism)
+	addon_requirement_effects::RequirePopulation(5)
+
+	settlement_effects::AddSettlementResource(0.75, Money)

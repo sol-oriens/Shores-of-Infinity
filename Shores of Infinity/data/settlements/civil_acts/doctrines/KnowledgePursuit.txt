@@ -1,0 +1,21 @@
+CivilAct: KnowledgePursuit
+	Name: #CIVIL_ACT_KNOWLEDGE_PURSUIT
+	Description: #CIVIL_ACT_KNOWLEDGE_PURSUIT_DESC
+
+	Category: Doctrines
+
+	Maintenance: 10
+	Population Multiplier: True
+
+	Delay: 180
+	Commitment: 1800
+
+	RequireNotStatus(SettlementPrison)
+	addon_requirement_effects::RequirePopulation(2)
+
+	settlement_effects::AddSettlementResource(0.1, Research)
+
+	ConvertResource(Influence, 1.0, Research, Convert Percent = 0.2)
+	ConvertResource(Energy, 1.0, Research, Convert Percent = 0.1)
+
+	AddLaborFactor(-0.1)

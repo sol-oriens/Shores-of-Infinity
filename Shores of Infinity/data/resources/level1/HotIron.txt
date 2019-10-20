@@ -1,0 +1,22 @@
+Resource: HotIron
+	Name: #IRON
+	Description: #IRON_DESC
+	Native Biome: SuperheatedFluids
+
+	Icon: ResourceIcons::7
+	Small Icon: ResourceIconsSmall::15
+
+	Distribution: 0
+	Frequency: 0
+
+	Level: 1
+	Affinity: Labor
+	Can Be Terraformed: False
+
+	Planet Classification: Gas V
+
+	Secondary Resource: CommonGases
+
+	Pressure: 6 Labor
+
+	ModSupportBuildSpeed(+0.3)

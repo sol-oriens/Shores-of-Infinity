@@ -5,6 +5,8 @@ import buildings;
 from buildings import IBuildingHook;
 import constructions;
 from constructions import IConstructionHook;
+import settlements;
+from settlements import ISettlementHook;
 import resources;
 from biomes import getBiome;
 
@@ -14,7 +16,7 @@ from construction.Constructible import Constructible;
 from influence_global import getSenateLeader;
 #section all
 
-class Requirement : Hook, IOrbitalEffect, IBuildingHook, IConstructionHook {
+class Requirement : Hook, IOrbitalEffect, IBuildingHook, IConstructionHook, ISettlementHook {
 	bool meets(Object& obj, bool ignoreState = false) const {
 		return true;
 	}
@@ -109,6 +111,12 @@ class Requirement : Hook, IOrbitalEffect, IBuildingHook, IConstructionHook {
 	bool getCost(Object& obj, string& value, Sprite& icon) const { return false; }
 	bool consume(Object& obj) const { return true; }
 	void reverse(Object& obj) const {}
+
+	//Settlements
+	void enable(Object& obj, any@ data) const {}
+  void disable(Object& obj, any@ data) const {}
+	bool canEnable(Object& obj) const { return meets(obj); }
+	void tick(Object& obj, any@ data, double time) const {}
 };
 
 class RequireTrait : Requirement {
@@ -348,11 +356,12 @@ class RequireMoreMoonsThanStatus : Requirement {
 class RequireStatus : Requirement {
 	Document doc("Require that a particular status is present to build this.");
 	Argument status(AT_Status, doc="Status type to check for.");
+	Argument count(AT_Integer, "1", doc="Minimal number of statuses of this type to require.");
 
 	bool meets(Object& obj, bool ignoreState = false) const override {
 		if(!obj.hasStatuses)
 			return false;
-		return obj.getStatusStackCountAny(status.integer) > 0;
+		return obj.getStatusStackCountAny(status.integer) >= uint(count.integer);
 	}
 };
 

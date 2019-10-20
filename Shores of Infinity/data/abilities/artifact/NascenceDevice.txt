@@ -1,0 +1,15 @@
+Ability: NascenceDevice
+	Name: #ABL_NASCENCE_DEVICE
+	Description: #ABL_NASCENCE_DEVICE_DESC
+	Icon: ResourceClassIcons::3
+	Activate Sound: genesis_activate
+
+	Energy Cost: 750
+	ReduceEnergyCostSystemFlag(0.75, CheapArtifacts)
+
+	Target: targ = Object
+	TargetFilterType(targ, Planet)
+	TargetFilterOwned(targ)
+
+	Trigger(targ, AddRandomResource(Fruit:Grain:Meat))
+	TriggerEffectOnce(targ, PlayParticles(GenesisDevice, 1.03))

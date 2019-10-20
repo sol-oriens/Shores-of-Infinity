@@ -1,6 +1,7 @@
 import settings.game_settings;
 from empire_ai.EmpireAI import AIController;
 
+import AIComponent@ createEvents() from "empire_ai.weasel.Events";
 import AIComponent@ createColonization() from "empire_ai.weasel.Colonization";
 import AIComponent@ createResources() from "empire_ai.weasel.Resources";
 import AIComponent@ createPlanets() from "empire_ai.weasel.Planets";
@@ -337,10 +338,11 @@ final class AIBehavior {
 final class AIDefs {
 	const BuildingType@ Factory;
 	const BuildingType@ LaborStorage;
-	const OrbitalModule@ Shipyard;
-	const OrbitalModule@ TradeOutpost;
-	const OrbitalModule@ Starport;
 	const ConstructionType@ MoonBase;
+	const OrbitalModule@ Shipyard;
+	const OrbitalModule@ Starport;
+	const OrbitalModule@ TradeOutpost;
+	const OrbitalModule@ TradeStation;
 };
 
 final class AI : AIController, Savable {
@@ -359,6 +361,7 @@ final class AI : AIController, Savable {
 
 	array<IAIComponent@> components;
 	array<ProfileData> profileData;
+	IAIComponent@ events;
 	IAIComponent@ fleets;
 	IAIComponent@ budget;
 	IAIComponent@ colonization;
@@ -390,6 +393,7 @@ final class AI : AIController, Savable {
 	void createComponents() {
 		//NOTE: This is also save/load order, so
 		//make sure to add loading logic when changing this list
+		@events = add(createEvents());
 		@budget = add(createBudget());
 		@planets = add(createPlanets());
 		@resources = add(createResources());

@@ -14,8 +14,8 @@ Module: SingularityLab
 	Armor: 6000
 
 	Build Cost: 800
-	Maintenance: 25
-	Labor Cost: 25
+	Maintenance: 90
+	Labor Cost: 50
 
 	RequireBlackHoleSystem()
 	LimitOncePerSystem(SingularityLabFlag)

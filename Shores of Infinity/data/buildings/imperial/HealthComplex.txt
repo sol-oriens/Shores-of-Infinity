@@ -18,7 +18,8 @@ Building: HealthComplex
 
 	TriggerStartConstruction( AddStatus(HealthComplexCost) )
 	TriggerCancelConstruction( RemoveStatusInstance(HealthComplexCost) )
+	TriggerDestroyed( RemoveStatusInstance(HealthComplexCost) )
 	addon_consume_effects::ConsumeResearchStatusCount(HealthComplexCost, Base Amount = 100, Amount = 100)
 
-  AddMaxPopulation(1)
+ 	AddMaxPopulation(1)
 	ModPopulationGrowth(0.1)

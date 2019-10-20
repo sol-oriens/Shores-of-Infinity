@@ -53,7 +53,7 @@ final class AmbienceGroup {
 					volume = max(volume - time, 0.0);
 
 					//SoI - Scaling
-					sound.volume = volume * sqrt(active.scale / (20 * config::SCALE_SPACING));
+					sound.volume = volume * sqrt(active.scale / (40 * config::SCALE_SPACING));
 				}
 				else {
 					sound.pause();
