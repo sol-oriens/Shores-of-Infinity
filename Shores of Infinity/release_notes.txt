@@ -19,6 +19,11 @@ v0.3.1b
 - Mechanoids now correctly indicate in their description that they ignore all morale modifiers.
 - Star children now correctly indicate in their description that they start with 1 Harvest influence card.
 
+[*] Orbitals
+
+- Fixed being able to import resources to orbitals with module slots.
+- Fixed not being able to import resources to staging hubs with a public market module. 
+
 v0.3.0b
 
 **************************
