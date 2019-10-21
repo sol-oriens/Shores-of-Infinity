@@ -4,7 +4,7 @@ v0.3.2b
 *** Release Highlights ***
 **************************
 
-*** Minor additions, adjustments and fixes related to gameplay.
+*** Fixes related to gameplay.
 
 ************************
 *** Detailed Changes ***
