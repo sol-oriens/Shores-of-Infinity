@@ -14,8 +14,7 @@ CivilAct: KnowledgePursuit
 	addon_requirement_effects::RequirePopulation(2)
 
 	settlement_effects::AddSettlementResource(0.1, Research)
-
-	ConvertResource(Influence, 1.0, Research, Convert Percent = 0.2)
-	ConvertResource(Energy, 1.0, Research, Convert Percent = 0.1)
+	settlement_effects::ConvertSettlementResource(Influence, 1.0, Research, Convert Percent = 0.2)
+	settlement_effects::ConvertSettlementResource(Energy, 1.0, Research, Convert Percent = 0.1)
 
 	AddLaborFactor(-0.1)

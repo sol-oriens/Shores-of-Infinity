@@ -2687,6 +2687,10 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 		calculateSightRange(obj);
 	}
 
+	void modContainShipCivilUnrest(Object& obj, double mod) {
+		//TODO containCivilUnrest += mod;
+	}
+
 	void writeOrders(const Object& obj, Message& msg) {
 		msg.writeAlign();
 		uint cntPos = msg.reserve();

@@ -14,5 +14,4 @@ CivilAct: MilitaryIndustrialComplex
 	addon_requirement_effects::RequirePopulation(2)
 
 	settlement_effects::AddSettlementResource(0.2, Defense)
-
-	ConvertResource(Influence, 1.0, Defense, Convert Percent = 0.2)
+	settlement_effects::ConvertSettlementResource(Influence, 1.0, Defense, Convert Percent = 0.2)

@@ -142,7 +142,7 @@ server:
 	float getCivResourceMod(uint resource);
 	void modColonyShipAccel(double mod);
 	void modBaseLoyalty(int mod);
-	void modContainCivilUnrest(double mod);
+	void modContainSurfaceCivilUnrest(double mod);
 	void setGraphicsFlag(uint flag, bool value);
 	void modIncome(int mod);
 	void set_maxLevel(int level);
