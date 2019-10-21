@@ -313,40 +313,59 @@ tidy class SettlementManager : Component_Settlement, Savable {
 	void save(SaveFile& file) {
 		file << obj;
 		file << _isActive;
-		if (_isActive) {
-			file << _morale;
-			file << _focusId;
-			file << _autoFocus;
+
+		if (!_isActive)
+			return;
+
+		file << _morale;
+		file << _focusId;
+		file << _autoFocus;
+		if (settlementType is null)
+			file.write0();
+		else {
+			file.write1();
 			file << settlementType;
-			file << focus;
-			uint cnt = civilActs.length;
-			file << cnt;
-			for(uint i = 0; i < cnt; ++i)
-				file << civilActs[i];
-			file << _notifiedCivilUnrest;
 		}
+		if (focus is null)
+			file.write0();
+		else {
+			file.write1();
+			file << focus;
+		}
+		uint cnt = civilActs.length;
+		file << cnt;
+		for(uint i = 0; i < cnt; ++i)
+			file << civilActs[i];
+		file << _notifiedCivilUnrest;
 	}
 
 	void load(SaveFile& file) {
 		@obj = file.readObject();
 		file >> _isActive;
-		if (_isActive) {
-			file >> _morale;
-			file >> _focusId;
-			file >> _autoFocus;
+		if (!_isActive)
+			return;
+
+		file >> _morale;
+		file >> _focusId;
+		file >> _autoFocus;
+		if (!file.readBit())
+			@settlementType = Settlement(getSettlementType(0));
+		else {
 			@settlementType = Settlement();
 			file >> settlementType;
+		}
+		if (file.readBit()) {
 			@focus = SettlementFocus();
 			file >> focus;
-			uint cnt = 0;
-			file >> cnt;
-			civilActs.length = cnt;
-			for(uint i = 0; i < cnt; ++i) {
-				@civilActs[i] = CivilAct();
-				file >> civilActs[i];
-			}
-			file >> _notifiedCivilUnrest;
 		}
+		uint cnt = 0;
+		file >> cnt;
+		civilActs.length = cnt;
+		for (uint i = 0; i < cnt; ++i) {
+			@civilActs[i] = CivilAct();
+			file >> civilActs[i];
+		}
+		file >> _notifiedCivilUnrest;
 	}
 
 	void writeSettlement(Message& msg) const {
@@ -360,18 +379,18 @@ tidy class SettlementManager : Component_Settlement, Savable {
 		msg << _focusId;
 		msg << _autoFocus;
 		msg << settlementTypeId;
-		if(civilActs.length == 0) {
-			msg.write0();
-			return;
-		}
 		Lock lck(mtx);
-		uint cnt = civilActs.length;
-		msg.write1();
-		msg << cnt;
-		for(uint i = 0; i < cnt; ++i) {
-			msg << civilActs[i].type.id;
-			msg << getCivilActTimerType(i);
-			msg << getCivilActTimer(i);
+		if(civilActs.length == 0)
+			msg.write0();
+		else {
+			msg.write1();
+			uint cnt = civilActs.length;
+			msg << cnt;
+			for(uint i = 0; i < cnt; ++i) {
+				msg << civilActs[i].type.id;
+				msg << getCivilActTimerType(i);
+				msg << getCivilActTimer(i);
+			}
 		}
 	}
 

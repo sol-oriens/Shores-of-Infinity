@@ -223,40 +223,41 @@ tidy class SettlementManager : Component_Settlement {
 		@settlementType = Settlement(getSettlementType(id));
 		if (_focusId > -1)
 			@focus = SettlementFocus(getSettlementFocusType(_focusId));
-		if(!msg.readBit()) {
+		if (!msg.readBit()) {
 			if(civilActs.length != 0) {
 				Lock lck(mtx);
 				civilActs.length = 0;
 			}
-			return;
 		}
-		Lock lck(mtx);
-		uint cnt = 0;
-		msg >> cnt;
-		civilActs.length = cnt;
-		for(uint i = 0; i < cnt; ++i) {
-			msg >> id;
-			@civilActs[i] = CivilAct(getCivilActType(id));
-			msg >> timerType;
-			msg >> timer;
-			switch (timerType) {
-				case CAT_Delay:
-					civilActs[i].currentDelay = timer;
-					break;
-				case CAT_Commitment:
-					civilActs[i].currentDelay = 0;
-					civilActs[i].currentCommitment = timer;
-					break;
-				case CAT_Duration:
-					civilActs[i].currentDelay = 0;
-					civilActs[i].currentCommitment = 0;
-					civilActs[i].currentDuration = timer;
-					break;
-				default:
-					civilActs[i].currentDelay = 0;
-					civilActs[i].currentCommitment = 0;
-					civilActs[i].currentDuration = INFINITY;
-					break;
+		else {
+			Lock lck(mtx);
+			uint cnt = 0;
+			msg >> cnt;
+			civilActs.length = cnt;
+			for(uint i = 0; i < cnt; ++i) {
+				msg >> id;
+				@civilActs[i] = CivilAct(getCivilActType(id));
+				msg >> timerType;
+				msg >> timer;
+				switch (timerType) {
+					case CAT_Delay:
+						civilActs[i].currentDelay = timer;
+						break;
+					case CAT_Commitment:
+						civilActs[i].currentDelay = 0;
+						civilActs[i].currentCommitment = timer;
+						break;
+					case CAT_Duration:
+						civilActs[i].currentDelay = 0;
+						civilActs[i].currentCommitment = 0;
+						civilActs[i].currentDuration = timer;
+						break;
+					default:
+						civilActs[i].currentDelay = 0;
+						civilActs[i].currentCommitment = 0;
+						civilActs[i].currentDuration = INFINITY;
+						break;
+				}
 			}
 		}
 	}
