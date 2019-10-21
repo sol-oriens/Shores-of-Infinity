@@ -1376,7 +1376,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		}
 	}
 
-	void modContainCivilUnrest(Object& obj, double mod) {
+	void modContainSurfaceCivilUnrest(Object& obj, double mod) {
 		containCivilUnrest += mod;
 	}
 

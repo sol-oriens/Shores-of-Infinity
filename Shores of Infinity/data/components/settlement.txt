@@ -2,7 +2,6 @@ Object.Settlement : components.SettlementManager::SettlementManager {
 restricted local:
 	bool get_isSettlement() const;
 	uint get_morale() const;
-	void modMorale(double value);
 	uint get_settlementTypeId() const;
 	uint get_focusId() const;
 	bool get_autoFocus() const;
@@ -20,6 +19,7 @@ restricted remote:
 server:
 	void initSettlement();
 	void clearSettlement(Empire@ emp);
+	void modMorale(double value);
 	void settlementTick(double time);
 	void writeSettlement(Message& msg) const;
 	bool writeSettlementDelta(Message& msg) const;

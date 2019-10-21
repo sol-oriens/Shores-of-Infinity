@@ -1,4 +1,4 @@
-v0.3.2b
+v0.3.3b
 
 **************************
 *** Release Highlights ***
@@ -13,6 +13,22 @@ v0.3.2b
 [*] Settlements
 
 - Farm World now additionally require a native Water resource, but can replace a Level 1 resource.
+
+v0.3.2b
+
+**************************
+*** Release Highlights ***
+**************************
+
+*** Fixes related to gameplay.
+
+************************
+*** Detailed Changes ***
+************************
+
+[*] Gameplay
+
+- Fixed several script errors that could crash the game.
 
 v0.3.1b
 

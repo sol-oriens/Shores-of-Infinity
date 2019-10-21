@@ -11,11 +11,17 @@ class ContainCivilUnrest : SettlementHook {
 
 #section server
 	void enable(Object& obj, any@ data) const override {
-		obj.modContainCivilUnrest(amount.decimal);
+		if (obj.isPlanet)
+			obj.modContainSurfaceCivilUnrest(amount.decimal);
+		else
+			obj.modContainShipCivilUnrest(amount.decimal);
 	}
 
 	void disable(Object& obj, any@ data) const override {
-		obj.modContainCivilUnrest(-amount.decimal);
+		if (obj.isPlanet)
+			obj.modContainSurfaceCivilUnrest(-amount.decimal);
+		else
+			obj.modContainShipCivilUnrest(-amount.decimal);
 	}
 #section all
 };
@@ -98,6 +104,90 @@ class AddSettlementResource : SettlementHook {
 		double amt = 0.0;
 		file >> amt;
 		data.store(amt);
+	}
+#section all
+};
+
+class ConvertSettlementResource : SettlementHook {
+	Document doc("Convert all civilian income of a particular type to income of a different type.");
+	Argument resource(AT_TileResource, doc="Type of income resource to convert.");
+	Argument factor(AT_Decimal, doc="Multiplier to the amount of income taken away.");
+	Argument income(AT_TileResource, doc="Type of income to generate, after multiplication.");
+	Argument maximum_converted(AT_Decimal, "-1", doc="Maximum amount of resource of the first type that is converted.");
+	Argument convert_percent(AT_Decimal, "1", doc="Percentage of the original resource to be converted. The rest is left alone.");
+
+#section server
+	void enable(Object& obj, any@ data) const override {
+		ConvertData info;
+		data.store(@info);
+	}
+
+	void disable(Object& obj, any@ data) const override {
+		ConvertData@ info;
+		data.retrieve(@info);
+
+		if(info.given > 0)
+			modResource(obj, income.integer, -info.given);
+		if(info.taken > 0)
+			modResource(obj, resource.integer, +info.taken);
+	}
+
+	void tick(Object& obj, any@ data, double time) const override {
+		ConvertData@ info;
+		data.retrieve(@info);
+
+		//Check rate
+		double curProd = obj.isPlanet
+			? obj.getResourceProduction(resource.integer)
+			: 0; //TODO
+		double total = info.taken + curProd;
+
+		double target = total * (1.0 - convert_percent.decimal);
+		target = clamp(target, 0.0, total);
+
+		double newTaken = total - target;
+		if(maximum_converted.decimal >= 0)
+			newTaken = min(newTaken, maximum_converted.decimal);
+
+		if(newTaken != info.taken) {
+			modResource(obj, resource.integer, -(newTaken - info.taken));
+			info.taken = newTaken;
+		}
+
+		double newGiven = newTaken * factor.decimal;
+		if(newGiven != info.given) {
+			modResource(obj, income.integer, newGiven - info.given);
+			info.given = newGiven;
+		}
+	}
+
+	void modResource(Object& obj, int type, double amt) {
+		if (obj.isPlanet)
+			obj.modResource(type, amt);
+		// TODO else {}
+	}
+
+	void save(any@ data, SaveFile& file) const override {
+		ConvertData@ info;
+		data.retrieve(@info);
+		file << info.given;
+		file << info.taken;
+	}
+
+	void load(any@ data, SaveFile& file) const override {
+		ConvertData info;
+		if(file >= SV_0079) {
+			file >> info.given;
+			file >> info.taken;
+		}
+		else {
+			double current = 0;
+			double rate = 0;
+			file >> current;
+			if(file >= SV_0049)
+				file >> rate;
+		}
+		data.store(@info);
 	}
 #section all
 };
