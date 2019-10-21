@@ -10,7 +10,7 @@
 		[i]This version is a beta. Balance is experimental and far from final. Game progression may also feel a bit slow, especially in the beginning of the game; this will be fine-tuned and balanced with more content in future versions.
 		Competitive multiplayer games are not recommended until balance is fine-tuned.[/i]
 
-		[h1]Current version: 0.3.1b[/h1]
+		[h1]Current version: 0.3.2b[/h1]
 		[i]Based on Rising Stars v1.2.1[/i]
 
 		[h1][b]Features[/b][/h1]
