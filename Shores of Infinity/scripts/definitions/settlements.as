@@ -5,6 +5,8 @@ import util.formatting;
 
 from statuses import getStatusID;
 
+const double CIVIL_UNREST_CHECK_TIMER = 30.0;
+
 const string VeryPositive = "Very Positive";
 const string Positive = "Positive";
 const string None = "None";
@@ -96,9 +98,7 @@ abstract class MoraleModifier {
 				return LocalMoraleEffect();
 			return _moraleEffect;
 		}
-		set {
-			@_moraleEffect = value;
-		}
+		set { @_moraleEffect = value; }
 	}
 };
 
@@ -620,6 +620,19 @@ double getSettlementPopulation(Object& obj) {
 			pop = obj.getStatusStackCountAny(mothershipPopulationStatus);
 	}
 	return pop;
+}
+
+int getSettlementBaseIncome(Object& obj) {
+	int income = 0;
+	if (obj.hasSurfaceComponent)
+		income = 50;
+	else if (obj.hasStatuses) {
+		if (obj.getStatusStackCountAny(shipPopulationStatus) > 0)
+			income = 15;
+		else if (obj.getStatusStackCountAny(mothershipPopulationStatus) > 0)
+			income = 15;
+	}
+	return income;
 }
 
 const SettlementType@ getSettlement(Object& obj) {

@@ -17,6 +17,7 @@ restricted remote:
 	void removeCivilAct(uint id);
 
 server:
+	bool checkCivilUnrestContainment(double containCivilUnrest);
 	void initSettlement();
 	void clearSettlement(Empire@ emp);
 	void modMorale(double value);

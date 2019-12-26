@@ -25,6 +25,7 @@ import util.target_search;
 import ship_groups;
 import design_settings;
 import empire;
+import settlements;
 import ABEM_data;
 
 tidy class ActiveConstruction {
@@ -141,6 +142,8 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 	uint supplyGhost = 0;
 	uint supplyOrdered = 0;
 	uint supplySatellite = 0;
+
+	double containCivilUnrest = 0;
 
 	uint nextConstructionId = 0;
 	ActiveConstruction@[] activeConstructions;
@@ -2687,8 +2690,29 @@ tidy class LeaderAI : Component_LeaderAI, Savable {
 		calculateSightRange(obj);
 	}
 
+	double moraleUpdateTimer = CIVIL_UNREST_CHECK_TIMER;
+	void updateLoyalty(Object& obj, double time) {
+		if (obj.isShip) {
+			Ship@ ship = cast<Ship>(obj);
+			bool civilUnrest = ship.morale + ship.owner.GlobalMorale.value <= SM_VeryLow;
+			if (civilUnrest) {
+				moraleUpdateTimer -= time;
+				if (moraleUpdateTimer <= 0) {
+					moraleUpdateTimer = CIVIL_UNREST_CHECK_TIMER;
+					if (ship !is null && !ship.checkCivilUnrestContainment(containCivilUnrest)) {
+						//ship.damageAllHexes(ship.blueprint.design.size * 0.1 * time, null);
+						//if (randomd(0.1, 1.0) >= 0.6)
+							ship.startFire();
+					}
+				}
+			}
+			else if (moraleUpdateTimer <= CIVIL_UNREST_CHECK_TIMER)
+				moraleUpdateTimer = CIVIL_UNREST_CHECK_TIMER;
+		}
+	}
+
 	void modContainShipCivilUnrest(Object& obj, double mod) {
-		//TODO containCivilUnrest += mod;
+		containCivilUnrest += mod;
 	}
 
 	void writeOrders(const Object& obj, Message& msg) {

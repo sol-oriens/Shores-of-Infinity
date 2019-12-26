@@ -62,7 +62,7 @@ v0.3.0b
 *** Release Highlights ***
 **************************
 
-*** Improvements and rebalances have been made across the board to make the mod more balanced and overall more polished.
+*** Improvements and rebalances have been made across the board to make the mod more polished.
 
 *** Quality of life features have been added, such as the possibility to automate cargo haulage from one point to another, including the automatic use of FTL.
 
@@ -103,7 +103,7 @@ v0.3.0b
 	- Tier III: Increases Labor generation by 60%. Base and maintenance costs of 1M and 150k, respectively. Also costs 200 Labor to build. Consumes 36 Ore / minute when the planet is using labor to build.
 	- Tier IV: Increases Labor generation by 80%. Base and maintenance costs of 2M and 200k, respectively. Also costs 400 Labor to build. Consumes 48 Ore / minute when the planet is using labor to build.
 	- Tier V: Increases Labor generation by 100%. Base and maintenance costs of 4M and 250k, respectively. Also costs 800 Labor to build. Consumes 60 Ore / minute when the planet is using labor to build.
-- Space elevators now cost 1M (up from 750k), no longer costs labor and instead has a build time of 8m.
+- Space elevators now cost 1M (up from 750k), no longer cost labor and instead have a build time of 8m.
 - Arcologies have been rebalanced. Each one now adds 3 population (down from 5), replaces 3 cities (down from 5) and increases pressure cap by 3. They now have a build time of 7m and a build cost of 2M (down from 2.5M) as well as an Ore cost of 1.5k (down from 2k), and no longer cost labor.
 - Spires now have a build time of 9m (up from 3m).
 - Fixed a bug where the research cost was not updated when a healthcare complex is removed.
@@ -121,12 +121,12 @@ v0.3.0b
 
 [*] Government Traits
 
-- Vanilla governments boni have been removed in favor of the government-related boni provided by settlements.
+- Vanilla government boni have been removed in favor of the government-related boni provided by settlements.
 
 [*] Lifestyles
 
 - Star Children now have Superstructure Hull unlocked at game start (WotH DLC only).
-- Star Children are now smart enough to use crop regulation before their homeworld gets destroyed and start with one Harvest influence card.
+- Star Children are now smart enough to use crop regulation before their homeworld is destroyed and start with one Harvest influence card.
 - Ancients now indicate in their description that they ignore all morale modifiers.
 
 [*] Orbitals
@@ -163,7 +163,7 @@ v0.3.0b
 
 - Artificial Moons secret project was renamed to Supermoons. Now requires building 5 artificial moons. Unlocks the Supermoon construction. Still requires the WotH DLC.
 - Artificial Moons is now a regular research node. Does not require the WotH DLC.
-- Fixed an overlook where Verdant lifestyle could research Metropolitan Optimization and Arcologies nodes. These nodes are now replaced with Modular Habitats nodes.
+- Fixed an oversight where Verdant lifestyle could research Metropolitan Optimization and Arcologies nodes. These nodes are now replaced with Modular Habitats nodes.
 - Verdant lifestyle now has an additional Modular Habitats node where the Megacities node normally is.
 
 [*] Resources

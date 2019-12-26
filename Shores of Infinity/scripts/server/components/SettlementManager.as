@@ -17,6 +17,8 @@ tidy class SettlementManager : Component_Settlement, Savable {
 	private double _morale;
 	private int _focusId;
 	private bool _autoFocus;
+	private int _taxFactor;
+	private int _incomeModifier;
 
 	private bool _notifiedCivilUnrest = false;
 
@@ -55,9 +57,7 @@ tidy class SettlementManager : Component_Settlement, Savable {
 		_morale += value;
 	}
 
-	uint get_settlementTypeId() const {
-		return settlementType !is null ? settlementType.type.id : 0;
-	}
+	uint get_settlementTypeId() const { return settlementType !is null ? settlementType.type.id : 0; }
 
 	void setType(uint id) {
 		const SettlementType@ type = getSettlementType(id);
@@ -80,9 +80,7 @@ tidy class SettlementManager : Component_Settlement, Savable {
 		delta = true;
 	}
 
-	uint get_focusId() const {
-		return _focusId;
-	}
+	uint get_focusId() const { return _focusId; }
 
 	void setFocus(uint id) {
 		const SettlementFocusType@ type = getSettlementFocusType(id);
@@ -106,13 +104,22 @@ tidy class SettlementManager : Component_Settlement, Savable {
 		delta = true;
 	}
 
-	bool get_autoFocus() const {
-		return _autoFocus;
-	}
-
+	bool get_autoFocus() const { return _autoFocus; }
 	void set_autoFocus(bool value) {
 		_autoFocus = value;
 		delta = true;
+	}
+
+	int get_taxFactor() const { return _taxFactor; }
+	void set_taxFactor(int value) { _taxFactor = value; }
+
+	void refreshIncomeModifier() {
+		int baseIncome = getSettlementBaseIncome(obj);
+		int newMod = baseIncome * 2 * (_taxFactor - 0.5) * getSettlementPopulation(obj);
+		if (newMod != _incomeModifier) {
+			obj.owner.modMaintenance(-(newMod - _incomeModifier), MoT_Planet_Income);
+			_incomeModifier = newMod;
+		}
 	}
 
 	uint getCivilActTypeId(uint index) const {
@@ -211,12 +218,24 @@ tidy class SettlementManager : Component_Settlement, Savable {
 		}
 	}
 
+	bool checkCivilUnrestContainment(double containCivilUnrest) {
+		double lossThreshold = 0.8;
+		if (obj.morale + obj.owner.GlobalMorale.value == SM_Critical)
+			lossThreshold = 0.4;
+		double roll = randomd(0.1 - containCivilUnrest, 1.0);
+		if (roll >= lossThreshold || roll >= 0.95 /* Fumble! */)
+			return false;
+		return true;
+	}
+
 	void initSettlement(Object& obj) {
 		@this.obj = obj;
 		_morale = 0;
 		_focusId = -1;
 		_autoFocus = true;
 		_isActive = true;
+		_taxFactor = 0;
+		_incomeModifier = 0;
 		_notifiedCivilUnrest = false;
 	}
 
@@ -272,6 +291,8 @@ tidy class SettlementManager : Component_Settlement, Savable {
 
 		if (focus !is null)
 			focus.tick(obj, time);
+
+		//refreshIncomeModifier();
 
 		for(uint i = 0, cnt = civilActs.length; i < cnt; ++i) {
 			auto@ civilAct = civilActs[i];

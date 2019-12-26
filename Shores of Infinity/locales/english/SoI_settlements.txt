@@ -13,7 +13,7 @@ TT_MORALE: <<|
 	its support for the local government and criminality level.
 
 	When too low, civil unrest will ensue, which will cause revolts and civil wars, leading to the colony losing
-	loyalty being and being abandoned if not addressed quickly.
+	loyalty and being abandoned if not addressed quickly.
 >>
 
 SETTLEMENT_COLONY: Colony

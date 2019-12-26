@@ -99,8 +99,9 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 	double tileDevelopRate = 1.0;
 	double bldConstructRate = 1.0;
 	double undevelopedMaint = 1.0;
-	double containCivilUnrest = 0;
 	double colonyshipAccel = 1.0;
+	
+	double containCivilUnrest = 0;
 
 	uint gfxFlags = 0;
 
@@ -1194,7 +1195,7 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 	}
 
 	uint siegeMask = 0;
-	double moraleUpdateTimer = 30.0;
+	double moraleUpdateTimer = CIVIL_UNREST_CHECK_TIMER;
 	void updateLoyalty(Object& obj, double time) {
 		Region@ reg = obj.region;
 		if(obj.owner is null || !obj.owner.valid || reg is null) {
@@ -1353,12 +1354,8 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		if (civilUnrest) {
 			moraleUpdateTimer -= time;
 			if (moraleUpdateTimer <= 0) {
-				moraleUpdateTimer = 30.0;
-				double lossThreshold = 0.8;
-				if (obj.morale + obj.owner.GlobalMorale.value == SM_Critical)
-					lossThreshold = 0.4;
-				double roll = randomd(0.1 - containCivilUnrest, 1.0);
-				if (roll >= lossThreshold || roll >= 0.95 /* Fumble! */) {
+				moraleUpdateTimer = CIVIL_UNREST_CHECK_TIMER;
+				if (!obj.checkCivilUnrestContainment(containCivilUnrest)) {
 					LoyaltyPenalty++;
 					if (!contested && LoyaltyPenalty >= BaseLoyalty + obj.owner.GlobalLoyalty.value) {
 						LoyaltyPenalty = 0;
@@ -1371,8 +1368,8 @@ tidy class SurfaceComponent : Component_SurfaceComponent, Savable {
 		else {
 			if (LoyaltyPenalty > 0)
 				LoyaltyPenalty--;
-			if (moraleUpdateTimer <= 30.0)
-				moraleUpdateTimer = 30.0;
+			if (moraleUpdateTimer <= CIVIL_UNREST_CHECK_TIMER)
+				moraleUpdateTimer = CIVIL_UNREST_CHECK_TIMER;
 		}
 	}
 
