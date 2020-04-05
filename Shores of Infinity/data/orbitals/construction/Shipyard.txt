@@ -37,4 +37,4 @@ Module: Shipyard
 	AllowLaborImport()
 	ForbidLaborExport()
 
-	AI:RegisterForUse(Shipyard)
+	AI: RegisterForUse(Shipyard)

@@ -69,7 +69,7 @@ tidy class Construction : Component_Construction, Savable {
 	Object@ supportFor;
 	double supportLabor = -1;
 	int consType = -1;
-	
+
 	bool repeating = false;
 	bool rally = false;
 	Object@ rallyObj;
@@ -97,7 +97,7 @@ tidy class Construction : Component_Construction, Savable {
 			msg >> laborStorage;
 			msg >> storedLabor;
 		}
-		
+
 		if(msg > SV_0021) {
 			msg >> rally;
 			msg >> rallyObj;
@@ -174,7 +174,7 @@ tidy class Construction : Component_Construction, Savable {
 		msg << constructionCost;
 		msg << laborStorage;
 		msg << storedLabor;
-		
+
 		msg << rally;
 		msg << rallyObj;
 		msg << rallyPoint;
@@ -223,7 +223,7 @@ tidy class Construction : Component_Construction, Savable {
 	void modLaborIncome(Object& obj, double mod) {
 		LaborIncome += mod;
 		deltaConstruction = true;
-		
+
 		if(laborIncome >= LABOR_ACHIEVE_THRESH && obj.owner is playerEmpire && !getCheatsEverOn())
 			unlockAchievement("ACH_LABOR200");
 	}
@@ -231,7 +231,7 @@ tidy class Construction : Component_Construction, Savable {
 	void modLaborFactor(Object& obj, double mod) {
 		LaborFactor += mod;
 		deltaConstruction = true;
-		
+
 		if(laborIncome >= LABOR_ACHIEVE_THRESH && obj.owner is playerEmpire && !getCheatsEverOn())
 			unlockAchievement("ACH_LABOR200");
 	}
@@ -241,7 +241,7 @@ tidy class Construction : Component_Construction, Savable {
 			LaborIncome += val - DistributedLabor;
 			DistributedLabor = val;
 			deltaConstruction = true;
-		
+
 			if(laborIncome >= LABOR_ACHIEVE_THRESH && obj.owner is playerEmpire && !getCheatsEverOn())
 				unlockAchievement("ACH_LABOR200");
 		}
@@ -263,16 +263,16 @@ tidy class Construction : Component_Construction, Savable {
 			return 1.f;
 		return queue[0].curLabor / queue[0].totalLabor;
 	}
-	
+
 	const Design@ get_constructionDesign() const {
 		if(queue.length == 0)
 			return null;
 		Constructible@ top = queue[0];
-		
+
 		ShipConstructible@ flagship = cast<ShipConstructible@>(top);
 		if(flagship !is null)
 			return flagship.design;
-			
+
 		return null;
 	}
 
@@ -389,7 +389,7 @@ tidy class Construction : Component_Construction, Savable {
 			return "(null)";
 		return queue[num].name;
 	}
-	
+
 	int get_constructionID(uint num) const {
 		if(num >= queue.length)
 			return -1;
@@ -510,13 +510,13 @@ tidy class Construction : Component_Construction, Savable {
 	bool get_isUsingLabor() const {
 		return curUsingLabor;
 	}
-	
+
 	void clearRally() {
 		rally = false;
 		@rallyObj = null;
 		deltaConstruction = true;
 	}
-	
+
 	void rallyTo(Object& obj, Object@ dest) {
 		if(dest is null || !dest.valid || !dest.isVisibleTo(obj.owner))
 			clearRally();
@@ -525,25 +525,25 @@ tidy class Construction : Component_Construction, Savable {
 		rallyPoint = dest.position;
 		deltaConstruction = true;
 	}
-	
+
 	void rallyTo(vec3d position) {
 		rally = true;
 		rallyPoint = position;
 		deltaConstruction = true;
 	}
-	
+
 	bool get_isRallying() {
 		return rally;
 	}
-	
+
 	vec3d get_rallyPosition() {
 		return rallyPoint;
 	}
-	
+
 	Object@ get_rallyObject() {
 		return rallyObj;
 	}
-	
+
 	void doRally(Object& obj, Object@ orderObj) {
 		if(!rally || obj.owner !is orderObj.owner || !orderObj.hasLeaderAI)
 			return;
@@ -600,7 +600,7 @@ tidy class Construction : Component_Construction, Savable {
 		bool usingLabor = laborFlag;
 		if(rally && rallyObj !is null && rallyObj.isVisibleTo(obj.owner))
 			rallyPoint = rallyObj.position;
-	
+
 		//Handle support construction
 		double subLabor = time * LaborIncome * LaborFactor * double(get_supportBuildSpeed(obj)) / 100.0;
 		double resvLabor = 0.0;
@@ -1032,23 +1032,23 @@ tidy class Construction : Component_Construction, Savable {
 				return;
 			@pathFrom = constructFrom;
 		}
-	
+
 		const ResourceType@ res = getResource(resId);
 		if(res is null)
 			return;
-	
+
 		double cost = asteroid.getAvailableCostFor(resId);
 		if(cost < 0.0)
 			return;
 		if(!asteroid.canDevelop(obj.owner))
 			return;
-	
+
 		TradePath path(obj.owner);
 		path.generate(getSystem(pathFrom.region), getSystem(asteroid.region));
 		if(!path.isUsablePath)
 			return;
 		double costFactor = 1.0 + config::ASTEROID_COST_STEP * double(path.pathSize - 1);
-	
+
 		AsteroidConstructible cons(obj, asteroid, res, cost * costFactor);
 		queueConstructible(obj, cons);
 	}
@@ -1273,7 +1273,7 @@ tidy class Construction : Component_Construction, Savable {
 		msg.writeSmall(cnt);
 		for(uint i = 0; i < cnt; ++i)
 			queue[i].write(msg);
-		
+
 		msg << rally;
 		if(rally) {
 			msg.writeBit(rallyObj !is null);

@@ -534,6 +534,7 @@ class ConstructionDisplay : DisplayBox {
 				list.updateHover();
 			}
 			else {
+				sleep(1); //SoI: Workaround: CTD when building from a shipyard with items with an ore cost in the list
 				modulesButton.disabled = true;
 			}
 			if(obj.hasConstruction && obj.canBuildShips) {

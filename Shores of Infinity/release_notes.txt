@@ -10,6 +10,10 @@ v0.3.3b
 *** Detailed Changes ***
 ************************
 
+[*] Gameplay
+
+- Added a workaround to prevent a crash to desktop when trying to build from a shipyard when items with an ore cost are present among the available buildable items.
+
 [*] Settlements
 
 - Farm World now additionally require a native Water resource, but can replace a Level 1 resource.
