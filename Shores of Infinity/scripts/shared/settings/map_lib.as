@@ -86,7 +86,7 @@ final class SystemDesc : Serializable, Savable {
 	void read(Message& msg) {
 		index = msg.readSmall();
 		position = msg.readMedVec3();
-		radius = msg.read_float();
+		_radius = msg.read_float();
 		msg >> object;
 		msg >> name;
 		msg >> donateVision;
@@ -141,7 +141,7 @@ final class SystemDesc : Serializable, Savable {
 	void write(Message& msg) {
 		msg.writeSmall(index);
 		msg.writeMedVec3(position);
-		msg << float(radius);
+		msg << float(_radius);
 		msg << object;
 		msg << name;
 		msg << donateVision;
@@ -163,7 +163,7 @@ final class SystemDesc : Serializable, Savable {
 		msg >> index;
 		msg >> name;
 		msg >> position;
-		msg >> radius;
+		msg >> _radius;
 		msg >> object;
 		if(msg >= SV_0082)
 			msg >> contestation;
@@ -194,7 +194,7 @@ final class SystemDesc : Serializable, Savable {
 		msg << index;
 		msg << name;
 		msg << position;
-		msg << radius;
+		msg << _radius;
 		msg << object;
 		msg << contestation;
 		msg << donateVision;

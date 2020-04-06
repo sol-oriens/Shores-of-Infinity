@@ -13,6 +13,7 @@ v0.3.3b
 [*] Gameplay
 
 - Added a workaround to prevent a crash to desktop when trying to build from a shipyard when items with an ore cost are present among the available buildable items.
+- Fixed a bug where system radius values were not correctly loaded from a saved game.
 
 [*] Settlements
 
