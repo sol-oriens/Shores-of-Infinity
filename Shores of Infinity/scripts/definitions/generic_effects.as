@@ -4500,6 +4500,7 @@ class ModEfficiencyDistanceToOrbital : GenericEffect {
 	Argument maxrange_efficiency(AT_Decimal, doc="Efficiency at maximum range.");
 	Argument minrange(AT_Decimal, doc="Minimum range for min efficiency.");
 	Argument maxrange(AT_Decimal, doc="Maximum range for max efficiency.");
+	Argument scaled(AT_Boolean, "False", doc="Scale the distance to match game settings.");
 
 #section server
 	void enable(Object& obj, any@ data) const override {
@@ -4516,19 +4517,25 @@ class ModEfficiencyDistanceToOrbital : GenericEffect {
 			value.timer = randomd(0.5, 5.0);
 
 			double prevValue = value.value;
-			double dist = maxrange.decimal;
+			double maxRange = maxrange.decimal;
+			double minRange = minrange.decimal;
+			if (scaled.boolean) {
+				maxRange *= config::SCALE_SPACING;
+				minRange *= config::SCALE_SPACING;
+			}
+			double dist = maxRange;
 			Orbital@ closest = obj.owner.getClosestOrbital(orbital.integer, obj.position);
 			if(closest !is null)
 				dist = closest.position.distanceTo(obj.position);
 
-			if(dist <= minrange.decimal) {
+			if(dist <= minRange) {
 				value.value = minrange_efficiency.decimal;
 			}
-			else if(dist >= maxrange.decimal) {
+			else if(dist >= maxRange) {
 				value.value = maxrange_efficiency.decimal;
 			}
 			else {
-				double pct = (dist - minrange.decimal) / (maxrange.decimal - minrange.decimal);
+				double pct = (dist - minRange) / (maxRange - minRange);
 				value.value = minrange_efficiency.decimal + pct * (maxrange_efficiency.decimal - minrange_efficiency.decimal);
 			}
 
