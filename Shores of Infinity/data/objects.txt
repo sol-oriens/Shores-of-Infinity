@@ -169,7 +169,7 @@ local visible:
 	safe bool get_isDisabled();
 	bool get_isDamaged();
 	OrbitalSection@[] getSections();
-	bool hasModule(uint typeId);
+	safe bool hasModule(uint typeId);
 	safe double get_health();
 	safe double get_maxHealth();
 	safe double get_armor();
