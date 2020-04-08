@@ -30,6 +30,7 @@ v0.3.3b
 [*] Settlements
 
 - Farm World now additionally requires a native Water resource, but can replace a Level 1 resource.
+- Forge World now additionally requires a Space Elevator.
 
 v0.3.2b
 

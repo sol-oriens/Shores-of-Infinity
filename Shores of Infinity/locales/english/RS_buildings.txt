@@ -58,6 +58,7 @@ BLD_FORGE5_DESC: <<
 
 	Requirements:
 	[color=#ff0][bbloc=#BLD_FORGE5/] x 3[/color]
+	[color=#ff0][bbloc=#BLD_SPACE_ELEVATOR/][/color]
 
 	[bbloc=#TIP_CONSUME_ORE:60/]
 >>

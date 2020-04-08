@@ -9,6 +9,7 @@ Settlement: Forge
 	addon_requirement_effects::RequireNotHome()
 	RequirePlanet()
 	RequireStatus(Forge4, Count = 3)
+	RequireStatus(SpaceElevator)
 
 	AddDummyResource(Supercarbons, 1)
 	MultConstructionCost(0.8)
