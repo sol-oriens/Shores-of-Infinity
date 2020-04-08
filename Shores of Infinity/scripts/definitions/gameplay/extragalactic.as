@@ -1,8 +1,9 @@
 #priority init 1500
 import generic_hooks;
-from bonus_effects import BonusEffect;
-
 import resources;
+
+from statuses import getStatusID;
+from bonus_effects import BonusEffect;
 
 #section server
 import systems;
@@ -15,10 +16,14 @@ const ResourceClass@ foodClass;
 const ResourceClass@ waterClass;
 const ResourceClass@ scalableClass;
 
+int moonStatusId = -1;
+
 void init() {
 	@foodClass = getResourceClass("Food");
 	@waterClass = getResourceClass("WaterType");
 	@scalableClass = getResourceClass("Scalable");
+
+	moonStatusId = getStatusID("Moon");
 
 	coordination.length = getEmpireCount();
 }
@@ -58,6 +63,8 @@ final class Coordinate : Savable {
 	array<double> penaltiesUntil;
 
 	array<RefugeeData@> spreading;
+
+	bool canBuildArtificialMoon = false;
 
 	void tick(Empire& emp, double time) {
 		if(spreading.length == 0)
@@ -215,6 +222,9 @@ final class Coordinate : Savable {
 		else {
 			//Don't target quarantined planets
 			if(pl.quarantined)
+				return 0.0;
+			//Don't target gas giants with no moons if we can't build artificial moons
+			if (pl.getStatusStackCountAny(moonStatusId) == 0 && !canBuildArtificialMoon)
 				return 0.0;
 			//Don't colonize twice
 			if(targetIds.contains(pl.id))
