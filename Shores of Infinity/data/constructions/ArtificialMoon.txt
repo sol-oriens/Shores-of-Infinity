@@ -22,6 +22,7 @@ Construction: ArtificialMoon
 
 	Trigger(targ, AddSurfaceArea(Moon, (6, 6)))
 	Trigger(targ, AddMoonGraphic(25))
+	Trigger(targ, AddStatus(MoonBase))
 	Trigger(targ, AddStatus(ArtificialMoon))
 	Trigger(targ, AddResource(Labor, 3))
 	Trigger(targ, AddDummyResource(Water, 1))
