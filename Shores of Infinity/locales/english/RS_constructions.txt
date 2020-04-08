@@ -24,7 +24,7 @@ CONS_ADVANCED_MOON_DESC: <<|
 	[color=#aaa][i]This artificial moon is larger than any naturally occuring one. Its interior containes enough factories
 	to satisfy the needs of the entire population of its host planet.[/i][/color]
 
-	Construct an supermoon to orbit this planet. Only one advanced artificial moon can be constructed around a planet.
+	Construct a supermoon to orbit this planet. Only one supermoon can be constructed around a planet.
 
 	Produces enough water and food to satisfy all planet level requirements.
 
