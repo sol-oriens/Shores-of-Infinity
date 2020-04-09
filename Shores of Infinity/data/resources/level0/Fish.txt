@@ -11,5 +11,8 @@ Resource: Fish
 	Frequency: 0.9
 
 	Level: 0
+
+	Secondary Resource: Water
+
 	AddResourceVanishBonus(+0.3) #version<105
 	AddToNativeResource(AddResourceVanishBonus(+0.3)) #version<71

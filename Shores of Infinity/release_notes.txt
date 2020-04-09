@@ -25,6 +25,7 @@ v0.3.3b
 
 [*] Planets
 
+- Planets with a Fish native resource now also have a native exportable Water resource.
 - Fixed a vanilla bug where building an artificial moon was making a new moon base available to build.
 
 [*] Settlements
