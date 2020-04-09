@@ -21,6 +21,7 @@ v0.3.3b
 
 [*] Orbitals
 
+- Listening Posts now have a maintenance cost of 10k (up from 0).
 - Mainframe range is now correctly scaled.
 
 [*] Planets

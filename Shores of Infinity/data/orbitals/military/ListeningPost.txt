@@ -8,6 +8,7 @@ Module: ListeningPost
 	Core: False
 
 	Build Cost: 150
+	Maintenance: 10
 
 	ConsumeInfluence(5)
 
