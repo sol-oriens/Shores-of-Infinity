@@ -767,6 +767,12 @@ final class Infrastructure : AIComponent {
 	array<SystemCheck@> checkedOutsideSystems;
 	array<PlanetCheck@> checkedPlanets;
 
+	//Threshold and tracking to spread the number of systems / planets checked over several ticks for performance
+	uint checkThreshold = 20;
+	uint ownedSystemsCheckStartIndex = 0;
+	uint outsideSystemsCheckStartIndex = 0;
+	uint planetsCheckStartIndex = 0;
+
 	array<TradeRoute@> pendingRoutes;
 
 	SystemCheck@ homeSystem;
@@ -907,6 +913,7 @@ final class Infrastructure : AIComponent {
 		PlanetCheck@ pl;
 		SystemBuildLocation loc;
 
+		bool reachedThreshold = false;
 		bool critical = false;
 		double w;
 		double bestWeight = 0.0;
@@ -916,32 +923,43 @@ final class Infrastructure : AIComponent {
 			@sys = checkedOwnedSystems[i];
 			//Only consider anything if no critical action is underway
 			if (!critical) {
-				//Evaluate current weight
-				w = sys.check(ai);
-				if (w > bestWeight) {
-					if (_focus == FT_None || _focus == FT_Outpost) {
-						//Check if an outpost is needed
-						if (shouldHaveOutpost(sys, SA_Core, loc)) {
-							@nextAction = SystemAction(sys, BA_BuildOutpost, loc);
-							bestWeight = w;
-							if (log)
-								ai.print("outpost considered for owned system with weight: " + w, sys.ai.obj);
+				if (i >= ownedSystemsCheckStartIndex && i <= ownedSystemsCheckStartIndex + checkThreshold - 1) {
+					//Evaluate current weight
+					w = sys.check(ai);
+					if (w > bestWeight) {
+						if (_focus == FT_None || _focus == FT_Outpost) {
+							//Check if an outpost is needed
+							if (shouldHaveOutpost(sys, SA_Core, loc)) {
+								@nextAction = SystemAction(sys, BA_BuildOutpost, loc);
+								bestWeight = w;
+								if (log)
+									ai.print("outpost considered for owned system with weight: " + w, sys.ai.obj);
+							}
+						}
+						if (_focus == FT_None) {
+							//Check if a starport is needed
+							if (shouldHaveStarport(sys, SA_Core, loc)) {
+								@nextAction = SystemAction(sys, BA_BuildStarport, loc);
+								bestWeight = w;
+								if (log)
+									ai.print("starport considered for owned system with weight: " + w, sys.ai.obj);
+							}
 						}
 					}
-					if (_focus == FT_None) {
-						//Check if a starport is needed
-						if (shouldHaveStarport(sys, SA_Core, loc)) {
-							@nextAction = SystemAction(sys, BA_BuildStarport, loc);
-							bestWeight = w;
-							if (log)
-								ai.print("starport considered for owned system with weight: " + w, sys.ai.obj);
-						}
-					}
+					if (i == cnt - 1)
+						ownedSystemsCheckStartIndex = 0;
 				}
+				else if (i == ownedSystemsCheckStartIndex + checkThreshold)
+					reachedThreshold = true;
 			}
 			//Perform routine duties
 			sys.focusTick(ai, this, time);
 		}
+		if (reachedThreshold) {
+			ownedSystemsCheckStartIndex += checkThreshold;
+			reachedThreshold = false;
+		}
+
 		//Check if systems in tradable area need anything
 		for (uint i = 0, cnt = checkedOutsideSystems.length; i < cnt; ++i) {
 			@sys = checkedOutsideSystems[i];
@@ -949,53 +967,75 @@ final class Infrastructure : AIComponent {
 			if (sys.ai.explored) {
 				//Only consider anything if no critical action is underway
 				if (!critical) {
-					//Evaluate current weight
-					w = sys.check(ai);
-					if (w > bestWeight) {
-						if (_focus == FT_None || _focus == FT_Outpost) {
-							//Check if an outpost is needed
-							if (shouldHaveOutpost(sys, SA_Tradable, loc)) {
-								@nextAction = SystemAction(sys, BA_BuildOutpost, loc);
-								bestWeight = w;
-								if (log)
-									ai.print("outpost considered for outside system with weight: " + w, sys.ai.obj);
+					if (i >= outsideSystemsCheckStartIndex && i <= outsideSystemsCheckStartIndex + checkThreshold - 1) {
+						//Evaluate current weight
+						w = sys.check(ai);
+						if (w > bestWeight) {
+							if (_focus == FT_None || _focus == FT_Outpost) {
+								//Check if an outpost is needed
+								if (shouldHaveOutpost(sys, SA_Tradable, loc)) {
+									@nextAction = SystemAction(sys, BA_BuildOutpost, loc);
+									bestWeight = w;
+									if (log)
+										ai.print("outpost considered for outside system with weight: " + w, sys.ai.obj);
+								}
 							}
 						}
+						if (i == cnt - 1)
+							outsideSystemsCheckStartIndex = 0;
 					}
+					else if (i == outsideSystemsCheckStartIndex + checkThreshold)
+						reachedThreshold = true;
 				}
 			}
 			//Perform routine duties
 			sys.focusTick(ai, this, time);
 		}
+		if (reachedThreshold) {
+			outsideSystemsCheckStartIndex += checkThreshold;
+			reachedThreshold = false;
+		}
+
 		//Check if owned planets need anything
 		for (uint i = 0, cnt = checkedPlanets.length; i < cnt; ++i) {
 			@pl = checkedPlanets[i];
 			//Only consider anything if no critical action is underway
 			if (!critical) {
-				//Planets are their own 'factory' and can only build one construction at a time
-				if (!pl.isBuilding) {
-					//Evaluate current weight
-					w = pl.check(ai);
-					if (w > bestWeight) {
-						//Check if a moon base is needed
-						if (canBuildMoonBase && shouldHaveMoonBase(pl)) {
-							@nextAction = PlanetAction(pl, BA_BuildMoonBase);
-							bestWeight = w;
-							if (log)
-								ai.print("moon base considered with weight: " + w, pl.ai.obj);
-							if ((pl.isGasGiant || pl.isIceGiant) && pl.ai.obj.getStatusStackCountAny(moonBaseStatusId) == 0) {
-								//The first moon base on gas or ice giants must be built as soon as possible
-								nextAction.priority = 2.0;
-								critical = true;
-								break;
+				if (i >= planetsCheckStartIndex && i <= planetsCheckStartIndex + checkThreshold - 1) {
+					//Planets are their own 'factory' and can only build one construction at a time
+					if (!pl.isBuilding) {
+						//Evaluate current weight
+						w = pl.check(ai);
+						if (w > bestWeight) {
+							//Check if a moon base is needed
+							if (canBuildMoonBase && shouldHaveMoonBase(pl)) {
+								@nextAction = PlanetAction(pl, BA_BuildMoonBase);
+								bestWeight = w;
+								if (log)
+									ai.print("moon base considered with weight: " + w, pl.ai.obj);
+								if ((pl.isGasGiant || pl.isIceGiant) && pl.ai.obj.getStatusStackCountAny(moonBaseStatusId) == 0) {
+									//The first moon base on gas or ice giants must be built as soon as possible
+									nextAction.priority = 2.0;
+									critical = true;
+									break;
+								}
 							}
 						}
 					}
+					if (i == cnt - 1)
+						planetsCheckStartIndex = 0;
 				}
+				else if (i == planetsCheckStartIndex + checkThreshold)
+					reachedThreshold = true;
 			}
 			//Perform routine duties
 			pl.focusTick(ai, this, time);
 		}
+		if (reachedThreshold) {
+			planetsCheckStartIndex += checkThreshold;
+			reachedThreshold = false;
+		}
+
 		//Execute our next action if there is one
 		if (nextAction !is null) {
 			Object@ obj;
@@ -1063,7 +1103,6 @@ final class Infrastructure : AIComponent {
 					}
 				}
 			}
-
 			@nextAction = null;
 		}
 
