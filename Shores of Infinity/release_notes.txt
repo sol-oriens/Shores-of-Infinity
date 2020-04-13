@@ -10,6 +10,11 @@ v0.3.3b
 *** Detailed Changes ***
 ************************
 
+[*] Artificial Intelligence
+
+- AIs can now use nascence devices.
+- Fixed a vanilla bug where AIs would needlessly hoard water generated from comets on their homeworld.
+
 [*] Buildings
 
 - Fixed barracks description incorrectly pointing to an old locale.
