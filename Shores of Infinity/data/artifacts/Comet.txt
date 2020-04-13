@@ -17,4 +17,4 @@ Artifact: Comet
 
 	Ability: GenerateWater
 
-	AI: AsCreatedResource(Water, 5.0)
+	AI: AsCreatedResource(StellarWater, 5.0, Replaces Existing = False)
