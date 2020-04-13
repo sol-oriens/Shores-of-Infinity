@@ -14,7 +14,8 @@ v0.3.3b
 
 - AIs can now use nascence devices.
 - Fixed a vanilla bug where AIs would needlessly hoard water generated from comets on their homeworld.
-- Improved performance of custom algorithms tracking system and planet constructions to reduce late game stutters in large maps. 
+- Improved performance of custom algorithms tracking system and planet constructions to reduce late game stutters in large maps.
+- Tweaked budget management and colonization algorithms to correctly handle some of the latest drastic balance changes and avoid AIs struggling to expand in less favorable starting conditions.
 
 [*] Buildings
 

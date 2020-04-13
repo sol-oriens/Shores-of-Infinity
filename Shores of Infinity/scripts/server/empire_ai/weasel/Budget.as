@@ -79,21 +79,11 @@ final class BudgetPart {
 
 		for(uint i = 0, cnt = allocations.length; i < cnt; ++i) {
 			auto@ alloc = allocations[i];
-			if(alloc.priority < 1.0) {
-				if(alloc.cost >= remaining && alloc.maintenance >= remainingMaintenance) {
-					budget.spend(type, alloc.cost, alloc.maintenance);
-					alloc.allocated = true;
-					allocations.removeAt(i);
-					break;
-				}
-			}
-			else {
-				if(budget.canSpend(type, alloc.cost, alloc.maintenance, alloc.priority)) {
-					budget.spend(type, alloc.cost, alloc.maintenance);
-					alloc.allocated = true;
-					allocations.removeAt(i);
-					break;
-				}
+			if(budget.canSpend(type, alloc.cost, alloc.maintenance, alloc.priority)) {
+				budget.spend(type, alloc.cost, alloc.maintenance);
+				alloc.allocated = true;
+				allocations.removeAt(i);
+				break;
 			}
 		}
 	}
@@ -137,8 +127,8 @@ final class BudgetPart {
 
 final class Budget : AIComponent {
 	//Budget thresholds
-	private int _criticalThreshold = 350;
-	private int _lowThreshold = 400;
+	private int _criticalThreshold = 200;
+	private int _lowThreshold = 350;
 	private int _mediumThreshold = 500;
 	private int _highThreshold = 1000;
 	private int _veryHighThreshold = 2000;
@@ -285,9 +275,9 @@ final class Budget : AIComponent {
 					return false;
 			}
 			if (type != BT_Colonization
-				&& (maint > 200 && ai.empire.EstNextBudget < mediumThreshold)
-				|| (maint > 100 && ai.empire.EstNextBudget < lowThreshold)
-				|| (maint > 0 && ai.empire.EstNextBudget < criticalThreshold))
+				&& (maint > 200 && ai.empire.EstNextBudget < highThreshold)
+				|| (maint > 100 && ai.empire.EstNextBudget < mediumThreshold)
+				|| (maint > 0 && ai.empire.EstNextBudget < lowThreshold))
 				//Don't allow any high maintenance cost if our estimated next budget is too low
 				return false;
 
@@ -416,15 +406,11 @@ final class Budget : AIComponent {
 		FreeMaintenance += maint;
 	}
 
-	bool canFocus() {
-		return !(ai.empire.EstNextBudget <= criticalThreshold || _askedFocus || _focusing);
-	}
-
 	//Focus spendings on one particular budget part for one turn
 	//Only high priority requests will be considered for other parts
 	//Should be called at the start of a turn for best results
-	void focus(BudgetType type) {
-		if (ai.empire.EstNextBudget > criticalThreshold && !_askedFocus && !_focusing) {
+	bool focus(BudgetType type, bool force = false) {
+		if (force || ai.empire.EstNextBudget > criticalThreshold && !_askedFocus && !_focusing) {
 			_focus = type;
 			//If we are still at the start of a turn, focus immediately, else wait until next turn
 			//The second condition compensates for slight timing inaccuracies and execution delay
@@ -436,7 +422,9 @@ final class Budget : AIComponent {
 			}
 			else
 				_askedFocus = true;
+			return true;
 		}
+		return false;
 	}
 
 	void tick(double time) {

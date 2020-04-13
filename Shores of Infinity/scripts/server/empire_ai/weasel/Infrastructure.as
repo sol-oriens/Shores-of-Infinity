@@ -878,10 +878,8 @@ final class Infrastructure : AIComponent {
 		_focus = FT_None;
 		//If colonization is somehow blocked, force territory expansion by focusing on building outposts
 		if (colonization.needsMoreTerritory){
-			if (budget.canFocus()) {
-				budget.focus(BT_Infrastructure);
-				_focus = FT_Outpost;
-			}
+			budget.focus(BT_Infrastructure);
+			_focus = FT_Outpost;
 		}
 	}
 

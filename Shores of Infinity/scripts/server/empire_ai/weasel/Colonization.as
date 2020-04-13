@@ -657,7 +657,7 @@ final class Colonization : AIComponent {
 			case PC_Gas_III:
 			case PC_Gas_IV:
 			case PC_Gas_V:
-			if (ai.empire.EstNextBudget < budget.mediumThreshold) {
+			if (ai.empire.EstNextBudget < budget.criticalThreshold) {
 				weight *= 0;
 				break;
 			}
@@ -763,7 +763,7 @@ final class Colonization : AIComponent {
 				case PC_Gas_III:
 				case PC_Gas_IV:
 				case PC_Gas_V:
-					if (ai.empire.EstNextBudget < budget.mediumThreshold ||
+					if (ai.empire.EstNextBudget < budget.criticalThreshold ||
 						gameTime < 180 ||
 						(p.pl.getStatusStackCountAny(moonStatusId) == 0 && !canBuildArtificialMoon))
 						continue;
@@ -912,6 +912,8 @@ final class Colonization : AIComponent {
 				if (log)
 					ai.print("Colonization: continuing expansion phase with estimated next budget: " + ai.empire.EstNextBudget);
 			}
+			else if (log)
+				ai.print("Colonization: continuing expansion phase with estimated next budget: " + ai.empire.EstNextBudget);
 		}
 		else if (_phase == CP_Stabilization) {
 			if (ai.empire.RemainingBudget > budget.mediumThreshold) {
@@ -927,24 +929,18 @@ final class Colonization : AIComponent {
 		}
 
 		if (ai.empire.EstNextBudget <= 0) {
-			//We are in trouble. Abandon planets sucking budget up
-			if (log)
-				ai.print("Colonization: negative budget, abandoning planets");
-			auto@ homeworld = ai.empire.Homeworld;
-			for (uint i = 0, cnt = planets.planets.length; i < cnt; i++) {
-				auto@ pl = planets.planets[i].obj;
-				if (pl is homeworld)
-					continue;
-				int resId = pl.primaryResourceType;
-				if(resId == -1)
-					continue;
-				const ResourceType@ type = getResource(resId);
-				if ((type.cls is scalableClass || type.level > 0) && pl.resourceLevel == 0) {
-					pl.forceAbandon();
-				}
-			}
-			//If we are still in trouble, abandon more planets
-			if (ai.empire.EstNextBudget <= 0) {
+			bool shouldAbandon = true;
+			if (systems.owned.length <= 3 || planets.planets.length <= 5)
+				//Our territory is small and we need resources
+				shouldAbandon = false;
+			if (curColonizations > 0)
+				//Colonizers are taxing our budget
+				shouldAbandon = false;
+			if (shouldAbandon) {
+				//We are in trouble. Abandon planets sucking budget up
+				if (log)
+					ai.print("Colonization: negative budget, abandoning planets");
+				auto@ homeworld = ai.empire.Homeworld;
 				for (uint i = 0, cnt = planets.planets.length; i < cnt; i++) {
 					auto@ pl = planets.planets[i].obj;
 					if (pl is homeworld)
@@ -953,10 +949,11 @@ final class Colonization : AIComponent {
 					if(resId == -1)
 						continue;
 					const ResourceType@ type = getResource(resId);
-					if ((type.cls is foodClass || type.cls is waterClass) && !pl.primaryResourceExported)
+					if ((type.cls is scalableClass || type.level > 0) && pl.resourceLevel == 0) {
 						pl.forceAbandon();
+					}
 				}
-				//More!
+				//If we are still in trouble, abandon more planets
 				if (ai.empire.EstNextBudget <= 0) {
 					for (uint i = 0, cnt = planets.planets.length; i < cnt; i++) {
 						auto@ pl = planets.planets[i].obj;
@@ -966,8 +963,22 @@ final class Colonization : AIComponent {
 						if(resId == -1)
 							continue;
 						const ResourceType@ type = getResource(resId);
-						if (!(type.cls is foodClass || type.cls is waterClass || type.cls is scalableClass) && type.level == 0)
+						if ((type.cls is foodClass || type.cls is waterClass) && !pl.primaryResourceExported)
 							pl.forceAbandon();
+					}
+					//More!
+					if (ai.empire.EstNextBudget <= 0) {
+						for (uint i = 0, cnt = planets.planets.length; i < cnt; i++) {
+							auto@ pl = planets.planets[i].obj;
+							if (pl is homeworld)
+								continue;
+							int resId = pl.primaryResourceType;
+							if(resId == -1)
+								continue;
+							const ResourceType@ type = getResource(resId);
+							if (!(type.cls is foodClass || type.cls is waterClass || type.cls is scalableClass) && type.level == 0)
+								pl.forceAbandon();
+						}
 					}
 				}
 			}
