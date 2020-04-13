@@ -272,8 +272,8 @@ tidy class SettlementManager : Component_Settlement, Savable {
 			_notifiedCivilUnrest = false;
 
 		//Delay and spread expensive checks randomly over time
-		if (float(time) >= timer) {
-			timer = float(time + randomd(3.0, 5.0));
+		if (float(gameTime) >= timer) {
+			timer = float(gameTime + randomd(3.0, 5.0));
 
 			const SettlementType@ settlement = getSettlement(obj);
 			if (settlement !is null) {
