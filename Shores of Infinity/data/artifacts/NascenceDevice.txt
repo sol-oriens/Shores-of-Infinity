@@ -5,3 +5,5 @@ Artifact: NascenceDevice
 	Model: ArtifactAdvanced
 
 	Ability: NascenceDevice
+
+	AI: AsCreatedResource(Grain, 5.0, Replaces Existing = False)
