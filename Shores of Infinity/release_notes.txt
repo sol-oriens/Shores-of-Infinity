@@ -14,7 +14,7 @@ v0.3.3b
 
 - AIs can now use nascence devices.
 - Fixed a vanilla bug where AIs would needlessly hoard water generated from comets on their homeworld.
-- Improved performance of custom algorithms tracking system and planet constructions to reduce late game stutters in large maps.
+- Improved performance of custom algorithms tracking system and planet constructions to reduce late game stuttering in large maps.
 - Tweaked budget management and colonization algorithms to correctly handle some of the latest drastic balance changes and avoid AIs struggling to expand in less favorable starting conditions.
 
 [*] Buildings
@@ -25,6 +25,7 @@ v0.3.3b
 
 - Added a workaround to prevent a crash to desktop when trying to build from a shipyard when items with an ore cost are present among the available buildable items.
 - Fixed a bug where system radius values were not correctly loaded from a saved game.
+- Decreased the frequency of some settlement-related checks to avoid massive late game stuttering in large maps.
 
 [*] Orbitals
 

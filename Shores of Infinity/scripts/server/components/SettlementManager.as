@@ -7,6 +7,7 @@ int ignoreMoraleModifiersAttribute = -1;
 
 tidy class SettlementManager : Component_Settlement, Savable {
 	Mutex mtx;
+	float timer = 0.f;
 	bool delta = false;
 
 	Object@ obj;
@@ -270,29 +271,34 @@ tidy class SettlementManager : Component_Settlement, Savable {
 		else if (morale > SM_VeryLow && _notifiedCivilUnrest)
 			_notifiedCivilUnrest = false;
 
-		const SettlementType@ settlement = getSettlement(obj);
-		if (settlement !is null) {
-			if (settlementType is null || settlement.id != settlementType.type.id)
-				setType(settlement);
+		//Delay and spread expensive checks randomly over time
+		if (float(time) >= timer) {
+			timer = float(time + randomd(3.0, 5.0));
+
+			const SettlementType@ settlement = getSettlement(obj);
+			if (settlement !is null) {
+				if (settlementType is null || settlement.id != settlementType.type.id)
+					setType(settlement);
+			}
+			else
+				error("settlementTick (" + obj.name + ", " + obj.owner.name + "): could not find any suitable settlement type");
+
+			const SettlementFocusType@[] foci = getAvailableFoci(obj);
+			if (foci.length > 0) {
+				if (_focusId == -1 || _autoFocus && _focusId != int(foci[0].id))
+					setFocus(foci[0]);
+			}
+			else
+				error("settlementTick (" + obj.name + ", " + obj.owner.name + "): could not find any available focus");
+
+			//refreshIncomeModifier();
 		}
-		else
-			error("settlementTick (" + obj.name + ", " + obj.owner.name + "): could not find any suitable settlement type");
 
 		if (settlementType !is null)
 			settlementType.tick(obj, time);
 
-		const SettlementFocusType@[] foci = getAvailableFoci(obj);
-		if (foci.length > 0) {
-			if (_focusId == -1 || _autoFocus && _focusId != int(foci[0].id))
-				setFocus(foci[0]);
-		}
-		else
-			error("settlementTick (" + obj.name + ", " + obj.owner.name + "): could not find any available focus");
-
 		if (focus !is null)
 			focus.tick(obj, time);
-
-		//refreshIncomeModifier();
 
 		for(uint i = 0, cnt = civilActs.length; i < cnt; ++i) {
 			auto@ civilAct = civilActs[i];
