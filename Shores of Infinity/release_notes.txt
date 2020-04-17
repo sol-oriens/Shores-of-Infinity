@@ -10,6 +10,10 @@ v0.3.3b
 *** Detailed Changes ***
 ************************
 
+[*] Artifacts
+
+- Slightly decreased the frequency of Nascence Device.
+
 [*] Artificial Intelligence
 
 - AIs can now use nascence devices.
@@ -36,6 +40,10 @@ v0.3.3b
 
 - Planets with a Fish native resource now also have a native exportable Water resource.
 - Fixed a vanilla bug where building an artificial moon was making a new moon base available to build.
+
+[*] Resources
+
+- Decreased the frequency of Fish.
 
 [*] Settlements
 

@@ -7,8 +7,8 @@ Resource: Fish
 	Icon: ResourceIcons::2
 	Small Icon: ResourceIconsSmall::19
 
-	Distribution: 0.9
-	Frequency: 0.9
+	Distribution: 0.7
+	Frequency: 0.7
 
 	Level: 0
 

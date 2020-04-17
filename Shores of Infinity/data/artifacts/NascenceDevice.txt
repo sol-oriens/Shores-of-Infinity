@@ -4,6 +4,8 @@ Artifact: NascenceDevice
 
 	Model: ArtifactAdvanced
 
+	Frequency: 0.9
+
 	Ability: NascenceDevice
 
 	AI: AsCreatedResource(Grain, 5.0, Replaces Existing = False)
