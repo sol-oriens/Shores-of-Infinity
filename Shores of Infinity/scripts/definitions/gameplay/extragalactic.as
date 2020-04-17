@@ -224,8 +224,9 @@ final class Coordinate : Savable {
 			if(pl.quarantined)
 				return 0.0;
 			//Don't target gas giants with no moons if we can't build artificial moons
-			if (pl.getStatusStackCountAny(moonStatusId) == 0 && !canBuildArtificialMoon)
-				return 0.0;
+			//Disabled as repeated calls can crash the game
+			//if (pl.getStatusStackCountAny(moonStatusId) == 0 && !canBuildArtificialMoon)
+				//return 0.0;
 			//Don't colonize twice
 			if(targetIds.contains(pl.id))
 				return 0.0;
