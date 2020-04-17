@@ -89,6 +89,8 @@ SETTLEMENT_FARM_DESC: <<|
 	[color=#aaa][i]The numerous farmlands of this planet focus on producing grain. So much grain that over time
 	enough reserves are accumulated from leftovers that they can be used to seed new ones.[/i][/color]
 
+	Replaces a Level 1 resource.
+
 	Yields one Harvest influence card every 30 minutes.
 >>
 
