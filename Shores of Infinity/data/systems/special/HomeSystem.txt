@@ -49,10 +49,10 @@ System: HomeSystem
 	MakeAnomaly()
 	MakeArtifact(Type = Comet)
 
-	GuaranteeAdjacentResource(RandomType:Food:Common, Distance = 2)
-	GuaranteeAdjacentResource(RandomType:Food:Common, Distance = 2)
+	GuaranteeAdjacentResource(Fruit:Grain:Meat, Distance = 2)
+	GuaranteeAdjacentResource(Fruit:Grain:Meat, Distance = 2)
 	GuaranteeAdjacentResource(RandomLevel:1:Common, Distance = 2)
-	GuaranteeAdjacentResource(RandomType:Food:Common, Distance = 3)
+	GuaranteeAdjacentResource(Fruit:Grain:Meat, Distance = 3)
 	GuaranteeAdjacentResource(RandomLevel:2:Common, Distance = 3)
 
 	MakeAdjacentAsteroid(Resource = Distributed)
